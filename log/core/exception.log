@@ -1,0 +1,41 @@
+2012-10-11T00:39:01+02:00 WARNING{"errstr":"Undefined variable: obj","errfile":"\/var\/www\/apps\/billing\/controller.class.php","errline":112,"errno":8}
+2012-10-11T00:40:44+02:00 WARNING{"errstr":"Undefined variable: obj","errfile":"\/var\/www\/apps\/billing\/controller.class.php","errline":112,"errno":8}
+2012-10-11T00:40:44+02:00 WARNING{"errstr":"Missing argument 2 for helper\\lodo::__construct(), called in \/var\/www\/helpers\/lodo\/controller.class.php on line 240 and defined","errfile":"\/var\/www\/helpers\/lodo\/controller.class.php","errline":95,"errno":2}
+2012-10-11T00:40:44+02:00 WARNING{"errstr":"Undefined variable: app","errfile":"\/var\/www\/helpers\/lodo\/controller.class.php","errline":100,"errno":8}
+2012-10-11T00:40:44+02:00 WARNING{"errstr":"Undefined variable: app","errfile":"\/var\/www\/helpers\/lodo\/controller.class.php","errline":103,"errno":8}
+2012-10-11T00:40:44+02:00 ERROR{"message":"groups has to be an array","file":"implement","line":"implement"}
+2012-10-11T00:40:44+02:00 WARNING{"errstr":"Undefined index: favicon.ico","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-10-11T00:40:44+02:00 WARNING{"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-10-11T00:40:44+02:00 WARNING{"errstr":"Undefined index: favicon.ico","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-10-11T00:40:44+02:00 WARNING{"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-10-11T00:40:44+02:00 WARNING{"errstr":"unable to load class: app\\favicon.ico in \/var\/www\/apps\/favicon.ico\/controller.class.php or \/var\/www\/apps\/favicon.ico.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":107,"errno":512}
+2012-10-11T00:40:44+02:00 WARNING{"errstr":"Page index does not exist in app \\app\\favicon.ico.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":96,"errno":1024}
+2012-10-11T00:41:56+02:00 ERROR {"message":"groups has to be an array","file":"implement","line":"implement"}
+2012-11-04T16:11:44+01:00 ERROR {"message":"Not yet implemented","file":"implement","line":"implement"}
+2012-11-04T16:12:22+01:00 ERROR {"message":"Not yet implemented","file":"implement","line":"implement"}
+2012-11-04T16:14:39+01:00 ERROR {"message":"Not yet implemented","file":"implement","line":"implement"}
+2012-11-04T16:38:48+01:00 ERROR {"message":"Not yet implemented","file":"implement","line":"implement"}
+2012-11-04T16:39:10+01:00 ERROR {"message":"Not yet implemented","file":"implement","line":"implement"}
+2012-11-04T16:39:37+01:00 ERROR {"message":"Not yet implemented","file":"implement","line":"implement"}
+2012-11-04T16:39:45+01:00 ERROR {"message":"Not yet implemented","file":"implement","line":"implement"}
+2012-11-04T16:39:50+01:00 ERROR {"message":"Not yet implemented","file":"implement","line":"implement"}
+2012-11-04T16:40:19+01:00 ERROR {"message":"Not yet implemented","file":"implement","line":"implement"}
+2012-11-04T16:40:34+01:00 ERROR {"message":"Not yet implemented","file":"implement","line":"implement"}
+2012-11-04T16:40:36+01:00 ERROR {"message":"Not yet implemented","file":"implement","line":"implement"}
+2012-11-04T20:28:57+01:00 ERROR {"message":"Couldn't do conversion","file":"implement","line":"implement"}
+2012-11-06T18:04:00+01:00 ERROR {"message":"Property \"cvr\" doesn't exist in model\\ext\\ubl2\\PartyLegalEntity","file":"implement","line":"implement"}
+2012-11-06T19:32:10+01:00 ERROR {"message":"Property \"schemeID\" doesn't exist in model\\ext\\ubl2\\PartyLegalEntity","file":"implement","line":"implement"}
+2012-11-06T19:32:15+01:00 ERROR {"message":"Property \"schemeID\" doesn't exist in model\\ext\\ubl2\\PartyLegalEntity","file":"implement","line":"implement"}
+2012-11-06T19:32:45+01:00 ERROR {"message":"Property \"schemeID\" doesn't exist in model\\ext\\ubl2\\PartyLegalEntity","file":"implement","line":"implement"}
+2012-11-06T19:33:27+01:00 ERROR {"message":"Property \"schemeID\" doesn't exist in model\\ext\\ubl2\\PartyLegalEntity","file":"implement","line":"implement"}
+2012-11-06T19:34:41+01:00 ERROR {"message":"Property \"schemeID\" doesn't exist in model\\ext\\ubl2\\PartyLegalEntity","file":"implement","line":"implement"}
+2012-11-06T19:35:00+01:00 ERROR {"message":"Property \"schemeID\" doesn't exist in model\\ext\\ubl2\\PartyLegalEntity","file":"implement","line":"implement"}
+2012-11-06T19:35:01+01:00 ERROR {"message":"Property \"schemeID\" doesn't exist in model\\ext\\ubl2\\PartyLegalEntity","file":"implement","line":"implement"}
+2012-11-06T19:35:29+01:00 ERROR {"message":"Property \"schemeID\" doesn't exist in model\\ext\\ubl2\\PartyLegalEntity","file":"implement","line":"implement"}
+2012-11-06T19:36:35+01:00 ERROR {"message":"Property \"schemeID\" doesn't exist in model\\ext\\ubl2\\PartyLegalEntity","file":"implement","line":"implement"}
+2012-11-06T19:37:08+01:00 ERROR {"message":"Property \"schemeID\" doesn't exist in model\\ext\\ubl2\\PartyLegalEntity","file":"implement","line":"implement"}
+2012-11-06T19:37:43+01:00 ERROR {"message":"Property \"schemeID\" doesn't exist in model\\ext\\ubl2\\PartyLegalEntity","file":"implement","line":"implement"}
+2012-11-06T19:37:59+01:00 ERROR {"message":"Property \"schemeID\" doesn't exist in model\\ext\\ubl2\\PartyLegalEntity","file":"implement","line":"implement"}
+2012-11-06T19:38:23+01:00 ERROR {"message":"Property \"schemeID\" doesn't exist in model\\ext\\ubl2\\PartyLegalEntity","file":"implement","line":"implement"}
+2012-11-06T19:38:28+01:00 ERROR {"message":"Property \"schemeID\" doesn't exist in model\\ext\\ubl2\\PartyLegalEntity","file":"implement","line":"implement"}
+2012-11-06T19:39:16+01:00 ERROR {"message":"Property \"schemeID\" doesn't exist in model\\ext\\ubl2\\PartyLegalEntity","file":"implement","line":"implement"}

@@ -1,0 +1,46 @@
+div.t_tile, div.t_tile_thumbnail{
+	-webkit-box-shadow: 3px 3px 10px #888888;
+	box-shadow: 3px 3px 10px #888888;
+	
+}
+div.t_tile, div.t_tile_thumbnail:hover{
+	-webkit-box-shadow: 3px 3px 10px #888888 inset;
+	box-shadow: 3px 3px 10px #888888 inset;
+	
+}
+div.t_tile{
+	border:1px solid #000;
+	width:150px;
+	margin:10px;
+	float:left;
+}
+div.t_tile_thumbnail{
+	border:1px solid #000;
+	width:300px;
+	margin:10px;
+	float:left;
+}
+div.t_tileinfo{
+	margin:10px;
+}
+span.t_tileheader{
+	font-size:130%;
+	font-weight:bold;
+}
+img.t_tile{
+	width: 64;
+	height:64;
+	margin:20px;
+	float:left;
+}
+ul.t_tile{
+	font-size:80%;
+	list-style-type:none;
+}
+li.t_tile{
+	list-style-position:outside;
+	margin-left:-2.5em;
+}
+a.t_blocklink{
+	display:block;
+}

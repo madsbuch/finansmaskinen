@@ -1,0 +1,19 @@
+<?php
+/**
+* skeleton for layoutblocks
+* 
+* this abstract class takes offset in $blockContent used as variable for storing
+* content
+*/
+
+abstract class layoutBlock{
+	
+	/**
+	* initialize block
+	*
+	* $this->blockContent['tag'] = '[tag]'; has to be set!!
+	*/
+	abstract function __construct($attr);
+}
+
+?>

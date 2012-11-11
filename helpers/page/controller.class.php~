@@ -1,0 +1,212 @@
+<?php
+/**
+* class for containing and basic manipulation of struct
+*
+* This is a particially output independent class. It keeps at struct,
+* and has the abillity to output in different formats.
+*
+*/
+class helper_page{
+	
+	/**
+	* contains the page structure
+	*/
+	public $struct;
+	
+	/**
+	* contains an index over id's in the struct, and references to those
+	*/
+	public $IDindex;
+	
+	function __construct($tplFile = "default.tpl.php"){
+		//load struct from file
+		
+		$startdir = core_inputParser::getinstance();
+		$startdir = $startdir->getStartDir();
+		
+		//the appfolder
+		if(file_exists(__APPDIR__."/".$tplFile)){
+			include __APPDIR__."/".$tplFile;
+		}
+		//the start folder
+		elseif(file_exists($startdir."/".$tplFile)){
+			include $startdir."/".$tplFile;
+		}
+		//using default
+		else{
+			trigger_error("template file \"$tplFile\" doesn't exist. Using default");
+			include "templates/default.tpl.php";
+		}
+		$this->struct = $template;
+		$this->buildIndex();
+	}
+	
+	function __destruct(){
+		print_r($this->struct);
+	}
+	
+	/**
+	* adds content by elements id
+	*
+	* this is one of the most important methods in the templating system.
+	* this method adds content by parrent id
+	*/
+	public function insertByID($arr, $id){
+		if(!isset($this->IDindex[$id])){
+			return false;
+		}
+		$this->IDindex[$id][] = $arr;
+		
+		//tjek for new id
+		$this->buildIndex($this->IDindex[$id]);
+		
+		return true;
+	}
+	
+	/**
+	* unsets array by id
+	*
+	* COUTION! this deletes the content of the array with the ID, including it's
+	* children
+	*/
+	public function unsetByID($id){
+		//@TODO this function
+	}
+	
+	/**
+	* getContent()
+	*
+	* Render the main page
+	*/
+	public function getContent(){
+		//return compiled content.
+		return $this->generate();
+	}
+	
+	/**
+	* getHeader
+	* 
+	* construct the http header
+	*/
+	public function getHeader(){
+	
+	}
+	
+	/**
+	* link rewrite
+	*
+	* rewrite link according to router file
+	* @TODO include the router file ;)
+	*/
+	public function linkRewrite($link){
+		if(isset($link['static']))
+			return config_config::$protocol."://".config_config::$domain['static'].$link['static'];
+		else
+			return "/".implode('/', $link);
+	}
+	
+	/****************************************************************************
+	*								PRIVATE METHODS
+	* those are functions used internally and may not be welly documented
+	****************************************************************************/
+	
+	private function addID($id, &$ref){
+		//allready set?
+		if(isset($this->IDindex[$id]))
+			return false;
+		$this->IDindex[$id] = &$ref;
+	}
+	
+	/**
+	* structexeptions
+	*/
+	private $exeptions = array('tag', 'content', 'attr', 'closeTag');
+	
+	/**
+	* build index over ID's in the struct
+	*
+	* those are ref's so we can manipulate the struct throug those
+	*/
+	private function buildIndex(&$ref=false){
+		if(!$ref)
+			$arr = &$this->struct['struct'];
+		else
+			$arr = &$ref;
+		
+		//setting reference
+		if(isset($arr['attr']['id']))
+			$this->addID($arr['attr']['id'], $arr);
+		
+		//going deeper the tree
+		foreach($arr as $key => &$value){
+			if(!in_array($key, $this->exeptions) || is_int($key)){
+				$this->buildIndex($value);
+			}
+		}
+	}
+	
+	/**
+	* generates html
+	*
+	* scheme for future use
+	*/
+	private function generate(&$ref=false, $indent=""){
+		if(!$ref)
+			$arr = &$this->struct['struct'];
+		else
+			$arr = &$ref;
+		
+		//set default value of closetag		
+		if(!isset($arr['closeTag']))
+			$arr['closeTag'] = true;
+		
+		$tmp = "";
+		
+		if(!$this->struct['settings']['minimize'])
+			$tmp .= $indent;	
+		
+		$tmp .= "<".$arr['tag'];
+		
+		//doing attributes
+		if(isset($arr['attr']) && is_array($arr['attr']))
+			foreach($arr['attr'] as $key => $value){
+				//check if it's an array link
+				if(is_array($value))
+					$value = $this->linkRewrite($value);
+				$tmp .= " $key=\"$value\"";
+			}
+		
+		if(!$arr['closeTag'])
+			$tmp .= " /";
+		
+		$tmp .= ">\n";
+		
+		if(isset($arr['content'])){
+			//setting indentation in multiline
+			if(!$this->struct['settings']['minimize']){
+				$arr['content'] = str_replace("\n", "\n\t".$indent, $arr['content']);
+				$tmp .= $indent."\t";
+			}
+			
+			$tmp .= $arr['content']."\n";
+			
+		}
+		
+		foreach($arr as $key => &$value){
+			if(!in_array($key, $this->exeptions) || is_int($key)){
+				$tmp .= $this->generate($value, $indent."\t");
+			}
+		}
+		
+		if($arr['closeTag']){
+			if(!$this->struct['settings']['minimize'])
+				$tmp .= $indent;
+				
+			$tmp .= "</".$arr['tag'].">\n";
+			
+		}
+		
+		return $tmp;
+	}
+}
+?>

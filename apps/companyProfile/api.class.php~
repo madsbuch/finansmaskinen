@@ -1,0 +1,40 @@
+<?php
+/**
+* API class for use
+*/
+
+class api_companyProfile{
+	/*************************** INTERNAL API FUNCTIONS ***********************/
+	
+	/**
+	* getThumbnail
+	*
+	* returns link to thumbnail
+	*/
+	static function getThumbnail(){
+	
+	}
+	
+	/**
+	* getTitle
+	*
+	* Returns user friendly name of app (in current language)
+	*/
+	static function getTitle(){
+	
+	}
+	
+	
+	/*************************** EXTERNAL API FUNCTIONS ***********************/
+	
+	/**
+	* apiDispatcher
+	*
+	* dispatches api calls; decides what to return
+	*/
+	static function apiDispatcher($call){
+	
+	}
+}
+
+?>

@@ -1,0 +1,43 @@
+<?php
+/**
+* html helper.
+*
+* This helper provides tools for generating layout
+* The function returns an array, that can be insert with helper_page::insertByID()
+* the std template functions automaticallly inserts into the struct
+* write is used to automatically write to the struct. f.eks. if a ajax 
+* function is inserted, the needed code will automatically be added
+* 
+*/
+class helper_layout{
+
+	/**
+	* page is needed for reading settings
+	*
+	*
+	* @param ref $page		reference to page object
+	* @param bool $write	write to $page. used to high level abstractions
+	*						if false, this class will mostly be used to compile
+	*						arrays, for later insertion.
+	*/
+	function __construct(&$page, $write=true){
+		$this->page = &$page;
+		
+		
+	}
+	
+	/**
+	* Return a block helper
+	*
+	* f.ex. $helper = form, an object wich methods formanipulating forms are
+	* returned
+	*/
+	public function blockHelper($helper, $attr = array()){
+		include_once __DIR__."/block_helpers/block.abstract.class.php";
+		include_once __DIR__."/block_helpers/{$helper}.class.php";
+		$objname = "helper_layout_blocks\blockhelper_".$helper;
+		return new $objname($attr);
+	}
+}
+
+?>

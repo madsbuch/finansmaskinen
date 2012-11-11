@@ -1,0 +1,9 @@
+/**
+* Contains initialising javascript for finansmaskinen.dk
+*/
+
+$(document).ready(function(){
+	$(".treeview").ready(function(){
+		jQuery.getScript( "http://static.finansmaskinen.dev/js/libs/jquery/plugins/jquery.treeview.js");
+	}).treeview();
+});

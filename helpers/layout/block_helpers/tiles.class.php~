@@ -1,0 +1,126 @@
+<?php
+/**
+* Helper class for making tiles
+*
+* tiles are the same as icons, just containing more info.
+*
+* depends: helper_html
+*/
+
+namespace helper_layout_blocks;
+
+/**
+* make a list
+*
+* tile argument:
+* $tile = 
+* array(
+*	"title" => "tile title"
+*	"callback" => callbackURL //AJAX callback
+*	"link" => link //were does the tile take you?
+*	["content" => array("line1", "line2", "line3")]//should be specified if no AJAX is available
+*	["blockLink" => true|false] (default false)//links the whole box. No links are allowed inside
+* 	["thumbnail" => link]//link to icon (array or string)
+* );
+*/
+class blockhelper_tiles extends layoutBlock{
+	
+	/**
+	* containing all tiles
+	*/
+	private $tiles;
+	
+	/**
+	* waitingmessage for AJAX
+	*/
+	public $wait = "Henter notifikationer...";
+	
+	function __construct(&$page){
+		$this->page = &$page;
+	}
+	
+	/**
+	* Add tile for later generation
+	*/
+	function addTile($tile){
+		//add tile
+		$this->tiles[] = $tile;
+	}
+	
+	/**
+	* generates tilewrap array, with all tiles
+	*/
+	function getTiles(){
+		//adding new tag to html head (tile style)
+		$this->page->struct['struct'][0][] = array(
+			'tag' => 'link','attr' => array(
+			'rel' => "stylesheet",
+			"href" => array("static" => "/templates/default/css/tile.css"),
+			"type" => "text/css"),
+			'closeTag' => false
+		);
+		
+		$retArr = array('tag' => "div", 'attr' => array("class" => "t_tilewrap"));
+		
+		//iterating all the tiles, and make the html array
+		foreach($this->tiles as $tile){
+			$n = null;//we don't wanna use the inbuild writing facilities 
+			$html = new \helper_html($n, false);
+			
+			//setting class name (only half size, if no thumb
+			if(isset($tile['thumbnail']))
+				$class = "t_tile_thumbnail";
+			else
+				$class = "t_tile";
+			
+			$ret = array('tag' => 'div', 'attr' => array('class' => $class));
+			
+			//getting the block
+			if(isset($tile['blocklink']) && $tile['blocklink']){
+				$ret[] = array('tag' => "a", 'attr' => array("href" => $tile['link'], "class" => "t_blocklink"));
+				$block = &$ret[0];
+			}
+			else
+				$block = &$ret;
+			
+			//adding eventual thumb
+			if(isset($tile['thumbnail']))
+				//if the whole box is not a link, the thumb has to be
+				if(!isset($tile['blocklink']) || !$tile['blocklink'])
+					$block[] = $html->href(
+						$html->img(array("src" => $tile['thumbnail'], "alt" => $tile['title'], "class" => "t_tile")),
+						$tile['link']
+					);
+				else
+					$block[] = $html->img(array("src" => $tile['thumbnail'], "alt" => $tile['title'], "class" => "t_tile"));
+			
+			$block[] = array('tag' => "div", 'attr' => array("class" => "t_tileinfo"));
+			$info = &$block[1];
+			
+			//adding title
+			
+			//if the whole box is not a link, the thumb has to be
+			if(!isset($tile['blocklink']) || !$tile['blocklink'])
+				$info[] = $html->href(
+					$html->span($tile['title'], array("class" => "t_tileheader")),
+					$tile['link']
+				);
+			else
+				$info[] = $html->span($tile['title'], array("class" => "t_tileheader"));
+			
+			
+			if($this->page->struct['settings']['ajax']){
+				$info[] = array('tag' => "ul", 'attr' => array('class' => 't_tile'),
+					array('tag' => 'li', 'content' => $this->wait, 'attr' => array('class' => 't_tile')),
+				);
+			}
+			
+			$retArr[] = $ret;
+		}
+		
+		return $retArr;
+	}
+
+}
+
+?>

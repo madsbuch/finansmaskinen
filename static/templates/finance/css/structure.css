@@ -1,0 +1,91 @@
+#wrap {
+	margin:0 auto;
+}
+
+
+/*Top Navigation structure*/
+#topnav div{
+	line-height: 27px;
+	display:inline-block;
+	width:120px;
+	vertical-align:top; 
+	overflow:hidden;
+	text-align:center;
+	height:inherit;
+}
+#topnav{
+	background-color: #000;
+	border-bottom:2px solid #55a;
+	height:25px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+
+.topNavForm{
+	border:0px;
+	height:23px;
+	width: 300px;
+}
+
+/*some autocomplete stuff*/
+.ui-autocomplete{
+	background-color: #fff;
+	border: 1px solid #000;
+	width:300px;
+	list-style-type: none;
+	margin:0px;
+	padding:0px;
+}
+
+
+/*Menu*/
+#menu {
+	float: left;
+	width: 200px;
+}
+
+/*content structure*/
+#content{
+	margin-left:250px;
+	padding:2px;
+}
+
+/*Footer*/
+#footer {
+	clear: both;
+	margin-top:20px;
+	padding:5px;
+}
+
+/*center Box*/
+.centerBox{
+	text-align:left;
+	width:500px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	margin: auto;
+	margin-top: 20px;
+	padding:10px;
+	-moz-box-shadow: 2px 2px 5px #888;
+	-webkit-box-shadow: 2px 2px 5px #888;
+	box-shadow: 2px 2px 5px #888;
+}
+
+/*modular alignment*/
+.center{
+	text-align:center;
+}
+.right{
+	text-align:right;
+}
+.left{
+	text-align:left;
+}
+.clear{
+	clear:both;
+}
+.bloack{
+	display:block;
+}

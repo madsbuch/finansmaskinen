@@ -1,0 +1,54 @@
+<?
+/**
+* depends: core_groups
+*/
+
+class helper_core{
+	/*********** FOR SINGLETON ***********/
+	// Hold an instance of the class
+	private static $instance;
+
+	// The singleton method
+	public static function getInstance() {
+		if (!isset(self::$instance)){
+			$c = __CLASS__;
+			self::$instance = new $c;
+		}
+
+		return self::$instance;
+	}
+
+	
+	/********* THE CLASS ***************/
+	
+	/**
+	* app
+	*
+	* the app from which this class is called
+	*/
+	private $app;
+	
+	private $pageInfo;
+	
+	function __construct(){
+		$this->pageInfo = core_inputParser::getInstance();
+		$this->app = $this->pageInfo->getApp();
+		$this->grp = core_groups::getInstance();
+	}
+	
+	/**
+	* return current group / groups
+	*/
+	function getGrp(){
+		return $this->grp->getGrpForApp($this->app);
+	}
+	
+	/**
+	* get permissions for given group
+	*/
+	function getPermissions($grp){
+		return $this->grp->getPermissions($grp);
+	}
+}
+
+?>

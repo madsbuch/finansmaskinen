@@ -1,0 +1,203 @@
+<?php
+/**
+* html helper.
+*
+* This helper provides tools for generating layout
+* The function returns an array, that can be insert with helper_page::insertByID()
+* the std template functions automaticallly inserts into the struct
+* write is used to automatically write to the struct. f.eks. if a ajax 
+* function is inserted, the needed code will automatically be added
+* 
+*/
+class helper_html{
+
+	/**
+	* page is needed for reading settings
+	*
+	*
+	* @param ref $page		reference to page object
+	* @param bool $write	write to $page. used to high level abstractions
+	*						if false, this class will mostly be used to compile
+	*						arrays, for later insertion.
+	*/
+	function __construct(&$page, $write=true){
+		$this->page = &$page;
+		
+		
+	}
+	
+	/**
+	* Return a block helper
+	*
+	* f.ex. $helper = form, an object wich methods formanipulating forms are
+	* returned
+	*/
+	public function blockHelper($helper, $attr = array()){
+		include_once __DIR__."/block_helpers/block.abstract.class.php";
+		include_once __DIR__."/block_helpers/{$helper}.class.php";
+		$objname = "blockhelper_".$helper;
+		return new $objname($attr);
+	}
+
+	/***************************************************************************
+	*						STD HTML MANIPULATION
+	*
+	* These function are standard manipulation for manipulating html. For the
+	* sake of convenience, they are not wraped in a blockHelper
+	***************************************************************************/
+	
+	/**
+	* Create standard paragraph.
+	*/
+	public function paragraph($content, $attr=array()){
+		return array('tag' => 'p', 'content' => $content, 'attr' => $attr);
+	}
+	
+	/**
+	* Create standard span.
+	*/
+	public function span($content, $attr=array()){
+		return array('tag' => 'span', 'content' => $content, 'attr' => $attr);
+	}
+	
+	/**
+	* do image box.
+	*/
+	public function img($attr){
+		return array('tag' => 'img', 'closeTag' => false, 'attr' => $attr);
+	}
+	
+	/**
+	* Create a link
+	*/
+	public function href($content, $link, $attr=array()){
+		$attr['href'] = $link;
+		if(is_array($content))
+			return array('tag' => 'a', 'attr' => $attr, $content);
+		else
+			return array('tag' => 'a', 'attr' => $attr, 'content' => $content);
+	}
+	
+	/**
+	* create a newline
+	*/
+	public function nl(){
+		return array('tag' => 'br', 'closeTag' => false);
+	}
+	
+	/**
+	* create heading tag
+	*/
+	public function header($value, $size = 1,  $attr=array()){
+		if(is_array($value))
+			return array('tag' => 'h'.$size, 'attr' => $attr, $value);
+		else
+			return array('tag' => 'h'.$size, 'attr' => $attr, 'content' => $value);
+	}
+	
+	/**
+	* create a div tag
+	*/
+	public function div($value,  $attr=array()){
+		return array('tag' => 'div', 'attr' => $attr, $value);
+	}
+	
+	
+	/***************************************************************************
+	*						STD TEMPLATE MANIPULATION
+	*
+	* Those function are used for manipulationg title, topNav, menu, footer, and
+	* content within the standard template. Those functions manipulates the
+	* struct given the constructor
+	***************************************************************************/
+	
+	/**
+	* add element to topNav
+	*
+	* if controller, pointer points to another controller, else pointer 
+	* points to a site in same controller.
+	*/
+	public function addTopNavItem($title, $pointer, $anotherController=false){
+		
+		if(!$anotherController)
+			$link = array($pointer);
+		else
+			$link = array($anotherController, $pointer);
+			
+		
+		$element = array(
+			'tag' => 'li',
+			'attr' => array('class' => 'linkLi'),
+			array(
+				'tag' => 'a',
+				'attr' => array('href' => $link),
+				'content' => $title
+			)
+		);
+		if($this->page->insertByID($element, 'topnavul'))
+			return true;
+		
+		//do the parrent element
+		$ele = array(
+			'tag' => 'ul',
+			'attr' => array('id' => 'topnavul'),
+			$element
+		);
+		$this->page->insertByID($ele, 'topnav');
+	} 
+	
+	/**
+	* This function adds a menu item
+	*/
+	public function addMenuItem($title, $page){
+		$link = array('siden!', $page);
+		
+		$element = array(
+			'tag' => 'li',
+			'attr' => array('class' => 'linkLi'),
+			array(
+				'tag' => 'a',
+				'attr' => array('href' => $link),
+				'content' => $title
+			)
+		);
+		
+		//check if the ul element exists and try insert
+		if($this->page->insertByID($element, 'menuul'))
+			return true;
+		
+		//do the parrent element
+		$ele = array(
+			'tag' => 'ul',
+			'attr' => array('id' => 'menuul'),
+			$element
+		);
+		$this->page->insertByID($ele, 'menu');
+	} 
+	
+	/**
+	* sets title
+	*
+	* sets <title> to $title - $subtitle (if subtitle is set)
+	* and the pages title field to $title
+	*/
+	public function setTitle($title, $subtitle=false){
+		$this->page->insertByID(array('tag' => 'h1', 'content' => $title), 'title');
+	}
+	
+	/**
+	* Adds content
+	*/
+	public function add2content($arr){
+		$this->page->insertByID($arr, 'content');
+	}
+	
+	/**
+	* Sets footer str
+	*/
+	public function setFooter($str){
+		$this->page->insertByID(array('tag' => 'span', 'content' => $str), 'footer');
+	}
+}
+
+?>

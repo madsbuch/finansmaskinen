@@ -1,0 +1,163 @@
+#wrap{
+	font-family: courier, serif;
+}
+
+/*Top navigation*/
+#topnav{
+	-webkit-box-shadow: 0px 8px 20px #888888;
+	box-shadow: 0px 8px 20px #888888;
+}
+#topnav div a, .linkLi{
+	color: #fff;
+	text-decoration:none;
+	display:block;
+	height:30px;
+	font-size:90%;
+	color: #ccc;
+}
+#topnav div a:hover{
+	border-bottom:2px solid #55f;
+}
+.topNavForm{
+	border:0px;
+}
+
+/* autocomplete */
+.ui-autocomplete{
+	-webkit-box-shadow: 0px 8px 20px #888888;
+	box-shadow: 0px 8px 20px #888888;
+}
+.ui-menu .ui-menu-item a {
+	text-decoration:none;
+	display:block;
+	padding:.2em .4em;
+	line-height:1.5;
+	zoom:1;
+	border-bottom:1px solid #000;
+}
+
+.ui-menu .ui-menu-item a.ui-state-hover,
+.ui-menu .ui-menu-item a.ui-state-active {
+	font-weight: normal;
+	margin: -1px;
+	background-color: #00f;
+	color: #fff;
+}
+
+/* modalforms */
+.ui-dialog{
+	background-color:#fff;
+	border: 1px solid #000;
+}
+.ui-dialog-titlebar{
+	background-color:#00f;
+	color:#fff;
+	font-weight: bold;
+	cursor:move;
+}
+.ui-dialog-titlebar-close{
+	float: right;
+	color:#fff;
+}
+.ui-dialog-content{
+	padding:10px;
+}
+
+/*Title*/
+#title {
+	padding:10px;
+}
+
+/*Layout for menu area*/
+#menu a {
+	color: #000;
+	text-decoration:none;
+}
+#menu a:hover{
+	text-decoration:underline;
+}
+#menu li, #menu ul {
+	list-style-type: none;
+	margin:0px;
+	padding:0px;
+}
+.mBox{
+	border: 1px solid #000;
+	-webkit-box-shadow: 0px 8px 20px #888888;
+	box-shadow: 0px 8px 20px #888888;
+}
+.mHeader{
+	font-weight:bold;
+}
+
+#notifications li{
+	border-bottom:2px solid #666;
+	margin-top:5px;
+	margin-bottom:5px;
+	padding:4px;
+	font-size:90%;
+}
+
+/* Content layout */
+#content {
+	background-color: #fff;
+}
+#content a{
+	text-decoration: none;
+}
+
+
+/* Footer layout */
+#footer {
+	/*background-color: #0f0;*/
+	text-align: center;
+	border-top:1px solid #000;
+	font-size:90%;
+}
+
+/* forms */
+
+.form {
+	margin: 5px;
+	padding: 5px;
+	width: 300px;
+	border: 0;
+	font-size:110%;
+	-moz-box-shadow: 2px 2px 5px #888 inset;
+	-webkit-box-shadow: 2px 2px 5px #888 inset;
+	box-shadow: 2px 2px 5px #888 inset;
+}
+
+label{
+	float: left;
+	width: 200px;
+	font-weight: bold;
+}
+
+/*fonts*/
+p{
+	font-family: sans-serif;
+	font-size:95%;
+}
+h1, h2, h3, h4, h5, h6, form input{
+	font-family: "Courier New", courier, sans-serif;
+}
+
+/*centerBox style*/
+.centerHover{
+	border: 2px solid #115;
+	background-color: #91C4FA;
+}
+
+.centerOut{
+	border: 2px solid #1445CC;
+}
+/*misc*/
+
+.colored{
+	background-color:#33f;
+}
+
+.small{
+	font-size: 80%;
+}

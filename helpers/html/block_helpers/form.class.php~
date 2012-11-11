@@ -1,0 +1,46 @@
+<?php
+/**
+* Helper class for making forms
+*
+*/
+class blockhelper_form extends layoutBlock{
+	function __construct($attr){
+		$this->blockContent['tag'] = 'form';
+		$this->blockContent['attr'] = $attr;
+	}
+	
+
+	
+	/**
+	* Returns the form struct
+	*/
+	public function getForm(){
+		return $this->getBlock();
+	}
+	
+	/**
+	* add an inputfield
+	*
+	* attr:
+	* array("type" = text . . .)
+	*/
+	function addInput($attr){
+		$this->blockContent[] = array(
+			'tag' => 'input',
+			'attr' => $attr,
+			'closeTag' => false
+		);
+		return true;
+	}
+	
+	function addlabel($for, $value, $attr = array()){
+		$this->blockContent[] = array(
+			'tag' => 'label',
+			'attr' => array('for' => $for),
+			'content' => $value;
+		);
+		return true;
+	}
+}
+
+?>

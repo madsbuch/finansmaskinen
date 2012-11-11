@@ -1,0 +1,3 @@
+make it possble for contacts to create individuals, instead of only companies as contactrs
+
+

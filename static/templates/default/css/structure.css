@@ -1,0 +1,32 @@
+#wrap {
+	width: 960px;
+	margin:0 auto;
+	font-family:verdana,helvetica,arial,sans-serif;
+}
+
+
+/*Top Navigation structure*/
+#topnavul li{
+	display:inline;
+	margin:0px;
+	padding-right:20px;
+}
+
+/*Menu*/
+#menu {
+	float: left;
+	width: 20%;
+}
+
+/*content structure*/
+#content{
+	float:right;
+	width:75%;
+	padding:2px;
+}
+
+/*Footer*/
+#footer {
+	clear: both;
+	padding:5px;
+}

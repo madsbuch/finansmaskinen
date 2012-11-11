@@ -1,0 +1,27 @@
+<?php
+class blockhelper_form{
+	function __construct($page, $id){
+		//callback page 
+		//method
+		$this->form = array('tag' => 'form', 'attr'=>array('name'=>$id, 'id'=>$id));
+	}
+	
+	/**
+	* Returns the form struct
+	*/
+	public function getForm(){
+		return $this->form;
+	}
+	
+	/**
+	* add and inputfield
+	*/
+	function addInput($label, $name, $addAttr){
+	
+	}
+	
+	
+	
+}
+
+?>

@@ -1,0 +1,15 @@
+<?php
+/**
+* Helper class for making forms
+*
+* depends: helper_html, core_inputParser
+*/
+
+namespace helper_layout_blocks;
+
+class blockhelper_list extends layoutBlock{
+
+
+}
+
+?>

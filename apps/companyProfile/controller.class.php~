@@ -1,0 +1,61 @@
+<?
+
+class app_companyProfile{
+	/**
+	* requireLogin
+	*/
+	static public $requireLogin = true;
+	
+	/**
+	* whether to get all grps or display a selector, and only get one grp
+	*/
+	static public $grpSelector = false;
+	
+	/**
+	* construction
+	*/
+	function __construct(){
+		$this->page = new helper_page();
+		$this->header = new helper_header();
+		
+		$this->html = new helper_html($this->page);
+		$this->html->addTopNavItem("Dine Værktøjer", "apps", "index");
+		$this->html->addTopNavItem("Fakturaer", "index", "invoice");
+		$this->html->addTopNavItem("Kontakter", "index", "contacts");
+		$this->html->addTopNavItem("Regnskab", "apps", "index");
+	}
+	
+	function index(){
+		$html = $this->html;
+		$html->setTitle("Se og opdater virksomhedsinformation");
+		
+		$layout = new helper_layout($this->page);
+		
+		/*Fetching info*/
+		$company = new helper_companyProfile();
+		
+		$c = $company->get();
+		
+		/* Doing the form */
+		$desc = array(
+			array('attr' => array("value" => $c['tax_id'], "type" => "text", "name" => "tax_id"), 'label' => "CVR:"),
+			array('attr' => array("value" => $c['name'], "type" => "text", "name" => "name"), 'label' => "Firmanavn"),
+			array('attr' => array("value" => $c['addr1'], "type" => "text", "name" => "addr1"), 'label' => "Adresse 1"),
+			array('attr' => array("value" => $c['addr2'], "type" => "text", "name" => "addr2"), 'label' => "Adresse 2"),
+			array('attr' => array("value" => $c['zip'], "type" => "text", "name" => "zip"), 'label' => "postnr."),
+			array('attr' => array("value" => $c['city'], "type" => "text", "name" => "city"), 'label' => "By"),
+			array('attr' => array("value" => "Opdater", "type" => "submit",)),
+		);
+		$form = $layout->blockHelper("form", $desc);
+		
+		if($form->getInput()){
+			if(!$company->update($form->getInput()))
+				$this->html->add2content($this->html->paragraph("Intet er opdateret!"));
+		}
+		
+		$this->html->add2content($form->generateForm());
+		
+		$this->output_header = $this->page->getHeader();
+		$this->output_content = $this->page->getContent();
+	}
+}

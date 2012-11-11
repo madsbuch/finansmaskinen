@@ -1,0 +1,8 @@
+some doc for this app
+
+callback provided:
+	getWidget - for the frontpage
+	neutralSearch - for the neutra language search
+
+callbacks other may provide:
+	getContactWidget($contactObj) - the widget on the contact page, 

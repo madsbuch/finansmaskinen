@@ -1,0 +1,17 @@
+der kan kommunikeres med andre apps
+
+fra noget der extender \core\app kan man tilgå funktionalitet ved at udfører:
+
+$this->callAll('someFunction', array('arg1', 'arg2')).
+
+dette eksekvere funktionen:
+
+do_someFunction('arg1', 'arg2') i alle API'er i alle app's man har adgang til, 
+og som har defineret funktionen.
+
+F.eks. bruges dette ved kontakter:
+
+callAll('getContactWidget', array($contact))
+
+alle der har defineret do_getContactWidget($contact), kan herefter få en widget
+ind på siden med en specifik kontakt

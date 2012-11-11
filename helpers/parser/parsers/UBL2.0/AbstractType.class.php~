@@ -1,0 +1,82 @@
+<?php
+/**
+* this is the abstract class for streamlining the types
+*/
+
+namespace helper_parser\ubl;
+
+abstract class AbstractType extends \helper_parser\parserAbstract{
+	protected $dom;
+	protected $element;
+	protected $content;
+	protected $tag;
+	protected $attributes;
+	protected $returnElement;
+	
+	function getElement(){
+		return $this->returnElement;
+	}
+	function generate(){
+		//@TODO remove all childs of $this->invoice
+		foreach($this->element as $eleName => $ele){
+			if(is_null($ele)){
+				if(in_array($eleName, $this->neededElement))
+					throw new \Exception($eleName." is not correctly sat");
+			}
+			elseif($ele instanceof \DOMElement){
+				$this->party->appendChild($ele);
+			}
+			elseif(is_array($ele)){
+				foreach($ele as $l){
+					$l->generate();
+					$this->party->appendChild($l->getElement());
+				}
+			}
+			else{
+				$ele->generate();
+				$this->party->appendChild($ele->getElement());
+			}	
+		}
+	}
+	
+	/**
+	* accessing attributes
+	*/
+	public function setAttribute($key, $value){
+		$this->attributes[$key] = $value;
+	}
+	public function getAttribute($key){
+		return $this->attributes[$key];
+	}
+	
+	/**
+	* accessing the content of the type
+	*/
+	public function setContent($value){
+		$this->content = $value;
+	}
+	public function getContent(){
+		return $this->content;
+	}
+	
+	/**
+	* functions for accessing the tag
+	*/
+	public function setTag($value){
+		$this->tag = $value;
+	}
+	public function getTag(){
+		return $this->tag;
+	}
+	
+	/*
+	function __construct($dom){
+		$this->element = config::$someClassElementArray;
+		$this->neededElement = config::$someNeededElementsArray
+		$this->dom = $dom;
+		$this->returnElement = $dom->createElement('theTag');
+	}
+	*/
+}
+
+?>

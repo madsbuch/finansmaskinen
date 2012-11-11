@@ -1,0 +1,143 @@
+<?php
+/**
+* auxilery objects
+*
+* for making it ahort, almost everything is defined in this abstract class
+*/
+
+namespace helper_parser\ubl;
+
+include_once "classes.php";
+
+abstract class AbstractClass{
+	
+	//some constants
+	const MINOCCUR 	= 0;
+	const MAXOCCUR 	= 1;
+	const TYPE	 	= 2;
+	const VALUE		= 3;
+	
+	//the DOMDocument object to create elements from
+	protected $dom;
+	
+	//alle the elements of the class, in ordered list. and wether they are needed
+	protected $element;	
+	
+	//the DOMElement to return (after generate())
+	protected $returnElement;	
+	
+	//pointer to a config object
+	protected $config;
+	
+	/**
+	* scheme to fetch, scheme is the same as classtype
+	*/
+	protected $scheme = null;
+	
+	/**
+	* the xml namespace
+	*
+	* led this be a reference to $xmlns in config
+	*/
+	protected $xmlns = null;
+	
+	/**
+	* return the element, before this, generate should be called
+	*/
+	function getElement(){
+		return $this->returnElement;
+	}
+	
+	/**
+	* checks and generates the element
+	*/
+	function generate(){
+		//@TODO remove all childs of $this->invoice (for not duplicating)
+		foreach($this->element as $eleName => $ele){
+			//if a single value field isn't set, but should be
+			if(is_null($ele[self::VALUE])){
+				if($ele[self::MINOCCUR] > 0)
+					throw new \Exception($eleName." should be set in " . $this->scheme . " but isn't");
+				continue;//the value id optional, we continue
+			}
+			//if a multi value field isn't set correct
+			elseif(is_array($ele[self::VALUE])
+				&& (count($ele[self::VALUE]) < $ele[self::MINOCCUR]
+					|| !(!count($ele[self::VALUE]) > $ele[self::MAXOCCUR] 
+						|| $ele[self::MAXOCCUR] == -1))){
+				throw new \Exception($eleName." doesn't match constrains in " . $this->scheme);
+			}
+			if($ele instanceof \DOMElement){
+				$this->party->appendChild($ele);
+			}
+			elseif(is_array($ele[self::VALUE])){
+				foreach($ele[self::VALUE] as $l){
+					$l->generate();
+					$this->returnElement->appendChild($l->getElement());
+				}
+			}
+			else{
+				$ele[self::VALUE]->generate();
+				$this->returnElement->appendChild($ele[self::VALUE]->getElement());
+			}	
+		}
+	}
+	
+	/**
+	* set and get subelements of this class
+	*/
+	public function setField($field, $value=false){
+		if(!$value){
+			if(!is_null($this->element[$field][self::TYPE]))
+				$value = $this->getObject($this->element[$field][self::TYPE], $field);
+			else
+				throw new \Exception("something went wrong");
+		}
+		
+		if(is_array($this->element[$field][self::VALUE]))
+			$this->element[$field][self::VALUE][] = $value;
+		else
+			$this->element[$field][self::VALUE] = $value;
+		return $value;
+	}
+	public function getField($field){
+		return $this->element[$field][self::VALUE];
+	}
+	
+	/**
+	* the constructor
+	*/
+	function __construct($tag, $scheme, $dom, $config){
+		//check if scheme is set proberly
+		if(is_null(is_null($this->xmlns)))
+			throw new \Exception("xmlns must be set");
+		
+		$this->scheme = $scheme;
+		$this->config = $config;	
+		$this->element = $config::$elements[$this->scheme];
+		$this->dom = $dom;
+		$this->returnElement = $dom->createElementNS($config::$xmlns[$this->xmlns], 
+			$this->xmlns.":".$tag);
+		$this->init();
+	}
+	
+	/**
+	* helper function, returns a given object
+	*/
+	private function getObject($obj, $field){
+		$o = __NAMESPACE__."\\".$obj;
+		return new $o($field,
+					$this->element[$field][self::TYPE],
+					$this->dom,
+					$this->config);
+	}
+	
+	/**
+	*this function must be defined.
+	*
+	* it is used for standard settings and namespace settings
+	*/
+	abstract function init();
+}
+
+?>

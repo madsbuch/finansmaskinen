@@ -1,0 +1,25 @@
+betaling
+
+betaling sker på denne måde:
+
+HovedAPI'en har et callback (doAction(...)) der tager imod en action. Dette kan
+f.eks. være "invoice_create". Herefter prøver hovedAPI'en at tilgå companyProfile
+API'en, og indsætte en transaktion, altså den reelle betaling. Hvis abonnement 
+bruges, tjekkes der blot om dette stadig er gyldigt, herefter returneres true / false;
+
+Lykkedes dette, returnere den true, og fakturaen kan oprettes. Lykkedes dette
+ikke, returneres false, og fakturaen oprettes ikke.
+
+undoAction kan bruges den modsatte vej. Hvis fakturaen ikke kan leveres, indsættes
+en ny transaktion, og pengene tilbageføres til credit.
+
+
+Kode:
+$api = \helper\core('invoice')->getProfileAPI();
+
+if($api->doAction('invoice_create')){
+	udfør operationen
+}
+else{
+	redirect til en side hvor der kan overføres penge
+}

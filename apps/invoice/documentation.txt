@@ -1,0 +1,11 @@
+some doc for this app
+
+callback provided:
+	getWidget - for the frontpage
+	neutralSearch - for the neutra language search
+
+callbacks other may provide:
+	getInvoicePostCreate(Invoice object): inject a widget to the view invoice page.
+		takes invoice object as argument (if one wants to edit an invoice)
+	
+	getInvoiceDraft(Invoice object): called when invoice is still a draft
