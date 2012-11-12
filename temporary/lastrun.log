@@ -29935,3 +29935,44 @@ Events:
 
 Statistics:
 Total execution time: 3.3310639858246
+Domain: 192.168.1.22
+URI: /
+
+Events:
+0.016801118850708 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+
+
+Statistics:
+Total execution time: 0.60328912734985
+Domain: finansmaskinen.dev
+URI: /
+
+Events:
+0.014005899429321 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+
+
+Statistics:
+Total execution time: 0.57803702354431
+Domain: www.finansmaskinen.dev
+URI: /
+
+Events:
+0.0099000930786133 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+0.62145495414734 appStart
+0.62496900558472 appStop
+
+
+Statistics:
+Total execution time: 0.62545800209045
+app execution time: 0.0035061836242676
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.012438058853149

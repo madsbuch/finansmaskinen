@@ -823,3 +823,6 @@
 2012-11-11T05:20:31+01:00 ERROR {"errstr":"Undefined index: 1.22","errfile":"\/var\/www\/core\/inputParser.class.php","errline":113,"errno":8}
 2012-11-12T00:17:51+01:00 ERROR {"errstr":"unable to load class: app\\assets in \/var\/www\/apps\/assets\/controller.class.php or \/var\/www\/apps\/assets.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":107,"errno":512}
 2012-11-12T00:17:54+01:00 ERROR {"errstr":"Page ico does not exist in app \\app\\assets.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":96,"errno":1024}
+2012-11-12T17:20:38+01:00 ERROR {"errstr":"Undefined index: 1.22","errfile":"\/var\/www\/core\/inputParser.class.php","errline":113,"errno":8}
+2012-11-12T20:12:15+01:00 ERROR {"errstr":"unable to load class: app\\assets in \/var\/www\/apps\/assets\/controller.class.php or \/var\/www\/apps\/assets.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":107,"errno":512}
+2012-11-12T20:12:15+01:00 ERROR {"errstr":"Page ico does not exist in app \\app\\assets.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":96,"errno":1024}
