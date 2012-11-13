@@ -17,6 +17,5 @@ class Exception{
 	 * actual logging fields
 	 */
 	public $message;
-	public $file;
-	public $line;
+	public $stack;
 }

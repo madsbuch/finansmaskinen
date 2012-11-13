@@ -29976,3 +29976,4059 @@ Events:
 
 Statistics:
 Total execution time: 0.012438058853149
+Domain: finansmaskinen.dev
+URI: /
+
+Events:
+0.013005018234253 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+
+
+Statistics:
+Total execution time: 0.58255004882812
+Domain: www.finansmaskinen.dev
+URI: /
+
+Events:
+0.018999099731445 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+0.60556507110596 appStart
+0.61013507843018 appStop
+
+
+Statistics:
+Total execution time: 0.61071515083313
+app execution time: 0.0045721530914307
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.012496948242188
+Domain: www.finansmaskinen.dev
+URI: /index
+
+Events:
+0.011572122573853 appStart
+1.561774969101 INSERT INTO stats_logins (`sid`,`uid`,`time`)
+		VALUES (?,?,?);
+1.5755929946899 appStop
+
+
+Statistics:
+Total execution time: 1.576101064682
+app execution time: 1.564013004303
+Domain: www.finansmaskinen.dev
+URI: /index/apps
+
+Events:
+0.012102127075195 appStart
+3.6786451339722 appStop
+
+
+Statistics:
+Total execution time: 3.6797490119934
+app execution time: 3.6665399074554
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.019186973571777
+Domain: www.finansmaskinen.dev
+URI: /billing/add
+
+Events:
+0.95384502410889 appStart
+0.99415612220764 appStop
+
+
+Statistics:
+Total execution time: 0.99527311325073
+app execution time: 0.040302991867065
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.0368971824646
+Domain: 192.168.1.22
+URI: /
+
+Events:
+0.010998964309692 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+
+
+Statistics:
+Total execution time: 0.61292290687561
+Domain: www.finansmaskinen.dev
+URI: /index
+
+Events:
+0.018633127212524 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+0.62071800231934 appStart
+0.63789415359497 INSERT INTO stats_logins (`sid`,`uid`,`time`)
+		VALUES (?,?,?);
+0.64481616020203 appStop
+
+
+Statistics:
+Total execution time: 0.64540600776672
+app execution time: 0.024097919464111
+Domain: www.finansmaskinen.dev
+URI: /index/apps
+
+Events:
+0.014643907546997 appStart
+0.054056882858276 appStop
+
+
+Statistics:
+Total execution time: 0.055295944213867
+app execution time: 0.039412975311279
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.024121999740601
+Domain: 192.168.1.22
+URI: /
+
+Events:
+0.013180017471313 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+
+
+Statistics:
+Total execution time: 0.62060403823853
+Domain: 
+URI: 
+
+Events:
+0.027395963668823 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+
+
+Statistics:
+Total execution time: 0.59265398979187
+Domain: 
+URI: 
+
+Events:
+0.015347957611084 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+
+
+Statistics:
+Total execution time: 3.7027249336243
+Domain: 
+URI: 
+
+Events:
+0.016567945480347 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+
+
+Statistics:
+Total execution time: 0.59221076965332
+Domain: test.finansmaskinen.dk
+URI: /
+
+Events:
+0.013030052185059 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+
+
+Statistics:
+Total execution time: 0.58256387710571
+Domain: test.finansmaskinen.dk
+URI: /TestAll.php
+
+Events:
+
+
+Statistics:
+Total execution time: 0.013298034667969
+Domain: test.finansmaskinen.dk
+URI: /
+
+Events:
+
+
+Statistics:
+Total execution time: 0.0094869136810303
+Domain: test.finansmaskinen.dk
+URI: /TestAll.php
+
+Events:
+
+
+Statistics:
+Total execution time: 0.0069239139556885
+Domain: finansmaskinen.dev
+URI: /
+
+Events:
+0.011780977249146 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+
+
+Statistics:
+Total execution time: 0.58995604515076
+Domain: www.finansmaskinen.dev
+URI: /
+
+Events:
+0.0089662075042725 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+0.58002519607544 appStart
+0.58287310600281 appStop
+
+
+Statistics:
+Total execution time: 0.58328104019165
+app execution time: 0.0028469562530518
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.017622947692871
+Domain: test.finansmaskinen.dev
+URI: /TestAll.php
+
+Events:
+0.011290073394775 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+
+
+Statistics:
+Total execution time: 0.64709806442261
+Domain: test.finansmaskinen.dev
+URI: /TestAll.php
+
+Events:
+0.0066771507263184 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+
+
+Statistics:
+Total execution time: 0.61232018470764
+Domain: www.finansmaskinen.dev
+URI: /
+
+Events:
+0.0097219944000244 appStart
+0.012996196746826 appStop
+
+
+Statistics:
+Total execution time: 0.013381004333496
+app execution time: 0.0032651424407959
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.011730909347534
+Domain: test.finansmaskinen.dev
+URI: /TestAll.php
+
+Events:
+
+
+Statistics:
+Total execution time: 0.0067291259765625
+Domain: www.finansmaskinen.dev
+URI: /
+
+Events:
+0.0059239864349365 appStart
+0.0078778266906738 appStop
+
+
+Statistics:
+Total execution time: 0.0081439018249512
+app execution time: 0.001953125
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.0084409713745117
+Domain: www.finansmaskinen.dev
+URI: /
+
+Events:
+0.011173009872437 appStart
+0.014416933059692 appStop
+
+
+Statistics:
+Total execution time: 0.014756917953491
+app execution time: 0.0032281875610352
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.016412973403931
+Domain: www.finansmaskinen.dev
+URI: /index
+
+Events:
+0.0094258785247803 appStart
+0.025882959365845 INSERT INTO stats_logins (`sid`,`uid`,`time`)
+		VALUES (?,?,?);
+0.02680492401123 appStop
+
+
+Statistics:
+Total execution time: 0.027075052261353
+app execution time: 0.017375946044922
+Domain: www.finansmaskinen.dev
+URI: /index/apps
+
+Events:
+0.0085270404815674 appStart
+0.040644884109497 appStop
+
+
+Statistics:
+Total execution time: 0.04144287109375
+app execution time: 0.032118082046509
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.023874998092651
+Domain: www.finansmaskinen.dev
+URI: /index/apps
+
+Events:
+0.013200044631958 appStart
+0.054668188095093 appStop
+
+
+Statistics:
+Total execution time: 0.055530071258545
+app execution time: 0.041465997695923
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.021687030792236
+Domain: www.finansmaskinen.dev
+URI: /companyProfile
+
+Events:
+1.8919191360474 appStart
+2.2889239788055 appStop
+
+
+Statistics:
+Total execution time: 2.289922952652
+app execution time: 0.39700102806091
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.019556999206543
+Domain: www.finansmaskinen.dev
+URI: /
+
+Events:
+0.01106595993042 appStart
+0.011307001113892 appStop
+
+
+Statistics:
+Total execution time: 0.011568069458008
+app execution time: 0.00023007392883301
+Domain: www.finansmaskinen.dev
+URI: /index/apps
+
+Events:
+0.006990909576416 appStart
+0.045410871505737 appStop
+
+
+Statistics:
+Total execution time: 0.046180963516235
+app execution time: 0.038420915603638
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.022509098052979
+Domain: www.finansmaskinen.dev
+URI: /index/logout
+
+Events:
+0.0087540149688721 appStart
+0.0090639591217041 appStop
+
+
+Statistics:
+Total execution time: 0.0094728469848633
+app execution time: 0.0003049373626709
+Domain: www.finansmaskinen.dev
+URI: /index
+
+Events:
+0.0062670707702637 appStart
+0.0081651210784912 appStop
+
+
+Statistics:
+Total execution time: 0.0084080696105957
+app execution time: 0.001896858215332
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.009166955947876
+Domain: www.finansmaskinen.dev
+URI: /index/createUser
+
+Events:
+0.013188123703003 appStart
+1.7678761482239 appStop
+
+
+Statistics:
+Total execution time: 1.7684099674225
+app execution time: 1.7546739578247
+Domain: www.finansmaskinen.dev
+URI: /index/
+
+Events:
+0.0066800117492676 appStart
+0.0090699195861816 appStop
+
+
+Statistics:
+Total execution time: 0.0093228816986084
+app execution time: 0.0023880004882812
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.013141870498657
+Domain: www.finansmaskinen.dev
+URI: /index/createUser
+
+Domain: www.finansmaskinen.dev
+URI: /favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.012296915054321
+Domain: www.finansmaskinen.dev
+URI: /index/createUser
+
+Domain: www.finansmaskinen.dev
+URI: /favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.018676042556763
+Domain: www.finansmaskinen.dev
+URI: /index/
+
+Events:
+0.011645793914795 appStart
+0.014868974685669 appStop
+
+
+Statistics:
+Total execution time: 0.015291929244995
+app execution time: 0.0032129287719727
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.011276006698608
+Domain: www.finansmaskinen.dev
+URI: /index/createUser
+
+Domain: www.finansmaskinen.dev
+URI: /favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.0090701580047607
+Domain: www.finansmaskinen.dev
+URI: /index/createUser
+
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/rpc.json?key=786fd51e126665e791cc9e4d4ced18b034bec223db37f0b952636a346dae3863-5034016c4e9e7-d41d8cd98f00b204e9800998ecf8427e
+
+Events:
+0.011673927307129 appStart
+0.017523050308228 INSERT INTO usr (`secret`)
+		VALUES (?);
+0.022387981414795 INSERT INTO usr_grp (`usr_id`,`grp_id`)
+		VALUES (?,?);
+0.023232936859131 INSERT INTO usr_grp_permissions (`usr_id`,`grp_id`,`permission`)
+		VALUES (?,?,?);
+0.62636303901672 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.62703204154968 INSERT INTO usr_grp (`usr_id`,`grp_id`)
+		VALUES (?,?);
+0.6275908946991 INSERT INTO usr_grp_permissions (`usr_id`,`grp_id`,`permission`)
+		VALUES (?,?,?);
+0.66337299346924 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.66427302360535 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.66503286361694 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.66735792160034 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.66804003715515 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.66867899894714 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.67067503929138 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.67152905464172 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.67230892181396 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.67453098297119 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.67531800270081 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.67612791061401 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.67767596244812 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.67902898788452 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.67976903915405 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.68139290809631 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.68272495269775 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.68360090255737 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.68520903587341 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.68657684326172 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.68733787536621 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+
+
+Statistics:
+Total execution time: 3.7414979934692
+Domain: www.finansmaskinen.dev
+URI: /favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.0097191333770752
+Domain: api.finansmaskinen.dev
+URI: /
+
+Events:
+0.018784046173096 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+
+
+Statistics:
+Total execution time: 0.59021210670471
+Domain: www.finansmaskinen.dev
+URI: /
+
+Events:
+0.010496854782104 appStart
+0.013819932937622 appStop
+
+
+Statistics:
+Total execution time: 0.014229774475098
+app execution time: 0.0033199787139893
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.0085480213165283
+Domain: test.finansmaskinen.dev
+URI: /TestAll.php
+
+Events:
+
+
+Statistics:
+Total execution time: 0.0085458755493164
+Domain: www.finansmaskinen.dev
+URI: /
+
+Events:
+0.0060150623321533 appStart
+0.0079190731048584 appStop
+
+
+Statistics:
+Total execution time: 0.0081641674041748
+app execution time: 0.0019018650054932
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.011281967163086
+Domain: test.finansmaskinen.dev
+URI: /TestAll.php
+
+Events:
+
+
+Statistics:
+Total execution time: 0.0068378448486328
+Domain: www.finansmaskinen.dev
+URI: /
+
+Events:
+0.0068130493164062 appStart
+0.0090689659118652 appStop
+
+
+Statistics:
+Total execution time: 0.0093529224395752
+app execution time: 0.002251148223877
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.014575004577637
+Domain: rpc.finansmaskinen.dev
+URI: /
+
+Domain: rpc.finansmaskinen.dev
+URI: /favicon.ico
+
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/add?uname=madspbuch@gmail.com&pass=123456
+
+Domain: rpc.finansmaskinen.dev
+URI: /favicon.ico
+
+Domain: www.finansmaskinen.dev
+URI: /index/createUser
+
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/rpc.json?key=786fd51e126665e791cc9e4d4ced18b034bec223db37f0b952636a346dae3863-5034016c4e9e7-d41d8cd98f00b204e9800998ecf8427e
+
+Events:
+0.010460138320923 appStart
+0.015253067016602 INSERT INTO usr (`secret`)
+		VALUES (?);
+0.020992994308472 INSERT INTO usr_grp (`usr_id`,`grp_id`)
+		VALUES (?,?);
+0.021876096725464 INSERT INTO usr_grp_permissions (`usr_id`,`grp_id`,`permission`)
+		VALUES (?,?,?);
+0.023988008499146 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.024514198303223 INSERT INTO usr_grp (`usr_id`,`grp_id`)
+		VALUES (?,?);
+0.024968147277832 INSERT INTO usr_grp_permissions (`usr_id`,`grp_id`,`permission`)
+		VALUES (?,?,?);
+0.026540994644165 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.027033090591431 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.02754807472229 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.028595209121704 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.029087066650391 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.030078172683716 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.031151056289673 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.031646013259888 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.032174110412598 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.033133983612061 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.033982992172241 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.034558057785034 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.035778999328613 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.036334991455078 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.036908149719238 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.038367986679077 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.038836002349854 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.03944206237793 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.041851043701172 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.04230809211731 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.042865991592407 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+
+
+Statistics:
+Total execution time: 0.63800811767578
+Domain: www.finansmaskinen.dev
+URI: /favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.0099029541015625
+Domain: www.finansmaskinen.dev
+URI: /index/createUser
+
+Events:
+0.016786098480225 appStart
+0.023933172225952 appStop
+
+
+Statistics:
+Total execution time: 0.024451017379761
+app execution time: 0.0071358680725098
+Domain: www.finansmaskinen.dev
+URI: /index/
+
+Events:
+0.0066211223602295 appStart
+0.0092489719390869 appStop
+
+
+Statistics:
+Total execution time: 0.0094921588897705
+app execution time: 0.0026280879974365
+Domain: www.finansmaskinen.dev
+URI: /favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.012274026870728
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/rpc.json?key=786fd51e126665e791cc9e4d4ced18b034bec223db37f0b952636a346dae3863-5034016c4e9e7-d41d8cd98f00b204e9800998ecf8427e
+
+Domain: rpc.finansmaskinen.dev
+URI: /favicon.ico
+
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/rpc.json?key=786fd51e126665e791cc9e4d4ced18b034bec223db37f0b952636a346dae3863-5034016c4e9e7-d41d8cd98f00b204e9800998ecf8427e
+
+Domain: rpc.finansmaskinen.dev
+URI: /favicon.ico
+
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/rpc.json?key=786fd51e126665e791cc9e4d4ced18b034bec223db37f0b952636a346dae3863-5034016c4e9e7-d41d8cd98f00b204e9800998ecf8427e
+
+Domain: rpc.finansmaskinen.dev
+URI: /favicon.ico
+
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/rpc.json?key=786fd51e126665e791cc9e4d4ced18b034bec223db37f0b952636a346dae3863-5034016c4e9e7-d41d8cd98f00b204e9800998ecf8427e
+
+Domain: rpc.finansmaskinen.dev
+URI: /favicon.ico
+
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/rpc.json?key=786fd51e126665e791cc9e4d4ced18b034bec223db37f0b952636a346dae3863-5034016c4e9e7-d41d8cd98f00b204e9800998ecf8427e
+
+Domain: rpc.finansmaskinen.dev
+URI: /favicon.ico
+
+Domain: www.finansmaskinen.dev
+URI: /
+
+Events:
+0.015376091003418 appStart
+0.017904996871948 appStop
+
+
+Statistics:
+Total execution time: 0.018234014511108
+app execution time: 0.0025260448455811
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.01154613494873
+Domain: www.finansmaskinen.dev
+URI: /index/createUser
+
+Events:
+0.010284900665283 appStart
+0.014813899993896 appStop
+
+
+Statistics:
+Total execution time: 0.0152268409729
+app execution time: 0.0045261383056641
+Domain: www.finansmaskinen.dev
+URI: /index/
+
+Events:
+0.0069401264190674 appStart
+0.0090980529785156 appStop
+
+
+Statistics:
+Total execution time: 0.0094249248504639
+app execution time: 0.0021548271179199
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.013041019439697
+Domain: www.finansmaskinen.dev
+URI: /index
+
+Events:
+0.0063858032226562 appStart
+0.039336919784546 INSERT INTO stats_logins (`sid`,`uid`,`time`)
+		VALUES (?,?,?);
+0.040619850158691 appStop
+
+
+Statistics:
+Total execution time: 0.041085004806519
+app execution time: 0.034234046936035
+Domain: www.finansmaskinen.dev
+URI: /index/apps
+
+Events:
+0.011136054992676 appStart
+0.040468215942383 appStop
+
+
+Statistics:
+Total execution time: 0.041218042373657
+app execution time: 0.029327869415283
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.019859075546265
+Domain: www.finansmaskinen.dev
+URI: /index/
+
+Events:
+0.013424158096313 appStart
+0.013749122619629 appStop
+
+
+Statistics:
+Total execution time: 0.014140129089355
+app execution time: 0.00031876564025879
+Domain: www.finansmaskinen.dev
+URI: /index/apps
+
+Events:
+0.0080921649932861 appStart
+0.040587186813354 appStop
+
+
+Statistics:
+Total execution time: 0.041587114334106
+app execution time: 0.03249979019165
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.027997016906738
+Domain: www.finansmaskinen.dev
+URI: /index/logout
+
+Events:
+0.009382963180542 appStart
+0.0095911026000977 appStop
+
+
+Statistics:
+Total execution time: 0.0099349021911621
+app execution time: 0.00020313262939453
+Domain: www.finansmaskinen.dev
+URI: /index
+
+Events:
+0.006425142288208 appStart
+0.0084071159362793 appStop
+
+
+Statistics:
+Total execution time: 0.0086781978607178
+app execution time: 0.001978874206543
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.0089919567108154
+Domain: www.finansmaskinen.dev
+URI: /index/createUser
+
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/rpc.json?key=786fd51e126665e791cc9e4d4ced18b034bec223db37f0b952636a346dae3863-5034016c4e9e7-d41d8cd98f00b204e9800998ecf8427e
+
+Events:
+0.0081281661987305 appStart
+0.014497995376587 INSERT INTO usr (`secret`)
+		VALUES (?);
+0.021412134170532 INSERT INTO usr_grp (`usr_id`,`grp_id`)
+		VALUES (?,?);
+0.022192001342773 INSERT INTO usr_grp_permissions (`usr_id`,`grp_id`,`permission`)
+		VALUES (?,?,?);
+0.02423620223999 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.025432109832764 INSERT INTO usr_grp (`usr_id`,`grp_id`)
+		VALUES (?,?);
+0.02607798576355 INSERT INTO usr_grp_permissions (`usr_id`,`grp_id`,`permission`)
+		VALUES (?,?,?);
+0.027679204940796 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.028355121612549 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.029458999633789 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.03098201751709 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.031517028808594 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.032196044921875 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.042299032211304 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.043219089508057 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.044092178344727 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.046300172805786 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.047288179397583 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.048031091690063 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.049956083297729 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.050707101821899 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.052174091339111 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.054096221923828 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.054824113845825 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.055546998977661 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.058070182800293 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.058799028396606 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.059516191482544 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+
+
+Statistics:
+Total execution time: 0.680330991745
+Domain: www.finansmaskinen.dev
+URI: /favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.0084209442138672
+Domain: www.finansmaskinen.dev
+URI: /index/createUser
+
+Events:
+0.016760110855103 appStart
+0.022338151931763 appStop
+
+
+Statistics:
+Total execution time: 0.022956132888794
+app execution time: 0.0055739879608154
+Domain: www.finansmaskinen.dev
+URI: /index/
+
+Events:
+0.010248899459839 appStart
+0.013484001159668 appStop
+
+
+Statistics:
+Total execution time: 0.013911962509155
+app execution time: 0.0032329559326172
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.0090711116790771
+Domain: www.finansmaskinen.dev
+URI: /index
+
+Events:
+0.0081048011779785 appStart
+0.01019287109375 appStop
+
+
+Statistics:
+Total execution time: 0.010470867156982
+app execution time: 0.0020849704742432
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.011415004730225
+Domain: www.finansmaskinen.dev
+URI: /index/
+
+Events:
+0.0073421001434326 appStart
+0.0098481178283691 appStop
+
+
+Statistics:
+Total execution time: 0.010138034820557
+app execution time: 0.0025010108947754
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.010533094406128
+Domain: www.finansmaskinen.dev
+URI: /index/createUser
+
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/rpc.json?key=786fd51e126665e791cc9e4d4ced18b034bec223db37f0b952636a346dae3863-5034016c4e9e7-d41d8cd98f00b204e9800998ecf8427e
+
+Events:
+0.0096330642700195 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+
+
+Statistics:
+Total execution time: 0.62036490440369
+Events:
+0.013472080230713 appStart
+0.022294044494629 INSERT INTO usr (`secret`)
+		VALUES (?);
+0.036301136016846 INSERT INTO usr_grp (`usr_id`,`grp_id`)
+		VALUES (?,?);
+0.036972999572754 INSERT INTO usr_grp_permissions (`usr_id`,`grp_id`,`permission`)
+		VALUES (?,?,?);
+0.038871049880981 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.0397629737854 INSERT INTO usr_grp (`usr_id`,`grp_id`)
+		VALUES (?,?);
+0.040343046188354 INSERT INTO usr_grp_permissions (`usr_id`,`grp_id`,`permission`)
+		VALUES (?,?,?);
+0.041676998138428 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.042222023010254 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.042777061462402 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.044332981109619 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.044839143753052 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.045459032058716 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.046677112579346 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.047904014587402 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.048702955245972 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.050372123718262 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.051651000976562 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.05239200592041 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.053637027740479 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.054324150085449 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.054871082305908 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.056621074676514 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.057259082794189 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.057925939559937 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.060358047485352 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.06101393699646 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.06174111366272 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+
+
+Statistics:
+Total execution time: 0.69695401191711
+Domain: www.finansmaskinen.dev
+URI: /favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.0087599754333496
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/add?uname=madspbuch@gmail.com&pass=123456
+
+Domain: rpc.finansmaskinen.dev
+URI: /favicon.ico
+
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/add?uname=madspbuch@gmail.com&pass=123456
+
+Domain: rpc.finansmaskinen.dev
+URI: /favicon.ico
+
+Domain: www.finansmaskinen.dev
+URI: /index/createUser
+
+Events:
+0.010923147201538 appStart
+0.014899015426636 appStop
+
+
+Statistics:
+Total execution time: 0.015287160873413
+app execution time: 0.0039749145507812
+Domain: www.finansmaskinen.dev
+URI: /index/
+
+Events:
+0.0086488723754883 appStart
+0.010859966278076 appStop
+
+
+Statistics:
+Total execution time: 0.011125802993774
+app execution time: 0.0022070407867432
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.012964010238647
+Domain: www.finansmaskinen.dev
+URI: /index/createUser
+
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/rpc.json?key=786fd51e126665e791cc9e4d4ced18b034bec223db37f0b952636a346dae3863-5034016c4e9e7-d41d8cd98f00b204e9800998ecf8427e
+
+Events:
+0.01270604133606 appStart
+0.021281003952026 INSERT INTO usr (`secret`)
+		VALUES (?);
+0.027332067489624 INSERT INTO usr_grp (`usr_id`,`grp_id`)
+		VALUES (?,?);
+0.027915954589844 INSERT INTO usr_grp_permissions (`usr_id`,`grp_id`,`permission`)
+		VALUES (?,?,?);
+0.029452085494995 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.029958963394165 INSERT INTO usr_grp (`usr_id`,`grp_id`)
+		VALUES (?,?);
+0.030846118927002 INSERT INTO usr_grp_permissions (`usr_id`,`grp_id`,`permission`)
+		VALUES (?,?,?);
+0.032073020935059 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.032613039016724 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.033159971237183 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.03418493270874 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.03505802154541 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.035628080368042 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.036733150482178 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.03725004196167 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.037797927856445 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.039173126220703 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.039684057235718 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.040148973464966 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.041105031967163 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.041533946990967 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.042088985443115 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.043594121932983 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.044023990631104 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.044497966766357 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.045550107955933 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.04606294631958 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.046792030334473 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+
+
+Statistics:
+Total execution time: 0.70028805732727
+Domain: www.finansmaskinen.dev
+URI: /favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.0085170269012451
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/rpc.json?key=786fd51e126665e791cc9e4d4ced18b034bec223db37f0b952636a346dae3863-5034016c4e9e7-d41d8cd98f00b204e9800998ecf8427e
+
+Domain: rpc.finansmaskinen.dev
+URI: /favicon.ico
+
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/rpc.json?key=786fd51e126665e791cc9e4d4ced18b034bec223db37f0b952636a346dae3863-5034016c4e9e7-d41d8cd98f00b204e9800998ecf8427e
+
+Domain: rpc.finansmaskinen.dev
+URI: /favicon.ico
+
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/rpc.json?key=786fd51e126665e791cc9e4d4ced18b034bec223db37f0b952636a346dae3863-5034016c4e9e7-d41d8cd98f00b204e9800998ecf8427e
+
+Domain: rpc.finansmaskinen.dev
+URI: /favicon.ico
+
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/rpc.json?key=786fd51e126665e791cc9e4d4ced18b034bec223db37f0b952636a346dae3863-5034016c4e9e7-d41d8cd98f00b204e9800998ecf8427e
+
+Domain: rpc.finansmaskinen.dev
+URI: /favicon.ico
+
+Domain: www.finansmaskinen.dev
+URI: /index/createUser
+
+Events:
+0.011795043945312 appStart
+0.01898193359375 appStop
+
+
+Statistics:
+Total execution time: 0.019683122634888
+app execution time: 0.0071771144866943
+Domain: www.finansmaskinen.dev
+URI: /index/
+
+Events:
+0.011090040206909 appStart
+0.015079975128174 appStop
+
+
+Statistics:
+Total execution time: 0.015470027923584
+app execution time: 0.0039889812469482
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.013094902038574
+Domain: www.finansmaskinen.dev
+URI: /index/createUser
+
+Events:
+0.0096180438995361 appStart
+0.013706207275391 appStop
+
+
+Statistics:
+Total execution time: 0.014348983764648
+app execution time: 0.004086971282959
+Domain: www.finansmaskinen.dev
+URI: /index/
+
+Events:
+0.0092349052429199 appStart
+0.012166976928711 appStop
+
+
+Statistics:
+Total execution time: 0.012528896331787
+app execution time: 0.0029280185699463
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.010004997253418
+Domain: www.finansmaskinen.dev
+URI: /index/createUser
+
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/rpc.json?key=786fd51e126665e791cc9e4d4ced18b034bec223db37f0b952636a346dae3863-5034016c4e9e7-d41d8cd98f00b204e9800998ecf8427e
+
+Events:
+0.011950969696045 appStart
+0.017079830169678 INSERT INTO usr (`secret`)
+		VALUES (?);
+0.02243185043335 INSERT INTO usr_grp (`usr_id`,`grp_id`)
+		VALUES (?,?);
+0.023396968841553 INSERT INTO usr_grp_permissions (`usr_id`,`grp_id`,`permission`)
+		VALUES (?,?,?);
+0.025266885757446 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.026113986968994 INSERT INTO usr_grp (`usr_id`,`grp_id`)
+		VALUES (?,?);
+0.028138875961304 INSERT INTO usr_grp_permissions (`usr_id`,`grp_id`,`permission`)
+		VALUES (?,?,?);
+0.030358791351318 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.031467914581299 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.032116889953613 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.033496856689453 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.034150838851929 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.035120964050293 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.036475896835327 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.036961793899536 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.037755966186523 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.039410829544067 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.040004968643188 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.040565013885498 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.041911840438843 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.042974948883057 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.043552875518799 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.04479193687439 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.045414924621582 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.045943021774292 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.047659873962402 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.04836893081665 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.049011945724487 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+
+
+Statistics:
+Total execution time: 0.65168380737305
+Domain: www.finansmaskinen.dev
+URI: /favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.013556957244873
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/add?uname=madspbuch@gmail.com&pass=123456
+
+Domain: rpc.finansmaskinen.dev
+URI: /favicon.ico
+
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/add?uname=madspbuch@gmail.com&pass=123456
+
+Domain: rpc.finansmaskinen.dev
+URI: /favicon.ico
+
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/add?uname=madspbuch@gmail.com&pass=123456
+
+Domain: rpc.finansmaskinen.dev
+URI: /favicon.ico
+
+Domain: www.finansmaskinen.dev
+URI: /index/
+
+Events:
+0.011291027069092 appStart
+0.015454053878784 appStop
+
+
+Statistics:
+Total execution time: 0.015810012817383
+app execution time: 0.0041558742523193
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.013025999069214
+Domain: www.finansmaskinen.dev
+URI: /index/createUser
+
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/rpc.json?key=786fd51e126665e791cc9e4d4ced18b034bec223db37f0b952636a346dae3863-5034016c4e9e7-d41d8cd98f00b204e9800998ecf8427e
+
+Events:
+0.010095834732056 appStart
+0.015285968780518 INSERT INTO usr (`secret`)
+		VALUES (?);
+0.021569967269897 INSERT INTO usr_grp (`usr_id`,`grp_id`)
+		VALUES (?,?);
+0.022228956222534 INSERT INTO usr_grp_permissions (`usr_id`,`grp_id`,`permission`)
+		VALUES (?,?,?);
+0.024325847625732 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.025451898574829 INSERT INTO usr_grp (`usr_id`,`grp_id`)
+		VALUES (?,?);
+0.026298999786377 INSERT INTO usr_grp_permissions (`usr_id`,`grp_id`,`permission`)
+		VALUES (?,?,?);
+0.02805495262146 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.029117822647095 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.03000283241272 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.031529903411865 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.032099962234497 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.033098936080933 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.034496784210205 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.035015821456909 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.035734891891479 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.037237882614136 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.037786960601807 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.038419961929321 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.039458990097046 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.039949893951416 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.048837900161743 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.051139831542969 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.052020788192749 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.053332805633545 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.054913997650146 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.055598974227905 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.056721925735474 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+
+
+Statistics:
+Total execution time: 0.65184783935547
+Domain: www.finansmaskinen.dev
+URI: /favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.0084750652313232
+Domain: rpc.finansmaskinen.dev
+URI: /
+
+Domain: www.finansmaskinen.dev
+URI: /companyProfile
+
+Events:
+
+
+Statistics:
+Total execution time: 0.015577077865601
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.012578010559082
+Domain: www.finansmaskinen.dev
+URI: /index
+
+Events:
+0.0087759494781494 appStart
+0.043781042098999 INSERT INTO stats_logins (`sid`,`uid`,`time`)
+		VALUES (?,?,?);
+0.044878005981445 appStop
+
+
+Statistics:
+Total execution time: 0.045243978500366
+app execution time: 0.036089897155762
+Domain: www.finansmaskinen.dev
+URI: /index/apps
+
+Events:
+0.010722875595093 appStart
+0.050091981887817 appStop
+
+
+Statistics:
+Total execution time: 0.050855875015259
+app execution time: 0.03936505317688
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.028580188751221
+Domain: www.finansmaskinen.dev
+URI: /index/personal
+
+Events:
+0.012837886810303 appStart
+0.35180902481079 appStop
+
+
+Statistics:
+Total execution time: 0.35212206840515
+app execution time: 0.33896613121033
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.020763158798218
+Domain: www.finansmaskinen.dev
+URI: /index/personal
+
+Events:
+0.015140056610107 appStart
+0.03200101852417 appStop
+
+
+Statistics:
+Total execution time: 0.032385110855103
+app execution time: 0.016844987869263
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.02958083152771
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/rpc.json?key=786fd51e126665e791cc9e4d4ced18b034bec223db37f0b952636a346dae3863-5034016c4e9e7-d41d8cd98f00b204e9800998ecf8427e
+
+Domain: rpc.finansmaskinen.dev
+URI: /favicon.ico
+
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/rpc.json?key=786fd51e126665e791cc9e4d4ced18b034bec223db37f0b952636a346dae3863-5034016c4e9e7-d41d8cd98f00b204e9800998ecf8427e
+
+Domain: rpc.finansmaskinen.dev
+URI: /favicon.ico
+
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/rpc.json?key=786fd51e126665e791cc9e4d4ced18b034bec223db37f0b952636a346dae3863-5034016c4e9e7-d41d8cd98f00b204e9800998ecf8427e
+
+Domain: rpc.finansmaskinen.dev
+URI: /favicon.ico
+
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/rpc.json?key=786fd51e126665e791cc9e4d4ced18b034bec223db37f0b952636a346dae3863-5034016c4e9e7-d41d8cd98f00b204e9800998ecf8427e
+
+Domain: rpc.finansmaskinen.dev
+URI: /favicon.ico
+
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/rpc.json?key=786fd51e126665e791cc9e4d4ced18b034bec223db37f0b952636a346dae3863-5034016c4e9e7-d41d8cd98f00b204e9800998ecf8427e
+
+Domain: rpc.finansmaskinen.dev
+URI: /favicon.ico
+
+Domain: www.finansmaskinen.dev
+URI: /index/
+
+Events:
+0.015365839004517 appStart
+0.015733003616333 appStop
+
+
+Statistics:
+Total execution time: 0.016157865524292
+app execution time: 0.00036478042602539
+Domain: www.finansmaskinen.dev
+URI: /index/apps
+
+Events:
+0.011926889419556 appStart
+0.039041042327881 appStop
+
+
+Statistics:
+Total execution time: 0.039666891098022
+app execution time: 0.027108907699585
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.018929004669189
+Domain: www.finansmaskinen.dev
+URI: /index/logout
+
+Events:
+0.0093231201171875 appStart
+0.0095438957214355 appStop
+
+
+Statistics:
+Total execution time: 0.009861946105957
+app execution time: 0.00021696090698242
+Domain: www.finansmaskinen.dev
+URI: /index
+
+Events:
+0.0081100463867188 appStart
+0.011265993118286 appStop
+
+
+Statistics:
+Total execution time: 0.011583089828491
+app execution time: 0.0031521320343018
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.011839151382446
+Domain: www.finansmaskinen.dev
+URI: /index/createUser
+
+Events:
+0.0069670677185059 appStart
+0.0098540782928467 appStop
+
+
+Statistics:
+Total execution time: 0.010290145874023
+app execution time: 0.002885103225708
+Domain: www.finansmaskinen.dev
+URI: /index/
+
+Events:
+0.0067028999328613 appStart
+0.0087339878082275 appStop
+
+
+Statistics:
+Total execution time: 0.00901198387146
+app execution time: 0.0020289421081543
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.010201930999756
+Domain: www.finansmaskinen.dev
+URI: /index/createUser
+
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/rpc.json?key=786fd51e126665e791cc9e4d4ced18b034bec223db37f0b952636a346dae3863-5034016c4e9e7-d41d8cd98f00b204e9800998ecf8427e
+
+Events:
+0.0093450546264648 appStart
+0.01543402671814 INSERT INTO usr (`secret`)
+		VALUES (?);
+0.021800994873047 INSERT INTO usr_grp (`usr_id`,`grp_id`)
+		VALUES (?,?);
+0.022796154022217 INSERT INTO usr_grp_permissions (`usr_id`,`grp_id`,`permission`)
+		VALUES (?,?,?);
+0.024567127227783 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.02524209022522 INSERT INTO usr_grp (`usr_id`,`grp_id`)
+		VALUES (?,?);
+0.026280164718628 INSERT INTO usr_grp_permissions (`usr_id`,`grp_id`,`permission`)
+		VALUES (?,?,?);
+0.028018951416016 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.028706073760986 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.029250144958496 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.030962944030762 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.031527042388916 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.032056093215942 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.033352136611938 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.034245014190674 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.034736156463623 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.035853147506714 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.036411046981812 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.036910057067871 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.038195133209229 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.038712024688721 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.039214134216309 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.040336132049561 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.040898084640503 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.041440963745117 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.043107032775879 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.043741941452026 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.044342994689941 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+
+
+Statistics:
+Total execution time: 0.63934898376465
+Domain: www.finansmaskinen.dev
+URI: /favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.013125896453857
+Domain: www.finansmaskinen.dev
+URI: /index/createUser
+
+Events:
+0.0098249912261963 appStart
+0.015091896057129 appStop
+
+
+Statistics:
+Total execution time: 0.015527963638306
+app execution time: 0.0052638053894043
+Domain: www.finansmaskinen.dev
+URI: /index/
+
+Events:
+0.01126503944397 appStart
+0.014153003692627 appStop
+
+
+Statistics:
+Total execution time: 0.014585971832275
+app execution time: 0.0028879642486572
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.012167930603027
+Domain: www.finansmaskinen.dev
+URI: /index/
+
+Events:
+0.0082869529724121 appStart
+0.010622978210449 appStop
+
+
+Statistics:
+Total execution time: 0.010921955108643
+app execution time: 0.0023331642150879
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.010377883911133
+Domain: www.finansmaskinen.dev
+URI: /index
+
+Events:
+0.010006904602051 appStart
+0.012138843536377 appStop
+
+
+Statistics:
+Total execution time: 0.01240086555481
+app execution time: 0.0021169185638428
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.013606071472168
+Domain: www.finansmaskinen.dev
+URI: /index/
+
+Events:
+0.0086472034454346 appStart
+0.010958194732666 appStop
+
+
+Statistics:
+Total execution time: 0.011229038238525
+app execution time: 0.002302885055542
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.010043859481812
+Domain: www.finansmaskinen.dev
+URI: /index
+
+Events:
+0.01087212562561 appStart
+0.014178991317749 appStop
+
+
+Statistics:
+Total execution time: 0.014569044113159
+app execution time: 0.0033049583435059
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.0096940994262695
+Domain: www.finansmaskinen.dev
+URI: /index/createUser
+
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/rpc.json?key=786fd51e126665e791cc9e4d4ced18b034bec223db37f0b952636a346dae3863-5034016c4e9e7-d41d8cd98f00b204e9800998ecf8427e
+
+Events:
+0.0067381858825684 appStart
+0.011645078659058 INSERT INTO usr (`secret`)
+		VALUES (?);
+0.027405977249146 INSERT INTO usr_grp (`usr_id`,`grp_id`)
+		VALUES (?,?);
+0.028228044509888 INSERT INTO usr_grp_permissions (`usr_id`,`grp_id`,`permission`)
+		VALUES (?,?,?);
+0.030935049057007 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.031834125518799 INSERT INTO usr_grp (`usr_id`,`grp_id`)
+		VALUES (?,?);
+0.032588005065918 INSERT INTO usr_grp_permissions (`usr_id`,`grp_id`,`permission`)
+		VALUES (?,?,?);
+0.035032987594604 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.035813093185425 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.03662109375 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.038901090621948 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.039399147033691 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.039879083633423 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.040908098220825 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.041440010070801 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.042322158813477 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.043886184692383 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.044517040252686 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.045133113861084 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.04655909538269 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.047084093093872 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.047520160675049 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.04869818687439 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.04920506477356 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.049955129623413 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.050999164581299 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.051593065261841 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.052077054977417 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+
+
+Statistics:
+Total execution time: 0.68958020210266
+Domain: www.finansmaskinen.dev
+URI: /favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.0095579624176025
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/rpc.json?key=786fd51e126665e791cc9e4d4ced18b034bec223db37f0b952636a346dae3863-5034016c4e9e7-d41d8cd98f00b204e9800998ecf8427e
+
+Domain: rpc.finansmaskinen.dev
+URI: /favicon.ico
+
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/rpc.json?key=786fd51e126665e791cc9e4d4ced18b034bec223db37f0b952636a346dae3863-5034016c4e9e7-d41d8cd98f00b204e9800998ecf8427e
+
+Domain: rpc.finansmaskinen.dev
+URI: /favicon.ico
+
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/rpc.json?key=786fd51e126665e791cc9e4d4ced18b034bec223db37f0b952636a346dae3863-5034016c4e9e7-d41d8cd98f00b204e9800998ecf8427e
+
+Domain: rpc.finansmaskinen.dev
+URI: /favicon.ico
+
+Domain: www.finansmaskinen.dev
+URI: /index
+
+Events:
+0.014870166778564 appStart
+0.016978025436401 appStop
+
+
+Statistics:
+Total execution time: 0.017323017120361
+app execution time: 0.0021011829376221
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.0094878673553467
+Domain: www.finansmaskinen.dev
+URI: /index/createUser
+
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/rpc.json?key=786fd51e126665e791cc9e4d4ced18b034bec223db37f0b952636a346dae3863-5034016c4e9e7-d41d8cd98f00b204e9800998ecf8427e
+
+Events:
+0.0076701641082764 appStart
+0.012426137924194 INSERT INTO usr (`secret`)
+		VALUES (?);
+0.017989158630371 INSERT INTO usr_grp (`usr_id`,`grp_id`)
+		VALUES (?,?);
+0.018534183502197 INSERT INTO usr_grp_permissions (`usr_id`,`grp_id`,`permission`)
+		VALUES (?,?,?);
+0.020233154296875 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.020857095718384 INSERT INTO usr_grp (`usr_id`,`grp_id`)
+		VALUES (?,?);
+0.021798133850098 INSERT INTO usr_grp_permissions (`usr_id`,`grp_id`,`permission`)
+		VALUES (?,?,?);
+0.023248195648193 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.023894071578979 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.024417161941528 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.026102066040039 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.026717185974121 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.027276039123535 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.028443098068237 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.028954029083252 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.029827117919922 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.031772136688232 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.032440185546875 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.032961130142212 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.03444504737854 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.035060167312622 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.035588026046753 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.036679983139038 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.037633180618286 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.038206100463867 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.039483070373535 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.03996205329895 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.040452003479004 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+
+
+Statistics:
+Total execution time: 1.3441081047058
+Domain: www.finansmaskinen.dev
+URI: /favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.0084159374237061
+Domain: www.finansmaskinen.dev
+URI: /index
+
+Events:
+0.011319875717163 appStart
+0.016005992889404 appStop
+
+
+Statistics:
+Total execution time: 0.016489028930664
+app execution time: 0.0046839714050293
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.011929988861084
+Domain: www.finansmaskinen.dev
+URI: /index/createUser
+
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/rpc.json?key=786fd51e126665e791cc9e4d4ced18b034bec223db37f0b952636a346dae3863-5034016c4e9e7-d41d8cd98f00b204e9800998ecf8427e
+
+Events:
+0.0068259239196777 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+0.65065383911133 INSERT INTO stats_logins (`sid`,`uid`,`time`)
+		VALUES (?,?,?);
+0.65144085884094 appStart
+0.65475487709045 appStop
+
+
+Statistics:
+Total execution time: 0.65536379814148
+app execution time: 0.00331711769104
+Events:
+0.012591123580933 appStart
+0.02036714553833 INSERT INTO usr (`secret`)
+		VALUES (?);
+0.02576208114624 INSERT INTO usr_grp (`usr_id`,`grp_id`)
+		VALUES (?,?);
+0.026237010955811 INSERT INTO usr_grp_permissions (`usr_id`,`grp_id`,`permission`)
+		VALUES (?,?,?);
+0.027894020080566 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.028411149978638 INSERT INTO usr_grp (`usr_id`,`grp_id`)
+		VALUES (?,?);
+0.028996229171753 INSERT INTO usr_grp_permissions (`usr_id`,`grp_id`,`permission`)
+		VALUES (?,?,?);
+0.031107187271118 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.031642198562622 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.032275199890137 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.03386116027832 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.034403085708618 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.035982131958008 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.037125110626221 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.038286209106445 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.038895130157471 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.040301084518433 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.04088020324707 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.041964054107666 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.043359041213989 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.044057130813599 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.044652223587036 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.046454191207886 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.047015190124512 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.04754114151001 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.048758029937744 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.049251079559326 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.050467014312744 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+6.4857921600342 appStop
+
+
+Statistics:
+Total execution time: 6.4866721630096
+app execution time: 6.4731929302216
+Domain: www.finansmaskinen.dev
+URI: /favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.013270854949951
+Domain: www.finansmaskinen.dev
+URI: /
+
+Events:
+0.010977983474731 appStart
+0.013445854187012 appStop
+
+
+Statistics:
+Total execution time: 0.013712882995605
+app execution time: 0.0024611949920654
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.01153302192688
+Domain: www.finansmaskinen.dev
+URI: /index
+
+Events:
+0.0098068714141846 appStart
+0.046054840087891 INSERT INTO stats_logins (`sid`,`uid`,`time`)
+		VALUES (?,?,?);
+0.047321796417236 appStop
+
+
+Statistics:
+Total execution time: 0.047761917114258
+app execution time: 0.037513017654419
+Domain: www.finansmaskinen.dev
+URI: /index/apps
+
+Events:
+0.010893106460571 appStart
+0.047790050506592 appStop
+
+
+Statistics:
+Total execution time: 0.048590898513794
+app execution time: 0.036902904510498
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.024880886077881
+Domain: www.finansmaskinen.dev
+URI: /contacts
+
+Events:
+2.0897648334503 appStart
+2.1302769184113 appStop
+
+
+Statistics:
+Total execution time: 2.130735874176
+app execution time: 0.040504932403564
+Domain: www.finansmaskinen.dev
+URI: /contacts/fetchEntries?sEcho=1&iColumns=3&sColumns=&iDisplayStart=0&iDisplayLength=10&mDataProp_0=0&mDataProp_1=1&mDataProp_2=2&sSearch=&bRegex=false&sSearch_0=&bRegex_0=false&bSearchable_0=true&sSearch_1=&bRegex_1=false&bSearchable_1=true&sSearch_2=&bRegex_2=false&bSearchable_2=true&iSortCol_0=0&sSortDir_0=asc&iSortingCols=1&bSortable_0=true&bSortable_1=true&bSortable_2=true&_=1352847054894
+
+Events:
+0.014428853988647 appStart
+0.019166946411133 appStop
+
+
+Statistics:
+Total execution time: 0.019453048706055
+app execution time: 0.0047311782836914
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.019376993179321
+Domain: www.finansmaskinen.dev
+URI: /index/personal
+
+Events:
+0.0073730945587158 appStart
+0.019137144088745 appStop
+
+
+Statistics:
+Total execution time: 0.019439935684204
+app execution time: 0.011759042739868
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.019737958908081
+Domain: www.finansmaskinen.dev
+URI: /index/logout
+
+Events:
+0.0076761245727539 appStart
+0.007997989654541 appStop
+
+
+Statistics:
+Total execution time: 0.0082650184631348
+app execution time: 0.00031685829162598
+Domain: www.finansmaskinen.dev
+URI: /index
+
+Events:
+0.0060911178588867 appStart
+0.0082521438598633 appStop
+
+
+Statistics:
+Total execution time: 0.0085000991821289
+app execution time: 0.0021581649780273
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.0088260173797607
+Domain: www.finansmaskinen.dev
+URI: /index/createUser
+
+Events:
+0.0067720413208008 appStart
+0.011557102203369 appStop
+
+
+Statistics:
+Total execution time: 0.011934995651245
+app execution time: 0.0047850608825684
+Domain: www.finansmaskinen.dev
+URI: /index/
+
+Events:
+0.0065610408782959 appStart
+0.0085310935974121 appStop
+
+
+Statistics:
+Total execution time: 0.0087971687316895
+app execution time: 0.0019669532775879
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.0084588527679443
+Domain: www.finansmaskinen.dev
+URI: /index/createUser
+
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/rpc.json?key=786fd51e126665e791cc9e4d4ced18b034bec223db37f0b952636a346dae3863-5034016c4e9e7-d41d8cd98f00b204e9800998ecf8427e
+
+Events:
+0.0093989372253418 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+0.66872692108154 INSERT INTO stats_logins (`sid`,`uid`,`time`)
+		VALUES (?,?,?);
+0.66972899436951 appStart
+0.67232298851013 appStop
+
+
+Statistics:
+Total execution time: 0.67273306846619
+app execution time: 0.0025980472564697
+Events:
+0.0089011192321777 appStart
+0.013592004776001 INSERT INTO usr (`secret`)
+		VALUES (?);
+0.025739192962646 INSERT INTO usr_grp (`usr_id`,`grp_id`)
+		VALUES (?,?);
+0.026298999786377 INSERT INTO usr_grp_permissions (`usr_id`,`grp_id`,`permission`)
+		VALUES (?,?,?);
+0.028537034988403 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.029145002365112 INSERT INTO usr_grp (`usr_id`,`grp_id`)
+		VALUES (?,?);
+0.029755115509033 INSERT INTO usr_grp_permissions (`usr_id`,`grp_id`,`permission`)
+		VALUES (?,?,?);
+0.031145095825195 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.032223224639893 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.032774209976196 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.033940076828003 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.034462213516235 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.034999132156372 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.036607027053833 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.037093162536621 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.037568092346191 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.038774013519287 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.039525032043457 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.040340185165405 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+1.3167400360107 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+1.3182680606842 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+1.3190212249756 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+1.3210110664368 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+1.3216991424561 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+1.3224091529846 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+1.3238952159882 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+1.3251430988312 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+1.3257632255554 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+3.5925540924072 appStop
+
+
+Statistics:
+Total execution time: 3.5938811302185
+app execution time: 3.583652973175
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.0086450576782227
+Domain: www.finansmaskinen.dev
+URI: /
+
+Events:
+0.0072629451751709 appStart
+0.010278940200806 appStop
+
+
+Statistics:
+Total execution time: 0.010657072067261
+app execution time: 0.0030159950256348
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.0086979866027832
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/add?uname=madspbuch@gmail.com&pass=123456
+
+Events:
+0.006152868270874 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+
+
+Statistics:
+Total execution time: 0.61818504333496
+Domain: rpc.finansmaskinen.dev
+URI: /favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.008173942565918
+Domain: www.finansmaskinen.dev
+URI: /index/activate/ec0087a878936a64e9c7daeee38225c9/50a2cef71a5f019018000005
+
+Events:
+0.0067830085754395 appStart
+0.010127067565918 appStop
+
+
+Statistics:
+Total execution time: 0.010500192642212
+app execution time: 0.0033500194549561
+Domain: www.finansmaskinen.dev
+URI: /index/activate/assets/ico/favicon.ico
+
+Events:
+0.0083990097045898 appStart
+0.011327981948853 appStop
+
+
+Statistics:
+Total execution time: 0.011602878570557
+app execution time: 0.0029289722442627
+Domain: www.finansmaskinen.dev
+URI: /index
+
+Events:
+0.0088400840759277 appStart
+0.038859128952026 INSERT INTO stats_logins (`sid`,`uid`,`time`)
+		VALUES (?,?,?);
+0.040243148803711 appStop
+
+
+Statistics:
+Total execution time: 0.040618181228638
+app execution time: 0.031397819519043
+Domain: www.finansmaskinen.dev
+URI: /index/apps
+
+Events:
+0.010328054428101 appStart
+2.5908200740814 appStop
+
+
+Statistics:
+Total execution time: 2.5915579795837
+app execution time: 2.580493927002
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+0.0069358348846436 appStart
+0.014274835586548 appStop
+
+
+Statistics:
+Total execution time: 0.014868974685669
+app execution time: 0.0073950290679932
+Domain: www.finansmaskinen.dev
+URI: /index/apps
+
+Events:
+0.013896942138672 appStart
+0.022126913070679 INSERT INTO app_setup (`app_id`,`tree_id`)
+		VALUES (?,?);
+0.031361818313599 appStop
+
+
+Statistics:
+Total execution time: 0.03211498260498
+app execution time: 0.017516851425171
+Domain: www.finansmaskinen.dev
+URI: /index
+
+Events:
+0.05527400970459 appStart
+0.07580304145813 appStop
+
+
+Statistics:
+Total execution time: 0.076365947723389
+app execution time: 0.020528078079224
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Domain: www.finansmaskinen.dev
+URI: /accounting/setup/done
+
+Events:
+0.0099380016326904 appStart
+2.7316319942474 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+3.0295348167419 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+3.0813939571381 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+3.1115469932556 INSERT INTO app_setup (`app_id`,`tree_id`)
+		VALUES (?,?);
+3.1335928440094 appStop
+
+
+Statistics:
+Total execution time: 3.1345770359039
+app execution time: 3.1236522197723
+Domain: www.finansmaskinen.dev
+URI: /index
+
+Events:
+0.0074868202209473 appStart
+0.0076999664306641 appStop
+
+
+Statistics:
+Total execution time: 0.00807785987854
+app execution time: 0.00020813941955566
+Domain: www.finansmaskinen.dev
+URI: /index/apps
+
+Events:
+0.0082399845123291 appStart
+0.045992136001587 appStop
+
+
+Statistics:
+Total execution time: 0.046929121017456
+app execution time: 0.037751913070679
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.027620077133179
+Domain: www.finansmaskinen.dev
+URI: /index/logout
+
+Events:
+0.010112047195435 appStart
+0.010425090789795 appStop
+
+
+Statistics:
+Total execution time: 0.010970115661621
+app execution time: 0.00030803680419922
+Domain: www.finansmaskinen.dev
+URI: /index
+
+Events:
+0.008307933807373 appStart
+0.010985851287842 appStop
+
+
+Statistics:
+Total execution time: 0.011258840560913
+app execution time: 0.0026760101318359
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.012521982192993
+Domain: www.finansmaskinen.dev
+URI: /index
+
+Events:
+0.011977910995483 appStart
+0.054487943649292 INSERT INTO stats_logins (`sid`,`uid`,`time`)
+		VALUES (?,?,?);
+0.055320978164673 appStop
+
+
+Statistics:
+Total execution time: 0.055572986602783
+app execution time: 0.043334007263184
+Domain: www.finansmaskinen.dev
+URI: /index/apps
+
+Events:
+0.0071291923522949 appStart
+0.044037103652954 appStop
+
+
+Statistics:
+Total execution time: 0.045122146606445
+app execution time: 0.036908149719238
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.023928880691528
+Domain: www.finansmaskinen.dev
+URI: /contacts
+
+Events:
+0.011039018630981 appStart
+0.022022008895874 appStop
+
+
+Statistics:
+Total execution time: 0.022471189498901
+app execution time: 0.010979890823364
+Domain: www.finansmaskinen.dev
+URI: /contacts/fetchEntries?sEcho=1&iColumns=3&sColumns=&iDisplayStart=0&iDisplayLength=10&mDataProp_0=0&mDataProp_1=1&mDataProp_2=2&sSearch=&bRegex=false&sSearch_0=&bRegex_0=false&bSearchable_0=true&sSearch_1=&bRegex_1=false&bSearchable_1=true&sSearch_2=&bRegex_2=false&bSearchable_2=true&iSortCol_0=0&sSortDir_0=asc&iSortingCols=1&bSortable_0=true&bSortable_1=true&bSortable_2=true&_=1352847250911
+
+Events:
+0.0081751346588135 appStart
+0.012463092803955 appStop
+
+
+Statistics:
+Total execution time: 0.012721061706543
+app execution time: 0.0042870044708252
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.019966125488281
+Domain: www.finansmaskinen.dev
+URI: /contacts
+
+Events:
+0.0090069770812988 appStart
+0.020112991333008 appStop
+
+
+Statistics:
+Total execution time: 0.02040696144104
+app execution time: 0.011103868484497
+Domain: www.finansmaskinen.dev
+URI: /contacts/fetchEntries?sEcho=1&iColumns=3&sColumns=&iDisplayStart=0&iDisplayLength=10&mDataProp_0=0&mDataProp_1=1&mDataProp_2=2&sSearch=&bRegex=false&sSearch_0=&bRegex_0=false&bSearchable_0=true&sSearch_1=&bRegex_1=false&bSearchable_1=true&sSearch_2=&bRegex_2=false&bSearchable_2=true&iSortCol_0=0&sSortDir_0=asc&iSortingCols=1&bSortable_0=true&bSortable_1=true&bSortable_2=true&_=1352847321717
+
+Events:
+0.0070250034332275 appStart
+0.011317014694214 appStop
+
+
+Statistics:
+Total execution time: 0.011611938476562
+app execution time: 0.0042901039123535
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.017920970916748
+Domain: www.finansmaskinen.dev
+URI: /index/logout
+
+Events:
+0.011687994003296 appStart
+0.011926174163818 appStop
+
+
+Statistics:
+Total execution time: 0.0122971534729
+app execution time: 0.00023102760314941
+Domain: www.finansmaskinen.dev
+URI: /index
+
+Events:
+0.0066468715667725 appStart
+0.0088980197906494 appStop
+
+
+Statistics:
+Total execution time: 0.0091619491577148
+app execution time: 0.002251148223877
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.0094859600067139
+Domain: www.finansmaskinen.dev
+URI: /index/createUser
+
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/rpc.json?key=786fd51e126665e791cc9e4d4ced18b034bec223db37f0b952636a346dae3863-5034016c4e9e7-d41d8cd98f00b204e9800998ecf8427e
+
+Events:
+0.0077099800109863 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+0.66868805885315 INSERT INTO stats_logins (`sid`,`uid`,`time`)
+		VALUES (?,?,?);
+0.66954183578491 appStart
+0.67218589782715 appStop
+
+
+Statistics:
+Total execution time: 0.67258596420288
+app execution time: 0.0026469230651855
+Events:
+0.0077660083770752 appStart
+0.01265287399292 INSERT INTO usr (`secret`)
+		VALUES (?);
+0.01768684387207 INSERT INTO usr_grp (`usr_id`,`grp_id`)
+		VALUES (?,?);
+0.018233060836792 INSERT INTO usr_grp_permissions (`usr_id`,`grp_id`,`permission`)
+		VALUES (?,?,?);
+0.020413875579834 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.021611928939819 INSERT INTO usr_grp (`usr_id`,`grp_id`)
+		VALUES (?,?);
+0.022403955459595 INSERT INTO usr_grp_permissions (`usr_id`,`grp_id`,`permission`)
+		VALUES (?,?,?);
+0.023833990097046 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.024810075759888 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.025287866592407 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.026381969451904 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.026989936828613 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.0275719165802 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.029145002365112 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.029676914215088 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.030241966247559 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.031360864639282 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.032033920288086 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.033084869384766 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.034297943115234 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.034870862960815 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.035562992095947 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.036879062652588 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.03734302520752 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.038043975830078 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.039331912994385 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.040153026580811 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.041197061538696 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+2.309149980545 appStop
+
+
+Statistics:
+Total execution time: 2.3101999759674
+app execution time: 2.3013868331909
+Domain: www.finansmaskinen.dev
+URI: /favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.010004043579102
+Domain: www.finansmaskinen.dev
+URI: /index
+
+Events:
+0.008310079574585 appStart
+0.046090126037598 INSERT INTO stats_logins (`sid`,`uid`,`time`)
+		VALUES (?,?,?);
+0.047029972076416 appStop
+
+
+Statistics:
+Total execution time: 0.047532081604004
+app execution time: 0.038717985153198
+Domain: www.finansmaskinen.dev
+URI: /index/apps
+
+Events:
+0.010178089141846 appStart
+0.05026912689209 appStop
+
+
+Statistics:
+Total execution time: 0.051375150680542
+app execution time: 0.040088891983032
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.018790006637573
+Domain: www.finansmaskinen.dev
+URI: /contacts
+
+Events:
+0.0090320110321045 appStart
+0.023074150085449 appStop
+
+
+Statistics:
+Total execution time: 0.023457050323486
+app execution time: 0.014040946960449
+Domain: www.finansmaskinen.dev
+URI: /contacts/fetchEntries?sEcho=1&iColumns=3&sColumns=&iDisplayStart=0&iDisplayLength=10&mDataProp_0=0&mDataProp_1=1&mDataProp_2=2&sSearch=&bRegex=false&sSearch_0=&bRegex_0=false&bSearchable_0=true&sSearch_1=&bRegex_1=false&bSearchable_1=true&sSearch_2=&bRegex_2=false&bSearchable_2=true&iSortCol_0=0&sSortDir_0=asc&iSortingCols=1&bSortable_0=true&bSortable_1=true&bSortable_2=true&_=1352847937476
+
+Events:
+0.0093231201171875 appStart
+0.017409086227417 appStop
+
+
+Statistics:
+Total execution time: 0.017889976501465
+app execution time: 0.0080788135528564
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.019439935684204
+Domain: www.finansmaskinen.dev
+URI: /contacts/fetchEntries?sEcho=2&iColumns=3&sColumns=&iDisplayStart=0&iDisplayLength=50&mDataProp_0=0&mDataProp_1=1&mDataProp_2=2&sSearch=&bRegex=false&sSearch_0=&bRegex_0=false&bSearchable_0=true&sSearch_1=&bRegex_1=false&bSearchable_1=true&sSearch_2=&bRegex_2=false&bSearchable_2=true&iSortCol_0=0&sSortDir_0=asc&iSortingCols=1&bSortable_0=true&bSortable_1=true&bSortable_2=true&_=1352847942543
+
+Events:
+0.0074708461761475 appStart
+0.012622833251953 appStop
+
+
+Statistics:
+Total execution time: 0.012959957122803
+app execution time: 0.0051488876342773
+Domain: www.finansmaskinen.dev
+URI: /contacts/fetchEntries?sEcho=3&iColumns=3&sColumns=&iDisplayStart=0&iDisplayLength=10&mDataProp_0=0&mDataProp_1=1&mDataProp_2=2&sSearch=&bRegex=false&sSearch_0=&bRegex_0=false&bSearchable_0=true&sSearch_1=&bRegex_1=false&bSearchable_1=true&sSearch_2=&bRegex_2=false&bSearchable_2=true&iSortCol_0=0&sSortDir_0=asc&iSortingCols=1&bSortable_0=true&bSortable_1=true&bSortable_2=true&_=1352847943458
+
+Events:
+0.0079829692840576 appStart
+0.011984825134277 appStop
+
+
+Statistics:
+Total execution time: 0.012215852737427
+app execution time: 0.0039989948272705
+Domain: www.finansmaskinen.dev
+URI: /index/logout
+
+Events:
+0.0096471309661865 appStart
+0.0099539756774902 appStop
+
+
+Statistics:
+Total execution time: 0.010313034057617
+app execution time: 0.00030112266540527
+Domain: www.finansmaskinen.dev
+URI: /index
+
+Events:
+0.0064749717712402 appStart
+0.0096111297607422 appStop
+
+
+Statistics:
+Total execution time: 0.0099759101867676
+app execution time: 0.0031380653381348
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.012665033340454
+Domain: www.finansmaskinen.dev
+URI: /index
+
+Events:
+0.0071611404418945 appStart
+0.0094349384307861 appStop
+
+
+Statistics:
+Total execution time: 0.0097310543060303
+app execution time: 0.0022690296173096
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.013204097747803
+Domain: www.finansmaskinen.dev
+URI: /index
+
+Events:
+0.010105133056641 appStart
+0.025802135467529 INSERT INTO stats_logins (`sid`,`uid`,`time`)
+		VALUES (?,?,?);
+0.026854038238525 appStop
+
+
+Statistics:
+Total execution time: 0.027116060256958
+app execution time: 0.016743898391724
+Domain: www.finansmaskinen.dev
+URI: /index/apps
+
+Events:
+0.0078730583190918 appStart
+0.039436101913452 appStop
+
+
+Statistics:
+Total execution time: 0.040357112884521
+app execution time: 0.031569004058838
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.021222114562988
+Domain: www.finansmaskinen.dev
+URI: /contacts
+
+Events:
+0.010718822479248 appStart
+0.021682977676392 appStop
+
+
+Statistics:
+Total execution time: 0.022035837173462
+app execution time: 0.01096510887146
+Domain: www.finansmaskinen.dev
+URI: /contacts/fetchEntries?sEcho=1&iColumns=3&sColumns=&iDisplayStart=0&iDisplayLength=10&mDataProp_0=0&mDataProp_1=1&mDataProp_2=2&sSearch=&bRegex=false&sSearch_0=&bRegex_0=false&bSearchable_0=true&sSearch_1=&bRegex_1=false&bSearchable_1=true&sSearch_2=&bRegex_2=false&bSearchable_2=true&iSortCol_0=0&sSortDir_0=asc&iSortingCols=1&bSortable_0=true&bSortable_1=true&bSortable_2=true&_=1352848594791
+
+Events:
+0.010673999786377 appStart
+0.015287160873413 appStop
+
+
+Statistics:
+Total execution time: 0.015608072280884
+app execution time: 0.0046131610870361
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.018471956253052
+Domain: www.finansmaskinen.dev
+URI: /contacts/add
+
+Events:
+0.0082740783691406 appStart
+2.6163339614868 appStop
+
+
+Statistics:
+Total execution time: 2.6172139644623
+app execution time: 2.6080648899078
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.022356033325195
+Domain: www.finansmaskinen.dev
+URI: /contacts/create
+
+Events:
+0.0077831745147705 appStart
+1.7426080703735 appStop
+
+
+Statistics:
+Total execution time: 1.7432751655579
+app execution time: 1.7348239421844
+Domain: www.finansmaskinen.dev
+URI: /contacts/view/50a2d4e31a5f01a718000004
+
+Events:
+0.0069599151611328 appStart
+0.092151880264282 appStop
+
+
+Statistics:
+Total execution time: 0.092517852783203
+app execution time: 0.085194110870361
+Domain: www.finansmaskinen.dev
+URI: /contacts/assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.019126892089844
+Domain: www.finansmaskinen.dev
+URI: /contacts/add
+
+Events:
+0.008357048034668 appStart
+0.019619941711426 appStop
+
+
+Statistics:
+Total execution time: 0.02032995223999
+app execution time: 0.011263132095337
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.018764019012451
+Domain: www.finansmaskinen.dev
+URI: /contacts
+
+Events:
+0.0093939304351807 appStart
+0.022063970565796 appStop
+
+
+Statistics:
+Total execution time: 0.022481918334961
+app execution time: 0.012631893157959
+Domain: www.finansmaskinen.dev
+URI: /contacts/fetchEntries?sEcho=1&iColumns=3&sColumns=&iDisplayStart=0&iDisplayLength=10&mDataProp_0=0&mDataProp_1=1&mDataProp_2=2&sSearch=&bRegex=false&sSearch_0=&bRegex_0=false&bSearchable_0=true&sSearch_1=&bRegex_1=false&bSearchable_1=true&sSearch_2=&bRegex_2=false&bSearchable_2=true&iSortCol_0=0&sSortDir_0=asc&iSortingCols=1&bSortable_0=true&bSortable_1=true&bSortable_2=true&_=1352848617216
+
+Events:
+0.0071790218353271 appStart
+0.011842012405396 appStop
+
+
+Statistics:
+Total execution time: 0.012165069580078
+app execution time: 0.0046629905700684
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.018736839294434
+Domain: www.finansmaskinen.dev
+URI: /index/logout
+
+Events:
+0.010087013244629 appStart
+0.01040506362915 appStop
+
+
+Statistics:
+Total execution time: 0.010690212249756
+app execution time: 0.0003049373626709
+Domain: www.finansmaskinen.dev
+URI: /index
+
+Events:
+0.0065410137176514 appStart
+0.0097801685333252 appStop
+
+
+Statistics:
+Total execution time: 0.010090112686157
+app execution time: 0.0032410621643066
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.012975931167603
+Domain: www.finansmaskinen.dev
+URI: /index
+
+Events:
+0.010764837265015 appStart
+0.013170957565308 appStop
+
+
+Statistics:
+Total execution time: 0.013617038726807
+app execution time: 0.0023961067199707
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.012956142425537
+Domain: www.finansmaskinen.dev
+URI: /index/createUser
+
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/rpc.json?key=786fd51e126665e791cc9e4d4ced18b034bec223db37f0b952636a346dae3863-5034016c4e9e7-d41d8cd98f00b204e9800998ecf8427e
+
+Events:
+0.014681816101074 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+0.63695383071899 INSERT INTO stats_logins (`sid`,`uid`,`time`)
+		VALUES (?,?,?);
+0.63790082931519 appStart
+0.6415638923645 appStop
+
+
+Statistics:
+Total execution time: 0.64220380783081
+app execution time: 0.0036640167236328
+Events:
+0.013987064361572 appStart
+0.021469116210938 INSERT INTO usr (`secret`)
+		VALUES (?);
+0.028095006942749 INSERT INTO usr_grp (`usr_id`,`grp_id`)
+		VALUES (?,?);
+0.028726100921631 INSERT INTO usr_grp_permissions (`usr_id`,`grp_id`,`permission`)
+		VALUES (?,?,?);
+0.031003952026367 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.031702995300293 INSERT INTO usr_grp (`usr_id`,`grp_id`)
+		VALUES (?,?);
+0.032459020614624 INSERT INTO usr_grp_permissions (`usr_id`,`grp_id`,`permission`)
+		VALUES (?,?,?);
+0.034832000732422 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.035622119903564 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.036237001419067 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.037888050079346 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.038526058197021 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.039225101470947 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.040183067321777 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.040709018707275 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.041248083114624 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.042809963226318 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.043396949768066 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.04413104057312 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.045819044113159 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.046395063400269 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.046941995620728 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.04826807975769 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.048718929290771 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.049217939376831 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.058725118637085 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.059307098388672 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.059770107269287 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+2.5100710391998 appStop
+
+
+Statistics:
+Total execution time: 2.5112299919128
+app execution time: 2.4960608482361
+Domain: www.finansmaskinen.dev
+URI: /favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.010127067565918
+Domain: www.finansmaskinen.dev
+URI: /index/createUser
+
+Events:
+0.0088319778442383 appStart
+0.012764930725098 appStop
+
+
+Statistics:
+Total execution time: 0.013295888900757
+app execution time: 0.003931999206543
+Domain: www.finansmaskinen.dev
+URI: /index/
+
+Events:
+0.0069661140441895 appStart
+0.0090761184692383 appStop
+
+
+Statistics:
+Total execution time: 0.0094211101531982
+app execution time: 0.0021069049835205
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.012876987457275
+Domain: www.finansmaskinen.dev
+URI: /index
+
+Events:
+0.015529870986938 appStart
+0.062252044677734 INSERT INTO stats_logins (`sid`,`uid`,`time`)
+		VALUES (?,?,?);
+0.063252925872803 appStop
+
+
+Statistics:
+Total execution time: 0.063544988632202
+app execution time: 0.047715902328491
+Domain: www.finansmaskinen.dev
+URI: /index/apps
+
+Events:
+0.011794090270996 appStart
+0.04289698600769 appStop
+
+
+Statistics:
+Total execution time: 0.043713092803955
+app execution time: 0.031101942062378
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.019490003585815
+Domain: www.finansmaskinen.dev
+URI: /contacts
+
+Events:
+0.01116681098938 appStart
+0.023244857788086 appStop
+
+
+Statistics:
+Total execution time: 0.023540019989014
+app execution time: 0.012074947357178
+Domain: www.finansmaskinen.dev
+URI: /contacts/fetchEntries?sEcho=1&iColumns=3&sColumns=&iDisplayStart=0&iDisplayLength=10&mDataProp_0=0&mDataProp_1=1&mDataProp_2=2&sSearch=&bRegex=false&sSearch_0=&bRegex_0=false&bSearchable_0=true&sSearch_1=&bRegex_1=false&bSearchable_1=true&sSearch_2=&bRegex_2=false&bSearchable_2=true&iSortCol_0=0&sSortDir_0=asc&iSortingCols=1&bSortable_0=true&bSortable_1=true&bSortable_2=true&_=1352849583401
+
+Events:
+0.011579990386963 appStart
+0.018079042434692 appStop
+
+
+Statistics:
+Total execution time: 0.018441915512085
+app execution time: 0.0064961910247803
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.018871784210205
+Domain: www.finansmaskinen.dev
+URI: /index/logout
+
+Events:
+0.0073020458221436 appStart
+0.0074949264526367 appStop
+
+
+Statistics:
+Total execution time: 0.0077300071716309
+app execution time: 0.00018692016601562
+Domain: www.finansmaskinen.dev
+URI: /index
+
+Events:
+0.0068111419677734 appStart
+0.0091080665588379 appStop
+
+
+Statistics:
+Total execution time: 0.0093719959259033
+app execution time: 0.0022950172424316
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.0087101459503174
+Domain: www.finansmaskinen.dev
+URI: /index/createUser
+
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/rpc.json?key=786fd51e126665e791cc9e4d4ced18b034bec223db37f0b952636a346dae3863-5034016c4e9e7-d41d8cd98f00b204e9800998ecf8427e
+
+Events:
+0.01075005531311 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+0.64092516899109 INSERT INTO stats_logins (`sid`,`uid`,`time`)
+		VALUES (?,?,?);
+0.64190220832825 appStart
+0.64585614204407 appStop
+
+
+Statistics:
+Total execution time: 0.65049409866333
+app execution time: 0.0039570331573486
+Events:
+0.01137900352478 appStart
+0.018336057662964 INSERT INTO usr (`secret`)
+		VALUES (?);
+0.02414608001709 INSERT INTO usr_grp (`usr_id`,`grp_id`)
+		VALUES (?,?);
+0.025274038314819 INSERT INTO usr_grp_permissions (`usr_id`,`grp_id`,`permission`)
+		VALUES (?,?,?);
+0.02718710899353 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.027766942977905 INSERT INTO usr_grp (`usr_id`,`grp_id`)
+		VALUES (?,?);
+0.028304100036621 INSERT INTO usr_grp_permissions (`usr_id`,`grp_id`,`permission`)
+		VALUES (?,?,?);
+0.030415058135986 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.031028985977173 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.031575918197632 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.032834053039551 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.034141063690186 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.034710884094238 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.035948991775513 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.03646993637085 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.037467002868652 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.038578033447266 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.039186954498291 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.039659976959229 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.041275024414062 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.042181015014648 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.042773962020874 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.044061899185181 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.044677019119263 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.045737028121948 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.047501087188721 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.048405885696411 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.049822092056274 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+2.3823370933533 appStop
+
+
+Statistics:
+Total execution time: 2.3838000297546
+app execution time: 2.3709478378296
+Domain: www.finansmaskinen.dev
+URI: /favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.0091140270233154
+Domain: www.finansmaskinen.dev
+URI: /index
+
+Events:
+0.010168075561523 appStart
+0.051792144775391 INSERT INTO stats_logins (`sid`,`uid`,`time`)
+		VALUES (?,?,?);
+0.05328106880188 appStop
+
+
+Statistics:
+Total execution time: 0.053791046142578
+app execution time: 0.043114185333252
+Domain: www.finansmaskinen.dev
+URI: /index/apps
+
+Events:
+0.011314868927002 appStart
+0.045881986618042 appStop
+
+
+Statistics:
+Total execution time: 0.046639919281006
+app execution time: 0.034569978713989
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.026264905929565
+Domain: www.finansmaskinen.dev
+URI: /contacts
+
+Events:
+0.010509967803955 appStart
+0.021838188171387 appStop
+
+
+Statistics:
+Total execution time: 0.022124052047729
+app execution time: 0.011325836181641
+Domain: www.finansmaskinen.dev
+URI: /contacts/fetchEntries?sEcho=1&iColumns=3&sColumns=&iDisplayStart=0&iDisplayLength=10&mDataProp_0=0&mDataProp_1=1&mDataProp_2=2&sSearch=&bRegex=false&sSearch_0=&bRegex_0=false&bSearchable_0=true&sSearch_1=&bRegex_1=false&bSearchable_1=true&sSearch_2=&bRegex_2=false&bSearchable_2=true&iSortCol_0=0&sSortDir_0=asc&iSortingCols=1&bSortable_0=true&bSortable_1=true&bSortable_2=true&_=1352849643037
+
+Events:
+0.0080749988555908 appStart
+0.013002872467041 appStop
+
+
+Statistics:
+Total execution time: 0.013313055038452
+app execution time: 0.0049228668212891
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.020721912384033
+Domain: www.finansmaskinen.dev
+URI: /index/logout
+
+Events:
+0.0083699226379395 appStart
+0.0086359977722168 appStop
+
+
+Statistics:
+Total execution time: 0.0089199542999268
+app execution time: 0.00025701522827148
+Domain: www.finansmaskinen.dev
+URI: /index
+
+Events:
+0.006227970123291 appStart
+0.0081830024719238 appStop
+
+
+Statistics:
+Total execution time: 0.0085201263427734
+app execution time: 0.0019540786743164
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.01056981086731
+Domain: www.finansmaskinen.dev
+URI: /index
+
+Events:
+0.010895013809204 appStart
+0.03328800201416 INSERT INTO stats_logins (`sid`,`uid`,`time`)
+		VALUES (?,?,?);
+0.034523010253906 appStop
+
+
+Statistics:
+Total execution time: 0.034943103790283
+app execution time: 0.023618936538696
+Domain: www.finansmaskinen.dev
+URI: /index/apps
+
+Events:
+0.0096759796142578 appStart
+0.093126773834229 appStop
+
+
+Statistics:
+Total execution time: 0.093819856643677
+app execution time: 0.083455085754395
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.025588989257812
+Domain: www.finansmaskinen.dev
+URI: /index/personal
+
+Events:
+0.012444972991943 appStart
+0.028496980667114 appStop
+
+
+Statistics:
+Total execution time: 0.028781890869141
+app execution time: 0.016047954559326
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.021281957626343
+Domain: www.finansmaskinen.dev
+URI: /contacts
+
+Events:
+0.0097081661224365 appStart
+0.021600008010864 appStop
+
+
+Statistics:
+Total execution time: 0.021916151046753
+app execution time: 0.011891841888428
+Domain: www.finansmaskinen.dev
+URI: /contacts/fetchEntries?sEcho=1&iColumns=3&sColumns=&iDisplayStart=0&iDisplayLength=10&mDataProp_0=0&mDataProp_1=1&mDataProp_2=2&sSearch=&bRegex=false&sSearch_0=&bRegex_0=false&bSearchable_0=true&sSearch_1=&bRegex_1=false&bSearchable_1=true&sSearch_2=&bRegex_2=false&bSearchable_2=true&iSortCol_0=0&sSortDir_0=asc&iSortingCols=1&bSortable_0=true&bSortable_1=true&bSortable_2=true&_=1352849966906
+
+Events:
+0.007681131362915 appStart
+0.014198064804077 appStop
+
+
+Statistics:
+Total execution time: 0.014494180679321
+app execution time: 0.0065131187438965
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.024579048156738
+Domain: www.finansmaskinen.dev
+URI: /contacts
+
+Events:
+0.0077459812164307 appStart
+0.019132137298584 appStop
+
+
+Statistics:
+Total execution time: 0.019477128982544
+app execution time: 0.011386156082153
+Domain: www.finansmaskinen.dev
+URI: /favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.024331092834473
+Domain: www.finansmaskinen.dev
+URI: /contacts/fetchEntries
+
+Events:
+0.011706113815308 appStart
+0.023524045944214 appStop
+
+
+Statistics:
+Total execution time: 0.02391505241394
+app execution time: 0.011811971664429
+Domain: www.finansmaskinen.dev
+URI: /favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.022747993469238
+Domain: www.finansmaskinen.dev
+URI: /contacts
+
+Events:
+0.0098209381103516 appStart
+0.022198915481567 appStop
+
+
+Statistics:
+Total execution time: 0.022495031356812
+app execution time: 0.012376070022583
+Domain: www.finansmaskinen.dev
+URI: /favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.018939018249512
+Domain: www.finansmaskinen.dev
+URI: /contacts/view/506951cd1a5f015444000000
+
+Events:
+0.0075960159301758 appStart
+0.044122934341431 appStop
+
+
+Statistics:
+Total execution time: 0.044567823410034
+app execution time: 0.036518812179565
+Domain: www.finansmaskinen.dev
+URI: /contacts/assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.020586013793945
+Domain: www.finansmaskinen.dev
+URI: /index/personal
+
+Events:
+0.013942003250122 appStart
+0.028012990951538 appStop
+
+
+Statistics:
+Total execution time: 0.02833890914917
+app execution time: 0.014065027236938
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.02907395362854
+Domain: www.finansmaskinen.dev
+URI: /index/addAPIKey
+
+Events:
+0.0076329708099365 appStart
+0.010074853897095 appStop
+
+
+Statistics:
+Total execution time: 0.010319948196411
+app execution time: 0.002439022064209
+Domain: www.finansmaskinen.dev
+URI: /index/personal
+
+Events:
+0.012278079986572 appStart
+0.025194883346558 appStop
+
+
+Statistics:
+Total execution time: 0.025470972061157
+app execution time: 0.012913942337036
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.020620107650757
+Domain: www.finansmaskinen.dev
+URI: /index/personal
+
+Events:
+0.011927843093872 appStart
+0.025591850280762 appStop
+
+
+Statistics:
+Total execution time: 0.025883913040161
+app execution time: 0.013656854629517
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.017405033111572
+Domain: www.finansmaskinen.dev
+URI: /index/logout
+
+Events:
+0.012192010879517 appStart
+0.012537002563477 appStop
+
+
+Statistics:
+Total execution time: 0.012795925140381
+app execution time: 0.00034213066101074
+Domain: www.finansmaskinen.dev
+URI: /index
+
+Events:
+0.010951042175293 appStart
+0.014062881469727 appStop
+
+
+Statistics:
+Total execution time: 0.014342069625854
+app execution time: 0.003108024597168
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.0095701217651367
+Domain: www.finansmaskinen.dev
+URI: /index/createUser
+
+Domain: rpc.finansmaskinen.dev
+URI: /contacts/rpc.json?key=4e50d016a6f29dc43d728543fddebdfec6b9f7cfc6b51fcfa3e75712c841c5f5-50a2da9313642-d41d8cd98f00b204e9800998ecf8427e
+
+Events:
+0.0088000297546387 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+0.64376497268677 INSERT INTO stats_logins (`sid`,`uid`,`time`)
+		VALUES (?,?,?);
+0.64490103721619 appStart
+0.64940309524536 appStop
+
+
+Statistics:
+Total execution time: 0.65009188652039
+app execution time: 0.0045011043548584
+Events:
+0.0069441795349121 appStart
+0.011353015899658 INSERT INTO usr (`secret`)
+		VALUES (?);
+0.016582012176514 INSERT INTO usr_grp (`usr_id`,`grp_id`)
+		VALUES (?,?);
+0.017590045928955 INSERT INTO usr_grp_permissions (`usr_id`,`grp_id`,`permission`)
+		VALUES (?,?,?);
+0.019287109375 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.01987099647522 INSERT INTO usr_grp (`usr_id`,`grp_id`)
+		VALUES (?,?);
+0.020354032516479 INSERT INTO usr_grp_permissions (`usr_id`,`grp_id`,`permission`)
+		VALUES (?,?,?);
+0.02225399017334 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.022982120513916 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.02372407913208 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.025396108627319 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.026699066162109 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.027198076248169 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.028187036514282 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.028841972351074 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.02997612953186 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.031003952026367 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.031489133834839 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.03205394744873 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.033918142318726 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.034787178039551 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.035470008850098 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.036561012268066 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.037405967712402 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.037966012954712 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+0.039041042327881 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.039575099945068 INSERT INTO grp_meta (`gid`,`name`,`value`)
+		VALUES (?,?,?);
+0.040240049362183 INSERT INTO app_grp (`app_id`,`grp_id`,`status`,`expire`)
+		VALUES (?,?,?,?);
+2.3916749954224 appStop
+
+
+Statistics:
+Total execution time: 2.3933610916138
+app execution time: 2.3847370147705
+Domain: www.finansmaskinen.dev
+URI: /favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.0091719627380371
+Domain: www.finansmaskinen.dev
+URI: /index
+
+Events:
+0.012623071670532 appStart
+0.03333306312561 INSERT INTO stats_logins (`sid`,`uid`,`time`)
+		VALUES (?,?,?);
+0.037209033966064 appStop
+
+
+Statistics:
+Total execution time: 0.037480115890503
+app execution time: 0.02457594871521
+Domain: www.finansmaskinen.dev
+URI: /index/apps
+
+Events:
+0.0082380771636963 appStart
+0.035675048828125 appStop
+
+
+Statistics:
+Total execution time: 0.036512136459351
+app execution time: 0.027436017990112
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.018385887145996
+Domain: www.finansmaskinen.dev
+URI: /contacts
+
+Events:
+0.013755083084106 appStart
+0.027652978897095 appStop
+
+
+Statistics:
+Total execution time: 0.028018951416016
+app execution time: 0.013880014419556
+Domain: www.finansmaskinen.dev
+URI: /contacts/fetchEntries?sEcho=1&iColumns=3&sColumns=&iDisplayStart=0&iDisplayLength=10&mDataProp_0=0&mDataProp_1=1&mDataProp_2=2&sSearch=&bRegex=false&sSearch_0=&bRegex_0=false&bSearchable_0=true&sSearch_1=&bRegex_1=false&bSearchable_1=true&sSearch_2=&bRegex_2=false&bSearchable_2=true&iSortCol_0=0&sSortDir_0=asc&iSortingCols=1&bSortable_0=true&bSortable_1=true&bSortable_2=true&_=1352850137981
+
+Events:
+0.0077071189880371 appStart
+0.015786170959473 appStop
+
+
+Statistics:
+Total execution time: 0.016185998916626
+app execution time: 0.0080819129943848
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.019244194030762

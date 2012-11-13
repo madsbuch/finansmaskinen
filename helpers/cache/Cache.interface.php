@@ -8,7 +8,7 @@
  * @license   MIT License
  */
 
-namespace helper;
+namespace helper\cache;
 
 interface Cache{
 	function offsetExists($offset);

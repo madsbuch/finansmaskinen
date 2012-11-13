@@ -34,7 +34,7 @@ class jsonRPCClient {
 	 *
 	 * @var boolean
 	 */
-	private $debug;
+	private $debug = '';
 	
 	/**
 	 * The server URL
@@ -62,6 +62,7 @@ class jsonRPCClient {
 	 * @param boolean $debug
 	 */
 	public function __construct($url,$debug = false) {
+		$debug = DEBUG;
 		// server URL
 		$this->url = $url;
 		// proxy
@@ -142,7 +143,7 @@ class jsonRPCClient {
 		
 		// debug output
 		if ($this->debug) {
-			echo nl2br($debug);
+			echo nl2br($this->debug);
 		}
 		
 		// final checks and return

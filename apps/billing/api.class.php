@@ -43,15 +43,6 @@ class billing extends \core\api{
 	}
 	
 	/**
-	* get accepted filetypes
-	*
-	* if the app handles files, these are the fileendings appepted
-	*/
-	static function getAcceptetFiletypes(){
-		
-	}
-	
-	/**
 	* getTitle
 	*
 	* Returns user friendly name of app (in current language)

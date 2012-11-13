@@ -1,11 +1,18 @@
 <?php
 /**
-* Index.php. The magic starts here
-*/
+ * Index.php. The magic starts here
+ *
+ * This file provides basic inclusion and setup of the system
+ */
 
 /**
 * some really global seetings:
 */
+
+/**
+ * actually the only thing that should be changed when in prod.
+ */
+define('STRATEGY', 'test');
 
 //some character settings:
 mb_internal_encoding("UTF-8");
@@ -17,9 +24,9 @@ require_once("global.php");
 chdir("..");
 
 //configurations files
-require_once("config/config.php");
-require_once("config/router.php");
-require_once("config/const.php");
+require_once("config/".STRATEGY."/config.php");
+require_once("config/".STRATEGY."/router.php");
+require_once("config/".STRATEGY."/const.php");
 
 
 /**
@@ -133,6 +140,14 @@ function __autoload($class) {
 			require_once($alt);
 		else
 			trigger_error("unable to load profile API and controller. $controller , $api or alt $alt", E_USER_WARNING);
+	}
+	elseif($path[0] == "config"){
+		array_unshift($path, STRATEGY);
+		$path[0] = 'config';
+		$path[1] =  STRATEGY;
+		$file = ROOT.implode('/', $path) . '.class.php';
+		require_once $file;
+
 	}
 	else{
 		$alt = ROOT.implode('/', $path) . '.class.php';

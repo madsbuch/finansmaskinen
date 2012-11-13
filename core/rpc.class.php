@@ -54,8 +54,24 @@ class rpc extends app{
 	function getOutputHeader(){
 		return $this->header->getHeader();
 	}
-	
+
+	function handleError($errornum){
+		$this->throwException('Not authorized (you don\'t have access to requested app)');
+		header('Content-type: application/json');
+		die($this->getOutputContent());
+	}
+
 	function getOutputContent(){
+
+		$log = $this->request->toArray();
+		unset($log['arguments']);
+		$log['_filename'] = 'core/rpc.log';
+
+		$log['responseID'] = $this->returnArr['id'];
+		$log['responseErr'] = $this->returnArr['error'];
+
+		logHandler::log($log);
+
 		//@TODO format the output properly
 		return json_encode($this->returnArr);
 	}
@@ -67,14 +83,15 @@ class rpc extends app{
 	*/
 	static function parseRequest($req){
 		$rpcReq = inputParser::getInstance()->getRequestBody();
-		
+
 		//$TODO parse with respect mime (json, xml ect...)
 		$rpcReq = json_decode($rpcReq);
-		
+
 		$req->page = $rpcReq->method;
 		$req->id = $rpcReq->id;
 		$req->arguments = $rpcReq->params;
-		
+		$req->callback = new \core\rpc($req); //use this as callback
+
 		return $req;
 	}
 }

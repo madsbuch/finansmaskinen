@@ -85,13 +85,13 @@ class Setup extends \helper\layout\LayoutBlock{
 					<input type="hidden" value="DK:BANK" name="Public-PaymentMeans-PaymentChannelCode" />
 					<input type="hidden" value="1" name="Public-PaymentMeans-PaymentMeansCode" />
 					<div class="span1" style="width:40%">
-						<label>Bank</label>
+						<label>Regnr.:</label>
 						<input type="text" style="width:100%;"
 							id="Public-PaymentMeans-PayeeFinancialAccount-FinancialInstitutionBranch-ID-_content"
 							name="Public-PaymentMeans-PayeeFinancialAccount-FinancialInstitutionBranch-ID" />
 					</div>
 					<div class="span1" style="width:40%">
-						<label>Konto</label>
+						<label>Kontonr.:</label>
 						<input type="text" name="Public-PaymentMeans-PayeeFinancialAccount-ID"
 							id="Public-PaymentMeans-PayeeFinancialAccount-ID-_content"
 							style="width:100%;" />

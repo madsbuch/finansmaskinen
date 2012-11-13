@@ -152,10 +152,12 @@ abstract class app{
 	}
 	
 	/**
-	* prototype for a errorpage
-	*/
-	function getErrorPage($errornum){
-		return $errornum;
+	 * prototype for a errorpage
+	 *
+	 * this is a default implementation, implement if used!
+	 */
+	function handleError($errornum){
+		return die($errornum);
 	}
 	
 	/*** ABSTRACT METHODS ****/

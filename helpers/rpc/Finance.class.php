@@ -6,7 +6,11 @@
 namespace helper\rpc;
 
 class Finance extends \helper\rpc {
-	
+
+	/**
+	 * @param $res
+	 * @param bool $asUrl
+	 */
 	function __construct($res, $asUrl = false){
 		if(!$asUrl)
 			parent::__construct(\config\finance::$api['finansmaskinen']['url'].$res.'/rpc.json?key='.

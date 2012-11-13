@@ -53,12 +53,11 @@ class errorHandler
 	 *
 	 * @param $exception thrown exception
 	 */
-	function productionExeptionHandler($exception) {
+	function productionExeptionHandler(\Exception $exception) {
 		$log = new \model\log\core\Exception();
 
 		$log->message = $exception->getMessage();
-		$log->file = "implement";
-		$log->line = "implement";
+		$log->stack = $exception->getTraceAsString();
 
 		\core\logHandler::log($log);
 	}

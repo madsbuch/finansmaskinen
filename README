@@ -34,6 +34,8 @@ following settings in php.ini:
 	max_file_uploads 100
 	
 
+let the cli/php.ini be a symlink to apache2/php.ini for the test cases
+
 install mongoDB -> installed via php-pear
 
 install wkhtmltox (https://github.com/mreiferson/php-wkhtmltox) (better guide: http://roundhere.net/journal/install-wkhtmltopdf-php-bindings/)

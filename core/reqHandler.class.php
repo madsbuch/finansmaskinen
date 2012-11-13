@@ -68,7 +68,8 @@ class reqHandler{
 		}
 		else{
 			//it's nothing... :/ redirect to frontpage @TODO really bad hack...
-			header('location: http://www.'.$inputParser->getDomain());
+
+			header('location: http://www.'.$domain[1].'.'.$domain[0]);
 			exit();
 		}
 		
@@ -97,11 +98,16 @@ class reqHandler{
 			$o = 'start\\'.$profile.'\main';
 			
 			/** throwing error page **/
-			
-			//creating app
-			$appHandler = new $o($request);
-			//calling page
-			$appHandler->errorPage(404);
+
+			//if callback is provided
+			if(is_object($request->callback))
+				$request->callback->handleError(404);
+			else{
+				//creating app
+				$appHandler = new $o($request);
+				//calling page
+				$appHandler->errorPage(404);
+			}
 		}
 		//checking permission (the app class file is included here)
 		elseif(!($objName::$requireLogin && !$auth->appAuthorized($request->app))){
@@ -133,11 +139,15 @@ class reqHandler{
 		//if user id not authorized
 		else{
 			$o = 'start\\'.$profile.'\main';
-			//creating app
-			$appHandler = new $o($request);
-			
-			//calling page
-			$appHandler->errorPage(403);
+
+			if(is_object($request->callback))
+				$request->callback->handleError(403);
+			else{
+				//creating app
+				$appHandler = new $o($request);
+				//calling page
+				$appHandler->errorPage(403);
+			}
 		}
 		
 		\core\appHandler::doOutput($appHandler);
