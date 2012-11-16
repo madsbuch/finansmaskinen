@@ -157,7 +157,7 @@ class page{
 	private function addID($id, &$ref){
 		//allready set?
 		if(isset($this->IDindex[$id]))
-			return false;
+			return;
 		$this->IDindex[$id] = &$ref;
 	}
 	

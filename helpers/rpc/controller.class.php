@@ -19,7 +19,7 @@ class rpc{
 	
 	function __construct($url, $type = 'json'){
 		if($type == 'json')
-			$this->handler = new \jsonRPCClient($url);
+			$this->handler = new \jsonRPCClient($url, false);//no debugging!
 	}
 	
 	public function __call($method,$params){

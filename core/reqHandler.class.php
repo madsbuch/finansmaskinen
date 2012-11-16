@@ -67,7 +67,7 @@ class reqHandler{
 			//it's a webapp :D
 		}
 		else{
-			//it's nothing... :/ redirect to frontpage @TODO really bad hack...
+			//it's nothing... :/ redirect to frontpage @TODO really bad hack... we don't wanna destroy the programflow
 
 			header('location: http://www.'.$domain[1].'.'.$domain[0]);
 			exit();
@@ -101,7 +101,7 @@ class reqHandler{
 
 			//if callback is provided
 			if(is_object($request->callback))
-				$request->callback->handleError(404);
+				$request->callback->handleError(404, $request->page . ' doen\'t exist in ' . $request->app);
 			else{
 				//creating app
 				$appHandler = new $o($request);

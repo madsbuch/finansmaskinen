@@ -7,7 +7,7 @@
 
 namespace model\ext\ubl2;
 
-class Address extends \model\AbstractModel{
+class AllowanceCharge extends \model\AbstractModel{
 	
 	protected $_autoassign = array(
 		'ID' => array('\model\ext\ubl2\field\Identifier', false),

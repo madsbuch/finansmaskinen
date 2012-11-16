@@ -27,6 +27,7 @@ class File{
 	function getFile(){
 		if($this->t === self::MONGO)
 			return $this->r->getBytes();
+		throw new \Exception(__('Type %d don\' exist', $this->t));
 	}
 	
 	/**

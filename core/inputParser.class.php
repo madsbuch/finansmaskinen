@@ -213,7 +213,7 @@ class inputParser{
 	function getParameter($param){
 		if(isset($this->get[$param]))
 			return $this->get[$param];
-		return;
+		return null;
 	}
 	
 	function getParameters(){

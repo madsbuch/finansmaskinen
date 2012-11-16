@@ -11,7 +11,8 @@
 * this function still takes advantage of the AbstractModel
 */
 
-trait Xml {
+//this will properbly be implemented later on
+/*trait Xml {
 	protected  $_content;
 	public function __invoke($data){
 		$this->_content = $data;
@@ -20,6 +21,6 @@ trait Xml {
 	public function __toString(){
 		return $this->_content;
 	}
-}
+}*/
 
 ?>

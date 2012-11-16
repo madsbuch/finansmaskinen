@@ -114,8 +114,7 @@ class obj{
 	function setInfo($type, $name, $value){
 		$grps = $this->getAuthorizedGroups(\config_const::WRITE);
 		if(count($grps) < 1){
-			trigger_error("NOT ALLOWED");
-			return false;
+			throw new \Exception('No authorized for this action');
 		}
 		
 		$this->data[$type][$name]['value'] = $value;

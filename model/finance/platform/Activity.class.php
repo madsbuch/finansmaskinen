@@ -4,7 +4,7 @@
 */
 
 
-namespace model\finance\platform
+namespace model\finance\platform;
 
 class Activity extends \model\AbstractModel{
 	protected $time;

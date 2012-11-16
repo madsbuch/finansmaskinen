@@ -346,7 +346,6 @@ class groups{
 			$this->db = new \core\db(\config\config::$coreConfig);
 			return $this->db;
 		}
-		return false;
 	}
 }
 ?>

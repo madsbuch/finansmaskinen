@@ -411,6 +411,7 @@ class accounting{
 				return $acc->getVatStatement();
 			break;
 		}
+		throw new \Exception(__('rapport doesn\'t exist: %s', $type));
 	}
 	
 	

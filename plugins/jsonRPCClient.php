@@ -62,7 +62,6 @@ class jsonRPCClient {
 	 * @param boolean $debug
 	 */
 	public function __construct($url,$debug = false) {
-		$debug = DEBUG;
 		// server URL
 		$this->url = $url;
 		// proxy
@@ -93,7 +92,9 @@ class jsonRPCClient {
 	 * @return array
 	 */
 	public function __call($method,$params) {
-		
+
+		$debug = '';
+
 		// check
 		if (!is_scalar($method)) {
 			throw new Exception('Method name has no scalar value');
@@ -103,7 +104,8 @@ class jsonRPCClient {
 		if (is_array($params)) {
 			// no keys
 			$params = array_values($params);
-		} else {
+		}
+		else {
 			throw new Exception('Params must be given as array');
 		}
 		
@@ -121,7 +123,11 @@ class jsonRPCClient {
 						'id' => $currentId
 						);
 		$request = json_encode($request);
-		$this->debug && $this->debug.='***** Request *****'."\n".$request."\n".'***** End Of request *****'."\n\n";
+
+		$debug .=
+			'***** Request *****'.
+			"\n".$request."\n".
+			'***** End Of request *****'."\n\n";
 		
 		// performs the HTTP POST
 		$opts = array ('http' => array (
@@ -130,20 +136,22 @@ class jsonRPCClient {
 							'content' => $request
 							));
 		$context  = stream_context_create($opts);
+
 		if ($fp = fopen($this->url, 'r', false, $context)) {
 			$response = '';
 			while($row = fgets($fp)) {
 				$response.= trim($row)."\n";
 			}
-			$this->debug && $this->debug.='***** Server response *****'."\n".$response.'***** End of server response *****'."\n";
+			$debug .='***** Server response *****'."\n".$response.'***** End of server response *****'."\n";
 			$response = json_decode($response,true);
-		} else {
+		}
+		else {
 			throw new Exception('Unable to connect to '.$this->url);
 		}
-		
+
 		// debug output
 		if ($this->debug) {
-			echo nl2br($this->debug);
+			echo nl2br("debug:\n" . $debug);
 		}
 		
 		// final checks and return

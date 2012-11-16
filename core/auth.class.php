@@ -77,6 +77,7 @@ class auth{
 	public function getApps(){
 		if(isset($this->auth->appnames))
 			return $this->auth->appnames;
+		return null;
 	}
 	
 	/**
@@ -85,6 +86,7 @@ class auth{
 	public function getTrees(){
 		if(isset($this->auth->trees))
 			return $this->auth->trees;
+		return null;
 	}
 	
 	/**
@@ -150,7 +152,7 @@ class auth{
 	*/
 	function reFetch($tree = null){
 		if(!isset($this->auth))
-			return false;
+			return;
 		
 		$tree = $tree ? $tree : $this->auth->treeID;
 		$this->fetchInformation($this->auth->userID, $tree);
@@ -161,7 +163,7 @@ class auth{
 	*/
 	function doSetup($app){
 		if(!isset($this->auth->appnames[$app]))
-			return false;
+			return;
 		
 		//insert the row, that makes it possible
 		$db = $this->getDB();
@@ -544,19 +546,6 @@ class auth{
 	}
 	
 	/**
-	* merge to users into one (future feature)
-	*
-	* the $uid1 is persistent and keeps it's values, if $uid2's is different
-	*/
-	public function mergeUsers($uid1, $uid2, $secret1, $secret2){
-		//check information
-		if(!(validateUser($uid1, $secret1) && validateUser($uid2, $secret2)))
-			return false;//information is wrong			
-		
-		//før alle grupper fra $uid2 til $uid1
-	}
-	
-	/**
 	* moved to a util?
 	*/
 	private function genSecureKey(){
@@ -585,7 +574,6 @@ class auth{
 			$this->db = new db(\config\config::$coreConfig);
 			return $this->db;
 		}
-		return false;
 	}
 	
 	/**** auxillery methods, used when building auth structure! ****/
@@ -628,7 +616,7 @@ class auth{
 	private function addApp($appID, $appName){
 		//check if the app is set
 		if(isset($this->auth->apps[$appID]) || is_null($appName) || is_null($appID))
-			return false;
+			return;
 		
 		//set some variable
 		$this->auth->apps[$appID] = new \model\core\App();
@@ -644,7 +632,7 @@ class auth{
 		if(	is_null($appID) ||
 			(isset($this->auth->apps[$appID]->groups) && 
 			in_array($groupID, $this->auth->apps[$appID]->groups)))
-			return false;
+			return;
 		$this->auth->apps[$appID]->groups[] = $groupID;
 	}
 	
@@ -655,7 +643,7 @@ class auth{
 		if(	is_null($appID) ||
 			isset($this->auth->groups[$groupID]->apps) &&
 			in_array($appID, $this->auth->groups[$groupID]->apps))
-			return false;
+			return;
 		$this->auth->groups[$groupID]->apps[] = $appID;
 	}
 	
@@ -664,9 +652,9 @@ class auth{
 	*/
 	private function addChild($grp, $child){
 		if($grp == $child)
-			return false;
+			return;
 		if($this->auth->groups[$grp]->children && in_array($child, $this->auth->groups[$grp]->children))
-			return false;
+			return;
 		$this->auth->groups[$grp]->children[] = $child;
 	}
 	
@@ -675,7 +663,7 @@ class auth{
 	*/
 	private function addMetaInfo($grp, $key, $value){
 		if(is_null($key))
-			return false;
+			return;
 		$this->auth->groups[$grp]->metaInfo[$key] = $value;
 	}
 }

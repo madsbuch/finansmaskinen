@@ -2938,3 +2938,377 @@
 2012-11-16T09:52:07+01:00 ERROR {"errstr":"Page assets does not exist in app \\app\\invoice.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
 2012-11-16T15:18:51+01:00 ERROR {"errstr":"unable to load class: app\\assets in \/var\/www\/apps\/assets\/controller.class.php or \/var\/www\/apps\/assets.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
 2012-11-16T15:18:51+01:00 ERROR {"errstr":"Page ico does not exist in app \\app\\assets.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T16:01:03+01:00 ERROR {"errstr":"Page assets does not exist in app \\app\\invoice.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T16:01:04+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T16:01:04+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T16:01:04+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T16:01:04+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T16:01:04+01:00 ERROR {"errstr":"unable to load class: app\\assets in \/var\/www\/apps\/assets\/controller.class.php or \/var\/www\/apps\/assets.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T16:01:04+01:00 ERROR {"errstr":"Page ico does not exist in app \\app\\assets.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T16:02:26+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T16:02:26+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T16:02:26+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T16:02:26+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T16:02:26+01:00 ERROR {"errstr":"unable to load class: app\\assets in \/var\/www\/apps\/assets\/controller.class.php or \/var\/www\/apps\/assets.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T16:02:26+01:00 ERROR {"errstr":"Page ico does not exist in app \\app\\assets.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T16:02:27+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T16:02:27+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T16:02:27+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T16:02:27+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T16:02:27+01:00 ERROR {"errstr":"unable to load class: app\\assets in \/var\/www\/apps\/assets\/controller.class.php or \/var\/www\/apps\/assets.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T16:02:27+01:00 ERROR {"errstr":"Page ico does not exist in app \\app\\assets.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T16:04:33+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T16:04:33+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T16:04:33+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T16:04:33+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T16:04:33+01:00 ERROR {"errstr":"unable to load class: app\\assets in \/var\/www\/apps\/assets\/controller.class.php or \/var\/www\/apps\/assets.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T16:04:33+01:00 ERROR {"errstr":"Page ico does not exist in app \\app\\assets.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T16:04:34+01:00 ERROR {"errstr":"unable to load class: app\\assets in \/var\/www\/apps\/assets\/controller.class.php or \/var\/www\/apps\/assets.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T16:04:34+01:00 ERROR {"errstr":"Page ico does not exist in app \\app\\assets.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T16:04:36+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T16:04:36+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T16:04:36+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T16:04:36+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T16:04:36+01:00 ERROR {"errstr":"unable to load class: app\\assets in \/var\/www\/apps\/assets\/controller.class.php or \/var\/www\/apps\/assets.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T16:04:36+01:00 ERROR {"errstr":"Page ico does not exist in app \\app\\assets.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T16:06:42+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T16:06:42+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T16:06:42+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T16:06:42+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T16:06:42+01:00 ERROR {"errstr":"unable to load class: app\\assets in \/var\/www\/apps\/assets\/controller.class.php or \/var\/www\/apps\/assets.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T16:06:42+01:00 ERROR {"errstr":"Page ico does not exist in app \\app\\assets.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T16:06:43+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T16:06:43+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T16:06:43+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T16:06:43+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T16:06:43+01:00 ERROR {"errstr":"unable to load class: app\\assets in \/var\/www\/apps\/assets\/controller.class.php or \/var\/www\/apps\/assets.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T16:06:43+01:00 ERROR {"errstr":"Page ico does not exist in app \\app\\assets.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T16:06:45+01:00 ERROR {"errstr":"Page assets does not exist in app \\app\\invoice.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T16:06:47+01:00 ERROR {"errstr":"Undefined index: favicon.ico","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T16:06:47+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T16:06:47+01:00 ERROR {"errstr":"Undefined index: favicon.ico","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T16:06:47+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T16:06:47+01:00 ERROR {"errstr":"unable to load class: app\\favicon.ico in \/var\/www\/apps\/favicon.ico\/controller.class.php or \/var\/www\/apps\/favicon.ico.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T16:06:47+01:00 ERROR {"errstr":"Page index does not exist in app \\app\\favicon.ico.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T16:06:47+01:00 ERROR {"errstr":"Page assets does not exist in app \\app\\invoice.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T16:06:49+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T16:06:49+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T16:06:49+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T16:06:49+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T16:06:49+01:00 ERROR {"errstr":"unable to load class: app\\assets in \/var\/www\/apps\/assets\/controller.class.php or \/var\/www\/apps\/assets.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T16:06:49+01:00 ERROR {"errstr":"Page ico does not exist in app \\app\\assets.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T16:06:50+01:00 ERROR {"errstr":"Page assets does not exist in app \\app\\invoice.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T16:06:51+01:00 ERROR {"errstr":"Undefined index: favicon.ico","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T16:06:51+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T16:06:51+01:00 ERROR {"errstr":"Undefined index: favicon.ico","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T16:06:51+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T16:06:51+01:00 ERROR {"errstr":"unable to load class: app\\favicon.ico in \/var\/www\/apps\/favicon.ico\/controller.class.php or \/var\/www\/apps\/favicon.ico.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T16:06:51+01:00 ERROR {"errstr":"Page index does not exist in app \\app\\favicon.ico.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T16:06:52+01:00 ERROR {"errstr":"Page assets does not exist in app \\app\\invoice.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T16:07:50+01:00 ERROR {"errstr":"Page assets does not exist in app \\app\\invoice.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T16:07:54+01:00 ERROR {"errstr":"Undefined index: favicon.ico","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T16:07:54+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T16:07:54+01:00 ERROR {"errstr":"Undefined index: favicon.ico","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T16:07:54+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T16:07:54+01:00 ERROR {"errstr":"unable to load class: app\\favicon.ico in \/var\/www\/apps\/favicon.ico\/controller.class.php or \/var\/www\/apps\/favicon.ico.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T16:07:54+01:00 ERROR {"errstr":"Page index does not exist in app \\app\\favicon.ico.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T16:07:55+01:00 ERROR {"errstr":"Page assets does not exist in app \\app\\invoice.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T16:09:18+01:00 ERROR {"errstr":"Page assets does not exist in app \\app\\invoice.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T16:09:19+01:00 ERROR {"errstr":"Page assets does not exist in app \\app\\invoice.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T16:09:19+01:00 ERROR {"errstr":"Page assets does not exist in app \\app\\invoice.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T16:09:20+01:00 ERROR {"errstr":"Page assets does not exist in app \\app\\invoice.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T16:10:00+01:00 ERROR {"errstr":"Page assets does not exist in app \\app\\invoice.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T16:18:19+01:00 ERROR {"errstr":"Page assets does not exist in app \\app\\invoice.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T16:18:20+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T16:18:20+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T16:18:20+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T16:18:20+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T16:18:20+01:00 ERROR {"errstr":"unable to load class: app\\assets in \/var\/www\/apps\/assets\/controller.class.php or \/var\/www\/apps\/assets.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T16:18:20+01:00 ERROR {"errstr":"Page ico does not exist in app \\app\\assets.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T16:25:54+01:00 ERROR {"errstr":"Page assets does not exist in app \\app\\invoice.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T16:25:57+01:00 ERROR {"errstr":"Undefined index: favicon.ico","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T16:25:57+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T16:25:57+01:00 ERROR {"errstr":"Undefined index: favicon.ico","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T16:25:57+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T16:25:57+01:00 ERROR {"errstr":"unable to load class: app\\favicon.ico in \/var\/www\/apps\/favicon.ico\/controller.class.php or \/var\/www\/apps\/favicon.ico.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T16:25:57+01:00 ERROR {"errstr":"Page index does not exist in app \\app\\favicon.ico.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T16:25:58+01:00 ERROR {"errstr":"Undefined index: favicon.ico","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T16:25:58+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T16:25:58+01:00 ERROR {"errstr":"Undefined index: favicon.ico","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T16:25:58+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T16:25:58+01:00 ERROR {"errstr":"unable to load class: app\\favicon.ico in \/var\/www\/apps\/favicon.ico\/controller.class.php or \/var\/www\/apps\/favicon.ico.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T16:25:58+01:00 ERROR {"errstr":"Page index does not exist in app \\app\\favicon.ico.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T16:27:52+01:00 ERROR {"errstr":"Undefined index: favicon.ico","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T16:27:52+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T16:27:52+01:00 ERROR {"errstr":"Undefined index: favicon.ico","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T16:27:52+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T16:27:52+01:00 ERROR {"errstr":"unable to load class: app\\favicon.ico in \/var\/www\/apps\/favicon.ico\/controller.class.php or \/var\/www\/apps\/favicon.ico.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T16:27:52+01:00 ERROR {"errstr":"Page index does not exist in app \\app\\favicon.ico.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T16:27:52+01:00 ERROR {"errstr":"Undefined index: favicon.ico","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T16:27:52+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T16:27:52+01:00 ERROR {"errstr":"Undefined index: favicon.ico","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T16:27:52+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T16:27:52+01:00 ERROR {"errstr":"unable to load class: app\\favicon.ico in \/var\/www\/apps\/favicon.ico\/controller.class.php or \/var\/www\/apps\/favicon.ico.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T16:27:52+01:00 ERROR {"errstr":"Page index does not exist in app \\app\\favicon.ico.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T16:27:53+01:00 ERROR {"errstr":"Undefined index: favicon.ico","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T16:27:53+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T16:27:53+01:00 ERROR {"errstr":"Undefined index: favicon.ico","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T16:27:53+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T16:27:53+01:00 ERROR {"errstr":"unable to load class: app\\favicon.ico in \/var\/www\/apps\/favicon.ico\/controller.class.php or \/var\/www\/apps\/favicon.ico.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T16:27:53+01:00 ERROR {"errstr":"Page index does not exist in app \\app\\favicon.ico.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T16:27:53+01:00 ERROR {"errstr":"Undefined index: favicon.ico","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T16:27:53+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T16:27:53+01:00 ERROR {"errstr":"Undefined index: favicon.ico","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T16:27:53+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T16:27:53+01:00 ERROR {"errstr":"unable to load class: app\\favicon.ico in \/var\/www\/apps\/favicon.ico\/controller.class.php or \/var\/www\/apps\/favicon.ico.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T16:27:53+01:00 ERROR {"errstr":"Page index does not exist in app \\app\\favicon.ico.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T19:40:50+01:00 ERROR {"errstr":"unable to load class: rpc\\bill in \/var\/www\/apps\/bill\/rpc.class.php or \/var\/www\/apps\/bill.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T19:40:50+01:00 ERROR {"errstr":"Page add does not exist in app \\rpc\\bill.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T19:40:52+01:00 ERROR {"errstr":"unable to load class: rpc\\bill in \/var\/www\/apps\/bill\/rpc.class.php or \/var\/www\/apps\/bill.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T19:40:52+01:00 ERROR {"errstr":"Page add does not exist in app \\rpc\\bill.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T19:41:07+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/core\/rpc.class.php","errline":90,"errno":8}
+2012-11-16T19:41:07+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/core\/rpc.class.php","errline":91,"errno":8}
+2012-11-16T19:41:07+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/core\/rpc.class.php","errline":92,"errno":8}
+2012-11-16T19:41:07+01:00 ERROR {"errstr":"Page  does not exist in app \\rpc\\bill.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T19:41:08+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/core\/rpc.class.php","errline":90,"errno":8}
+2012-11-16T19:41:08+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/core\/rpc.class.php","errline":91,"errno":8}
+2012-11-16T19:41:08+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/core\/rpc.class.php","errline":92,"errno":8}
+2012-11-16T19:41:08+01:00 ERROR {"errstr":"Page  does not exist in app \\rpc\\favicon.ico.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T19:44:20+01:00 ERROR {"errstr":"unable to load class: rpc\\bill in \/var\/www\/apps\/bill\/rpc.class.php or \/var\/www\/apps\/bill.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T19:44:20+01:00 ERROR {"errstr":"Page  does not exist in app \\rpc\\bill.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T19:44:20+01:00 ERROR {"errstr":"unable to load class: rpc\\favicon.ico in \/var\/www\/apps\/favicon.ico\/rpc.class.php or \/var\/www\/apps\/favicon.ico.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T19:44:20+01:00 ERROR {"errstr":"Page  does not exist in app \\rpc\\favicon.ico.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T19:47:50+01:00 ERROR {"errstr":"unable to load class: rpc\\bill in \/var\/www\/apps\/bill\/rpc.class.php or \/var\/www\/apps\/bill.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T19:47:50+01:00 ERROR {"errstr":"Page  does not exist in app \\rpc\\bill.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T19:47:50+01:00 ERROR {"errstr":"unable to load class: rpc\\favicon.ico in \/var\/www\/apps\/favicon.ico\/rpc.class.php or \/var\/www\/apps\/favicon.ico.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T19:47:50+01:00 ERROR {"errstr":"Page  does not exist in app \\rpc\\favicon.ico.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T19:48:31+01:00 ERROR {"errstr":"unable to load class: rpc\\bill in \/var\/www\/apps\/bill\/rpc.class.php or \/var\/www\/apps\/bill.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T19:48:31+01:00 ERROR {"errstr":"Page  does not exist in app \\rpc\\bill.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T19:48:31+01:00 ERROR {"errstr":"unable to load class: rpc\\favicon.ico in \/var\/www\/apps\/favicon.ico\/rpc.class.php or \/var\/www\/apps\/favicon.ico.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T19:48:31+01:00 ERROR {"errstr":"Page  does not exist in app \\rpc\\favicon.ico.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T19:48:36+01:00 ERROR {"errstr":"unable to load class: rpc\\bill in \/var\/www\/apps\/bill\/rpc.class.php or \/var\/www\/apps\/bill.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T19:48:36+01:00 ERROR {"errstr":"Page  does not exist in app \\rpc\\bill.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T19:48:36+01:00 ERROR {"errstr":"unable to load class: rpc\\favicon.ico in \/var\/www\/apps\/favicon.ico\/rpc.class.php or \/var\/www\/apps\/favicon.ico.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T19:48:36+01:00 ERROR {"errstr":"Page  does not exist in app \\rpc\\favicon.ico.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T19:48:41+01:00 ERROR {"errstr":"unable to load class: rpc\\bill in \/var\/www\/apps\/bill\/rpc.class.php or \/var\/www\/apps\/bill.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T19:48:41+01:00 ERROR {"errstr":"Page add does not exist in app \\rpc\\bill.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T19:48:54+01:00 ERROR {"errstr":"unable to load class: rpc\\bill in \/var\/www\/apps\/bill\/rpc.class.php or \/var\/www\/apps\/bill.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T19:48:54+01:00 ERROR {"errstr":"Page add does not exist in app \\rpc\\bill.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T19:48:55+01:00 ERROR {"errstr":"unable to load class: rpc\\bill in \/var\/www\/apps\/bill\/rpc.class.php or \/var\/www\/apps\/bill.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T19:48:55+01:00 ERROR {"errstr":"Page add does not exist in app \\rpc\\bill.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T19:54:15+01:00 ERROR {"errstr":"unable to load class: rpc\\bill in \/var\/www\/apps\/bill\/rpc.class.php or \/var\/www\/apps\/bill.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T19:54:15+01:00 ERROR {"errstr":"Page add does not exist in app \\rpc\\bill.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T19:55:48+01:00 ERROR {"errstr":"Page assets does not exist in app \\app\\billing.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T19:55:49+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T19:55:49+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T19:55:49+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T19:55:49+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T19:55:49+01:00 ERROR {"errstr":"unable to load class: app\\assets in \/var\/www\/apps\/assets\/controller.class.php or \/var\/www\/apps\/assets.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T19:55:49+01:00 ERROR {"errstr":"Page ico does not exist in app \\app\\assets.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T19:55:50+01:00 ERROR {"errstr":"Page assets does not exist in app \\app\\billing.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T19:55:53+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T19:55:53+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T19:55:53+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T19:55:53+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T19:55:53+01:00 ERROR {"errstr":"unable to load class: app\\assets in \/var\/www\/apps\/assets\/controller.class.php or \/var\/www\/apps\/assets.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T19:55:53+01:00 ERROR {"errstr":"Page ico does not exist in app \\app\\assets.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T19:56:09+01:00 ERROR {"errstr":"Undefined index: bill","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T19:56:09+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T19:56:09+01:00 ERROR {"errstr":"Undefined index: bill","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T19:56:09+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T19:56:09+01:00 ERROR {"errstr":"unable to load class: rpc\\bill in \/var\/www\/apps\/bill\/rpc.class.php or \/var\/www\/apps\/bill.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T19:56:09+01:00 ERROR {"errstr":"Page add does not exist in app \\rpc\\bill.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T19:56:12+01:00 ERROR {"errstr":"Undefined index: bill","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T19:56:12+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T19:56:12+01:00 ERROR {"errstr":"Undefined index: bill","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T19:56:12+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T19:56:12+01:00 ERROR {"errstr":"unable to load class: rpc\\bill in \/var\/www\/apps\/bill\/rpc.class.php or \/var\/www\/apps\/bill.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T19:56:12+01:00 ERROR {"errstr":"Page add does not exist in app \\rpc\\bill.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T19:56:40+01:00 ERROR {"errstr":"Undefined index: bill","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T19:56:40+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T19:56:40+01:00 ERROR {"errstr":"Undefined index: bill","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T19:56:40+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T19:56:40+01:00 ERROR {"errstr":"unable to load class: rpc\\bill in \/var\/www\/apps\/bill\/rpc.class.php or \/var\/www\/apps\/bill.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T19:56:40+01:00 ERROR {"errstr":"Page add does not exist in app \\rpc\\bill.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T19:56:41+01:00 ERROR {"errstr":"Undefined index: bill","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T19:56:41+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T19:56:41+01:00 ERROR {"errstr":"Undefined index: bill","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T19:56:41+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T19:56:41+01:00 ERROR {"errstr":"unable to load class: rpc\\bill in \/var\/www\/apps\/bill\/rpc.class.php or \/var\/www\/apps\/bill.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T19:56:41+01:00 ERROR {"errstr":"Page add does not exist in app \\rpc\\bill.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T19:57:04+01:00 ERROR {"errstr":"Undefined index: bill","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T19:57:04+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T19:57:04+01:00 ERROR {"errstr":"Undefined index: bill","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T19:57:04+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T19:57:04+01:00 ERROR {"errstr":"unable to load class: rpc\\bill in \/var\/www\/apps\/bill\/rpc.class.php or \/var\/www\/apps\/bill.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T19:57:04+01:00 ERROR {"errstr":"Page  does not exist in app \\rpc\\bill.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T19:57:04+01:00 ERROR {"errstr":"Undefined index: favicon.ico","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T19:57:04+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T19:57:04+01:00 ERROR {"errstr":"Undefined index: favicon.ico","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T19:57:04+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T19:57:04+01:00 ERROR {"errstr":"unable to load class: rpc\\favicon.ico in \/var\/www\/apps\/favicon.ico\/rpc.class.php or \/var\/www\/apps\/favicon.ico.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T19:57:04+01:00 ERROR {"errstr":"Page  does not exist in app \\rpc\\favicon.ico.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T20:08:51+01:00 ERROR {"errstr":"Undefined index: bill","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T20:08:51+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T20:08:51+01:00 ERROR {"errstr":"Undefined index: bill","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T20:08:51+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T20:08:51+01:00 ERROR {"errstr":"unable to load class: rpc\\bill in \/var\/www\/apps\/bill\/rpc.class.php or \/var\/www\/apps\/bill.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T20:08:51+01:00 ERROR {"errstr":"Page  does not exist in app \\rpc\\bill.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T20:08:51+01:00 ERROR {"errstr":"Undefined index: favicon.ico","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T20:08:51+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T20:08:51+01:00 ERROR {"errstr":"Undefined index: favicon.ico","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T20:08:51+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T20:08:51+01:00 ERROR {"errstr":"unable to load class: rpc\\favicon.ico in \/var\/www\/apps\/favicon.ico\/rpc.class.php or \/var\/www\/apps\/favicon.ico.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T20:08:51+01:00 ERROR {"errstr":"Page  does not exist in app \\rpc\\favicon.ico.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T20:08:53+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T20:08:53+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T20:08:53+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T20:08:53+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T20:08:53+01:00 ERROR {"errstr":"unable to load class: app\\assets in \/var\/www\/apps\/assets\/controller.class.php or \/var\/www\/apps\/assets.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T20:08:53+01:00 ERROR {"errstr":"Page ico does not exist in app \\app\\assets.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T20:08:55+01:00 ERROR {"errstr":"Undefined index: bill","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T20:08:55+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T20:08:55+01:00 ERROR {"errstr":"Undefined index: bill","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T20:08:55+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T20:08:55+01:00 ERROR {"errstr":"unable to load class: rpc\\bill in \/var\/www\/apps\/bill\/rpc.class.php or \/var\/www\/apps\/bill.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T20:08:55+01:00 ERROR {"errstr":"Page add does not exist in app \\rpc\\bill.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T20:09:53+01:00 ERROR {"errstr":"Undefined index: bill","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T20:09:53+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T20:09:53+01:00 ERROR {"errstr":"Undefined index: bill","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T20:09:53+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T20:09:53+01:00 ERROR {"errstr":"unable to load class: rpc\\bill in \/var\/www\/apps\/bill\/rpc.class.php or \/var\/www\/apps\/bill.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T20:09:53+01:00 ERROR {"errstr":"Page add does not exist in app \\rpc\\bill.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T20:09:54+01:00 ERROR {"errstr":"Undefined index: bill","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T20:09:54+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T20:09:54+01:00 ERROR {"errstr":"Undefined index: bill","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T20:09:54+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T20:09:54+01:00 ERROR {"errstr":"unable to load class: rpc\\bill in \/var\/www\/apps\/bill\/rpc.class.php or \/var\/www\/apps\/bill.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T20:09:54+01:00 ERROR {"errstr":"Page add does not exist in app \\rpc\\bill.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T20:10:27+01:00 ERROR {"errstr":"Undefined index: bill","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T20:10:27+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T20:10:27+01:00 ERROR {"errstr":"Undefined index: bill","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T20:10:27+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T20:10:27+01:00 ERROR {"errstr":"unable to load class: rpc\\bill in \/var\/www\/apps\/bill\/rpc.class.php or \/var\/www\/apps\/bill.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T20:10:27+01:00 ERROR {"errstr":"Page add does not exist in app \\rpc\\bill.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T20:11:44+01:00 ERROR {"errstr":"Undefined index: bill","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T20:11:44+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T20:11:44+01:00 ERROR {"errstr":"Undefined index: bill","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T20:11:44+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T20:11:44+01:00 ERROR {"errstr":"unable to load class: rpc\\bill in \/var\/www\/apps\/bill\/rpc.class.php or \/var\/www\/apps\/bill.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T20:11:44+01:00 ERROR {"errstr":"Page add does not exist in app \\rpc\\bill.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T20:36:14+01:00 ERROR {"errstr":"Undefined index: bill","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T20:36:14+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T20:36:14+01:00 ERROR {"errstr":"Undefined index: bill","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T20:36:14+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T20:36:14+01:00 ERROR {"errstr":"unable to load class: rpc\\bill in \/var\/www\/apps\/bill\/rpc.class.php or \/var\/www\/apps\/bill.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T20:36:14+01:00 ERROR {"errstr":"Page add does not exist in app \\rpc\\bill.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T20:39:27+01:00 ERROR {"errstr":"Declaration of core\\rpc::handleError() should be compatible with that of core\\app::handleError()","errfile":"\/var\/www\/core\/rpc.class.php","errline":10,"errno":2048}
+2012-11-16T20:39:27+01:00 ERROR {"errstr":"Undefined index: bill","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T20:39:27+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T20:39:27+01:00 ERROR {"errstr":"Undefined index: bill","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T20:39:27+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T20:39:27+01:00 ERROR {"errstr":"unable to load class: rpc\\bill in \/var\/www\/apps\/bill\/rpc.class.php or \/var\/www\/apps\/bill.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T20:39:27+01:00 ERROR {"errstr":"Page add does not exist in app \\rpc\\bill.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T20:39:49+01:00 ERROR {"errstr":"Declaration of core\\rpc::handleError() should be compatible with that of core\\app::handleError()","errfile":"\/var\/www\/core\/rpc.class.php","errline":10,"errno":2048}
+2012-11-16T20:39:49+01:00 ERROR {"errstr":"Missing argument 1 for rpc\\billing::add()","errfile":"\/var\/www\/apps\/billing\/rpc.class.php","errline":26,"errno":2}
+2012-11-16T20:39:49+01:00 ERROR {"errstr":"Undefined variable: bill","errfile":"\/var\/www\/apps\/billing\/rpc.class.php","errline":29,"errno":8}
+2012-11-16T20:48:56+01:00 ERROR {"errstr":"Declaration of core\\rpc::handleError() should be compatible with that of core\\app::handleError()","errfile":"\/var\/www\/core\/rpc.class.php","errline":10,"errno":2048}
+2012-11-16T20:48:56+01:00 ERROR {"errstr":"Missing argument 1 for rpc\\billing::add()","errfile":"\/var\/www\/apps\/billing\/rpc.class.php","errline":26,"errno":2}
+2012-11-16T20:48:56+01:00 ERROR {"errstr":"Undefined variable: bill","errfile":"\/var\/www\/apps\/billing\/rpc.class.php","errline":29,"errno":8}
+2012-11-16T20:49:19+01:00 ERROR {"errstr":"Declaration of core\\rpc::handleError() should be compatible with that of core\\app::handleError()","errfile":"\/var\/www\/core\/rpc.class.php","errline":10,"errno":2048}
+2012-11-16T20:49:19+01:00 ERROR {"errstr":"Missing argument 1 for rpc\\billing::add()","errfile":"\/var\/www\/apps\/billing\/rpc.class.php","errline":26,"errno":2}
+2012-11-16T20:49:19+01:00 ERROR {"errstr":"Undefined variable: bill","errfile":"\/var\/www\/apps\/billing\/rpc.class.php","errline":29,"errno":8}
+2012-11-16T20:53:10+01:00 ERROR {"errstr":"Declaration of core\\rpc::handleError() should be compatible with that of core\\app::handleError()","errfile":"\/var\/www\/core\/rpc.class.php","errline":10,"errno":2048}
+2012-11-16T20:53:41+01:00 ERROR {"errstr":"Declaration of core\\rpc::handleError() should be compatible with that of core\\app::handleError()","errfile":"\/var\/www\/core\/rpc.class.php","errline":10,"errno":2048}
+2012-11-16T20:54:10+01:00 ERROR {"errstr":"Declaration of core\\rpc::handleError() should be compatible with that of core\\app::handleError()","errfile":"\/var\/www\/core\/rpc.class.php","errline":10,"errno":2048}
+2012-11-16T20:54:14+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T20:54:14+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T20:54:14+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T20:54:14+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T20:54:14+01:00 ERROR {"errstr":"unable to load class: app\\assets in \/var\/www\/apps\/assets\/controller.class.php or \/var\/www\/apps\/assets.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T20:54:14+01:00 ERROR {"errstr":"Page ico does not exist in app \\app\\assets.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T20:54:18+01:00 ERROR {"errstr":"Declaration of core\\rpc::handleError() should be compatible with that of core\\app::handleError()","errfile":"\/var\/www\/core\/rpc.class.php","errline":10,"errno":2048}
+2012-11-16T20:54:20+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T20:54:20+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T20:54:20+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T20:54:20+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T20:54:20+01:00 ERROR {"errstr":"unable to load class: app\\assets in \/var\/www\/apps\/assets\/controller.class.php or \/var\/www\/apps\/assets.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T20:54:20+01:00 ERROR {"errstr":"Page ico does not exist in app \\app\\assets.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T20:54:29+01:00 ERROR {"errstr":"Declaration of core\\rpc::handleError() should be compatible with that of core\\app::handleError()","errfile":"\/var\/www\/core\/rpc.class.php","errline":10,"errno":2048}
+2012-11-16T20:54:31+01:00 ERROR {"errstr":"Declaration of core\\rpc::handleError() should be compatible with that of core\\app::handleError()","errfile":"\/var\/www\/core\/rpc.class.php","errline":10,"errno":2048}
+2012-11-16T20:54:33+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T20:54:33+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T20:54:33+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T20:54:33+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T20:54:33+01:00 ERROR {"errstr":"unable to load class: app\\assets in \/var\/www\/apps\/assets\/controller.class.php or \/var\/www\/apps\/assets.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T20:54:33+01:00 ERROR {"errstr":"Page ico does not exist in app \\app\\assets.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T20:54:40+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T20:54:40+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T20:54:40+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T20:54:40+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T20:54:40+01:00 ERROR {"errstr":"unable to load class: app\\assets in \/var\/www\/apps\/assets\/controller.class.php or \/var\/www\/apps\/assets.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T20:54:40+01:00 ERROR {"errstr":"Page ico does not exist in app \\app\\assets.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T20:55:11+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T20:55:11+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T20:55:11+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T20:55:11+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T20:55:11+01:00 ERROR {"errstr":"unable to load class: app\\assets in \/var\/www\/apps\/assets\/controller.class.php or \/var\/www\/apps\/assets.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T20:55:11+01:00 ERROR {"errstr":"Page ico does not exist in app \\app\\assets.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T20:55:13+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T20:55:13+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T20:55:13+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T20:55:13+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T20:55:13+01:00 ERROR {"errstr":"unable to load class: app\\assets in \/var\/www\/apps\/assets\/controller.class.php or \/var\/www\/apps\/assets.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T20:55:13+01:00 ERROR {"errstr":"Page ico does not exist in app \\app\\assets.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T20:55:17+01:00 ERROR {"errstr":"Declaration of core\\rpc::handleError() should be compatible with that of core\\app::handleError()","errfile":"\/var\/www\/core\/rpc.class.php","errline":10,"errno":2048}
+2012-11-16T20:55:17+01:00 ERROR {"errstr":"Undefined index: bill","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T20:55:17+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T20:55:17+01:00 ERROR {"errstr":"Undefined index: bill","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T20:55:17+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T20:55:17+01:00 ERROR {"errstr":"unable to load class: rpc\\bill in \/var\/www\/apps\/bill\/rpc.class.php or \/var\/www\/apps\/bill.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T20:55:17+01:00 ERROR {"errstr":"Page  does not exist in app \\rpc\\bill.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T20:55:17+01:00 ERROR {"errstr":"Declaration of core\\rpc::handleError() should be compatible with that of core\\app::handleError()","errfile":"\/var\/www\/core\/rpc.class.php","errline":10,"errno":2048}
+2012-11-16T20:55:17+01:00 ERROR {"errstr":"Undefined index: favicon.ico","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T20:55:17+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T20:55:17+01:00 ERROR {"errstr":"Undefined index: favicon.ico","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T20:55:17+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T20:55:17+01:00 ERROR {"errstr":"unable to load class: rpc\\favicon.ico in \/var\/www\/apps\/favicon.ico\/rpc.class.php or \/var\/www\/apps\/favicon.ico.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T20:55:17+01:00 ERROR {"errstr":"Page  does not exist in app \\rpc\\favicon.ico.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T20:55:25+01:00 ERROR {"errstr":"Declaration of core\\rpc::handleError() should be compatible with that of core\\app::handleError()","errfile":"\/var\/www\/core\/rpc.class.php","errline":10,"errno":2048}
+2012-11-16T20:56:02+01:00 ERROR {"errstr":"Declaration of core\\rpc::handleError() should be compatible with that of core\\app::handleError()","errfile":"\/var\/www\/core\/rpc.class.php","errline":10,"errno":2048}
+2012-11-16T20:56:17+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T20:56:17+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T20:56:17+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T20:56:17+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T20:56:17+01:00 ERROR {"errstr":"unable to load class: app\\assets in \/var\/www\/apps\/assets\/controller.class.php or \/var\/www\/apps\/assets.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T20:56:17+01:00 ERROR {"errstr":"Page ico does not exist in app \\app\\assets.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T20:56:35+01:00 ERROR {"errstr":"Declaration of core\\rpc::handleError() should be compatible with that of core\\app::handleError()","errfile":"\/var\/www\/core\/rpc.class.php","errline":10,"errno":2048}
+2012-11-16T20:56:35+01:00 ERROR {"errstr":"Argument 1 passed to api\\billing::billObject() must be an instance of model\\finance\\Bill, instance of model\\finance\\Contact given, called in \/var\/www\/apps\/billing\/api.class.php on line 128 and defined","errfile":"\/var\/www\/apps\/billing\/api.class.php","errline":236,"errno":4096}
+2012-11-16T20:56:58+01:00 ERROR {"errstr":"Declaration of core\\rpc::handleError() should be compatible with that of core\\app::handleError()","errfile":"\/var\/www\/core\/rpc.class.php","errline":10,"errno":2048}
+2012-11-16T20:57:11+01:00 ERROR {"errstr":"Declaration of core\\rpc::handleError() should be compatible with that of core\\app::handleError()","errfile":"\/var\/www\/core\/rpc.class.php","errline":10,"errno":2048}
+2012-11-16T21:26:33+01:00 ERROR {"errstr":"Declaration of core\\rpc::handleError() should be compatible with that of core\\app::handleError()","errfile":"\/var\/www\/core\/rpc.class.php","errline":10,"errno":2048}
+2012-11-16T21:28:53+01:00 ERROR {"errstr":"Declaration of core\\rpc::handleError() should be compatible with that of core\\app::handleError()","errfile":"\/var\/www\/core\/rpc.class.php","errline":10,"errno":2048}
+2012-11-16T21:28:55+01:00 ERROR {"errstr":"Declaration of core\\rpc::handleError() should be compatible with that of core\\app::handleError()","errfile":"\/var\/www\/core\/rpc.class.php","errline":10,"errno":2048}
+2012-11-16T21:29:29+01:00 ERROR {"errstr":"Declaration of core\\rpc::handleError() should be compatible with that of core\\app::handleError()","errfile":"\/var\/www\/core\/rpc.class.php","errline":10,"errno":2048}
+2012-11-16T21:30:20+01:00 ERROR {"errstr":"Declaration of core\\rpc::handleError() should be compatible with that of core\\app::handleError()","errfile":"\/var\/www\/core\/rpc.class.php","errline":10,"errno":2048}
+2012-11-16T21:30:22+01:00 ERROR {"errstr":"Declaration of core\\rpc::handleError() should be compatible with that of core\\app::handleError()","errfile":"\/var\/www\/core\/rpc.class.php","errline":10,"errno":2048}
+2012-11-16T21:33:25+01:00 ERROR {"errstr":"Declaration of core\\rpc::handleError() should be compatible with that of core\\app::handleError()","errfile":"\/var\/www\/core\/rpc.class.php","errline":10,"errno":2048}
+2012-11-16T21:33:41+01:00 ERROR {"errstr":"Declaration of core\\rpc::handleError() should be compatible with that of core\\app::handleError()","errfile":"\/var\/www\/core\/rpc.class.php","errline":10,"errno":2048}
+2012-11-16T21:33:50+01:00 ERROR {"errstr":"Declaration of core\\rpc::handleError() should be compatible with that of core\\app::handleError()","errfile":"\/var\/www\/core\/rpc.class.php","errline":10,"errno":2048}
+2012-11-16T21:34:05+01:00 ERROR {"errstr":"Declaration of core\\rpc::handleError() should be compatible with that of core\\app::handleError()","errfile":"\/var\/www\/core\/rpc.class.php","errline":10,"errno":2048}
+2012-11-16T21:34:27+01:00 ERROR {"errstr":"Declaration of core\\rpc::handleError() should be compatible with that of core\\app::handleError()","errfile":"\/var\/www\/core\/rpc.class.php","errline":10,"errno":2048}
+2012-11-16T21:35:32+01:00 ERROR {"errstr":"Page assets does not exist in app \\app\\contacts.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T21:35:32+01:00 ERROR {"errstr":"Page assets does not exist in app \\app\\contacts.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T21:35:34+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T21:35:34+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T21:35:34+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T21:35:34+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T21:35:34+01:00 ERROR {"errstr":"unable to load class: app\\assets in \/var\/www\/apps\/assets\/controller.class.php or \/var\/www\/apps\/assets.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T21:35:34+01:00 ERROR {"errstr":"Page ico does not exist in app \\app\\assets.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T21:41:31+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T21:41:31+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-11-16T21:41:31+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T21:41:31+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-11-16T21:41:31+01:00 ERROR {"errstr":"unable to load class: app\\assets in \/var\/www\/apps\/assets\/controller.class.php or \/var\/www\/apps\/assets.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":114,"errno":512}
+2012-11-16T21:41:31+01:00 ERROR {"errstr":"Page ico does not exist in app \\app\\assets.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-11-16T21:42:03+01:00 ERROR {"errstr":"Declaration of core\\rpc::handleError() should be compatible with that of core\\app::handleError()","errfile":"\/var\/www\/core\/rpc.class.php","errline":10,"errno":2048}

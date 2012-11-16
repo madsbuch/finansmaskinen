@@ -1,0 +1,91 @@
+2012-11-13T22:35:58+01:00 INFO {"app":"contacts","ui":"rpc","fileType":"json","_version":"noV"}
+2012-11-13T22:35:59+01:00 INFO {"app":"favicon.ico","ui":"rpc","fileType":"ico","_version":"noV"}
+2012-11-13T22:36:39+01:00 INFO {"app":"contacts","page":"add","ui":"rpc","fileType":"json","arguments":[{"_version":"v1","_model":"model\\finance\\Contact","apiID":1177,"apiUrl":"http:\/\/rpc.finansmaskinen.dev"}],"id":1,"_version":"noV"}
+2012-11-13T22:45:23+01:00 INFO {"app":"contacts","ui":"rpc","_version":"noV"}
+2012-11-13T22:45:23+01:00 INFO {"app":"favicon.ico","ui":"rpc","fileType":"ico","_version":"noV"}
+2012-11-13T22:45:24+01:00 INFO {"app":"contacts","ui":"rpc","_version":"noV"}
+2012-11-13T22:45:25+01:00 INFO {"app":"favicon.ico","ui":"rpc","fileType":"ico","_version":"noV"}
+2012-11-13T23:05:29+01:00 INFO {"app":"contacts","ui":"rpc","_version":"noV"}
+2012-11-13T23:05:30+01:00 INFO {"app":"favicon.ico","ui":"rpc","fileType":"ico","_version":"noV"}
+2012-11-13T23:05:49+01:00 INFO {"app":"contacts","page":"add","ui":"rpc","fileType":"json","id":1,"_version":"noV"}
+2012-11-13T23:06:27+01:00 INFO {"app":"main","ui":"rpc","_version":"noV"}
+2012-11-13T23:36:59+01:00 INFO {"app":"contacts","ui":"rpc","fileType":"json","callback":{"cacheExpire":-1},"_version":"noV"}
+2012-11-13T23:36:59+01:00 INFO {"app":"favicon.ico","ui":"rpc","fileType":"ico","callback":{"cacheExpire":-1},"_version":"noV"}
+2012-11-13T23:37:00+01:00 INFO {"app":"contacts","ui":"rpc","fileType":"json","callback":{"cacheExpire":-1},"_version":"noV"}
+2012-11-13T23:37:00+01:00 INFO {"app":"favicon.ico","ui":"rpc","fileType":"ico","callback":{"cacheExpire":-1},"_version":"noV"}
+2012-11-13T23:38:36+01:00 INFO {"app":"contacts","ui":"rpc","fileType":"json","callback":{"cacheExpire":-1},"_version":"noV"}
+2012-11-13T23:38:36+01:00 INFO {"app":"favicon.ico","ui":"rpc","fileType":"ico","callback":{"cacheExpire":-1},"_version":"noV"}
+2012-11-13T23:38:37+01:00 INFO {"app":"contacts","ui":"rpc","fileType":"json","callback":{"cacheExpire":-1},"_version":"noV"}
+2012-11-13T23:38:38+01:00 INFO {"app":"favicon.ico","ui":"rpc","fileType":"ico","callback":{"cacheExpire":-1},"_version":"noV"}
+2012-11-13T23:38:40+01:00 INFO {"app":"contacts","ui":"rpc","fileType":"json","callback":{"cacheExpire":-1},"_version":"noV"}
+2012-11-13T23:38:40+01:00 INFO {"app":"favicon.ico","ui":"rpc","fileType":"ico","callback":{"cacheExpire":-1},"_version":"noV"}
+2012-11-13T23:39:04+01:00 INFO {"app":"contacts","page":"add","ui":"rpc","fileType":"json","id":1,"callback":{"cacheExpire":-1},"_version":"noV"}
+2012-11-13T23:46:57+01:00 INFO {"app":"contacts","page":"add","ui":"rpc","fileType":"json","id":1,"callback":{"cacheExpire":-1},"_version":"noV"}
+2012-11-13T23:48:12+01:00 INFO {"app":"contacts","ui":"rpc","fileType":"json","callback":{"cacheExpire":-1},"_version":"noV"}
+2012-11-13T23:48:13+01:00 INFO {"app":"favicon.ico","ui":"rpc","fileType":"ico","callback":{"cacheExpire":-1},"_version":"noV"}
+2012-11-13T23:48:13+01:00 INFO {"app":"contacts","ui":"rpc","fileType":"json","callback":{"cacheExpire":-1},"_version":"noV"}
+2012-11-13T23:48:14+01:00 INFO {"app":"favicon.ico","ui":"rpc","fileType":"ico","callback":{"cacheExpire":-1},"_version":"noV"}
+2012-11-13T23:48:31+01:00 INFO {"app":"contacts","ui":"rpc","fileType":"json","callback":{"cacheExpire":-1},"_version":"noV"}
+2012-11-13T23:48:33+01:00 INFO {"app":"favicon.ico","ui":"rpc","fileType":"ico","callback":{"cacheExpire":-1},"_version":"noV"}
+2012-11-13T23:48:46+01:00 INFO {"app":"contacts","page":"add","ui":"rpc","fileType":"json","id":1,"callback":{"cacheExpire":-1},"_version":"noV"}
+2012-11-13T23:49:48+01:00 INFO {"app":"contacts","page":"add","ui":"rpc","fileType":"json","id":1,"callback":{"cacheExpire":-1},"_version":"noV"}
+2012-11-13T23:49:48+01:00 INFO {"app":"contacts","page":"add","ui":"rpc","fileType":"json","id":1,"callback":{"cacheExpire":-1},"_version":"noV","responseID":1,"responseErr":null}
+2012-11-13T23:51:35+01:00 INFO {"app":"contacts","page":"add","ui":"rpc","fileType":"json","id":1,"callback":{"cacheExpire":-1},"_version":"noV"}
+2012-11-13T23:51:35+01:00 INFO {"app":"contacts","page":"add","ui":"rpc","fileType":"json","id":1,"callback":{"cacheExpire":-1},"_version":"noV","responseID":1,"responseErr":null}
+2012-11-13T23:51:46+01:00 INFO {"app":"contacts","ui":"rpc","callback":{"cacheExpire":-1},"_version":"noV"}
+2012-11-13T23:51:46+01:00 INFO {"app":"contacts","ui":"rpc","callback":{"cacheExpire":-1},"_version":"noV","responseID":null,"responseErr":"Not authorized (you don't have access to requested app)"}
+2012-11-13T23:51:46+01:00 INFO {"app":"favicon.ico","ui":"rpc","fileType":"ico","callback":{"cacheExpire":-1},"_version":"noV"}
+2012-11-13T23:51:46+01:00 INFO {"app":"favicon.ico","ui":"rpc","fileType":"ico","callback":{"cacheExpire":-1},"_version":"noV","responseID":null,"responseErr":"Not authorized (you don't have access to requested app)"}
+2012-11-14T00:05:09+01:00 INFO {"app":"contacts","page":"add","ui":"rpc","fileType":"json","id":1,"callback":{"cacheExpire":-1},"_version":"noV"}
+2012-11-14T00:05:09+01:00 INFO {"app":"contacts","page":"add","ui":"rpc","fileType":"json","id":1,"callback":{"cacheExpire":-1},"_version":"noV","responseID":1,"responseErr":null}
+2012-11-14T00:30:15+01:00 INFO {"app":"contacts","page":"add","ui":"rpc","fileType":"json","id":1,"callback":{"cacheExpire":-1},"_version":"noV"}
+2012-11-14T00:30:15+01:00 INFO {"app":"contacts","page":"add","ui":"rpc","fileType":"json","id":1,"callback":{"cacheExpire":-1},"_version":"noV","responseID":1,"responseErr":null}
+2012-11-14T00:33:19+01:00 INFO {"app":"contacts","page":"add","ui":"rpc","fileType":"json","id":1,"callback":{"cacheExpire":-1},"_version":"noV","responseID":1,"responseErr":null}
+2012-11-14T00:42:06+01:00 INFO {"app":"contacts","page":"add","ui":"rpc","fileType":"json","id":1,"callback":{"cacheExpire":-1},"_version":"noV","responseID":1,"responseErr":null}
+2012-11-14T16:53:07+01:00 INFO {"app":"contacts","ui":"rpc","fileType":"json","callback":{"cacheExpire":-1},"_version":"noV","responseID":null,"responseErr":"Not authorized (you don't have access to requested app)"}
+2012-11-14T16:53:08+01:00 INFO {"app":"favicon.ico","ui":"rpc","fileType":"ico","callback":{"cacheExpire":-1},"_version":"noV","responseID":null,"responseErr":"Not authorized (you don't have access to requested app)"}
+2012-11-16T19:40:50+01:00 INFO {"app":"bill","page":"add","ui":"rpc","id":1,"callback":{"cacheExpire":-1},"_version":"noV","responseID":1,"responseErr":"Not authorized (you don't have access to requested app)"}
+2012-11-16T19:40:52+01:00 INFO {"app":"bill","page":"add","ui":"rpc","id":1,"callback":{"cacheExpire":-1},"_version":"noV","responseID":1,"responseErr":"Not authorized (you don't have access to requested app)"}
+2012-11-16T19:41:07+01:00 INFO {"app":"bill","ui":"rpc","callback":{"cacheExpire":-1},"_version":"noV","responseID":null,"responseErr":"Not authorized (you don't have access to requested app)"}
+2012-11-16T19:41:08+01:00 INFO {"app":"favicon.ico","ui":"rpc","fileType":"ico","callback":{"cacheExpire":-1},"_version":"noV","responseID":null,"responseErr":"Not authorized (you don't have access to requested app)"}
+2012-11-16T19:44:20+01:00 INFO {"app":"bill","page":"","ui":"rpc","id":0,"callback":{"cacheExpire":-1},"_version":"noV","responseID":0,"responseErr":"Not authorized (you don't have access to requested app)"}
+2012-11-16T19:44:20+01:00 INFO {"app":"favicon.ico","page":"","ui":"rpc","fileType":"ico","id":0,"callback":{"cacheExpire":-1},"_version":"noV","responseID":0,"responseErr":"Not authorized (you don't have access to requested app)"}
+2012-11-16T19:47:50+01:00 INFO {"app":"bill","page":"","ui":"rpc","id":0,"callback":{"cacheExpire":-1},"_version":"noV","responseID":0,"responseErr":"An error with following http code happened: 404"}
+2012-11-16T19:47:50+01:00 INFO {"app":"favicon.ico","page":"","ui":"rpc","fileType":"ico","id":0,"callback":{"cacheExpire":-1},"_version":"noV","responseID":0,"responseErr":"An error with following http code happened: 404"}
+2012-11-16T19:48:31+01:00 INFO {"app":"bill","page":"","ui":"rpc","id":0,"callback":{"cacheExpire":-1},"_version":"noV","responseID":0,"responseErr":"An error with following http code happened: 404"}
+2012-11-16T19:48:31+01:00 INFO {"app":"favicon.ico","page":"","ui":"rpc","fileType":"ico","id":0,"callback":{"cacheExpire":-1},"_version":"noV","responseID":0,"responseErr":"An error with following http code happened: 404"}
+2012-11-16T19:48:36+01:00 INFO {"app":"bill","page":"","ui":"rpc","id":0,"callback":{"cacheExpire":-1},"_version":"noV","responseID":0,"responseErr":"An error with following http code happened: 404"}
+2012-11-16T19:48:36+01:00 INFO {"app":"favicon.ico","page":"","ui":"rpc","fileType":"ico","id":0,"callback":{"cacheExpire":-1},"_version":"noV","responseID":0,"responseErr":"An error with following http code happened: 404"}
+2012-11-16T19:48:41+01:00 INFO {"app":"bill","page":"add","ui":"rpc","id":1,"callback":{"cacheExpire":-1},"_version":"noV","responseID":1,"responseErr":"An error with following http code happened: 404"}
+2012-11-16T19:48:54+01:00 INFO {"app":"bill","page":"add","ui":"rpc","id":1,"callback":{"cacheExpire":-1},"_version":"noV","responseID":1,"responseErr":"An error with following http code happened: 404"}
+2012-11-16T19:48:55+01:00 INFO {"app":"bill","page":"add","ui":"rpc","id":1,"callback":{"cacheExpire":-1},"_version":"noV","responseID":1,"responseErr":"An error with following http code happened: 404"}
+2012-11-16T19:54:15+01:00 INFO {"app":"bill","page":"add","ui":"rpc","id":1,"callback":{"cacheExpire":-1},"_version":"noV","responseID":1,"responseErr":"An error with following http code happened: 404"}
+2012-11-16T19:56:09+01:00 INFO {"app":"bill","page":"add","ui":"rpc","fileType":"json","id":1,"callback":{"cacheExpire":-1},"_version":"noV","responseID":1,"responseErr":"An error with following http code happened: 404"}
+2012-11-16T19:56:12+01:00 INFO {"app":"bill","page":"add","ui":"rpc","fileType":"json","id":1,"callback":{"cacheExpire":-1},"_version":"noV","responseID":1,"responseErr":"An error with following http code happened: 404"}
+2012-11-16T19:56:40+01:00 INFO {"app":"bill","page":"add","ui":"rpc","fileType":"json","id":1,"callback":{"cacheExpire":-1},"_version":"noV","responseID":1,"responseErr":"An error with following http code happened: 404"}
+2012-11-16T19:56:41+01:00 INFO {"app":"bill","page":"add","ui":"rpc","fileType":"json","id":1,"callback":{"cacheExpire":-1},"_version":"noV","responseID":1,"responseErr":"An error with following http code happened: 404"}
+2012-11-16T19:57:04+01:00 INFO {"app":"bill","page":"","ui":"rpc","fileType":"json","id":0,"callback":{"cacheExpire":-1},"_version":"noV","responseID":0,"responseErr":"An error with following http code happened: 404"}
+2012-11-16T19:57:04+01:00 INFO {"app":"favicon.ico","page":"","ui":"rpc","fileType":"ico","id":0,"callback":{"cacheExpire":-1},"_version":"noV","responseID":0,"responseErr":"An error with following http code happened: 404"}
+2012-11-16T20:08:51+01:00 INFO {"app":"bill","page":"","ui":"rpc","fileType":"json","id":0,"callback":{"cacheExpire":-1},"_version":"noV","responseID":0,"responseErr":"An error with following http code happened: 404"}
+2012-11-16T20:08:51+01:00 INFO {"app":"favicon.ico","page":"","ui":"rpc","fileType":"ico","id":0,"callback":{"cacheExpire":-1},"_version":"noV","responseID":0,"responseErr":"An error with following http code happened: 404"}
+2012-11-16T20:08:55+01:00 INFO {"app":"bill","page":"add","ui":"rpc","fileType":"json","id":1,"callback":{"cacheExpire":-1},"_version":"noV","responseID":1,"responseErr":"An error with following http code happened: 404"}
+2012-11-16T20:09:53+01:00 INFO {"app":"bill","page":"add","ui":"rpc","fileType":"json","id":1,"callback":{"cacheExpire":-1},"_version":"noV","responseID":1,"responseErr":"An error with following http code happened: 404"}
+2012-11-16T20:09:54+01:00 INFO {"app":"bill","page":"add","ui":"rpc","fileType":"json","id":1,"callback":{"cacheExpire":-1},"_version":"noV","responseID":1,"responseErr":"An error with following http code happened: 404"}
+2012-11-16T20:10:27+01:00 INFO {"app":"bill","page":"add","ui":"rpc","fileType":"json","id":1,"callback":{"cacheExpire":-1},"_version":"noV","responseID":1,"responseErr":"An error with following http code happened: 404"}
+2012-11-16T20:11:44+01:00 INFO {"app":"bill","page":"add","ui":"rpc","fileType":"json","id":1,"callback":{"cacheExpire":-1},"_version":"noV","responseID":1,"responseErr":"An error with following http code happened: 404"}
+2012-11-16T20:36:14+01:00 INFO {"app":"bill","page":"add","ui":"rpc","fileType":"json","id":1,"callback":{"cacheExpire":-1},"_version":"noV","responseID":1,"responseErr":"An error with following http code happened: 404"}
+2012-11-16T20:39:27+01:00 INFO {"app":"bill","page":"add","ui":"rpc","fileType":"json","id":1,"callback":{"cacheExpire":-1},"_version":"noV","responseID":1,"responseErr":"An error with following http code happened: 404 and masg: add doen' exist in bill"}
+2012-11-16T20:39:49+01:00 INFO {"app":"billing","page":"add","ui":"rpc","fileType":"json","id":1,"callback":{"cacheExpire":-1},"_version":"noV","responseID":1,"responseErr":null}
+2012-11-16T20:48:56+01:00 INFO {"app":"billing","page":"add","ui":"rpc","fileType":"json","id":1,"callback":{"cacheExpire":-1},"_version":"noV","responseID":1,"responseErr":null}
+2012-11-16T20:49:19+01:00 INFO {"app":"billing","page":"add","ui":"rpc","fileType":"json","id":1,"callback":{"cacheExpire":-1},"_version":"noV","responseID":1,"responseErr":null}
+2012-11-16T20:53:10+01:00 INFO {"app":"billing","page":"add","ui":"rpc","fileType":"json","id":1,"callback":{"cacheExpire":-1},"_version":"noV","responseID":1,"responseErr":null}
+2012-11-16T20:53:41+01:00 INFO {"app":"billing","page":"add","ui":"rpc","fileType":"json","id":1,"callback":{"cacheExpire":-1},"_version":"noV","responseID":1,"responseErr":null}
+2012-11-16T20:54:10+01:00 INFO {"app":"billing","page":"add","ui":"rpc","fileType":"json","id":1,"callback":{"cacheExpire":-1},"_version":"noV","responseID":1,"responseErr":null}
+2012-11-16T20:54:18+01:00 INFO {"app":"billing","page":"add","ui":"rpc","fileType":"json","id":1,"callback":{"cacheExpire":-1},"_version":"noV","responseID":1,"responseErr":null}
+2012-11-16T20:54:29+01:00 INFO {"app":"billing","page":"add","ui":"rpc","fileType":"json","id":1,"callback":{"cacheExpire":-1},"_version":"noV","responseID":1,"responseErr":null}
+2012-11-16T20:54:31+01:00 INFO {"app":"billing","page":"add","ui":"rpc","fileType":"json","id":1,"callback":{"cacheExpire":-1},"_version":"noV","responseID":1,"responseErr":null}
+2012-11-16T20:55:17+01:00 INFO {"app":"bill","page":"","ui":"rpc","fileType":"json","id":0,"callback":{"cacheExpire":-1},"_version":"noV","responseID":0,"responseErr":"An error with following http code happened: 404 and masg:  doen't exist in bill"}
+2012-11-16T20:55:17+01:00 INFO {"app":"favicon.ico","page":"","ui":"rpc","fileType":"ico","id":0,"callback":{"cacheExpire":-1},"_version":"noV","responseID":0,"responseErr":"An error with following http code happened: 404 and masg:  doen't exist in favicon.ico"}
+2012-11-16T20:55:25+01:00 INFO {"app":"billing","page":"add","ui":"rpc","fileType":"json","id":1,"callback":{"cacheExpire":-1},"_version":"noV","responseID":1,"responseErr":null}
+2012-11-16T20:56:02+01:00 INFO {"app":"billing","page":"add","ui":"rpc","fileType":"json","id":1,"callback":{"cacheExpire":-1},"_version":"noV","responseID":1,"responseErr":null}
+2012-11-16T20:56:35+01:00 INFO {"app":"billing","page":"add","ui":"rpc","fileType":"json","id":1,"callback":{"cacheExpire":-1},"_version":"noV","responseID":1,"responseErr":"Property \"Invoice\" doesn't exist in model\\finance\\Contact"}

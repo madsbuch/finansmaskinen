@@ -66,7 +66,7 @@ class products{
 		
 		$mainGrp = $core->getMainGroup();
 		if(!$mainGrp)
-			return;
+			return null;
 		
 		$newGroup = $core->createGroup($mainGrp);
 		$core->setMeta($newGroup, 'name', $cat->name);
@@ -112,15 +112,16 @@ class products{
 	}
 	
 	/**
-	* returns list of products
-	*
-	* returns products associated to groups that the user is a part of. if not
-	* products from alle groups are needed, $grp may be specified
-	*
-	* @param	limit	how many elements are to be returned?
-	* @param	start	start offset for returning element
-	* @param	grp		only elements from specified groups this is an array
-	*/
+	 * returns list of products
+	 *
+	 * returns products associated to groups that the user is a part of. if not
+	 * products from alle groups are needed, $grp may be specified
+	 *
+	 * @param	limit	how many elements are to be returned?
+	 * @param	start	start offset for returning element
+	 * @param	grp		only elements from specified groups this is an array
+	 *
+	 */
 	static function get($sort = null, $conditions=null, $limit=null){
 		$products = new \helper\lodo('products', 'products');
 		if($limit)

@@ -274,7 +274,7 @@ class companyProfile{
 		$o = self::retrieve();
 		
 		if(!isset($o->counters->$val))
-			return null;
+			throw new \Exception('no accounting to retrieve (lack of permissions)');
 		
 		//save number to return
 		$ret = $o->counters->$val;
@@ -285,6 +285,7 @@ class companyProfile{
 		//return, if we succeed in updating the object
 		if(self::update($o))
 			return $ret;
+		throw new \Exception('It wasn\'t possible to update accounting (lack of permissions)');
 	}
 	
 	/**** functions for invoicing the customer ****/

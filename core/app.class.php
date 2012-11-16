@@ -111,7 +111,7 @@ abstract class app{
 	function getUserMsg(){
 		if(isset(\core\session::getInstance()->coreUserMessage))
 			return \core\session::getInstance()->coreUserMessage;
-		null;
+		return null;
 	}
 	
 	/**
@@ -156,8 +156,8 @@ abstract class app{
 	 *
 	 * this is a default implementation, implement if used!
 	 */
-	function handleError($errornum){
-		return die($errornum);
+	function handleError($errornum, $msg){
+		return die($errornum . ' ' . $msg);
 	}
 	
 	/*** ABSTRACT METHODS ****/

@@ -54,7 +54,6 @@ class db{
 				$this->debug->eventByTime('connection failed');
 				echo "Connection failed: ".$e->getMessage();
 			}
-			return false;
 		}
 	}
 	
@@ -114,7 +113,6 @@ class db{
 				$stmt->execute($d);
 			return true;
 		}
-		return false;
 	}
 	
 	/**

@@ -202,6 +202,8 @@ abstract class AbstractModel{
 			return $this->$func();
 		elseif(property_exists($this, $name))
 			return $this->$name;
+		else
+			return null;
 	}
 	
 	/**

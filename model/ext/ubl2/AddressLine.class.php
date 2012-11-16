@@ -7,7 +7,7 @@
 
 namespace model\ext\ubl2;
 
-class Address extends \model\AbstractModel{
+class AddressLine extends \model\AbstractModel{
 	
 	protected $_autoassign = array(
 		'Line' => array('\model\ext\ubl2\field\Text', false),

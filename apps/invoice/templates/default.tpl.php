@@ -442,7 +442,7 @@ foreach ($invoice->InvoiceLine as $il):
 			?>
             konto: <?php
 			echo $invoice->PaymentMeans->first->PayeeFinancialAccount->ID
-			?></p>
+			?></b>
         </div>
     </aside>
 </section>

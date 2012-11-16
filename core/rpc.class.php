@@ -55,8 +55,8 @@ class rpc extends app{
 		return $this->header->getHeader();
 	}
 
-	function handleError($errornum){
-		$this->throwException('Not authorized (you don\'t have access to requested app)');
+	function handleError($errornum, $msg){
+		$this->throwException('An error with following http code happened: ' . $errornum . ' and masg: ' . $msg);
 		header('Content-type: application/json');
 		die($this->getOutputContent());
 	}
@@ -87,9 +87,9 @@ class rpc extends app{
 		//$TODO parse with respect mime (json, xml ect...)
 		$rpcReq = json_decode($rpcReq);
 
-		$req->page = $rpcReq->method;
-		$req->id = $rpcReq->id;
-		$req->arguments = $rpcReq->params;
+		$req->page = isset($rpcReq->method) ? $rpcReq->method : '';
+		$req->id = isset($rpcReq->id) ? $rpcReq->id : 0;
+		$req->arguments = isset($rpcReq->params) ? $rpcReq->params : null;
 		$req->callback = new \core\rpc($req); //use this as callback
 
 		return $req;

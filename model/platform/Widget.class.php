@@ -4,7 +4,7 @@
 */
 
 
-namespace model\platform
+namespace model\platform;
 
 class Widget extends \model\AbstractModel{
 	/**

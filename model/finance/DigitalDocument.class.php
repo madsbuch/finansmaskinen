@@ -5,7 +5,7 @@
 
 namespace mode\ext\nemhandel;
 
-class Document extends \model\AbstractClass{
+class DigitalDocument extends \model\AbstractModel{
 	/**
 	* version
 	*/

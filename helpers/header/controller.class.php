@@ -29,7 +29,7 @@ class header{
 	public function generate(){
 		$str = "";
 		if(empty($this->header))
-			return;
+			return null;
 		foreach($this->header as $name => $value)
 			$str = "$name $value\n";
 		return $str;

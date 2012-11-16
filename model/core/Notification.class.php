@@ -1,6 +1,6 @@
 <?php
 
-namespace \model\core;
+namespace model\core;
 
 class Notification extends \model\AbstractModel{
 	protected $description;

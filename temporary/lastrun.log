@@ -39154,3 +39154,1067 @@ Events:
 
 Statistics:
 Total execution time: 0.0094130039215088
+Domain: www.finansmaskinen.dev
+URI: /invoice/view/509978fe1a5f01730c000000
+
+Events:
+
+
+Statistics:
+Total execution time: 0.016430139541626
+Domain: www.finansmaskinen.dev
+URI: /invoice/assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.012441158294678
+Domain: www.finansmaskinen.dev
+URI: /index
+
+Events:
+0.010458946228027 appStart
+0.034349918365479 INSERT INTO stats_logins (`sid`,`uid`,`time`)
+		VALUES (?,?,?);
+0.03566312789917 appStop
+
+
+Statistics:
+Total execution time: 0.03593897819519
+app execution time: 0.025193214416504
+Domain: www.finansmaskinen.dev
+URI: /index/apps
+
+Events:
+0.007133960723877 appStart
+0.039290904998779 appStop
+
+
+Statistics:
+Total execution time: 0.039939880371094
+app execution time: 0.032155990600586
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.024034976959229
+Domain: www.finansmaskinen.dev
+URI: /index/apps
+
+Events:
+0.0090451240539551 appStart
+0.042088031768799 appStop
+
+
+Statistics:
+Total execution time: 0.042964935302734
+app execution time: 0.033038139343262
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.028759002685547
+Domain: www.finansmaskinen.dev
+URI: /index/apps
+
+Events:
+0.01371693611145 appStart
+0.048202991485596 appStop
+
+
+Statistics:
+Total execution time: 0.04894495010376
+app execution time: 0.034478902816772
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.02803897857666
+Domain: www.finansmaskinen.dev
+URI: /index/apps
+
+Events:
+0.013492107391357 appStart
+0.048994064331055 appStop
+
+
+Statistics:
+Total execution time: 0.050071001052856
+app execution time: 0.035498142242432
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.026082992553711
+Domain: www.finansmaskinen.dev
+URI: /index/logout
+
+Events:
+0.014517068862915 appStart
+0.01496410369873 appStop
+
+
+Statistics:
+Total execution time: 0.015437126159668
+app execution time: 0.00043511390686035
+Domain: www.finansmaskinen.dev
+URI: /index
+
+Events:
+0.010581016540527 appStart
+0.012664079666138 appStop
+
+
+Statistics:
+Total execution time: 0.01292610168457
+app execution time: 0.0020818710327148
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.0093288421630859
+Domain: www.finansmaskinen.dev
+URI: /index
+
+Events:
+0.010297060012817 appStart
+0.031363964080811 INSERT INTO stats_logins (`sid`,`uid`,`time`)
+		VALUES (?,?,?);
+0.032647848129272 appStop
+
+
+Statistics:
+Total execution time: 0.033035039901733
+app execution time: 0.022347927093506
+Domain: www.finansmaskinen.dev
+URI: /index/apps
+
+Events:
+0.011534929275513 appStart
+0.041139125823975 appStop
+
+
+Statistics:
+Total execution time: 0.041807889938354
+app execution time: 0.029601097106934
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.017663955688477
+Domain: www.finansmaskinen.dev
+URI: /index/apps
+
+Events:
+0.010195970535278 appStart
+0.036707162857056 appStop
+
+
+Statistics:
+Total execution time: 0.03770112991333
+app execution time: 0.026510953903198
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.020860195159912
+Domain: www.finansmaskinen.dev
+URI: /index/apps
+
+Events:
+0.012849807739258 appStart
+0.05447793006897 appStop
+
+
+Statistics:
+Total execution time: 0.055333852767944
+app execution time: 0.041609048843384
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.022002935409546
+Domain: www.finansmaskinen.dev
+URI: /invoice/view/509978fe1a5f01730c000000
+
+Events:
+0.010787963867188 appStart
+0.037123918533325 appStop
+
+
+Statistics:
+Total execution time: 0.039089918136597
+app execution time: 0.026324033737183
+Domain: www.finansmaskinen.dev
+URI: /invoice/assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.019047975540161
+Domain: www.finansmaskinen.dev
+URI: /invoice/export/509978fe1a5f01730c000000?template=html
+
+Events:
+0.0097789764404297 appStart
+0.020571947097778 appStop
+
+
+Statistics:
+Total execution time: 0.021499872207642
+app execution time: 0.010785102844238
+Domain: www.finansmaskinen.dev
+URI: /favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.025191068649292
+Domain: www.finansmaskinen.dev
+URI: /invoice/view/509978fe1a5f01730c000000
+
+Events:
+0.015267848968506 appStart
+0.041467905044556 appStop
+
+
+Statistics:
+Total execution time: 0.043510913848877
+app execution time: 0.026190996170044
+Domain: www.finansmaskinen.dev
+URI: /invoice/assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.020766019821167
+Domain: www.finansmaskinen.dev
+URI: /index/apps
+
+Events:
+0.0084290504455566 appStart
+0.038437128067017 appStop
+
+
+Statistics:
+Total execution time: 0.039139032363892
+app execution time: 0.030007839202881
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.016823053359985
+Domain: www.finansmaskinen.dev
+URI: /invoice/view/50968e6e1a5f011705000000
+
+Events:
+0.0083949565887451 appStart
+0.024259090423584 appStop
+
+
+Statistics:
+Total execution time: 0.025419950485229
+app execution time: 0.015862941741943
+Domain: www.finansmaskinen.dev
+URI: /invoice/assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.023254156112671
+Domain: www.finansmaskinen.dev
+URI: /invoice/export/50968e6e1a5f011705000000?template=html
+
+Events:
+0.0094530582427979 appStart
+0.024160146713257 appStop
+
+
+Statistics:
+Total execution time: 0.025187969207764
+app execution time: 0.014698028564453
+Domain: www.finansmaskinen.dev
+URI: /favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.019742012023926
+Domain: www.finansmaskinen.dev
+URI: /invoice/view/50968e6e1a5f011705000000
+
+Events:
+0.0095939636230469 appStart
+0.025557041168213 appStop
+
+
+Statistics:
+Total execution time: 0.02655291557312
+app execution time: 0.015962839126587
+Domain: www.finansmaskinen.dev
+URI: /invoice/assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.021029949188232
+Domain: www.finansmaskinen.dev
+URI: /invoice/export/50968e6e1a5f011705000000?template=pdf
+
+Events:
+0.011686086654663 appStart
+0.40896010398865 appStop
+
+
+Statistics:
+Total execution time: 0.41152405738831
+app execution time: 0.39726901054382
+Domain: www.finansmaskinen.dev
+URI: /invoice/view/50968e6e1a5f011705000000
+
+Events:
+0.0071630477905273 appStart
+0.023989915847778 appStop
+
+
+Statistics:
+Total execution time: 0.025300025939941
+app execution time: 0.016819000244141
+Domain: www.finansmaskinen.dev
+URI: /invoice/assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.02423095703125
+Domain: www.finansmaskinen.dev
+URI: /invoice/export/50968e6e1a5f011705000000?template=pdf
+
+Events:
+0.013461112976074 appStart
+0.34737491607666 appStop
+
+
+Statistics:
+Total execution time: 0.34931588172913
+app execution time: 0.33390188217163
+Domain: www.finansmaskinen.dev
+URI: /invoice/export/50968e6e1a5f011705000000?template=html
+
+Events:
+0.0098228454589844 appStart
+0.019230842590332 appStop
+
+
+Statistics:
+Total execution time: 0.019989013671875
+app execution time: 0.0093991756439209
+Domain: www.finansmaskinen.dev
+URI: /favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.019872188568115
+Domain: www.finansmaskinen.dev
+URI: /invoice/view/50968e6e1a5f011705000000
+
+Events:
+0.014273881912231 appStart
+0.039454936981201 appStop
+
+
+Statistics:
+Total execution time: 0.040589094161987
+app execution time: 0.025162935256958
+Domain: www.finansmaskinen.dev
+URI: /invoice/assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.022125959396362
+Domain: www.finansmaskinen.dev
+URI: /invoice/view/50968e6e1a5f011705000000
+
+Events:
+0.012830972671509 appStart
+0.033369064331055 appStop
+
+
+Statistics:
+Total execution time: 0.034578084945679
+app execution time: 0.020516157150269
+Domain: www.finansmaskinen.dev
+URI: /invoice/assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.029579162597656
+Domain: www.finansmaskinen.dev
+URI: /invoice/view/50968e6e1a5f011705000000
+
+Events:
+0.013189077377319 appStart
+0.034426212310791 appStop
+
+
+Statistics:
+Total execution time: 0.03578519821167
+app execution time: 0.021228075027466
+Domain: www.finansmaskinen.dev
+URI: /invoice/assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.018103122711182
+Domain: www.finansmaskinen.dev
+URI: /invoice/view/50968e6e1a5f011705000000
+
+Events:
+0.011646032333374 appStart
+0.033945083618164 appStop
+
+
+Statistics:
+Total execution time: 0.035082101821899
+app execution time: 0.022294044494629
+Domain: www.finansmaskinen.dev
+URI: /invoice/assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.023385047912598
+Domain: www.finansmaskinen.dev
+URI: /invoice/view/50968e6e1a5f011705000000
+
+Events:
+0.011876106262207 appStart
+0.035138130187988 appStop
+
+
+Statistics:
+Total execution time: 0.036800146102905
+app execution time: 0.023261070251465
+Domain: www.finansmaskinen.dev
+URI: /invoice/assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.026190996170044
+Domain: www.finansmaskinen.dev
+URI: /invoice/view/50968e6e1a5f011705000000
+
+Events:
+0.013986825942993 appStart
+0.034776926040649 appStop
+
+
+Statistics:
+Total execution time: 0.036057949066162
+app execution time: 0.020771980285645
+Domain: www.finansmaskinen.dev
+URI: /invoice/assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.021665096282959
+Domain: www.finansmaskinen.dev
+URI: /invoice/view/50968e6e1a5f011705000000
+
+Events:
+0.01338791847229 appStart
+0.033428907394409 appStop
+
+
+Statistics:
+Total execution time: 0.034795045852661
+app execution time: 0.02003288269043
+Domain: www.finansmaskinen.dev
+URI: /invoice/assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.024806022644043
+Domain: www.finansmaskinen.dev
+URI: /
+
+Events:
+0.016868114471436 appStart
+0.017258167266846 appStop
+
+
+Statistics:
+Total execution time: 0.017637014389038
+app execution time: 0.00038599967956543
+Domain: www.finansmaskinen.dev
+URI: /index/apps
+
+Events:
+0.011337041854858 appStart
+0.047213077545166 appStop
+
+
+Statistics:
+Total execution time: 0.047837018966675
+app execution time: 0.035872936248779
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.019951820373535
+Domain: www.finansmaskinen.dev
+URI: /invoice/view/5099465d1a5f013e0c000000
+
+Events:
+0.012415170669556 appStart
+0.034403085708618 appStop
+
+
+Statistics:
+Total execution time: 0.035892009735107
+app execution time: 0.021978855133057
+Domain: www.finansmaskinen.dev
+URI: /invoice/assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.021740913391113
+Domain: www.finansmaskinen.dev
+URI: /invoice/export/5099465d1a5f013e0c000000?template=html
+
+Events:
+0.01216197013855 appStart
+0.027160882949829 appStop
+
+
+Statistics:
+Total execution time: 0.027978897094727
+app execution time: 0.014990091323853
+Domain: www.finansmaskinen.dev
+URI: /favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.025934934616089
+Domain: www.finansmaskinen.dev
+URI: /invoice/export/5099465d1a5f013e0c000000?template=html
+
+Events:
+0.013351202011108 appStart
+0.028592109680176 appStop
+
+
+Statistics:
+Total execution time: 0.029420137405396
+app execution time: 0.015229940414429
+Domain: www.finansmaskinen.dev
+URI: /favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.018748044967651
+Domain: www.finansmaskinen.dev
+URI: /invoice/export/5099465d1a5f013e0c000000?template=html
+
+Events:
+0.010581016540527 appStart
+0.025004148483276 appStop
+
+
+Statistics:
+Total execution time: 0.025792121887207
+app execution time: 0.014416933059692
+Domain: www.finansmaskinen.dev
+URI: /favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.020206928253174
+Domain: www.finansmaskinen.dev
+URI: /invoice/export/5099465d1a5f013e0c000000?template=html
+
+Events:
+0.010068893432617 appStart
+0.019352912902832 appStop
+
+
+Statistics:
+Total execution time: 0.020210027694702
+app execution time: 0.0092790126800537
+Domain: www.finansmaskinen.dev
+URI: /favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.01857590675354
+Domain: www.finansmaskinen.dev
+URI: /invoice/export/5099465d1a5f013e0c000000?template=html
+
+Events:
+0.013314962387085 appStart
+0.026394128799438 appStop
+
+
+Statistics:
+Total execution time: 0.027207136154175
+app execution time: 0.013072967529297
+Domain: www.finansmaskinen.dev
+URI: /favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.02179217338562
+Domain: www.finansmaskinen.dev
+URI: /invoice/export/5099465d1a5f013e0c000000?template=html
+
+Events:
+0.013634920120239 appStart
+0.025866031646729 appStop
+
+
+Statistics:
+Total execution time: 0.026633977890015
+app execution time: 0.012225866317749
+Domain: www.finansmaskinen.dev
+URI: /favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.019888162612915
+Domain: finansmaskinen.dev
+URI: /bill/
+
+Events:
+0.0085768699645996 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+
+
+Statistics:
+Total execution time: 0.57116889953613
+Domain: www.finansmaskinen.dev
+URI: /
+
+Events:
+0.013782978057861 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+0.57324290275574 appStart
+0.57768297195435 appStop
+
+
+Statistics:
+Total execution time: 0.57822704315186
+app execution time: 0.0044369697570801
+Domain: rpc.finansmaskinen.dev
+URI: /bill/
+
+Events:
+0.0085089206695557 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+
+
+Statistics:
+Total execution time: 0.58157992362976
+Domain: rpc.finansmaskinen.dev
+URI: /bill/
+
+Events:
+0.0092358589172363 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+
+
+Statistics:
+Total execution time: 0.64178204536438
+Domain: rpc.finansmaskinen.dev
+URI: /bill/
+
+Events:
+0.0091378688812256 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+
+
+Statistics:
+Total execution time: 0.57798385620117
+Domain: rpc.finansmaskinen.dev
+URI: /favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.0082230567932129
+Domain: rpc.finansmaskinen.dev
+URI: /bill/
+
+Events:
+
+
+Statistics:
+Total execution time: 0.014391899108887
+Domain: rpc.finansmaskinen.dev
+URI: /favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.016061782836914
+Domain: rpc.finansmaskinen.dev
+URI: /bill/
+
+Events:
+
+
+Statistics:
+Total execution time: 0.018746852874756
+Domain: rpc.finansmaskinen.dev
+URI: /favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.017092943191528
+Domain: rpc.finansmaskinen.dev
+URI: /bill/
+
+Events:
+0.0073678493499756 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+
+
+Statistics:
+Total execution time: 0.57816100120544
+Domain: rpc.finansmaskinen.dev
+URI: /bill/
+
+Events:
+0.0074410438537598 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+
+
+Statistics:
+Total execution time: 0.58267498016357
+Domain: rpc.finansmaskinen.dev
+URI: /bill/
+
+Events:
+0.015730142593384 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+
+
+Statistics:
+Total execution time: 0.63592910766602
+Domain: www.finansmaskinen.dev
+URI: /billing/view/50a57d551a5f01ef1f000000
+
+Events:
+0.010735988616943 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+
+
+Statistics:
+Total execution time: 0.58214592933655
+Domain: www.finansmaskinen.dev
+URI: /billing/assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.008537769317627
+Domain: www.finansmaskinen.dev
+URI: /index
+
+Events:
+0.01600193977356 appStart
+0.038302898406982 INSERT INTO stats_logins (`sid`,`uid`,`time`)
+		VALUES (?,?,?);
+0.039678812026978 appStop
+
+
+Statistics:
+Total execution time: 0.040127992630005
+app execution time: 0.023671865463257
+Domain: www.finansmaskinen.dev
+URI: /index/apps
+
+Events:
+0.011386156082153 appStart
+0.046963214874268 appStop
+
+
+Statistics:
+Total execution time: 0.047783136367798
+app execution time: 0.03557300567627
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.02439284324646
+Domain: www.finansmaskinen.dev
+URI: /billing/view/50a57eb81a5f010e20000000
+
+Events:
+0.009458065032959 appStart
+0.026994943618774 appStop
+
+
+Statistics:
+Total execution time: 0.027890920639038
+app execution time: 0.017535924911499
+Domain: www.finansmaskinen.dev
+URI: /billing/assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.018710136413574
+Domain: www.finansmaskinen.dev
+URI: /index/personal
+
+Events:
+0.011718034744263 appStart
+0.025183916091919 appStop
+
+
+Statistics:
+Total execution time: 0.025499105453491
+app execution time: 0.013463020324707
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.019108057022095
+Domain: rpc.finansmaskinen.dev
+URI: /bill/rpc.json?key=4e50d016a6f29dc43d728543fddebdfec6b9f7cfc6b51fcfa3e75712c841c5f5-50a2da9313642-d41d8cd98f00b204e9800998ecf8427e
+
+Events:
+0.0066380500793457 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+0.61390209197998 INSERT INTO stats_logins (`sid`,`uid`,`time`)
+		VALUES (?,?,?);
+
+
+Statistics:
+Total execution time: 0.61594700813293
+Domain: rpc.finansmaskinen.dev
+URI: /bill/rpc.json?key=4e50d016a6f29dc43d728543fddebdfec6b9f7cfc6b51fcfa3e75712c841c5f5-50a2da9313642-d41d8cd98f00b204e9800998ecf8427e
+
+Events:
+0.0064218044281006 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+0.60707688331604 INSERT INTO stats_logins (`sid`,`uid`,`time`)
+		VALUES (?,?,?);
+
+
+Statistics:
+Total execution time: 0.60925984382629
+Domain: rpc.finansmaskinen.dev
+URI: /bill/rpc.json?key=4e50d016a6f29dc43d728543fddebdfec6b9f7cfc6b51fcfa3e75712c841c5f5-50a2da9313642-d41d8cd98f00b204e9800998ecf8427e
+
+Events:
+0.0080628395080566 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+0.61440587043762 INSERT INTO stats_logins (`sid`,`uid`,`time`)
+		VALUES (?,?,?);
+
+
+Statistics:
+Total execution time: 0.61609387397766
+Domain: rpc.finansmaskinen.dev
+URI: /bill/rpc.json?key=4e50d016a6f29dc43d728543fddebdfec6b9f7cfc6b51fcfa3e75712c841c5f5-50a2da9313642-d41d8cd98f00b204e9800998ecf8427e
+
+Events:
+0.0067539215087891 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+0.59994888305664 INSERT INTO stats_logins (`sid`,`uid`,`time`)
+		VALUES (?,?,?);
+
+
+Statistics:
+Total execution time: 0.60197687149048
+Domain: rpc.finansmaskinen.dev
+URI: /bill/rpc.json?key=4e50d016a6f29dc43d728543fddebdfec6b9f7cfc6b51fcfa3e75712c841c5f5-50a2da9313642-d41d8cd98f00b204e9800998ecf8427e
+
+Events:
+0.027491092681885 INSERT INTO stats_logins (`sid`,`uid`,`time`)
+		VALUES (?,?,?);
+
+
+Statistics:
+Total execution time: 0.029063940048218
+Domain: rpc.finansmaskinen.dev
+URI: /favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.0092270374298096
+Domain: rpc.finansmaskinen.dev
+URI: /bill/rpc.json?key=4e50d016a6f29dc43d728543fddebdfec6b9f7cfc6b51fcfa3e75712c841c5f5-50a2da9313642-d41d8cd98f00b204e9800998ecf8427e
+
+Events:
+0.032648086547852 INSERT INTO stats_logins (`sid`,`uid`,`time`)
+		VALUES (?,?,?);
+
+
+Statistics:
+Total execution time: 0.035200119018555
+Domain: rpc.finansmaskinen.dev
+URI: /favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.0098772048950195
+Domain: www.finansmaskinen.dev
+URI: /index/personal
+
+Events:
+0.01514196395874 appStart
+0.032264947891235 appStop
+
+
+Statistics:
+Total execution time: 0.032574892044067
+app execution time: 0.017097949981689
+Domain: www.finansmaskinen.dev
+URI: /assets/ico/favicon.ico
+
+Events:
+
+
+Statistics:
+Total execution time: 0.028076887130737
+Domain: rpc.finansmaskinen.dev
+URI: /bill/rpc.json?key=4e50d016a6f29dc43d728543fddebdfec6b9f7cfc6b51fcfa3e75712c841c5f5-50a2da9313642-d41d8cd98f00b204e9800998ecf8427e
+
+Events:
+0.0086390972137451 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+0.60290312767029 INSERT INTO stats_logins (`sid`,`uid`,`time`)
+		VALUES (?,?,?);
+
+
+Statistics:
+Total execution time: 0.60505700111389
+Domain: rpc.finansmaskinen.dev
+URI: /bill/rpc.json?key=4e50d016a6f29dc43d728543fddebdfec6b9f7cfc6b51fcfa3e75712c841c5f5-50a2da9313642-d41d8cd98f00b204e9800998ecf8427e
+
+Events:
+0.0067150592803955 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+0.62302803993225 INSERT INTO stats_logins (`sid`,`uid`,`time`)
+		VALUES (?,?,?);
+
+
+Statistics:
+Total execution time: 0.62449812889099
+Domain: rpc.finansmaskinen.dev
+URI: /bill/rpc.json?key=4e50d016a6f29dc43d728543fddebdfec6b9f7cfc6b51fcfa3e75712c841c5f5-50a2da9313642-d41d8cd98f00b204e9800998ecf8427e
+
+Events:
+0.0070271492004395 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+0.59799408912659 INSERT INTO stats_logins (`sid`,`uid`,`time`)
+		VALUES (?,?,?);
+
+
+Statistics:
+Total execution time: 0.60021018981934
+Domain: rpc.finansmaskinen.dev
+URI: /bill/rpc.json?key=4e50d016a6f29dc43d728543fddebdfec6b9f7cfc6b51fcfa3e75712c841c5f5-50a2da9313642-d41d8cd98f00b204e9800998ecf8427e
+
+Events:
+0.0082039833068848 INSERT INTO stats_sessions (`sid`,`ua`,`ref`,`entrance`)
+		VALUES (?,?,?,?);
+0.60302996635437 INSERT INTO stats_logins (`sid`,`uid`,`time`)
+		VALUES (?,?,?);
+
+
+Statistics:
+Total execution time: 0.60491704940796
+Domain: rpc.finansmaskinen.dev
+URI: /billing/rpc.json?key=4e50d016a6f29dc43d728543fddebdfec6b9f7cfc6b51fcfa3e75712c841c5f5-50a2da9313642-d41d8cd98f00b204e9800998ecf8427e
+
+Domain: rpc.finansmaskinen.dev
+URI: /billing/rpc.json?key=4e50d016a6f29dc43d728543fddebdfec6b9f7cfc6b51fcfa3e75712c841c5f5-50a2da9313642-d41d8cd98f00b204e9800998ecf8427e
+
+Domain: rpc.finansmaskinen.dev
+URI: /billing/rpc.json?key=4e50d016a6f29dc43d728543fddebdfec6b9f7cfc6b51fcfa3e75712c841c5f5-50a2da9313642-d41d8cd98f00b204e9800998ecf8427e

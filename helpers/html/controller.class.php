@@ -26,9 +26,6 @@ class html{
 	* this converts HTML, XML and stuff to a DOMNode
 	*/
 	public static function importNode($dom, $data){
-		if(is_null($data))
-			trigger_error('Data cannot be null', E_USER_NOTICE);
-
 		if(is_string($data)){
 			$fragment = $dom->createDocumentFragment();
 			$fragment->appendXML($data);
@@ -37,6 +34,7 @@ class html{
 		elseif(!is_array($data)){
 			return $dom->importNode($data, true);
 		}
+		trigger_error('Unsupported datatype.', E_USER_NOTICE);
 	}
 }
 

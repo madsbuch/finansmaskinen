@@ -17,14 +17,12 @@ class core{
 
 		if (!isset($caller['class'])){
 			throw new Exception('insufficient permission');
-			return;
 		}
 		
 		$class = explode("_", $caller['class']);
 		
 		if($class[0] != "helper" || $class[0] != "core"){
 			throw new Exception('insufficient permission');
-			return;
 		}
 	}
 	

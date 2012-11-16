@@ -83,6 +83,7 @@ class core{
 			if(isset($g->metaInfo['mainFor']) && $g->metaInfo['mainFor'] == $this->appObj->id)
 				return $g->id;
 		}
+		throw new \Exception('No main group');
 	}
 	
 	function getTreeID(){

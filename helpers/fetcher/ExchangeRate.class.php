@@ -30,9 +30,11 @@ class ExchangeRate {
 	*/
 	function getRate($from, $to, $timestamp=null){
 		//forwarding the request to the first object that responds proper
-		foreach($this->ERProviders as $p)
-			if(($t = $p->getRate($from, $to, $timestamp)));//yeah, the single = is correct ;)
+		foreach($this->ERProviders as $p){
+			if(($t = $p->getRate($from, $to, $timestamp))){//yeah, the single = is correct ;)
 				return $t;
+			}
+		}
 		return false;
 	}
 	

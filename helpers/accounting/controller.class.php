@@ -333,6 +333,7 @@ class accounting{
 				'taxcatagoryID' => $t['ubl_taxCatagory']
 			));
 		}
+		return false;
 	}
 	
 	/**
