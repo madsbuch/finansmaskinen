@@ -2,8 +2,9 @@
 
 namespace app\billing\layout\finance;
 
-class Form extends \helper\layout\LayoutBlock{
-	
+class Form extends \helper\layout\LayoutBlock
+{
+
 	public $addJsIncludes = array(
 		'/bootstrap/js/bootstrap-modal.js',
 		'/js/plugins/jquery.sheepItPlugin-1.0.0.min.js',
@@ -11,7 +12,7 @@ class Form extends \helper\layout\LayoutBlock{
 		'/js/plugins/jquery.form.js',
 		'/bootstrap/js/init.js',
 	);
-	
+
 	public $addCSSIncludes = array(
 		'/css/plugins/bootstrap-datepicker.css'
 	);
@@ -24,11 +25,13 @@ class Form extends \helper\layout\LayoutBlock{
 		at holde styr på hvem der skylder hvad.',
 	);
 
-	function __construct($obj = null){
-	
+	function __construct($obj = null)
+	{
+
 	}
-	
-	function generate(){
+
+	function generate()
+	{
 		return '
 <div>
 	<div id="billingAddTrigger" />
@@ -94,9 +97,6 @@ class Form extends \helper\layout\LayoutBlock{
 									</i></a>
 							</div>
 							<br />
-							<input class="checkbox" type="checkbox" data-checkedLabel="Beløb med Moms"
-								data-uncheckedLabel="Beløb uden Moms" checked="checked"
-								name="vat" />
 							<br />
 							<input class="btn totalCompute" type="button" value="opdater" />
 
@@ -138,11 +138,11 @@ class Form extends \helper\layout\LayoutBlock{
 							</div>
 
 							<div class="input-append" style="float:left;width:15%;">
-								<input type="text" name="products-#index#-vatCode" placeholder="Moms"
-									style="width:60%"
+								<input type="text" name="product-#index#-vatCode" placeholder="Moms"
+									style="width:60%" data-replace="product-#index#-inclVat-code"
 									data-listLink="/accounting/autocompleteVatCode/"
 									class="input-small pPicker"
-									id="#index#-vatCode" /><a href="##index#-vatCode"
+									id="product-#index#-vatCode" /><a href="##index#-vatCode"
 									class="btn pickerDroP add-on"><i class="icon-circle-arrow-down"></i></a>
 							</div>
 
@@ -152,7 +152,7 @@ class Form extends \helper\layout\LayoutBlock{
 								style="width:8%" />
 
 							<input id="product-#index#-Price-PriceAmount-_content"
-								name="Invoice-InvoiceLine-#index#-unitPrice"
+								name="Invoice-InvoiceLine-#index#-Price-PriceAmount-_content"
 								type="text" class="totalCompute" placeholder="Pris"
 								style="width:8%" />
 
@@ -175,7 +175,9 @@ class Form extends \helper\layout\LayoutBlock{
 									data-replace="product-#index#-inclVat-percentage"
 									style="width:60px;" readonly="true" />
 
-								<input type="text" name="product-#index#-vatAmount" id="product-#index#-vatAmount" />
+								<input type="text"
+									name="Invoice-InvoiceLine-#index#-TaxTotal-TaxSubtotal-TaxCategory-Percent"
+									id  ="Invoice-InvoiceLine-#index#-TaxTotal-TaxSubtotal-TaxCategory-Percent" />
 							</div>
 
 						</div>
@@ -305,18 +307,18 @@ class Form extends \helper\layout\LayoutBlock{
 		<form method="post" action="/products/create/true" id="addNewProductForm">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">×</button>
-				<h3>'.__('Add product').'</h3>
+				<h3>' . __('Add product') . '</h3>
 			</div>
 			<div class="modal-body">
 				<div class="row">
 					<div class="span1" style="width:45%;">
-						<label for="Item-Name">'.__('Name').':</label>
+						<label for="Item-Name">' . __('Name') . ':</label>
 						<input type="text" id="Item-Name" name="Item-Name" style="width:90%;" />
 					</div>
 				</div>
 				<div class="row">
 					<div class="span1" style="width:40%;">
-						<label for="Price-PriceAmount-Amount">'.__('Price').':</label>
+						<label for="Price-PriceAmount-Amount">' . __('Price') . ':</label>
 						<div class="input-prepend">
 							<input type="text" class="picker" name="Price-PriceAmount-CurrencyID"
 								data-listLink="/index/currencies/"
@@ -330,7 +332,7 @@ class Form extends \helper\layout\LayoutBlock{
 					</div>
 
 					<div class="span1" style="width:40%;">
-						<label class="vatAccount">'.__('Category').'</label>
+						<label class="vatAccount">' . __('Category') . '</label>
 						<div class="input-append">
 							<input type="text" class="picker descriptionPopoverLeft" id="addProdData-"
 								style="width:60%" title="Katagori" data-content="Vælg hvilken
@@ -344,9 +346,9 @@ class Form extends \helper\layout\LayoutBlock{
 				</div>
 
 				<div class="alert alert-info">
-					<h4 class="alert-heading">'.__('OBS').'!</h4>
-					'.__('It is only the most important data about your product you apply here.
-					Go to your product overview and add details to use further features.').'
+					<h4 class="alert-heading">' . __('OBS') . '!</h4>
+					' . __('It is only the most important data about your product you apply here.
+					Go to your product overview and add details to use further features.') . '
 				</div>
 			</div>
 			<div class="modal-footer">
