@@ -63,8 +63,10 @@ class billing extends \core\app
 		$html->appendContent(\helper\layout\Element::heading(__('Billing'), __('Details for bill')));
 
 		$widgets = $this->callAll('getBillingPostCreate', array(null));
+		$bill = \api\billing::getOne($id);
+		$party = \api\contacts::getContact($bill->contactID);
 
-		$view = new billing\layout\finance\View(\api\billing::getOne($id), $widgets);
+		$view = new billing\layout\finance\View($bill, $party->Party, $widgets);
 		$html->appendContent($view);
 
 		$this->output_header = $this->header->getHeader();
@@ -100,17 +102,15 @@ class billing extends \core\app
 			$arr['draft'] = true;
 
 			//parsing the time
-			if (isset($arr['Invoice']['IssueDate']))
-				$arr['Invoice']['IssueDate'] =
-					\DateTime::createFromFormat('d/m/Y', $arr['Invoice']['IssueDate'])->getTimestamp();
+			if (isset($arr['paymentDate']))
+				$arr['paymentDate'] =
+					\DateTime::createFromFormat('d/m/Y', $arr['paymentDate'])->getTimestamp();
 			else
-				$arr['Invoice']['IssueDate'] = time();
+				$arr['paymentDate'] = time();
 
 			//some quantaty and unitprice stuff
-			foreach ($arr['Invoice']['InvoiceLine'] as &$il) {
-				$il['Price']['PriceAmount'] = $il['unitPrice'] * $il['InvoicedQuantity'];
-				$il['Price']['PriceAmount']['_content'] = l::readValuta($il['Price']['PriceAmount']['_content']);
-				unset($il['unitPrice']);
+			foreach ($arr['lines'] as &$il) {
+				$il['amount'] = l::readValuta($il['amount']);
 			}
 
 			//for some js plugins to work, the namefield must be set:

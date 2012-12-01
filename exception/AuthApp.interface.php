@@ -2,13 +2,14 @@
 
 namespace type;
 
-interface AuthApp{
-	
+interface AuthApp
+{
+
 	/**
-	* returns if given action is authorized
-	*/
+	 * returns if given action is authorized
+	 */
 	function authorizeAction($action);
-	
+
 }
 
 ?>

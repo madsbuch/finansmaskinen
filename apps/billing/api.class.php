@@ -30,6 +30,13 @@ class billing extends \core\api
 		'DKCVR' => 'DK:CVR'
 	);
 
+
+	/**
+	 * TODO add something to this
+	 * @var array
+	 */
+	private static $fulltextIndex = array();
+
 	/**
 	 * returns a summery of this app in a widget
 	 *
@@ -37,7 +44,7 @@ class billing extends \core\api
 	 */
 	static function on_getWidget()
 	{
-		return new \app\billing\layout\finance\Widget(self::get(null, null, 4));
+		return new \app\billing\layout\finance\Widget(self::get(null, null, 3));
 	}
 
 	/**
@@ -106,11 +113,18 @@ class billing extends \core\api
 
 	/*************************** EXTERNAL API FUNCTIONS ***********************/
 
+	/**
+	 * @param $id
+	 * @return \model\finance\Bill
+	 */
 	public static function getOne($id)
 	{
 		$lodo = new \helper\lodo('bills', 'billing');
 		$lodo->setReturnType('\model\finance\Bill');
-		return $lodo->getFromId($id);
+		$ret = $lodo->getFromId($id);
+		if (is_null($ret))
+			throw new \exception\UserException('Requested bill doesn\'t exist');
+		return $ret;
 	}
 
 
@@ -127,7 +141,8 @@ class billing extends \core\api
 		//readies the bill
 		$bill = self::billObject($bill);
 
-		$lodo->setFulltextIndex(array('Invoice.AccountingSupplierParty.Party.PartyName'));
+		//makes it searchable
+		$lodo->setFulltextIndex(self::$fulltextIndex);
 		$bill = $lodo->insert($bill);
 
 		return $bill;
@@ -180,13 +195,25 @@ class billing extends \core\api
 	 * updates a bill
 	 *
 	 * be aware, that not all fields are updateable if the bill is posted. if that
-	 * is the case, unposting is an option.
+	 * is the case, unposting is an option
+	 *
+	 * @return \model\finance\Bill.
 	 */
-	static function update($obj)
+	static function update(\model\finance\Bill $obj)
 	{
-
+		$lodo = new \helper\lodo('bills', 'billing');
+		//create the object
+		$obj = self::billObject($obj);
+		$lodo->setFulltextIndex(self::$fulltextIndex);
+		$obj = $lodo->update($obj);
+		return $obj;
 	}
 
+	/**
+	 * marks a bill as deleted
+	 *
+	 * @param $id
+	 */
 	static function delete($id)
 	{
 
@@ -232,63 +259,56 @@ class billing extends \core\api
 	 * of the system, to make it ready.
 	 *
 	 * TODO Refactor! a function like this is also in invoice
+	 *
+	 * @return \model\finance\Bill
 	 */
 	private static function billObject(\model\finance\Bill $bill)
 	{
-		$core = new \helper\core('billing');
+		//validates data
 
+		//test contact
+		if (is_string($bill->contactID) && !\api\contacts::getContact($bill->contactID))
+			throw new \exception\UserException(__('Contact %s doesn\' exist', $bill->contactID));
+
+		//set standard values
+		if (!isset($bill->draft)) //assuming draft
+			$bill->draft = true;
+		if (!$bill->draft)
+			throw new \exception\UserException('The bill is not a draft, editing is not possible');
 		//final merging array
 		$toMerge = array();
-
-		// merge in the accountingCustomerParty (if not set!)
-		if (!isset($bill->Invoice->AccountingCustomerParty)) {
-			$customer = \api\companyProfile::getPublic($core->getTreeID());
-
-			//merge customer data in
-			$toMerge['Invoice']['AccountingCustomerParty']['Party'] = $customer->Party->toArray();
-		}
-
-		//merge supplier in
-		if (!empty($bill->contactID)) {
-			$contact = \api\contacts::getContact($bill->contactID);
-			$party = $contact->Party;
-			$toMerge['Invoice']['AccountingSupplierParty']['Party'] = $party->toArray();
-
-			//merge leagalnumbers in
-			foreach (self::$legalEntities as $id => $val) {
-				if (isset($contact->legalNumbers->$id)) {
-					$toMerge['Invoice']['AccountingSupplierParty']['Party']['PartyLegalEntity']
-					['CompanyID']['_content'] = $contact->legalNumbers->$id;
-					$toMerge['Invoice']['AccountingSupplierParty']['Party']['PartyLegalEntity']
-					['CompanyID']['schemeID'] = $val;
-				}
-			}
-		}
 
 		//some totals for the products:
 		$total = 0;
 		$vat = 0;
 
 		//items from productlines
-		if (!empty($bill->product))
-			foreach ($bill->product as $i => $prod) {
-				if (!isset($prod->productID))
-					continue;
+		if (!empty($bill->lines))
+			foreach ($bill->lines as &$prod) {
+				if (is_string($prod->productID) && !\api\products::getOne($prod->productID))
+					throw new \exception\UserException(__('Product %s doesn\' exist', $prod->productID));
+
+				if ($prod->quantity <= 0)
+					throw new \exception\UserException(__('Quantity must be more than 0, value: %s', $prod->quantity));
+
+				$tAmount = $prod->amount * $prod->quantity;
+
+				//***calculate vat total:
+
+				//fetch vat from accounting
+				$percentage = \api\accounting::getVatCode($prod->vatCode)->percentage;
+
+
+				$vat += ($tAmount * $percentage) / 100;
+
+				//set linetotal
+				$prod->lineTotal = ($tAmount * $percentage) / 100 + $tAmount;
 
 				//for calculating total
-				$total += $t = $bill->Invoice->InvoiceLine->$i->Price->PriceAmount->_content *
-					$bill->Invoice->InvoiceLine->$i->InvoicedQuantity->_content;
-
-				$p = \api\products::getOne($prod->id);
-
-				if ($p) //make it possible to make an invoice on not saved products
-					$toMerge['Invoice']['InvoiceLine'][$i]['Item'] = $p->Item->toArray();
-
+				$total += $tAmount;
 			}
-
-
-		//merge data in
-		$bill->merge($toMerge);
+		//set total
+		$bill->amountTotal = $total + $vat;
 
 		//finalize, if finished
 		if (!$bill->draft)

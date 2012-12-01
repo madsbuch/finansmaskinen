@@ -38,19 +38,17 @@ class Widget extends \helper\layout\LayoutBlock implements \helper\layout\Widget
 			</p>');
 		else {
 			$insertion = new \helper\layout\Table(array(
-				'Invoice.AccountingSupplierParty.Party.PartyName.Name' => __('Sender'),
-				'Invoice' => array(
+				'contactID' => __('Sender'),
+				'amountTotal' => array(
 					__('Amount'),
 					function ($data) {
-						return isset($data->LegalMonetaryTotal->PayableAmount->_content) ?
-							new \DOMText(l::writeValuta(
-								$data->LegalMonetaryTotal->PayableAmount->_content,
-								$data->DocumentCurrencyCode->_content, true))
+						return isset($data) ?
+							new \DOMText(l::writeValuta($data))
 							:
 							new \DOMText('Error');
 					}
 				),
-				'.' => array(__('Duedate'), function ($data, $dom, $field, $row) {
+				'.' => array(__('Duedate'), function ($data, \DOMDocument $dom, $field, $row) {
 					//put all this some other place
 					$row->setAttribute('data-href', '/billing/view/' . $data->_id);
 					$row->setAttribute('style', 'cursor:pointer;');
@@ -59,11 +57,12 @@ class Widget extends \helper\layout\LayoutBlock implements \helper\layout\Widget
 					$toRet = $dom->createElement('a', 'No date');
 					$toRet->setAttribute('href', '/billing/view/');
 
-					if (!empty($data->Invoice->PaymentMeans->first->PaymentDueDate->_content)) {
-						if (($date = $data->Invoice->PaymentMeans->first->PaymentDueDate->_content) > time()) {
+					$date = $data->paymentDate;
+					if (!empty($date)) {
+						if ($date > time())
 							$toRet = new \DOMText(date("j/n-Y", $date));
-						} else {
-							$toRet = $dom->createElement('p', 'Overskredet');
+						else {
+							$toRet = $dom->createElement('span', date("j/n-Y", $date));
 							$toRet->setAttribute('class', 'label label-important');
 						}
 					}

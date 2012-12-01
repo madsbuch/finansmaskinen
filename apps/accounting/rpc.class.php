@@ -1,79 +1,90 @@
 <?php
 /**
-* remote procedure call
-*/
+ * remote procedure call
+ */
 
 namespace rpc;
 
-class accounting{
-	
+class accounting extends \core\rpc
+{
+
 	/**
-	* body of the request recieved, not formattet?
-	*/
+	 * body of the request recieved, not formattet?
+	 */
 	protected $requestBody;
-	
+
 	/**
-	* should this class do the output formatting?
-	*/
-	function __construct(){
-	
-	}
-	
-	/**** Accounting interface ****/
-	
-	function getAccountings(){
-	
-	}
-	
-	function addAccounting(){
-	
-	}
-	
-	function updateAccounting(){
-	
-	}
-	
-	/**** Transaction interface ****/
-	
+	 * requireLogin
+	 */
+	static public $requireLogin = true;
+
 	/**
-	* returns last up to 1000 transactions
-	*/
-	function getTransactions($id = null){
-	
+	 * adds a new account to the system
+	 * @param $account
+	 */
+	function create($account)
+	{
+		try {
+			$account = $this->prepareAccountObj($account);
+			\api\accounting::createAccount($account);
+			$this->ret(array('success' => true));
+		} catch (\exception\UserException $e) {
+			$this->throwException($e->getMessage());
+		}
 	}
-	
-	function addTransactions($id = null){
-	
+
+	/**
+	 * @param array $id array of accountnumbers
+	 */
+	function getAccounts($ids = array())
+	{
+		try {
+			$acc = \api\accounting::getAccountsByIds($ids);
+			$this->ret($acc);
+		} catch (\exception\UserException $e) {
+			$this->throwException($e->getMessage());
+		}
 	}
-	
-	function cancelTransaction(){
-	
+
+	/**
+	 * returns a ginel account based on the id supplied
+	 *
+	 * @param $id string
+	 */
+	function get($id)
+	{
+		try {
+			$acc = \api\accounting::getAccount($id);
+			$this->ret($acc->toArray());
+		} catch (\exception\UserException $e) {
+			$this->throwException($e->getMessage());
+		}
 	}
-	
-	/**** accounts interface ****/
-	
-	function getAccounts($id = null){
-	
+
+	/**
+	 * $delete an account
+	 *
+	 * if the account is has been used (has any associated postings), this operation will not work
+	 *
+	 * @param $id string id of the account to delete
+	 */
+	function deleteAccount($id)
+	{
+		try {
+			$acc = \api\accounting::deleteAccount($id);
+			$this->ret(array('success' => true));
+		} catch (\exception\UserException $e) {
+			$this->throwException($e->getMessage());
+		}
 	}
-	
-	function addAccount($id = null){
-	
+
+	/**** Private aux ****/
+
+	private function prepareAccountObj($acc)
+	{
+		$acc = new \model\finance\accounting\Account($acc);
+		return $acc;
 	}
-	
-	function deleteAccount($id = null){
-	
-	}
-	
-	function updateAccount($id = null){
-	
-	}
-	
-	/**** some repporting ****/
-	
-	function getRepport(){
-	
-	}
-	
 }
 
 ?>

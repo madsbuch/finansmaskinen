@@ -42,8 +42,7 @@ class Form extends \helper\layout\LayoutBlock
 		</div>
 		<div class="modal-body">
 			<p>Har du modtaget din regning i UBL formattet?</p>
-			<p>Hvis ja, upload den da nedenfor, og gør indtastningen meget lettere
-			for dig selv.</p>
+			<p>Hvis ja, upload den da nedenfor, og gør indtastningen meget lettere.</p>
 			<input type="file" />
 		</div>
 		<div class="modal-footer">
@@ -62,23 +61,23 @@ class Form extends \helper\layout\LayoutBlock
 							<div class="input-append" id="billingContact">
 								<input type="text" class="picker"
 									style="width:50%;"
-									id="Invoice-AccountingSupplierParty-"
+									id="sender-"
 									data-listLink="/contacts/autocomplete/"
 									data-objLink="/contacts/getContact/"
 									data-addForm="#addNewContact"
 									data-titleIndex="addNewContact"
-									placeholder="Vælg Afsender" /><a href="#Invoice-AccountingSupplierParty-"
+									placeholder="Vælg Afsender" /><a href="#sender-"
 									class="btn pickerDP"><i class="icon-circle-arrow-down">
-									</i></a><input type="button" class="btn" style="width:30%;"
-									value="Rediger afsender" data-toggle="modal" href="#changeContact" />
+									</i></a>
 							</div>
 							<input type="hidden" name="contactID"
-								id="Invoice-AccountingSupplierParty-contactID" />
+								id="sender-contactID" />
 
 							<br/>
-							<label>Dato:</label>
+							<label>' . __('Duedate') . '</label>
 							<div class="input-append datepicker date">
-								<input type="text" name="Invoice-IssueDate"
+								<input type="text" name="paymentDate"
+									id="paymentDate"
 									style="width:85%" readonly=""/><span
 									class="add-on"><i class="icon-th"></i></span>
 							</div>
@@ -88,11 +87,12 @@ class Form extends \helper\layout\LayoutBlock
 
 							<label>Valuta:</label>
 							<div class="input-append">
-								<input type="text" class="picker" name="Invoice-DocumentCurrencyCode"
+								<input type="text" class="picker"
+									name="currency"
+									id="currency"
 									data-listLink="/index/currencies/" value="DKK"
-									id="Invoice-AccountingCustomerParty-currency"
-									data-replace="Invoice-DocumentCurrencyCode" required="true"
-									style="width:85%" /><a href="#Invoice-AccountingCustomerParty-currency"
+									required="true"
+									style="width:85%" /><a href="#currency"
 									class="btn pickerDP add-on"><i class="icon-circle-arrow-down">
 									</i></a>
 							</div>
@@ -114,8 +114,10 @@ class Form extends \helper\layout\LayoutBlock
 					<div id="productLine_template">
 						<div class="span12">
 							<div class="input-append" style="float:left;width:30%;">
-								<input id="product-#index#-"
-									name="Invoice-InvoiceLine-#index#-Item-Name" type="text"
+								<input
+									id="lines-#index#-"
+									name="trash"
+									type="text"
 									class="pPicker totalCompute" style="width:80%"
 									data-listLink="/products/autocomplete/"
 									data-objLink="/products/getProduct/"
@@ -123,36 +125,42 @@ class Form extends \helper\layout\LayoutBlock
 									data-addForm="#addNewProduct"
 									data-titleIndex="addNewProduct"
 
-									placeholder="Produkt" /><a href="#product-#index#-"
+									placeholder="Produkt" /><a href="#lines-#index#-"
 									class="btn pickerDroP"><i class="icon-circle-arrow-down"></i></a>
 							</div>
+		                    <input type="hidden" id="lines-#index#-productID" name="lines-#index#-productID" />
 
 							<p id="#index#" class="readIndex hide" />
 
 							<div class="input-append" style="float:left;width:15%;">
-								<input type="text" class="pPicker" id="product-#index#-account" name="trash"
+								<input type="text" class="pPicker"
+									id="lines-#index#-account"
+									name="lines-#index#-account"
 									placeholder="Konto"
-									style="width:60%" data-listLink="/accounting/autocompleteAccounts/"
-									data-objLink="/accounting/getAccount/" /><a href="#product-#index#-account"
+									style="width:60%"
+									data-listLink="/accounting/autocompleteAccounts/"
+									data-objLink="/accounting/getAccount/" /><a href="#lines-#index#-account"
 									class="btn pickerDroP"><i class="icon-circle-arrow-down"></i></a>
 							</div>
 
 							<div class="input-append" style="float:left;width:15%;">
-								<input type="text" name="product-#index#-vatCode" placeholder="Moms"
+								<input type="text"
+									name="lines-#index#-vatCode"
+									id="lines-#index#-inclVat-code"
+									placeholder="Moms"
 									style="width:60%" data-replace="product-#index#-inclVat-code"
 									data-listLink="/accounting/autocompleteVatCode/"
-									class="input-small pPicker"
-									id="product-#index#-vatCode" /><a href="##index#-vatCode"
+									class="input-small pPicker" /><a href="#lines-#index#-inclVat-code"
 									class="btn pickerDroP add-on"><i class="icon-circle-arrow-down"></i></a>
 							</div>
 
-							<input id="product-#index#-quantity"
-								name="Invoice-InvoiceLine-#index#-InvoicedQuantity"
+							<input id="lines-#index#-quantity"
+								name="lines-#index#-quantity"
 								type="text" class="add-on totalCompute" placeholder="Antal"
 								style="width:8%" />
 
-							<input id="product-#index#-Price-PriceAmount-_content"
-								name="Invoice-InvoiceLine-#index#-Price-PriceAmount-_content"
+							<input id="lines-#index#-amount"
+								name="lines-#index#-amount"
 								type="text" class="totalCompute" placeholder="Pris"
 								style="width:8%" />
 
@@ -162,22 +170,13 @@ class Form extends \helper\layout\LayoutBlock
 							<a href="#" class="btn" id="productLine_remove_current"
 								title="Fjern"><i class="icon-minus" title="Fjern linje"></i></a>
 
-							<input type="hidden" id="product-#index#-productID" name="Invoice-InvoiceLine-#index#-ID" />
-
 							<div class="form-inline"
 								id="settings-#index#" style="margin-bottom:10px;">
 
 								<label>moms:</label>
 								<input type="text"
-									class="currencyCompute"
-									name="Invoice-InvoiceLine-#index#-TaxTotal-TaxSubtotal-TaxCategory-Percent"
-									id="product-#index#-TaxTotal-TaxSubtotal-TaxCategory-Percent"
-									data-replace="product-#index#-inclVat-percentage"
-									style="width:60px;" readonly="true" />
-
-								<input type="text"
-									name="Invoice-InvoiceLine-#index#-TaxTotal-TaxSubtotal-TaxCategory-Percent"
-									id  ="Invoice-InvoiceLine-#index#-TaxTotal-TaxSubtotal-TaxCategory-Percent" />
+									name="trash"
+									id="lines-#index#-inclVat-percentage" />
 							</div>
 
 						</div>
@@ -206,53 +205,7 @@ class Form extends \helper\layout\LayoutBlock
 
 		<div class="offset4">
 			<input type="submit" name="draft" class="btn btn-primary btn-large" value="Gem kladde" />
-			<a href="#createInvoice" class="btn btn-primary btn-large" data-toggle="modal">Opret Regning</a>
-		</div>
-
-		<!-- modals -->
-		<div class="modal hide fade" id="changeContact">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">×</button>
-				<h3>Rediger kontakt</h3>
-			</div>
-			<div class="modal-body">
-				<div class="span3">
-					<label>Navn:</label>
-					<input id="Invoice-AccountingSupplierParty-Party-PartyName-Name-_content"
-					name="Invoice-AccountingSupplierParty-Party-PartyName" type="text" />
-				</div>
-				<div style="clear:both;"></div>
-
-				Adresse:<br />
-				<div class="span3">
-					<label>Vej:</label>
-					<input id="Invoice-AccountingSupplierParty-Party-PostalAddress-StreetName-_content"
-					name="Invoice-AccountingSupplierParty-Party-PostalAddress-StreetName"
-					type="text" />
-				</div>
-
-				<div class="span3">
-					<label>Nummer:</label>
-					<input id="Invoice-AccountingSupplierParty-Party-PostalAddress-BuildingNumber-_content"
-					name="Invoice-AccountingSupplierParty-Party-PostalAddress-BuildingNumber"
-					type="text" />
-				</div>
-
-				<div style="clear:both;"></div>
-
-				<hr />
-				CVR: <input id="Invoice-AccountingSupplierParty-legalNumbers-DKCVR"
-				type="text" />
-				EAN: <input id="Invoice-AccountingSupplierParty-legalNumbers-DKEAN"
-				type="text" />
-				<div class="alert alert-info">
-					Du behøver ikke at bruge en kontakt fra kontaker, men det gør det
-					lettere at håndtere hvem du skylder hvad.
-				</div>
-			</div>
-			<div class="modal-footer">
-				<a href="#" class="btn btn-primary" data-dismiss="modal">OK</a>
-			</div>
+			<a href="#createBull" class="btn btn-primary btn-large" data-toggle="modal">Opret Regning</a>
 		</div>
 	</form>
 

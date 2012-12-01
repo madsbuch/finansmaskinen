@@ -10,13 +10,15 @@ class View extends \helper\layout\LayoutBlock
 
 	private $obj;
 	private $widgets;
+	private $party;
 
 	/**
 	 * prefill some variables with the construcotr.
 	 */
-	function __construct($obj, $widgets)
+	function __construct($obj, $senderParty, $widgets)
 	{
 		$this->obj = $obj;
+		$this->party = $senderParty;
 		$this->widgets = $widgets;
 	}
 
@@ -38,11 +40,13 @@ class View extends \helper\layout\LayoutBlock
 		$right->setAttribute('class', 'span5');
 		$root->appendChild($right);
 
-		//populating the left side
+		//***populating the left side
 
 		//contact, that is left side
 		$cl = $dom->createElement('div');
-		$p = $this->obj->Invoice->AccountingSupplierParty->Party;
+		$p = $this->party;
+
+
 		$cl->appendChild(\helper\html::importNode($dom, '<h3>Afsender</h3>'));
 		$cl->setAttribute('class', 'span3');
 		$cRow = $dom->createElement('div');
@@ -77,9 +81,12 @@ class View extends \helper\layout\LayoutBlock
 		$info->addObject(new \model\Base(array('key' => 'Betalt',
 			'val' => $this->obj->isPayed ? 'Ja' : 'Nej')));
 
-		if (!is_null($this->obj->Invoice->IssueDate))
-			$info->addObject(new \model\Base(array('key' => 'Oprettet',
-				'val' => date('d/m-Y', (string)$this->obj->Invoice->IssueDate))));
+		$info->addObject(new \model\Base(array('key' => 'Beløb',
+			'val' => l::writeValuta($this->obj->amountTotal, $this->obj->currency, true))));
+
+		if (!is_null($this->obj->paymentDate))
+			$info->addObject(new \model\Base(array('key' => 'Rettidig betaling før',
+				'val' => date('d/m-Y', (string)$this->obj->paymentDate))));
 
 		/* this is not correct, as we wanna show all paymentMeans, and not only the first one
 		$info->addObject(new \model\Base(array('key' => 'Sidst rettidige betaling',
@@ -107,29 +114,25 @@ class View extends \helper\layout\LayoutBlock
 		//and products
 		$left->appendChild(\helper\html::importNode($dom, '<h3>Produkter</h3>'));
 		$info = new \helper\layout\Table(array(
-			'Item.Name' => __('Name'),
+			'text' => __('Name'),
 
-			'InvoicedQuantity' => array(__('Quantity'), function ($q) {
-				return new \DOMText($q->_content . ' ' . ($q->unitCode ? $q->unitCode : 'EA'));
-			}, $this->obj),
+			'quantity' => __('Quantity'),
 
-			'.' => array(__('Amount'), function ($p, $d, $td, $tr, $inv) {
+			'.' => array(__('Linetotal'), function ($p, $d, $td, $tr, $inv) {
 				//adding th link
-				$pid = (string)$p->ID;
+				$pid = (string)$p->productID;
 				//@TODO WTF! sheepIT doesn't add #index# after injection, make sure it does, so we can get some id's
-				if (isset($inv->product->$pid))
-					$tr->setAttribute('data-href', '/products/view/' . (string)$inv->product->$pid->id);
+				$tr->setAttribute('data-href', '/products/view/' . (string)$pid);
 
-				return new \DOMText(l::writeValuta($p->Price->PriceAmount->_content,
-					(empty($p->Price->PriceAmount->currencyID) ? $inv->Invoice->DocumentCurrencyCode : $p->Price->PriceAmount->currencyID), true));
+				return new \DOMText(l::writeValuta($p->lineTotal));
 			}, array($this->obj))
 		));
-		$info->setIterator($this->obj->Invoice->InvoiceLine);
+		$info->setIterator($this->obj->lines);
 		$left->appendChild(\helper\html::importNode($dom, $info->generate()));
 
 		if ($this->obj->draft)
 			$left->appendChild(\helper\html::importNode($dom,
-				'<a class="btn btn-success btn-large" href="/invoice/edit/' . $this->obj->_id .
+				'<a class="btn btn-success btn-large" href="/bill/edit/' . $this->obj->_id .
 					'">Færdiggør regning</a> '));
 		elseif (!$this->obj->isPayed)
 			$left->appendChild(\helper\html::importNode($dom,

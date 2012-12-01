@@ -9,8 +9,8 @@ namespace model\finance;
 class Bill extends \model\AbstractModel
 {
 	protected $_autoassign = array(
-		'Invoice' => array('\model\ext\ubl2\Invoice', false),
-		'product' => array('\model\finance\bill\Product', true),
+		'attachments' => array('string', true),
+		'lines' => array('\model\finance\bill\Line', true),
 	);
 
 	/**
@@ -34,23 +34,52 @@ class Bill extends \model\AbstractModel
 	protected $contactID;
 
 	/**
-	 * productdetails
+	 * last date for paying this bill
+	 */
+	protected $paymentDate;
+
+	/**
+	 * curremcy of this invoice
 	 *
-	 * This includes for each product:
-	 *  account
-	 *  vatCode
-	 *  productID if any given
+	 * @var string
+	 */
+	protected $currency;
+
+	/**
+	 * lines on the bill
 	 *
+	 * @var \model\finance\bill\Line
 	 *
 	 */
-	protected $product;
+	protected $lines;
+
+	/**
+	 * total, inclusive everything
+	 *
+	 * this is overwritten in preperation of object
+	 *
+	 * @var int
+	 */
+	protected $amountTotal;
+
+	/**
+	 * represents the transactions to this bill
+	 *
+	 * TODO are daybookTransaction and product to merge
+	 *
+	 * @var \model\finance\accounting\DaybookTransaction
+	 */
+	protected $daybookTransaction;
 
 	/**
 	 * instance of
 	 *
+	 * Deprecated, out of scope for a bill.
+	 * The only problem is where to save product id
+	 *
 	 * everything that logically goes in here, goes in here.
 	 */
-	protected $Invoice;
+	protected $attachments;
 
 
 	/**
@@ -70,7 +99,7 @@ class Bill extends \model\AbstractModel
 	protected $accounting;
 
 	/**
-	 * ref from the accounting, used when the bill is bookkeeped, to e.g. rewind the changes
+	 * ref from the accounting, used when the bill is bookkeeped, to e.g. rewind the changes and undraft
 	 */
 	protected $ref;
 }
