@@ -44,7 +44,7 @@ class billing extends \core\api
 	 */
 	static function on_getWidget()
 	{
-		return new \app\billing\layout\finance\Widget(self::get(null, null, 3));
+		return new \app\billing\layout\finance\Widget(self::get(null,  array('isPayed' => false), 3));
 	}
 
 	/**
@@ -141,6 +141,10 @@ class billing extends \core\api
 		//readies the bill
 		$bill = self::billObject($bill);
 
+		//finalize, if finished
+		if (!$bill->draft)
+			self::finalize($bill);
+
 		//makes it searchable
 		$lodo->setFulltextIndex(self::$fulltextIndex);
 		$bill = $lodo->insert($bill);
@@ -182,13 +186,18 @@ class billing extends \core\api
 
 	static function get($sort = null, $conditions = null, $limit = null)
 	{
-		$bills = new \helper\lodo('bills', 'billing');
-		if ($limit)
-			$bills->setLimit($limit);
+		$lodo = new \helper\lodo('bills', 'billing');
+
+		if($limit)
+			$lodo->setLimit($limit);
+		if($sort)
+			$lodo->sort($sort);
+		if($conditions)
+			$lodo->addCondition($conditions);
 
 		//$contacts->setReturnType('\\helper\\business\\Company');
 
-		return $bills->getObjects('\model\finance\Bill');
+		return $lodo->getObjects('\model\finance\Bill');
 	}
 
 	/**
@@ -202,10 +211,20 @@ class billing extends \core\api
 	static function update(\model\finance\Bill $obj)
 	{
 		$lodo = new \helper\lodo('bills', 'billing');
+
+		//test that existing object is a draft
+
 		//create the object
 		$obj = self::billObject($obj);
+
+		//finalize, if finished
+		if (!$obj->draft)
+			self::finalize($obj);
+
+		//save the bill
 		$lodo->setFulltextIndex(self::$fulltextIndex);
 		$obj = $lodo->update($obj);
+
 		return $obj;
 	}
 
@@ -242,16 +261,60 @@ class billing extends \core\api
 	}
 
 	/**
-	 * add bill as draft, from external source.
+	 * bookkeeps invoice.
 	 *
-	 * this draft will have to
+	 * marks the bill as payes
 	 *
-	 * @param $treeID the ID of the tree, where the bill is inserted
-	 * @param $bill the bill object.
+	 * @param $id string the id of the bill
+	 * @param $asset int the asset account the money is recieved on.
+	 * @param $liability int the liability account
+	 * @param $amount int if the invoice is of different currency than the asset
+	 *					account,  this is required.
+	 * @param $currency string the currency it was payed in, only mandatory when another valuta
+	 *  the default was used.
 	 */
-	static function addExternal($treeID, $bill)
-	{
+	static function bookkeep($id, $asset, $liability, $amount = null, $currency = null){
+		//fetch invoice
+		$bill = self::getOne($id);
 
+		//accounts to post to
+		$daybookTransaction = new \model\finance\accounting\DaybookTransaction();
+
+		//iterate through products
+		$collection = array();
+		if(!empty($bill->lines)){
+			$amount = 0;
+			foreach($bill->lines as $line){
+			   $posting = new \model\finance\accounting\Posting(array(
+				   'amount' => abs($line->amount) * $line->quantity,
+				   'positive' => ($line->amount >= 0 ? true : false),
+				   'account' => $line->account
+			   ));
+				$amount += $line->amount * $line->quantity;
+				$collection[] = $posting;
+			}
+			$collection[] = new \model\finance\accounting\Posting(array(
+				'amount' => $amount,
+				'positive' => ($amount >= 0 ? true : false),
+				'account' => $asset
+			));
+			$collection[] = new \model\finance\accounting\Posting(array(
+				'amount' => $amount,
+				'positive' => ($amount >= 0 ? true : false),
+				'account' => $liability
+			));
+		}
+		//set variables:
+		$daybookTransaction->postings = $collection;
+		$daybookTransaction->approved = true;
+		$daybookTransaction->date = time();
+		$bill->ref = $daybookTransaction->referenceText = __('Bill %s', base_convert(crc32($bill->_id), 10, 35));
+
+		//port the transactions to the accounting system
+		\api\accounting::importTransactions($daybookTransaction);
+		$bill->isPayed = true;
+		self::update($bill);
+		return $bill->ref;
 	}
 
 	/**
@@ -273,8 +336,6 @@ class billing extends \core\api
 		//set standard values
 		if (!isset($bill->draft)) //assuming draft
 			$bill->draft = true;
-		if (!$bill->draft)
-			throw new \exception\UserException('The bill is not a draft, editing is not possible');
 		//final merging array
 		$toMerge = array();
 
@@ -288,16 +349,22 @@ class billing extends \core\api
 				if (is_string($prod->productID) && !\api\products::getOne($prod->productID))
 					throw new \exception\UserException(__('Product %s doesn\' exist', $prod->productID));
 
-				if ($prod->quantity <= 0)
+				//some validation
+				if ($prod->quantity <= 0)//quantity not negative
 					throw new \exception\UserException(__('Quantity must be more than 0, value: %s', $prod->quantity));
+				if(empty($prod->account))//account available
+					throw new \exception\UserException(__('Billingline identified by "%s" has no accountnumber.', $prod->text));
 
 				$tAmount = $prod->amount * $prod->quantity;
 
 				//***calculate vat total:
 
 				//fetch vat from accounting
-				$percentage = \api\accounting::getVatCode($prod->vatCode)->percentage;
-
+				$percentage = 0;
+				if($prod->vatCode)//if vatcode exists
+					$percentage = \api\accounting::getVatCode($prod->vatCode)->percentage;
+				else//fetch from accountcode
+					$percentage = \api\accounting::getVatCodeForAccount($prod->account)->percentage;
 
 				$vat += ($tAmount * $percentage) / 100;
 
@@ -310,11 +377,14 @@ class billing extends \core\api
 		//set total
 		$bill->amountTotal = $total + $vat;
 
-		//finalize, if finished
-		if (!$bill->draft)
-			$bill = self::finalize($bill);
-
 		return $bill;
+	}
+
+	/**
+	 * finalize a bill;
+	 */
+	private static function finalize($bill){
+
 	}
 }
 

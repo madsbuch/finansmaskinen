@@ -132,7 +132,7 @@ class View extends \helper\layout\LayoutBlock
 
 		if ($this->obj->draft)
 			$left->appendChild(\helper\html::importNode($dom,
-				'<a class="btn btn-success btn-large" href="/bill/edit/' . $this->obj->_id .
+				'<a class="btn btn-success btn-large" href="/billing/edit/' . $this->obj->_id .
 					'">Færdiggør regning</a> '));
 		elseif (!$this->obj->isPayed)
 			$left->appendChild(\helper\html::importNode($dom,

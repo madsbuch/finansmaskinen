@@ -134,8 +134,11 @@ class auth{
 	}
 	
 	/**
-	* Log a user in to the system
-	*/
+	 * Log a user in to the system
+	 *
+	 * TODO add cache facilities, quite easy, create a file identified by uid and secret
+	 * let it contain information. use it if it exists, delete the file if any changes are made.
+	 */
 	function login($uid, $secret){
 		if(!$this->validateUser($uid, $secret))
 			return false;

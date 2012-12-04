@@ -68,9 +68,27 @@ class billing extends \core\rpc
 			//fetch object
 			$newBill = $this->billPrepare($newBill);
 			//update the stuff
-			\api\billing::update($newBill);
+			 \api\billing::update($newBill);
 			//return success
-			$this->ret(array('success', true));
+			$this->ret(array('success' => true));
+		} catch (\exception\UserException $e) {
+			$this->throwException($e->getMessage());
+		}
+	}
+
+	/**
+	 * posts an bill to the accounting
+	 *
+	 * @param $id string
+	 * @param $asset int
+	 * @param $liability int
+	 */
+	function post($id, $asset, $liability){
+		try {
+			//do the posting stuff
+			$ref = \api\billing::bookkeep($id, $asset, $liability);
+			//return success
+			$this->ret(array('success' => true, 'referenceText' => $ref));
 		} catch (\exception\UserException $e) {
 			$this->throwException($e->getMessage());
 		}

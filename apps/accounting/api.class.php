@@ -336,19 +336,42 @@ class accounting
 	 *
 	 * here interfacing to this system is defined:
 	 *
-	 * @param $trans array of objects, they are expected to be homogeneous.
-	 *                behaviour is not documentet otherwise
-	 * @param $type exåæicitly tell what the transactions is of type
+	 * @param $transaction array array of objects, they are expected to be homogeneous. behaviour is not documentet otherwise
+	 * @param $type string explictly tell what the transactions is of type
+	 * @param $ref string the desired reference in the accounting system
+	 * @param $addVat bool whether to automatically add vat postings to the transaction
 	 */
-	static function importTransactions($trans, $type = null, $ref = null)
+	static function importTransactions($transaction, $type = null, $ref = null, $addVat = false)
 	{
-		//this is used, when registering products.
+		$ah = new \helper\accounting((string) self::retrieve()->_id);
 
-		$ah = new \helper\accounting((string)self::retrieve()->_id);
-		reset($trans);
-		$f = current($trans);
+		if(!is_null($type)){
+			$strategyName = 'app\accounting\strategies\transactions\\'.$type;
+			$strategy = new $strategyName();
+			$transaction = $strategy->getDaybookTransaction($transaction);
+		}
+
+		//test if it's is a daybookTransaction
+		if(is_a($transaction, '\model\finance\accounting\DaybookTransaction')){
+			//if $ref is set explicitly, set it
+			if(empty($transaction->referenceText))
+				$transaction->referenceText = $ref;
+
+			//maybe calculate vat?
+			if($addVat)
+				$transaction = $ah->vatCalculate($transaction);
+			//and finally add all th stuff
+			$ah->addDaybookTransaction($transaction);
+			$ah->commit();
+			return;
+		}
+
+		//try to guess the type (deprecated). requires the transaction to be an array
+		reset($transaction);
+		$f = current($transaction);
+		//collection of Catagories
 		if (is_a($f, 'model\finance\products\Catagory')) {
-			foreach ($trans as $cat) {
+			foreach ($transaction as $cat) {
 				$vat = isset($cat->vatAmount) ? false : true;
 				$ah->automatedTransaction(
 					$cat->amount,
@@ -406,7 +429,6 @@ class accounting
 		$acc = self::retrieve();
 		$acc = new \helper\accounting((string)$acc->_id);
 		return $acc->getAccount($id);
-		;
 	}
 
 	/**

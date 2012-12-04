@@ -41,7 +41,9 @@ class accounting
 	protected $balance;
 
 	/**
-	 * transactions that are ready to be applied to database.
+	 * //TODO refactor everything to use daybookTransaction and postings
+	 *
+	 * @var \model\finance\accounting\Transaction
 	 */
 	private $transactions = array();
 
@@ -68,6 +70,7 @@ class accounting
 			WHERE ref = ? AND account_id = \'' . $accounting . '\';');
 	}
 
+	/**** different add functions ****/
 
 	/**
 	 * add transaction
@@ -87,10 +90,10 @@ class accounting
 		//get account type:
 		$this->accCheck->execute(array($transaction->account));
 		$rArr = $this->accCheck->fetchAll();
-		$rArr = $rArr[0];
+		if (count($rArr) != 1)
+			throw new \exception\UserException(__('Account "%s" does not exist.', $transaction->account));
 
-		if (empty($rArr))
-			throw new \Exception(__('Account "%s" does not exist.', $transaction->account));
+		$rArr = $rArr[0];
 
 		//check if refere already exists
 		$this->refCheck->execute(array($transaction->ref));
@@ -120,6 +123,24 @@ class accounting
 		$this->transactions[] = $transaction;
 	}
 
+	/**
+	 * adds all postings from daybooktransaction object
+	 *
+	 * @param $transaction \model\finance\accounting\DaybookTransaction
+	 */
+	function addDaybookTransaction(\model\finance\accounting\DaybookTransaction $transaction){
+		foreach($transaction->postings as $posting){
+			$this->addTransaction(new \model\finance\accounting\Transaction(array(
+				'value' => $posting->amount,
+				'positive' => $posting->positive,
+				'account' => $posting->account,
+
+				'ref' => $transaction->referenceText,
+				'date' => $transaction->date,
+				'approved' => $transaction->approved
+			)));
+		}
+	}
 	/**
 	 * automatic add of transactions for a standard double accounting registration
 	 *
@@ -197,6 +218,48 @@ class accounting
 		$this->addTransaction($assTrans);
 	}
 
+	/**** aux function adding functionality and transforming objects ****/
+
+	/**
+	 * calculates and adds postings for VAT.
+	 *
+	 * @param $dbTrans \model\finance\accounting\DaybookTransaction
+	 * @param $liabilityAccount int account to reflect salesVat
+	 * @param $assetAccount int account to reflect bourght vat
+	 */
+	function vatCalculate(\model\finance\accounting\DaybookTransaction $dbTrans, $liabilityAccount, $assetAccount){
+		$vatCodes = array();
+		//go through all postings and fetch VAT codes
+		foreach($dbTrans->postings as $post){
+			$vat = isset($post->overrideVat) ? $this->getVatCode($post->overrideVat) : $this->getVatCodeForAccount($post->account);
+			if(isset($vatCodes[$vat->code]))
+				$vatCodes[$vat->code]['amount'] += $post->positive ? $post->amount : $post->amount * -1;
+			else{
+				$vatCodes[$vat->code]['amount'] = $post->positive ? $post->amount : $post->amount * -1;
+				$vatCodes[$vat->code]['obj'] = $vat;
+			}
+		}
+
+		//add postings for vatcodes
+		foreach($vatCodes as $entry){
+
+		}
+		return $dbTrans;
+	}
+
+	/**
+	 * takes a daybookTransaction, and calculates the balance accounts (liability and asset) from the
+	 * operation accounts
+	 *
+	 * @param \model\finance\accounting\DaybookTransaction $dbTrans
+	 * @param $liabilityAccount
+	 * @param $assetAccount
+	 * @return \model\finance\accounting\DaybookTransaction
+	 */
+	function balanceCalculate(\model\finance\accounting\DaybookTransaction $dbTrans, $liabilityAccount, $assetAccount){
+		return $dbTrans;
+	}
+
 	/**
 	 * commits changes to the database
 	 *
@@ -206,7 +269,7 @@ class accounting
 	{
 
 		if ($this->balance != 0)
-			throw new \Exception('assets and libilities should equal up to 0');
+			throw new \exception\UserException('assets and libilities should equal up to 0');
 
 		if (!is_string($this->accounting))
 			throw new \Exception('Accounting is not set properly');
@@ -318,7 +381,9 @@ class accounting
 	}
 
 	/**
-	 * returns a single vatcode
+	 * returns a single vatcode object
+	 *
+	 * @return \model\finance\accounting\VatCode
 	 */
 	function getVatCode($code)
 	{
@@ -346,7 +411,9 @@ class accounting
 	}
 
 	/**
-	 * returns a single vatcode based on accountnumber
+	 * returns a single vatcode object based on accountnumber
+	 *
+	 * @return \model\finance\accounting\VatCode
 	 */
 	function getVatCodeForAccount($acc)
 	{
@@ -387,12 +454,22 @@ class accounting
 	/**
 	 * returns some account objects
 	 *
-	 * @param $flags, binary representation of flags. see constants
+	 * @param $flags int, binary representation of flags. see constants, used for quereing
+	 * @param $account array, array of accounts search is limited to
 	 */
-	function getAccounts($flags = 0)
+	function getAccounts($flags = 0, $accounts = array())
 	{
 		$pdo = $this->db->dbh;
 		$add = ' AND flags & ' . $flags . ' = ' . $flags . '';
+
+		if(is_array($accounts)){
+			$first = 'AND ';
+			foreach($accounts as $acc){
+				$add .= ' '.$first.' acc.account_id = '. (int) $acc;
+				$first = 'OR';
+			}
+			$add .= '';
+		}
 
 		//$sth = $pdo->prepare('SELECT * FROM '.self::ATABLE.' WHERE grp_id = '. $this->grp . $add);
 
@@ -405,6 +482,8 @@ class accounting
 			WHERE acc.grp_id = ' . $this->grp . $add . '
 			GROUP BY acc.account_id');
 
+		//var_dump($sth);
+
 		$ret = array();
 		$sth->execute(array($this->accounting));
 		foreach ($sth->fetchAll() as $t) {
@@ -416,8 +495,8 @@ class accounting
 				'type' => $t['type'],
 				'allowPayments' => $t['flags'] & self::PAYABLE == self::PAYABLE ? true : false,
 				'isEquity' => $t['flags'] & self::EQUITY == self::EQUITY ? true : false,
-				'income' => $t['income'],
-				'outgoing' => $t['outgoing']
+				'income' => $t['income'] ? $t['income'] : 0,
+				'outgoing' => $t['outgoing'] ? $t['outgoing'] : 0
 			));
 		}
 
@@ -426,7 +505,12 @@ class accounting
 
 	function getAccount($id)
 	{
-		$id = (int)$id;
+		$accounts = $this->getAccounts(0, array($id));
+
+		if(count($accounts) < 1)
+			throw new \exception\UserException(__('Account %s doesn\'t exist.', $id));
+		return $accounts[0];
+		/*$id = (int)$id;
 		$pdo = $this->db->dbh;
 		$sth = $pdo->prepare('SELECT * FROM ' . self::ATABLE . ' WHERE
 			grp_id = ' . $this->grp . ' AND account_id = ?');
@@ -446,7 +530,7 @@ class accounting
 				//'ref' => $t['ref']
 			));
 		}
-		throw new \exception\UserException(__('Account %s doesn\'t exist.', $id));
+		throw new \exception\UserException(__('Account %s doesn\'t exist.', $id));*/
 	}
 
 	/**

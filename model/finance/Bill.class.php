@@ -69,7 +69,7 @@ class Bill extends \model\AbstractModel
 	 *
 	 * @var \model\finance\accounting\DaybookTransaction
 	 */
-	protected $daybookTransaction;
+	//protected $daybookTransaction;
 
 	/**
 	 * instance of

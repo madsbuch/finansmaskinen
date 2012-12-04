@@ -108,7 +108,8 @@ class logHandler{
 	* core statistics, types defined in the start.
 	*/
 	static function statistic($type){
-		$session = session::getInstance();
+		//TODO see plexus for how to handle statistics
+		/*$session = session::getInstance();
 		$input = inputParser::getInstance();
 		$auth = auth::getInstance();
 		
@@ -138,7 +139,7 @@ class logHandler{
 			break;
 		}
 		
-		self::writeDB($arr, $type);
+		//self::writeDB($arr, $type);*/
 	}
 	
 	/**

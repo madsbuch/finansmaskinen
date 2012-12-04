@@ -87,6 +87,20 @@ class billing extends \core\app
 		$this->output_content = $html->generate();
 	}
 
+	function edit($id = null){
+		$html = $this->getTpl();
+		$html->appendContent(\helper\layout\Element::heading('Regninger',
+			'Rediger regning'));
+
+		$bill = \api\billing::getOne($id);
+
+		$form = new billing\layout\finance\Form($bill );
+		$html->appendContent($form);
+
+		$this->output_header = $this->header->generate();
+		$this->output_content = $html->generate();
+	}
+
 	/***************************** AJAX FUNCTION ******************************/
 
 	function create()

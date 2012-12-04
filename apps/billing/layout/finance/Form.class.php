@@ -25,9 +25,10 @@ class Form extends \helper\layout\LayoutBlock
 		at holde styr på hvem der skylder hvad.',
 	);
 
-	function __construct($obj = null)
-	{
+	private $bill;
 
+	function __construct($bill = null){
+		$this->bill = $bill;
 	}
 
 	function generate()

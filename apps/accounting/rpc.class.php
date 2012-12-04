@@ -34,9 +34,12 @@ class accounting extends \core\rpc
 	}
 
 	/**
-	 * @param array $id array of accountnumbers
+	 * requests a collection of accounts, optionally you
+	 *
+	 * @param $id array array of accountnumbers
+	 * @param $accounting string the accounting to use (for current amounts)
 	 */
-	function getAccounts($ids = array())
+	function getAccounts($ids = array(), $accounting = null)
 	{
 		try {
 			$acc = \api\accounting::getAccountsByIds($ids);
@@ -47,11 +50,12 @@ class accounting extends \core\rpc
 	}
 
 	/**
-	 * returns a ginel account based on the id supplied
+	 * returns a single account based on the id supplied. optionally a accountingid may be supplied
 	 *
 	 * @param $id string
+	 * @param $accounting string the accounting to use (for current amounts)
 	 */
-	function get($id)
+	function get($id, $accounting = null)
 	{
 		try {
 			$acc = \api\accounting::getAccount($id);

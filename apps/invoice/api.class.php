@@ -211,11 +211,11 @@ class invoice{
 	/**
 	 * bookkeeps invoice.
 	 *
-	 * this should be called on an invoice, when it is marked payed
+	 * marks the invoice as payed, and notes the reference
 	 *
-	 * @param $id the id of the invoice
-	 * @param $asset the asset account the money is recived on.
-	 * @param $amount	if the invoice is of different currency than the asset
+	 * @param $id string the id of the invoice
+	 * @param $asset int the asset account the money is recived on.
+	 * @param $amount int if the invoice is of different currency than the asset
 	 *					account,  this is required.
 	 */
 	static function bookkeep($id, $asset, $amount = null){

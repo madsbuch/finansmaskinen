@@ -8,6 +8,9 @@ namespace model\finance\accounting;
 
 /**
  * @property int $percentage
+ * @property int $type
+ * @property int $name
+ * @property int $account
  */
 class VatCode extends \model\AbstractModel
 {

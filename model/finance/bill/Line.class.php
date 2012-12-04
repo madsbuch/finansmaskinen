@@ -23,7 +23,8 @@ class Line extends \model\AbstractModel
 
 	/**
 	 * used for this line
-	 * MONDATORY
+	 *
+	 * if not used, vatCode from account is used
 	 */
 	protected $vatCode;
 

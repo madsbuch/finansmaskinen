@@ -8,11 +8,42 @@
  *
  */
 namespace model\finance\accounting;
+
+/**
+ * @property $referenceText string
+ * @property $postings array
+ * @property $date int
+ * @property $approved bool
+ */
 class DaybookTransaction extends \model\AbstractModel
 {
+	protected $_autoassign = array(
+		'postings' => array('\model\finance\accounting\Posting', true),
+	);
 
-	protected $ref;
+	/**
+	 * unique reference text
+	 *
+	 * @var string
+	 */
+	protected $referenceText;
+
+
+	/**
+	 * @var postings
+	 */
 	protected $postings;
+
+
+	/**
+	 * @var
+	 */
+	protected $date;
+
+	/**
+	 * @var bool
+	 */
+	protected $approved;
 
 	/**
 	 * what do you think?!

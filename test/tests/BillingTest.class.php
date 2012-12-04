@@ -27,12 +27,14 @@ class BillingTest extends UnitTestCase
 	 */
 	function setUp()
 	{
+		global $settings;
 		$this->client = new jsonRPCClient(
-			'http://rpc.finansmaskinen.dev/billing/rpc.json?key=4e50d016a6f29dc43d728543fddebdfec6b9f7cfc6b51fcfa3e75712c841c5f5-50a2da9313642-d41d8cd98f00b204e9800998ecf8427e',
-			true);
+			'http://rpc.finansmaskinen.dev/billing/rpc.json?key=' . $settings->apiKey, true);
+		$this->clientAcc = new jsonRPCClient(
+			'http://rpc.finansmaskinen.dev/accounting/rpc.json?key=' . $settings->apiKey, true);
 	}
 
-	//region basic testing (nothing from here is done, is the test framework needs to be finished)
+	//region basic testing (nothing from here as done, is the test framework needs to be finished)
 
 	/**
 	 * test that a bill is actually added
@@ -175,19 +177,68 @@ class BillingTest extends UnitTestCase
 
 	}
 
+	private $expense;
+	private $asset;
+	private $liability;
+	private $vat;
 
 	/**
 	 * test for accurate accounting on the invoice including vat
 	 */
-	function testAccounting()
+	function testFinalize()
 	{
-		//read accounts
+		//save account values
+		$this->expense = new \model\finance\accounting\Account($this->clientAcc->get('2100'));
+		$this->asset = new \model\finance\accounting\Account($this->clientAcc->get('12320'));
+		$this->liability = new \model\finance\accounting\Account($this->clientAcc->get('13110'));
+		$this->vat = new \model\finance\accounting\Account($this->clientAcc->get('14261'));
 
-		//undraft the bill
+		//setting draft to false
+		$this->fetchedBill->draft = false;
+		$ret = $this->billApi1 = $this->client->update($this->fetchedBill->toArray());
 
-		//read accounts again
+		//marking the bill as payed
+		$this->client->post((string) $this->fetchedBill->_id, 12320, 13110);
+	}
 
-		//assert differences
+	/**
+	 * tests  that a non draft document cannot be updated
+	 */
+	function testImmutableOfFinalizedBill(){
+
+	}
+
+	/**
+	 * tests that accounting is updated
+	 */
+	function testAccountingUpdated(){
+		global $billDetail;
+
+		//we only check on income, as there should only be increments
+		$expense = new \model\finance\accounting\Account($this->clientAcc->get(2100));
+		$asset = new \model\finance\accounting\Account($this->clientAcc->get(12320));
+		$liability = new \model\finance\accounting\Account($this->clientAcc->get(13110));
+		$vat = new \model\finance\accounting\Account($this->clientAcc->get(14261));
+
+		//checking that accounts are done right
+		$incomeAmountExpected = $this->expense->income + $billDetail['amountIncome'];
+		$assetAmountExpected = $this->asset->income + $billDetail['amountIncome'];
+		$liabilityAmountExpected = $this->liability->income + $billDetail['amountIncome'];
+		$vatAmountExpected = $this->vat->income + $billDetail['amountVat'];
+
+		$this->assertEqual($incomeAmountExpected, $expense->income,
+			"income was not posted properly, should be $incomeAmountExpected, was ". $expense->income);
+
+		$this->assertEqual($assetAmountExpected, $asset->income,
+			"asset was not posted properly, should be $assetAmountExpected, was ". $asset->income);
+
+		$this->assertEqual($liabilityAmountExpected, $liability->income,
+			"liability was not posted properly, should be $liabilityAmountExpected, was ". $liability->income);
+
+		$this->assertEqual($vatAmountExpected, $vat->income,
+			"vat was not posted properly, should be $vatAmountExpected, was ". $vat->income);
+
+
 	}
 
 	//endregion

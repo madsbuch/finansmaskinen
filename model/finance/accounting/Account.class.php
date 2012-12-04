@@ -6,6 +6,17 @@
 
 namespace model\finance\accounting;
 
+/**
+ * @property string $name
+ * @property int $code
+ * @property int $defaultReflaction
+ * @property string $vatCode
+ * @property int $type
+ * @property bool $allowPayments
+ * @property bool $isEquity
+ * @property int $income
+ * @property int $outgoing
+ */
 class Account extends \model\AbstractModel
 {
 	/**

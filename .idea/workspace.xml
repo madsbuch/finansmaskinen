@@ -1,19 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="183a684a-abcb-40ae-91a3-389cc5b99508" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/exception/PermissionException.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/exception/UserException.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/model/finance/accounting/DaybookTransaction.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/model/finance/accounting/Posting.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/model/finance/bill/Line.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/start/finance/strategies/Factory.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/start/finance/strategies/signup/Signup.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/start/finance/strategies/signup/firstYearFree.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/tests/Destructor.class.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/model/finance/bill/Product.class.php" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/interfaces/AuthApp.interface.php" afterPath="$PROJECT_DIR$/exception/AuthApp.interface.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/interfaces/Log.interface.php" afterPath="$PROJECT_DIR$/exception/Log.interface.php" />
+    <list default="true" id="d3682f5e-bc6d-4295-9baa-f52e6348649d" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apps/accounting/strategies/transactions/Transactions.class.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/plugins/htmlpurifier/standalone/HTMLPurifier/DefinitionCache/Serializer/HTML/4.4.0,7dbdc3d58ab57a278defc6669c7aa098,1.ser" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/accounting/api.class.php" afterPath="$PROJECT_DIR$/apps/accounting/api.class.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/accounting/rpc.class.php" afterPath="$PROJECT_DIR$/apps/accounting/rpc.class.php" />
@@ -21,24 +11,24 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/billing/controller.class.php" afterPath="$PROJECT_DIR$/apps/billing/controller.class.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/billing/layout/finance/Form.class.php" afterPath="$PROJECT_DIR$/apps/billing/layout/finance/Form.class.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/billing/layout/finance/View.class.php" afterPath="$PROJECT_DIR$/apps/billing/layout/finance/View.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/billing/layout/finance/Widget.class.php" afterPath="$PROJECT_DIR$/apps/billing/layout/finance/Widget.class.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/billing/rpc.class.php" afterPath="$PROJECT_DIR$/apps/billing/rpc.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/products/api.class.php" afterPath="$PROJECT_DIR$/apps/products/api.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/rpc.class.php" afterPath="$PROJECT_DIR$/core/rpc.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/invoice/api.class.php" afterPath="$PROJECT_DIR$/apps/invoice/api.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/auth.class.php" afterPath="$PROJECT_DIR$/core/auth.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/logHandler.class.php" afterPath="$PROJECT_DIR$/core/logHandler.class.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/helpers/accounting/controller.class.php" afterPath="$PROJECT_DIR$/helpers/accounting/controller.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/helpers/lodo/controller.class.php" afterPath="$PROJECT_DIR$/helpers/lodo/controller.class.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/localization/da_DK.lan" afterPath="$PROJECT_DIR$/localization/da_DK.lan" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/core/access.log" afterPath="$PROJECT_DIR$/log/core/access.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/core/error.log" afterPath="$PROJECT_DIR$/log/core/error.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/core/exception.log" afterPath="$PROJECT_DIR$/log/core/exception.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/core/rpc.log" afterPath="$PROJECT_DIR$/log/core/rpc.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/AbstractModel.class.php" afterPath="$PROJECT_DIR$/model/AbstractModel.class.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/finance/Bill.class.php" afterPath="$PROJECT_DIR$/model/finance/Bill.class.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/finance/accounting/Account.class.php" afterPath="$PROJECT_DIR$/model/finance/accounting/Account.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/finance/accounting/DaybookTransaction.class.php" afterPath="$PROJECT_DIR$/model/finance/accounting/DaybookTransaction.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/finance/accounting/Posting.class.php" afterPath="$PROJECT_DIR$/model/finance/accounting/Posting.class.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/finance/accounting/VatCode.class.php" afterPath="$PROJECT_DIR$/model/finance/accounting/VatCode.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/bootstrap/js/init.js" afterPath="$PROJECT_DIR$/static/bootstrap/js/init.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/finance/bill/Line.class.php" afterPath="$PROJECT_DIR$/model/finance/bill/Line.class.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/temporary/lastrun.log" afterPath="$PROJECT_DIR$/temporary/lastrun.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/simpletest/reflection_php4.php" afterPath="$PROJECT_DIR$/test/simpletest/reflection_php4.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/tests/AccountingTest.class.php" afterPath="$PROJECT_DIR$/test/tests/AccountingTest.class.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/tests/BillingTest.class.php" afterPath="$PROJECT_DIR$/test/tests/BillingTest.class.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/tests/DataLib.php" afterPath="$PROJECT_DIR$/test/tests/DataLib.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/index.php" afterPath="$PROJECT_DIR$/webroot/index.php" />
@@ -60,16 +50,14 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5105263">
+    <splitter split-orientation="horizontal" split-proportion="0.67862374">
       <split-first>
         <leaf>
-          <file leaf-file-name="BillingTest.class.php" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/test/tests/BillingTest.class.php">
+          <file leaf-file-name="rpc.class.php" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/apps/billing/rpc.class.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="166" column="26" selection-start="3558" selection-end="3576" vertical-scroll-proportion="1.5769231">
-                  <folding>
-                    <element signature="e#787#881#0" expanded="false" />
-                  </folding>
+                <state line="99" column="24" selection-start="1993" selection-end="1993" vertical-scroll-proportion="-31.416666">
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -77,28 +65,8 @@
           <file leaf-file-name="api.class.php" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/apps/billing/api.class.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="125" column="37" selection-start="2319" selection-end="2319" vertical-scroll-proportion="2.25">
+                <state line="195" column="43" selection-start="3968" selection-end="3968" vertical-scroll-proportion="-14.692307">
                   <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="rpc.class.php" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/apps/billing/rpc.class.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="82" column="33" selection-start="1594" selection-end="1594" vertical-scroll-proportion="2.25">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="rpc.class.php" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/apps/accounting/rpc.class.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="56" column="40" selection-start="999" selection-end="999" vertical-scroll-proportion="2.25">
-                  <folding>
-                    <marker date="1354403782000" expanded="true" signature="1617:1688" placeholder="..." />
-                  </folding>
                 </state>
               </provider>
             </entry>
@@ -106,45 +74,52 @@
           <file leaf-file-name="api.class.php" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/apps/accounting/api.class.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="407" column="26" selection-start="9877" selection-end="9877" vertical-scroll-proportion="2.25">
+                <state line="361" column="61" selection-start="9296" selection-end="9296" vertical-scroll-proportion="-20.583334">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="AccountingTest.class.php" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/test/tests/AccountingTest.class.php">
+          <file leaf-file-name="Address.class.php" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/model/ext/ubl2/Address.class.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="65" column="43" selection-start="1421" selection-end="1421" vertical-scroll-proportion="2.25">
+                <state line="11" column="4" selection-start="127" selection-end="218" vertical-scroll-proportion="-5.0">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Destructor.class.php" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/test/tests/Destructor.class.php">
+          <file leaf-file-name="controller.class.php" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/apps/billing/controller.class.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="28" column="5" selection-start="722" selection-end="722" vertical-scroll-proportion="2.25">
-                  <folding>
-                    <element signature="e#6#66#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Account.class.php" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/model/finance/accounting/Account.class.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="47" column="32" selection-start="833" selection-end="833" vertical-scroll-proportion="2.25">
+                <state line="92" column="20" selection-start="2059" selection-end="2059" vertical-scroll-proportion="-48.916668">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="controller.class.php" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="View.class.php" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/apps/billing/layout/finance/View.class.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="134" column="68" selection-start="4339" selection-end="4339" vertical-scroll-proportion="-13.019231">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="controller.class.php" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/helpers/accounting/controller.class.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="448" column="79" selection-start="11680" selection-end="11680" vertical-scroll-proportion="0.9669604">
+                <state line="251" column="25" selection-start="7138" selection-end="7138" vertical-scroll-proportion="0.7671674">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Form.class.php" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/apps/billing/layout/finance/Form.class.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="30" column="28" selection-start="813" selection-end="813" vertical-scroll-proportion="-16.875">
                   <folding />
                 </state>
               </provider>
@@ -154,37 +129,37 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="Form.class.php" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/apps/billing/layout/finance/Form.class.php">
+          <file leaf-file-name="Bill.class.php" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/model/finance/Bill.class.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="152" column="102" selection-start="4749" selection-end="4749" vertical-scroll-proportion="1.5769231">
+                <state line="76" column="16" selection-start="1253" selection-end="1253" vertical-scroll-proportion="-46.25">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="init.js" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/static/bootstrap/js/init.js">
+          <file leaf-file-name="Line.class.php" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/model/finance/bill/Line.class.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="195" column="76" selection-start="7385" selection-end="7385" vertical-scroll-proportion="0.0">
+                <state line="21" column="22" selection-start="239" selection-end="246" vertical-scroll-proportion="-10.625">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="View.class.php" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/apps/billing/layout/finance/View.class.php">
+          <file leaf-file-name="Transaction.class.php" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/model/finance/accounting/Transaction.class.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="106" column="32" selection-start="3364" selection-end="3364" vertical-scroll-proportion="1.5769231">
+                <state line="41" column="18" selection-start="753" selection-end="757" vertical-scroll-proportion="-25.625">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ContactWidget.class.php" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/apps/billing/layout/finance/ContactWidget.class.php">
+          <file leaf-file-name="DaybookTransaction.class.php" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/model/finance/accounting/DaybookTransaction.class.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+                <state line="0" column="18" selection-start="5" selection-end="5" vertical-scroll-proportion="-0.0">
                   <folding />
                 </state>
               </provider>
@@ -193,54 +168,46 @@
           <file leaf-file-name="DataLib.php" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/test/tests/DataLib.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="52" column="9" selection-start="1125" selection-end="1129" vertical-scroll-proportion="2.25">
+                <state line="77" column="21" selection-start="1654" selection-end="1662" vertical-scroll-proportion="-14.375">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ListAccounts.class.php" pinned="false" current="true" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/apps/accounting/layout/finance/ListAccounts.class.php">
+          <file leaf-file-name="BillingTest.class.php" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/test/tests/BillingTest.class.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="51" column="47" selection-start="1386" selection-end="1387" vertical-scroll-proportion="0.734375">
+                <state line="36" column="0" selection-start="840" selection-end="840" vertical-scroll-proportion="65.75">
                   <folding>
-                    <marker date="1344521687000" expanded="true" signature="972:2335" placeholder="..." />
-                    <marker date="1344521687000" expanded="true" signature="994:2324" placeholder="..." />
-                    <marker date="1344521687000" expanded="true" signature="1031:1940" placeholder="..." />
-                    <marker date="1344521687000" expanded="true" signature="1055:1928" placeholder="..." />
-                    <marker date="1344521687000" expanded="false" signature="1109:1119" placeholder="..." />
-                    <marker date="1344521687000" expanded="false" signature="1188:1198" placeholder="..." />
-                    <marker date="1344521687000" expanded="false" signature="1351:1360" placeholder="..." />
-                    <marker date="1344521687000" expanded="true" signature="1361:1554" placeholder="..." />
-                    <marker date="1344521687000" expanded="false" signature="1603:1613" placeholder="..." />
-                    <marker date="1344521687000" expanded="true" signature="1614:1915" placeholder="..." />
-                    <marker date="1344521687000" expanded="false" signature="1684:1693" placeholder="..." />
-                    <marker date="1344521687000" expanded="true" signature="1694:1803" placeholder="..." />
-                    <marker date="1344521687000" expanded="true" signature="1822:1901" placeholder="..." />
-                    <marker date="1344521687000" expanded="true" signature="1965:2123" placeholder="..." />
-                    <marker date="1344521687000" expanded="true" signature="2043:2111" placeholder="..." />
-                    <marker date="1344521687000" expanded="true" signature="2156:2313" placeholder="..." />
-                    <marker date="1344521687000" expanded="true" signature="2381:3137" placeholder="..." />
-                    <marker date="1344521687000" expanded="true" signature="2412:2544" placeholder="..." />
-                    <marker date="1344521687000" expanded="true" signature="2590:2974" placeholder="..." />
-                    <marker date="1344521687000" expanded="true" signature="2663:2963" placeholder="..." />
-                    <marker date="1344521687000" expanded="true" signature="3005:3127" placeholder="..." />
+                    <element signature="e#841#935#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Widget.class.php" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/apps/billing/layout/finance/Widget.class.php">
+          <file leaf-file-name="Form.class.php" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/apps/invoice/layout/finance/Form.class.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="61" column="35" selection-start="1484" selection-end="1484" vertical-scroll-proportion="2.25">
-                  <folding>
-                    <marker date="1354377937000" expanded="true" signature="713:768" placeholder="..." />
-                    <marker date="1354377937000" expanded="true" signature="2274:2330" placeholder="..." />
-                    <marker date="1354377937000" expanded="true" signature="2331:2398" placeholder="..." />
-                    <marker date="1354377937000" expanded="true" signature="2503:2571" placeholder="..." />
-                    <marker date="1354377937000" expanded="true" signature="2572:2651" placeholder="..." />
-                  </folding>
+                <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="280.20834">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Posting.class.php" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/model/finance/accounting/Posting.class.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="30" column="15" selection-start="531" selection-end="537" vertical-scroll-proportion="-15.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="VatCode.class.php" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/model/finance/accounting/VatCode.class.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="12" column="25" selection-start="234" selection-end="234" vertical-scroll-proportion="0.11824324">
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -255,41 +222,35 @@
     </FindUsagesManager>
   </component>
   <component name="Git.Settings">
-    <option name="PREVIOUS_COMMIT_AUTHORS">
-      <list>
-        <option value="mads" />
-      </list>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/webroot/index.php" />
-        <option value="$PROJECT_DIR$/interfaces/UserException.class.php" />
-        <option value="$PROJECT_DIR$/test/simpletest/reflection_php4.php" />
+        <option value="$PROJECT_DIR$/core/auth.class.php" />
+        <option value="$PROJECT_DIR$/apps/billing/strategies/transactions/Transactions.class.php" />
         <option value="$PROJECT_DIR$/apps/billing/rpc.class.php" />
-        <option value="$PROJECT_DIR$/apps/products/api.class.php" />
-        <option value="$PROJECT_DIR$/apps/billing/api.class.php" />
-        <option value="$PROJECT_DIR$/apps/billing/layout/finance/Widget.class.php" />
-        <option value="$PROJECT_DIR$/model/finance/accounting/Account.class.php" />
-        <option value="$PROJECT_DIR$/test/tests/DataLib.php" />
-        <option value="$PROJECT_DIR$/exception/PermissionException.class.php" />
-        <option value="$PROJECT_DIR$/test/tests/Destructor.class.php" />
-        <option value="$PROJECT_DIR$/test/tests/AccountingTest.class.php" />
+        <option value="$PROJECT_DIR$/model/finance/Bill.class.php" />
+        <option value="$PROJECT_DIR$/model/AbstractModel.class.php" />
         <option value="$PROJECT_DIR$/test/tests/BillingTest.class.php" />
-        <option value="$PROJECT_DIR$/apps/accounting/rpc.class.php" />
+        <option value="$PROJECT_DIR$/apps/billing/api.class.php" />
+        <option value="$PROJECT_DIR$/apps/billing/layout/finance/View.class.php" />
+        <option value="$PROJECT_DIR$/apps/billing/controller.class.php" />
+        <option value="$PROJECT_DIR$/apps/billing/layout/finance/Form.class.php" />
         <option value="$PROJECT_DIR$/apps/accounting/api.class.php" />
+        <option value="$PROJECT_DIR$/model/finance/accounting/DaybookTransaction.class.php" />
+        <option value="$PROJECT_DIR$/model/finance/accounting/Posting.class.php" />
+        <option value="$PROJECT_DIR$/model/finance/accounting/VatCode.class.php" />
         <option value="$PROJECT_DIR$/helpers/accounting/controller.class.php" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="1969" />
-    <option name="y" value="2424" />
-    <option name="width" value="1871" />
-    <option name="height" value="1176" />
+    <option name="x" value="1968" />
+    <option name="y" value="-1" />
+    <option name="width" value="1873" />
+    <option name="height" value="1202" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -332,20 +293,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="finansmaskinen" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sshmnt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="finansmaskinen" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webroot" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -431,6 +378,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="bill" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sshmnt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="finansmaskinen" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="accounting" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -477,20 +446,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="exception" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sshmnt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="finansmaskinen" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="apps" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -509,7 +464,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="accounting" />
+              <option name="myItemId" value="invoice" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -527,7 +482,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="accounting" />
+              <option name="myItemId" value="invoice" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -539,18 +494,80 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sshmnt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="finansmaskinen" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="apps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="billing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sshmnt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="finansmaskinen" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="apps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="billing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sshmnt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="finansmaskinen" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="apps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="accounting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="fileTemplates" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/apps/accounting" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -583,34 +600,33 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="183a684a-abcb-40ae-91a3-389cc5b99508" name="Default" comment="" />
-      <created>1353435856926</created>
-      <updated>1353435856926</updated>
+      <created>1354492711249</created>
+      <updated>1354492711249</updated>
     </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1969" y="2424" width="1871" height="1176" extended-state="6" />
+    <frame x="1968" y="-1" width="1873" height="1202" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295238" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294893" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1652938" sideWeight="0.6704762" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24986272" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -648,11 +664,11 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Test added (billing an accounting)&#10;Billing almost done (subsystem), some frontend updating and bookkeeping still misses." />
+    <option name="LAST_COMMIT_MESSAGE" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
-    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
     <option name="FILE_HISTORY_DIALOG_COMMENTS_SPLITTER_PROPORTION" value="0.8" />
     <option name="FILE_HISTORY_DIALOG_SPLITTER_PROPORTION" value="0.5" />
@@ -661,153 +677,125 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Test added (billing an accounting)&#10;Billing almost done (subsystem), some frontend updating and bookkeeping still misses." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test/TestAll.php">
+    <entry file="file://$PROJECT_DIR$/localization/da_DK.lan">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="0" column="26" selection-start="18" selection-end="26" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/billing/layout/finance/View.class.php">
+    <entry file="file://$PROJECT_DIR$/core/appHandler.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="106" column="32" selection-start="3364" selection-end="3364" vertical-scroll-proportion="1.5769231">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/finance/Bill.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="76" column="16" selection-start="1253" selection-end="1253" vertical-scroll-proportion="-46.25">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/invoice/layout/finance/Form.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="280.20834">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/apps/billing/layout/finance/Form.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="152" column="102" selection-start="4749" selection-end="4749" vertical-scroll-proportion="1.5769231">
+        <state line="30" column="28" selection-start="813" selection-end="813" vertical-scroll-proportion="-16.875">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/exception/UserException.class.php">
+    <entry file="file://$PROJECT_DIR$/apps/billing/layout/finance/Widget.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="19" selection-start="163" selection-end="182" vertical-scroll-proportion="0.18967333">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#6#67#0" expanded="true" />
+            <marker date="1354377937000" expanded="true" signature="713:768" placeholder="..." />
+            <marker date="1354377937000" expanded="false" signature="2274:2330" placeholder="..." />
+            <marker date="1354377937000" expanded="true" signature="2331:2398" placeholder="..." />
+            <marker date="1354377937000" expanded="true" signature="2572:2651" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/exception/PermissionException.class.php">
+    <entry file="file://$PROJECT_DIR$/model/finance/accounting/DaybookTransaction.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="44" selection-start="132" selection-end="132" vertical-scroll-proportion="0.11064278">
-          <folding>
-            <element signature="e#6#66#0" expanded="true" />
-          </folding>
+        <state line="0" column="18" selection-start="5" selection-end="5" vertical-scroll-proportion="-0.0">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/finance/accounting/Account.class.php">
+    <entry file="file://$PROJECT_DIR$/model/finance/accounting/Posting.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="32" selection-start="833" selection-end="833" vertical-scroll-proportion="2.25">
+        <state line="30" column="15" selection-start="531" selection-end="537" vertical-scroll-proportion="-15.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/finance/accounting/VatCode.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="25" selection-start="234" selection-end="234" vertical-scroll-proportion="0.11824324">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/invoice/api.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="69" column="40" selection-start="1406" selection-end="1406" vertical-scroll-proportion="0.043165468">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/apps/billing/api.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="125" column="37" selection-start="2319" selection-end="2319" vertical-scroll-proportion="2.25">
+        <state line="195" column="43" selection-start="3968" selection-end="3968" vertical-scroll-proportion="-14.692307">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/tests/Destructor.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="5" selection-start="722" selection-end="722" vertical-scroll-proportion="2.25">
-          <folding>
-            <element signature="e#6#66#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/tests/AccountingTest.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="43" selection-start="1421" selection-end="1421" vertical-scroll-proportion="2.25">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/tests/BillingTest.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="166" column="26" selection-start="3558" selection-end="3576" vertical-scroll-proportion="1.5769231">
-          <folding>
-            <element signature="e#787#881#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/apps/billing/rpc.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="33" selection-start="1594" selection-end="1594" vertical-scroll-proportion="2.25">
+        <state line="99" column="24" selection-start="1993" selection-end="1993" vertical-scroll-proportion="-31.416666">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/accounting/rpc.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="40" selection-start="999" selection-end="999" vertical-scroll-proportion="2.25">
-          <folding>
-            <marker date="1354403782000" expanded="true" signature="1617:1688" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/apps/accounting/api.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="407" column="26" selection-start="9877" selection-end="9877" vertical-scroll-proportion="2.25">
+        <state line="361" column="61" selection-start="9296" selection-end="9296" vertical-scroll-proportion="-20.583334">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/ext/ubl2/Address.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="4" selection-start="127" selection-end="218" vertical-scroll-proportion="-5.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/billing/controller.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="92" column="20" selection-start="2059" selection-end="2059" vertical-scroll-proportion="-48.916668">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/helpers/accounting/controller.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="448" column="79" selection-start="11680" selection-end="11680" vertical-scroll-proportion="0.9669604">
+        <state line="251" column="25" selection-start="7138" selection-end="7138" vertical-scroll-proportion="0.7671674">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/tests/DataLib.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="9" selection-start="1125" selection-end="1129" vertical-scroll-proportion="2.25">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/accounting/layout/finance/ListAccounts.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="47" selection-start="1386" selection-end="1387" vertical-scroll-proportion="0.734375">
-          <folding>
-            <marker date="1344521687000" expanded="true" signature="972:2335" placeholder="..." />
-            <marker date="1344521687000" expanded="true" signature="994:2324" placeholder="..." />
-            <marker date="1344521687000" expanded="true" signature="1031:1940" placeholder="..." />
-            <marker date="1344521687000" expanded="true" signature="1055:1928" placeholder="..." />
-            <marker date="1344521687000" expanded="false" signature="1109:1119" placeholder="..." />
-            <marker date="1344521687000" expanded="false" signature="1188:1198" placeholder="..." />
-            <marker date="1344521687000" expanded="false" signature="1351:1360" placeholder="..." />
-            <marker date="1344521687000" expanded="true" signature="1361:1554" placeholder="..." />
-            <marker date="1344521687000" expanded="false" signature="1603:1613" placeholder="..." />
-            <marker date="1344521687000" expanded="true" signature="1614:1915" placeholder="..." />
-            <marker date="1344521687000" expanded="false" signature="1684:1693" placeholder="..." />
-            <marker date="1344521687000" expanded="true" signature="1694:1803" placeholder="..." />
-            <marker date="1344521687000" expanded="true" signature="1822:1901" placeholder="..." />
-            <marker date="1344521687000" expanded="true" signature="1965:2123" placeholder="..." />
-            <marker date="1344521687000" expanded="true" signature="2043:2111" placeholder="..." />
-            <marker date="1344521687000" expanded="true" signature="2156:2313" placeholder="..." />
-            <marker date="1344521687000" expanded="true" signature="2381:3137" placeholder="..." />
-            <marker date="1344521687000" expanded="true" signature="2412:2544" placeholder="..." />
-            <marker date="1344521687000" expanded="true" signature="2590:2974" placeholder="..." />
-            <marker date="1344521687000" expanded="true" signature="2663:2963" placeholder="..." />
-            <marker date="1344521687000" expanded="true" signature="3005:3127" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>

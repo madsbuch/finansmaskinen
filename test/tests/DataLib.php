@@ -72,15 +72,14 @@ $bill = new \model\finance\Bill(array(
 	'lines' => array(
 		array(
 			'productID' => '506951df1a5f015d44000001',
-			'account' => 0,
-			'vatCode' => 'I25',
+			'account' => 2100,
 			'text' => 'Just added productline',
 			'amount' => 10000,
 			'quantity' => 1,
 		),
 		array(
 			'productID' => '506f38e91a5f011555000000',
-			'account' => 0,
+			'account' => 2100,
 			'vatCode' => 'I25',
 			'text' => 'another one',
 			'amount' => 5000,
@@ -97,6 +96,8 @@ $bill = new \model\finance\Bill(array(
  */
 $billDetail = array(
 	'amountTotal' => 25000,
+	'amountIncome' => 20000,
+	'amountVat' => 5000
 );
 
 /**

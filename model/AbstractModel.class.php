@@ -80,7 +80,7 @@ abstract class AbstractModel{
 	*
 	* this one is stripped when converted to array
 	*/
-	protected $_autoassign;
+	protected $_autoassign = array();
 	
 	/**
 	* create object from array
@@ -116,6 +116,13 @@ abstract class AbstractModel{
 		foreach($data as $name => $value){
 			$this->set($name, $value);
 		}
+
+		//make it possible to use all fields of array types without initiating
+		/*foreach($this->_autoassign as $field => $details){
+			if($details[1] && !isset($this->$field))
+				$this->$field = new \model\Iterator(null, $details[0]);
+
+		} */
 		
 	}
 	

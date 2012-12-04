@@ -161,7 +161,7 @@ initiation:
 */
 
 //configuration
-config\config::initialize();
+\config\config::initialize();
 
 //session
 core\session::initialize();

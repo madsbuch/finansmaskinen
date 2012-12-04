@@ -9,9 +9,37 @@
 namespace model\finance\accounting;
 class Posting extends \model\AbstractModel
 {
+	/**
+	 * @var int account this posting belongs to
+	 */
 	protected $account;
-	protected $value;
+
+	/**
+	 * override vatCode for account
+	 * @var string
+	 */
+	protected $overrideVat;
+
+	/**
+	 * amount in lowest value (cent)
+	 *
+	 * this is always positive, this is due to not doing a lot
+	 * of arithmik operations
+	 *
+	 * @var int
+	 */
 	protected $amount;
 
+	/**
+	 * this is actually side (debit / credit)
+	 *
+	 * @var bool whether the value is positive
+	 */
+	protected $positive;
+
+	/**
+	 * @var string a description
+	 */
+	protected $description;
 }
 
