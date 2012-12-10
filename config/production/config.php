@@ -29,23 +29,23 @@ class config{
 			'mysql' => array (
 				'dbname' => 'finance',
 				'driver' => 'mysql',
-				'host' => '192.168.1.18',
-				'username' => 'appf',
-				'password' => 'appfDB'
+				'host' => '127.0.0.1',
+				'username' => 'finance',
+				'password' => 'YPDMFIVVWA'
 			),
-			
+
 			//mongo
 			'mongo' => array (
 				'dbname' => 'finance',
 				'replicaSet'=> false,
-			
+
 				// persistent related vars
 				'persistent' 	=> true, 			// persistent connection to DB?
 				'persistentId' 	=> 'financeMongo', 	// name of persistent connection
-			
+
 				'servers' => array(
 					array(
-						'host'          => '192.168.1.18',
+						'host'          => '127.0.0.1',
 						'port'          => 27017,
 						'username'      => null,
 						'password'      => null
@@ -78,25 +78,25 @@ class config{
 		'mysql' => array (
 			'dbname' => 'core',
 			'driver' => 'mysql',
-			'host' => '192.168.1.18',
-			'username' => 'appf',
-			'password' => 'appfDB'
+			'host' => '127.0.0.1',
+			'username' => 'finance',
+			'password' => 'YPDMFIVVWA'
 		),
 		'mongo' => array (
 			'dbname' => 'core',
 			'replicaSet'=> false,
-			
+
 			// persistent related vars
 			'persistent' 	=> true, 			// persistent connection to DB?
-		    'persistentId' 	=> 'coreMongo', 	// name of persistent connection
-			
+			'persistentId' 	=> 'coreMongo', 	// name of persistent connection
+
 			'servers' => array(
 				array(
-		            'host'          => '192.168.1.18',
-		            'port'          => 27017,
-		            'username'      => null,
-		            'password'      => null
-		        )
+					'host'          => '127.0.0.1',
+					'port'          => 27017,
+					'username'      => null,
+					'password'      => null
+				)
 			)
 		),
 	
@@ -106,9 +106,9 @@ class config{
 		'mysql' => array (
 			'dbname' => 'logs',
 			'driver' => 'mysql',
-			'host' => '192.168.1.18',
-			'username' => 'appf',
-			'password' => 'appfDB'
+			'host' => '127.0.0.1',
+			'username' => 'finance',
+			'password' => 'YPDMFIVVWA'
 		),
 	);
 	
@@ -116,29 +116,29 @@ class config{
 	* those values, which are null, is read from coreconfig
 	*/
 	public static $sessionConfig = array(
-		    // session related vars
-		    'max_lock_time'	=> 60,			//if something goes wrong with the server
-		    								//a user should not hang all the lifetime
-		    'lifetime'      => 3600,        // session lifetime in seconds
-		    'database'      => null,   		// name of MongoDB database
-		    'collection'    => 'session',   // name of MongoDB collection
-			// persistent related vars
-			'persistent' 	=> true, 			// persistent connection to DB?
-		    'persistentId' 	=> 'MongoSession', 	// name of persistent connection
-			
-			// whether we're supporting replicaSet
-			'replicaSet'		=> null,
+		// session related vars
+		'max_lock_time'	=> 60,			//if something goes wrong with the server
+		//a user should not hang all the lifetime
+		'lifetime'      => 3600,        // session lifetime in seconds
+		'database'      => null,   		// name of MongoDB database
+		'collection'    => 'session',   // name of MongoDB collection
+		// persistent related vars
+		'persistent' 	=> true, 			// persistent connection to DB?
+		'persistentId' 	=> 'MongoSession', 	// name of persistent connection
 
-			// array of mongo db servers
-		    'servers'   	=> array(
-		        array(
-		            'host'          => null,
-		            'port'          => null,
-		            'username'      => null,
-		            'password'      => null
-		        )
-		    )
-		);
+		// whether we're supporting replicaSet
+		'replicaSet'		=> null,
+
+		// array of mongo db servers
+		'servers'   	=> array(
+			array(
+				'host'          => null,
+				'port'          => null,
+				'username'      => null,
+				'password'      => null
+			)
+		)
+	);
 	
 	public static $settings = array(
 		'useCDN' => false,	//use Content Delivery Network (if available)
@@ -148,9 +148,9 @@ class config{
 	);
 	
 	public static $domain = array(
-		'main' => 'www.finansmaskinen.dev',
-		'static' => 'static.finansmaskinen.dev',
-		'api' => 'api.finansmaskinen.dev',
+		'main' => 'www.finansmaskinen.dk',
+		'static' => 'static.finansmaskinen.dk',
+		'api' => 'api.finansmaskinen.dk',
 	);
 	
 	//f.eks. http or https

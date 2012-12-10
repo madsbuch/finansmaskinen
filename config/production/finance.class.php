@@ -61,8 +61,8 @@ class finance{
 	public static $api = array(
 		'krak' => array(),
 		'finansmaskinen' => array(
-			'url' => 'http://rpc.finansmaskinen.dev/',//remember trailing /
-			'key' => '4e50d016a6f29dc43d728543fddebdfec6b9f7cfc6b51fcfa3e75712c841c5f5-50a2da9313642-d41d8cd98f00b204e9800998ecf8427e'
+			'url' => 'http://rpc.finansmaskinen.dk/',//remember trailing /
+			'key' => 'b82544edb387a6190951b2ecbc4bdaa99b6d1f49d59f5d8cc3e395cd80175958-50716ffa41769-d41d8cd98f00b204e9800998ecf8427e'
 		)
 	);
 }

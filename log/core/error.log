@@ -9178,3 +9178,28 @@
 2012-12-10T23:47:04+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
 2012-12-10T23:47:04+01:00 ERROR {"errstr":"unable to load class: app\\assets in \/var\/www\/apps\/assets\/controller.class.php or \/var\/www\/apps\/assets.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":107,"errno":512}
 2012-12-10T23:47:04+01:00 ERROR {"errstr":"Page ico does not exist in app \\app\\assets.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-12-11T00:05:37+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-12-11T00:05:37+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-12-11T00:05:37+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-12-11T00:05:37+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-12-11T00:05:37+01:00 ERROR {"errstr":"unable to load class: app\\assets in \/var\/www\/apps\/assets\/controller.class.php or \/var\/www\/apps\/assets.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":107,"errno":512}
+2012-12-11T00:05:37+01:00 ERROR {"errstr":"Page ico does not exist in app \\app\\assets.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-12-11T00:05:38+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-12-11T00:05:38+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-12-11T00:05:38+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-12-11T00:05:38+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-12-11T00:05:38+01:00 ERROR {"errstr":"unable to load class: app\\assets in \/var\/www\/apps\/assets\/controller.class.php or \/var\/www\/apps\/assets.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":107,"errno":512}
+2012-12-11T00:05:38+01:00 ERROR {"errstr":"Page ico does not exist in app \\app\\assets.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-12-11T00:05:39+01:00 ERROR {"errstr":"Page assets does not exist in app \\app\\billing.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-12-11T00:05:42+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-12-11T00:05:42+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-12-11T00:05:42+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-12-11T00:05:42+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-12-11T00:05:42+01:00 ERROR {"errstr":"unable to load class: app\\assets in \/var\/www\/apps\/assets\/controller.class.php or \/var\/www\/apps\/assets.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":107,"errno":512}
+2012-12-11T00:05:42+01:00 ERROR {"errstr":"Page ico does not exist in app \\app\\assets.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}
+2012-12-11T00:19:36+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-12-11T00:19:36+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":367,"errno":8}
+2012-12-11T00:19:36+01:00 ERROR {"errstr":"Undefined index: assets","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-12-11T00:19:36+01:00 ERROR {"errstr":"Trying to get property of non-object","errfile":"\/var\/www\/start\/finance\/api.class.php","errline":368,"errno":8}
+2012-12-11T00:19:36+01:00 ERROR {"errstr":"unable to load class: app\\assets in \/var\/www\/apps\/assets\/controller.class.php or \/var\/www\/apps\/assets.class.php","errfile":"\/var\/www\/webroot\/index.php","errline":107,"errno":512}
+2012-12-11T00:19:36+01:00 ERROR {"errstr":"Page ico does not exist in app \\app\\assets.","errfile":"\/var\/www\/core\/reqHandler.class.php","errline":97,"errno":1024}

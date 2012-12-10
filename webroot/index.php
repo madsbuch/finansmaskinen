@@ -12,7 +12,7 @@
 /**
  * actually the only thing that should be changed when in prod.
  */
-define('STRATEGY', 'test');
+define('STRATEGY', 'production');
 
 //some character settings:
 mb_internal_encoding("UTF-8");
