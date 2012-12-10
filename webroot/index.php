@@ -14,6 +14,8 @@
  */
 define('STRATEGY', 'production');
 
+include '../'.STRATEGY.'/config.php';
+
 //some character settings:
 mb_internal_encoding("UTF-8");
 ini_set('default_charset', 'UTF-8');
