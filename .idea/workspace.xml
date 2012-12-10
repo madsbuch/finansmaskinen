@@ -119,7 +119,7 @@
           <file leaf-file-name="index.php" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/webroot/index.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="16" column="22" selection-start="286" selection-end="286" vertical-scroll-proportion="0.18499486">
+                <state line="14" column="30" selection-start="259" selection-end="259" vertical-scroll-proportion="0.15416238">
                   <folding />
                 </state>
               </provider>
@@ -590,7 +590,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webroot/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="22" selection-start="286" selection-end="286" vertical-scroll-proportion="0.18499486">
+        <state line="14" column="30" selection-start="259" selection-end="259" vertical-scroll-proportion="0.15416238">
           <folding />
         </state>
       </provider>
