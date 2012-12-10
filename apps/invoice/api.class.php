@@ -197,6 +197,15 @@ class invoice{
 	* takes an invoice object
 	*/
 	public static function finalize($inv){
+		//finalization of invoice requires it to be a valid structure.
+		try{
+			//and validates
+			$inv->validate();
+		}catch(\exception\NotValidatedException $e){
+			//if some validation error was detected, we throw an message to the user
+			throw new \exception\UserException(__('The invoice was not validated: %s', $e->getMessage()));
+		}
+
 		//try to add invoice number, or fail
 		$iNr = \api\companyProfile::increment('invoiceNumberNext');
 		if(is_null($iNr))
@@ -248,7 +257,12 @@ class invoice{
 		}
 		//post the cat's the to accounting system
 		$inv->ref = __('Invoice %s', (string) $inv->Invoice->ID);
-		\api\accounting::importTransactions($cats, null, $inv->ref);
+
+		$options = array(
+			'referenceText' => $inv->ref
+		);
+
+		\api\accounting::importTransactions($cats, $options);
 		$inv->isPayed = true;
 		self::update($inv);
 	}
@@ -299,24 +313,35 @@ class invoice{
 	}
 	
 	/**
-	* this function takes and invoice, and performs all the queries to other parts
-	* of the system, to make it ready.
-	*
-	* if we talk an update, $old should contain the old invoice (which should be
-	* a full object)
-	*/
-	private static function invoiceObject($inv, $old = null){
+	 * This function does following to the invoice:
+	 *  - parses all data
+	 *  - validates that required fields are defined
+	 *  - fetches data from other parts of the system to emrge in
+	 *  - calculates totals
+	 *
+	 * if we talk an update, $old should contain the old invoice (which should be
+	 * a full object)
+	 */
+	private static function invoiceObject(\model\finance\Invoice $inv){
 		$core = new \helper\core('invoice');
 		// merge following details in:
 		//accountingSupplierParty, no reason to play with permissions
 		$supplier = \api\companyProfile::getPublic($core->getTreeID());
-		
+
+		//performing parsing on structure
+		//strict validation is done upon creation, is UBL is to be used
+		$inv->validate($inv::WEAK);
+		$inv->parse();
+
+
 		//merge supplier data in
 		$toMerge = array();
 		$toMerge['Invoice']['AccountingSupplierParty']['Party'] = $supplier->Party->toArray();
 		$toMerge['Invoice']['PaymentMeans'][0] = $supplier->PaymentMeans->toArray();
-		$toMerge['Invoice']['PaymentMeans'][0]['PaymentDueDate'] = ($supplier->dueDays
-			* 86400) + $inv->Invoice->IssueDate->_content;
+
+		if(isset($inv->Invoice->IssueDate->_content))
+			$toMerge['Invoice']['PaymentMeans'][0]['PaymentDueDate'] = ($supplier->dueDays
+				* 86400) + $inv->Invoice->IssueDate->_content;
 		
 		//merge customer in
 		if(!empty($inv->contactID)){

@@ -35,27 +35,33 @@ class View extends \helper\layout\LayoutBlock{
 		$right->setAttribute('class', 'span5');
 		$root->appendChild($right);
 		
-		//populating the left side
+		/**populating the left side**/
+
+		//set a few variable
+		$currencyCode = isset($this->obj->Invoice->DocumentCurrencyCode->_content) ? $this->obj->Invoice->DocumentCurrencyCode->_content : __('No currency set');
 
 		//contact, that is left side
 		$cl = $dom->createElement('div');
-		$p = $this->obj->Invoice->AccountingCustomerParty->Party;
+
 		$cl->appendChild(\helper\html::importNode($dom, '<h3>Modtager</h3>'));
 		$cl->setAttribute('class', 'span3');
 		$cRow = $dom->createElement('div');
 		$cRow->setAttribute('class', 'row');
 		$left->appendChild($cRow);
 		$contact = $dom->createElement('div');
-		$contact->appendChild(new \DOMElement('b', $p->PartyName->Name));
-		$contact->appendChild(new \DOMElement('br'));
-		$contact->appendChild(new \DOMText($p->PostalAddress->StreetName . ' ' . 
-			$p->PostalAddress->BuildingNumber));
-		$contact->appendChild(new \DOMElement('br'));
-		$contact->appendChild(new \DOMText($p->PostalAddress->PostalZone . ' ' . 
-			$p->PostalAddress->CityName));
-		$contact->appendChild(new \DOMElement('br'));
-		$cl->appendChild($contact);
-		
+
+		$p = isset($this->obj->Invoice->AccountingCustomerParty->Party) ? $this->obj->Invoice->AccountingCustomerParty->Party : null;
+		if($p){
+			$contact->appendChild(new \DOMElement('b', $p->PartyName->Name));
+			$contact->appendChild(new \DOMElement('br'));
+			$contact->appendChild(new \DOMText($p->PostalAddress->StreetName . ' ' .
+				$p->PostalAddress->BuildingNumber));
+			$contact->appendChild(new \DOMElement('br'));
+			$contact->appendChild(new \DOMText($p->PostalAddress->PostalZone . ' ' .
+				$p->PostalAddress->CityName));
+			$contact->appendChild(new \DOMElement('br'));
+			$cl->appendChild($contact);
+		}
 		//details that is in the right side
 		$cr = $dom->createElement('div');
 		$cr->setAttribute('class', 'span4');
@@ -73,17 +79,20 @@ class View extends \helper\layout\LayoutBlock{
 		
 		$info->addObject(new \model\Base(array('key' => 'Betalt',
 			'val' => $this->obj->isPayed ? 'Ja' : 'Nej')));
-		
+
+		if(!($t = strtotime((string)$this->obj->Invoice->IssueDate)))
+			$t = (string)$this->obj->Invoice->IssueDate;
 		$info->addObject(new \model\Base(array('key' => 'Oprettet',
-			'val' => date('d/m-Y', (string) $this->obj->Invoice->IssueDate))));
+			'val' => date('d/m-Y', $t))));
 		
 		$info->addObject(new \model\Base(array('key' => 'Sidst rettidige betaling',
-			'val' => date('d/m-Y', $this->obj->Invoice->PaymentMeans->first->PaymentDueDate->_content))));
+			'val' => isset($this->obj->Invoice->PaymentMeans->first->PaymentDueDate->_content) ? date('d/m-Y', $this->obj->Invoice->PaymentMeans->first->PaymentDueDate->_content) : __('Not set'))));
 			
 		$info->addObject(new \model\Base(array('key' => 'Total',
-			'val' => l::writeValuta(
+			'val' => isset($this->obj->Invoice->LegalMonetaryTotal->PayableAmount->_content) ? l::writeValuta(
 				$this->obj->Invoice->LegalMonetaryTotal->PayableAmount->_content,
-				$this->obj->Invoice->DocumentCurrencyCode->_content, true))));
+				$currencyCode, true) : __('Not set'))));
+
 		$info->additionalClasses('table-condensed');
 		$cr->appendChild(\helper\html::importNode($dom, $info->generate()));
 		

@@ -1,6 +1,9 @@
 <?php
 namespace core;
 
+/**
+ * this class should be rethought, everything is "return"'ed out
+ */
 class debug{
 	/*********** FOR SINGLETON ***********/
 	// Hold an instance of the class
@@ -24,6 +27,7 @@ class debug{
 	/********* THE CLASS ***************/
 	
 	private function __construct(){
+		return;
 		if(!DEBUG)//check if we are debugging
 			return;
 		
@@ -43,6 +47,7 @@ class debug{
 	}
 	
 	function __destruct(){
+		return;
 		if(!DEBUG)// check if we are debugging
 			return;
 		//print things to file
@@ -64,12 +69,14 @@ class debug{
 	}
 	
 	public function classLoad($class){
-		if(!DEBUG)// check if we are debugging
-			return;
-		$this->classes[] = $class;
+		return;
+		//if(!DEBUG)// check if we are debugging
+		//	return;
+		//$this->classes[] = $class;
 	}
 	
 	public function eventByTime($event){
+		return;
 		if(!DEBUG)// check if we are debugging
 			return;
 		
@@ -82,10 +89,12 @@ class debug{
 	}
 	
 	public function startTimer($id){
+		return;
 		$this->ctimer[$id] = microtime(true);
 	}
 	
 	public function add2statistics($id){
+		return;
 		//calculate the time
 		$now = microtime(true);
 		$time = (string)($now - $this->ctimer[$id]);

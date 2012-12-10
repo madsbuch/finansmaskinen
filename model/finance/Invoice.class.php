@@ -89,6 +89,25 @@ class Invoice extends \model\AbstractModel{
 	* custom information from other apps
 	*/
 	protected $appsCustom;
+
+	/**
+	 * perform parsing of data in this object
+	 */
+	function doParse(){
+		if(!isset($this->draft))
+			$this->draft = true;
+		if(!isset($this->isPayed))
+			$this->isPayed = false;
+
+	}
+
+	/**
+	 * make sure this is an valid invoice
+	 */
+	function doValidate(){
+		if(empty($this->Invoice))
+			throw new \exception\NotValidatedException(__('The invoice needs the actual invoice object'));
+	}
 }
 
 ?>

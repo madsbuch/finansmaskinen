@@ -111,6 +111,22 @@ class Invoice extends \model\AbstractModel{
 
 	//Navn	DK-Navn	Type
 	protected $TaxRepresentativeParty;//
+
+	/**
+	 * validate datastructure according to UBL standard
+	 */
+	function doValidate($level){
+		if(!isset($this->DocumentCurrencyCode))
+			throw new \exception\NotValidatedException(__('Currency has to be set.'));
+		if(!isset($this->InvoiceLine))
+			throw new \exception\NotValidatedException(__('An invoice must have at least one invoiceline.'));
+
+		if(!$level == static::STRICT)
+			return;
+
+		if(!isset($this->IssueDate))
+			throw new \exception\NotValidatedException(__('Issuedate was not set for invoice.'));
+	}
 }
 
 ?>

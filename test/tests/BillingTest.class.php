@@ -187,10 +187,11 @@ class BillingTest extends UnitTestCase
 	 */
 	function testFinalize()
 	{
+		global $billDetail;
 		//save account values
 		$this->expense = new \model\finance\accounting\Account($this->clientAcc->get('2100'));
-		$this->asset = new \model\finance\accounting\Account($this->clientAcc->get('12320'));
-		$this->liability = new \model\finance\accounting\Account($this->clientAcc->get('13110'));
+		$this->asset = new \model\finance\accounting\Account($this->clientAcc->get($billDetail['asset']));
+		$this->liability = new \model\finance\accounting\Account($this->clientAcc->get($billDetail['liability']));
 		$this->vat = new \model\finance\accounting\Account($this->clientAcc->get('14261'));
 
 		//setting draft to false
@@ -198,7 +199,7 @@ class BillingTest extends UnitTestCase
 		$ret = $this->billApi1 = $this->client->update($this->fetchedBill->toArray());
 
 		//marking the bill as payed
-		$this->client->post((string) $this->fetchedBill->_id, 12320, 13110);
+		$this->client->post((string) $this->fetchedBill->_id, $billDetail['asset'], $billDetail['liability']);
 	}
 
 	/**
@@ -216,23 +217,31 @@ class BillingTest extends UnitTestCase
 
 		//we only check on income, as there should only be increments
 		$expense = new \model\finance\accounting\Account($this->clientAcc->get(2100));
-		$asset = new \model\finance\accounting\Account($this->clientAcc->get(12320));
-		$liability = new \model\finance\accounting\Account($this->clientAcc->get(13110));
+		$asset = new \model\finance\accounting\Account($this->clientAcc->get($billDetail['asset']));
+		$liability = new \model\finance\accounting\Account($this->clientAcc->get($billDetail['liability']));
 		$vat = new \model\finance\accounting\Account($this->clientAcc->get(14261));
 
 		//checking that accounts are done right
+
+		//extra on the operation account
 		$incomeAmountExpected = $this->expense->income + $billDetail['amountIncome'];
-		$assetAmountExpected = $this->asset->income + $billDetail['amountIncome'];
-		$liabilityAmountExpected = $this->liability->income + $billDetail['amountIncome'];
+
+		//less in the bank
+		$assetAmountExpected = $this->asset->outgoing + $billDetail['amountTotal'];
+
+		//less on the liability
+		$liabilityAmountExpected = $this->liability->outgoing + $billDetail['amountIncome'];
+
+		//more on the vat account
 		$vatAmountExpected = $this->vat->income + $billDetail['amountVat'];
 
 		$this->assertEqual($incomeAmountExpected, $expense->income,
 			"income was not posted properly, should be $incomeAmountExpected, was ". $expense->income);
 
-		$this->assertEqual($assetAmountExpected, $asset->income,
+		$this->assertEqual($assetAmountExpected, $asset->outgoing,
 			"asset was not posted properly, should be $assetAmountExpected, was ". $asset->income);
 
-		$this->assertEqual($liabilityAmountExpected, $liability->income,
+		$this->assertEqual($liabilityAmountExpected, $liability->outgoing,
 			"liability was not posted properly, should be $liabilityAmountExpected, was ". $liability->income);
 
 		$this->assertEqual($vatAmountExpected, $vat->income,

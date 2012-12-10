@@ -5,7 +5,7 @@
 
 namespace rpc;
 
-class contacts extends \core\rpc {
+class invoice extends \core\rpc {
 	
 	public $docs = array(
 		'add' => 'adds invoice from the Invoice model. Returns the invoice',
@@ -21,26 +21,61 @@ class contacts extends \core\rpc {
 	static public $requireLogin = true;
 	
 	/**
-	* adds a contact
-	*/
-	function add($invoice){
+	 * Creates an invoice
+	 *
+	 * The invoice must be a valid OIOUBL invoice dokument
+	 *
+	 */
+	function create($invoice){
 		try{
-			$contact = \helper\model\Arr::toModel($contact, '\model\finance\Contact');
+			$invoice = $this->invoiceObject($invoice);
+
+			$invoice = \api\invoice::create($invoice);
 			
-			$contact = \api\contacts::create($contact);
-			
-			$this->ret((string) $contact->_id);
+			$this->ret((string) $invoice->_id);
 		}
-		catch(\Exception $e){
+		catch(\exception\UserException $e){
 			$this->throwException($e->getMessage());
 		}
 	}
-	
+
 	/**
-	* invoice is here 
-	*/
-	function addUBL($invoice){
-	
+	 * creates invoice from a SimpleInvoice object,
+	 *
+	 * this offloads a lot of work to the server, but requires all products and
+	 * stuff to be stored here.
+	 *
+	 * @param $easyInvoice
+	 */
+	function createLight($easyInvoice){
+
+	}
+
+	function update($invoice){
+		$this->throwException("not yet implemented");
+	}
+
+	function get($id){
+		$this->throwException("not yet implemented");
+	}
+
+	/**
+	 * post an invoice to the accounting
+	 *
+	 * @param $id
+	 */
+	function post($id){
+		$this->throwException("not yet implemented");
+	}
+
+	/**
+	 * performs some operations on the invoice object
+	 *
+	 * @param $inv array
+	 * @return \model\finance\Invoice
+	 */
+	private function invoiceObject($inv){
+		return new \model\finance\Invoice($inv);
 	}
 }
 

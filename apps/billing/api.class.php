@@ -283,26 +283,14 @@ class billing extends \core\api
 		//iterate through products
 		$collection = array();
 		if(!empty($bill->lines)){
-			$amount = 0;
 			foreach($bill->lines as $line){
 			   $posting = new \model\finance\accounting\Posting(array(
 				   'amount' => abs($line->amount) * $line->quantity,
 				   'positive' => ($line->amount >= 0 ? true : false),
 				   'account' => $line->account
 			   ));
-				$amount += $line->amount * $line->quantity;
 				$collection[] = $posting;
 			}
-			$collection[] = new \model\finance\accounting\Posting(array(
-				'amount' => $amount,
-				'positive' => ($amount >= 0 ? true : false),
-				'account' => $asset
-			));
-			$collection[] = new \model\finance\accounting\Posting(array(
-				'amount' => $amount,
-				'positive' => ($amount >= 0 ? true : false),
-				'account' => $liability
-			));
 		}
 		//set variables:
 		$daybookTransaction->postings = $collection;
@@ -311,7 +299,12 @@ class billing extends \core\api
 		$bill->ref = $daybookTransaction->referenceText = __('Bill %s', base_convert(crc32($bill->_id), 10, 35));
 
 		//port the transactions to the accounting system
-		\api\accounting::importTransactions($daybookTransaction);
+		\api\accounting::importTransactions($daybookTransaction, array(
+			'liability' => $liability,
+			'asset' => $asset,
+			'calculateVat' => true,
+			'calculateBalance' => true
+		));
 		$bill->isPayed = true;
 		self::update($bill);
 		return $bill->ref;
@@ -346,9 +339,6 @@ class billing extends \core\api
 		//items from productlines
 		if (!empty($bill->lines))
 			foreach ($bill->lines as &$prod) {
-				if (is_string($prod->productID) && !\api\products::getOne($prod->productID))
-					throw new \exception\UserException(__('Product %s doesn\' exist', $prod->productID));
-
 				//some validation
 				if ($prod->quantity <= 0)//quantity not negative
 					throw new \exception\UserException(__('Quantity must be more than 0, value: %s', $prod->quantity));

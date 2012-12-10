@@ -40,11 +40,16 @@ install mongoDB -> installed via php-pear
 
 install wkhtmltox (https://github.com/mreiferson/php-wkhtmltox) (better guide: http://roundhere.net/journal/install-wkhtmltopdf-php-bindings/)
 
+
+
 edit the config/config.php
 
 mysql:
 
 mongoDB:
+
+wkhtmltox
+it didn't work on centos for me, untill i installed qt-devel (yum install qt qt-devel)
 
 ::::::::::::: 2 :::::::::::::
 to add domain:

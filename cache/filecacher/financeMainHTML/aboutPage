@@ -1,1 +1,159 @@
-a:2:{s:6:"expiry";i:1351640553;s:4:"data";s:10792:"czo4MDgyOiI8IURPQ1RZUEUgaHRtbD4KPGh0bWw+PGhlYWQ+PG1ldGEgY2hhcnNldD0idXRmLTgiPjx0aXRsZT5GaW5hbnNtYXNraW5lbjwvdGl0bGU+PG1ldGEgbmFtZT0idmlld3BvcnQiIGNvbnRlbnQ9IndpZHRoPWRldmljZS13aWR0aCwgaW5pdGlhbC1zY2FsZT0xLjAiPjxtZXRhIG5hbWU9ImRlc2NyaXB0aW9uIiBjb250ZW50PSIiPjxtZXRhIG5hbWU9ImF1dGhvciIgY29udGVudD0iIj48IS0tIExlIEhUTUw1IHNoaW0sIGZvciBJRTYtOCBzdXBwb3J0IG9mIEhUTUw1IGVsZW1lbnRzIC0tPjwhLS1baWYgbHQgSUUgOV0+CgkJICA8c2NyaXB0IHNyYz0iaHR0cDovL2h0bWw1c2hpbS5nb29nbGVjb2RlLmNvbS9zdm4vdHJ1bmsvaHRtbDUuanMiPjwvc2NyaXB0PgoJCTwhW2VuZGlmXS0tPjwhLS0gTGUgZmF2IGFuZCB0b3VjaCBpY29ucyAtLT48bGluayByZWw9InNob3J0Y3V0IGljb24iIGhyZWY9Ii4uL2Fzc2V0cy9pY28vZmF2aWNvbi5pY28iPjxsaW5rIHJlbD0iYXBwbGUtdG91Y2gtaWNvbi1wcmVjb21wb3NlZCIgc2l6ZXM9IjE0NHgxNDQiIGhyZWY9ImJvb3RzdHJhcC9pY28vYXBwbGUtdG91Y2gtaWNvbi0xNDQtcHJlY29tcG9zZWQucG5nIj48bGluayByZWw9ImFwcGxlLXRvdWNoLWljb24tcHJlY29tcG9zZWQiIHNpemVzPSIxMTR4MTE0IiBocmVmPSIuLi9hc3NldHMvaWNvL2FwcGxlLXRvdWNoLWljb24tMTE0LXByZWNvbXBvc2VkLnBuZyI+PGxpbmsgcmVsPSJhcHBsZS10b3VjaC1pY29uLXByZWNvbXBvc2VkIiBzaXplcz0iNzJ4NzIiIGhyZWY9Ii4uL2Fzc2V0cy9pY28vYXBwbGUtdG91Y2gtaWNvbi03Mi1wcmVjb21wb3NlZC5wbmciPjxsaW5rIHJlbD0iYXBwbGUtdG91Y2gtaWNvbi1wcmVjb21wb3NlZCIgaHJlZj0iLi4vYXNzZXRzL2ljby9hcHBsZS10b3VjaC1pY29uLTU3LXByZWNvbXBvc2VkLnBuZyI+PHN0eWxlPgoJCWJvZHkgewoJCQlwYWRkaW5nLXRvcDogNjBweDsgLyogNjBweCB0byBtYWtlIHRoZSBjb250YWluZXIgZ28gYWxsIHRoZSB3YXkgdG8gdGhlIGJvdHRvbSBvZiB0aGUgdG9wYmFyICovCgkJfQoJPC9zdHlsZT48bGluayBocmVmPSJodHRwOi8vc3RhdGljLmZpbmFuc21hc2tpbmVuLmRldi9ib290c3RyYXAvY3NzL2Jvb3RzdHJhcC5jc3MiIHJlbD0ic3R5bGVzaGVldCI+PGxpbmsgaHJlZj0iaHR0cDovL3N0YXRpYy5maW5hbnNtYXNraW5lbi5kZXYvYm9vdHN0cmFwL2Nzcy9ib290c3RyYXAtcmVzcG9uc2l2ZS5jc3MiIHJlbD0ic3R5bGVzaGVldCI+PGxpbmsgaHJlZj0iaHR0cDovL3N0YXRpYy5maW5hbnNtYXNraW5lbi5kZXYvYm9vdHN0cmFwL2Nzcy9hcHAuY3NzIiByZWw9InN0eWxlc2hlZXQiPjwvaGVhZD48Ym9keT4KCgk8ZGl2IGNsYXNzPSJuYXZiYXIgbmF2YmFyLWZpeGVkLXRvcCI+CgkJPGRpdiBjbGFzcz0ibmF2YmFyLWlubmVyIj4KCQkJPGRpdiBjbGFzcz0iY29udGFpbmVyIj4KCQkJCTxhIGNsYXNzPSJidG4gYnRuLW5hdmJhciIgZGF0YS10b2dnbGU9ImNvbGxhcHNlIiBkYXRhLXRhcmdldD0iLm5hdi1jb2xsYXBzZSI+CgkJCQkJPHNwYW4gY2xhc3M9Imljb24tYmFyIj48L3NwYW4+CgkJCQkJPHNwYW4gY2xhc3M9Imljb24tYmFyIj48L3NwYW4+CgkJCQkJPHNwYW4gY2xhc3M9Imljb24tYmFyIj48L3NwYW4+CgkJCQk8L2E+CgkJCQk8YSBjbGFzcz0iYnJhbmQiIGhyZWY9Ii8iPkZpbmFuc21hc2tpbmVuPC9hPgoJCQkJPGRpdiBjbGFzcz0ibmF2LWNvbGxhcHNlIj4KCQkJCQk8dWwgY2xhc3M9Im5hdiIgaWQ9InRvcE5hdiI+PGxpPjxhIGhyZWY9Ii8iPkhqZW08L2E+PC9saT48bGk+PGEgaHJlZj0iL2luZGV4L3ByaWNlIj5QcmlzPC9hPjwvbGk+PGxpIGNsYXNzPSJhY3RpdmUiPjxhIGhyZWY9Ii9pbmRleC9hYm91dCI+T208L2E+PC9saT48L3VsPjwvZGl2PjwhLS0vLm5hdi1jb2xsYXBzZSAtLT4KCgkJCQk8Zm9ybSBjbGFzcz0icHVsbC1yaWdodCBuYXZiYXItZm9ybSB2aXNpYmxlLWRlc2t0b3AiIG1ldGhvZD0icG9zdCIgYWN0aW9uPSIvaW5kZXgiPgoJCQkJCTxpbnB1dCB0eXBlPSJ0ZXh0IiBuYW1lPSJtYWlsIiBjbGFzcz0iaW5wdXQtbWVkaXVtIiBwbGFjZWhvbGRlcj0iRW1haWwiPjxpbnB1dCB0eXBlPSJwYXNzd29yZCIgbmFtZT0icGFzc3dvcmQiIGNsYXNzPSJpbnB1dC1tZWRpdW0iIHBsYWNlaG9sZGVyPSJQYXNzd29yZCI+PGJ1dHRvbiB0eXBlPSJzdWJtaXQiIGNsYXNzPSJidG4iPkxvZyBpbmQ8L2J1dHRvbj4KCQkJCTwvZm9ybT4KCQkJPC9kaXY+CgkJPC9kaXY+Cgk8L2Rpdj4KCiAgICA8ZGl2IGlkPSJjb250ZW50IiBjbGFzcz0iY29udGFpbmVyIj4KICAgCgk8aGVhZGVyIGNsYXNzPSJqdW1ib3Ryb24gc3ViaGVhZCIgaWQ9Im92ZXJ2aWV3Ij4KCQk8aDE+T208L2gxPgoJCTxwIGNsYXNzPSJsZWFkIj5IdmVtIGVyIHZpLCBvZyBodmFkIGthbiB2aS48L3A+Cgk8L2hlYWRlcj4KPGRpdiBjbGFzcz0icm93Ij4KCTxkaXYgY2xhc3M9InNwYW4yIj4KCQk8ZGl2IHN0eWxlPSJoZWlnaHQ6NDBweDsiPjwvZGl2PgoJCTxkaXYgZGF0YS1zcHk9ImFmZml4IiBkYXRhLW9mZnNldC10b3A9IjAiPgoJCQk8dWwgY2xhc3M9Im5hdiBuYXYtbGlzdCI+CgkJCQk8bGk+PGEgaHJlZj0iI2FwcHMiPjxpIGNsYXNzPSJpY29uLWNoZXZyb24tcmlnaHQiPjwvaT4gTW9kdWwmYWVsaWc7cnQ8L2E+PC9saT4KCQkJCTxsaT48YSBocmVmPSIjdGVjaCI+PGkgY2xhc3M9Imljb24tY2hldnJvbi1yaWdodCI+PC9pPiBUZWtub2xvZ2k8L2E+PC9saT4KCQkJCTxsaT48YSBocmVmPSIjcHJpY2luZyI+PGkgY2xhc3M9Imljb24tY2hldnJvbi1yaWdodCI+PC9pPiBQcmlzc3RydWt0dXI8L2E+PC9saT4KCQkJCTxsaT48YSBocmVmPSIjcHJpdmFjeSI+PGkgY2xhc3M9Imljb24tY2hldnJvbi1yaWdodCI+PC9pPiBQcml2YXRsaXY8L2E+PC9saT4KCQkJCTxsaT48YSBocmVmPSIjYmVoaW5kIj48aSBjbGFzcz0iaWNvbi1jaGV2cm9uLXJpZ2h0Ij48L2k+IEZvbGtlbmUgYmFnPC9hPjwvbGk+CgkJCTwvdWw+CgkJPC9kaXY+Cgk8L2Rpdj4KCgk8ZGl2IGNsYXNzPSJvZmZzZXQyIj4KCgkJPGRpdiBjbGFzcz0icm93IiBpZD0iYXBwcyI+CgkJCTxkaXYgc3R5bGU9ImhlaWdodDo0MHB4OyI+PC9kaXY+CgkJCTxoMj5Nb2R1bGVyIDxzbWFsbD5UaWwgZXRodmVydCBmb3JtJmFyaW5nO2wuPC9zbWFsbD48L2gyPgoJCQk8ZGl2IGNsYXNzPSJzcGFuNSI+CgkJCQk8aDM+T3JkcmVtb2R1bDwvaDM+CgkJCQk8cD5WaWwgZHUgZ2VybmUgYXQgZGluZSBrdW5kZXIga2FuIHBsYWNlcmUgZW4gb3JkcmUgdmVkIGRpZz8gbWVkIGRldHRlIG1vZHVsIGVyIGRldHRlIGxldCBvZyBvdmVyc2t1ZWxpZ3QuCgkJCQlEZSBrYW4gZyZvc2xhc2g7cmUgZGV0IGdlbm5lbSBuZW1oYW5kZWwgc3lzdGVtZXQuPC9wPgoJCQk8L2Rpdj4KCQkJPGRpdiBjbGFzcz0ic3BhbjUiPgoJCQkJPHA+Li4uLjwvcD4KCQkJPC9kaXY+CgkJPC9kaXY+CgoJCTxkaXYgY2xhc3M9InJvdyIgaWQ9InRlY2giPgoJCQk8ZGl2IHN0eWxlPSJoZWlnaHQ6NDBweDsiPjwvZGl2PgoJCQk8aDI+VGVrbm9sb2dpc2sgdGlwIHRvcCA8c21hbGw+JkFyaW5nO2JuZSBzdGFuZGFyZGVyIG9nIGludGVncmF0aW9uLjwvc21hbGw+PC9oMj4KCQkJPGRpdiBjbGFzcz0ic3BhbjUiPgoJCQkJPHA+VmkgdW5kZXJzdCZvc2xhc2g7dHRlciBVQkwgZm9ycmV0bmluZ3Nkb2t1bWVudGVyLiBEZXQgYmV0eWRlciBhdCBkdSBrYW4gaGFuZGxlCgkJCQltZWQgZGV0IG9mZmVudGxpZ2UuPC9wPgoJCQkJPHA+TGlnZWxlZGVzIGJldHlkZXIgZGV0IGF0IGR1IGthbiBzZW5kZSBvZyBtb2R0YWdlIGZha3R1cmFlciBkaXJla3RlIHRpbAoJCQkJb2cgZnJhIGRpdCBwcm9ncmFtLCB1ZGVuIGF0IGJlbnl0dGUgbWFpbHMsIGVsbGVyIGxhdmUgYmVzdiZhZWxpZztybGlnZQoJCQkJaW5kdGFzdG5pbmdlci4gRGV0IGVuZXN0ZSBkZXIga3ImYWVsaWc7dmVzIGVyIGF0IGRlbiBhbmRlbiBwYXJ0IG9ncyZhcmluZzsKCQkJCXVuZGVyc3Qmb3NsYXNoO3R0ZXIgVUJMLCBvZyBkZXQgZyZvc2xhc2g7ciBkZSBodmlzIGRlIGJydWdlciBkZXR0ZSBzeXN0ZW08L3A+CgkJCTwvZGl2PgoJCQk8ZGl2IGNsYXNzPSJzcGFuNSI+CgkJCQk8cD5WaSBoYXIgdWRmb3Jza2V0IGRldCBkYW5za2Ugc3Byb2cgZm9yIGF0IGdpdmUgZGlnIGVuIHVuaWsgbSZhcmluZztkZSBhdCBpbnRlcmFnZXJlCgkJCQltZWQgZGlnIHJlZ25za2FicHJvZ3JhbS4gRmFrdGlzayBrYW4gZHUgYmxvdCBza3JpdmUgaHZhZCBkdSB2aWwgaGF2ZQoJCQkJcHJvZ3JhbW1ldCBza2FsIGcmb3NsYXNoO3JlLCBvZyBzJmFyaW5nOyBibGl2ZXIgZGV0IGdqb3J0LjwvcD4KCQkJPC9kaXY+CgkJPC9kaXY+CgoJCTxkaXYgY2xhc3M9InJvdyIgaWQ9InByaWNpbmciPgoJCQk8aDI+Rmxla3NpYmVsIHByaXNzdHJ1a3R1ciA8c21hbGw+R3JhdGlzIGF0IHN0YXJ0ZSBwJmFyaW5nOzwvc21hbGw+PC9oMj4KCQkJPGRpdiBjbGFzcz0ic3BhbjUiPgoJCQkJPHA+T3MgYmFnIGRlbm5lIHNlcnZpY2UgdmVkIHVkZW0mYWVsaWc7cmtldCBodm9yZGFuIGRldCBlciBhdCBzdCZhcmluZzsgaSBkZW4gc2l0dWF0aW9uCgkJCQlhdCBoYXZlIGVnZXQgZmlybWEsIGRvZyB1ZGVuIGF0IHYmYWVsaWc7cmUgc2lra2VyIHAmYXJpbmc7IGF0IG1hbiB0amVuZXIgbm9nZXQgZGVuIG4mYWVsaWc7c3RlCgkJCQltJmFyaW5nO25lZCwgZWxsZXIgJmFyaW5nO3IuPC9wPgoJCQkJPHA+SHZvcmZvciBza2FsIG1hbiBzJmFyaW5nOyBiZXRhbGUgZm9yIGVuIHJlZ25za2Fic3Byb2dyYW0sIHNvbSBtYW4gYWxsaWdldmVsIGlra2UKCQkJCWJydWdlcj8gVmkgaGFyIGdqb3J0IGRldCwgYXQgdmkgaGFyIGxhdmV0IGVuIHBheSBhcyB5b3UgZ28gcHJpc21vZGVsLiBEZXQKCQkJCWJldHlkZXIgYXQgZHUga3VuIGJldGFsZXIgZm9yIGRldCBkdSBicnVnZXIuIEZha3Rpc2sgaGFyIHZpIG9ncyZhcmluZzsgZW4gZ3ImYWVsaWc7bnNlCgkJCQlodm9yIGR1IGthbiBmJmFyaW5nOyBkZXQgaGVsZSBncmF0aXMsIHMmYXJpbmc7IHNlbmRlciBvZyBtb2R0YWdlciBkdSBrdW4gZiZhcmluZzsgZmFrdHVyYWVyCgkJCQlvbSBtJmFyaW5nO25lZGVuLCBza2FsIGR1IGludGV0IGJldGFsZTwvcD4KCQkJPC9kaXY+CgkJCTxkaXYgY2xhc3M9InNwYW41Ij4KCQkJCTxwPlZpIHVkdmlkZXIgaGVsZSB0aWRlbiBmaW5hbnNtYXNraW5lbiBtZWQgZmxlcmUgdiZhZWxpZztya3RyJm9zbGFzaDtqZXIgdGlsIGVodmVydnNkcml2ZW5kZS4KCQkJCVN0JmFyaW5nO3IgZHUgbWFuZ2xlciBldCBlbGxlciBhbmRldCwgc2thbCBkdSBoZWxsZXIgZWogaG9sZGUgZGlnIHRpbGJhZ2UgZm9yIGF0CgkJCQllZnRlcnNwJm9zbGFzaDtyZ2UgZGV0LjwvcD4KCQkJPC9kaXY+CgkJPC9kaXY+CgoJCTxkaXYgY2xhc3M9InJvdyIgaWQ9InByaXZhY3kiPgoJCQk8aDI+UHJpdmF0bGl2IDxzbWFsbD5EZXQgZXIgaSBodmVydCBmYWxkIHZpZ3RpZ3QgZm9yIG9zPC9zbWFsbD48L2gyPgoJCQk8ZGl2IGNsYXNzPSJzcGFuNSI+CgkJCQk8cD5FZnRlciBiZXRhcGVyaW9kZW4gdmlsIGluZ2VuIDMuIHBhcnRzdWRieWRlcmUgaGF2ZSBhZGdhbmcgdGlsIGRpbiBmJmFlbGlnO3JkZW4gcCZhcmluZzsgZGVubmUgaGplbW1lc2lkZS48L3A+CgkJCQk8cD5NYW5nZSBoamVtbWVzaWRlciBicnVnZXIgc2VydmljZXMgdGlsIGF0IGYmb3NsYXNoO2xnZSBkZSBiZXMmb3NsYXNoO2dlbmRlLCBkZXIgdWRieWRlcyBhZiAzLiBwYXJ0LiBEaXNzZSBzZXJ2aWNlcyBoYXIKCQkJCXZpIGxhdmV0IHAmYXJpbmc7IGVnZW4gaCZhcmluZztuZCwgcyZhcmluZzsgZHUgdW5kZyZhcmluZztyIGF0IGFuZHJlIGphbiBoYXZlIGxvdiBhdCBzbmFnZSBpIGRpbmUgcmVnbnNrYWJlci48L3A+CgkJCTwvZGl2PgoJCQk8ZGl2IGNsYXNzPSJzcGFuNSI+CgkJCQk8cD5WaSB1ZHZpZGVyIGhlbGUgdGlkZW4gZmluYW5zbWFza2luZW4gbWVkIGZsZXJlIHYmYWVsaWc7cmt0ciZvc2xhc2g7amVyIHRpbCBlaHZlcnZzZHJpdmVuZGUuCgkJCQlTdCZhcmluZztyIGR1IG1hbmdsZXIgZXQgZWxsZXIgYW5kZXQsIHNrYWwgZHUgaGVsbGVyIGVqIGhvbGRlIGRpZyB0aWxiYWdlIGZvciBhdAoJCQkJZWZ0ZXJzcCZvc2xhc2g7cmdlIGRldC48L3A+CgkJCTwvZGl2PgoJCTwvZGl2PgoKCQk8ZGl2IGNsYXNzPSJyb3ciIGlkPSJiZWhpbmQiPgoJCQk8aDI+SHZlbSBlciBiYWcgPHNtYWxsPkpvLCBkZXIgc2lkZGVyIHNrYW0gbWVubmVza2VyIGJhZzwvc21hbGw+PC9oMj4KCQkJPGRpdiBjbGFzcz0icm93Ij4KCQkJCTxkaXYgY2xhc3M9InNwYW41Ij4KCQkJCQk8aDM+TWFkcyBCdWNoIDxzbWFsbD5UaGUgbWFuITwvc21hbGw+PC9oMz4KCQkJCQk8aW1nIHNyYz0iaHR0cDovL3d3dy5wbGFjZWtpdHRlbi5jb20vZy8xMjAvOTAiIHN0eWxlPSJmbG9hdDpsZWZ0OyBtYXJnaW46NXB4OyI+CgkJCQkJPHA+SmVnIGVyIE1hZHMgQnVjaC4gRGV0IGVyIG1pZyBkZXIgZXIga29uY2VwdGluZGVoYXZlciwgcHJpbSZhZWxpZztyIHVkdmlrbGVyCgkJCQkJb2cgc3R5cmVyIGRyaWZ0ZW48L3A+CgkJCQk8L2Rpdj4KCQkJCTxkaXYgY2xhc3M9InNwYW41Ij4KCQkJCQk8aDM+Tm8gb25lIGhlcmUgPHNtYWxsPlRoZSBtYW4hPC9zbWFsbD48L2gzPgoJCQkJCTxpbWcgc3JjPSJodHRwOi8vd3d3LnBsYWNla2l0dGVuLmNvbS9nLzEyMC85MCIgc3R5bGU9ImZsb2F0OmxlZnQ7IG1hcmdpbjo1cHg7Ij4KCQkJCQk8cD4uLi48L3A+CgkJCQk8L2Rpdj4KCQkJPC9kaXY+CgkJCTxkaXYgY2xhc3M9InJvdyI+CgkJCQk8ZGl2IGNsYXNzPSJzcGFuNSI+CgkJCQkJPGgzPk5vIG9uZSBoZXJlIDxzbWFsbD5UaGUgbWFuITwvc21hbGw+PC9oMz4KCQkJCQk8aW1nIHNyYz0iaHR0cDovL3d3dy5wbGFjZWtpdHRlbi5jb20vZy8xMjAvOTAiIHN0eWxlPSJmbG9hdDpsZWZ0OyBtYXJnaW46NXB4OyI+CgkJCQkJPHA+Li4uPC9wPgoJCQkJPC9kaXY+CgkJCTwvZGl2PgoJCTwvZGl2PgoJPC9kaXY+CjwvZGl2Pgo8ZGl2IHN0eWxlPSJoZWlnaHQ6MjAwcHg7Ij48L2Rpdj4KCQk8L2Rpdj4gPCEtLSAvY29udGFpbmVyIC0tPgogICAJPCEtLSBHb29nbGUgYW5hbHl0aWNzIGlzIG9ubHkgdXNlZCB1bnRpbGwgd2UgYXJlIG91dCBvZiBiZXRhIC0tPgoJPHNjcmlwdCB0eXBlPSJ0ZXh0L2phdmFzY3JpcHQiPgoKCSAgdmFyIF9nYXEgPSBfZ2FxIHx8IFtdOwoJICBfZ2FxLnB1c2goWydfc2V0QWNjb3VudCcsICdVQS0zMzIzNTgzNi0xJ10pOwoJICBfZ2FxLnB1c2goWydfdHJhY2tQYWdldmlldyddKTsKCgkgIChmdW5jdGlvbigpIHsKCQl2YXIgZ2EgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdzY3JpcHQnKTsgZ2EudHlwZSA9ICd0ZXh0L2phdmFzY3JpcHQnOyBnYS5hc3luYyA9IHRydWU7CgkJZ2Euc3JjID0gKCdodHRwczonID09IGRvY3VtZW50LmxvY2F0aW9uLnByb3RvY29sID8gJ2h0dHBzOi8vc3NsJyA6ICdodHRwOi8vd3d3JykgKyAnLmdvb2dsZS1hbmFseXRpY3MuY29tL2dhLmpzJzsKCQl2YXIgcyA9IGRvY3VtZW50LmdldEVsZW1lbnRzQnlUYWdOYW1lKCdzY3JpcHQnKVswXTsgcy5wYXJlbnROb2RlLmluc2VydEJlZm9yZShnYSwgcyk7CgkgIH0pKCk7CgoJPC9zY3JpcHQ+PHNjcmlwdD4KCQkJdmFyIGNvbW1hU2VwYXJhdG9yID0gJywnOwoJCQl2YXIgdGhvdXNhbmRzU2VwYXJhdG9yID0gJy4nOwoJCTwvc2NyaXB0PjxzY3JpcHQgc3JjPSJodHRwOi8vc3RhdGljLmZpbmFuc21hc2tpbmVuLmRldi9ib290c3RyYXAvanMvanF1ZXJ5LmpzIj48L3NjcmlwdD48c2NyaXB0IHNyYz0iaHR0cDovL3N0YXRpYy5maW5hbnNtYXNraW5lbi5kZXYvanMvcGx1Z2lucy9qcXVlcnkucGxhY2Vob2xkZXIubWluLmpzIj48L3NjcmlwdD48c2NyaXB0IHNyYz0iaHR0cDovL3N0YXRpYy5maW5hbnNtYXNraW5lbi5kZXYvYm9vdHN0cmFwL2pzL2Jvb3RzdHJhcC5taW4uanMiPjwvc2NyaXB0PjxzY3JpcHQgc3JjPSJodHRwOi8vc3RhdGljLmZpbmFuc21hc2tpbmVuLmRldi9ib290c3RyYXAvanMvYXBwbGljYXRpb24uanMiPjwvc2NyaXB0PjxzY3JpcHQgc3JjPSJodHRwOi8vc3RhdGljLmZpbmFuc21hc2tpbmVuLmRldi9ib290c3RyYXAvanMvaW5pdC5qcyI+PC9zY3JpcHQ+PHNjcmlwdD48L3NjcmlwdD48L2JvZHk+PC9odG1sPgoiOw==";}
+s:8082:"<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Finansmaskinen</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content=""><meta name="author" content=""><!-- Le HTML5 shim, for IE6-8 support of HTML5 elements --><!--[if lt IE 9]>
+		  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]--><!-- Le fav and touch icons --><link rel="shortcut icon" href="../assets/ico/favicon.ico"><link rel="apple-touch-icon-precomposed" sizes="144x144" href="bootstrap/ico/apple-touch-icon-144-precomposed.png"><link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png"><link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png"><link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png"><style>
+		body {
+			padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+		}
+	</style><link href="http://static.finansmaskinen.dev/bootstrap/css/bootstrap.css" rel="stylesheet"><link href="http://static.finansmaskinen.dev/bootstrap/css/bootstrap-responsive.css" rel="stylesheet"><link href="http://static.finansmaskinen.dev/bootstrap/css/app.css" rel="stylesheet"></head><body>
+
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<a class="brand" href="/">Finansmaskinen</a>
+				<div class="nav-collapse">
+					<ul class="nav" id="topNav"><li><a href="/">Hjem</a></li><li><a href="/index/price">Pris</a></li><li class="active"><a href="/index/about">Om</a></li></ul></div><!--/.nav-collapse -->
+
+				<form class="pull-right navbar-form visible-desktop" method="post" action="/index">
+					<input type="text" name="mail" class="input-medium" placeholder="Email"><input type="password" name="password" class="input-medium" placeholder="Password"><button type="submit" class="btn">Log ind</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+    <div id="content" class="container">
+   
+	<header class="jumbotron subhead" id="overview">
+		<h1>Om</h1>
+		<p class="lead">Hvem er vi, og hvad kan vi.</p>
+	</header>
+<div class="row">
+	<div class="span2">
+		<div style="height:40px;"></div>
+		<div data-spy="affix" data-offset-top="0">
+			<ul class="nav nav-list">
+				<li><a href="#apps"><i class="icon-chevron-right"></i> Modul&aelig;rt</a></li>
+				<li><a href="#tech"><i class="icon-chevron-right"></i> Teknologi</a></li>
+				<li><a href="#pricing"><i class="icon-chevron-right"></i> Prisstruktur</a></li>
+				<li><a href="#privacy"><i class="icon-chevron-right"></i> Privatliv</a></li>
+				<li><a href="#behind"><i class="icon-chevron-right"></i> Folkene bag</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="offset2">
+
+		<div class="row" id="apps">
+			<div style="height:40px;"></div>
+			<h2>Moduler <small>Til ethvert form&aring;l.</small></h2>
+			<div class="span5">
+				<h3>Ordremodul</h3>
+				<p>Vil du gerne at dine kunder kan placere en ordre ved dig? med dette modul er dette let og overskueligt.
+				De kan g&oslash;re det gennem nemhandel systemet.</p>
+			</div>
+			<div class="span5">
+				<p>....</p>
+			</div>
+		</div>
+
+		<div class="row" id="tech">
+			<div style="height:40px;"></div>
+			<h2>Teknologisk tip top <small>&Aring;bne standarder og integration.</small></h2>
+			<div class="span5">
+				<p>Vi underst&oslash;tter UBL forretningsdokumenter. Det betyder at du kan handle
+				med det offentlige.</p>
+				<p>Ligeledes betyder det at du kan sende og modtage fakturaer direkte til
+				og fra dit program, uden at benytte mails, eller lave besv&aelig;rlige
+				indtastninger. Det eneste der kr&aelig;ves er at den anden part ogs&aring;
+				underst&oslash;tter UBL, og det g&oslash;r de hvis de bruger dette system</p>
+			</div>
+			<div class="span5">
+				<p>Vi har udforsket det danske sprog for at give dig en unik m&aring;de at interagere
+				med dig regnskabprogram. Faktisk kan du blot skrive hvad du vil have
+				programmet skal g&oslash;re, og s&aring; bliver det gjort.</p>
+			</div>
+		</div>
+
+		<div class="row" id="pricing">
+			<h2>Fleksibel prisstruktur <small>Gratis at starte p&aring;</small></h2>
+			<div class="span5">
+				<p>Os bag denne service ved udem&aelig;rket hvordan det er at st&aring; i den situation
+				at have eget firma, dog uden at v&aelig;re sikker p&aring; at man tjener noget den n&aelig;ste
+				m&aring;ned, eller &aring;r.</p>
+				<p>Hvorfor skal man s&aring; betale for en regnskabsprogram, som man alligevel ikke
+				bruger? Vi har gjort det, at vi har lavet en pay as you go prismodel. Det
+				betyder at du kun betaler for det du bruger. Faktisk har vi ogs&aring; en gr&aelig;nse
+				hvor du kan f&aring; det hele gratis, s&aring; sender og modtager du kun f&aring; fakturaer
+				om m&aring;neden, skal du intet betale</p>
+			</div>
+			<div class="span5">
+				<p>Vi udvider hele tiden finansmaskinen med flere v&aelig;rktr&oslash;jer til ehvervsdrivende.
+				St&aring;r du mangler et eller andet, skal du heller ej holde dig tilbage for at
+				eftersp&oslash;rge det.</p>
+			</div>
+		</div>
+
+		<div class="row" id="privacy">
+			<h2>Privatliv <small>Det er i hvert fald vigtigt for os</small></h2>
+			<div class="span5">
+				<p>Efter betaperioden vil ingen 3. partsudbydere have adgang til din f&aelig;rden p&aring; denne hjemmeside.</p>
+				<p>Mange hjemmesider bruger services til at f&oslash;lge de bes&oslash;gende, der udbydes af 3. part. Disse services har
+				vi lavet p&aring; egen h&aring;nd, s&aring; du undg&aring;r at andre jan have lov at snage i dine regnskaber.</p>
+			</div>
+			<div class="span5">
+				<p>Vi udvider hele tiden finansmaskinen med flere v&aelig;rktr&oslash;jer til ehvervsdrivende.
+				St&aring;r du mangler et eller andet, skal du heller ej holde dig tilbage for at
+				eftersp&oslash;rge det.</p>
+			</div>
+		</div>
+
+		<div class="row" id="behind">
+			<h2>Hvem er bag <small>Jo, der sidder skam mennesker bag</small></h2>
+			<div class="row">
+				<div class="span5">
+					<h3>Mads Buch <small>The man!</small></h3>
+					<img src="http://www.placekitten.com/g/120/90" style="float:left; margin:5px;">
+					<p>Jeg er Mads Buch. Det er mig der er konceptindehaver, prim&aelig;r udvikler
+					og styrer driften</p>
+				</div>
+				<div class="span5">
+					<h3>No one here <small>The man!</small></h3>
+					<img src="http://www.placekitten.com/g/120/90" style="float:left; margin:5px;">
+					<p>...</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span5">
+					<h3>No one here <small>The man!</small></h3>
+					<img src="http://www.placekitten.com/g/120/90" style="float:left; margin:5px;">
+					<p>...</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div style="height:200px;"></div>
+		</div> <!-- /container -->
+   	<!-- Google analytics is only used untill we are out of beta -->
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-33235836-1']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script><script>
+			var commaSeparator = ',';
+			var thousandsSeparator = '.';
+		</script><script src="http://static.finansmaskinen.dev/bootstrap/js/jquery.js"></script><script src="http://static.finansmaskinen.dev/js/plugins/jquery.placeholder.min.js"></script><script src="http://static.finansmaskinen.dev/bootstrap/js/bootstrap.min.js"></script><script src="http://static.finansmaskinen.dev/bootstrap/js/application.js"></script><script src="http://static.finansmaskinen.dev/bootstrap/js/init.js"></script><script></script></body></html>
+";

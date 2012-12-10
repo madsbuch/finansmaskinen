@@ -127,7 +127,7 @@ abstract class AbstractModel{
 	}
 	
 	/**
-	* if the class is treaded as a string, content is the answar
+	* if the class is treated as a string, content is the answer
 	*/
 	function __toString(){
 		return (string) $this->_content;
@@ -227,13 +227,55 @@ abstract class AbstractModel{
 				$this->$k->merge($v);
 		}
 	}
-	
+
+	/**** ALL THE FUNCTIONALITY ****/
+
 	/**
 	* get vars of object
 	*/
 	public function getVars(){
 		return get_object_vars($this);
 	}
+
+	/**
+	 * allows individual object to parse data in their internally structure
+	 */
+	public function parse(){
+		//validate this
+		if(method_exists($this, 'doParse'))
+			$this->doParse();
+		//validate other objects
+		foreach(get_object_vars($this) as $p){
+			if(is_object($p) && is_subclass_of($p, 'model\AbstractModel'))
+				$p->parse();
+		}
+	}
+
+	const STRICT = 1;
+	const WEAK = 2;
+
+	/**
+	 * allows each object to validate their data and whether it confirms with
+	 * conventions on the data.
+	 *
+	 * an \exception\NotValidated exception will be thrown, if an object is not validated
+	 *
+	 * validation can be STRICT, WEAK, were's strict is default
+	 *
+	 * @param $level int level of validation
+	 */
+	public function validate($level = 0){
+		//validate this
+		if(method_exists($this, 'doValidate'))
+			$this->doValidate($level);
+
+		//propergate down the hierachi
+		foreach(get_object_vars($this) as $p){
+			if(is_object($p) && is_subclass_of($p, 'model\AbstractModel'))
+				$p->validate($level);
+		}
+	}
+
 	/**
 	* return array representation of object
 	*/

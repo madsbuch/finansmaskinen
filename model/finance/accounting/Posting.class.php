@@ -7,6 +7,12 @@
  * class that represents a line in a daybook transaction
  */
 namespace model\finance\accounting;
+
+/**
+ * @property $positive bool
+ * @property $account int
+ * @property $amount int
+ */
 class Posting extends \model\AbstractModel
 {
 	/**

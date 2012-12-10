@@ -336,15 +336,36 @@ class accounting
 	 *
 	 * here interfacing to this system is defined:
 	 *
-	 * @param $transaction array array of objects, they are expected to be homogeneous. behaviour is not documentet otherwise
-	 * @param $type string explictly tell what the transactions is of type
-	 * @param $ref string the desired reference in the accounting system
-	 * @param $addVat bool whether to automatically add vat postings to the transaction
+	 * options:
+	 *  type: the type of the transaction data
+	 *  referenceText:  override the reference text
+	 *
+	 *  liability:  liability account, used when auto calculate vat and balance is used
+	 *  asset:      asset account --------------------||--------------------------------
+	 *
+	 *  calculateVat:       auto calculate vat?
+	 *  calculateBalance:   auto calculate balance
+	 *
+	 *
+	 * @param $transaction mixed The data containing the actial transaction. This is of various types
+	 * @param $options array because of the flexible nature on the functions, objects are defined here
 	 */
-	static function importTransactions($transaction, $type = null, $ref = null, $addVat = false)
+	static function importTransactions($transaction, $options = array())
 	{
+		//getting the parameters
+		$type = isset($options['type']) ? $options['type'] : null;
+		$ref = isset($options['referenceText']) ? $options['referenceText'] : null;
+
+		$addVat =     isset($options['calculateVat'])     ? $options['calculateVat']     : false;
+		$addBalance = isset($options['calculateBalance']) ? $options['calculateBalance'] : false;
+
+		$lAcc = isset($options['liability']) ? $options['liability'] : null;
+		$aAcc = isset($options['asset']) ? $options['asset'] : null;
+
+		//accounting heler
 		$ah = new \helper\accounting((string) self::retrieve()->_id);
 
+		//converts to a transaction object
 		if(!is_null($type)){
 			$strategyName = 'app\accounting\strategies\transactions\\'.$type;
 			$strategy = new $strategyName();
@@ -359,7 +380,11 @@ class accounting
 
 			//maybe calculate vat?
 			if($addVat)
-				$transaction = $ah->vatCalculate($transaction);
+				$transaction = $ah->vatCalculate($transaction, $lAcc, $aAcc);
+			//and calculate the balance
+			if($addBalance)
+				$transaction = $ah->balanceCalculate($transaction, $lAcc, $aAcc);
+
 			//and finally add all th stuff
 			$ah->addDaybookTransaction($transaction);
 			$ah->commit();

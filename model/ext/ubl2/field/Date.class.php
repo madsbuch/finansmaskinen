@@ -18,6 +18,14 @@ class Date extends \model\AbstractModel{
 	* make sure it's formattet: ISO 8601’s standardformat "YYYY-MM-DD",
 	*/
 	protected $_content;
+
+	/**
+	 * tries to parse date to correct internally representation
+	 */
+	function doParse(){
+		if($t = strtotime($this->_content))
+			$this->_content = date("c", $t);
+	}
 }
 
 ?>

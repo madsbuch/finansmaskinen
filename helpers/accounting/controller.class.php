@@ -82,7 +82,7 @@ class accounting
 	{
 		//some validation
 		if ($transaction->value <= 0)
-			throw new \Exception('Value of transaction has to be > 0');
+			throw new \exception\UserException(__('Value of transaction has to be more than 0 on account: %s', $transaction->account));
 
 		if (!isset($transaction->date))
 			throw new \Exception('No transaction date set');
@@ -116,9 +116,9 @@ class accounting
 
 		//set some stats to check validity of all transactions
 		if ($rArr['type'] == self::ASSET)
-			$this->balance += $transaction['value'];
+			$this->balance += $transaction['positive'] ? $transaction['value'] : -1 * $transaction['value'];
 		elseif ($rArr['type'] == self::LIBALITY)
-			$this->balance -= $transaction['value'];
+			$this->balance -= $transaction['positive'] ? $transaction['value'] : -1 * $transaction['value'];
 
 		$this->transactions[] = $transaction;
 	}
@@ -227,36 +227,137 @@ class accounting
 	 * @param $liabilityAccount int account to reflect salesVat
 	 * @param $assetAccount int account to reflect bourght vat
 	 */
-	function vatCalculate(\model\finance\accounting\DaybookTransaction $dbTrans, $liabilityAccount, $assetAccount){
+	function vatCalculate(\model\finance\accounting\DaybookTransaction $dbTrans,
+	                      $liabilityAccount, $assetAccount){
+
+		//contains vat amount, and the vat object:
+		//  'amount' th
 		$vatCodes = array();
+
 		//go through all postings and fetch VAT codes
 		foreach($dbTrans->postings as $post){
 			$vat = isset($post->overrideVat) ? $this->getVatCode($post->overrideVat) : $this->getVatCodeForAccount($post->account);
-			if(isset($vatCodes[$vat->code]))
-				$vatCodes[$vat->code]['amount'] += $post->positive ? $post->amount : $post->amount * -1;
-			else{
-				$vatCodes[$vat->code]['amount'] = $post->positive ? $post->amount : $post->amount * -1;
+			//check that there is an vat object
+			if(is_null($vat))
+				continue;
+			//cannot post negative values to expense accounts
+			if(!$post->positive)
+				throw new \exception\UserException(__('A posting cannot be negative'));
+
+			//initialize if not set
+			if(!isset($vatCodes[$vat->code])){
+				$vatCodes[$vat->code]['amount'] = 0;
 				$vatCodes[$vat->code]['obj'] = $vat;
 			}
+
+			//increment amount taking percentage in account
+			$vatCodes[$vat->code]['amount'] += $post->amount * ($vat->percentage / 100);
 		}
 
 		//add postings for vatcodes
-		foreach($vatCodes as $entry){
+		$counterSales = new \model\finance\accounting\Posting();
+		$counterBought = new \model\finance\accounting\Posting();
+		$counterSales->amount = 0;
+		$counterBought->amount = 0;
 
+		$postings = array();
+
+		foreach($vatCodes as $entry){
+			if(!isset($postings[$entry['obj']->code])){
+				$postings[$entry['obj']->code] = new \model\finance\accounting\Posting();
+				$postings[$entry['obj']->code]->account = $vat->account;
+				$postings[$entry['obj']->code]->positive = true;
+				$postings[$entry['obj']->code]->amount = 0;
+			}
+			$postings[$entry['obj']->code]->amount =
+				$postings[$entry['obj']->code]->amount + $entry['amount'];
+
+			if($entry['obj']->type == 1){//sales vat
+				$counterBought->amount = $counterBought->amount + $entry['amount'];
+			}
+			else{//bought vat
+				$counterSales->amount = $counterSales->amount + $entry['amount'];
+			}
 		}
+
+		//adding to some counter account for sales vat
+		if($counterSales->amount > 0){
+
+			$counterSales->account = $assetAccount;
+			$counterSales->positive = false;
+			$dbTrans->postings->counterSales = $counterSales;
+		}
+
+		//adding to some counter account for bought vat
+		if($counterBought->amount > 0){
+			$counterBought->account = $assetAccount;//$liabilityAccount;
+			$counterBought->positive = false;
+			$dbTrans->postings->counterBought = $counterBought;
+		}
+
+		//adding the rest of the postings
+		foreach($postings as $name =>$p)
+			$dbTrans->postings->$name = $p;
+
+		//var_dump($dbTrans->toArray());
+
 		return $dbTrans;
 	}
 
 	/**
 	 * takes a daybookTransaction, and calculates the balance accounts (liability and asset) from the
-	 * operation accounts
+	 * operation accounts (be aware, that no balance accounts are reset, so if some accounts
+	 * are filled, duplication may accour)
+	 *
+	 * only two postings are added, one for the liability account and one for the asset account
+	 *
+	 * not validation is performed, as it will fail to insert is not used properly
 	 *
 	 * @param \model\finance\accounting\DaybookTransaction $dbTrans
 	 * @param $liabilityAccount
 	 * @param $assetAccount
 	 * @return \model\finance\accounting\DaybookTransaction
 	 */
-	function balanceCalculate(\model\finance\accounting\DaybookTransaction $dbTrans, $liabilityAccount, $assetAccount){
+	function balanceCalculate(\model\finance\accounting\DaybookTransaction $dbTrans,
+	                          $liabilityAccount, $assetAccount){
+
+		$liability = new \model\finance\accounting\Posting(array(
+			'account' => $liabilityAccount,
+			'amount' => 0,
+			'positive' => true,
+		));
+		$asset = new \model\finance\accounting\Posting(array(
+			'account' => $assetAccount,
+			'amount' => 0,
+			'positive' => true,
+		));
+
+		foreach($dbTrans->postings as $posting){
+			$account = $this->getAccount($posting->account);
+			//make sure we use an income or expense account
+
+			if($account->type == 3) { //expense, we withdraw
+				$asset->amount = $asset->amount - $posting->amount;
+				$liability->amount = $liability->amount - $posting->amount;
+			}
+			elseif( $account->type == 4 ) { //income we add
+				$asset->amount = $asset->amount + $posting->amount;
+				$liability->amount = $liability->amount + $posting->amount;
+			}
+		}
+
+		if($liability->amount < 0){
+			$liability->amount = $liability->amount * -1;
+			$liability->positive = false;
+			$asset->amount = $asset->amount * -1;
+			$asset->positive = false;
+		}
+
+		if($liability->amount != 0) {
+			$dbTrans->postings->liabilityPosting = $liability;
+			$dbTrans->postings->assetPosting = $asset;
+		}
+
 		return $dbTrans;
 	}
 
@@ -269,7 +370,7 @@ class accounting
 	{
 
 		if ($this->balance != 0)
-			throw new \exception\UserException('assets and libilities should equal up to 0');
+			throw new \exception\UserException(__('assets and libilities should equal up to 0. The difference is %s', abs($this->balance)));
 
 		if (!is_string($this->accounting))
 			throw new \Exception('Accounting is not set properly');

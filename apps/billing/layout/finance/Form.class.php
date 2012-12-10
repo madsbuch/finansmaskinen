@@ -2,6 +2,8 @@
 
 namespace app\billing\layout\finance;
 
+use \helper\local as l;
+
 class Form extends \helper\layout\LayoutBlock
 {
 
@@ -33,7 +35,9 @@ class Form extends \helper\layout\LayoutBlock
 
 	function generate()
 	{
-		return '
+		if(!isset($this->contactID) && isset($this->bill->contactID))
+			$this->contactID = $this->bill->contactID;
+		$ret = '
 <div>
 	<div id="billingAddTrigger" />
 	<div class="modal hide fade" id="UBL_ask">
@@ -52,6 +56,7 @@ class Form extends \helper\layout\LayoutBlock
 	</div>
 
 	<form method="post" action="/billing/create">
+		'.($this->bill ? '<input type="hidden" name="_id" value="'.$this->bill->_id.'" />' : '').'
 		<div class="row">
 			<div class="span12">
 				<h2>Afsender og instillinger</h2>
@@ -63,9 +68,15 @@ class Form extends \helper\layout\LayoutBlock
 								<input type="text" class="picker"
 									style="width:50%;"
 									id="sender-"
+
+									data-replace="sender-Party-PartyName-Name-_content"
+
 									data-listLink="/contacts/autocomplete/"
 									data-objLink="/contacts/getContact/"
 									data-addForm="#addNewContact"
+
+									'.($this->contactID ? 'data-preselect="'.$this->contactID.'"' : '').'
+
 									data-titleIndex="addNewContact"
 									placeholder="Vælg Afsender" /><a href="#sender-"
 									class="btn pickerDP"><i class="icon-circle-arrow-down">
@@ -312,6 +323,51 @@ class Form extends \helper\layout\LayoutBlock
 		</form>
 	</div>
 </div>';
+
+		//should we merge in more data?
+		if($this->bill){
+			$element = new \helper\html\HTMLMerger($ret, $this->bill);
+			$dom = $element->getDOM();
+			$element = $element->generate();
+
+			//inject some productline
+			$inj = array();
+			foreach($this->bill->lines as $line){
+				$t = array();
+				$t['lines-#index#-'] = $line->productID;
+				/*$t['product-#index#-Item-Description-_content'] = $il->Item->Description->_content;
+				$t['product-#index#-quantity'] = $il->InvoicedQuantity->_content;
+				$t['product-#index#-ID'] = (string) $il->ID->_content;
+
+				$t['product-#index#-productID'] = $this->invoice->product->$i->id;
+
+				$t['product-#index#-Price-PriceAmount-_content'] =
+					l::writeValuta($il->Price->PriceAmount->_content);
+				$t['product-#index#-TaxTotal-TaxSubtotal-TaxCategory-Percent'] =
+					$il->TaxTotal->TaxSubtotal->TaxCategory->Percent->_content;
+
+
+				*/
+				$t['lines-#index#-account'] = $line->account;
+
+				$t['lines-#index#-inclVat-code'] = $line->vatCode;
+
+				$t['lines-#index#-quantity'] = $line->quantity;
+
+
+				$t['lines-#index#-amount'] = l::writeValuta($line->amount);
+
+				$inj[] = (object) $t;
+			}
+
+			$xpath = new \DOMXpath($dom);
+			$ct = $xpath->query("//*[@id='productLine']")->item(0);
+			$ct->setAttribute('data-inject', json_encode($inj));
+
+			$ret = $element;
+		}
+
+		return $ret;
 	}
 }
 

@@ -23,8 +23,7 @@ class Form extends \helper\layout\LayoutBlock{
 	private $invoice;
 	
 	private $contactID;
-	
-	private $products;
+
 	
 	private $msg = array(
 		'Efter denne handling kan der ikke ændres i salget',
@@ -479,6 +478,8 @@ class Form extends \helper\layout\LayoutBlock{
 			//generate data for products
 			$inj = array();
 			$injEx = array();
+
+			//merge in productlines
 			foreach($this->invoice->Invoice->InvoiceLine as $i => $il){
 				$t = array();
 				$t['product-#index#-'] = $il->Item->Name->_content;
@@ -501,7 +502,8 @@ class Form extends \helper\layout\LayoutBlock{
 					$il->InvoicedQuantity->_content);
 				$inj[] = (object) $t;
 			}
-			
+
+			//merge in exchange rates
 			if(isset($this->invoice->ExchangeRates))
 				foreach($this->invoice->ExchangeRates as $rate){
 					$t = array();

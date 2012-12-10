@@ -37,12 +37,22 @@ $ubl_Party = new \model\ext\ubl2\Party(array(
 /**
  * following are details for this invoice:
  */
-$ubl_Invoice_DKK100 = new \model\ext\ubl2\Invoice(array(
-	'AccountingSupplierParty' => new \model\ext\ubl2\SupplierParty(array(
+$ubl_Invoice_I1 = new \model\ext\ubl2\Invoice(array(
+	/*'AccountingSupplierParty' => new \model\ext\ubl2\SupplierParty(array(
 		'Party' => $ubl_Party
-	)),
+	)),*/
+	'IssueDate' => '2013-11-29',
 ));
 
+$ublI1Detail = array();
+
+//region invoicing
+
+$invoiceObject = new \model\finance\Invoice(array(
+	'Invoice' => $ubl_Invoice_I1,
+));
+
+//endregion
 
 //endregion
 
@@ -97,7 +107,10 @@ $bill = new \model\finance\Bill(array(
 $billDetail = array(
 	'amountTotal' => 25000,
 	'amountIncome' => 20000,
-	'amountVat' => 5000
+	'amountVat' => 5000,
+
+	'asset' => 12320,
+	'liability' => 13110
 );
 
 /**
