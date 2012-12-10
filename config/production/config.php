@@ -12,7 +12,7 @@ define("DEBUG", false);
 define("CORE_CEHCK_PERMISSIONS", true);//shall the core classes check if the object can be created?
 
 //dirs
-define("ROOT", "/var/www/");//remember ending backslash
+define("ROOT", "/var/www/fm/");//remember ending backslash
 define("APPDIR", ROOT."/apps/");
 define("TMPDIR", ROOT."/temporary/");
 define("STATICDIR", ROOT."/static/");
