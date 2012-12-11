@@ -196,7 +196,7 @@ class accounting
 	 * be aware, not all transactions are returned by default
 	 * if $id = null, current accounting is retrived.
 	 *
-	 *
+	 * @param $id string id of accounting
 	 * @param $ts, populate with transactions?
 	 * @param $accounts, the return object is populated with details from MySQL
 	 */
@@ -270,19 +270,20 @@ class accounting
 	 */
 	static function addTransactions($transactions, $accounting = null)
 	{
-		$accObj = self::retrieve($accounting, false);
+		$accObj = self::retrieve($accounting);
 
 		if (!$accObj)
-			throw new \Exception('No accounting available at adding transactions');
+			throw new \exception\UserException(__('No valid accounting selected'));
 
-		$acc = new \helper\accounting($accObj->_id);
+		$acc = new \helper\accounting((string) $accObj->_id);
 
+		//if a single transaction, wrap it into a collection type
 		if (!is_array($transactions) &&
-			!(is_object($transactions) && is_a($transactions, '\model\Iterator'))
-		) {
+			!(is_object($transactions) && is_a($transactions, '\model\Iterator'))){
 			$transactions = array($transactions);
 		}
 
+		//add transactions
 		foreach ($transactions as $t) {
 			$acc->addTransaction($t);
 		}

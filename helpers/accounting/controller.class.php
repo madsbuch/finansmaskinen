@@ -57,7 +57,7 @@ class accounting
 	 */
 	function __construct($accounting, $grp = null)
 	{
-		$this->accounting = $accounting;
+		$this->accounting = (string) $accounting;
 		$core = new core('accounting');
 
 		$this->grp = $grp ? $grp : (int)$core->getMainGroup();

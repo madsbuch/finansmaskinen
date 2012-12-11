@@ -53,33 +53,6 @@
     <splitter split-orientation="horizontal" split-proportion="0.7459762">
       <split-first>
         <leaf>
-          <file leaf-file-name="View.class.php" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/apps/invoice/layout/finance/View.class.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="81" column="0" selection-start="2537" selection-end="2537" vertical-scroll-proportion="-26.875">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="README" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/README">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="51" column="86" selection-start="1117" selection-end="1117" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="AbstractModel.class.php" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/model/AbstractModel.class.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="238" column="20" selection-start="5764" selection-end="5764" vertical-scroll-proportion="-2.6666667">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="config.php" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/config/production/config.php">
               <provider selected="true" editor-type-id="text-editor">
@@ -141,10 +114,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Price.class.php" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="Price.class.php" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/start/finance/layout/Price.class.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="20" column="29" selection-start="425" selection-end="425" vertical-scroll-proportion="0.27749228">
+                <state line="5" column="39" selection-start="81" selection-end="81" vertical-scroll-proportion="-1.875">
                   <folding>
                     <marker date="1355184833000" expanded="true" signature="305:408" placeholder="..." />
                     <marker date="1355184833000" expanded="true" signature="491:594" placeholder="..." />
@@ -203,37 +176,64 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="const.php" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/config/production/const.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="finance.class.php" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/config/production/finance.class.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="63" column="50" selection-start="1459" selection-end="1459" vertical-scroll-proportion="-36.25">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="router.php" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/config/production/router.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="27" column="54" selection-start="655" selection-end="655" vertical-scroll-proportion="-13.75">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/webroot/index.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="66" column="38" selection-start="1319" selection-end="1319" vertical-scroll-proportion="-38.75">
+                <state line="14" column="24" selection-start="253" selection-end="253" vertical-scroll-proportion="-6.25">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="PDF.class.php" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/helpers/transform/PDF.class.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="53" column="11" selection-start="1054" selection-end="1054" vertical-scroll-proportion="-9.916667">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Shortcuts.class.php" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/apps/accounting/layout/finance/widgets/Shortcuts.class.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="28" column="39" selection-start="687" selection-end="687" vertical-scroll-proportion="-16.25">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="TransactionForm.class.php" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/apps/accounting/layout/finance/TransactionForm.class.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="89" column="44" selection-start="2364" selection-end="2364" vertical-scroll-proportion="-18.125">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="controller.class.php" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/apps/accounting/controller.class.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="253" column="44" selection-start="6869" selection-end="6884" vertical-scroll-proportion="-158.125">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="api.class.php" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/apps/accounting/api.class.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="275" column="79" selection-start="6987" selection-end="6987" vertical-scroll-proportion="-12.692307">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="controller.class.php" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/helpers/accounting/controller.class.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="51" column="70" selection-start="1061" selection-end="1061" vertical-scroll-proportion="0.26560846">
                   <folding />
                 </state>
               </provider>
@@ -330,22 +330,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/exception/NotValidatedExceptionException.class.php" />
-        <option value="$PROJECT_DIR$/model/finance/Invoice.class.php" />
-        <option value="$PROJECT_DIR$/test/tests/InvoiceTest.class.php" />
         <option value="$PROJECT_DIR$/model/ext/ubl2/field/Date.class.php" />
         <option value="$PROJECT_DIR$/model/AbstractModel.class.php" />
         <option value="$PROJECT_DIR$/model/ext/ubl2/Invoice.class.php" />
-        <option value="$PROJECT_DIR$/helpers/accounting/controller.class.php" />
         <option value="$PROJECT_DIR$/test/tests/BillingTest.class.php" />
         <option value="$PROJECT_DIR$/apps/invoice/api.class.php" />
         <option value="$PROJECT_DIR$/apps/invoice/layout/finance/View.class.php" />
         <option value="$PROJECT_DIR$/README" />
         <option value="$PROJECT_DIR$/config/production/finance.class.php" />
-        <option value="$PROJECT_DIR$/webroot/index.php" />
         <option value="$PROJECT_DIR$/config/production/config.php" />
         <option value="$PROJECT_DIR$/start/finance/layout/About.class.php" />
         <option value="$PROJECT_DIR$/start/finance/layout/Price.class.php" />
+        <option value="$PROJECT_DIR$/webroot/index.php" />
+        <option value="$PROJECT_DIR$/apps/accounting/layout/finance/widgets/Shortcuts.class.php" />
+        <option value="$PROJECT_DIR$/apps/accounting/layout/finance/TransactionForm.class.php" />
+        <option value="$PROJECT_DIR$/apps/accounting/api.class.php" />
+        <option value="$PROJECT_DIR$/helpers/accounting/controller.class.php" />
       </list>
     </option>
   </component>
@@ -479,7 +479,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
+              <option name="myItemId" value="helpers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -493,11 +493,99 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
+              <option name="myItemId" value="helpers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="production" />
+              <option name="myItemId" value="accounting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sshmnt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="finansmaskinen" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="apps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sshmnt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="finansmaskinen" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="apps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="accounting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sshmnt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="finansmaskinen" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="apps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="accounting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sshmnt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="finansmaskinen" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="apps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="accounting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="widgets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -629,52 +717,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/model/finance/invoice/SimpleInvoice.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="35" selection-start="210" selection-end="216" vertical-scroll-proportion="0.19459459">
-          <folding>
-            <element signature="e#6#67#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/invoice/api.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="322" column="34" selection-start="8502" selection-end="8502" vertical-scroll-proportion="0.3165236">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/tests/InvoiceTest.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="62" selection-start="763" selection-end="763" vertical-scroll-proportion="0.46875">
-          <folding>
-            <element signature="e#6#66#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/billing/layout/finance/Form.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="350" column="60" selection-start="11736" selection-end="11736" vertical-scroll-proportion="-43.5">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/ext/ubl2/field/Date.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="92" selection-start="320" selection-end="320" vertical-scroll-proportion="-6.25">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/helpers/accounting/controller.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="351" column="35" selection-start="10605" selection-end="10605" vertical-scroll-proportion="-30.625">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/apps/invoice/layout/finance/View.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="81" column="0" selection-start="2537" selection-end="2537" vertical-scroll-proportion="-26.875">
@@ -706,13 +748,6 @@
     <entry file="file://$PROJECT_DIR$/config/production/router.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="27" column="54" selection-start="655" selection-end="655" vertical-scroll-proportion="-13.75">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="38" selection-start="1319" selection-end="1319" vertical-scroll-proportion="-38.75">
           <folding />
         </state>
       </provider>
@@ -783,7 +818,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/start/finance/layout/Price.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="29" selection-start="425" selection-end="425" vertical-scroll-proportion="0.27749228">
+        <state line="5" column="39" selection-start="81" selection-end="81" vertical-scroll-proportion="-1.875">
           <folding>
             <marker date="1355184833000" expanded="true" signature="305:408" placeholder="..." />
             <marker date="1355184833000" expanded="true" signature="491:594" placeholder="..." />
@@ -838,6 +873,55 @@
             <marker date="1355184833000" expanded="true" signature="4229:4333" placeholder="..." />
             <marker date="1355184833000" expanded="true" signature="4365:4518" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="24" selection-start="253" selection-end="253" vertical-scroll-proportion="-6.25">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helpers/transform/PDF.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="11" selection-start="1054" selection-end="1054" vertical-scroll-proportion="-9.916667">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/accounting/layout/finance/widgets/Shortcuts.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="39" selection-start="687" selection-end="687" vertical-scroll-proportion="-16.25">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/accounting/layout/finance/TransactionForm.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="89" column="44" selection-start="2364" selection-end="2364" vertical-scroll-proportion="-18.125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/accounting/api.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="275" column="79" selection-start="6987" selection-end="6987" vertical-scroll-proportion="-12.692307">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/accounting/controller.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="253" column="44" selection-start="6869" selection-end="6884" vertical-scroll-proportion="-158.125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helpers/accounting/controller.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="70" selection-start="1061" selection-end="1061" vertical-scroll-proportion="0.26560846">
+          <folding />
         </state>
       </provider>
     </entry>

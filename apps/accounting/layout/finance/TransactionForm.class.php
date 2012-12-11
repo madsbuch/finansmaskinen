@@ -79,10 +79,16 @@ class TransactionForm extends \helper\layout\LayoutBlock{
 						<div class="row" id="transaction_template" style="padding-bottom:4px;">
 							<div class="span8">
 							
-								<input class="tPicker" id="t#index#" name="showbox"
-									style="width:70%" placeholder="Konto"
+								<input type="text"
+								    class="tPicker"
+								    id="t#index#"
+								    name="showbox"
+									style="width:60%"
+									placeholder="Konto"
 									data-listLink="/accounting/autocompleteAccounts/"
-									data-objLink="/accounting/getAccount/" />
+									data-objLink="/accounting/getAccount/"
+									value=""
+									/>
 								
 								<input type="hidden" id="t#index#code" name="t[#index#][account]" />
 								
