@@ -15,6 +15,11 @@ class About extends \helper\layout\LayoutBlock {
 	}
 	
 	function generate(){
+		return '<header class="jumbotron subhead" id="overview">
+		<h1>Om</h1>
+		<p class="lead">Hvem er vi, og hvad kan vi.</p>
+	</header>
+	<p>kommer senere</p>';
 		return '
 	<header class="jumbotron subhead" id="overview">
 		<h1>Om</h1>
