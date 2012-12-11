@@ -19,7 +19,7 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.7459762">
+    <splitter split-orientation="horizontal" split-proportion="0.46370682">
       <split-first>
         <leaf>
           <file leaf-file-name="config.php" pinned="false" current="false" current-in-tab="false">
@@ -106,7 +106,7 @@
           <file leaf-file-name="controller.class.php" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/helpers/accounting/controller.class.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="52" column="7" selection-start="1066" selection-end="1066" vertical-scroll-proportion="0.018703243">
+                <state line="52" column="7" selection-start="1066" selection-end="1066" vertical-scroll-proportion="0.016447369">
                   <folding />
                 </state>
               </provider>
@@ -119,7 +119,7 @@
           <file leaf-file-name="Invoice.class.php" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/model/ext/ubl2/Invoice.class.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="106" column="35" selection-start="6195" selection-end="6623" vertical-scroll-proportion="0.4117647">
+                <state line="106" column="35" selection-start="6195" selection-end="6623" vertical-scroll-proportion="0.5121951">
                   <folding />
                 </state>
               </provider>
@@ -161,10 +161,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1" />
-    <option name="y" value="27" />
-    <option name="width" value="1922" />
-    <option name="height" value="1054" />
+    <option name="x" value="1969" />
+    <option name="y" value="24" />
+    <option name="width" value="1871" />
+    <option name="height" value="1176" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -224,6 +224,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sshmnt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="finansmaskinen" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -275,7 +289,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="27" width="1922" height="1054" extended-state="7" />
+    <frame x="1969" y="24" width="1871" height="1176" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295238" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -283,7 +297,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21811362" sideWeight="0.6704762" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22075783" sideWeight="0.6704762" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -404,7 +418,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/helpers/accounting/controller.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="7" selection-start="1066" selection-end="1066" vertical-scroll-proportion="0.018703243">
+        <state line="52" column="7" selection-start="1066" selection-end="1066" vertical-scroll-proportion="0.016447369">
           <folding />
         </state>
       </provider>
@@ -418,7 +432,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/model/ext/ubl2/Invoice.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="106" column="35" selection-start="6195" selection-end="6623" vertical-scroll-proportion="0.4117647">
+        <state line="106" column="35" selection-start="6195" selection-end="6623" vertical-scroll-proportion="0.5121951">
           <folding />
         </state>
       </provider>
