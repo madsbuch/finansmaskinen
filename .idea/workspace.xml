@@ -1,38 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d3682f5e-bc6d-4295-9baa-f52e6348649d" name="Default" comment="commit">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/plugins/htmlpurifier/standalone/HTMLPurifier/DefinitionCache/Serializer/HTML/4.4.0,7dbdc3d58ab57a278defc6669c7aa098,1.ser" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apps/accounting/strategies/transactions/Transactions.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/billing/layout/finance/View.class.php" afterPath="$PROJECT_DIR$/apps/billing/layout/finance/View.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/finance/accounting/DaybookTransaction.class.php" afterPath="$PROJECT_DIR$/model/finance/accounting/DaybookTransaction.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/billing/layout/finance/Form.class.php" afterPath="$PROJECT_DIR$/apps/billing/layout/finance/Form.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/finance/accounting/Account.class.php" afterPath="$PROJECT_DIR$/model/finance/accounting/Account.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/billing/rpc.class.php" afterPath="$PROJECT_DIR$/apps/billing/rpc.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/localization/da_DK.lan" afterPath="$PROJECT_DIR$/localization/da_DK.lan" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/helpers/accounting/controller.class.php" afterPath="$PROJECT_DIR$/helpers/accounting/controller.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/billing/controller.class.php" afterPath="$PROJECT_DIR$/apps/billing/controller.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/finance/accounting/VatCode.class.php" afterPath="$PROJECT_DIR$/model/finance/accounting/VatCode.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/core/access.log" afterPath="$PROJECT_DIR$/log/core/access.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/core/exception.log" afterPath="$PROJECT_DIR$/log/core/exception.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/tests/DataLib.php" afterPath="$PROJECT_DIR$/test/tests/DataLib.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/finance/bill/Line.class.php" afterPath="$PROJECT_DIR$/model/finance/bill/Line.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/auth.class.php" afterPath="$PROJECT_DIR$/core/auth.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/core/rpc.log" afterPath="$PROJECT_DIR$/log/core/rpc.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/tests/BillingTest.class.php" afterPath="$PROJECT_DIR$/test/tests/BillingTest.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/AbstractModel.class.php" afterPath="$PROJECT_DIR$/model/AbstractModel.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/finance/accounting/Posting.class.php" afterPath="$PROJECT_DIR$/model/finance/accounting/Posting.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/temporary/lastrun.log" afterPath="$PROJECT_DIR$/temporary/lastrun.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/accounting/rpc.class.php" afterPath="$PROJECT_DIR$/apps/accounting/rpc.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/core/error.log" afterPath="$PROJECT_DIR$/log/core/error.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/accounting/api.class.php" afterPath="$PROJECT_DIR$/apps/accounting/api.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/invoice/api.class.php" afterPath="$PROJECT_DIR$/apps/invoice/api.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/index.php" afterPath="$PROJECT_DIR$/webroot/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/billing/api.class.php" afterPath="$PROJECT_DIR$/apps/billing/api.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/finance/Bill.class.php" afterPath="$PROJECT_DIR$/model/finance/Bill.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/logHandler.class.php" afterPath="$PROJECT_DIR$/core/logHandler.class.php" />
-    </list>
+    <list default="true" id="d3682f5e-bc6d-4295-9baa-f52e6348649d" name="Default" comment="commit" />
     <ignored path="sshmnt.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -56,7 +25,7 @@
           <file leaf-file-name="config.php" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/config/production/config.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="14" column="30" selection-start="372" selection-end="372" vertical-scroll-proportion="-4.375">
+                <state line="14" column="30" selection-start="372" selection-end="372" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -65,51 +34,8 @@
           <file leaf-file-name="About.class.php" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/start/finance/layout/About.class.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="32" column="49" selection-start="734" selection-end="734" vertical-scroll-proportion="-18.75">
-                  <folding>
-                    <marker date="1355184833000" expanded="true" signature="316:391" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="476:551" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="569:4796" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="590:1123" placeholder="..." />
-                    <marker date="1355184833000" expanded="false" signature="606:618" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="666:1115" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="695:1106" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="1147:4789" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="1178:1542" placeholder="..." />
-                    <marker date="1355184833000" expanded="false" signature="1195:1207" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="1288:1484" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="1320:1474" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="1507:1533" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="1573:2359" placeholder="..." />
-                    <marker date="1355184833000" expanded="false" signature="1590:1602" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="1707:2106" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="1715:1814" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="1822:2096" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="2129:2350" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="2137:2340" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="2393:3272" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="2486:3040" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="2494:2672" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="2680:3030" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="3063:3263" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="3071:3253" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="3306:3953" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="3401:3721" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="3514:3711" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="3744:3944" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="3752:3934" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="3986:4781" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="4080:4553" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="4104:4355" placeholder="..." />
-                    <marker date="1355184833000" expanded="false" signature="4213:4236" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="4248:4344" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="4379:4543" placeholder="..." />
-                    <marker date="1355184833000" expanded="false" signature="4490:4513" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="4574:4772" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="4598:4762" placeholder="..." />
-                    <marker date="1355184833000" expanded="false" signature="4709:4732" placeholder="..." />
-                    <marker date="1355184833000" expanded="false" signature="4810:4823" placeholder="..." />
-                  </folding>
+                <state line="32" column="49" selection-start="734" selection-end="734" vertical-scroll-proportion="0.0">
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -117,61 +43,8 @@
           <file leaf-file-name="Price.class.php" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/start/finance/layout/Price.class.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="5" column="39" selection-start="81" selection-end="81" vertical-scroll-proportion="-1.875">
-                  <folding>
-                    <marker date="1355184833000" expanded="true" signature="305:408" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="491:594" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="613:2426" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="636:935" placeholder="..." />
-                    <marker date="1355184833000" expanded="false" signature="671:689" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="690:726" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="805:926" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="958:1551" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="1054:1337" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="1066:1143" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="1076:1130" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="1155:1325" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="1165:1232" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="1242:1312" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="1344:1455" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="1462:1542" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="1574:2075" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="1667:1982" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="1679:1756" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="1689:1743" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="1768:1970" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="1778:1862" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="1872:1957" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="2100:2415" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="2132:2314" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="2321:2406" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="2453:4535" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="2476:3465" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="2511:2653" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="2708:3456" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="2720:2823" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="2730:2810" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="2835:3444" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="2845:2920" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="2930:3025" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="3035:3122" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="3132:3218" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="3228:3335" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="3345:3431" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="3489:4527" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="3640:4358" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="3652:3734" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="3662:3721" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="3746:4346" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="3756:3807" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="3817:3874" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="3884:3977" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="3987:4039" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="4049:4117" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="4127:4219" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="4229:4333" placeholder="..." />
-                    <marker date="1355184833000" expanded="true" signature="4365:4518" placeholder="..." />
-                  </folding>
+                <state line="5" column="31" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0">
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -179,7 +52,7 @@
           <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/webroot/index.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="14" column="24" selection-start="253" selection-end="253" vertical-scroll-proportion="-6.25">
+                <state line="14" column="24" selection-start="253" selection-end="253" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -188,7 +61,7 @@
           <file leaf-file-name="PDF.class.php" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/helpers/transform/PDF.class.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="53" column="11" selection-start="1054" selection-end="1054" vertical-scroll-proportion="-9.916667">
+                <state line="53" column="11" selection-start="1054" selection-end="1054" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -197,7 +70,7 @@
           <file leaf-file-name="Shortcuts.class.php" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/apps/accounting/layout/finance/widgets/Shortcuts.class.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="28" column="39" selection-start="687" selection-end="687" vertical-scroll-proportion="-16.25">
+                <state line="38" column="0" selection-start="774" selection-end="774" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -206,7 +79,7 @@
           <file leaf-file-name="TransactionForm.class.php" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/apps/accounting/layout/finance/TransactionForm.class.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="89" column="44" selection-start="2364" selection-end="2364" vertical-scroll-proportion="-18.125">
+                <state line="95" column="44" selection-start="2556" selection-end="2556" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -215,7 +88,7 @@
           <file leaf-file-name="controller.class.php" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/apps/accounting/controller.class.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="253" column="44" selection-start="6869" selection-end="6884" vertical-scroll-proportion="-158.125">
+                <state line="253" column="44" selection-start="6869" selection-end="6884" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -224,16 +97,16 @@
           <file leaf-file-name="api.class.php" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/apps/accounting/api.class.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="275" column="79" selection-start="6987" selection-end="6987" vertical-scroll-proportion="-12.692307">
+                <state line="277" column="61" selection-start="7048" selection-end="7048" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="controller.class.php" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="controller.class.php" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/helpers/accounting/controller.class.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="51" column="70" selection-start="1061" selection-end="1061" vertical-scroll-proportion="0.26560846">
+                <state line="52" column="7" selection-start="1066" selection-end="1066" vertical-scroll-proportion="0.018703243">
                   <folding />
                 </state>
               </provider>
@@ -243,73 +116,10 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="DaybookTransaction.class.php" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/model/finance/accounting/DaybookTransaction.class.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="28" column="15" selection-start="560" selection-end="573" vertical-scroll-proportion="-13.125">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Form.class.php" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/apps/invoice/layout/finance/Form.class.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="481" column="14" selection-start="16807" selection-end="16807" vertical-scroll-proportion="-8.5">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Bill.class.php" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/model/finance/Bill.class.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="15.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Line.class.php" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/model/finance/bill/Line.class.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="0" column="37" selection-start="239" selection-end="246" vertical-scroll-proportion="-0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Invoice.class.php" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/model/finance/Invoice.class.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="108" column="12" selection-start="1842" selection-end="1936" vertical-scroll-proportion="-33.125">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Invoice.class.php" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="Invoice.class.php" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/model/ext/ubl2/Invoice.class.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="106" column="35" selection-start="6195" selection-end="6623" vertical-scroll-proportion="0.73214287">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="DataLib.php" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/test/tests/DataLib.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="107" column="16" selection-start="2159" selection-end="2170" vertical-scroll-proportion="10.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Account.class.php" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/model/finance/accounting/Account.class.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="11.25">
+                <state line="106" column="35" selection-start="6195" selection-end="6623" vertical-scroll-proportion="0.4117647">
                   <folding />
                 </state>
               </provider>
@@ -332,7 +142,6 @@
       <list>
         <option value="$PROJECT_DIR$/model/ext/ubl2/field/Date.class.php" />
         <option value="$PROJECT_DIR$/model/AbstractModel.class.php" />
-        <option value="$PROJECT_DIR$/model/ext/ubl2/Invoice.class.php" />
         <option value="$PROJECT_DIR$/test/tests/BillingTest.class.php" />
         <option value="$PROJECT_DIR$/apps/invoice/api.class.php" />
         <option value="$PROJECT_DIR$/apps/invoice/layout/finance/View.class.php" />
@@ -346,15 +155,16 @@
         <option value="$PROJECT_DIR$/apps/accounting/layout/finance/TransactionForm.class.php" />
         <option value="$PROJECT_DIR$/apps/accounting/api.class.php" />
         <option value="$PROJECT_DIR$/helpers/accounting/controller.class.php" />
+        <option value="$PROJECT_DIR$/model/ext/ubl2/Invoice.class.php" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="1969" />
-    <option name="y" value="24" />
-    <option name="width" value="1871" />
-    <option name="height" value="1176" />
+    <option name="x" value="-1" />
+    <option name="y" value="27" />
+    <option name="width" value="1922" />
+    <option name="height" value="1054" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -382,7 +192,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -415,182 +224,9 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sshmnt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="finansmaskinen" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="start" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sshmnt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="finansmaskinen" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="start" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sshmnt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="finansmaskinen" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="start" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sshmnt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="finansmaskinen" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="helpers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sshmnt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="finansmaskinen" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="helpers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="accounting" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sshmnt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="finansmaskinen" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="apps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sshmnt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="finansmaskinen" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="apps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="accounting" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sshmnt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="finansmaskinen" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="apps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="accounting" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sshmnt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="finansmaskinen" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="apps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="accounting" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="widgets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -639,16 +275,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1969" y="24" width="1871" height="1176" extended-state="6" />
-    <editor active="true" />
+    <frame x="-1" y="27" width="1922" height="1054" extended-state="7" />
+    <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295238" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295238" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21526633" sideWeight="0.6704762" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21811362" sideWeight="0.6704762" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -658,6 +293,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295238" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -717,210 +353,114 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/apps/invoice/layout/finance/View.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="0" selection-start="2537" selection-end="2537" vertical-scroll-proportion="-26.875">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="86" selection-start="1117" selection-end="1117" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/AbstractModel.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="238" column="20" selection-start="5764" selection-end="5764" vertical-scroll-proportion="-2.6666667">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/production/finance.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="50" selection-start="1459" selection-end="1459" vertical-scroll-proportion="-36.25">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/production/router.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="54" selection-start="655" selection-end="655" vertical-scroll-proportion="-13.75">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/production/const.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/production/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="30" selection-start="372" selection-end="372" vertical-scroll-proportion="-4.375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/start/finance/layout/About.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="49" selection-start="734" selection-end="734" vertical-scroll-proportion="-18.75">
-          <folding>
-            <marker date="1355184833000" expanded="true" signature="316:391" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="476:551" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="569:4796" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="590:1123" placeholder="..." />
-            <marker date="1355184833000" expanded="false" signature="606:618" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="666:1115" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="695:1106" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="1147:4789" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="1178:1542" placeholder="..." />
-            <marker date="1355184833000" expanded="false" signature="1195:1207" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="1288:1484" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="1320:1474" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="1507:1533" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="1573:2359" placeholder="..." />
-            <marker date="1355184833000" expanded="false" signature="1590:1602" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="1707:2106" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="1715:1814" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="1822:2096" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="2129:2350" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="2137:2340" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="2393:3272" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="2486:3040" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="2494:2672" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="2680:3030" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="3063:3263" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="3071:3253" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="3306:3953" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="3401:3721" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="3514:3711" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="3744:3944" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="3752:3934" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="3986:4781" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="4080:4553" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="4104:4355" placeholder="..." />
-            <marker date="1355184833000" expanded="false" signature="4213:4236" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="4248:4344" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="4379:4543" placeholder="..." />
-            <marker date="1355184833000" expanded="false" signature="4490:4513" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="4574:4772" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="4598:4762" placeholder="..." />
-            <marker date="1355184833000" expanded="false" signature="4709:4732" placeholder="..." />
-            <marker date="1355184833000" expanded="false" signature="4810:4823" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/start/finance/layout/Price.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="39" selection-start="81" selection-end="81" vertical-scroll-proportion="-1.875">
-          <folding>
-            <marker date="1355184833000" expanded="true" signature="305:408" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="491:594" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="613:2426" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="636:935" placeholder="..." />
-            <marker date="1355184833000" expanded="false" signature="671:689" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="690:726" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="805:926" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="958:1551" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="1054:1337" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="1066:1143" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="1076:1130" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="1155:1325" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="1165:1232" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="1242:1312" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="1344:1455" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="1462:1542" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="1574:2075" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="1667:1982" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="1679:1756" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="1689:1743" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="1768:1970" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="1778:1862" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="1872:1957" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="2100:2415" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="2132:2314" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="2321:2406" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="2453:4535" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="2476:3465" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="2511:2653" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="2708:3456" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="2720:2823" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="2730:2810" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="2835:3444" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="2845:2920" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="2930:3025" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="3035:3122" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="3132:3218" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="3228:3335" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="3345:3431" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="3489:4527" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="3640:4358" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="3652:3734" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="3662:3721" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="3746:4346" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="3756:3807" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="3817:3874" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="3884:3977" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="3987:4039" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="4049:4117" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="4127:4219" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="4229:4333" placeholder="..." />
-            <marker date="1355184833000" expanded="true" signature="4365:4518" placeholder="..." />
-          </folding>
+        <state line="5" column="31" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/webroot/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="24" selection-start="253" selection-end="253" vertical-scroll-proportion="-6.25">
+        <state line="14" column="24" selection-start="253" selection-end="253" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/helpers/transform/PDF.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="11" selection-start="1054" selection-end="1054" vertical-scroll-proportion="-9.916667">
+        <state line="53" column="11" selection-start="1054" selection-end="1054" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/apps/accounting/layout/finance/widgets/Shortcuts.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="39" selection-start="687" selection-end="687" vertical-scroll-proportion="-16.25">
+        <state line="38" column="0" selection-start="774" selection-end="774" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/apps/accounting/layout/finance/TransactionForm.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="44" selection-start="2364" selection-end="2364" vertical-scroll-proportion="-18.125">
+        <state line="95" column="44" selection-start="2556" selection-end="2556" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/apps/accounting/api.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="275" column="79" selection-start="6987" selection-end="6987" vertical-scroll-proportion="-12.692307">
+        <state line="277" column="61" selection-start="7048" selection-end="7048" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/apps/accounting/controller.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="253" column="44" selection-start="6869" selection-end="6884" vertical-scroll-proportion="-158.125">
+        <state line="253" column="44" selection-start="6869" selection-end="6884" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/helpers/accounting/controller.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="70" selection-start="1061" selection-end="1061" vertical-scroll-proportion="0.26560846">
+        <state line="52" column="7" selection-start="1066" selection-end="1066" vertical-scroll-proportion="0.018703243">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/tests/DataLib.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="107" column="16" selection-start="2159" selection-end="2170" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/ext/ubl2/Invoice.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="106" column="35" selection-start="6195" selection-end="6623" vertical-scroll-proportion="0.4117647">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/finance/accounting/DaybookTransaction.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="15" selection-start="560" selection-end="573" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/invoice/layout/finance/Form.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="481" column="14" selection-start="16807" selection-end="16807" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/finance/Bill.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/finance/bill/Line.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="5" selection-start="239" selection-end="246" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/finance/Invoice.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="108" column="12" selection-start="1842" selection-end="1936" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/finance/accounting/Account.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
