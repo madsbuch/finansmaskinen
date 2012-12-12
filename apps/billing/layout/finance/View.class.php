@@ -12,10 +12,12 @@ class View extends \helper\layout\LayoutBlock
 	private $widgets;
 	private $party;
 
-	/**
-	 * prefill some variables with the construcotr.
-	 */
-	function __construct($obj, $senderParty, $widgets)
+    /**
+     * @param $obj \model\finance\Bill
+     * @param $senderParty \model\ext\ubl2\Party the ubl party
+     * @param $widgets
+     */
+    function __construct($obj, $senderParty, $widgets)
 	{
 		$this->obj = $obj;
 		$this->party = $senderParty;

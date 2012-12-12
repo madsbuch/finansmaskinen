@@ -146,14 +146,14 @@ class Page extends \helper\layout\LayoutBlock{
 					<input type="hidden" value="DK:BANK" name="Public-PaymentMeans-PaymentChannelCode" />
 					<input type="hidden" value="1" name="Public-PaymentMeans-PaymentMeansCode" />
 					<div class="span1" style="width:40%">
-						<label>Bank</label>
+						<label>Regnr.</label>
 						<input type="text"
 							id="Public-PaymentMeans-PayeeFinancialAccount-FinancialInstitutionBranch-ID-_content"
 							name="Public-PaymentMeans-PayeeFinancialAccount-FinancialInstitutionBranch-ID"
 							style="width:100%;" />
 					</div>
 					<div class="span1" style="width:45%">
-						<label>Konto</label>
+						<label>Kontonr.</label>
 						<input type="text" name="Public-PaymentMeans-PayeeFinancialAccount-ID"
 							id="Public-PaymentMeans-PayeeFinancialAccount-ID-_content"
 							style="width:100%;" />

@@ -24,10 +24,13 @@ class Form extends \helper\layout\LayoutBlock{
 	
 	private $contactID;
 
-	
+    /**
+     * @var array array of messages to present to the user before final creation
+     */
 	private $msg = array(
-		'Efter denne handling kan der ikke ændres i salget',
-		'Der vil blive trukket DKK 19,- fra din konto. køb abonnement <a target="_blank" href="/companyProfile/credit">her</a>');
+		'Efter denne handling kan fakturaen ikke ændres.',
+		'Der vil blive trukket DKK 19,- fra din konto. køb abonnement <a target="_blank" href="/companyProfile/credit">her</a>'
+    );
 	
 	/**
 	* prefill some variables with the construcotr.
