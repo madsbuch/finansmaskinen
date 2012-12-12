@@ -2,24 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3682f5e-bc6d-4295-9baa-f52e6348649d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/robots.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/accounting/controller.class.php" afterPath="$PROJECT_DIR$/apps/accounting/controller.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/accounting/setups/DkkSolitaire.class.php" afterPath="$PROJECT_DIR$/apps/accounting/setups/DkkSolitaire.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/billing/api.class.php" afterPath="$PROJECT_DIR$/apps/billing/api.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/billing/layout/finance/ContactWidget.class.php" afterPath="$PROJECT_DIR$/apps/billing/layout/finance/ContactWidget.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/billing/layout/finance/Form.class.php" afterPath="$PROJECT_DIR$/apps/billing/layout/finance/Form.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/billing/layout/finance/View.class.php" afterPath="$PROJECT_DIR$/apps/billing/layout/finance/View.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/billing/layout/finance/Widget.class.php" afterPath="$PROJECT_DIR$/apps/billing/layout/finance/Widget.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/companyProfile/layout/finance/Page.class.php" afterPath="$PROJECT_DIR$/apps/companyProfile/layout/finance/Page.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/invoice/layout/finance/Form.class.php" afterPath="$PROJECT_DIR$/apps/invoice/layout/finance/Form.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/localization/da_DK.lan" afterPath="$PROJECT_DIR$/localization/da_DK.lan" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/core/access.log" afterPath="$PROJECT_DIR$/log/core/access.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/core/error.log" afterPath="$PROJECT_DIR$/log/core/error.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/core/exception.log" afterPath="$PROJECT_DIR$/log/core/exception.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/core/rpc.log" afterPath="$PROJECT_DIR$/log/core/rpc.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/finance/Bill.class.php" afterPath="$PROJECT_DIR$/model/finance/Bill.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/bootstrap/js/init.js" afterPath="$PROJECT_DIR$/static/bootstrap/js/init.js" />
     </list>
     <ignored path="sshmnt.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -71,7 +54,7 @@
           <file leaf-file-name="api.class.php" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/apps/billing/api.class.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="357" column="46" selection-start="8248" selection-end="8248" vertical-scroll-proportion="0.27629912">
+                <state line="357" column="46" selection-start="8248" selection-end="8248" vertical-scroll-proportion="0.4386318">
                   <folding />
                 </state>
               </provider>
@@ -102,7 +85,7 @@
           <file leaf-file-name="init.js" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/static/bootstrap/js/init.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="275" column="36" selection-start="10496" selection-end="10496" vertical-scroll-proportion="0.52521527">
+                <state line="275" column="36" selection-start="10496" selection-end="10496" vertical-scroll-proportion="0.81957775">
                   <folding>
                     <element signature="n#!!doc" expanded="true" />
                   </folding>
@@ -586,28 +569,33 @@
       <created>1354492711249</created>
       <updated>1354492711249</updated>
     </task>
+    <task id="LOCAL-00001" summary="some frontend">
+      <created>1355351239091</created>
+      <updated>1355351239091</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="27" width="1922" height="1054" extended-state="6" />
     <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295238" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295238" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22454448" sideWeight="0.6700565" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22454448" sideWeight="0.6700565" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299435" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3299435" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295238" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -754,7 +742,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/apps/billing/api.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="357" column="46" selection-start="8248" selection-end="8248" vertical-scroll-proportion="0.27629912">
+        <state line="357" column="46" selection-start="8248" selection-end="8248" vertical-scroll-proportion="0.4386318">
           <folding />
         </state>
       </provider>
@@ -775,7 +763,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/bootstrap/js/init.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="275" column="36" selection-start="10496" selection-end="10496" vertical-scroll-proportion="0.52521527">
+        <state line="275" column="36" selection-start="10496" selection-end="10496" vertical-scroll-proportion="0.81957775">
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
