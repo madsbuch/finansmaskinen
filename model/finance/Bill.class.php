@@ -63,15 +63,6 @@ class Bill extends \model\AbstractModel
 	protected $amountTotal;
 
 	/**
-	 * represents the transactions to this bill
-	 *
-	 * TODO are daybookTransaction and product to merge
-	 *
-	 * @var \model\finance\accounting\DaybookTransaction
-	 */
-	//protected $daybookTransaction;
-
-	/**
 	 * instance of
 	 *
 	 * Deprecated, out of scope for a bill.

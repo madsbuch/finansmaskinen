@@ -16,12 +16,27 @@ class Widget extends \helper\layout\LayoutBlock implements \helper\layout\Widget
 		'#billing_widget_container' => 'Denne boks viser de preserende regninger du skal være opmærksom på.'
 	);
 
-	function __construct($objs)
+    /**
+     * Objects to this widget have following type:
+     * ->bill contains \model\finance\Bill
+     * ->contact containt \model\finance\Contact
+     *
+     * @param $objs collection of objects to show in this widget
+     */
+    function __construct($objs)
 	{
 		$this->objects = $objs;
 	}
 
-	function wrap($wrapper, $dom)
+    /**
+     * function for wrapping this object ito another object.
+     *
+     * this is called before generate.
+     *
+     * @param $wrapper
+     * @param $dom
+     */
+    function wrap($wrapper, $dom)
 	{
 		$this->wrapper = $wrapper;
 		$this->edom = $dom;
@@ -38,8 +53,8 @@ class Widget extends \helper\layout\LayoutBlock implements \helper\layout\Widget
 			</p>');
 		else {
 			$insertion = new \helper\layout\Table(array(
-				'contactID' => __('Sender'),
-				'amountTotal' => array(
+				'contact.Party.PartyName' => __('Sender'),
+				'bill.amountTotal' => array(
 					__('Amount'),
 					function ($data) {
 						return isset($data) ?
@@ -50,14 +65,14 @@ class Widget extends \helper\layout\LayoutBlock implements \helper\layout\Widget
 				),
 				'.' => array(__('Duedate'), function ($data, \DOMDocument $dom, $field, $row) {
 					//put all this some other place
-					$row->setAttribute('data-href', '/billing/view/' . $data->_id);
+					$row->setAttribute('data-href', '/billing/view/' . $data->bill->_id);
 					$row->setAttribute('style', 'cursor:pointer;');
 
 
 					$toRet = $dom->createElement('a', 'No date');
 					$toRet->setAttribute('href', '/billing/view/');
 
-					$date = $data->paymentDate;
+					$date = $data->bill->paymentDate;
 					if (!empty($date)) {
 						if ($date > time())
 							$toRet = new \DOMText(date("j/n-Y", $date));

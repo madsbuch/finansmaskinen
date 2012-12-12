@@ -31,19 +31,19 @@ class DkkSolitaire {
 		array(
 			'code' => 'REP',
 			'name' => 'Repræsentation',
-			'percentage' => 5.26,
+			'percentage' => 6.25,
 			'account' => 14261,
 			'counterAccount' => null,
-			'net' => false,
+			'net' => true,
 			'type' => 2
 		),
 		array(
 			'code' => 'HREP',
 			'name' => 'Repræsentation - hotelbesøg',
-			'percentage' => 11.11,
+			'percentage' => 12.5,
 			'account' => 14261,
 			'counterAccount' => null,
-			'net' => false,
+			'net' => true,
 			'type' => 2
 		),
 	);

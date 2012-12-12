@@ -379,15 +379,19 @@ class accounting extends \core\app{
 		$this->output_content = $ret;
 	}
 
-	/**
-	 * returns details on the vatcode.
-	 *
-	 * @param $id id of ht vat code
-	 *
-	 */
-	function getVatCode($id){
-	
-	}
+    /**
+     * returns an object representing requested vatCode
+     *
+     * @param string $code the code to return object from
+     */
+    function getVatCode($code = null){
+        $obj = \api\accounting::getVatCode($code);
+        $ret = json_encode($obj->toArray());
+
+        $this->header->setMime('json');
+        $this->output_header = $this->header->getHeader();
+        $this->output_content = $ret;
+    }
 	
 	/**
 	* Required functions

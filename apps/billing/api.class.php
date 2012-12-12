@@ -44,7 +44,16 @@ class billing extends \core\api
 	 */
 	static function on_getWidget()
 	{
-		return new \app\billing\layout\finance\Widget(self::get(null,  array('isPayed' => false), 3));
+        $bills = self::get(null,  array('isPayed' => false), 3);
+        $objects = array();
+        foreach($bills as $b){
+            $obj = new \stdClass;
+            $obj->contact = \api\contacts::getContact($b->contactID);
+            $obj->bill = $b;
+            $objects[] = $obj;
+        }
+
+		return new \app\billing\layout\finance\Widget($objects);
 	}
 
 	/**
@@ -53,7 +62,15 @@ class billing extends \core\api
 	static function on_contactGetLatest($contactObj)
 	{
 		//@TODO check permissions, user should have permission to view bills
-		return new \app\billing\layout\finance\ContactWidget(null, $contactObj);
+        $bills = self::get(null,  array('isPayed' => false, 'contactID' => (string) $contactObj->_id), 3);
+        $objects = array();
+        foreach($bills as $b){
+            $obj = new \stdClass;
+            $obj->contact = \api\contacts::getContact($b->contactID);
+            $obj->bill = $b;
+            $objects[] = $obj;
+        }
+		return new \app\billing\layout\finance\ContactWidget($objects, $contactObj);
 	}
 
 	/**
@@ -322,9 +339,9 @@ class billing extends \core\api
 	{
 		//validates data
 
-		//test contact
-		if (is_string($bill->contactID) && !\api\contacts::getContact($bill->contactID))
-			throw new \exception\UserException(__('Contact %s doesn\' exist', $bill->contactID));
+		//test contact this is removes because we let the model objects do validation
+		//if (is_string($bill->contactID) && !\api\contacts::getContact($bill->contactID))
+		//	throw new \exception\UserException(__('Contact %s doesn\' exist', $bill->contactID));
 
 		//set standard values
 		if (!isset($bill->draft)) //assuming draft

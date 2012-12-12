@@ -29,8 +29,22 @@ class Form extends \helper\layout\LayoutBlock
 
 	private $bill;
 
-	function __construct($bill = null){
+    /**
+     * @var array array of messages to present the user for, before final creation of bill
+     */
+    private $msg = array(
+		'Efter denne handling kan regingen ikke ændres.',
+		'Der vil blive trukket DKK 9,- fra din konto. køb abonnement <a target="_blank" href="/companyProfile/credit">her</a>'
+    );
+
+    /**
+     * @var string holder for some default contact (defaulting contact or editing)
+     */
+    private $contactID;
+
+	function __construct($bill = null, $contact = null){
 		$this->bill = $bill;
+        $this->contactID = $contact;
 	}
 
 	function generate()
@@ -75,7 +89,7 @@ class Form extends \helper\layout\LayoutBlock
 									data-objLink="/contacts/getContact/"
 									data-addForm="#addNewContact"
 
-									'.($this->contactID ? 'data-preselect="'.$this->contactID.'"' : '').'
+									'.(isset($this->contactID) ? 'data-preselect="'.$this->contactID.'"' : '').'
 
 									data-titleIndex="addNewContact"
 									placeholder="Vælg Afsender" /><a href="#sender-"
@@ -125,43 +139,54 @@ class Form extends \helper\layout\LayoutBlock
 				<div id="productLine">
 					<div id="productLine_template">
 						<div class="span12">
-							<div class="input-append" style="float:left;width:30%;">
+							<div class="input-append" style="float:left;width:15%;">
 								<input
 									id="lines-#index#-"
 									name="trash"
 									type="text"
-									class="pPicker totalCompute" style="width:80%"
+									class="pPicker totalCompute" style="width:60%"
 									data-listLink="/products/autocomplete/"
 									data-objLink="/products/getProduct/"
 
 									data-addForm="#addNewProduct"
 									data-titleIndex="addNewProduct"
 
-									placeholder="Produkt" /><a href="#lines-#index#-"
+									placeholder="Kendt produkt?" /><a href="#lines-#index#-"
 									class="btn pickerDroP"><i class="icon-circle-arrow-down"></i></a>
 							</div>
-		                    <input type="hidden" id="lines-#index#-productID" name="lines-#index#-productID" />
+
+                            <input
+                                type="text"
+                                name="lines-#index#-text"
+                                id="line-#index#-text"
+                                placeholder="Beskrivese"
+                                style="float:left; width:27%;" />
 
 							<p id="#index#" class="readIndex hide" />
 
-							<div class="input-append" style="float:left;width:15%;">
+							<div class="input-append" style="float:left;width:15%;margin-left:5px;">
 								<input type="text" class="pPicker"
-									id="lines-#index#-account"
-									name="lines-#index#-account"
+									id="lines-#index#-account-"
+									name="trash"
 									placeholder="Konto"
 									style="width:60%"
 									data-listLink="/accounting/autocompleteAccounts/"
-									data-objLink="/accounting/getAccount/" /><a href="#lines-#index#-account"
+									data-objLink="/accounting/getAccount/" /><a href="#lines-#index#-account-"
 									class="btn pickerDroP"><i class="icon-circle-arrow-down"></i></a>
 							</div>
 
-							<div class="input-append" style="float:left;width:15%;">
+
+							<div class="input-append" style="float:left;width:5%;">
 								<input type="text"
 									name="lines-#index#-vatCode"
 									id="lines-#index#-inclVat-code"
 									placeholder="Moms"
-									style="width:60%" data-replace="product-#index#-inclVat-code"
+									style="width:45%"
+
+									data-replace="product-#index#-inclVat-code"
 									data-listLink="/accounting/autocompleteVatCode/"
+									data-objLink="/accounting/getVatCode/"
+
 									class="input-small pPicker" /><a href="#lines-#index#-inclVat-code"
 									class="btn pickerDroP add-on"><i class="icon-circle-arrow-down"></i></a>
 							</div>
@@ -169,7 +194,7 @@ class Form extends \helper\layout\LayoutBlock
 							<input id="lines-#index#-quantity"
 								name="lines-#index#-quantity"
 								type="text" class="add-on totalCompute" placeholder="Antal"
-								style="width:8%" />
+								style="width:8%;margin-left:15px;" />
 
 							<input id="lines-#index#-amount"
 								name="lines-#index#-amount"
@@ -188,7 +213,18 @@ class Form extends \helper\layout\LayoutBlock
 								<label>moms:</label>
 								<input type="text"
 									name="trash"
-									id="lines-#index#-inclVat-percentage" />
+									id="lines-#index#-inclVat-percentage"
+									data-replace="lines-#index#-inclVat-codepercentage" />
+
+								<label>produkt:</label>
+							    <input type="text" id="lines-#index#-productID" name="lines-#index#-productID" />
+
+							    <label>Konto</label>
+							    <input type="text"
+							        data-replace="lines-#index#-account-code"
+							        id="lines-#index#-account"
+							        name="lines-#index#-account" />
+
 							</div>
 
 						</div>
@@ -217,8 +253,23 @@ class Form extends \helper\layout\LayoutBlock
 
 		<div class="offset4">
 			<input type="submit" name="draft" class="btn btn-primary btn-large" value="Gem kladde" />
-			<a href="#createBull" class="btn btn-primary btn-large" data-toggle="modal">Opret Regning</a>
+			<a href="#createBill" class="btn btn-primary btn-large" data-toggle="modal">Opret Regning</a>
 		</div>
+
+		<div class="modal hide fade" id="createBill">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">×</button>
+				<h3>Opret salg</h3>
+			</div>
+			<div class="modal-body">
+				<p>'.implode('</p><p>', $this->msg).'</p>
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="btn" data-dismiss="modal">Anuller</a>
+				<input type="submit" name="finished" class="btn btn-primary" value="Opret salg" />
+			</div>
+		</div>
+
 	</form>
 
 	<div class="modal hide fade" id="addNewContact">
@@ -332,22 +383,13 @@ class Form extends \helper\layout\LayoutBlock
 
 			//inject some productline
 			$inj = array();
+
+            //do preselects on products
+            $preselects = array();
 			foreach($this->bill->lines as $line){
 				$t = array();
-				$t['lines-#index#-'] = $line->productID;
-				/*$t['product-#index#-Item-Description-_content'] = $il->Item->Description->_content;
-				$t['product-#index#-quantity'] = $il->InvoicedQuantity->_content;
-				$t['product-#index#-ID'] = (string) $il->ID->_content;
+				$t['lines-#index#-productID'] = $line->productID;
 
-				$t['product-#index#-productID'] = $this->invoice->product->$i->id;
-
-				$t['product-#index#-Price-PriceAmount-_content'] =
-					l::writeValuta($il->Price->PriceAmount->_content);
-				$t['product-#index#-TaxTotal-TaxSubtotal-TaxCategory-Percent'] =
-					$il->TaxTotal->TaxSubtotal->TaxCategory->Percent->_content;
-
-
-				*/
 				$t['lines-#index#-account'] = $line->account;
 
 				$t['lines-#index#-inclVat-code'] = $line->vatCode;
@@ -357,12 +399,22 @@ class Form extends \helper\layout\LayoutBlock
 
 				$t['lines-#index#-amount'] = l::writeValuta($line->amount);
 
+                $t['lines-#index#-text'] = $line->text;
+
+                $ps['-'] = $line->productID;
+                $ps['-account-'] = $line->account;
+                $ps['-inclVat-code'] = $line->vatCode;
+
+                $preselects[] = $ps;
+
+
 				$inj[] = (object) $t;
 			}
 
 			$xpath = new \DOMXpath($dom);
 			$ct = $xpath->query("//*[@id='productLine']")->item(0);
 			$ct->setAttribute('data-inject', json_encode($inj));
+            $ct->setAttribute('data-ajaxPreselects', json_encode($preselects));
 
 			$ret = $element;
 		}

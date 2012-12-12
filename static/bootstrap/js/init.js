@@ -266,6 +266,25 @@ var ExchangeRate = {};
             minFormsCount:0,
             iniFormsCount:1,
             afterAdd:function (source, newForm) {
+
+                var presel = $("#productLine").attr('data-ajaxPreselects');
+                if(typeof(presel) == 'string')
+                    presel = jQuery.parseJSON($("#productLine").attr('data-ajaxPreselects'));
+
+                var index = $(newForm).find(".readIndex").attr('id');
+
+                console.log(presel  );
+
+                if(presel != null){
+                    var preselect = presel.shift();
+
+                    $.each(preselect, function(i, val){
+                        $("#lines-"+index+i).attr('data-preselect', val);
+                        console.log("#lines-"+index+i);
+                    });
+                    jQuery.parseJSON($("#productLine").attr('data-ajaxPreselects',presel));
+            }
+
                 $(".pPicker").Picker();
                 $(".pickerDroP").PickerDropdown();
             }
