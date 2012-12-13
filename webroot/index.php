@@ -12,12 +12,13 @@
 /**
  * actually the only thing that should be changed when in prod.
  */
-define('STRATEGY', 'test');
+define('STRATEGY', 'testLaptop');
 include '../config/'.STRATEGY.'/config.php';
 
 //some character settings:
 mb_internal_encoding("UTF-8");
 ini_set('default_charset', 'UTF-8');
+
 //make sure we won't have any problems writing files (logs)
 umask(0777);
 
