@@ -304,14 +304,25 @@ class invoice{
 		//apply caching
 	}
 
-	
 	/**
-	* mails an invoice
-	*/
-	public static function mail($draft){
+	 * @param $invoiceID string id of invoice
+	 * @param $recipients array array of recipient emails
+	 * @param null $template template to user
+	 */
+	public static function mail($invoiceID, $recipients, $template = null){
 		
 	}
-	
+
+	/**
+	 * creates an invoice object from a SimpleInvoice object
+	 *
+	 * @param \model\finance\invoice\SimpleInvoice $inv
+	 * @return \model\finance\Invoice
+	 */
+	public static function createFromSimple(\model\finance\invoice\SimpleInvoice $inv){
+
+	}
+
 	/**
 	 * This function does following to the invoice:
 	 *  - parses all data
@@ -330,7 +341,8 @@ class invoice{
 
 		//performing parsing on structure
 		//strict validation is done upon creation, is UBL is to be used
-		$inv->validate($inv::WEAK);
+		if(count($errs = $inv->validate($inv::WEAK)) > 0)
+			throw new \exception\UserException(__("Validation errors on invoice:\n * %s\n ", implode("\n * ", $errs)));
 		$inv->parse();
 
 

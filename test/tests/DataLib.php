@@ -34,6 +34,15 @@ $ubl_Party = new \model\ext\ubl2\Party(array(
 
 ));
 
+$ubl_Price = new \model\ext\ubl2\Price(array());
+
+$ubl_invoiceLines = new \model\Iterator(array(
+	array(
+		'Price' => $ubl_Price
+	),
+
+), '\model\ext\ubl2\InvoiceLine');
+
 /**
  * following are details for this invoice:
  */
@@ -42,6 +51,9 @@ $ubl_Invoice_I1 = new \model\ext\ubl2\Invoice(array(
 		'Party' => $ubl_Party
 	)),*/
 	'IssueDate' => '2013-11-29',
+	'DocumentCurrencyCode' => 'DKK',
+
+	'InvoiceLine' => $ubl_invoiceLines,
 ));
 
 $ublI1Detail = array();

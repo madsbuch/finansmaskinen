@@ -116,16 +116,20 @@ class Invoice extends \model\AbstractModel{
 	 * validate datastructure according to UBL standard
 	 */
 	function doValidate($level){
+		$ret = array() ;
 		if(!isset($this->DocumentCurrencyCode))
-			throw new \exception\NotValidatedException(__('Currency has to be set.'));
-		if(!isset($this->InvoiceLine))
-			throw new \exception\NotValidatedException(__('An invoice must have at least one invoiceline.'));
+			$ret[] = __('DocumentCurrencyCode has to be set.');
 
-		if(!$level == static::STRICT)
-			return;
+		if(!(isset($this->InvoiceLine) && $this->InvoiceLine->count() > 0))
+			$ret[] = __('An invoice must have at least one InvoiceLine.');
+
+		if($level != static::STRICT)
+			return $ret;
 
 		if(!isset($this->IssueDate))
-			throw new \exception\NotValidatedException(__('Issuedate was not set for invoice.'));
+			$ret[] = __('Issuedate was not set for invoice.');
+
+		return $ret;
 	}
 }
 

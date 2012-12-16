@@ -81,6 +81,10 @@ class Iterator extends AbstractModel implements \IteratorAggregate, \ArrayAccess
 	function get_first(){
 		return reset($this->_index);
 	}
+
+	function count(){
+		return count($this->_index);
+	}
 }
 
 ?>
