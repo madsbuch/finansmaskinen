@@ -22,6 +22,9 @@ ini_set('default_charset', 'UTF-8');
 //make sure we won't have any problems writing files (logs)
 umask(0777);
 
+//default timezone
+date_default_timezone_set('UTC');
+
 require_once("global.php");
 chdir("..");
 
