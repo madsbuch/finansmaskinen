@@ -1,6 +1,7 @@
 <?php
 namespace start\finance;
-class main extends \core\app{
+class main extends \core\app implements \core\framework\Output
+{
 
 	public static $requireLogin = false;
 	
@@ -495,6 +496,38 @@ class main extends \core\app{
 		$this->output_header = $this->header->getHeader();
 		$this->output_content = $html->generate();
 	}
+
+	/**
+	 * takes an exception, shows it to the user :D
+	 *
+	 * exception messages are translated.
+	 *
+	 * @param \core\framework\the $e
+	 */
+	function handleException($e){
+		/**** echo out some content ****/
+		$html = $this->getTpl();
+		if($e instanceof \exception\PermissionException){
+			$c = new \helper\layout\MessagePage(__('Woops'),
+				'<p>'.__('Well, it doesn\'t seem that you are allowed to see this page... Try to login maybe?').'</p>');
+		}
+		elseif($e instanceof \exception\PageNotFoundException){
+			$this->header->setResponse(404);
+			$c = new \helper\layout\MessagePage('ARG! 404',
+				'<p>Denn side findes vist ikke.</p>');
+		}
+		else{
+			$this->header->setResponse(500);
+			$c = new \helper\layout\MessagePage('Bah 500',
+				'<p>'.$e->getMessage().'</p>');
+		}
+
+		$html->appendContent($c);
+		$this->output_header = $this->header->getHeader();
+		$this->output_content = $html->generate();
+	}
+
+
 	
 	
 	function addAPIKey(){
