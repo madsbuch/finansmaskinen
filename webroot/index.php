@@ -41,7 +41,7 @@ if (DEBUG)
 	\core\debug::getInstance();
 
 /**
- * Defining the autoload class
+ * Defining the autoload function
  */
 function __autoload($class)
 {

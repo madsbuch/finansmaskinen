@@ -77,8 +77,10 @@ class errorHandler
 			\core\appHandler::doOutput($this->app);
 		}
 		catch(\Exception $e){
-			echo 'something serious happened.';
+			echo "something serious happened.\n\n";
+			echo get_class ($this->app) . "\n\n";
 			if(DEBUG){
+				echo $exception->getMessage() . "\n\n";
 				echo $exception->getMessage() . "\n\n";
 				var_dump($exception->getTRace());
 			}
