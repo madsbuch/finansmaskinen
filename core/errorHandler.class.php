@@ -75,9 +75,9 @@ class errorHandler
 			echo "something serious happened.\n\n";
 			echo get_class ($this->app) . "\n\n";
 			if(DEBUG){
-				echo $exception->getMessage() . "\n\n";
-				echo $exception->getMessage() . "\n\n";
-				var_dump($exception->getTRace());
+				echo $e->getMessage() . "\n\n";
+				echo $e->getMessage() . "\n\n";
+				var_dump($e->getTRace());
 			}
 		}
 	}
