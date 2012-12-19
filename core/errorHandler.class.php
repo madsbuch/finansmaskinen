@@ -68,14 +68,21 @@ class errorHandler
 	 * @param $exception thrown exception
 	 */
 	function productionExeptionHandler(\Exception $exception) {
-		$log = new \model\log\core\Exception();
-
-		$log->message = $exception->getMessage();
-		$log->stack = $exception->getTraceAsString();
-
-		\core\logHandler::log($log);
-		$this->app->handleException($exception);
-		\core\appHandler::doOutput($this->app);
+		try{
+			$log = new \model\log\core\Exception();
+			$log->message = $exception->getMessage();
+			$log->stack = $exception->getTraceAsString();
+			\core\logHandler::log($log);
+			$this->app->handleException($exception);
+			\core\appHandler::doOutput($this->app);
+		}
+		catch(\Exception $e){
+			echo 'something serious happened.';
+			if(DEBUG){
+				echo $exception->getMessage() . "\n\n";
+				var_dump($exception->getTRace());
+			}
+		}
 	}
 
 	/**
@@ -88,6 +95,7 @@ class errorHandler
 		echo $exception->getMessage() . "\n\n";
 		var_dump($exception->getTRace());
 	}
+
 	
 	public function productionHandler($errno, $errstr, $errfile, $errline ){
 		throw new \ErrorException($errstr, $errno, 0, $errfile, $errline);
