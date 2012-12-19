@@ -16,11 +16,9 @@ class File implements Cache{
 		//make sure the dir exists
 		if(!is_dir(CACHEDIR . 'filecacher/')){
 			mkdir(CACHEDIR . 'filecacher/');
-			chmod(CACHEDIR . 'filecacher/', 0777);
 		}
 		if(!is_dir($this->dir)){
 			@mkdir($this->dir);
-			@chmod($this->dir, 0777);
 		}
 	}
 	
