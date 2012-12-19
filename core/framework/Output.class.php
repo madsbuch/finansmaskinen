@@ -28,7 +28,7 @@ interface Output
 	 *
 	 * @return string
 	 */
-	function getOutputHeader();
+	function getHeader();
 
 	/**
 	 * string representing the body
@@ -36,5 +36,5 @@ interface Output
 	 *
 	 * @return string
 	 */
-	function getOutputContent();
+	function getBody();
 }

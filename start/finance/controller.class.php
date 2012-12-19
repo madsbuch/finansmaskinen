@@ -527,7 +527,13 @@ class main extends \core\app implements \core\framework\Output
 		$this->output_content = $html->generate();
 	}
 
+	function getHeader(){
+		return $this->getOutputHeader();
+	}
 
+	function getBody(){
+		return $this->getOutputContent();
+	}
 	
 	
 	function addAPIKey(){
