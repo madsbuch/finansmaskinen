@@ -241,7 +241,7 @@ class main extends \core\app implements \core\framework\Output
 	
 	public function price(){
 		$html = $this->getTpl('price');
-		$html->add2content(new layout\Price);
+		$html->add2content(new layout\Price());
 		//$this->output_header = $this->page->getHeader();
 		$this->output_content = $html->generate();
 	}
@@ -263,8 +263,9 @@ class main extends \core\app implements \core\framework\Output
 			$cache->set('aboutPage', $this->output_content, 7200);
 		}*/
 		$html = $this->getTpl('about');
-		$html->add2content(new layout\About);
+		$html->add2content(new layout\About());
 		$this->output_header = $this->header->getHeader();
+		$this->output_content = $html->generate();
 	}
 
 	
