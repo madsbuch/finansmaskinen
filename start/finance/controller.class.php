@@ -250,7 +250,7 @@ class main extends \core\app implements \core\framework\Output
 	public function about(){
 		/**** echo out some content ****/
 		//static page, let's try some caching :D
-		$cache = \helper\cache::getInstance('File', 'financeMainHTML');
+		/*$cache = \helper\cache::getInstance('File', 'financeMainHTML');
 		$o = $cache->get('aboutPage');
 		
 		if(!is_null($o) && false)
@@ -261,8 +261,9 @@ class main extends \core\app implements \core\framework\Output
 			$this->output_content = $html->generate();
 			//cachinf for full 2 hours ;)
 			$cache->set('aboutPage', $this->output_content, 7200);
-		}
-		
+		}*/
+		$html = $this->getTpl('about');
+		$html->add2content(new layout\About);
 		$this->output_header = $this->header->getHeader();
 	}
 
