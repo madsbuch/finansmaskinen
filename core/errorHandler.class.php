@@ -50,14 +50,9 @@ class errorHandler
 	// A private constructor; prevents direct creation of object
 	private function __construct() {
 		//attach erro handlers and exeption handlers
-		if(DEBUG){
-			set_error_handler(array($this, "debugHandler"));
-			set_exception_handler(array($this, "debugExeptionHandler"));
-		}
-		else{
-			set_error_handler(array($this, "productionHandler"));
-			set_exception_handler(array($this, "productionExeptionHandler"));
-		}
+		set_error_handler(array($this, "errorHandler"));
+		set_exception_handler(array($this, "exeptionHandler"));
+
 	}
 
 	/**
@@ -67,7 +62,7 @@ class errorHandler
 	 *
 	 * @param $exception thrown exception
 	 */
-	function productionExeptionHandler(\Exception $exception) {
+	function exeptionHandler(\Exception $exception) {
 		try{
 			$log = new \model\log\core\Exception();
 			$log->message = $exception->getMessage();
@@ -86,23 +81,8 @@ class errorHandler
 			}
 		}
 	}
-
-	/**
-	 * exceptionhandlerhandler for the program in debug mode
-	 *
-	 * @param $exception thrown exception
-	 */
-	function debugExeptionHandler($exception) {
-		$this->productionExeptionHandler($exception);
-		echo $exception->getMessage() . "\n\n";
-		var_dump($exception->getTRace());
-	}
-
 	
-	public function productionHandler($errno, $errstr, $errfile, $errline ){
-		throw new \ErrorException($errstr, $errno, 0, $errfile, $errline);
-	}
-	public function debugHandler($errno, $errstr, $errfile, $errline ){
+	public function errorHandler($errno, $errstr, $errfile, $errline ){
 		throw new \ErrorException($errstr, $errno, 0, $errfile, $errline);
 	}
 
