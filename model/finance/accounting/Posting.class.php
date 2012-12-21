@@ -30,7 +30,7 @@ class Posting extends \model\AbstractModel
 	 * amount in lowest value (cent)
 	 *
 	 * this is always positive, this is due to not doing a lot
-	 * of arithmik operations
+	 * of arithmic operations
 	 *
 	 * @var int
 	 */

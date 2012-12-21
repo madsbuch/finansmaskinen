@@ -19,6 +19,7 @@ class AccountingTest extends UnitTestCase
 	 * @var holder for jsonRPCClient object
 	 */
 	private $client;
+	private $accounting;//string of a known accounting
 
 	/**
 	 * authenticate to the app, and stuff
@@ -30,6 +31,8 @@ class AccountingTest extends UnitTestCase
 			'http://rpc.finansmaskinen.dev/accounting/rpc.json?key=' . $settings->apiKey, true);
 	}
 
+	/**** Accounts testing ****/
+
 	/**
 	 * test that we are able to add an account
 	 */
@@ -37,7 +40,7 @@ class AccountingTest extends UnitTestCase
 	{
 		global $account;
 		//should succeed
-		$this->client->create($account->toArray());
+		$this->client->createAccount($account->toArray());
 	}
 
 	function testNoAccountDuplicate()
@@ -45,20 +48,20 @@ class AccountingTest extends UnitTestCase
 		global $account;
 		$this->expectException();
 		//should throw an exception
-		$this->client->create($account->toArray());
+		$this->client->createAccount($account->toArray());
 	}
 
 	function testRetrieve()
 	{
 		global $account;
 
-		$acc = new \model\finance\accounting\Account($this->client->get($account->code));
+		$acc = new \model\finance\accounting\Account($this->client->getAccount($account->code));
 
 		$this->assertIdentical($acc->name, $account->name, "Names are not the same on retrieved account");
 	}
 
 	/**
-	 * test if it is possible to delete account, alså works as cleaning
+	 * test if it is possible to delete account, also works as cleaning
 	 */
 	function testDeleteAccount()
 	{
@@ -72,7 +75,62 @@ class AccountingTest extends UnitTestCase
 		global $account;
 		$this->expectException();
 		//should throw an exception
-		$this->client->get($account->code);
+		$this->client->getAccount($account->code);
+	}
+
+	function testGetCurrentAccounting(){
+		$this->accounting = new \model\finance\Accounting($this->client->getAccounting());
+	}
+
+	/**** transaction testing ****/
+
+	/**
+	 * tests if it is possible to insert daybooktransaction
+	 */
+	function testInsertTransaction(){
+		global $daybookTransaction;
+
+		//fetch current accountinginformation
+
+		$this->client->createTransaction($daybookTransaction->toArray());
+	}
+
+	function testTransactionWasCorrect(){
+
+	}
+
+	/**
+	 * should fail as there is en error on the balance
+	 */
+	function testInsertErrorBalance(){
+		global $daybookTransaction;
+
+		$this->expectException();
+
+		//fetch current accountinginformation
+		$daybookTransaction->postings->blah = array(
+			'account' => 12320,
+			'amount' => 10000,
+			'positive' => true,
+			'description' => 'error'
+		);
+		$this->client->createTransaction($daybookTransaction->toArray());
+	}
+
+	/**** vat testing ****/
+
+	/**
+	 * attempts to reset vat
+	 */
+	function testVatRest(){
+
+	}
+
+	/**
+	 * attempts to mark vat as payed
+	 */
+	function testVatMarkAsPayed(){
+
 	}
 
 }

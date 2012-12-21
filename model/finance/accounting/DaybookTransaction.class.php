@@ -34,9 +34,16 @@ class DaybookTransaction extends \model\AbstractModel
 	 */
 	protected $postings;
 
+	/**
+	 * id of accounting
+	 * @var string
+	 */
+	protected $accounting;
 
 	/**
-	 * @var
+	 * hmm, either unix ts or iso8601
+	 *
+	 * @var string
 	 */
 	protected $date;
 

@@ -516,12 +516,17 @@ class main extends \core\app implements \core\framework\Output
 		elseif($e instanceof \exception\PageNotFoundException){
 			$this->header->setResponse(404);
 			$c = new \helper\layout\MessagePage('ARG! 404',
-				'<p>Denn side findes vist ikke.</p>');
+				'<p>'.__('The requested page does not exist.').'</p>');
+		}
+		elseif($e instanceof \exception\UserException){
+			$this->header->setResponse(404);
+			$c = new \helper\layout\MessagePage('En fejl?',
+				'<p>'.$e->getMessage().'</p>');
 		}
 		else{
 			$this->header->setResponse(500);
 			$c = new \helper\layout\MessagePage('Bah 500',
-				'<p>'.$e->getMessage().'</p>');
+				'<p>'.__('Some fatal internal error happened.').'</p>');
 		}
 
 		$html->appendContent($c);

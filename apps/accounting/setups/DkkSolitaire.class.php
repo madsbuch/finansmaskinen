@@ -192,6 +192,13 @@ class DkkSolitaire {
 			'accountLiability' => 13110
 		)
 	);
+
+	/**
+	 * @var array initial settings.
+	 */
+	public static $settings = array(
+		'vatSettlementAccount' => 14260
+	);
 }
 
 ?>

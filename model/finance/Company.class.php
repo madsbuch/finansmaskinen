@@ -27,7 +27,8 @@ class Company extends \model\AbstractModel{
 	protected $_autoassign = array(
 		'Public' => array('\model\finance\company\PublicProperties', false),
 		'legalnumbers' => array('\model\Base', false),
-		'counters' => array('\model\Base', false)
+		'counters' => array('\model\Base', false),
+		'settings' => array('model\finance\company\SettingsObj', true)
 	);
 	
 	/**
@@ -151,11 +152,13 @@ class Company extends \model\AbstractModel{
 	protected $coupons;
 	
 	/**
-	* custom data for other modules
-	*
-	* think! use names that do not collide
-	*/
-	protected $data;
+	 * Custom data that can be used for settings.
+	 * some form is automatically generated
+	 * object can only be key value pairs
+	 *
+	 * collection of model\finance\company\SettingsObj
+	 */
+	protected $settings;
 	
 	/**** tech ****/
 	

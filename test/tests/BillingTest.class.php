@@ -173,7 +173,7 @@ class BillingTest extends UnitTestCase
 		$b = $this->billApi1 = $this->client->get($this->fetchedBill->_id);
 		$b = new \model\finance\Bill($b);
 
-		$this->assertIdentical($b->paymentDate, date("c", strtotime('2013-9-2')), "date should be: " . date("c", strtotime('2013-9-2')) . ' but was ' . $b->paymentDate);
+		$this->assertIdentical(date("o-m-d", strtotime($b->paymentDate)), date("o-m-d", strtotime('2013-9-2')), "date should be: " . date("o-m-d", strtotime('2013-9-2')) . ' but was ' . date("o-m-d", strtotime($b->paymentDate)));
 
 	}
 
@@ -189,10 +189,10 @@ class BillingTest extends UnitTestCase
 	{
 		global $billDetail;
 		//save account values
-		$this->expense = new \model\finance\accounting\Account($this->clientAcc->get('2100'));
-		$this->asset = new \model\finance\accounting\Account($this->clientAcc->get($billDetail['asset']));
-		$this->liability = new \model\finance\accounting\Account($this->clientAcc->get($billDetail['liability']));
-		$this->vat = new \model\finance\accounting\Account($this->clientAcc->get('14261'));
+		$this->expense = new \model\finance\accounting\Account($this->clientAcc->getAccount('2100'));
+		$this->asset = new \model\finance\accounting\Account($this->clientAcc->getAccount($billDetail['asset']));
+		$this->liability = new \model\finance\accounting\Account($this->clientAcc->getAccount($billDetail['liability']));
+		$this->vat = new \model\finance\accounting\Account($this->clientAcc->getAccount('14261'));
 
 		//setting draft to false
 		$this->fetchedBill->draft = false;
@@ -216,10 +216,10 @@ class BillingTest extends UnitTestCase
 		global $billDetail;
 
 		//we only check on income, as there should only be increments
-		$expense = new \model\finance\accounting\Account($this->clientAcc->get(2100));
-		$asset = new \model\finance\accounting\Account($this->clientAcc->get($billDetail['asset']));
-		$liability = new \model\finance\accounting\Account($this->clientAcc->get($billDetail['liability']));
-		$vat = new \model\finance\accounting\Account($this->clientAcc->get(14261));
+		$expense = new \model\finance\accounting\Account($this->clientAcc->getAccount(2100));
+		$asset = new \model\finance\accounting\Account($this->clientAcc->getAccount($billDetail['asset']));
+		$liability = new \model\finance\accounting\Account($this->clientAcc->getAccount($billDetail['liability']));
+		$vat = new \model\finance\accounting\Account($this->clientAcc->getAccount(14261));
 
 		//checking that accounts are done right
 

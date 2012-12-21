@@ -76,11 +76,10 @@ class reqHandler{
 		//setting some more variables
 		$mainPageClass = 'start\\'.$profile.'\main';
 
-		/*EXECUTING MAIN SITE*/
-		
-		//run the pre-execution stuff
-		$api::beforeExecution($request);
-		
+		/* EXECUTING MAIN SITE */
+
+		/** generate the page **/
+
 		//setting object name for the app
 		if($request->app == "main"){
 			$objName = $mainPageClass;
@@ -95,12 +94,22 @@ class reqHandler{
 		else
 			$objName = '\\'.$request->ui.'\\'.$request->app;
 
+		//sets default errorhandler
+		$eh->setOutput(new $mainPageClass($request));
+
 		//create apphandler and set output handler for errors
-		$appHandler = new $objName($request);
+
+		try{
+			$appHandler = new $objName($request);
+		}
+		catch(\Exception $e){
+			throw new \exception\PageNotFoundException(__('App not found'));
+		}
 		if($appHandler instanceof \core\framework\Output)
 			$eh->setOutput($appHandler);
-		else
-			$eh->setOutput(new $mainPageClass($request));
+
+		/** preexecution stuff **/
+		$api::beforeExecution($request);
 
 		//checking wether page exists
 		if(!is_callable(array($objName, $request->page))){

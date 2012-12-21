@@ -26,8 +26,23 @@ class companyProfile{
 			$company->Public->Party->PartyName->Name->_content : 
 			__('Your company');
 	}
-	static function getDescription(){
-		return "Administrer information vedrørende din virksomhed.";
+
+	static function on_getAppSettings($companyObject){
+		$rets = array();
+
+		$cp = self::retrieve();
+
+		if(!empty($cp->settings))
+			foreach($cp->settings as $s){
+	            $o = new \model\finance\company\AppSetting(array(
+			            'title' => $s->title,
+			            'settingsModal' => 'toCome',
+			            'modalID' => '#dd'
+		            ));
+				$rets[] = $o;
+			}
+
+		return $rets;
 	}
 	
 	/*************************** EXTERNAL API FUNCTIONS ***********************/
@@ -263,13 +278,18 @@ class companyProfile{
 			$ret = null;
 		return $ret;
 	}
-	
+
+	/**** module leves services ****/
+
 	/**
-	* returns and increments value given by v
-	*
-	* f.eks:
-	* invoiceNumber
-	*/
+	 * returns and increments value given by v
+	 *
+	 * e.g:
+	 * invoiceNumber
+	 *
+	 * @param $val string key to increment
+	 * @return int
+	 */
 	static function increment($val){
 		$o = self::retrieve();
 		
@@ -286,6 +306,37 @@ class companyProfile{
 		if(self::update($o))
 			return $ret;
 		throw new \Exception('It wasn\'t possible to update accounting (lack of permissions)');
+	}
+
+	/**
+	 * @param $for string settings object for retrieval
+	 */
+	static function getSettings($for){
+		$o = self::retrieve();
+		if(!isset($o->settings->$for))
+			return null;
+		return $o->settings->$for->settings;
+	}
+
+	/**
+	 * save some settings object
+	 *
+	 * this is editable by the user
+	 *
+	 * @param $for
+	 * @param $obj
+	 */
+	static function saveSettings($for, \app\companyProfile\Settings $obj){
+		$o = self::retrieve();
+
+		$s = new \model\finance\company\SettingsObj(array(
+			'title' => $obj->getSettingsTitle(),
+			'fields' =>$obj->getDescriptions(),
+			'settings' => $obj
+		));
+
+		$o->settings->$for = $s;
+		self::update($o);
 	}
 	
 	/**** functions for invoicing the customer ****/

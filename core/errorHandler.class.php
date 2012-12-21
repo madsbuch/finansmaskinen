@@ -68,8 +68,10 @@ class errorHandler
 			$log->message = $exception->getMessage();
 			$log->stack = $exception->getTraceAsString();
 			\core\logHandler::log($log);
-			$this->app->handleException($exception);
-			\core\appHandler::doOutput($this->app);
+			if(is_object($this->app)){
+				$this->app->handleException($exception);
+				\core\appHandler::doOutput($this->app);
+			}
 		}
 		catch(\Exception $e){
 			echo "something serious happened.\n\n";
@@ -79,6 +81,11 @@ class errorHandler
 				echo $e->getMessage() . "\n\n";
 				var_dump($e->getTRace());
 			}
+		}
+		if(DEBUG){
+			echo $exception->getMessage() . "\n\n";
+			echo $exception->getMessage() . "\n\n";
+			var_dump($exception->getTRace());
 		}
 	}
 	

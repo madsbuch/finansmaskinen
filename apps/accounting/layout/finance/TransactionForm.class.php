@@ -56,13 +56,21 @@ class TransactionForm extends \helper\layout\LayoutBlock{
 					
 					<div class="row">
 						<div class="span8">
-							<input type="text" name="ref" class="span2 descriptionPopover"
-								placeholder="Reference" style="width:47%" />
+							<input
+								type="text"
+								name="referenceText"
+								class="span2 descriptionPopover"
+								placeholder="Reference"
+								style="width:47%" />
 								
 							<div class="input-append datepicker date" style="width:47%;">
-								<input type="text" name="date" class="span2"
-									style="width:85%" readonly=""/><span
-									class="add-on"><i class="icon-th"></i></span>
+								<input
+									type="text"
+									name="date"
+									class="span2"
+									style="width:85%"
+									readonly=""/><span
+										class="add-on"><i class="icon-th"></i></span>
 							</div>
 						</div>
 						<div>
@@ -90,14 +98,28 @@ class TransactionForm extends \helper\layout\LayoutBlock{
 									value=""
 									/>
 								
-								<input type="hidden" id="t#index#code" name="t[#index#][account]" />
+								<input
+									type="hidden"
+									class="t#index#code"
+									id="postings-#index#-account"
+									name="postings-#index#-account" />
 								
-								<input type="text" id="#index#-v" name="t[#index#][value]"
-									placeholder="Beløb" class="money" style="width:26%" />
+								<input
+									type="text"
+									id="postings-#index#-amount"
+									name="postings-#index#-amount"
+									placeholder="Beløb"
+									class="money"
+									style="width:26%" />
 							</div>
 							<div class="span2">
-								<input type="checkbox" id="bl" name="t[#index#][positive]" class="tCheckbox"
-									data-checkedLabel="'.__('Credit').'" data-uncheckedLabel="'.__('Debit').'" />
+								<input
+									type="checkbox"
+									id="postings-#index#-positive"
+									name="postings-#index#-positive"
+									class="tCheckbox"
+									data-checkedLabel="'.__('Credit').'"
+									data-uncheckedLabel="'.__('Debit').'" />
 							</div>
 							<div>
 								<a href="#" class="btn" id="transaction_remove_current"

@@ -57,6 +57,8 @@ class accounting
 		return new \app\accounting\layout\finance\widgets\Accounts($accounts);
 	}
 
+
+
 	/*************************** ACTUAL API FUNCTIONS ***********************/
 	/**
 	 * Anatomy:
@@ -412,6 +414,8 @@ class accounting
 			}
 			$ah->commit();
 		}
+
+		throw new \exception\UserException(__('Wasn\'t able to insert transaction'));
 	}
 
 	/**** ACCOUNTS ****/
@@ -471,7 +475,7 @@ class accounting
 		return $acc->deleteAccount((string)$id);
 	}
 
-	/**** VAT CODES ****/
+	/**** VAT ****/
 
 	/**
 	 * returns all vatcodes
@@ -510,6 +514,24 @@ class accounting
 
 	}
 
+	/**
+	 * marks vat as reset in the current accounting
+	 */
+	static function resetVat(){
+		$acc = self::retrieve();
+		$acc = new \helper\accounting((string)$acc->_id);
+		$acc->resetVatAccounting();
+	}
+
+	/**
+	 * adjust asset account and the vat holding account
+	 */
+	static function payVat($assetAccount){
+		$acc = self::retrieve();
+		$acc = new \helper\accounting((string)$acc->_id);
+		$acc->vatPayed($assetAccount);
+	}
+
 	/**** RAPPORTS ****/
 
 	static function getRapport($type)
@@ -527,11 +549,17 @@ class accounting
 	/**
 	 * a lot of default settings are needed when easing accountance.
 	 *
-	 * they are global to this treeID
+	 * they are saved in companyProfile module
 	 */
 	static function getSettings()
 	{
-
+		$settings = \api\companyProfile::getSettings('accounting');
+		//this will not override as exceptions are thrown if permissions are not pressent
+		if($settings = null){
+			$settings = new \model\finance\accounting\Settings();
+			\api\companyProfile::saveSettings('accounting', $settings);
+		}
+		return $settings;
 	}
 
 	static function export()

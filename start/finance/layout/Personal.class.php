@@ -49,8 +49,21 @@ class Personal extends \helper\layout\LayoutBlock {
 			'val' => !is_null($t = $this->user->mail) ? $t : '-')));
 		
 		$left->appendChild(\helper\html::importNode($dom, $info->generate()));
-		
 
+		//privacy section
+		$priv = $dom->createElement('div');
+		$priv->setAttribute('class', 'well');
+		$h2 = $dom->createElement('h2', __('Privacy settings'));
+		$h2->appendChild($dom->createElement('small', __(' select third party plugins we may use')));
+		$priv->appendChild($h2);
+
+		$priv->appendChild($dom->createElement('p', 'Google analytics'));
+		$priv->appendChild($dom->createElement('p', 'User voice'));
+
+
+		$right->appendChild($priv);
+
+		//api keys section
 		$api = $dom->createElement('div');
 		$api->setAttribute('class', 'well');
 		

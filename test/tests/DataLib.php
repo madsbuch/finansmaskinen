@@ -77,6 +77,33 @@ $account = new \model\finance\accounting\Account(array(
 	'type' => 4
 
 ));
+$daybookTransactionRef = 'test øæå ' . uniqid();
+$daybookTransaction = new \model\finance\accounting\DaybookTransaction(array(
+	'referenceText' => $daybookTransactionRef,
+	'date' => date("c"),
+	'approved' => false,
+	//a couple of postings i both balance and operation accounts
+	'postings' => array(
+		array(
+			'account' => 1100,
+			'amount' => 10000,
+			'positive' => true,
+			'description' => 'some nice description'
+		),
+		array(
+			'account' => 13110,
+			'amount' => 10000,
+			'positive' => true,
+			'description' => 'equity'
+		),
+		array(
+			'account' => 12310,
+			'amount' => 10000,
+			'positive' => true,
+			'description' => 'asset'
+		)
+	)
+));
 
 //endregion
 

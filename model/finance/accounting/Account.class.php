@@ -56,7 +56,10 @@ class Account extends \model\AbstractModel
 
 	/**
 	 * some enumerated value:
-	 * asset (1) or liability (2), expense (3) or income (4)
+	 * asset     (1) or
+	 * liability (2),
+	 * expense   (3) or
+	 * income    (4)
 	 *
 	 * a transaction can NOT be done, if it's liabilities and assets not add's up
 	 * to 0, this effectivly makes sure all transactions are made up of atleast
@@ -75,6 +78,8 @@ class Account extends \model\AbstractModel
 	 * whether this account is an equity account
 	 */
 	protected $isEquity = false;
+
+
 
 	/**** some details used in extraction ****/
 	/**

@@ -48,15 +48,6 @@ class Home extends \helper\layout\LayoutBlock {
 
 						<input type="text" Placeholder="Mail" style="width:90%;" name="mail" id="mail" />
 
-						<select style="width:90%;" title="Dit niveau til regnskab"
-							data-content="For at give dig en god oplevelse, har vi formuleret siden på flere måder.
-							Det gør at du kan forstå den selv om du ikke kender til regnskab. Kender du til rengkab
-							får du alle dine vandte vendinger." class="descriptionPopoverLeft">
-							<option disabled="disabled" selected="selected">regnskabsniveau</option>
-							<option>Begynder</option>
-							<option>Champ</option>
-						</select>
-
 						<input type="password" Placeholder="Kode" style="width:90%;" name="pass" />
 						<input type="password" Placeholder="Kode igen" style="width:90%;" name="repass" />
 
