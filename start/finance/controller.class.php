@@ -1,6 +1,7 @@
 <?php
 namespace start\finance;
-class main extends \core\app{
+class main extends \core\app implements \core\framework\Output
+{
 
 	public static $requireLogin = false;
 	
@@ -240,7 +241,7 @@ class main extends \core\app{
 	
 	public function price(){
 		$html = $this->getTpl('price');
-		$html->add2content(new layout\Price);
+		$html->add2content(new layout\Price());
 		//$this->output_header = $this->page->getHeader();
 		$this->output_content = $html->generate();
 	}
@@ -249,7 +250,7 @@ class main extends \core\app{
 	public function about(){
 		/**** echo out some content ****/
 		//static page, let's try some caching :D
-		$cache = \helper\cache::getInstance('File', 'financeMainHTML');
+		/*$cache = \helper\cache::getInstance('File', 'financeMainHTML');
 		$o = $cache->get('aboutPage');
 		
 		if(!is_null($o) && false)
@@ -260,9 +261,11 @@ class main extends \core\app{
 			$this->output_content = $html->generate();
 			//cachinf for full 2 hours ;)
 			$cache->set('aboutPage', $this->output_content, 7200);
-		}
-		
+		}*/
+		$html = $this->getTpl('about');
+		$html->add2content(new layout\About());
 		$this->output_header = $this->header->getHeader();
+		$this->output_content = $html->generate();
 	}
 
 	
@@ -494,6 +497,49 @@ class main extends \core\app{
 		$html->appendContent($c);
 		$this->output_header = $this->header->getHeader();
 		$this->output_content = $html->generate();
+	}
+
+	/**
+	 * takes an exception, shows it to the user :D
+	 *
+	 * exception messages are translated.
+	 *
+	 * @param \core\framework\the $e
+	 */
+	function handleException($e){
+		/**** echo out some content ****/
+		$html = $this->getTpl();
+		if($e instanceof \exception\PermissionException){
+			$c = new \helper\layout\MessagePage(__('Woops'),
+				'<p>'.__('Well, it doesn\'t seem that you are allowed to see this page... Try to login maybe?').'</p>');
+		}
+		elseif($e instanceof \exception\PageNotFoundException){
+			$this->header->setResponse(404);
+			$c = new \helper\layout\MessagePage('ARG! 404',
+				'<p>'.__('The requested page does not exist.').'</p>');
+		}
+		elseif($e instanceof \exception\UserException){
+			$this->header->setResponse(404);
+			$c = new \helper\layout\MessagePage('En fejl?',
+				'<p>'.$e->getMessage().'</p>');
+		}
+		else{
+			$this->header->setResponse(500);
+			$c = new \helper\layout\MessagePage('Bah 500',
+				'<p>'.__('Some fatal internal error happened.').'</p>');
+		}
+
+		$html->appendContent($c);
+		$this->output_header = $this->header->getHeader();
+		$this->output_content = $html->generate();
+	}
+
+	function getHeader(){
+		return $this->getOutputHeader();
+	}
+
+	function getBody(){
+		return $this->getOutputContent();
 	}
 	
 	

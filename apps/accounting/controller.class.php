@@ -209,52 +209,40 @@ class accounting extends \core\app{
 	}
 	
 	function createTransaction($jsonRet = false){
-		$input = new \helper\parser\Post('model\finance\accounting\Transaction');
-		$input->isCollection();
+		$input = new \helper\parser\Post('model\finance\accounting\DaybookTransaction');
 		$input->alterArray(function($arr){
-			$new = array();
-			$i = 0;
-			if(!isset($arr['t']))
-				return null;
-			
 			if(!isset($arr['date']))
 				$arr['date'] = time();//creating
 			else
 				$arr['date'] = \DateTime::createFromFormat('d/m/Y', $arr['date'])->getTimestamp();//parsing
-			
-			//default values
-			if(!isset($arr['ref']))
-				$arr['ref'] = __('transaction from %s', date('j/n - Y H:i', $arr['date']));
-			
-			
-			
-			foreach($arr['t'] as $ts){
-				$new[$i]['ref'] = $arr['ref'];
-				$new[$i]['date'] = $arr['date'];
-				$new[$i]['approved'] = isset($arr['approved']) && $arr['approved'] == 'on' ? true : false ;
-				
-				$new[$i]['account'] = $ts['account'];
-				$new[$i]['value'] = l::readValuta(isset($ts['value']) ? $ts['value'] : $arr['value']);
-				$new[$i]['positive'] = isset($ts['positive']) && $ts['positive'] == 'on' ? true : false ;
-				
-				$i++;
+			foreach($arr['postings'] as &$p){
+				$p['amount'] = l::readValuta($p['amount']);
+
+				if(isset($p['positive']))
+					$p['positive'] = true;
+				else
+					$p['positive'] = false;
 			}
-			return $new;
+
+			if(isset($arr['approved']))
+				$arr['approved'] = true;
+			else
+				$arr['approved'] = false;
+
+			unset($arr['showbox']);
+
+			return $arr;
 		});
 		
 		$objs = $input->getObj();
 		
 		
-		//var_dump($objs);
+		//var_dump($objs->toArray());
 		//die();
 		
 		$err = false;
-		
-		try{
-			\api\accounting::addTransactions($objs);
-		}catch(\Exception $e){
-			$err = $e->getMessage();
-		}
+
+		\api\accounting::importTransactions($objs);
 		
 		//if json return is requested
 		if($jsonRet){
@@ -266,23 +254,6 @@ class accounting extends \core\app{
 				$this->output_content = json_encode($objs->toArray());
 			return;
 		}
-		
-		//if an error happended
-		if($err){
-			$msg = new \helper\layout\UserMsg(__('Error'));
-			$msg->setTitle('Posteringerne kunne ikke oprettes');
-			$this->setUserMsg('accounting_some_error', new \helper\layout\UserMsg(__($err)));
-			$this->header->redirect("/accounting/addTransaction");
-			$this->output_header = $this->header->generate();
-			$this->output_content = '';
-		}
-		else{
-			//everything went allrigt, redirect the user
-			$msg = new \helper\layout\UserMsg('Dejligt');
-			$msg->setTitle('Posteringerne blev oprettet');
-			$this->setUserMsg('accounting_success', $msg);
-		}
-		
 		
 		$this->header->redirect("/accounting/transactions");
 		$this->output_header = $this->header->generate();

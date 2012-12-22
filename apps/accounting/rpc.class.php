@@ -17,12 +17,30 @@ class accounting extends \core\rpc
 	 * requireLogin
 	 */
 	static public $requireLogin = true;
+	/**** Accounting abstractions ****/
+
+	/**
+	 * returns an accounting
+	 * if no id is set, default accounting is returned
+	 *
+	 * @param null $accounting string
+	 */
+	function getAccounting($accountingID=null){
+		try {
+			$accounting = \api\accounting::retrieve($accountingID);
+			$this->ret($accounting->toArray());
+		} catch (\exception\UserException $e) {
+			$this->throwException($e->getMessage());
+		}
+	}
+
+	/**** Account abstractions ****/
 
 	/**
 	 * adds a new account to the system
 	 * @param $account
 	 */
-	function create($account)
+	function createAccount($account)
 	{
 		try {
 			$account = $this->prepareAccountObj($account);
@@ -55,7 +73,7 @@ class accounting extends \core\rpc
 	 * @param $id string
 	 * @param $accounting string the accounting to use (for current amounts)
 	 */
-	function get($id, $accounting = null)
+	function getAccount($id, $accounting = null)
 	{
 		try {
 			$acc = \api\accounting::getAccount($id);
@@ -66,19 +84,35 @@ class accounting extends \core\rpc
 	}
 
 	/**
-	 * $delete an account
+	 * delete an account
 	 *
-	 * if the account is has been used (has any associated postings), this operation will not work
+	 * if the account is has been used (has any associated postings), this operation will throw an exception
 	 *
 	 * @param $id string id of the account to delete
 	 */
-	function deleteAccount($id)
-	{
+	public function deleteAccount($id = null){
 		try {
-			$acc = \api\accounting::deleteAccount($id);
+			\api\accounting::deleteAccount($id);
 			$this->ret(array('success' => true));
 		} catch (\exception\UserException $e) {
 			$this->throwException($e->getMessage());
+		}
+	}
+
+	/**** daybook transactions abstracations ****/
+
+	/**
+	 *
+	 */
+	function createTransaction($transaction){
+		try {
+			$transaction = new \model\finance\accounting\DaybookTransaction($transaction);
+			\api\accounting::importTransactions($transaction);
+			$this->ret(array('success' => true));
+		} catch (\exception\UserException $e) {
+			$this->throwException($e->getMessage());
+		} catch(\Exception $e){
+			$this->throwException($e->getMessage() . $e->getTraceAsString());
 		}
 	}
 

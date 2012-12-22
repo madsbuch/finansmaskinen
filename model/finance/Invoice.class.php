@@ -105,8 +105,10 @@ class Invoice extends \model\AbstractModel{
 	 * make sure this is an valid invoice
 	 */
 	function doValidate(){
+		$ret = array();
 		if(empty($this->Invoice))
-			throw new \exception\NotValidatedException(__('The invoice needs the actual invoice object'));
+			$ret[] = __('The invoice needs the actual invoice object');
+		return $ret;
 	}
 }
 

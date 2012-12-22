@@ -34,6 +34,15 @@ $ubl_Party = new \model\ext\ubl2\Party(array(
 
 ));
 
+$ubl_Price = new \model\ext\ubl2\Price(array());
+
+$ubl_invoiceLines = new \model\Iterator(array(
+	array(
+		'Price' => $ubl_Price
+	),
+
+), '\model\ext\ubl2\InvoiceLine');
+
 /**
  * following are details for this invoice:
  */
@@ -42,6 +51,9 @@ $ubl_Invoice_I1 = new \model\ext\ubl2\Invoice(array(
 		'Party' => $ubl_Party
 	)),*/
 	'IssueDate' => '2013-11-29',
+	'DocumentCurrencyCode' => 'DKK',
+
+	'InvoiceLine' => $ubl_invoiceLines,
 ));
 
 $ublI1Detail = array();
@@ -64,6 +76,33 @@ $account = new \model\finance\accounting\Account(array(
 	'vatCode' => 'I25',
 	'type' => 4
 
+));
+$daybookTransactionRef = 'test øæå ' . uniqid();
+$daybookTransaction = new \model\finance\accounting\DaybookTransaction(array(
+	'referenceText' => $daybookTransactionRef,
+	'date' => date("c"),
+	'approved' => false,
+	//a couple of postings i both balance and operation accounts
+	'postings' => array(
+		array(
+			'account' => 1100,
+			'amount' => 10000,
+			'positive' => true,
+			'description' => 'some nice description'
+		),
+		array(
+			'account' => 13110,
+			'amount' => 10000,
+			'positive' => true,
+			'description' => 'equity'
+		),
+		array(
+			'account' => 12310,
+			'amount' => 10000,
+			'positive' => true,
+			'description' => 'asset'
+		)
+	)
 ));
 
 //endregion

@@ -134,8 +134,15 @@ function reAttach () {
 								});
 								
 								$('#' + prefix + key).val(val);
-								console.log('#' + prefix + key + ' = ' + val);
-							})
+
+                                //support for classnames, this will be final, as this supports
+                                //arbritary many listeners
+                                $('.' + prefix + key).val(val);
+
+								console.log(prefix + key + ' = ' + val);
+							});
+
+                            //TODO trigger some action here
 						}
 					});
 			},

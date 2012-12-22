@@ -72,15 +72,17 @@ class reqHandler{
 			header('location: http://www.'.$domain[1].'.'.$domain[0]);
 			exit();
 		}
-		
-		/*EXECUTING MAIN SITE*/
-		
-		//run the pre-execution stuff
-		$api::beforeExecution($request);
-		
+
+		//setting some more variables
+		$mainPageClass = 'start\\'.$profile.'\main';
+
+		/* EXECUTING MAIN SITE */
+
+		/** generate the page **/
+
 		//setting object name for the app
 		if($request->app == "main"){
-			$objName = 'start\\'.$profile.'\main';
+			$objName = $mainPageClass;
 			//checking of the start page exists
 			if(!class_exists($objName)){
 				if(DEBUG)
@@ -91,17 +93,34 @@ class reqHandler{
 		}
 		else
 			$objName = '\\'.$request->ui.'\\'.$request->app;
-		
+
+		//sets default errorhandler
+		$eh->setOutput(new $mainPageClass($request));
+
+		//create apphandler and set output handler for errors
+
+		try{
+			$appHandler = new $objName($request);
+		}
+		catch(\Exception $e){
+			throw new \exception\PageNotFoundException(__('App not found'));
+		}
+		if($appHandler instanceof \core\framework\Output)
+			$eh->setOutput($appHandler);
+
+		/** preexecution stuff **/
+		$api::beforeExecution($request);
+
 		//checking wether page exists
 		if(!is_callable(array($objName, $request->page))){
-			trigger_error('Page '.$request->page.' does not exist in app '.$objName.'.');
+			throw new \exception\PageNotFoundException(__('Page %s does not exist in app %s.',$request->page,$objName));
 			$o = 'start\\'.$profile.'\main';
 			
 			/** throwing error page **/
 
 			//if callback is provided
 			if(is_object($request->callback))
-				$request->callback->handleError(404, $request->page . ' doen\'t exist in ' . $request->app);
+				throw new \exception\PageNotFoundException(__('%s doen\'t exist in %s',$request->page , $request->app));
 			else{
 				//creating app
 				$appHandler = new $o($request);
@@ -124,8 +143,6 @@ class reqHandler{
 				$debug->eventByTime("appStart");
 				$debug->startTimer("app execution time");
 			}
-			//creating app
-			$appHandler = new $objName($request);
 			
 			//calling page
 			call_user_func_array(array($appHandler, $request->page), $request->arguments);
@@ -138,6 +155,8 @@ class reqHandler{
 		}
 		//if user id not authorized
 		else{
+			throw new \exception\PermissionException("You don't have permission to access selected page");
+			//hmm, rather handle this the ordinary way?!
 			$o = 'start\\'.$profile.'\main';
 
 			if(is_object($request->callback))

@@ -89,7 +89,7 @@ class Form extends \helper\layout\LayoutBlock
 									data-objLink="/contacts/getContact/"
 									data-addForm="#addNewContact"
 
-									'.(isset($this->contactID) ? 'data-preselect="'.$this->contactID.'"' : '').'
+									'.(!empty($this->contactID) ? 'data-preselect="'.$this->contactID.'"' : '').'
 
 									data-titleIndex="addNewContact"
 									placeholder="Vælg Afsender" /><a href="#sender-"
@@ -144,7 +144,7 @@ class Form extends \helper\layout\LayoutBlock
 									id="lines-#index#-"
 									name="trash"
 									type="text"
-									class="pPicker totalCompute" style="width:60%"
+									class="pPicker totalCompute lines-#index#-Item-Name-_content" style="width:60%"
 									data-listLink="/products/autocomplete/"
 									data-objLink="/products/getProduct/"
 
@@ -167,6 +167,7 @@ class Form extends \helper\layout\LayoutBlock
 							<div class="input-append" style="float:left;width:15%;margin-left:5px;">
 								<input type="text" class="pPicker"
 									id="lines-#index#-account-"
+									data-replace="lines-#index#-account-name"
 									name="trash"
 									placeholder="Konto"
 									style="width:60%"
@@ -183,11 +184,10 @@ class Form extends \helper\layout\LayoutBlock
 									placeholder="Moms"
 									style="width:45%"
 
-									data-replace="product-#index#-inclVat-code"
 									data-listLink="/accounting/autocompleteVatCode/"
 									data-objLink="/accounting/getVatCode/"
 
-									class="input-small pPicker" /><a href="#lines-#index#-inclVat-code"
+									class="input-small lines-#index#-account-vatCode pPicker" /><a href="#lines-#index#-inclVat-code"
 									class="btn pickerDroP add-on"><i class="icon-circle-arrow-down"></i></a>
 							</div>
 
@@ -207,7 +207,7 @@ class Form extends \helper\layout\LayoutBlock
 							<a href="#" class="btn" id="productLine_remove_current"
 								title="Fjern"><i class="icon-minus" title="Fjern linje"></i></a>
 
-							<div class="form-inline"
+							<div class="form-inline hide"
 								id="settings-#index#" style="margin-bottom:10px;">
 
 								<label>moms:</label>
@@ -384,11 +384,12 @@ class Form extends \helper\layout\LayoutBlock
 			//inject some productline
 			$inj = array();
 
-            //do preselects on products
-            $preselects = array();
+			//do preselects on products
+			$preselects = array();
 			foreach($this->bill->lines as $line){
 				$t = array();
-				$t['lines-#index#-productID'] = $line->productID;
+				if(!empty($line->productID))
+					$t['lines-#index#-productID'] = $line->productID;
 
 				$t['lines-#index#-account'] = $line->account;
 
@@ -399,22 +400,23 @@ class Form extends \helper\layout\LayoutBlock
 
 				$t['lines-#index#-amount'] = l::writeValuta($line->amount);
 
-                $t['lines-#index#-text'] = $line->text;
+				$t['lines-#index#-text'] = $line->text;
 
-                $ps['-'] = $line->productID;
-                $ps['-account-'] = $line->account;
-                $ps['-inclVat-code'] = $line->vatCode;
+				if(!empty($line->productID))
+					$ps['-'] = $line->productID;
+				$ps['-account-'] = $line->account;
+				$ps['-inclVat-code'] = $line->vatCode;
 
-                $preselects[] = $ps;
-
+				$preselects[] = $ps;
 
 				$inj[] = (object) $t;
+				unset($t, $ps);
 			}
 
 			$xpath = new \DOMXpath($dom);
 			$ct = $xpath->query("//*[@id='productLine']")->item(0);
 			$ct->setAttribute('data-inject', json_encode($inj));
-            $ct->setAttribute('data-ajaxPreselects', json_encode($preselects));
+			$ct->setAttribute('data-ajaxPreselects', json_encode($preselects));
 
 			$ret = $element;
 		}

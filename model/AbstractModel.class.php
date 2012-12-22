@@ -258,22 +258,30 @@ abstract class AbstractModel{
 	 * allows each object to validate their data and whether it confirms with
 	 * conventions on the data.
 	 *
-	 * an \exception\NotValidated exception will be thrown, if an object is not validated
+	 * an array of errors are returned, if empty, the pbject is valid
 	 *
 	 * validation can be STRICT, WEAK, were's strict is default
+	 *
+	 * the doValidate function should return an array of errors
 	 *
 	 * @param $level int level of validation
 	 */
 	public function validate($level = 0){
+		$ret = array();
 		//validate this
-		if(method_exists($this, 'doValidate'))
-			$this->doValidate($level);
+		if(method_exists($this, 'doValidate')){
+			$errors = $this->doValidate($level);
+			$ret = array_merge($ret, $errors);
+		}
 
 		//propergate down the hierachi
 		foreach(get_object_vars($this) as $p){
-			if(is_object($p) && is_subclass_of($p, 'model\AbstractModel'))
-				$p->validate($level);
+			if(is_object($p) && is_subclass_of($p, 'model\AbstractModel')){
+				$errors = $p->validate($level);
+				$ret = array_merge($ret, $errors);
+			}
 		}
+		return $ret;
 	}
 
 	/**

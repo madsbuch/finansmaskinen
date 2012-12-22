@@ -142,14 +142,14 @@ class View extends \helper\layout\LayoutBlock
 					 href="#applyPayment">Marker som betalt og bogfør</a>
 
 <div class="modal hide fade" id="applyPayment">
-	<form method="post" action="/invoice/pay/' . $this->obj->_id . '" id="addNewProductForm">
+	<form method="post" action="/billing/pay/' . $this->obj->_id . '" id="addNewProductForm">
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal">×</button>
 			<h3>' . __('Apply payment') . '</h3>
 		</div>
 		<div class="modal-body">
 
-			<label>Hvilken konto er pengene kommet ind på:</label>
+			<label>Hvilken beholdning blev pengene trukket fra:</label>
 			<div class="input-append">
 				<input type="text" class="picker"
 					id="amountToPay" style="width:80%"
@@ -157,7 +157,19 @@ class View extends \helper\layout\LayoutBlock
 					data-objLink="/accounting/getAccount/" /><a href="#amountToPay"
 					class="btn pickerDP"><i class="icon-circle-arrow-down"></i></a>
 			</div>
+
+			<label>Egenkapital:</label>
+			<div class="input-append">
+				<input
+					type="text"
+					class="picker"
+					id="lia" style="width:80%"
+					data-listLink="/accounting/autocompleteAccounts/equity/do/"
+					data-objLink="/accounting/getAccount/" /><a href="#lia"
+					class="btn pickerDP"><i class="icon-circle-arrow-down"></i></a>
+			</div>
 			<input type="hidden" id="amountToPaycode" name="assAcc" />
+			<input type="hidden" id="liacode" name="liaAcc" />
 		</div>
 		<div class="modal-footer">
 			<a href="#" class="btn" data-dismiss="modal">Anuller</a>

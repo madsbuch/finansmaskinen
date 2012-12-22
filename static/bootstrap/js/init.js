@@ -256,6 +256,7 @@ var ExchangeRate = {};
         var reciever = getUrlVars();
 
         //initialise productsform
+        var preSelIndex = 0;
         productsForm = $("#productLine").sheepIt({
             separator:"",
             allowRemoveLast:true,
@@ -266,25 +267,6 @@ var ExchangeRate = {};
             minFormsCount:0,
             iniFormsCount:1,
             afterAdd:function (source, newForm) {
-
-                var presel = $("#productLine").attr('data-ajaxPreselects');
-                if(typeof(presel) == 'string')
-                    presel = jQuery.parseJSON($("#productLine").attr('data-ajaxPreselects'));
-
-                var index = $(newForm).find(".readIndex").attr('id');
-
-                console.log(presel  );
-
-                if(presel != null){
-                    var preselect = presel.shift();
-
-                    $.each(preselect, function(i, val){
-                        $("#lines-"+index+i).attr('data-preselect', val);
-                        console.log("#lines-"+index+i);
-                    });
-                    jQuery.parseJSON($("#productLine").attr('data-ajaxPreselects',presel));
-            }
-
                 $(".pPicker").Picker();
                 $(".pickerDroP").PickerDropdown();
             }
@@ -293,6 +275,40 @@ var ExchangeRate = {};
         //check for injection
         if (typeof $("#productLine").attr('data-inject') != 'undefined')
             productsForm.inject(jQuery.parseJSON($("#productLine").attr('data-inject')));
+
+        //check for preselects
+        var presel = $("#productLine").attr('data-ajaxPreselects');
+        presel = jQuery.parseJSON($("#productLine").attr('data-ajaxPreselects'));
+        $.each(productsForm.getAllForms(), function(idex, value){
+            console.log(presel);
+
+
+            var index = $(value).find(".readIndex").attr('id');
+
+            if(presel != null){
+                console.log(presel);
+                if(jQuery.isArray(presel))
+                    var preselect = presel.shift();
+                else{
+                    var preselect = presel;
+                    presel = null;
+                }
+
+                //console.log(preselect);
+
+                $.each(preselect, function(i, val){
+                    $("#lines-"+index+i).attr('data-preselect', val);
+                    console.log("#lines-"+index+i);
+                });
+                preSelIndex++;
+                jQuery.parseJSON($("#productLine").attr('data-ajaxPreselects',presel));
+            }
+
+            //$(".pPicker").Picker();
+            //$(".pickerDroP").PickerDropdown();
+        });
+        $(".pPicker").Picker();
+        $(".pickerDroP").PickerDropdown();
 
         //initialise exchangerates
         ExchangeRate = $("#ExchangeRate").sheepIt({
@@ -343,7 +359,7 @@ var ExchangeRate = {};
                 console.log(responseText);
             }
         });
-        updatePrices();
+        update();
 
     });//billing form end
 

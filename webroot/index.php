@@ -12,7 +12,7 @@
 /**
  * actually the only thing that should be changed when in prod.
  */
-define('STRATEGY', 'testLaptop');
+define('STRATEGY', 'test');
 include '../config/'.STRATEGY.'/config.php';
 
 //some character settings:
@@ -20,6 +20,9 @@ mb_internal_encoding("UTF-8");
 ini_set('default_charset', 'UTF-8');
 //-rw-rw-r--
 umask(0777);
+
+//default timezone
+date_default_timezone_set('UTC');
 
 require_once("global.php");
 chdir("..");
@@ -37,7 +40,7 @@ if (DEBUG)
 	\core\debug::getInstance();
 
 /**
- * Defining the autoload class
+ * Defining the autoload function
  */
 function __autoload($class)
 {
@@ -64,11 +67,21 @@ function __autoload($class)
 
 	//try loading class from core or core/extra
 	if ($path[0] == "core") {
-		$path = ROOT . 'core/' . $className . '.class.php';
-		if (file_exists($path))
-			require_once $path;
+		array_shift($path);
+		if (is_string($path))
+			$path = ROOT . 'core/' . $path;
 		else
-			trigger_error("unable to load class: $class in $path", E_USER_WARNING);
+			$path = ROOT . 'core/' . implode('/', $path);
+
+		var_dump($path . '.class.php');
+
+		$incl = realpath($path . '.class.php');
+
+		if ($incl) {
+			include_once($incl);
+			return;
+		}
+		trigger_error("unable to load class: $class in $incl", E_USER_WARNING);
 	} //loading the helper
 	/**
 	 * @TODO if there is a file named controller in a subdir, it might course

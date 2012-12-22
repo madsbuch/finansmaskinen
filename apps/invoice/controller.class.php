@@ -239,9 +239,9 @@ class invoice extends \core\app
 
 		$obj = $input->getObj();
 		if (isset($obj->_id))
-			\api\invoice::update($input->getObj());
+			\api\invoice::update($obj);
 		else
-			$obj = \api\invoice::create($input->getObj());
+			$obj = \api\invoice::create($obj);
 
 		$this->header->redirect('/invoice/view/' . (string)$obj->_id);
 

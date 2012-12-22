@@ -11,6 +11,11 @@ class errorHandler
 	// Hold an instance of the class
 	private static $instance;
 
+	/**
+	 * @var \core\framework\Output
+	 */
+	private $app;
+
 	// The singleton method
 	public static function getInstance() {
 		if (!isset(self::$instance)){
@@ -31,19 +36,23 @@ class errorHandler
 	public function setErrorPage($error){
 		echo $error;
 	}
-	
+
+	/**
+	 * set app object to invoke when an exception has occured.
+	 * this makes it possible to sent valid info to th user (ies, nice html, valid rpd response ect.)
+	 *
+	 * @param $app \core\app
+	 */
+	public function setOutput(\core\framework\Output $app){
+		$this->app = $app;
+	}
 	
 	// A private constructor; prevents direct creation of object
 	private function __construct() {
 		//attach erro handlers and exeption handlers
-		if(DEBUG){
-			set_error_handler(array($this, "debugHandler"));
-			set_exception_handler(array($this, "debugExeptionHandler"));
-		}
-		else{
-			set_error_handler(array($this, "productionHandler"));
-			set_exception_handler(array($this, "productionExeptionHandler"));
-		}
+		set_error_handler(array($this, "errorHandler"));
+		set_exception_handler(array($this, "exeptionHandler"));
+
 	}
 
 	/**
@@ -53,67 +62,35 @@ class errorHandler
 	 *
 	 * @param $exception thrown exception
 	 */
-	function productionExeptionHandler(\Exception $exception) {
-		$log = new \model\log\core\Exception();
-
-		$log->message = $exception->getMessage();
-		$log->stack = $exception->getTraceAsString();
-
-		\core\logHandler::log($log);
-	}
-
-	/**
-	 * exceptionhandlerhandler for the program in debug mode
-	 *
-	 * @param $exception thrown exception
-	 */
-	function debugExeptionHandler($exception) {
-		echo $exception->getMessage() . "\n\n";
-		var_dump($exception->getTRace());
-		$this->productionExeptionHandler($exception);
-	}
-	
-	public function productionHandler($errno, $errstr, $errfile, $errline){
-		$log = new \model\log\core\Error();
-		$log->errno = $errno;
-		$log->errstr = $errstr;
-		$log->errfile = $errfile;
-		$log->errline = $errline;
-
-		\core\logHandler::log($log);
-	}
-	
-	public function debugHandler($errno, $errstr, $errfile, $errline){
-
-		$this->productionHandler($errno, $errstr, $errfile, $errline);
-
-		switch ($errno) {
-			case E_USER_ERROR:
-			case E_ERROR:
-				\core\logHandler::logError($errstr, $errfile, $errline);
-				echo "<br /><b>ERROR</b> [$errno] $errstr<br />\n";
-				echo "  Fatal error on line $errline in file $errfile";
-				echo ", PHP " . PHP_VERSION . " (" . PHP_OS . ")<br />\n";
-			break;
-
-			case E_USER_WARNING:
-			case E_WARNING:
-				echo "<br /><b>WARNING</b> [$errno] $errstr<br />\n";
-				echo "  Warning on line $errline in file $errfile";
-				echo ", PHP " . PHP_VERSION . " (" . PHP_OS . ")<br />\n";
-			break;
-
-			case E_USER_NOTICE:
-			case E_NOTICE:
-				echo "<br /><b>NOTICE</b> [$errno] $errstr<br />\n";
-				echo "Notice on line $errline in file $errfile<br />";
-			break;
-
-			default:
-				echo "<br /><b>NOTICE</b> [$errno] $errstr<br />\n";
-				echo "unknown error on line $errline in file $errfile<br />";
-			break;
+	function exeptionHandler(\Exception $exception) {
+		try{
+			$log = new \model\log\core\Exception();
+			$log->message = $exception->getMessage();
+			$log->stack = $exception->getTraceAsString();
+			\core\logHandler::log($log);
+			if(is_object($this->app)){
+				$this->app->handleException($exception);
+				\core\appHandler::doOutput($this->app);
+			}
 		}
+		catch(\Exception $e){
+			echo "something serious happened.\n\n";
+			echo get_class ($this->app) . "\n\n";
+			if(DEBUG){
+				echo $e->getMessage() . "\n\n";
+				echo $e->getMessage() . "\n\n";
+				var_dump($e->getTRace());
+			}
+		}
+		if(DEBUG){
+			echo $exception->getMessage() . "\n\n";
+			echo $exception->getMessage() . "\n\n";
+			var_dump($exception->getTRace());
+		}
+	}
+	
+	public function errorHandler($errno, $errstr, $errfile, $errline ){
+		throw new \ErrorException($errstr, $errno, 0, $errfile, $errline);
 	}
 
 }

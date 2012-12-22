@@ -15,6 +15,11 @@ class accounting
 	private $accounting;
 	private $grp;
 
+	/**
+	 * @var \helper\accounting\Queries
+	 */
+	private $queries;
+
 	const ATABLE = 'accounting_accounts';
 	const TRANST = 'accounting_transactions';
 
@@ -44,8 +49,21 @@ class accounting
 	 * //TODO refactor everything to use daybookTransaction and postings
 	 *
 	 * @var \model\finance\accounting\Transaction
+	 * @deprecated
 	 */
 	private $transactions = array();
+
+	/**
+	 * a daybooktransaction object without the postings
+	 * @var \model\finance\accounting\DaybookTransaction
+	 */
+	private $transactionInfo;
+
+	/**
+	 * array of \model\finance\accounting\Posting
+	 * @var array
+	 */
+	private $postings;
 
 	private $db;
 
@@ -60,14 +78,16 @@ class accounting
 		$this->accounting = (string) $accounting;
 		$core = new core('accounting');
 
+		$this->queries = new accounting\MysqlQueries();
+
 		$this->grp = $grp ? $grp : (int)$core->getMainGroup();
 
 		$this->db = $core->getDB();
 
 		$this->accCheck = $this->db->dbh->prepare('SELECT * FROM ' . self::ATABLE . '
-			WHERE grp_id = ' . $this->grp . ' AND account_id = ?;');
+			WHERE grp_id = ' . $this->grp . ' AND code = ?;');
 		$this->refCheck = $this->db->dbh->prepare('SELECT * FROM ' . self::TRANST . '
-			WHERE ref = ? AND account_id = \'' . $accounting . '\';');
+			WHERE ref = ? AND code = \'' . $accounting . '\';');
 	}
 
 	/**** different add functions ****/
@@ -77,6 +97,8 @@ class accounting
 	 *
 	 * takes on transaction
 	 * returns false if ref already exists in the database.
+	 *
+	 * @deprecated
 	 */
 	function addTransaction($transaction)
 	{
@@ -123,12 +145,20 @@ class accounting
 		$this->transactions[] = $transaction;
 	}
 
+	/**** daybook transactions ****/
+
 	/**
 	 * adds all postings from daybooktransaction object
 	 *
 	 * @param $transaction \model\finance\accounting\DaybookTransaction
 	 */
 	function addDaybookTransaction(\model\finance\accounting\DaybookTransaction $transaction){
+		$this->postings = $transaction->postings;
+		$this->transactionInfo = $transaction;
+
+		if(empty($transaction->postings) || $transaction->postings->count() < 1)
+			throw new \exception\UserException('Transaction must have postings');
+
 		foreach($transaction->postings as $posting){
 			$this->addTransaction(new \model\finance\accounting\Transaction(array(
 				'value' => $posting->amount,
@@ -141,6 +171,13 @@ class accounting
 			)));
 		}
 	}
+
+	function getDaybookTransaction($ref){
+
+	}
+
+	/**** helper methods ****/
+
 	/**
 	 * automatic add of transactions for a standard double accounting registration
 	 *
@@ -378,25 +415,26 @@ class accounting
 		$pdo = $this->db->dbh;
 		$pdo->beginTransaction();
 		try {
-			$sth = $pdo->prepare('INSERT INTO accounting_transactions
-				(`account_id`, `v_income`, `v_outgoing`, `ref`, `date`, `approved`, `account`)
-				VALUES
-				(\'' . $this->accounting . '\', ?, ?, ?, ?, ?, ?);');
+			$sthTrans = $pdo->prepare($this->queries->insertTransaction());
+			$sthTrans->execute(array(
+				'date' => $this->transactionInfo->date,
+				'referenceText' => $this->transactionInfo->referenceText,
+				'approved' => $this->transactionInfo->approved,
+				'accounting_id' => $this->transactionInfo->accounting,
+			));
 
+			$transID = $pdo->lastInsertId();
+
+			$sth = $pdo->prepare($this->queries->insertPosting());
 			foreach ($this->transactions as $t) {
 				if (!$sth->execute(
 					array(
-						$t['value_positive'],
-						$t['value_negative'],
-						$t['ref'],
-						$t['date'],
-						$t['approved'],
-						$t['account']))
+						'amount_in' => $t['value_positive'],
+						'amount_out' => $t['value_negative'],
+						'grp' => $this->grp,
+						'transaction_id' => $transID,
+						'account' => $t['account']))
 				) {
-					if (DEBUG) {
-						var_dump($sth->errorInfo());
-						die();
-					}
 					$pdo->rollback();
 					throw new \Exception('Some error happended?');
 				}
@@ -409,20 +447,11 @@ class accounting
 			return false;
 		} catch (PDOException $e) {
 			$pdo->rollback();
-			return false;
+			throw $e;
 		}
 	}
 
-	/**** VAT CODES ***********************************************************/
-
-	/**
-	 * resets the vat system
-	 */
-	function resetVat()
-	{
-
-	}
-
+	/**** VAT ****/
 	function createVatCode($vatCode)
 	{
 		if (is_null($this->grp))
@@ -550,38 +579,33 @@ class accounting
 		return $ret;
 	}
 
-	/**** ACCOUNTS ************************************************************/
+	/**
+	 * transfer money from vat account to a holder account
+	 */
+	function resetVatAccounting(){
+
+	}
+
+	/**
+	 * reset the vat holder account and and some asset payable account
+	 */
+	function vatPayed($payedFrom){
+
+	}
+
+	/**** ACCOUNTS ****/
 
 	/**
 	 * returns some account objects
 	 *
 	 * @param $flags int, binary representation of flags. see constants, used for quereing
 	 * @param $account array, array of accounts search is limited to
+	 * @param $globalTotal bool if true, accounting will not be used, and all posts ever are summed up
 	 */
 	function getAccounts($flags = 0, $accounts = array())
 	{
 		$pdo = $this->db->dbh;
-		$add = ' AND flags & ' . $flags . ' = ' . $flags . '';
-
-		if(is_array($accounts)){
-			$first = 'AND ';
-			foreach($accounts as $acc){
-				$add .= ' '.$first.' acc.account_id = '. (int) $acc;
-				$first = 'OR';
-			}
-			$add .= '';
-		}
-
-		//$sth = $pdo->prepare('SELECT * FROM '.self::ATABLE.' WHERE grp_id = '. $this->grp . $add);
-
-		$sth = $pdo->prepare(' SELECT acc.id, acc.name, acc.account_id, acc.vat,
-			acc.type, acc.flags, acc.grp_id,
-			SUM(t.v_income) as income,
-			SUM(t.v_outgoing) as outgoing
-			FROM accounting_accounts as acc LEFT JOIN accounting_transactions as t
-			ON (t.account = acc.account_id AND t.account_id = ?)
-			WHERE acc.grp_id = ' . $this->grp . $add . '
-			GROUP BY acc.account_id');
+		$sth = $pdo->prepare($this->queries->getAllAccounts($this->grp, $flags, $accounts));
 
 		//var_dump($sth);
 
@@ -591,13 +615,13 @@ class accounting
 			$ret[] = new \model\finance\accounting\Account(array(
 				'_id' => $t['id'],
 				'name' => $t['name'],
-				'code' => $t['account_id'],
+				'code' => $t['code'],
 				'vatCode' => $t['vat'],
 				'type' => $t['type'],
 				'allowPayments' => $t['flags'] & self::PAYABLE == self::PAYABLE ? true : false,
 				'isEquity' => $t['flags'] & self::EQUITY == self::EQUITY ? true : false,
-				'income' => $t['income'] ? $t['income'] : 0,
-				'outgoing' => $t['outgoing'] ? $t['outgoing'] : 0
+				'income' => $t['amount_in'] ? $t['amount_in'] : 0,
+				'outgoing' => $t['amount_out'] ? $t['amount_out'] : 0
 			));
 		}
 
@@ -611,27 +635,6 @@ class accounting
 		if(count($accounts) < 1)
 			throw new \exception\UserException(__('Account %s doesn\'t exist.', $id));
 		return $accounts[0];
-		/*$id = (int)$id;
-		$pdo = $this->db->dbh;
-		$sth = $pdo->prepare('SELECT * FROM ' . self::ATABLE . ' WHERE
-			grp_id = ' . $this->grp . ' AND account_id = ?');
-
-		$sth->execute(array($id));
-		foreach ($sth->fetchAll() as $t) {
-			return new \model\finance\accounting\Account(array(
-				'_id' => $t['id'],
-				'name' => $t['name'],
-				'code' => $t['account_id'],
-				'vatCode' => $t['vat'],
-				'type' => $t['type'],
-				'allowPayments' => $t['flags'] & self::PAYABLE == self::PAYABLE ? true : false,
-				'isEquity' => $t['flags'] & self::EQUITY == self::EQUITY ? true : false,
-
-				//'approved' => $t['approved'],
-				//'ref' => $t['ref']
-			));
-		}
-		throw new \exception\UserException(__('Account %s doesn\'t exist.', $id));*/
 	}
 
 	/**
@@ -652,10 +655,7 @@ class accounting
 			throw new \exception\PermissionException('Insufficient permissions for creating account');
 
 		$pdo = $this->db->dbh;
-		$sth = $pdo->prepare('INSERT INTO accounting_accounts
-			(`grp_id`, `account_id`, `default_reflection_account`, `name`, `type`, `vat`, `flags`)
-			VALUES
-			(?, ?, ?, ?, ?, ?, ?);');
+		$sth = $pdo->prepare($this->queries->insertAccount());
 
 		if (!is_array($account))
 			$account = array($account);
@@ -665,15 +665,15 @@ class accounting
 			$flag = $a->allowPayments ? $flag | self::PAYABLE : $flag;
 			$flag = $a->isEquity ? $flag | self::EQUITY : $flag;
 			if (!$sth->execute(array(
-				$this->grp,
-				$a->code,
-				$a->defaultReflection,
-				$a->name,
-				$a->type,
-				$a->vatCode,
-				$flag,))
+				'grp_id' => $this->grp,
+				'code' => $a->code,
+				'dfa' => $a->defaultReflection,
+				'name' => $a->name,
+				'type' => $a->type,
+				'vat' => $a->vatCode,
+				'flags' => $flag,))
 			) {
-				throw new \exception\UserException(__('Following account is already in use: %s', $a->code));
+				throw new \exception\UserException(__('Unable to create account: %s', $a->code));
 			}
 		}
 		return true;
@@ -686,19 +686,19 @@ class accounting
 	 */
 	function deleteAccount($id)
 	{
-		if (count($this->getTransactionsAccount($id, 0, 1, true)) > 0)
+		if (count($this->getTransactionsAccount($id, 0, 1, false)) > 0)
 			throw new \exception\UserException(__('account %s cannot be deleted, as there is associated postings.'));
 
 		if (is_null($this->grp))
-			throw new \exception\PermissionException('Insufficient permissions for creating account');
+			throw new \exception\PermissionException('Insufficient permissions for deleting account');
 
 
 		$pdo = $this->db->dbh;
-		$sth = $pdo->prepare('DELETE FROM ' . self::ATABLE . ' WHERE account_id = ? AND grp_id = ? LIMIT 1');
+		$sth = $pdo->prepare($this->queries->deleteAccount());
 
 		//get grp id
 
-		$sth->execute(array($id, $this->grp));
+		$sth->execute(array('code' => $id, 'grp_id' => $this->grp));
 		return true;
 	}
 
@@ -749,10 +749,11 @@ class accounting
 	 * @param $accCode
 	 * @param int $start
 	 * @param int $num
+	 * @param bool whether to limit to current accounting
 	 *
 	 * //TODO refactor so that getTransactions and this use same code
 	 */
-	function getTransactionsAccount($accCode, $start = 0, $num = 1000)
+	function getTransactionsAccount($accCode, $start = 0, $num = 1000, $accountinggLimit=true)
 	{
 		$pdo = $this->db->dbh;
 		$sth = $pdo->prepare('SELECT * FROM ' . self::TRANST . ' WHERE

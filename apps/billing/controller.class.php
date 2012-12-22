@@ -108,12 +108,13 @@ class billing extends \core\app
 		$input = new \helper\parser\Post('model\finance\Bill');
 
 		$input->alterArray(function ($arr) {
-			if (isset($arr['isPayed']) && $arr['isPayed'] == 'on')
-				$arr['isPayed'] = true;
-			else
-				$arr['isPayed'] = false;
 
-			$arr['draft'] = true;
+			//check if create bill was pressed
+			if(isset($arr['finished']))
+				$arr['draft'] = false;
+			else
+				$arr['draft'] = true;
+			unset($arr['finished']);
 
 			//parsing the time
 			if (isset($arr['paymentDate']))
@@ -137,12 +138,34 @@ class billing extends \core\app
 
 		//var_dump($obj->toArray());
 		//die();
-
-		$obj = \api\billing::create($obj);
+		if (isset($obj->_id))
+			\api\billing::update($obj);
+		else
+			$obj = \api\billing::create($obj);
 
 
 		$this->header->redirect('/billing/view/' . (string)$obj->_id);
 
+		$this->output_header = $this->header->getHeader();
+		$this->output_content = '';
+	}
+
+	/**
+	 * posts a bill
+	 *
+	 * @param null $id string
+	 */
+	function pay($id = null){
+		$input = new \helper\parser\Post('model\Base');
+		$input->alterArray(function ($arr) {
+			$arr['assAcc'] = (int)$arr['assAcc'];
+			$arr['liaAcc'] = (int)$arr['liaAcc'];
+			return $arr;
+		});
+
+		$input = $input->getObj();
+		\api\billing::bookkeep($id, $input->assAcc, $input->liaAcc);
+		$this->header->redirect('/billing/view/' . (string)$id);
 		$this->output_header = $this->header->getHeader();
 		$this->output_content = '';
 	}
