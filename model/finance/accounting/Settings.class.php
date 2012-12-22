@@ -10,7 +10,7 @@ namespace model\finance\accounting;
 /**
  * class representing settings
  */
-class Settings extends \model\AbstractModel implements \app\companyProfile\Settings
+class Settings extends \model\AbstractModel// implements \app\companyProfile\Settings
 {
 
 	/**

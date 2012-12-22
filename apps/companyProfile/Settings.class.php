@@ -5,6 +5,7 @@
  * Time: 5:52 PM
  */
 namespace app\companyProfile;
+
 interface Settings
 {
 	/**

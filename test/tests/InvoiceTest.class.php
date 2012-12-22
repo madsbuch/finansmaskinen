@@ -26,24 +26,44 @@ class InvoiceTest extends UnitTestCase
 	private $insertedID;
 	private $insertedInvoice;
 
-	function testCreate(){
+    /**
+     * test that it is possible
+     */
+    function testCreate(){
 		global $invoiceObject;
 		$ret = $this->client->create($invoiceObject->toArray());
 		$this->insertedID = $ret['id'];
 	}
 
-	function testFetch(){
+    /**
+     * integrity test on the jst inserted object
+     */
+    function testIntegrity(){
 	 $this->insertedInvoice	= new \model\finance\Invoice($this->client->get($this->insertedID));
 	}
 
-	function testFinalize(){
+    /**
+     * tests if invoice can be finalized
+     */
+    function testFinalize(){
 	    $this->insertedInvoice->draft = false;
 		$this->client->update($this->insertedInvoice);
 	}
 
+    /**
+     * and whether finalization does the right thing
+     */
+    function testFinalizeIntegrity(){
+
+    }
+
 	function testBookkeep(){
 		$this->client->post($this->insertedInvoice);
 	}
+
+    function testBookkeepIntegrity(){
+
+    }
 
 	//endregion
 }
