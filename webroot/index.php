@@ -18,8 +18,7 @@ include '../config/'.STRATEGY.'/config.php';
 //some character settings:
 mb_internal_encoding("UTF-8");
 ini_set('default_charset', 'UTF-8');
-
-//make sure we won't have any problems writing files (logs)
+//-rw-rw-r--
 umask(0777);
 
 require_once("global.php");
