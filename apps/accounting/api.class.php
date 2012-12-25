@@ -250,16 +250,6 @@ class accounting
 
 	}
 
-	/**
-	 * delete an accounting
-	 *
-	 * aaaaand it's gone ;)
-	 */
-	static function delete($id)
-	{
-
-	}
-
 	/**** TRANSACTIONS ****/
 
 	/**
@@ -302,7 +292,7 @@ class accounting
 	 *
 	 * @return array of \model\finance\accounting\Transaction
 	 */
-	static function getTransactions($accountID = null, $from = 0, $num = 10, $compress = false)
+	static function getTransactions($accountID = null, $from = 0, $num = 10)
 	{
 		$acc = self::retrieve($accountID);
 		if (is_null($acc))
@@ -310,7 +300,7 @@ class accounting
 		$acc = (string)$acc->_id;
 		$acc = new \helper\accounting($acc);
 
-		return $acc->getTransactions($from, $num, $compress);
+		return $acc->getTransactions($from, $num);
 	}
 
 	/**
@@ -369,7 +359,7 @@ class accounting
 		$ah = new \helper\accounting((string) self::retrieve()->_id);
 
 		//converts to a transaction object
-		if(!is_null($type)){
+		if(is_string($type)){
 			$strategyName = 'app\accounting\strategies\transactions\\'.$type;
 			$strategy = new $strategyName();
 			$transaction = $strategy->getDaybookTransaction($transaction);
@@ -413,6 +403,7 @@ class accounting
 
 			}
 			$ah->commit();
+            return true;
 		}
 
 		throw new \exception\UserException(__('Wasn\'t able to insert transaction'));

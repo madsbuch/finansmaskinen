@@ -221,10 +221,12 @@ abstract class AbstractModel{
 		foreach($data as $k => $v){
 			//if value isn't set, or overwrrite is used, do it
 			if(!isset($this->$k) || $overwrite)
-				$this->set($k, $v);
+				$this->set($k, $v); //set the value
 			//check if we should propergate down
-			elseif(is_object($this->$k) && is_subclass_of($this->$k, 'model\AbstractModel'))
-				$this->$k->merge($v);
+			elseif(is_object($this->$k)
+                && is_subclass_of($this->$k, 'model\AbstractModel')
+                && is_array($v))
+				$this->$k->merge($v, $overwrite);
 		}
 	}
 

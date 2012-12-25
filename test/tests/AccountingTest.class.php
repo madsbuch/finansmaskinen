@@ -119,6 +119,18 @@ class AccountingTest extends UnitTestCase
 
 	/**** vat testing ****/
 
+    function testAccessVat(){
+        $vatStatement = $this->client->getVatStatement();
+    }
+
+    function testPostToVat(){
+
+    }
+
+    function testActuallyPosted(){
+
+    }
+
 	/**
 	 * attempts to reset vat
 	 */

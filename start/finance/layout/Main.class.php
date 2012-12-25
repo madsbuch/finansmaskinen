@@ -11,8 +11,7 @@ class Main extends \helper\layout\LayoutBlock {
 	* some javascript includes for this layout
 	*/
 	public $addJsIncludes = array(
-		'/js/plugins/jquery.tools.min.js',
-		'/js/plugins/jquery.tutorial.js'
+		'/js/plugins/jquery.tools.min.js'
     );
     
     public $tutorialSlides = array(

@@ -48,22 +48,15 @@ class accounting extends \core\app{
 	*/
 	function transactions($accounting=null){
 		$html = $this->getOutTpl();
-		$html->appendContent(\helper\layout\Element::heading('Posteringer',
-			'Her er dine seneste posteringer for regnskab'));
+		$html->appendContent(\helper\layout\Element::heading(__('Transactions'),
+			__('Latest transactions for accounting')));
 		
 		$html->appendContent(new \app\accounting\layout\finance\quick\Insert());
 		$html->appendContent(new \app\accounting\layout\finance\quick\Withdraw());
 		
 		$html->appendContent('<a href="/accounting/addTransaction" class="btn">Manuel postering</a>');
-		
-		try{
-			$ts = \api\accounting::getTransactions($accounting, 0, 10);
-		}catch(\Exception $e){
-			$msg = new \helper\layout\UserMsg(__($e->getMessage()));
-			$msg->setTitle('Der skete en fejl');
-			$this->setUserMsg('accounting_some_error', $msg);
-			$ts = null;
-		}
+
+		$ts = \api\accounting::getTransactions($accounting, 0, 10);
 		
 		$accounting = new accounting\layout\finance\ViewTransactions($ts);
 		$html->appendContent($accounting);

@@ -47,6 +47,7 @@ class db{
 
 		try {
 			$this->dbh = new \PDO($dsn, $dbarray['username'], $dbarray['password']);
+            $this->dbh->setAttribute(\PDO::ERRMODE_EXCEPTION,true);
 		}
 		//using internal exeption handler
 		catch (PDOException $e){

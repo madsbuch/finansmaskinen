@@ -25,24 +25,13 @@ class ViewTransactions extends \helper\layout\LayoutBlock{
 							}
 							return $toRet;
 						};
-						
-		$genVal = function($a, $dom){
-							if($a->positive){
-								$toRet = new \DOMText(l::writeValuta($a->value));
-							}
-							else{
-								$toRet = new \DOMText(l::writeValuta($a->value * -1));
-							}
-							return $toRet;
-						};
+
 		$genDate = function($a, $dom){
-							$toRet = new \DOMText(date('d/m/Y', $a));
+							$toRet = new \DOMText(date('d/m/Y', strtotime($a)));
 							return $toRet;
 						};
 		$table = new \helper\layout\Table(array(
-			'ref' => 'Reference',
-			'.' => array('Beløb', $genVal),
-			'account' => 'Konto',
+			'referenceText' => 'Reference',
 			'date' => array('Dato', $genDate),
 			'approved' => array('Status', $genAppr)
 		));
@@ -50,7 +39,7 @@ class ViewTransactions extends \helper\layout\LayoutBlock{
 		$table->setNull('-');
 		$table->setEmpty(__('No transactions to show'));
 		$table->setItterator($this->t);
-		
+
 		return $table->generate();
 	}
 	
