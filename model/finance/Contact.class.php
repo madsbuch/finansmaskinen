@@ -23,11 +23,11 @@ class Contact extends \model\AbstractModel{
 	*
 	* version string shall comply with the characters of those methods can have
 	*/
-	protected $_version = 'v1';
+	protected $_version = 'v2';
 	protected $_model   = 'model\finance\Contact';
 	
 	//this is the current version of this model. notice the static context
-	protected static $_currentVersion = 'v1';
+	protected static $_currentVersion = 'v2';
 	
 	/**
 	* internal ID
@@ -54,7 +54,7 @@ class Contact extends \model\AbstractModel{
 	/**
 	* ID by user
 	*/
-	protected $id;
+	protected $contactID;
 	
 	/**
 	* legal numbers
@@ -92,6 +92,9 @@ class Contact extends \model\AbstractModel{
 	*/
 	function upgrade_v1($arr){
 		//remember to update the version, otherwise we'll have en infinite loop
+        if(isset($arr['id']))
+            $arr['contactID'] = $arr['id'];
+        unset($arr['id']);
 		$arr['_version'] = 'v2';
 		return $arr;
 	}

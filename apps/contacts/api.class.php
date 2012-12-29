@@ -137,13 +137,23 @@ class contacts extends \core\api{
 	*					obj: herlper_lodo object
 	*					asp: XML string of UBL SupplierParty type
 	*					VCARD: VCARD string
-	* @return	string
+	* @return	\model\finance\Contact
 	*/
 	static function getContact($id){
 		$contact = new \helper\lodo('contacts', 'contacts');
 		$contact->setReturnType('model\finance\Contact');
 		return $contact->getFromId($id);
 	}
+
+    static function getByContactID($id){
+        $lodo = new \helper\lodo('contacts', 'contacts');
+        $lodo->setReturnType('model\finance\Contact');
+        $lodo->addCondition(array('contactID' => (string) $id));
+        $ret = $lodo->getObjects();
+        if(count($ret) < 1)
+            return null;
+        return $ret[0];
+    }
 	
 	/**
 	* insert contact
@@ -156,7 +166,8 @@ class contacts extends \core\api{
 	* @TODO maḱe create aware
 	*/
 	static function create(\model\finance\Contact $data){
-		$lodo = new \helper\lodo('contacts', 'contacts');
+        $data = self::contactObj($data);
+        $lodo = new \helper\lodo('contacts', 'contacts');
 		$core = new \helper\core('contacts');
 		
 		$core->notify(__('Contact %s created', $data->name));
@@ -173,6 +184,7 @@ class contacts extends \core\api{
 	* update contacts
 	*/
 	static function update($newContact){
+        $newContact = self::contactObj($newContact);
 		$lodo = new \helper\lodo('contacts', 'contacts');
 		$lodo->setFulltextIndex(array('Party.PartyName.Name._content'));
 		return $lodo->update($newContact);
@@ -211,11 +223,33 @@ class contacts extends \core\api{
 	/**** SOME PRIVATE STUFF ****/
 
     /**
+     * prepares the contact
+     *
+     * @param $obj
+     */
+    private static function contactObj($obj){
+
+        if(empty($obj->contactID)){
+            if(isset($obj->Party->PartyName->Name))
+                $p = (string) $obj->Party->PartyName->Name;
+            else
+                $p = base_convert(time(), 10, 36);
+            $obj->contactID = strtoupper(substr($p, 0, 2));
+            $obj->contactID .= '-'.(time() % 1000000);
+        }
+
+        if(self::idExists($obj->contactID))
+            throw new \exception\UserException(__('ContactID is not unique.'));
+
+        return $obj;
+    }
+
+    /**
      * @param $id string representation of the unique id to check if in the db
      * @param $exclude documents to be excluded (their mongoID's)
      */
-    private function checkContactID($id, $exclude = null){
-        return true;
+    private static function idExists($id, $exclude = null){
+        return !is_null(self::getByContactID($id));
     }
 }
 

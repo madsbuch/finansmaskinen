@@ -118,6 +118,7 @@ class main extends \core\app implements \core\framework\Output
 			//and redirect
 			$this->header->redirect("/index");
 			$this->output_header = $this->header->generate();
+            $this->output_content = '';
 			return;//stop execution
 		}
 		
@@ -555,7 +556,9 @@ class main extends \core\app implements \core\framework\Output
 	}
 	
 	function getOutputContent(){
-		return isset($this->output_content) ? $this->output_content : 'dafuq';
+        if(!isset($this->output_content))
+            throw new \Exception('No output was generated');
+		return $this->output_content;
 	}
 	
 	/**** private functions ****/

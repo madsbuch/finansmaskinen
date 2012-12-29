@@ -133,6 +133,25 @@ class accounting extends \core\rpc
         }
     }
 
+    /**
+     * resets the vat accounting according to settings
+     */
+    function resetVat($holder){
+        try {
+            \api\accounting::resetVat($holder);
+            $this->ret(array('success' => true));
+        } catch (\Exception $e) {
+            $this->throwException($e->getMessage(). '  ' . $e->getTraceAsString());
+        }
+    }
+
+    /**
+     * marks vat as payed
+     */
+    function payVat(){
+
+    }
+
 	/**** Private aux ****/
 
 	private function prepareAccountObj($acc)

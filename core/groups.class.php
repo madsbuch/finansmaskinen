@@ -58,7 +58,7 @@ class groups{
 	public function createGroup($parent = -1){
 		//validate
 		if(!is_int($parent))
-			throw new \Exception('Dafuq?!');
+			throw new \Exception('Parent is not validated as int');
 		
 		//note we are updating
 		if(isset($this->authArray->update))

@@ -66,7 +66,12 @@ class billing extends \core\app
 		$bill = \api\billing::getOne($id);
 		$party = \api\contacts::getContact($bill->contactID);
 
-		$view = new billing\layout\finance\View($bill, $party->Party, $widgets);
+        if(!isset($party->Party))
+            $party = null;
+        else
+            $party = $party->Party;
+
+		$view = new billing\layout\finance\View($bill, $party, $widgets);
 		$html->appendContent($view);
 
 		$this->output_header = $this->header->getHeader();

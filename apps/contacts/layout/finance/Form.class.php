@@ -47,7 +47,7 @@ class Form extends \helper\layout\LayoutBlock{
 			<div>
 				<label>Virksomhedsnavn:</label>
 				<input name="Party-PartyName" type="text" class="descriptionPopover span6"
-					title="Navn" id="Party-PartyName"
+					title="Navn" id="Party-PartyName" required="required"
 					data-content="Vejnavn for virksomhedens adresse" />
 				
 				<label>Vejnavn- og nr.:</label>
@@ -98,7 +98,7 @@ class Form extends \helper\layout\LayoutBlock{
 			</div>
 			<h2>Indstillinger</h2>
 			<div class="well">
-				<input name="id" id="id" type="text" class="span5 descriptionPopover" placeholder="Unikt kundeid"
+				<input name="contactID" id="contactID" type="text" class="span5 descriptionPopover" placeholder="Unikt kundeid"
 					title="Kundeid"
 					data-content="Et id genereres automatisk, hvis denne ikke udfyldes"
 				  />

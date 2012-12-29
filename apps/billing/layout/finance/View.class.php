@@ -43,32 +43,34 @@ class View extends \helper\layout\LayoutBlock
 		$root->appendChild($right);
 
 		//***populating the left side
+        $cl = $dom->createElement('div');
+        $cl->appendChild(\helper\html::importNode($dom, '<h3>Afsender</h3>'));
+        $cl->setAttribute('class', 'span3');
+        $cRow = $dom->createElement('div');
+        $cRow->setAttribute('class', 'row');
+        $left->appendChild($cRow);
+        $contact = $dom->createElement('div');
 
 		//contact, that is left side
-		$cl = $dom->createElement('div');
 		$p = $this->party;
 
+        if(!empty($p)){
 
-		$cl->appendChild(\helper\html::importNode($dom, '<h3>Afsender</h3>'));
-		$cl->setAttribute('class', 'span3');
-		$cRow = $dom->createElement('div');
-		$cRow->setAttribute('class', 'row');
-		$left->appendChild($cRow);
-		$contact = $dom->createElement('div');
-		$contact->appendChild(new \DOMElement('b', $p->PartyName->Name));
-		$contact->appendChild(new \DOMElement('br'));
-		$contact->appendChild(new \DOMText($p->PostalAddress->StreetName . ' ' .
-			$p->PostalAddress->BuildingNumber));
-		$contact->appendChild(new \DOMElement('br'));
-		$contact->appendChild(new \DOMText($p->PostalAddress->PostalZone . ' ' .
-			$p->PostalAddress->CityName));
-		$contact->appendChild(new \DOMElement('br'));
-		$cl->appendChild($contact);
+            $contact->appendChild(new \DOMElement('b', $p->PartyName->Name));
+            $contact->appendChild(new \DOMElement('br'));
+            $contact->appendChild(new \DOMText($p->PostalAddress->StreetName . ' ' .
+                $p->PostalAddress->BuildingNumber));
+            $contact->appendChild(new \DOMElement('br'));
+            $contact->appendChild(new \DOMText($p->PostalAddress->PostalZone . ' ' .
+                $p->PostalAddress->CityName));
+            $contact->appendChild(new \DOMElement('br'));
+            $cl->appendChild($contact);
+        }
 
-		//details that is in the right side
-		$cr = $dom->createElement('div');
-		$cr->setAttribute('class', 'span4');
-		$cr->appendChild(\helper\html::importNode($dom, '<h3>Detaljer</h3>'));
+        //details that is in the right side
+        $cr = $dom->createElement('div');
+        $cr->setAttribute('class', 'span4');
+        $cr->appendChild(\helper\html::importNode($dom, '<h3>Detaljer</h3>'));
 
 		//the rest of the details
 		$info = new \helper\layout\Table(array(

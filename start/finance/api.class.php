@@ -378,6 +378,7 @@ class api extends \core\startapi{
 				return $request;
 			}
 		}
+        return $request;
 	}
 	
 	/**

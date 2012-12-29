@@ -169,7 +169,7 @@ class accounting
 		if(empty($transaction->postings) || $transaction->postings->count() < 1)
 			throw new \exception\UserException('Transaction must have postings');
 
-        //backwards combatability
+        //TODO refactor so this isn't needed
 		foreach($transaction->postings as $posting){
 			$this->addTransaction(new \model\finance\accounting\Transaction(array(
 				'value' => $posting->amount,
@@ -201,7 +201,7 @@ class accounting
 	function automatedTransaction(
 		$amount, //amount to insert, exl vat
 		$acc, //operating account
-		$libilityAccount, //libility account
+		$liabilityAccount, //libility account
 		$assertAccount, //assert account
 		$ref = null, //set some reference, it is ecpected to be unique!
 		$vat = false, //add vat
@@ -243,7 +243,7 @@ class accounting
                 array(
                     'amount' => $lAmount,
                     'positive' => true,
-                    'account' => $libilityAccount,
+                    'account' => $liabilityAccount,
                 ),
                 array(
                     'amount' => $aAmount,
@@ -581,7 +581,22 @@ class accounting
 	/**
 	 * transfer money from vat account to a holder account
 	 */
-	function resetVatAccounting(){
+	function resetVatAccounting($holderAccount){
+        $pdo = $this->db->dbh;
+
+
+        $accounts = array();
+        //get all accounts for vat, and their amounts
+        $vats = $this->getVatCodes();
+        foreach($vats as $v)
+            $accounts[$v->account] = true;
+        $accounts = array_keys($accounts);
+
+        //add new amounts to the accounts, so they'll 0 up
+        $accounts = $this->getAccounts(0, $accounts);
+
+
+        //add the differences to the holderAccount
 
 	}
 
@@ -711,6 +726,7 @@ class accounting
 	function getTransactions($start = 0, $num = 1000)
 	{
         $pdo = $this->db->dbh;
+        $pdo->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
 		$sth = $pdo->prepare($this->queries->getTransactions());
 		$ret = array();
 		if(!$sth)
@@ -731,7 +747,6 @@ class accounting
             ));
             //@TODO fetch postings for the transaction
 		}
-
 		return $ret;
 	}
 
@@ -793,21 +808,6 @@ class accounting
 	{
 		$pdo = $this->db->dbh;
 		$sth = $pdo->prepare($this->queries->getSumsOnVatAccounts());
-            /*'
-		Select
-			SUM(v_income) as v_income,
-			SUM(v_outgoing) as v_outgoing,
-			vc.type as type
-		from
-			accounting_vat_codes as vc,
-			accounting_transactions as t 
-		WHERE
-			vc.grp_id = :grp AND
-			t.account_id = :accounting AND
-			t.account = vc.account
-			
-		GROUP BY
-			vc.type;');*/
 		if(!$sth->execute(array('accounting' => $this->accounting, 'grp' => $this->grp)))
             throw new \Exception("Was not abl to execute query.");
 

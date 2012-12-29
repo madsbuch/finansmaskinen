@@ -44,7 +44,7 @@ class View extends \helper\layout\LayoutBlock{
 		$info->showHeader = false;
 		
 		$info->addObject(new \model\Base(array('key' => 'ID',
-			'val' => !is_null($t = $this->contact->id) ? $t : '-')));
+			'val' => !is_null($t = $this->contact->contactID) ? $t : '-')));
 		$info->addObject(new \model\Base(array('key' => 'Adresse',
 			'val' => (isset(
 				$this->contact->Party->PostalAddress->StreetName) ? 

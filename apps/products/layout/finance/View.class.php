@@ -42,6 +42,11 @@ class View extends \helper\layout\LayoutBlock{
 			'val' => (isset(
 				$this->product->Item->Name) ? 
 				$this->product->Item->Name : '-'))));
+
+        $info->addObject(new \model\Base(array('key' => 'ID',
+            'val' => (isset(
+            $this->product->productID) ?
+                $this->product->productID : '-'))));
 		
 		$info->addObject(new \model\Base(array('key' => 'Beskrivelse',
 			'val' => (isset(

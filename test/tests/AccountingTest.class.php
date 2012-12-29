@@ -134,8 +134,8 @@ class AccountingTest extends UnitTestCase
 	/**
 	 * attempts to reset vat
 	 */
-	function testVatRest(){
-
+	function testVatReset(){
+        $this->client->resetVat(14260);
 	}
 
 	/**

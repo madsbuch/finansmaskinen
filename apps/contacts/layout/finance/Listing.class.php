@@ -27,7 +27,7 @@ class Listing extends \helper\layout\LayoutBlock{
 		
 		//the descriptor for making the table from the objects
 		$table = new \helper\layout\Table(array(
-			'id' => __('ID'),
+			'contactID' => __('ID'),
 			'Party.PartyName.Name._content' => __('Company'),
 			'_subsystem.updated_at' => array(__('Last activity'), $generateDate),
 		));

@@ -37,16 +37,6 @@ class accounting
 		return "Regnskab";
 	}
 
-	/**
-	 * get description
-	 *
-	 * returns user readable description of app (in users language)
-	 */
-	static function getDescription()
-	{
-		return "Se og administrer dit regnskab og moms";
-	}
-
 	/**** SOME HOOKS ****/
 	/**
 	 * returns widget for frontpage
@@ -366,7 +356,7 @@ class accounting
 		}
 
 		//test if it's is a daybookTransaction
-		if(is_a($transaction, '\model\finance\accounting\DaybookTransaction')){
+		if($transaction instanceof \model\finance\accounting\DaybookTransaction){
 			//if $ref is set explicitly, set it
 			if(empty($transaction->referenceText))
 				$transaction->referenceText = $ref;
@@ -507,17 +497,21 @@ class accounting
 
 	/**
 	 * marks vat as reset in the current accounting
+     *
+     * $holderAcc later goes to settings
 	 */
-	static function resetVat(){
+	static function resetVat($holderAcc){
+        $settings = self::getSettings();
 		$acc = self::retrieve();
 		$acc = new \helper\accounting((string)$acc->_id);
-		$acc->resetVatAccounting();
+		$acc->resetVatAccounting($holderAcc);
 	}
 
 	/**
 	 * adjust asset account and the vat holding account
 	 */
 	static function payVat($assetAccount){
+        $settings = self::getSettings();
 		$acc = self::retrieve();
 		$acc = new \helper\accounting((string)$acc->_id);
 		$acc->vatPayed($assetAccount);
@@ -546,7 +540,7 @@ class accounting
 	{
 		$settings = \api\companyProfile::getSettings('accounting');
 		//this will not override as exceptions are thrown if permissions are not pressent
-		if($settings = null){
+		if($settings == null){
 			$settings = new \model\finance\accounting\Settings();
 			\api\companyProfile::saveSettings('accounting', $settings);
 		}

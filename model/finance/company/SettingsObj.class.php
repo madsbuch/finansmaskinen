@@ -5,7 +5,7 @@
  * Time: 6:38 PM
  */
 namespace model\finance\company;
-class SettingsObj
+class SettingsObj extends \model\AbstractModel
 {
 	/**
 	 * non translated settings title
