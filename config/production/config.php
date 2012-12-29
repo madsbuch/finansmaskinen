@@ -8,7 +8,7 @@
 * called. This is because of the CLI based cron system.
 */
 namespace config;
-define("DEBUG", true);
+define("DEBUG", false);
 define("CORE_CEHCK_PERMISSIONS", true);//shall the core classes check if the object can be created?
 
 //dirs

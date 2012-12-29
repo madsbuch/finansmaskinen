@@ -62,7 +62,7 @@ class finance{
 		'krak' => array(),
 		'finansmaskinen' => array(
 			'url' => 'http://rpc.finansmaskinen.dk/',//remember trailing /
-			'key' => 'b82544edb387a6190951b2ecbc4bdaa99b6d1f49d59f5d8cc3e395cd80175958-50716ffa41769-d41d8cd98f00b204e9800998ecf8427e'
+			'key' => '9feb1101115be822c9f4de80eaf6545cb7a75d5fc98ab1e959018557129811b2-50df331e27d2c-d41d8cd98f00b204e9800998ecf8427e'
 		)
 	);
 }
