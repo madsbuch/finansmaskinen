@@ -63,9 +63,9 @@ class config{
 			),
 			
 			'domains' => array(
-				'static' => 'static.finansmaskinen.dev',
-				'web' => 'www.finansmaskinen.dev',
-				'rpc' => 'rpc.finansmaskinen.dev'
+				'static' => 'static.finansmaskinen.dk',
+				'web' => 'www.finansmaskinen.dk',
+				'rpc' => 'rpc.finansmaskinen.dk'
 			),
 			
 			'settings' => array(
