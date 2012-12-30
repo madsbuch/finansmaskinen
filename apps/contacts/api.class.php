@@ -207,7 +207,7 @@ class contacts extends \core\api{
 		$contact = self::getContact($id);
 		
 		if(!isset($contact->apiID) || !isset($contact->apiUrl))
-			throw new \Exception('No external data on this contact');
+			throw new \exception\UserException('No external data on this contact');
 
 		//do the retrival stuff
 		$rpc = new \helper\rpc\Finance($contact->apiUrl . '/companyProfile', true);
@@ -240,7 +240,7 @@ class contacts extends \core\api{
 
         $excl = null;
         if(!empty($obj->_id))
-            $excl = $obj->_id;
+            $excl = (string) $obj->_id;
 
         if(self::idExists($obj->contactID, $excl))
             throw new \exception\UserException(__('ContactID is not unique.'));
