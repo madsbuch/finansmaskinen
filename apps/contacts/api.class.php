@@ -238,7 +238,11 @@ class contacts extends \core\api{
             $obj->contactID .= '-'.(time() % 1000000);
         }
 
-        if(self::idExists($obj->contactID))
+        $excl = null;
+        if(!empty($obj->_id))
+            $excl = $obj->_id;
+
+        if(self::idExists($obj->contactID, $excl))
             throw new \exception\UserException(__('ContactID is not unique.'));
 
         return $obj;
@@ -249,7 +253,12 @@ class contacts extends \core\api{
      * @param $exclude documents to be excluded (their mongoID's)
      */
     private static function idExists($id, $exclude = null){
-        return !is_null(self::getByContactID($id));
+        $obj = self::getByContactID($id);
+        if(is_null($obj))
+            return false;
+        if((string) $obj->_id === $exclude)
+            return false;
+        return true;
     }
 }
 
