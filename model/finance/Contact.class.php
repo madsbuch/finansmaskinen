@@ -62,13 +62,9 @@ class Contact extends \model\AbstractModel{
 	protected $legalNumbers;
 	
 	/**
-	* overrides $Party->Contact and $Party->Person
-	*
-	* array of pairs:
-	* model\Base{
-	*  public Contacts;
-	*  public Person
-	* }
+	 * primary (or if oly one, if conatct is an individual) is in Party
+     *
+	 * Reason is that we wanna have abritary many contact persons to a contact (company)
 	*/	
 	protected $ContactPerson;
 	
