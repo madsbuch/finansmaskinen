@@ -177,7 +177,7 @@ class products extends \core\app{
 	*
 	* looks for the id in the form data, not the urld
 	*/
-	function update(){
+	function update($ajax = false){
 		$prod = new \helper\parser\Post('\model\finance\Product');
 		
 		$prod->alterArray(function($arr){

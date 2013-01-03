@@ -95,7 +95,7 @@ class Product extends \model\AbstractModel{
 	/**
 	* ID by user
 	*/
-	protected $id;
+	protected $productID;
 }
 
 ?>

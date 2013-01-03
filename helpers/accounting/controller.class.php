@@ -107,7 +107,17 @@ class accounting
 			throw new \exception\UserException(__('Value of transaction has to be more than 0 on account: %s', $transaction->account));
 
 		if (!isset($transaction->date))
-			throw new \Exception('No transaction date set');
+			throw new \exception\UserException('No transaction date set');
+
+        //this function is deprecated, but for backwardscompatability:
+        if(!isset($this->transactionInfo)){
+            $this->transactionInfo = new \model\finance\accounting\DaybookTransaction(array(
+                'data' => $transaction->date,
+                'referenceText' => $transaction->ref,
+                'approved' => $transaction->approved
+            ));
+        }
+
 
 		//get account type:
 		$this->accCheck->execute(array($transaction->account));
@@ -159,6 +169,7 @@ class accounting
 		if(empty($transaction->postings) || $transaction->postings->count() < 1)
 			throw new \exception\UserException('Transaction must have postings');
 
+        //TODO refactor so this isn't needed
 		foreach($transaction->postings as $posting){
 			$this->addTransaction(new \model\finance\accounting\Transaction(array(
 				'value' => $posting->amount,
@@ -190,7 +201,7 @@ class accounting
 	function automatedTransaction(
 		$amount, //amount to insert, exl vat
 		$acc, //operating account
-		$libilityAccount, //libility account
+		$liabilityAccount, //libility account
 		$assertAccount, //assert account
 		$ref = null, //set some reference, it is ecpected to be unique!
 		$vat = false, //add vat
@@ -214,45 +225,35 @@ class accounting
 			$aAmount = $amount + $vat;
 		}
 
+        $transaction = new \model\finance\accounting\DaybookTransaction(array(
+            'referenceText' => $ref,
+            'date' => $date,
+            'approved' => true,
+            'postings' => array(
+                array(
+                    'amount' => $amount,
+                    'positive' => true,
+                    'account' => $acc,
+                ),
+                array(
+                    'amount' => $vat,
+                    'positive' => true,
+                    'account' => $vatObj->account,
+                ),
+                array(
+                    'amount' => $lAmount,
+                    'positive' => true,
+                    'account' => $liabilityAccount,
+                ),
+                array(
+                    'amount' => $aAmount,
+                    'positive' => true,
+                    'account' => $assertAccount,
+                )
+            )
+        ));
 
-		$oTrans = new \model\finance\accounting\Transaction(array(
-			'value' => $amount,
-			'positive' => true,
-			'account' => $acc,
-			'ref' => $ref,
-			'approved' => true,
-			'date' => $date
-		));
-		$vatTrans = new \model\finance\accounting\Transaction(array(
-			'value' => $vat,
-			'positive' => true,
-			'account' => $vatObj->account,
-			'ref' => $ref,
-			'approved' => true,
-			'date' => $date
-		));
-
-		$liaTrans = new \model\finance\accounting\Transaction(array(
-			'value' => $lAmount,
-			'positive' => true,
-			'account' => $libilityAccount,
-			'ref' => $ref,
-			'approved' => true,
-			'date' => $date
-		));
-		$assTrans = new \model\finance\accounting\Transaction(array(
-			'value' => $aAmount,
-			'positive' => true,
-			'account' => $assertAccount,
-			'ref' => $ref,
-			'approved' => true,
-			'date' => $date
-		));
-
-		$this->addTransaction($oTrans);
-		$this->addTransaction($vatTrans);
-		$this->addTransaction($liaTrans);
-		$this->addTransaction($assTrans);
+		$this->addDaybookTransaction($transaction);
 	}
 
 	/**** aux function adding functionality and transforming objects ****/
@@ -412,43 +413,41 @@ class accounting
 		if (!is_string($this->accounting))
 			throw new \Exception('Accounting is not set properly');
 
+        if(empty($this->transactionInfo))
+            throw new \Exception('no transaction info set');
+
 		$pdo = $this->db->dbh;
 		$pdo->beginTransaction();
-		try {
-			$sthTrans = $pdo->prepare($this->queries->insertTransaction());
-			$sthTrans->execute(array(
-				'date' => $this->transactionInfo->date,
-				'referenceText' => $this->transactionInfo->referenceText,
-				'approved' => $this->transactionInfo->approved,
-				'accounting_id' => $this->transactionInfo->accounting,
-			));
+        $sthTrans = $pdo->prepare($this->queries->insertTransaction());
+        $sthTrans->execute(array(
+            'date' => $this->transactionInfo->date,
+            'referenceText' => $this->transactionInfo->referenceText,
+            'approved' => $this->transactionInfo->approved,
+            'accounting_id' => $this->accounting,
+        ));
 
-			$transID = $pdo->lastInsertId();
+        $transID = $pdo->lastInsertId();
 
-			$sth = $pdo->prepare($this->queries->insertPosting());
-			foreach ($this->transactions as $t) {
-				if (!$sth->execute(
-					array(
-						'amount_in' => $t['value_positive'],
-						'amount_out' => $t['value_negative'],
-						'grp' => $this->grp,
-						'transaction_id' => $transID,
-						'account' => $t['account']))
-				) {
-					$pdo->rollback();
-					throw new \Exception('Some error happended?');
-				}
-			}
-			//commit the rows, if everything wen't well
-			if ($pdo->commit())
-				return true;
-			else
-				$pdo->rollback();
-			return false;
-		} catch (PDOException $e) {
-			$pdo->rollback();
-			throw $e;
-		}
+        $sth = $pdo->prepare($this->queries->insertPosting());
+
+        if(!$sth){
+            $pdo->rollback();
+            throw new \Exception('Some error happended? ' . implode($pdo->errorInfo()));
+        }
+
+        foreach ($this->transactions as $t) {
+            $sth->execute( array(
+                'amount_in' => $t['value_positive'],
+                'amount_out' => $t['value_negative'],
+                'grp' => $this->grp,
+                'transaction_id' => $transID,
+                'account' => $t['account']));
+        }
+        //commit the rows, if everything wen't well
+        if ($pdo->commit())
+            return true;
+        else
+            $pdo->rollback();
 	}
 
 	/**** VAT ****/
@@ -582,7 +581,22 @@ class accounting
 	/**
 	 * transfer money from vat account to a holder account
 	 */
-	function resetVatAccounting(){
+	function resetVatAccounting($holderAccount){
+        $pdo = $this->db->dbh;
+
+
+        $accounts = array();
+        //get all accounts for vat, and their amounts
+        $vats = $this->getVatCodes();
+        foreach($vats as $v)
+            $accounts[$v->account] = true;
+        $accounts = array_keys($accounts);
+
+        //add new amounts to the accounts, so they'll 0 up
+        $accounts = $this->getAccounts(0, $accounts);
+
+
+        //add the differences to the holderAccount
 
 	}
 
@@ -704,47 +718,40 @@ class accounting
 
 	/** TRANSACTION FUNCTIONS **/
 
-	//TODO rename transactions to postings...
-
 	/**
 	 * get transactions
+     *
+     * @return array of \model\finance\accounting\DaybookTransaction
 	 */
-	function getTransactions($start = 0, $num = 1000, $compress = false)
+	function getTransactions($start = 0, $num = 1000)
 	{
-		$pdo = $this->db->dbh;
-		$sth = $pdo->prepare('SELECT * FROM ' . self::TRANST . ' WHERE account_id = ?
-			ORDER BY date DESC LIMIT ' . $start . ', ' . $num . '');
+        $pdo = $this->db->dbh;
+        $pdo->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
+		$sth = $pdo->prepare($this->queries->getTransactions());
 		$ret = array();
-		$sth->execute(array($this->accounting));
+		if(!$sth)
+            throw new  \Exception('Unable to perform query: ' . implode('; ', $pdo->errorInfo()));
+
+        $sth->execute(array(
+            'accounting' => $this->accounting,
+            'start' => $start,
+            'num' => $num
+        ));
+
 		foreach ($sth->fetchAll() as $t) {
-			$obj = array(
-				'_id' => $t['id'],
-				'v_positive' => $t['v_income'],
-				'v_negative' => $t['v_outgoing'],
-				'account' => $t['account'],
-				'date' => $t['date'],
-				'approved' => $t['approved'],
-				'ref' => $t['ref']
-			);
-
-			if ($obj['v_positive']) {
-				$obj['value'] = $obj['v_positive'];
-				$obj['positive'] = true;
-				unset($obj['v_positive'], $obj['v_negative']);
-			} else {
-				$obj['value'] = $obj['v_negative'];
-				$obj['positive'] = false;
-				unset($obj['v_positive'], $obj['v_negative']);
-			}
-
-			$ret[] = new \model\finance\accounting\Transaction($obj);
+			$ret[] = new \model\finance\accounting\DaybookTransaction(array(
+                'referenceText' => $t['reference'],
+                'date' => $t['date'],
+                'approved' => $t['approved'],
+                '_id' => $t['id']
+            ));
+            //@TODO fetch postings for the transaction
 		}
-
 		return $ret;
 	}
 
 	/**
-	 * returns postings for an account
+	 * returns transactions for an account
 	 *
 	 * @param $accCode
 	 * @param int $start
@@ -800,22 +807,9 @@ class accounting
 	function getVatStatement()
 	{
 		$pdo = $this->db->dbh;
-		$sth = $pdo->prepare('
-		Select
-			SUM(v_income) as v_income,
-			SUM(v_outgoing) as v_outgoing,
-			vc.type as type
-		from
-			accounting_vat_codes as vc,
-			accounting_transactions as t 
-		WHERE
-			vc.grp_id = :grp AND
-			t.account_id = :accounting AND
-			t.account = vc.account
-			
-		GROUP BY
-			vc.type;');
-		$sth->execute(array('accounting' => $this->accounting, 'grp' => $this->grp));
+		$sth = $pdo->prepare($this->queries->getSumsOnVatAccounts());
+		if(!$sth->execute(array('accounting' => $this->accounting, 'grp' => $this->grp)))
+            throw new \Exception("Was not abl to execute query.");
 
 		$ret = new \model\finance\accounting\VatStatement;
 
@@ -823,11 +817,11 @@ class accounting
 		foreach ($sth->fetchAll() as $r) {
 			switch ($r['type']) {
 				case 1:
-					$ret->sales = $r['v_income'] - $r['v_outgoing'];
+					$ret->sales = $r['amount_in'] - $r['amount_out'];
 					$total += $ret->sales;
 					break;
 				case 2:
-					$ret->bought = $r['v_income'] - $r['v_outgoing'];
+					$ret->bought = $r['amount_in'] - $r['amount_out'];
 					$total -= $ret->bought;
 					break;
 			}

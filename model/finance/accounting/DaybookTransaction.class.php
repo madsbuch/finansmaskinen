@@ -21,6 +21,8 @@ class DaybookTransaction extends \model\AbstractModel
 		'postings' => array('\model\finance\accounting\Posting', true),
 	);
 
+    protected $_id;
+
 	/**
 	 * unique reference text
 	 *
@@ -34,11 +36,6 @@ class DaybookTransaction extends \model\AbstractModel
 	 */
 	protected $postings;
 
-	/**
-	 * id of accounting
-	 * @var string
-	 */
-	protected $accounting;
 
 	/**
 	 * hmm, either unix ts or iso8601

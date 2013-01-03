@@ -13,13 +13,28 @@ class SimpleInvoice extends \model\AbstractModel
 		'products' => array('string', true),
 		'contact' => array('string', false),
 	);
-	protected $products;
 
-	protected $contact;
+    /**
+     * SimpleProduct objects
+     *
+     * @var \model\Iterator
+     */
+    protected $products;
+
+    /**
+     * contat id (not object id)
+     *
+     * @var string
+     */
+    protected $contact;
 
 	/** some options, with default values **/
 
-	protected $vat = true;
+    /**
+     * whether to add VAT
+     * @var bool
+     */
+    protected $vat = true;
 
 
 

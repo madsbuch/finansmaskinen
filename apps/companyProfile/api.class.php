@@ -34,10 +34,11 @@ class companyProfile{
 
 		if(!empty($cp->settings))
 			foreach($cp->settings as $s){
+                $htmlID = $s->title . time();
 	            $o = new \model\finance\company\AppSetting(array(
 			            'title' => $s->title,
-			            'settingsModal' => 'toCome',
-			            'modalID' => '#dd'
+			            'settingsModal' => new \app\companyProfile\layout\finance\SettingsObject($s, $htmlID),
+			            'modalID' => '#'.$htmlID
 		            ));
 				$rets[] = $o;
 			}
@@ -326,7 +327,7 @@ class companyProfile{
 	 * @param $for
 	 * @param $obj
 	 */
-	static function saveSettings($for, \app\companyProfile\Settings $obj){
+	static function saveSettings($for, $obj){
 		$o = self::retrieve();
 
 		$s = new \model\finance\company\SettingsObj(array(
@@ -335,7 +336,13 @@ class companyProfile{
 			'settings' => $obj
 		));
 
-		$o->settings->$for = $s;
+        if(!isset($o->settings))
+            $o->settings = array(
+                $for => $s
+            );
+        else
+		    $o->settings->$for = $s;
+
 		self::update($o);
 	}
 	

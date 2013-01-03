@@ -97,6 +97,9 @@ class Form extends \helper\layout\LayoutBlock{
 			<div class="span4">
 				<h2>Ekstra detaljer</h2>
 				<div class="app-box">
+				    Produkt ID:
+					<input type="text" style="width:90%"
+						name="productID" id="productID" />
 					<label>Beskrivelse</label>
 					<textarea name="Item-Description" id="Item-Description" style="width:90%"></textarea>
 					<label>Produktbilleder</label>

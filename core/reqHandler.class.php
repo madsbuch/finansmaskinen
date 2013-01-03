@@ -41,7 +41,7 @@ class reqHandler{
 		$request->arguments = $inputParser->getArgs();
 		
 		/**** check subdomains to see where the request should be dispatched to ****/
-		$domain = $inputParser->getReverseDomain();//$domain[2] conains level 1 sub
+		$domain = $inputParser->getReverseDomain();//$domain[2] contains level 1 sub
 
 		$subDomain = isset($domain[2]) ? $domain[2] : null;
 		
@@ -67,14 +67,20 @@ class reqHandler{
 			//it's a webapp :D
 		}
 		else{
-			//it's nothing... :/ redirect to frontpage @TODO really bad hack... we don't wanna destroy the programflow
+			//it's nothing... :/ redirect to frontpage
+            //@TODO really bad hack... we don't wanna destroy the programflow
 
 			header('location: http://www.'.$domain[1].'.'.$domain[0]);
 			exit();
 		}
 
+        /** just preexecution stuff **/
+
 		//setting some more variables
 		$mainPageClass = 'start\\'.$profile.'\main';
+        //sets default errorhandler
+        $eh->setOutput(new $mainPageClass($request));
+        $request = $api::beforeExecution($request);
 
 		/* EXECUTING MAIN SITE */
 
@@ -94,9 +100,6 @@ class reqHandler{
 		else
 			$objName = '\\'.$request->ui.'\\'.$request->app;
 
-		//sets default errorhandler
-		$eh->setOutput(new $mainPageClass($request));
-
 		//create apphandler and set output handler for errors
 
 		try{
@@ -107,9 +110,6 @@ class reqHandler{
 		}
 		if($appHandler instanceof \core\framework\Output)
 			$eh->setOutput($appHandler);
-
-		/** preexecution stuff **/
-		$api::beforeExecution($request);
 
 		//checking wether page exists
 		if(!is_callable(array($objName, $request->page))){

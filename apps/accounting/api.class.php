@@ -37,16 +37,6 @@ class accounting
 		return "Regnskab";
 	}
 
-	/**
-	 * get description
-	 *
-	 * returns user readable description of app (in users language)
-	 */
-	static function getDescription()
-	{
-		return "Se og administrer dit regnskab og moms";
-	}
-
 	/**** SOME HOOKS ****/
 	/**
 	 * returns widget for frontpage
@@ -250,16 +240,6 @@ class accounting
 
 	}
 
-	/**
-	 * delete an accounting
-	 *
-	 * aaaaand it's gone ;)
-	 */
-	static function delete($id)
-	{
-
-	}
-
 	/**** TRANSACTIONS ****/
 
 	/**
@@ -302,7 +282,7 @@ class accounting
 	 *
 	 * @return array of \model\finance\accounting\Transaction
 	 */
-	static function getTransactions($accountID = null, $from = 0, $num = 10, $compress = false)
+	static function getTransactions($accountID = null, $from = 0, $num = 10)
 	{
 		$acc = self::retrieve($accountID);
 		if (is_null($acc))
@@ -310,7 +290,7 @@ class accounting
 		$acc = (string)$acc->_id;
 		$acc = new \helper\accounting($acc);
 
-		return $acc->getTransactions($from, $num, $compress);
+		return $acc->getTransactions($from, $num);
 	}
 
 	/**
@@ -369,14 +349,14 @@ class accounting
 		$ah = new \helper\accounting((string) self::retrieve()->_id);
 
 		//converts to a transaction object
-		if(!is_null($type)){
+		if(is_string($type)){
 			$strategyName = 'app\accounting\strategies\transactions\\'.$type;
 			$strategy = new $strategyName();
 			$transaction = $strategy->getDaybookTransaction($transaction);
 		}
 
 		//test if it's is a daybookTransaction
-		if(is_a($transaction, '\model\finance\accounting\DaybookTransaction')){
+		if($transaction instanceof \model\finance\accounting\DaybookTransaction){
 			//if $ref is set explicitly, set it
 			if(empty($transaction->referenceText))
 				$transaction->referenceText = $ref;
@@ -413,6 +393,7 @@ class accounting
 
 			}
 			$ah->commit();
+            return true;
 		}
 
 		throw new \exception\UserException(__('Wasn\'t able to insert transaction'));
@@ -516,17 +497,21 @@ class accounting
 
 	/**
 	 * marks vat as reset in the current accounting
+     *
+     * $holderAcc later goes to settings
 	 */
-	static function resetVat(){
+	static function resetVat($holderAcc){
+        $settings = self::getSettings();
 		$acc = self::retrieve();
 		$acc = new \helper\accounting((string)$acc->_id);
-		$acc->resetVatAccounting();
+		$acc->resetVatAccounting($holderAcc);
 	}
 
 	/**
 	 * adjust asset account and the vat holding account
 	 */
 	static function payVat($assetAccount){
+        $settings = self::getSettings();
 		$acc = self::retrieve();
 		$acc = new \helper\accounting((string)$acc->_id);
 		$acc->vatPayed($assetAccount);
@@ -555,7 +540,7 @@ class accounting
 	{
 		$settings = \api\companyProfile::getSettings('accounting');
 		//this will not override as exceptions are thrown if permissions are not pressent
-		if($settings = null){
+		if($settings == null){
 			$settings = new \model\finance\accounting\Settings();
 			\api\companyProfile::saveSettings('accounting', $settings);
 		}

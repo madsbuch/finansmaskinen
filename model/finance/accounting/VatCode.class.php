@@ -52,6 +52,9 @@ class VatCode extends \model\AbstractModel
 	 */
 	protected $percentage;
 
+    /**
+     * account code
+     */
 	protected $account;
 
 	protected $counterAccount;

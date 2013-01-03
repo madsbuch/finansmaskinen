@@ -81,4 +81,45 @@ class MysqlQueries implements \helper\accounting\Queries
 		return 'DELETE FROM accounting_accounts WHERE code = :code AND grp_id = :grp_id LIMIT 1';
 	}
 
+    /**** Vat ****/
+    function getSumsOnVatAccounts(){
+        return 'select
+            SUM(a_in) as amount_in,
+            SUM(a_out) as amount_out,
+            type
+        from
+        (select DISTINCT
+            posts.id as post_id,
+            vat.type as type,
+            posts.amount_in as a_in,
+            posts.amount_out as a_out
+        from
+            accounting_vat_codes as vat,
+            accounting_accounts as acc,
+            accounting_transactions as dbt,
+            accounting_postings as posts
+        WHERE
+                vat.grp_id = :grp							#get only those for this group
+                    AND	vat.account = acc.code				#select neeeded accounts
+                    AND	dbt.accounting_id = :accounting	    #restricting to accounting
+                        AND posts.transaction_id = dbt.id	#restricting postings to be in transactions
+                            AND posts.account_id = acc.id	#restricting postings t correct accounts
+        ) as getPostings
+        GROUP BY
+            type';
+
+    }
+
+    /**** transactions ****/
+
+    function getTransactions(){
+        return 'SELECT
+          id,
+          date,
+	      reference,
+	      approved
+	    FROM accounting_transactions WHERE accounting_id = :accounting
+	      ORDER BY date DESC LIMIT :start, :num';
+    }
+
 }

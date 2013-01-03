@@ -167,7 +167,7 @@ class contacts extends \core\app{
 		$this->header->redirect('/contacts/view/'.$id);
 		
 		$this->output_header = $this->header->getHeader();
-		$this->output_content = $c;
+		$this->output_content = '';
 	}
 	
 	/**
@@ -191,7 +191,7 @@ class contacts extends \core\app{
 		\api\contacts::retrieveExternal($id);
 		
 		$this->output_header = $this->header->getHeader();
-		$this->output_content = $c;
+		$this->output_content = '';
 	}
 	
 	/**

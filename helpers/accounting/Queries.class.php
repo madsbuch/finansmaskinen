@@ -74,4 +74,32 @@ interface Queries
 	 * @return string
 	 */
 	function deleteAccount();
+
+    /**
+     * creates a query that returns a table of following col's
+     *  amount_in
+     *  amount_out
+     *  type
+     *
+     * it requires following parameters:
+     *  accounting
+     *  grp
+     *
+     * @return string
+     */
+    function getSumsOnVatAccounts();
+
+    /**** transactions ****/
+
+    /**
+     * returns a query to get all transactions, takes folloing parameters:
+     *  start   starting row
+     *  num     row number limit
+     *  accounting
+     *
+     *
+     * @return string
+     */
+    function getTransactions();
+
 }

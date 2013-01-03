@@ -8,7 +8,7 @@
 * called. This is because of the CLI based cron system.
 */
 namespace config;
-define("DEBUG", true);
+define("DEBUG", false);
 define("CORE_CEHCK_PERMISSIONS", true);//shall the core classes check if the object can be created?
 
 //dirs
@@ -63,9 +63,9 @@ class config{
 			),
 			
 			'domains' => array(
-				'static' => 'static.finansmaskinen.dev',
-				'web' => 'www.finansmaskinen.dev',
-				'rpc' => 'rpc.finansmaskinen.dev'
+				'static' => 'static.finansmaskinen.dk',
+				'web' => 'www.finansmaskinen.dk',
+				'rpc' => 'rpc.finansmaskinen.dk'
 			),
 			
 			'settings' => array(

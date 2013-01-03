@@ -78,13 +78,13 @@ class errorHandler
 			echo get_class ($this->app) . "\n\n";
 			if(DEBUG){
 				echo $e->getMessage() . "\n\n";
-				echo $e->getMessage() . "\n\n";
+				echo $e->getTraceAsString() . "\n\n";
 				var_dump($e->getTRace());
 			}
 		}
 		if(DEBUG){
 			echo $exception->getMessage() . "\n\n";
-			echo $exception->getMessage() . "\n\n";
+            echo $exception->getTraceAsString() . "\n\n";
 			var_dump($exception->getTRace());
 		}
 	}

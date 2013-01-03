@@ -203,6 +203,7 @@ class products
 	 */
 	static function create($data, $grp = false)
 	{
+        $data = self::productObj($data);
 		$lodo = new \helper\lodo('products', 'products');
 		$core = new \helper\core('products');
 		$core->notify(__('Product %s created', $data->Item->Name));
@@ -227,12 +228,12 @@ class products
 	}
 
 	/**
-	 * update contacts
+	 * update prouct
 	 *
-	 * $deltaProduct must contain $deltaProduct->_id = string | mongoID
 	 */
-	static function update($data)
+	static function update(\model\finance\Product $data)
 	{
+        $data = self::productObj($data);
 		$lodo = new \helper\lodo('products', 'products');
 
 		$lodo->setFulltextIndex(array(
@@ -270,6 +271,33 @@ class products
 	{
 
 	}
+
+    /**** SOME PRIVATE AUX ****/
+
+    private static function productObj($obj){
+
+        if(empty($obj->productID)){
+            if(isset($obj->Item->Name))
+                $p = (string) $obj->Item->Name;
+            else
+                $p = base_convert(time(), 10, 36);
+            $obj->productID = strtoupper(substr($p, 0, 2));
+            $obj->productID .= '-'.(time() % 1000000);
+        }
+
+        if(!self::checkProductID($obj->productID))
+            throw new \exception\UserException(__('ProductID is not unique.'));
+
+        return $obj;
+    }
+
+    /**
+     * @param $id string representation of the unique id to check if in the db
+     * @param $exclude documents to be excluded (their mongoID's)
+     */
+    private static function checkProductID($id, $exclude = null){
+        return true;
+    }
 }
 
 ?>

@@ -352,7 +352,7 @@ $currency = $invoice->DocumentCurrencyCode;
         </tr>
         <tr>
             <th><span><?php echo __('Date') ?></span></th>
-            <td><span><?php echo date('F. j Y', (string)$invoice->IssueDate) ?></span></td>
+            <td><span><?php echo date('F. j Y', strtotime((string)$invoice->IssueDate)) ?></span></td>
         </tr>
         <tr>
             <th><span><?php echo __('Duedate') ?></span></th>

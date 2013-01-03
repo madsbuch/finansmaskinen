@@ -17,6 +17,7 @@ class accounting extends \core\rpc
 	 * requireLogin
 	 */
 	static public $requireLogin = true;
+
 	/**** Accounting abstractions ****/
 
 	/**
@@ -101,10 +102,10 @@ class accounting extends \core\rpc
 
 	/**** daybook transactions abstracations ****/
 
-	/**
-	 *
-	 */
-	function createTransaction($transaction){
+    /**
+     * @param $transaction
+     */
+    function createTransaction($transaction){
 		try {
 			$transaction = new \model\finance\accounting\DaybookTransaction($transaction);
 			\api\accounting::importTransactions($transaction);
@@ -115,6 +116,41 @@ class accounting extends \core\rpc
 			$this->throwException($e->getMessage() . $e->getTraceAsString());
 		}
 	}
+
+    /**** VAT abstractions ****/
+
+    /**
+     * returns vat statement object
+     */
+    function getVatStatement(){
+        try {
+            $statement = \api\accounting::getRapport('vatStatement');
+            $this->ret($statement->toArray());
+        } catch (\exception\UserException $e) {
+            $this->throwException($e->getMessage());
+        } catch(\Exception $e){
+            $this->throwException($e->getMessage() . $e->getTraceAsString());
+        }
+    }
+
+    /**
+     * resets the vat accounting according to settings
+     */
+    function resetVat($holder){
+        try {
+            \api\accounting::resetVat($holder);
+            $this->ret(array('success' => true));
+        } catch (\Exception $e) {
+            $this->throwException($e->getMessage(). '  ' . $e->getTraceAsString());
+        }
+    }
+
+    /**
+     * marks vat as payed
+     */
+    function payVat(){
+
+    }
 
 	/**** Private aux ****/
 

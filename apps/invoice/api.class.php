@@ -184,10 +184,8 @@ class invoice{
 		//create the object
 		$invoice = self::invoiceObject($inv);
 		$lodo->setFulltextIndex(array('Invoice.AccountingCustomerParty.Party.PartyName'));
-		$obj = $lodo->update($invoice);
-		if($obj->isPayed)
-			return self::finalize((string) $obj->_id);
-		return $obj;
+		$lodo->update($invoice);
+		return $invoice;
 	}
 	
 	/**
@@ -350,9 +348,11 @@ class invoice{
 		$toMerge = array();
 		$toMerge['Invoice']['AccountingSupplierParty']['Party'] = $supplier->Party->toArray();
 		$toMerge['Invoice']['PaymentMeans'][0] = $supplier->PaymentMeans->toArray();
+        if(!isset($inv->isPayed))
+            $inv->isPayed = false;
 
 		if(isset($inv->Invoice->IssueDate->_content))
-			$toMerge['Invoice']['PaymentMeans'][0]['PaymentDueDate'] = ($supplier->dueDays
+			$toMerge['Invoice']['PaymentMeans'][0]['PaymentDueDate']['_content'] = ($supplier->dueDays
 				* 86400) + $inv->Invoice->IssueDate->_content;
 		
 		//merge customer in

@@ -118,6 +118,7 @@ class main extends \core\app implements \core\framework\Output
 			//and redirect
 			$this->header->redirect("/index");
 			$this->output_header = $this->header->generate();
+            $this->output_content = '';
 			return;//stop execution
 		}
 		
@@ -510,6 +511,7 @@ class main extends \core\app implements \core\framework\Output
 		/**** echo out some content ****/
 		$html = $this->getTpl();
 		if($e instanceof \exception\PermissionException){
+            $this->header->setResponse(403);
 			$c = new \helper\layout\MessagePage(__('Woops'),
 				'<p>'.__('Well, it doesn\'t seem that you are allowed to see this page... Try to login maybe?').'</p>');
 		}
@@ -519,7 +521,6 @@ class main extends \core\app implements \core\framework\Output
 				'<p>'.__('The requested page does not exist.').'</p>');
 		}
 		elseif($e instanceof \exception\UserException){
-			$this->header->setResponse(404);
 			$c = new \helper\layout\MessagePage('En fejl?',
 				'<p>'.$e->getMessage().'</p>');
 		}
@@ -555,7 +556,9 @@ class main extends \core\app implements \core\framework\Output
 	}
 	
 	function getOutputContent(){
-		return isset($this->output_content) ? $this->output_content : 'dafuq';
+        if(!isset($this->output_content))
+            throw new \Exception('No output was generated');
+		return $this->output_content;
 	}
 	
 	/**** private functions ****/
