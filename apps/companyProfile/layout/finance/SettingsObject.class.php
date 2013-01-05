@@ -23,12 +23,15 @@ class SettingsObject extends \helper\layout\LayoutBlock
 
         //the object representing current settings is an associative array, as we don't know the type
         foreach($this->obj->fields as $key => $desc){
+
+            $pre = isset($this->obj->settings[$key]) ? $this->obj->settings[$key]: '';
+
             $form .= '<label>'
                 . __($desc)
                 . '</label><input type="text" name="'
                 .$key
                 .'" value="'
-                .$this->obj->settings[$key]
+                . $pre
                 .'" />';
         }
 
