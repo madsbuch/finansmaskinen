@@ -186,6 +186,7 @@ class contacts extends \core\api{
 	static function update($newContact){
         $newContact = self::contactObj($newContact);
 		$lodo = new \helper\lodo('contacts', 'contacts');
+		$lodo->setReturnType('\model\finance\Contact');
 		$lodo->setFulltextIndex(array('Party.PartyName.Name._content'));
 		return $lodo->update($newContact);
 	}

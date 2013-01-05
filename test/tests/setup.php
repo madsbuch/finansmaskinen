@@ -27,9 +27,9 @@ function includeRecurse($dirName) {
 	}
 	closedir($dirHandle);
 }
-include_once(ROOT.'/model/AbstractModel.class.php');
+require_once(ROOT.'/model/AbstractModel.class.php');
 includeRecurse(ROOT.'/model/');
 echo "<br />----Just random stuff, do not take into account (from mass inclusion)----<br />" ;
-include_once('DataLib.php');
-include __DIR__ . '/../simpletest/autorun.php';
+require_once('DataLib.php');
+require_once __DIR__ . '/../simpletest/autorun.php';
 ?>

@@ -6,7 +6,7 @@
  * Time: 8:18 PM
  */
 
-include __DIR__ . '/simpletest/autorun.php';
+require_once __DIR__ . '/simpletest/autorun.php';
 
 require_once 'tests/setup.php';
 
