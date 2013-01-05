@@ -396,15 +396,6 @@ class Form extends \helper\layout\LayoutBlock{
 				<input name="Party-PartyName" type="text"
 					class="span5" required="true" />
 		
-				<h4>Juridiske numre <small>Udfyld dem du kan</small></h4>
-				<label>CVR</label>
-				<input name="legalNumbers-DKCVR"
-					type="text" class="span5" />
-		
-				<label>EAN</label>
-				<input name="legalNumbers-DKEAN"
-					type="text" class="span5"  />
-		
 				<h4>Adresse</h4>
 				<label for="legal">Vej og vejnummer: </label>
 				<div class="controls controls-row">
@@ -423,6 +414,16 @@ class Form extends \helper\layout\LayoutBlock{
 					<input name="Party-PostalAddress-CityName"
 						type="text" class="span4" />
 				</div>
+
+				<h4>Juridiske numre <small>Udfyld dem du kan</small></h4>
+				<label>CVR</label>
+				<input name="legalNumbers-DKCVR"
+					type="text" class="span5" />
+
+				<label>EAN</label>
+				<input name="legalNumbers-DKEAN"
+					type="text" class="span5"  />
+
 			</div>
 			<div class="modal-footer">
 				<a href="#" class="btn" data-dismiss="modal">Luk</a>

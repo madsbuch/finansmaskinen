@@ -26,7 +26,7 @@ class SimpleInvoice extends \model\AbstractModel
      *
      * @var string
      */
-    protected $contact;
+    protected $contactID;
 
 	/** some options, with default values **/
 
@@ -35,6 +35,21 @@ class SimpleInvoice extends \model\AbstractModel
      * @var bool
      */
     protected $vat = true;
+
+	/**
+	 * currency of the invoice
+	 *
+	 * @var string
+	 */
+	protected $currency;
+
+
+	/**
+	 * date of the invoice
+	 *
+	 * @var string
+	 */
+	protected $date;
 
 
 

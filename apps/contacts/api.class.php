@@ -174,7 +174,8 @@ class contacts extends \core\api{
 
         //@TODO check uniq id, and add if none
 
-		$lodo->setFulltextIndex(array('Party.PartyName.Name._content'));
+		$lodo->setFulltextIndex(array('Party.PartyName.Name._content',
+			'contactID'));
 		$obj = $lodo->insert($data);
 		
 		return $obj;
@@ -187,7 +188,8 @@ class contacts extends \core\api{
         $newContact = self::contactObj($newContact);
 		$lodo = new \helper\lodo('contacts', 'contacts');
 		$lodo->setReturnType('\model\finance\Contact');
-		$lodo->setFulltextIndex(array('Party.PartyName.Name._content'));
+		$lodo->setFulltextIndex(array('Party.PartyName.Name._content',
+			'contactID'));
 		return $lodo->update($newContact);
 	}
 	

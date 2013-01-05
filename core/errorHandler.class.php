@@ -75,21 +75,39 @@ class errorHandler
 		}
 		catch(\Exception $e){
 			echo "something serious happened.\n\n";
-			echo get_class ($this->app) . "\n\n";
 			if(DEBUG){
 				echo $e->getMessage() . "\n\n";
 				echo $e->getTraceAsString() . "\n\n";
-				var_dump($e->getTRace());
+				var_dump($e->getTrace());
 			}
 		}
 		if(DEBUG){
 			echo $exception->getMessage() . "\n\n";
             echo $exception->getTraceAsString() . "\n\n";
-			var_dump($exception->getTRace());
+			var_dump($exception->getTrace());
 		}
 	}
-	
+
+	/**
+	 * function that transforms php errors to exceptions
+	 *
+	 * if in production, warnings and notices are ignored.
+	 *
+	 * @param $errno
+	 * @param $errstr
+	 * @param $errfile
+	 * @param $errline
+	 * @throws \ErrorException
+	 */
 	public function errorHandler($errno, $errstr, $errfile, $errline ){
+
+		//if we do production, and the error is a NOTICE or a WARNING, proceed
+		if(!DEBUG && ($errno & E_USER_NOTICE
+			||  $errno & E_USER_WARNING
+			||  $errno & E_WARNING
+			||  $errno & E_NOTICE))
+			return;
+
 		throw new \ErrorException($errstr, $errno, 0, $errfile, $errline);
 	}
 

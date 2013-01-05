@@ -309,6 +309,8 @@ class lodo
 	{
 		//@TODO check permissions
 
+
+
 		$obj = $this->getArray($obj);
 		if (!$obj['_id'])
 			throw new \Exception('No id set on the object');
@@ -316,6 +318,7 @@ class lodo
 		$this->conditions['_id'] = new \MongoID($obj['_id']);
 
 		$old = $this->findOne();
+
 		$old->merge($obj, true);
 		$new = $old->toArray();
 
@@ -323,9 +326,7 @@ class lodo
 
 		unset($new['_id']);
 
-		$ins['$set'] = $new;
-
-		return $this->collection->update($this->conditions, $ins, array('safe' => true));
+		return $this->collection->update($this->conditions, $new, array('safe' => true));
 	}
 
 	/**
@@ -484,7 +485,10 @@ class lodo
 	}
 
 	/**
-	 * takes array of strings and returns array of suffix strings
+	 * takes array of strings, and retunrs an array, of suffix strings
+	 *
+	 * @param $strings array array of string to create suffix over
+	 * @return array the trie dumped as strings (one for every endleaf in the tree)
 	 */
 	private function buildSuffixTrie($strings)
 	{

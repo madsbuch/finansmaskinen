@@ -29,8 +29,12 @@ class reqHandler{
 		//profile name
 		$profile = $inputParser->getSite();
 		$api = 'start\\'.$profile.'\api';
-		
-		//creating the request object
+
+		/**
+		 * request object, this keeps details on the request:
+		 *
+		 * in what format should return be, what was requested etc.
+		 */
 		$request = new \model\core\Request();
 		
 		//initialising the request
