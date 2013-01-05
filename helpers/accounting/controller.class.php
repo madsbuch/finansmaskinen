@@ -813,21 +813,18 @@ class accounting
 
 		$ret = new \model\finance\accounting\VatStatement;
 
-		$total = 0;
 		foreach ($sth->fetchAll() as $r) {
 			switch ($r['type']) {
 				case 1:
 					$ret->sales = $r['amount_in'] - $r['amount_out'];
-					$total += $ret->sales;
 					break;
 				case 2:
 					$ret->bought = $r['amount_in'] - $r['amount_out'];
-					$total -= $ret->bought;
 					break;
 			}
 		}
 
-		$ret->total = $total;
+		$ret->total = $ret->sales - $ret->bought;
 
 		return $ret;
 	}

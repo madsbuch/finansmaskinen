@@ -33,11 +33,14 @@ class companyProfile{
 		$cp = self::retrieve();
 
 		if(!empty($cp->settings))
-			foreach($cp->settings as $s){
+			foreach($cp->settings as $for => $s){
                 $htmlID = $s->title . time();
 	            $o = new \model\finance\company\AppSetting(array(
 			            'title' => $s->title,
-			            'settingsModal' => new \app\companyProfile\layout\finance\SettingsObject($s, $htmlID),
+			            'settingsModal' => new \app\companyProfile\layout\finance\SettingsObject(
+                            $s,
+                            $htmlID,
+                            $for),
 			            'modalID' => '#'.$htmlID
 		            ));
 				$rets[] = $o;
@@ -310,7 +313,12 @@ class companyProfile{
 	}
 
 	/**
+     * get settings for some application
+     *
+     * be aware that model details are stripped, so when object is returned, it is ass array
+     *
 	 * @param $for string settings object for retrieval
+     * @return array array to create model from
 	 */
 	static function getSettings($for){
 		$o = self::retrieve();
@@ -326,13 +334,15 @@ class companyProfile{
 	 *
 	 * @param $for
 	 * @param $obj
+     * @param $title string not translated shown title (single word, no special chars)
+     * @param $fiels array array as follows: "property in settingsObj" => not translated desc
 	 */
-	static function saveSettings($for, $obj){
+	static function saveSettings($for, $obj, $title, $fields){
 		$o = self::retrieve();
 
 		$s = new \model\finance\company\SettingsObj(array(
-			'title' => $obj->getSettingsTitle(),
-			'fields' =>$obj->getDescriptions(),
+			'title' => $title,
+			'fields' => $fields,
 			'settings' => $obj
 		));
 
@@ -345,6 +355,23 @@ class companyProfile{
 
 		self::update($o);
 	}
+
+    /**
+     * updates, which save also does, this just fails on create
+     * and doesn't require title and field
+     *
+     * @param $for
+     * @param $settings
+     */
+    static function updateSettings($for, $settings){
+        $o = self::retrieve();
+
+        if(!isset($o->settings->$for))
+            throw new \exception\UserException('Tried to update not existing settings object');
+        $o->settings->$for->settings = $settings;
+
+        self::update($o);
+    }
 	
 	/**** functions for invoicing the customer ****/
 	

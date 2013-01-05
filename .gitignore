@@ -1,6 +1,8 @@
-# log files #
-#############
+# Logs and databases #
+######################
 *.log
+*.sql
+*.sqlite
 
 # IDE files #
 #############
