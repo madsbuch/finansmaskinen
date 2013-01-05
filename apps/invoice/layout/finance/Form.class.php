@@ -13,7 +13,15 @@ class Form extends \helper\layout\LayoutBlock{
 		'/js/plugins/jquery.form.js',
 		'/bootstrap/js/init.js',
 	);
-	
+
+    public $tutorialSlides = array(
+        '#contactTutorial' => 'Kontakten der skal modtage fakturaen. Selv om kontaken kun skal have en, kan du endelig oprette den.',
+        '#invoiceDateTutorial' => 'Her skal angives faktureringsdate for denne faktura. Det er den dag kunden modtager fakturaen.',
+        '#currencyTutorial' => 'Vælg hvilken valuta fakturae skal operettes i.',
+        '#documentValutaSettings' => 'Denne boks indeholder bugte valutakurser for denne faktura. De kurser der autoatisk kommer ind er beregnet på baggrund af den europæiske nationalbanks.
+            Produkter kan hver have deres egen valuta, hr vil produktets valuta og pris blive omregnet til fakturaens.',
+        );
+
 	public $addCSSIncludes = array(
 		'/css/plugins/bootstrap-datepicker.css'
 	);
@@ -77,42 +85,50 @@ class Form extends \helper\layout\LayoutBlock{
 						<div class="app-box">
 							<div class="row">
 								<div class="span4">
-									<div class="input-append">
-										<input type="text" class="picker"
-											style="width:50%;"
-											data-prefix="Invoice-AccountingCustomerParty-"
-											id="Invoice-AccountingCustomerParty-"
-											data-replace="Invoice-AccountingCustomerParty-Party-PartyName-Name-_content"
-											data-listLink="/contacts/autocomplete/"
-											'.($this->contactID ? 'data-preselect="'.$this->contactID.'"' : '').'
-											data-objLink="/contacts/getContact/"
-											data-addForm="#addNewContact"
-											data-titleIndex="addNewContact"
-											placeholder="Vælg kontakt" /><a href="#Invoice-AccountingCustomerParty-"
-											class="btn pickerDP"><i class="icon-circle-arrow-down">
-											</i></a><input type="button" class="btn" style="width:30%;"
-											value="Detaljer" data-toggle="modal" href="#changeContact" />
-									</div>
-									<input type="hidden" name="contactID"
-										id="Invoice-AccountingCustomerParty-contactID" />
-								
+
+								    <div id="contactTutorial">
+                                        <div class="input-append">
+                                            <input type="text" class="picker"
+                                                style="width:50%;"
+                                                data-prefix="Invoice-AccountingCustomerParty-"
+                                                id="Invoice-AccountingCustomerParty-"
+                                                data-replace="Invoice-AccountingCustomerParty-Party-PartyName-Name-_content"
+                                                data-listLink="/contacts/autocomplete/"
+                                                '.($this->contactID ? 'data-preselect="'.$this->contactID.'"' : '').'
+                                                data-objLink="/contacts/getContact/"
+                                                data-addForm="#addNewContact"
+                                                data-titleIndex="addNewContact"
+                                                placeholder="Vælg kontakt" /><a href="#Invoice-AccountingCustomerParty-"
+                                                class="btn pickerDP"><i class="icon-circle-arrow-down">
+                                                </i></a><input type="button" class="btn" style="width:30%;"
+                                                value="Detaljer" data-toggle="modal" href="#changeContact" />
+                                        </div>
+                                        <input type="hidden" name="contactID"
+                                            id="Invoice-AccountingCustomerParty-contactID" />
+                                    </div>
+
+
 									<br/>
-									<label>Faktureringsdato:</label>
-									<div class="input-append datepicker date">
-										<input type="text" name="Invoice-IssueDate"
-											style="width:85%" readonly=""/><span
-											class="add-on"><i class="icon-th"></i></span>
-									</div>
-								
-									<label>Valuta:</label>
-									<div class="input-append">
-										<input type="text" class="picker" name="Invoice-DocumentCurrencyCode"
-											data-listLink="/index/currencies/" value="DKK"
-											id="Invoice-AccountingCustomerParty-currency"
-											data-replace="Invoice-DocumentCurrencyCode" required="true"
-											style="width:85%" /><a href="#Invoice-AccountingCustomerParty-currency"
-											class="btn pickerDP add-on"><i class="icon-circle-arrow-down">
-											</i></a>
+									<div id="invoiceDateTutorial">
+                                        <label>Faktureringsdato:</label>
+                                        <div class="input-append datepicker date">
+                                            <input type="text" name="Invoice-IssueDate"
+                                                style="width:85%" readonly=""/><span
+                                                class="add-on"><i class="icon-th"></i></span>
+                                        </div>
+								    </div>
+
+                                    <div id="currencyTutorial">
+                                        <label>Valuta:</label>
+                                        <div class="input-append">
+                                            <input type="text" class="picker" name="Invoice-DocumentCurrencyCode"
+                                                data-listLink="/index/currencies/" value="DKK"
+                                                id="Invoice-AccountingCustomerParty-currency"
+                                                data-replace="Invoice-DocumentCurrencyCode" required="true"
+                                                style="width:85%" /><a href="#Invoice-AccountingCustomerParty-currency"
+                                                class="btn pickerDP add-on"><i class="icon-circle-arrow-down">
+                                                </i></a>
+                                        </div>
 									</div>
 								
 								</div>

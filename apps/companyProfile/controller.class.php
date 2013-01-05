@@ -123,8 +123,24 @@ class companyProfile extends \core\app {
 	* creates an invoice, and redirects to the pay page
 	*/
 	function invoice(){
-	
+
 	}
+
+    /**
+     * updates some settings
+     *
+     * @param null $for
+     */
+    function updateSettings($for = null){
+        if($for){
+            $input = new \helper\parser\Post('\model\Base');
+            $input = $input->getObj();
+            \api\companyProfile::updateSettings((string) $for, $input);
+        }
+        $this->header->redirect('/companyProfile/index');
+        $this->output_header = $this->header->generate();
+        $this->output_content = '';
+    }
 	
 	
 	/**

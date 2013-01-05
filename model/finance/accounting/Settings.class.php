@@ -12,21 +12,14 @@ namespace model\finance\accounting;
  */
 class Settings extends \model\AbstractModel// implements \app\companyProfile\Settings
 {
-
+    //casting to correct types
+    protected $_autoassign = array(
+        'vatSettlementAccount' => array('int', false)
+    );
 	/**
 	 * account to posst vat settlement to
 	 *
 	 * @var int
 	 */
 	protected $vatSettlementAccount;
-
-	function getDescriptions(){
-		return array(
-			'vatSettlementAccount' => 'Account to save VAT settlement to.'
-		);
-	}
-
-	function getSettingsTitle(){
-		return 'Accounting';
-	}
 }

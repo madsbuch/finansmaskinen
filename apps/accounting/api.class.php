@@ -117,15 +117,32 @@ class accounting
 		$preset = new $preset();
 
 		$accHelper = new \helper\accounting((string)$accObj->_id);
-		foreach ($preset::$vatCodes as $vc) //add vatcodes
+
+        //adding vat codes
+        foreach ($preset::$vatCodes as $vc) //add vatcodes
 			$accHelper->createVatCode(new \model\finance\accounting\VatCode($vc));
 
+        //adding default accounts
 		foreach ($preset::$accounts as $acc) //add accounts
 			$accHelper->createAccount(new \model\finance\accounting\Account($acc));
 
-		//and products (if there is access)
-		foreach ($preset::$productCatagories as $pcs)
-			\api\products::createCat(new \model\finance\products\Catagory($pcs));
+		//and product catagories (if there is access)
+		foreach ($preset::$productCatagories as $pcs){
+			try{
+                \api\products::createCat(new \model\finance\products\Catagory($pcs));
+            } catch(\exception\PermissionException $e){
+                //we don't have permissions, do nothing
+            }
+        }
+
+        //insert default settings
+        try{
+            self::saveSettings(new \model\finance\accounting\Settings($preset::$settings));
+        }
+        catch(\exception\PermissionException $e){
+            //we don't have permission to do this, do nothing
+        }
+
 
 		return $accObj;
 	}
@@ -206,6 +223,9 @@ class accounting
 
 		if (is_null($obj->_id))
 			return null;
+
+        //see if object is in timelimits, and create new accounting if not so
+        //make that new accounting current
 
 		if ($ts) {
 			$transactions = self::getTransactions((string)$obj->_id);
@@ -542,10 +562,17 @@ class accounting
 		//this will not override as exceptions are thrown if permissions are not pressent
 		if($settings == null){
 			$settings = new \model\finance\accounting\Settings();
-			\api\companyProfile::saveSettings('accounting', $settings);
+			self::saveSettings($settings);
 		}
 		return $settings;
 	}
+
+    private static function saveSettings(\model\finance\accounting\Settings $settingsObj){
+        \api\companyProfile::saveSettings('accounting', $settingsObj, 'Accounting',
+            array(
+                'vatSettlementAccount' => 'Account to save VAT settlement to.'
+            ));
+    }
 
 	static function export()
 	{
