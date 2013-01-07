@@ -464,7 +464,7 @@ class accounting
 		$flag = 0;
 		$flag = $onlyPayable ? $flag | 1 : $flag;
 		$flag = $onlyEquity ? $flag | 2 : $flag;
-		return $acc->getAccounts($flag);
+		return $acc->accounts()->getAccounts($flag);
 	}
 
 	/**

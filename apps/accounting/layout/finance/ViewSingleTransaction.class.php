@@ -18,9 +18,6 @@ class ViewSingleTransaction extends \helper\layout\LayoutBlock
 		parent::__construct();
 	}
 
-	/**
-	 *
-	 */
 	function generate(){
 		$holder = $this->dom->createElement('div');
 

@@ -16,6 +16,11 @@ class accounting
 	private $grp;
 
 	/**
+	 * @var \helper\accounting\ObjectServer
+	 */
+	private $objSrv;
+
+	/**
 	 * @var \helper\accounting\Queries
 	 */
 	private $queries;
@@ -25,7 +30,7 @@ class accounting
 
 	//transactionable accounts
 	const ASSET = 1;
-	const LIBALITY = 2;
+	const LIABILITY = 2;
 	const EXPENSES = 3;
 	const INCOME = 4;
 
@@ -37,6 +42,24 @@ class accounting
 	//flags for account, using bitmask
 	const PAYABLE = 1;
 	const EQUITY = 2;
+
+	/**** the future from fown here, we has to make it possible to
+	                access from object ref ****/
+
+	//transactionable accounts
+	public $ASSET = 1;
+	public $LIABILITY = 2;
+	public $EXPENSES = 3;
+	public $INCOME = 4;
+
+	//some administrative accounts
+	public $HEADING = 11; //just a heading
+	public $INTERVAL = 13; //interval of sums from other accounts, a single accounts
+	//may be choosed, then it is used as a sum from account
+
+	//flags for account, using bitmask
+	public $PAYABLE = 1;
+	public $EQUITY = 2;
 
 	/**
 	 * this variable is incremented and decremented every time a transactions i added
@@ -85,6 +108,7 @@ class accounting
 	 */
 	function __construct($accounting, $grp = null)
 	{
+
 		$this->accounting = (string) $accounting;
 		$core = new core('accounting');
 
@@ -93,6 +117,14 @@ class accounting
 		$this->grp = $grp ? $grp : (int)$core->getMainGroup();
 
 		$this->db = $core->getDB();
+
+
+		$this->objSrv = new \helper\accounting\ObjectServer();
+		$this->objSrv->controller = $this;
+		$this->objSrv->db = $this->db;
+		$this->objSrv->accounting = $this->accounting;
+		$this->objSrv->grp = $this->grp;
+		$this->objSrv->queries = $this->queries;
 
 		$this->accCheck = $this->db->dbh->prepare('SELECT * FROM ' . self::ATABLE . '
 			WHERE grp_id = ' . $this->grp . ' AND code = ?;');
@@ -109,7 +141,7 @@ class accounting
 	 */
 	public function transaction(){
 		if(!isset($this->transactionUtil))
-			$this->transactionUtil = new \helper\accounting\utils\Transactions($this->accounting, $this->grp, $this->db, $this->queries);
+			$this->transactionUtil = new \helper\accounting\utils\Transactions($this->objSrv);
 		return $this->transactionUtil;
 	}
 
@@ -118,7 +150,7 @@ class accounting
 	 */
 	public function accounts(){
 		if(!isset($this->accountsUtil))
-			$this->accountsUtil = new \helper\accounting\utils\Accounts($this->accounting, $this->grp, $this->db, $this->queries);
+			$this->accountsUtil = new \helper\accounting\utils\Accounts($this->objSrv);
 		return $this->accountsUtil;
 	}
 
@@ -130,7 +162,7 @@ class accounting
 	 * takes on transaction
 	 * returns false if ref already exists in the database.
 	 *
-	 * @deprecated
+	 * @deprecated see insertTransaction in the transaction util
 	 */
 	function addTransaction($transaction)
 	{
@@ -181,7 +213,7 @@ class accounting
 		//set some stats to check validity of all transactions
 		if ($rArr['type'] == self::ASSET)
 			$this->balance += $transaction['positive'] ? $transaction['value'] : -1 * $transaction['value'];
-		elseif ($rArr['type'] == self::LIBALITY)
+		elseif ($rArr['type'] == self::LIABILITY)
 			$this->balance -= $transaction['positive'] ? $transaction['value'] : -1 * $transaction['value'];
 
 		$this->transactions[] = $transaction;
@@ -193,6 +225,8 @@ class accounting
 	 * adds all postings from daybooktransaction object
 	 *
 	 * @param $transaction \model\finance\accounting\DaybookTransaction
+	 *
+	 * @deprecated moved to transaction util
 	 */
 	function addDaybookTransaction(\model\finance\accounting\DaybookTransaction $transaction){
 		$this->postings = $transaction->postings;
@@ -253,7 +287,7 @@ class accounting
 		$vatAcc = $this->getAccount($vatObj->account);
 		if ($vatAcc->type == self::ASSET) {
 			$lAmount = $amount + $vat;
-		} elseif ($vatAcc->type == self::LIBALITY) {
+		} elseif ($vatAcc->type == self::LIABILITY) {
 			$aAmount = $amount + $vat;
 		}
 
@@ -435,6 +469,8 @@ class accounting
 	 * commits changes to the database
 	 *
 	 * this will return false, if assets and liabilities not equaĺs up to 0
+	 *
+	 * @deprecated moved to insertTransaction in transaction util
 	 */
 	function commit()
 	{
@@ -645,11 +681,13 @@ class accounting
 	 * returns some account objects
 	 *
 	 * @param $flags int, binary representation of flags. see constants, used for quereing
-	 * @param $account array, array of accounts search is limited to
-	 * @param $globalTotal bool if true, accounting will not be used, and all posts ever are summed up
+	 * @param array $accounts
+	 * @return array
+	 * @deprecated
 	 */
 	function getAccounts($flags = 0, $accounts = array())
 	{
+		return $this->accounts()->getAccounts($flags, $accounts);
 		$pdo = $this->db->dbh;
 		$sth = $pdo->prepare($this->queries->getAllAccounts($this->grp, $flags, $accounts));
 
@@ -674,13 +712,15 @@ class accounting
 		return $ret;
 	}
 
+	/**
+	 * @param $id
+	 * @return mixed
+	 * @throws \exception\UserException
+	 * @deprecated
+	 */
 	function getAccount($id)
 	{
-		$accounts = $this->getAccounts(0, array($id));
-
-		if(count($accounts) < 1)
-			throw new \exception\UserException(__('Account %s doesn\'t exist.', $id));
-		return $accounts[0];
+		return $this->accounts()->getAccountByCode($id);
 	}
 
 	/**
@@ -694,36 +734,7 @@ class accounting
 	 */
 	function createAccount($account)
 	{
-		//validation
-		if ($account->type < 1 || $account->type > 4)
-			throw new \exception\UserException(__('Account type "%s" is not valid', $account->type));
-
-		if (is_null($this->grp))
-			throw new \exception\PermissionException('Insufficient permissions for creating account');
-
-		$pdo = $this->db->dbh;
-		$sth = $pdo->prepare($this->queries->insertAccount());
-
-		if (!is_array($account))
-			$account = array($account);
-
-		foreach ($account as $a) {
-			$flag = 0;
-			$flag = $a->allowPayments ? $flag | self::PAYABLE : $flag;
-			$flag = $a->isEquity ? $flag | self::EQUITY : $flag;
-			if (!$sth->execute(array(
-				'grp_id' => $this->grp,
-				'code' => $a->code,
-				'dfa' => $a->defaultReflection,
-				'name' => $a->name,
-				'type' => $a->type,
-				'vat' => $a->vatCode,
-				'flags' => $flag,))
-			) {
-				throw new \exception\UserException(__('Unable to create account: %s', $a->code));
-			}
-		}
-		return true;
+		return $this->accounts()->createAccount($account);
 	}
 
 	/**
@@ -763,7 +774,7 @@ class accounting
 	 */
 	function getTransactions($start = 0, $num = 1000)
 	{
-        $this->transaction()->getTransactions($start, $num);
+        return $this->transaction()->getTransactions($start, $num);
 	}
 
 	/**
@@ -819,7 +830,7 @@ class accounting
 	 */
 	function report($report){
 		$className = '\helper\accounting\reports\\' . $report;
-		$object = new $className($this);
+		$object = new $className($this->objSrv);
 		return $object->generateReport();
 	}
 

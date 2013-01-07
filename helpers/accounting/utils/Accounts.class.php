@@ -9,7 +9,6 @@ namespace helper\accounting\utils;
 
 class Accounts
 {
-
 	/**
 	 * holder for various variables
 	 */
@@ -18,12 +17,19 @@ class Accounts
 	private $grp;
 	private $db;
 	private $queries;
+	private $controller;
 
-	function __construct($accounting, $grp, $db, $queries){
-		$this->accounting = $accounting;
-		$this->grp = $grp;
-		$this->db = $db;
-		$this->queries = $queries;
+	private $srv;
+
+	function __construct(\helper\accounting\ObjectServer $srv){
+		$this->srv = $srv;
+
+		//TODO, remove dependicies on following
+		$this->accounting = $srv->accounting;
+		$this->grp = $srv->grp;
+		$this->db = $srv->db;
+		$this->queries = $srv->queries;
+		$this->controller = $srv->controller;
 
 	}
 
@@ -54,8 +60,8 @@ class Accounts
 
 		foreach ($account as $a) {
 			$flag = 0;
-			$flag = $a->allowPayments ? $flag | self::PAYABLE : $flag;
-			$flag = $a->isEquity ? $flag | self::EQUITY : $flag;
+			$flag = $a->allowPayments ? $flag | $this->controller->PAYABLE : $flag;
+			$flag = $a->isEquity ? $flag | $this->controller->EQUITY : $flag;
 			if (!$sth->execute(array(
 				'grp_id' => $this->grp,
 				'code' => $a->code,
@@ -76,6 +82,54 @@ class Accounts
 	 */
 	function deleteAccount($accountCode){
 
+	}
+
+	/**** GETTERS ****/
+
+	/**
+	 * returns some account objects
+	 *
+	 * @param $flags int, binary representation of flags. see constants, used for quereing
+	 * @param array $accounts
+	 * @return array
+	 */
+	function getAccounts($flags = 0, $accounts = array())
+	{
+		$pdo = $this->db->dbh;
+		$sth = $pdo->prepare($this->queries->getAllAccounts($this->grp, $flags, $accounts));
+
+		//var_dump($sth);
+
+		$ret = array();
+		$sth->execute(array($this->accounting));
+		foreach ($sth->fetchAll() as $t) {
+			$ret[] = new \model\finance\accounting\Account(array(
+				'_id' => $t['id'],
+				'name' => $t['name'],
+				'code' => $t['code'],
+				'vatCode' => $t['vat'],
+				'type' => $t['type'],
+				'allowPayments' => ($t['flags'] & $this->controller->PAYABLE) == $this->controller->PAYABLE ? true : false,
+				'isEquity' => ($t['flags'] & $this->controller->EQUITY) == $this->controller->EQUITY ? true : false,
+				'income' => $t['amount_in'] ? $t['amount_in'] : 0,
+				'outgoing' => $t['amount_out'] ? $t['amount_out'] : 0
+			));
+		}
+
+		return $ret;
+	}
+
+	/**
+	 * @param $code
+	 * @return mixed
+	 * @throws \exception\UserException
+	 */
+	function getAccountByCode($code){
+		$accounts = $this->getAccounts(0, array($code));
+
+		if(count($accounts) < 1)
+			throw new \exception\UserException(__('Account %s doesn\'t exist.', $code));
+		return $accounts[0];
 	}
 
 }

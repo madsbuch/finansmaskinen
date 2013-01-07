@@ -44,6 +44,8 @@ class Posting extends \model\AbstractModel
 	protected $positive;
 
 	/**
+	 * Not yet implemented
+	 *
 	 * @var string a description
 	 */
 	protected $description;

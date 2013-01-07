@@ -79,7 +79,7 @@ class accounting extends \core\rpc
 		try {
 			$acc = \api\accounting::getAccount($id);
 			$this->ret($acc->toArray());
-		} catch (\exception\UserException $e) {
+		} catch (\Exception $e) {
 			$this->throwException($e->getMessage());
 		}
 	}
