@@ -33,7 +33,12 @@ class ViewTransactions extends \helper\layout\LayoutBlock{
 		$table = new \helper\layout\Table(array(
 			'referenceText' => 'Reference',
 			'date' => array('Dato', $genDate),
-			'approved' => array('Status', $genAppr)
+			'approved' => array('Status', $genAppr),
+			'_id' => array('More', function($id, $dom){
+				$a = $dom->createElement('a', __('More'));
+				$a->setAttribute('href', '/accounting/transaction/'.$id);
+				return $a;
+			})
 		));
 		
 		$table->setNull('-');

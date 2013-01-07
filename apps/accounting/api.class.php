@@ -124,7 +124,7 @@ class accounting
 
         //adding default accounts
 		foreach ($preset::$accounts as $acc) //add accounts
-			$accHelper->createAccount(new \model\finance\accounting\Account($acc));
+			$accHelper->accounts()->createAccount(new \model\finance\accounting\Account($acc));
 
 		//and product catagories (if there is access)
 		foreach ($preset::$productCatagories as $pcs){
@@ -149,6 +149,10 @@ class accounting
 
 	/**
 	 * creates a new accounting
+	 *
+	 * @param $accounting
+	 * @param bool $setCurrent
+	 * @return mixed
 	 */
 	static function create($accounting, $setCurrent = false)
 	{
@@ -172,6 +176,9 @@ class accounting
 
 	/**
 	 * sets this one as current, and removes other as current
+	 *
+	 * @param $accounting_id
+	 * @return bool
 	 */
 	static function setCurrent($accounting_id)
 	{
@@ -206,8 +213,10 @@ class accounting
 	 * if $id = null, current accounting is retrived.
 	 *
 	 * @param $id string id of accounting
-	 * @param $ts, populate with transactions?
-	 * @param $accounts, the return object is populated with details from MySQL
+	 * @param bool $ts , populate with transactions?
+	 * @param bool $as
+	 * @return null
+	 * @internal param $accounts , the return object is populated with details from MySQL
 	 */
 	static function retrieve($id = null, $ts = false, $as = false)
 	{
@@ -254,6 +263,7 @@ class accounting
 	 *
 	 * it is not possible to overwrite transactions, only additions can be made
 	 * to those
+	 * @param $obj
 	 */
 	static function update($obj)
 	{
@@ -267,7 +277,10 @@ class accounting
 	 *
 	 * if no accounting is specified, then it's added to current accounting
 	 *
-	 * @param $transaction array of transactions, this sytem makes sure, that
+	 * @param $transactions
+	 * @param null $accounting
+	 * @throws \exception\UserException
+	 * @internal param array $transaction of transactions, this sytem makes sure, that
 	 * every transaction is applied
 	 */
 	static function addTransactions($transactions, $accounting = null)
@@ -298,7 +311,11 @@ class accounting
 	 *
 	 * compression: only refs are extracted
 	 *
-	 * @param $account id of the account to retrieve to
+	 * @param null $accountID
+	 * @param int $from
+	 * @param int $num
+	 * @throws \Exception
+	 * @internal param \api\id $account of the account to retrieve to
 	 *
 	 * @return array of \model\finance\accounting\Transaction
 	 */
@@ -310,7 +327,7 @@ class accounting
 		$acc = (string)$acc->_id;
 		$acc = new \helper\accounting($acc);
 
-		return $acc->getTransactions($from, $num);
+		return $acc->transaction()->getTransactions($from, $num);
 	}
 
 	/**
@@ -352,6 +369,8 @@ class accounting
 	 *
 	 * @param $transaction mixed The data containing the actial transaction. This is of various types
 	 * @param $options array because of the flexible nature on the functions, objects are defined here
+	 * @throws \exception\UserException
+	 * @return bool
 	 */
 	static function importTransactions($transaction, $options = array())
 	{
@@ -427,11 +446,15 @@ class accounting
 	static function createAccount($account)
 	{
 		$acc = new \helper\accounting(null);
-		return $acc->createAccount($account);
+		return $acc->accounts()->createAccount($account);
 	}
 
 	/**
 	 * returns a list of given accounts
+	 *
+	 * @param bool $onlyPayable
+	 * @param bool $onlyEquity
+	 * @return array
 	 */
 	static function getAccounts($onlyPayable = false, $onlyEquity = false)
 	{
@@ -454,6 +477,8 @@ class accounting
 
 	/**
 	 * return a single account
+	 *
+	 * @param string $id
 	 */
 	static function getAccount($id)
 	{
@@ -468,6 +493,7 @@ class accounting
 	 * if the account is used, this will fail
 	 *
 	 * @param $id string id of the account
+	 * @return bool
 	 */
 	static function deleteAccount($id)
 	{

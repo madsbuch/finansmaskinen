@@ -62,7 +62,21 @@ class accounting extends \core\app{
 		$html->appendContent($accounting);
 		
 		$this->output_header = $this->header->getHeader();
-		$this->output_content =$html->generate();
+		$this->output_content = $html->generate();
+	}
+
+	/**
+	 * shows details on a single transaction
+	 *
+	 * @param null $id int
+	 */
+	function transaction($id = null){
+		$html = $this->getOutTpl();
+
+		$html->appendContent(new \app\accounting\layout\finance\ViewSingleTransaction(null));
+
+		$this->output_header = $this->header->getHeader();
+		$this->output_content = $html->generate();
 	}
 	
 	function addTransaction($accounting=null, $special=null){
@@ -261,20 +275,33 @@ class accounting extends \core\app{
 	}
 	
 	/**
-	* if term is set, then search is converted to constraints
-	*
-	* f.eks. payable, equity
-	*/
+	 * if term is set, then search is converted to constraints
+	 *
+	 * f.eks. payable, equity
+	 *
+	 * if filer = type, term can take:
+	 *  sales, cost, liability, or asset.
+	 *
+	 * @param $search string
+	 * @param $filer string
+	 * @param $term string
+	 */
 	function autocompleteAccounts($search = null, $filter = false, $term = null){
 		
 		$e = false; //equity only
-		$p = false; //payable
+		$p = false; //payable only
+		$s = false; //sales only
+		$c = false; //cost accounts only
 		
 		if($filter){
 			if($search == 'equity')
 				$e = true;
 			elseif($search == 'payable')
 				$p = true;
+			elseif($search == 'sales')
+				$s = true;
+			elseif($search == 'costs')
+				$c = true;
 			$search = $term;
 		}
 		
@@ -399,16 +426,20 @@ class accounting extends \core\app{
 	}
 	
 	/**** Private functions ****/
+
+	/**
+	 * @return \helper\template
+	 */
 	private function getOutTpl(){
 		$tpl = $this->getSiteAPI()->getTemplate();
 		$tpl->setSecondaryTitle('Regnskab');
 		$tpl->addSecondaryNav('Alle Regnskaber', '/accounting/accountings');
+		$tpl->addSecondaryNav('Kontoplan', '/accounting/accounts');
+		$tpl->addSecondaryNav('Transaktioner', '/accounting/transactions');
+		$tpl->addSecondaryNav('Moms', '/accounting/vat');
 		$tpl->addSecondaryNav('Balance', '/accounting/repport/balance');
 		$tpl->addSecondaryNav('Resultatopgørelse', '/accounting/repport/result');
-		$tpl->addSecondaryNav('Moms', '/accounting/vat');
-		$tpl->addSecondaryNav('Posteringer', '/accounting/transactions');
-		
-		$tpl->addSecondaryNav('Kontoplan', '/accounting/accounts');
+
 		$tpl->setMsg($this->getUserMsg());
 		$this->clearUserMsg();
 		return $tpl;

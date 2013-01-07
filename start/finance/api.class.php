@@ -77,7 +77,8 @@ class api extends \core\startapi{
 		//inserting contact in finansmaskinen
 		$rpc = new \helper\rpc\Finance('contacts');
 		$contact = new \model\finance\Contact(array(
-            'contactID' => $mainGrp //let main grp be the contact id, so we can recognize upon payment
+            'contactID'     => $mainGrp, //let main grp be the contact id, so we can recognize upon payment
+			'apiCronUpdate' => true, //we always wanna have the users contact details
         ));
 		$contact->apiID = $mainGrp;//treeID
 		$contact->apiUrl = \config\config::$configs['finance']['settings']['protocol'] . 

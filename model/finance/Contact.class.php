@@ -43,6 +43,7 @@ class Contact extends \model\AbstractModel{
 	*/
 	protected $apiID;
 	protected $apiUrl;
+	protected $apiCronUpdate; //show this object be updated on cron (overwrite own details)
 	
 	/**
 	* relation to \finance\ubl\Party

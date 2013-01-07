@@ -68,6 +68,16 @@ class accounting
 	private $db;
 
 	/**
+	 * objects to hold the utils
+	 */
+	private $transactionUtil;
+
+	/**
+	 * accountsUtil
+	 */
+	private $accountsUtil;
+
+	/**
 	 * instanciate with details of the group and the accounting
 	 *
 	 * @param $accounting    the id of the accounting related to
@@ -88,6 +98,28 @@ class accounting
 			WHERE grp_id = ' . $this->grp . ' AND code = ?;');
 		$this->refCheck = $this->db->dbh->prepare('SELECT * FROM ' . self::TRANST . '
 			WHERE ref = ? AND code = \'' . $accounting . '\';');
+	}
+
+	/**** access to classes, that handles the stuff ****/
+
+	/**
+	 * access transactions subsystem
+	 *
+	 * @return accounting\utils\Transactions
+	 */
+	public function transaction(){
+		if(!isset($this->transactionUtil))
+			$this->transactionUtil = new \helper\accounting\utils\Transactions($this->accounting, $this->grp, $this->db, $this->queries);
+		return $this->transactionUtil;
+	}
+
+	/**
+	 * @return accounting\utils\Accounts
+	 */
+	public function accounts(){
+		if(!isset($this->accountsUtil))
+			$this->accountsUtil = new \helper\accounting\utils\Accounts($this->accounting, $this->grp, $this->db, $this->queries);
+		return $this->accountsUtil;
 	}
 
 	/**** different add functions ****/
@@ -658,6 +690,7 @@ class accounting
 	 * @return bool
 	 * @throws \exception\UserException
 	 * @throws \exception\PermissionException
+	 * @deprecated use the one in util
 	 */
 	function createAccount($account)
 	{
@@ -697,6 +730,10 @@ class accounting
 	 * try to delete an account
 	 *
 	 * @param $id string
+	 * @throws \exception\UserException
+	 * @throws \exception\PermissionException
+	 * @return bool
+	 * @deprecated moved to utils/Accounts
 	 */
 	function deleteAccount($id)
 	{
@@ -722,32 +759,11 @@ class accounting
 	 * get transactions
      *
      * @return array of \model\finance\accounting\DaybookTransaction
+	 * @deprecated use those functions in util/Transactions
 	 */
 	function getTransactions($start = 0, $num = 1000)
 	{
-        $pdo = $this->db->dbh;
-        $pdo->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
-		$sth = $pdo->prepare($this->queries->getTransactions());
-		$ret = array();
-		if(!$sth)
-            throw new  \Exception('Unable to perform query: ' . implode('; ', $pdo->errorInfo()));
-
-        $sth->execute(array(
-            'accounting' => $this->accounting,
-            'start' => $start,
-            'num' => $num
-        ));
-
-		foreach ($sth->fetchAll() as $t) {
-			$ret[] = new \model\finance\accounting\DaybookTransaction(array(
-                'referenceText' => $t['reference'],
-                'date' => $t['date'],
-                'approved' => $t['approved'],
-                '_id' => $t['id']
-            ));
-            //@TODO fetch postings for the transaction
-		}
-		return $ret;
+        $this->transaction()->getTransactions($start, $num);
 	}
 
 	/**
@@ -759,6 +775,7 @@ class accounting
 	 * @param bool whether to limit to current accounting
 	 *
 	 * //TODO refactor so that getTransactions and this use same code
+	 * @deprecated, it doesn't make sense to get transactions for account, maybe postings
 	 */
 	function getTransactionsAccount($accCode, $start = 0, $num = 1000, $accountinggLimit=true)
 	{
@@ -795,15 +812,22 @@ class accounting
 		return $ret;
 	}
 
-	/**
-	 * get transactions from ref
-	 */
-	function getTransactionsRef($ref)
-	{
+	/**** RAPPORTS ****/
 
+	/**
+	 * dispatch the call to a specific report strategy
+	 */
+	function report($report){
+		$className = '\helper\accounting\reports\\' . $report;
+		$object = new $className($this);
+		return $object->generateReport();
 	}
 
-	/**** RAPPORTS ****/
+	/**
+	 * @return \model\finance\accounting\VatStatement
+	 * @throws \Exception
+	 * @deprecated use report(...) instead
+	 */
 	function getVatStatement()
 	{
 		$pdo = $this->db->dbh;

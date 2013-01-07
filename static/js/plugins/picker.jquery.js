@@ -9,6 +9,8 @@ $.widget( "custom.picker", $.ui.autocomplete, {
 				currentCategory = item.category;
 			}
 			ul.removeClass();
+            //TODO fix this in a more beautiful way
+            ul.css('z-index', 1100);
 			ul.addClass('typeahead dropdown-menu');
 			self._renderItem( ul, item );
 		});

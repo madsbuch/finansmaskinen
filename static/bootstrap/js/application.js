@@ -162,10 +162,10 @@ function reAttach () {
 				$($(this).attr('href')).picker('search', ' ');
 		});
 	}
-	
-	$(".picker").Picker();
+
 	$(".pickerDP").PickerDropdown();
-	
+    $(".picker").Picker();
+
 	//format numbers for currency
 	$.fn.formatMoney = function(){
 		var opt = {
