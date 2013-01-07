@@ -29,8 +29,19 @@ class Iterator extends AbstractModel implements \IteratorAggregate, \ArrayAccess
 			return;
 			
 		//create object if not null (or false), otherwise it's a primitive
-		if($this->_typeOfAll)
-			$this->_index[$name] = new $this->_typeOfAll($value);
+		if($this->_typeOfAll){
+            $tmp = explode('\\', $this->_typeOfAll);
+
+            $tmp = empty($tmp[0]) ? $tmp[1] : $tmp[0];
+
+            if($tmp == 'model')
+			    $this->_index[$name] = new $this->_typeOfAll($value);
+            else{
+                settype($value, $this->_typeOfAll);
+                $this->_index[$name] = $value;
+            }
+
+        }
 		else
 			$this->_index[$name] = $value;
 	}

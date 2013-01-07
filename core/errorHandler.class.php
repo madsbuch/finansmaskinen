@@ -64,6 +64,7 @@ class errorHandler
 	 */
 	function exeptionHandler(\Exception $exception) {
 		try{
+            //TODO do not log to file, if exception is UserException or PermissionException
 			$log = new \model\log\core\Exception();
 			$log->message = $exception->getMessage();
 			$log->stack = $exception->getTraceAsString();
