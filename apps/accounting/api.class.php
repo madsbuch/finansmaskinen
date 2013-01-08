@@ -408,8 +408,7 @@ class accounting
 				$transaction = $ah->balanceCalculate($transaction, $lAcc, $aAcc);
 
 			//and finally add all th stuff
-			$ah->addDaybookTransaction($transaction);
-			$ah->commit();
+			$ah->transaction()->insertTransaction($transaction);
 			return;
 		}
 
@@ -544,13 +543,13 @@ class accounting
 	/**
 	 * marks vat as reset in the current accounting
      *
-     * $holderAcc later goes to settings
+     *
 	 */
-	static function resetVat($holderAcc){
+	static function resetVat(){
         $settings = self::getSettings();
 		$acc = self::retrieve();
 		$acc = new \helper\accounting((string)$acc->_id);
-		$acc->resetVatAccounting($holderAcc);
+		$acc->resetVatAccounting($settings->vatSettlementAccount);
 	}
 
 	/**
@@ -570,7 +569,7 @@ class accounting
 		$acc = new \helper\accounting((string)self::retrieve()->_id);
 		switch (strtolower($type)) {
 			case 'vatstatement':
-				return $acc->getVatStatement();
+				return $acc->report('DKVatSettlement');
 				break;
 		}
 		throw new \Exception(__('rapport doesn\'t exist: %s', $type));
@@ -590,6 +589,9 @@ class accounting
 			$settings = new \model\finance\accounting\Settings();
 			self::saveSettings($settings);
 		}
+        else{
+            $settings = new \model\finance\accounting\Settings($settings);
+        }
 		return $settings;
 	}
 

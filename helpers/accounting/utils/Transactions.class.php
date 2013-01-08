@@ -36,8 +36,18 @@ class Transactions
 
 	/**** SETTERS ****/
 
-
-	function insertTransaction(\model\finance\accounting\DaybookTransaction $transaction){
+    /**
+     * takes an transaction object, and insert to the accounting
+     *
+     * this method auto commits
+     *
+     * @param \model\finance\accounting\DaybookTransaction $transaction
+     * @throws \exception\UserException
+     * @throws \Exception
+     * @internal param bool $autocommit
+     * @internal param bool $autocommit
+     */
+    function insertTransaction(\model\finance\accounting\DaybookTransaction $transaction){
 		//throw an exception if anything is wrong
 		$this->validateTransaction($transaction);
 
@@ -78,6 +88,22 @@ class Transactions
 			throw new \exception\UserException(__('Insertion of transaction did not succeed'));
 		}
 	}
+
+    /**
+     * adds a transaction to queue, for insertion with commit
+     *
+     * @param \model\finance\accounting\DaybookTransaction $t
+     */
+    function addTransaction(\model\finance\accounting\DaybookTransaction $t){
+
+    }
+
+    /**
+     * commits all queued transactions
+     */
+    function commit(){
+
+    }
 
 	/**
 	 * approves already inserted transaction
@@ -144,7 +170,7 @@ class Transactions
 	}
 
 	function getTransactionByRef($ref){
-
+        null;
 	}
 
 	/**** private functions ****/
@@ -157,8 +183,8 @@ class Transactions
 	 */
 	private function validateTransaction(\model\finance\accounting\DaybookTransaction  $transaction){
 		//validate the datastructures
-		if(!$transaction->validate($transaction::STRICT))
-			throw new \exception\UserException(__('Transaction was not validated'));
+		if(($errs = $transaction->validate($transaction::STRICT)))
+			throw new \exception\UserException(__('Transaction was not validated: %s', implode(', ', $errs)));
 
 		if(!isset($transaction->postings))
 			throw new \exception\UserException(__('Transaction must have at least one posting'));
@@ -178,16 +204,20 @@ class Transactions
 
 			if ($acc->type == $this->controller->ASSET)
 				$balance += $posting->positive ? $posting->amount : -1 * $posting->amount;
-			elseif ($acc->type == self::LIABILITY)
+			elseif ($acc->type == $this->srv->controller->LIABILITY)
 				$balance -= $posting->positive ? $posting->amount : -1 * $posting->amount;
 		}
 		if($balance != 0)
-			throw new \exception\UserException(__('assets and liabilities should equal up to 0. The difference is %s', abs($this->balance)));
+			throw new \exception\UserException(__('assets and liabilities should equal up to 0. The difference is %s', abs($balance)));
 
 		if(!is_null($this->getTransactionByRef($transaction->referenceText)))
 			throw new \exception\UserException(__('ReferenceText, %s,  already exist in this accounting.', $transaction->referenceText));
 
 	}
+
+    private function addTransactionNoCommit($pdo, $queries){
+
+    }
 
 	/**
 	 * creates obfuscated id

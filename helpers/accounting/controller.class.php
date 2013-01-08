@@ -229,7 +229,10 @@ class accounting
 	 * @deprecated moved to transaction util
 	 */
 	function addDaybookTransaction(\model\finance\accounting\DaybookTransaction $transaction){
-		$this->postings = $transaction->postings;
+
+        return $this->transaction()->insertTransaction($transaction);
+
+        $this->postings = $transaction->postings;
 		$this->transactionInfo = $transaction;
 
 		if(empty($transaction->postings) || $transaction->postings->count() < 1)
@@ -255,15 +258,18 @@ class accounting
 
 	/**** helper methods ****/
 
-	/**
-	 * automatic add of transactions for a standard double accounting registration
-	 *
-	 * @param $amount    amount to insert to account
-	 * @param $acc        the actual account
-	 * ...
-	 * @param $vat        whether to add $vat (only if an vataccount is ass. with acc)
-	 * @param $vatAmount    Override calculation of vat, and use the specific amount
-	 */
+    /**
+     * automatic add of transactions for a standard double accounting registration
+     *
+     * @param $amount    amount to insert to account
+     * @param $acc        the actual account
+     * ...
+     * @param $liabilityAccount
+     * @param $assertAccount
+     * @param null $ref
+     * @param bool| $vat whether to add $vat (only if an vataccount is ass. with acc)
+     * @param $vatAmount    Override calculation of vat, and use the specific amount
+     */
 	function automatedTransaction(
 		$amount, //amount to insert, exl vat
 		$acc, //operating account
@@ -786,7 +792,8 @@ class accounting
 	 * @param bool whether to limit to current accounting
 	 *
 	 * //TODO refactor so that getTransactions and this use same code
-	 * @deprecated, it doesn't make sense to get transactions for account, maybe postings
+     * @return array
+     * @deprecated, it doesn't make sense to get transactions for account, maybe postings
 	 */
 	function getTransactionsAccount($accCode, $start = 0, $num = 1000, $accountinggLimit=true)
 	{
@@ -841,27 +848,7 @@ class accounting
 	 */
 	function getVatStatement()
 	{
-		$pdo = $this->db->dbh;
-		$sth = $pdo->prepare($this->queries->getSumsOnVatAccounts());
-		if(!$sth->execute(array('accounting' => $this->accounting, 'grp' => $this->grp)))
-            throw new \Exception("Was not abl to execute query.");
-
-		$ret = new \model\finance\accounting\VatStatement;
-
-		foreach ($sth->fetchAll() as $r) {
-			switch ($r['type']) {
-				case 1:
-					$ret->sales = $r['amount_in'] - $r['amount_out'];
-					break;
-				case 2:
-					$ret->bought = $r['amount_in'] - $r['amount_out'];
-					break;
-			}
-		}
-
-		$ret->total = $ret->sales - $ret->bought;
-
-		return $ret;
+		return $this->report('DKVatSettlement');
 	}
 }
 
