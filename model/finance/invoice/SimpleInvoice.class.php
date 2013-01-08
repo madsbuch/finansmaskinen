@@ -10,7 +10,7 @@ namespace model\finance\invoice;
 class SimpleInvoice extends \model\AbstractModel
 {
 	protected $_autoassign = array(
-		'products' => array('string', true),
+		'products' => array('\model\finance\invoice\SimpleProduct', true),
 		'contact' => array('string', false),
 	);
 
