@@ -32,7 +32,7 @@ class localization{
 	*/
 	private static $addable = array();
 	
-	/* the language everythinf is written in*/
+	/* the language the programmer writes in */
 	private static $defaultLan = 'en_EN';
 	
 	private static $changes = false;
@@ -62,7 +62,7 @@ class localization{
 		$gotSomething = false;
 		
 		//get the key for the string:
-		$key = (string) dechex(crc32($str));
+		$key = (string) self::getKey($str);
 		foreach(self::$dictionary as $d => &$dict){
 			if(isset($dict[$key])){
 				$str = $dict[$key];
@@ -143,13 +143,6 @@ class localization{
 	}*/
 	
 	/**
-	* save all changes back to mongo
-	*/
-	function __destruct(){
-	
-	}
-	
-	/**
 	* add language to the priority.
 	*
 	* if a string does not excist in the first language, the second is used, if
@@ -169,6 +162,16 @@ class localization{
 		$this->disctionary[$lan] = $mongoCollection->findOne(array('lanID' => $lan . $jargon));
 		//locally cached serialised array (for not loading mongoDB to hard)
 	}
+
+    /**
+     * takes a string, and returns the associate key
+     *
+     * @param $str
+     * @return string
+     */
+    static function getKey($str){
+        return base_convert(crc32($str), 10, 36);
+    }
 	
 	
 }

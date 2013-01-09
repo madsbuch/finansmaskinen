@@ -136,6 +136,7 @@ class AccountingTest extends UnitTestCase
 
     function testAccessVat(){
         $vatStatement = $this->client->getVatStatement();
+        $this->assertTrue(isset($vatStatement));
     }
 
     function testPostToVat(){
@@ -148,15 +149,26 @@ class AccountingTest extends UnitTestCase
 
 	/**
 	 * attempts to reset vat
+     *
 	 */
 	function testVatReset(){
+        //get value from holder account
+
+        //make the system post
         $this->client->resetVat(14260);
+
+        //test that holder account is incremented
 	}
 
 	/**
 	 * attempts to mark vat as payed
 	 */
 	function testVatMarkAsPayed(){
+        //test the amount on the holder account
+
+        //make the system mark the vat as payed
+
+        //test that the holder is 0
 
 	}
 

@@ -20,12 +20,14 @@ class accounting extends \core\rpc
 
 	/**** Accounting abstractions ****/
 
-	/**
-	 * returns an accounting
-	 * if no id is set, default accounting is returned
-	 *
-	 * @param null $accounting string
-	 */
+    /**
+     * returns an accounting
+     * if no id is set, default accounting is returned
+     *
+     * @param null $accountingID
+     * @return void
+     * @internal param null $accounting string
+     */
 	function getAccounting($accountingID=null){
 		try {
 			$accounting = \api\accounting::retrieve($accountingID);
@@ -52,12 +54,14 @@ class accounting extends \core\rpc
 		}
 	}
 
-	/**
-	 * requests a collection of accounts, optionally you
-	 *
-	 * @param $id array array of accountnumbers
-	 * @param $accounting string the accounting to use (for current amounts)
-	 */
+    /**
+     * requests a collection of accounts, optionally you
+     *
+     * @param array $ids
+     * @param $accounting string the accounting to use (for current amounts)
+     * @return void
+     * @internal param array $id array of accountnumbers
+     */
 	function getAccounts($ids = array(), $accounting = null)
 	{
 		try {

@@ -260,7 +260,6 @@ class accounting
 				'value' => $posting->amount,
 				'positive' => $posting->positive,
 				'account' => $posting->account,
-
 				'ref' => $transaction->referenceText,
 				'date' => $transaction->date,
 				'approved' => $transaction->approved
@@ -625,9 +624,11 @@ class accounting
 
 	/**
 	 * returns vat code by type
+     * @deprecated
 	 */
 	function getVatCodeByType($type)
 	{
+        return $this->vat()->getVatByType($type);
 		$pdo = $this->db->dbh;
 
 		$sth = $pdo->prepare('SELECT * FROM accounting_vat_codes WHERE type = ? AND grp_id = ?');
