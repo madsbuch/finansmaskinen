@@ -14,4 +14,13 @@ interface Transactions
 	 * @return \model\finance\accounting\DaybookTransaction
 	 */
 	function getDaybookTransaction($input);
+
+    /**
+     * returns whether there is more transactions
+     *
+     * if a source creates more than a single transaction, we might wanna insert it all
+     *
+     * @return bool
+     */
+    function hasMore();
 }

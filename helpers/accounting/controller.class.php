@@ -94,11 +94,9 @@ class accounting
 	 * objects to hold the utils
 	 */
 	private $transactionUtil;
-
-	/**
-	 * accountsUtil
-	 */
 	private $accountsUtil;
+	private $vatUtil;
+	private $postingUtil;
 
 	/**
 	 * instanciate with details of the group and the accounting
@@ -152,6 +150,24 @@ class accounting
 		if(!isset($this->accountsUtil))
 			$this->accountsUtil = new \helper\accounting\utils\Accounts($this->objSrv);
 		return $this->accountsUtil;
+	}
+
+	/**
+	 * @return accounting\utils\Vat
+	 */
+	public function vat(){
+		if(!isset($this->vatUtil))
+			$this->vatUtil = new \helper\accounting\utils\Vat($this->objSrv);
+		return $this->vatUtil;
+	}
+
+	/**
+	 * @return accounting\utils\Postings
+	 */
+	public function postings(){
+		if(!isset($this->postingUtil))
+			$this->postingUtil = new accounting\utils\Postings($this->objSrv);
+		return $this->postingUtil;
 	}
 
 	/**** different add functions ****/
@@ -229,7 +245,10 @@ class accounting
 	 * @deprecated moved to transaction util
 	 */
 	function addDaybookTransaction(\model\finance\accounting\DaybookTransaction $transaction){
-		$this->postings = $transaction->postings;
+
+        return $this->transaction()->insertTransaction($transaction);
+
+        $this->postings = $transaction->postings;
 		$this->transactionInfo = $transaction;
 
 		if(empty($transaction->postings) || $transaction->postings->count() < 1)
@@ -255,15 +274,18 @@ class accounting
 
 	/**** helper methods ****/
 
-	/**
-	 * automatic add of transactions for a standard double accounting registration
-	 *
-	 * @param $amount    amount to insert to account
-	 * @param $acc        the actual account
-	 * ...
-	 * @param $vat        whether to add $vat (only if an vataccount is ass. with acc)
-	 * @param $vatAmount    Override calculation of vat, and use the specific amount
-	 */
+    /**
+     * automatic add of transactions for a standard double accounting registration
+     *
+     * @param $amount    amount to insert to account
+     * @param $acc        the actual account
+     * ...
+     * @param $liabilityAccount
+     * @param $assertAccount
+     * @param null $ref
+     * @param bool| $vat whether to add $vat (only if an vataccount is ass. with acc)
+     * @param $vatAmount    Override calculation of vat, and use the specific amount
+     */
 	function automatedTransaction(
 		$amount, //amount to insert, exl vat
 		$acc, //operating account
@@ -552,29 +574,12 @@ class accounting
 
 	/**
 	 * returns all vatcodes
+	 *
+	 * @deprecated
 	 */
 	function getVatCodes()
 	{
-		$pdo = $this->db->dbh;
-
-		$sth = $pdo->prepare('SELECT * FROM accounting_vat_codes WHERE grp_id = ' . $this->grp);
-
-		$ret = array();
-		$sth->execute(array($this->accounting));
-
-		foreach ($sth->fetchAll() as $t) {
-			$ret[] = new \model\finance\accounting\VatCode(array(
-				'_id' => $t['id'],
-				'name' => $t['name'],
-				'code' => $t['vat_code'],
-				'type' => $t['type'],
-				'account' => $t['account'],
-				'counterAccount' => $t['counter_account'],
-				'net' => $t['netto'],
-				'taxcatagoryID' => $t['ubl_taxCatagory']
-			));
-		}
-		return $ret;
+		return $this->vat()->getVatCodes();
 	}
 
 	/**
@@ -646,76 +651,17 @@ class accounting
 		return $ret;
 	}
 
-	/**
-	 * transfer money from vat account to a holder account
-	 */
-	function resetVatAccounting($holderAccount){
-        $pdo = $this->db->dbh;
-
-
-        $accounts = array();
-        //get all accounts for vat, and their amounts
-        $vats = $this->getVatCodes();
-        foreach($vats as $v)
-            $accounts[$v->account] = true;
-        $accounts = array_keys($accounts);
-
-        //add new amounts to the accounts, so they'll 0 up
-        $accounts = $this->getAccounts(0, $accounts);
-
-
-        //add the differences to the holderAccount
-
-	}
-
-	/**
-	 * reset the vat holder account and and some asset payable account
-	 */
-	function vatPayed($payedFrom){
-
-	}
-
 	/**** ACCOUNTS ****/
 
 	/**
-	 * returns some account objects
-	 *
-	 * @param $flags int, binary representation of flags. see constants, used for quereing
-	 * @param array $accounts
-	 * @return array
 	 * @deprecated
 	 */
 	function getAccounts($flags = 0, $accounts = array())
 	{
 		return $this->accounts()->getAccounts($flags, $accounts);
-		$pdo = $this->db->dbh;
-		$sth = $pdo->prepare($this->queries->getAllAccounts($this->grp, $flags, $accounts));
-
-		//var_dump($sth);
-
-		$ret = array();
-		$sth->execute(array($this->accounting));
-		foreach ($sth->fetchAll() as $t) {
-			$ret[] = new \model\finance\accounting\Account(array(
-				'_id' => $t['id'],
-				'name' => $t['name'],
-				'code' => $t['code'],
-				'vatCode' => $t['vat'],
-				'type' => $t['type'],
-				'allowPayments' => $t['flags'] & self::PAYABLE == self::PAYABLE ? true : false,
-				'isEquity' => $t['flags'] & self::EQUITY == self::EQUITY ? true : false,
-				'income' => $t['amount_in'] ? $t['amount_in'] : 0,
-				'outgoing' => $t['amount_out'] ? $t['amount_out'] : 0
-			));
-		}
-
-		return $ret;
 	}
 
 	/**
-	 * @param $id
-	 * @return mixed
-	 * @throws \exception\UserException
 	 * @deprecated
 	 */
 	function getAccount($id)
@@ -724,12 +670,6 @@ class accounting
 	}
 
 	/**
-	 * add a new account to the system
-	 *
-	 * @param $account a single or array of account objects
-	 * @return bool
-	 * @throws \exception\UserException
-	 * @throws \exception\PermissionException
 	 * @deprecated use the one in util
 	 */
 	function createAccount($account)
@@ -738,38 +678,16 @@ class accounting
 	}
 
 	/**
-	 * try to delete an account
-	 *
-	 * @param $id string
-	 * @throws \exception\UserException
-	 * @throws \exception\PermissionException
-	 * @return bool
 	 * @deprecated moved to utils/Accounts
 	 */
 	function deleteAccount($id)
 	{
-		if (count($this->getTransactionsAccount($id, 0, 1, false)) > 0)
-			throw new \exception\UserException(__('account %s cannot be deleted, as there is associated postings.'));
-
-		if (is_null($this->grp))
-			throw new \exception\PermissionException('Insufficient permissions for deleting account');
-
-
-		$pdo = $this->db->dbh;
-		$sth = $pdo->prepare($this->queries->deleteAccount());
-
-		//get grp id
-
-		$sth->execute(array('code' => $id, 'grp_id' => $this->grp));
-		return true;
+		return $this->accounts()->deleteAccount($id);
 	}
 
 	/** TRANSACTION FUNCTIONS **/
 
 	/**
-	 * get transactions
-     *
-     * @return array of \model\finance\accounting\DaybookTransaction
 	 * @deprecated use those functions in util/Transactions
 	 */
 	function getTransactions($start = 0, $num = 1000)
@@ -786,10 +704,12 @@ class accounting
 	 * @param bool whether to limit to current accounting
 	 *
 	 * //TODO refactor so that getTransactions and this use same code
-	 * @deprecated, it doesn't make sense to get transactions for account, maybe postings
+     * @return array
+     * @deprecated, it doesn't make sense to get transactions for account, maybe postings
 	 */
 	function getTransactionsAccount($accCode, $start = 0, $num = 1000, $accountinggLimit=true)
 	{
+		throw new \Exception('deprecated');
 		$pdo = $this->db->dbh;
 		$sth = $pdo->prepare('SELECT * FROM ' . self::TRANST . ' WHERE
 			account_id = ? AND account = ?
@@ -841,27 +761,7 @@ class accounting
 	 */
 	function getVatStatement()
 	{
-		$pdo = $this->db->dbh;
-		$sth = $pdo->prepare($this->queries->getSumsOnVatAccounts());
-		if(!$sth->execute(array('accounting' => $this->accounting, 'grp' => $this->grp)))
-            throw new \Exception("Was not abl to execute query.");
-
-		$ret = new \model\finance\accounting\VatStatement;
-
-		foreach ($sth->fetchAll() as $r) {
-			switch ($r['type']) {
-				case 1:
-					$ret->sales = $r['amount_in'] - $r['amount_out'];
-					break;
-				case 2:
-					$ret->bought = $r['amount_in'] - $r['amount_out'];
-					break;
-			}
-		}
-
-		$ret->total = $ret->sales - $ret->bought;
-
-		return $ret;
+		return $this->report('DKVatSettlement');
 	}
 }
 

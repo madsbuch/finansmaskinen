@@ -122,4 +122,19 @@ class MysqlQueries implements \helper\accounting\Queries
 	      ORDER BY date DESC LIMIT :start, :num';
     }
 
+	/**** Postings ****/
+	function getPostings($accounting){
+		$limit = is_null($accounting) ? '' : 'AND transaction_id IN (select id from accounting_transactions WHERE accounting_id = \''.$accounting.'\')';
+
+		return '
+			select
+			    *
+			from
+			    accounting_postings
+			where
+			    account_id = (select id from accounting_accounts where grp_id = :grp and code = :accountCode)
+			    '.$limit.'
+			limit :start,:num';
+	}
+
 }

@@ -19,6 +19,9 @@ class Accounts
 	private $queries;
 	private $controller;
 
+	/**
+	 * @var \helper\accounting\ObjectServer
+	 */
 	private $srv;
 
 	function __construct(\helper\accounting\ObjectServer $srv){
@@ -81,7 +84,18 @@ class Accounts
 	 * @param int $accountCode
 	 */
 	function deleteAccount($accountCode){
+		if (count($this->srv->controller->postings()->getPostingsForAccount($accountCode, 0, 1, false)) > 0)
+			throw new \exception\UserException(__('account %s cannot be deleted, as there is associated postings.', $accountCode));
 
+		if (is_null($this->srv->grp))
+			throw new \exception\PermissionException('Insufficient permissions for deleting account');
+
+
+		$pdo = $this->db->dbh;
+		$sth = $pdo->prepare($this->queries->deleteAccount());
+
+		$sth->execute(array('code' => $accountCode, 'grp_id' => $this->grp));
+		return true;
 	}
 
 	/**** GETTERS ****/
@@ -97,8 +111,6 @@ class Accounts
 	{
 		$pdo = $this->db->dbh;
 		$sth = $pdo->prepare($this->queries->getAllAccounts($this->grp, $flags, $accounts));
-
-		//var_dump($sth);
 
 		$ret = array();
 		$sth->execute(array($this->accounting));

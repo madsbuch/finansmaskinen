@@ -408,8 +408,7 @@ class accounting
 				$transaction = $ah->balanceCalculate($transaction, $lAcc, $aAcc);
 
 			//and finally add all th stuff
-			$ah->addDaybookTransaction($transaction);
-			$ah->commit();
+			$ah->transaction()->insertTransaction($transaction);
 			return;
 		}
 
@@ -499,7 +498,7 @@ class accounting
 	{
 		$acc = self::retrieve();
 		$acc = new \helper\accounting((string)$acc->_id);
-		return $acc->deleteAccount((string)$id);
+		return $acc->accounts()->deleteAccount((int)$id);
 	}
 
 	/**** VAT ****/
@@ -544,13 +543,13 @@ class accounting
 	/**
 	 * marks vat as reset in the current accounting
      *
-     * $holderAcc later goes to settings
+     *
 	 */
-	static function resetVat($holderAcc){
+	static function resetVat(){
         $settings = self::getSettings();
 		$acc = self::retrieve();
 		$acc = new \helper\accounting((string)$acc->_id);
-		$acc->resetVatAccounting($holderAcc);
+		$acc->vat()->resetVatAccounting($settings->vatSettlementAccount);
 	}
 
 	/**
@@ -560,7 +559,7 @@ class accounting
         $settings = self::getSettings();
 		$acc = self::retrieve();
 		$acc = new \helper\accounting((string)$acc->_id);
-		$acc->vatPayed($assetAccount);
+		$acc->vat()->vatPayed($assetAccount);
 	}
 
 	/**** RAPPORTS ****/
@@ -570,17 +569,19 @@ class accounting
 		$acc = new \helper\accounting((string)self::retrieve()->_id);
 		switch (strtolower($type)) {
 			case 'vatstatement':
-				return $acc->getVatStatement();
+				return $acc->report('DKVatSettlement');
 				break;
 		}
 		throw new \Exception(__('rapport doesn\'t exist: %s', $type));
 	}
 
+	/**** MISC ****/
 
 	/**
 	 * a lot of default settings are needed when easing accountance.
 	 *
 	 * they are saved in companyProfile module
+	 * @return \model\finance\accounting\Settings
 	 */
 	static function getSettings()
 	{
@@ -590,6 +591,9 @@ class accounting
 			$settings = new \model\finance\accounting\Settings();
 			self::saveSettings($settings);
 		}
+        else{
+            $settings = new \model\finance\accounting\Settings($settings);
+        }
 		return $settings;
 	}
 

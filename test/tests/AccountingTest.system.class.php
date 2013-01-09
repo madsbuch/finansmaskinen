@@ -70,6 +70,12 @@ class AccountingTest extends UnitTestCase
 		$this->assertTrue($ret['success']);
 	}
 
+	function testNotDeleteUsedAccount(){
+		$this->expectException();
+		$ret = $this->client->deleteAccount(2100);
+		$this->assertTrue($ret['success']);
+	}
+
 	function testActualDeleted()
 	{
 		global $account;
@@ -80,6 +86,7 @@ class AccountingTest extends UnitTestCase
 
 	function testGetCurrentAccounting(){
 		$this->accounting = new \model\finance\Accounting($this->client->getAccounting());
+		$this->assertTrue(isset($this->accounting));
 	}
 
 	/**** transaction testing ****/
@@ -89,10 +96,8 @@ class AccountingTest extends UnitTestCase
 	 */
 	function testInsertTransaction(){
 		global $daybookTransaction;
-
-		//fetch current accountinginformation
-
-		$this->client->createTransaction($daybookTransaction->toArray());
+		$res = $this->client->createTransaction($daybookTransaction->toArray());
+		$this->assertTrue($res['success']);
 	}
 
 	function testTransactionWasCorrect(){
@@ -118,6 +123,16 @@ class AccountingTest extends UnitTestCase
 	}
 
 	/**** vat testing ****/
+
+	function testGetVatCodes(){
+		$vatcodes = $this->client->getVatCodes();
+		$this->assertTrue(isset($vatcodes));
+	}
+
+	function testGetVatCode(){
+		$vatcode = $this->client->getVatCodes('I25');
+		$this->assertTrue(isset($vatcode));
+	}
 
     function testAccessVat(){
         $vatStatement = $this->client->getVatStatement();

@@ -312,7 +312,7 @@ class billing extends \core\api
 		//set variables:
 		$daybookTransaction->postings = $collection;
 		$daybookTransaction->approved = true;
-		$daybookTransaction->date = time();
+		$daybookTransaction->date = date('c');
 		$bill->ref = $daybookTransaction->referenceText = __('Bill %s', base_convert(crc32($bill->_id), 10, 35));
 
 		//port the transactions to the accounting system

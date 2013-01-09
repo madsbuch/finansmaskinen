@@ -95,7 +95,7 @@ class accounting extends \core\rpc
 		try {
 			\api\accounting::deleteAccount($id);
 			$this->ret(array('success' => true));
-		} catch (\exception\UserException $e) {
+		} catch (\Exception $e) {
 			$this->throwException($e->getMessage());
 		}
 	}
@@ -118,6 +118,32 @@ class accounting extends \core\rpc
 	}
 
     /**** VAT abstractions ****/
+
+
+	function getVatCodes(){
+		try {
+			$codes = \api\accounting::getVatCodes();
+			$ret = array();
+			foreach($codes as $c)
+				$ret[] = $c->toArray();
+			$this->ret($ret);
+		} catch (\exception\UserException $e) {
+			$this->throwException($e->getMessage());
+		} catch(\Exception $e){
+			$this->throwException($e->getMessage() . $e->getTraceAsString());
+		}
+	}
+
+	function getVatCode($code){
+		try {
+			$code = \api\accounting::getVatCode($code);
+			$this->ret($code->toArray());
+		} catch (\exception\UserException $e) {
+			$this->throwException($e->getMessage());
+		} catch(\Exception $e){
+			$this->throwException($e->getMessage() . $e->getTraceAsString());
+		}
+	}
 
     /**
      * returns vat statement object

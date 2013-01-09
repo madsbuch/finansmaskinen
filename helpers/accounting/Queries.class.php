@@ -102,4 +102,16 @@ interface Queries
      */
     function getTransactions();
 
+	/**
+	 * returns a query that takes following:
+	 *  start
+	 *  num
+	 *  accountCode
+	 *  grp
+	 *
+	 * @param $accounting null if all postings for accounting is to be returned
+	 * @return string
+	 */
+	function getPostings($accounting);
+
 }
