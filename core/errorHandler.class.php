@@ -102,12 +102,22 @@ class errorHandler
 	 */
 	public function errorHandler($errno, $errstr, $errfile, $errline ){
 
-		//if we do production, and the error is a NOTICE or a WARNING, proceed
-		if(!DEBUG && ($errno & E_USER_NOTICE
+		/**
+		 * dont' halt on errors and warnings, this is necesary to some functions
+		 * that throw an error, even though it is cougt:
+		 * e.g. \helper\html::importNode where the appendChild throws an error, but the scripts
+		 * should continue even though
+		 */
+		if($errno & E_USER_NOTICE
 			||  $errno & E_USER_WARNING
 			||  $errno & E_WARNING
-			||  $errno & E_NOTICE))
+			||  $errno & E_NOTICE){
+
+			//error message if we are en debug mode
+			if(DEBUG)
+				echo "$errno  $errstr  $errfile $errline <br />\n";
 			return;
+		}
 
 		throw new \ErrorException($errstr, $errno, 0, $errfile, $errline);
 	}

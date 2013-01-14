@@ -15,11 +15,11 @@ class About extends \helper\layout\LayoutBlock {
 	}
 	
 	function generate(){
-		return '<header class="jumbotron subhead" id="overview">
+		/*return '<header class="jumbotron subhead" id="overview">
 		<h1>Om</h1>
 		<p class="lead">Hvem er vi, og hvad kan vi.</p>
 	</header>
-	<p>kommer senere</p>';
+	<p>kommer senere</p>';*/
 		return '
 	<header class="jumbotron subhead" id="overview">
 		<h1>Om</h1>
@@ -34,7 +34,7 @@ class About extends \helper\layout\LayoutBlock {
 				<li><a href="#tech"><i class="icon-chevron-right"></i> Teknologi</a></li>
 				<li><a href="#pricing"><i class="icon-chevron-right"></i> Prisstruktur</a></li>
 				<li><a href="#privacy"><i class="icon-chevron-right"></i> Privatliv</a></li>
-				<li><a href="#behind"><i class="icon-chevron-right"></i> Folkene bag</a></li>
+				<li><a href="#behind"><i class="icon-chevron-right"></i> Kontakt os</a></li>
 			</ul>
 		</div>
 	</div>
@@ -106,7 +106,23 @@ class About extends \helper\layout\LayoutBlock {
 		</div>
 
 		<div class="row" id="behind">
-			<h2>Hvem er bag <small>Jo, der sidder skam mennesker bag</small></h2>
+			<h2>Kontakt <small>Muligheder for at komme i kontakt</small></h2>
+			<div class="row">
+				<div class="span5">
+					<p>Der er flere måder at komme i kontakt med os, til venstre
+					kan du se hvilke sociale medier vi er tilgængelige på. Der har du
+					mulighed for at tilmelde dig og få nyeste information direkte.</p>
+					<p>Ellers er der kontaktdetaljer på nogle af os bag nedenfor. Hver ikke
+					bange for at smide en mail, hvis der er spørgsmål
+					</p>
+				</div>
+
+				<div class="span5">
+					<a href="http://twitter.com/Finansmaskinen">Twitter</a><br />
+					<a href="http://www.facebook.com/pages/Finansmaskinendk/138902266186710">Facebook</a><br />
+				</div>
+
+			</div>
 			<div class="row">
 				<div class="span5">
 					<h3>Mads Buch <small>The man!</small></h3>

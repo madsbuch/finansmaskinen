@@ -28,8 +28,10 @@ class html{
 	public static function importNode($dom, $data){
 		if(is_string($data)){
 			$fragment = $dom->createDocumentFragment();
-			$fragment->appendXML($data);
-			return $fragment;
+			if(@$fragment->appendXML($data))
+				return $fragment;
+			return new \DOMText($data);
+
 		}
 		elseif(!is_array($data)){
 			return $dom->importNode($data, true);

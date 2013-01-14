@@ -88,8 +88,9 @@ class contacts extends \core\app{
 			$html->add2content('<div class="alert alert-info">'.__('Contact doesn\'t exist').'</div>');
 		}
 		else{
+			$name = isset($obj->Party->PartyName) ? $obj->Party->PartyName : 'kontakt';
 			$html->appendContent(\helper\layout\Element::heading('Kontakter',
-				'Detaljer for ' . (isset($obj->Party->PartyName) ? $obj->Party->PartyName : 'kontakt')));
+				'Detaljer for ' . $name));
 			$widgets = $this->callAll('contactGetLatest', array($obj));
 			$tpl = new contacts\layout\finance\View($obj, $widgets);
 			$html->appendContent($tpl);
