@@ -146,7 +146,7 @@ class billing extends \core\api
 
 
 	/**
-	 * creates new invoice in the system
+	 * creates new bill in the system
 	 *
 	 * if the bill is payed, it'll be finalized as well
 	 */

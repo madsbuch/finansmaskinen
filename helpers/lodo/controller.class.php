@@ -234,10 +234,14 @@ class lodo
 		$this->c = $class;
 	}
 
-	/**
-	 * insert object
-	 */
-	function insert($obj)
+    /**
+     * inserts an object, and returns it populated
+     *
+     * @param $obj
+     * @return mixed
+     * @throws Exception
+     */
+    function insert($obj)
 	{
 		//@TODO check permissions
 
@@ -256,8 +260,12 @@ class lodo
 		return new $c($obj);
 	}
 
-	//attempts to delete an object
-	function delete($id)
+    /**
+     * marks an object as deleted
+     *
+     * @param $id
+     */
+    function delete($id)
 	{
 
 	}

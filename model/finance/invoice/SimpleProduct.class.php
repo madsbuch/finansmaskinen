@@ -8,7 +8,7 @@
  */
 
 namespace model\finance\invoice;
-class SimpleProduct
+class SimpleProduct extends \model\AbstractModel
 {
     /**
      * product id (not object, but product)

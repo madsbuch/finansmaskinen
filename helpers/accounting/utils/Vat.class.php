@@ -106,7 +106,14 @@ class Vat
 		//add the differences to the holderAccount
 	}
 
-	function vatPayed($assetAccount){
+    /**
+     * mark vat as payed (reset holder account to 0, and post the difference
+     * to the assetaccount)
+     *
+     * @param $holderAccount
+     * @param $assetAccount
+     */
+    function vatPayed($holderAccount, $assetAccount){
 
 	}
 

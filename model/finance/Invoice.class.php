@@ -7,6 +7,20 @@
 
 namespace model\finance;
 
+/**
+ * @property $_id;
+ * @property $objectIDs
+ * @property $Invoice
+ * @property $contactID
+ * @property $product
+ * @property $isPayed
+ * @property $vat
+ * @property $ExchangeRates
+ * @property $draft
+ * @property $pendForSending
+ * @property $accounting
+ * @property $ref
+ */
 class Invoice extends \model\AbstractModel{
 	protected $_autoassign = array(
 		'Invoice' => array('\model\ext\ubl2\Invoice', false),
@@ -30,6 +44,14 @@ class Invoice extends \model\AbstractModel{
 	protected $_id;
 	protected $_subsystem;
 
+    /**
+     * whether ID's used are object id, or contact-/product-id's
+     *
+     * Be aware, that upon first insert, this will be set to true, and all id's overwritten
+     * with object id's. This is due to consistensy (having an invoice without reciever ect.)
+     * @var bool
+     */
+    protected $objectIDs = true;
 	
 	/**
 	* instance of to \finance\ubl\Item
@@ -37,8 +59,8 @@ class Invoice extends \model\AbstractModel{
 	protected $Invoice;
 	
 	/**
-	* the reciever contact of this invoice
-	*/
+	 * the reciever contact of this invoice
+	 */
 	protected $contactID;
 	
 	/**

@@ -39,16 +39,25 @@ class invoice extends \core\rpc {
 		}
 	}
 
-	/**
-	 * creates invoice from a SimpleInvoice object,
-	 *
-	 * this offloads a lot of work to the server, but requires all products and
-	 * stuff to be stored here.
-	 *
-	 * @param $easyInvoice
-	 */
-	function createLight($easyInvoice){
-
+    /**
+     * creates invoice from a SimpleInvoice object,
+     *
+     * this offloads a lot of work to the server, but requires all products and
+     * stuff to be stored here.
+     *
+     * @param $simpleInvoice
+     * @return void
+     * @internal param $easyInvoice
+     */
+	function simpleCreate($simpleInvoice){
+        try{
+            $invoice = new \model\finance\invoice\SimpleInvoice($simpleInvoice);
+            $invoice = \api\invoice::simpleCreate($invoice);
+            $this->ret((string) $invoice->_id);
+        }
+        catch(\Exception $e){
+            $this->throwException($e->getMessage() . "\n\n" . $e->getTraceAsString());
+        }
 	}
 
 	function update($invoice){
@@ -75,7 +84,7 @@ class invoice extends \core\rpc {
 	 * @return \model\finance\Invoice
 	 */
 	private function invoiceObject($inv){
-		return new \model\finance\Invoice($inv);
+        return new \model\finance\Invoice($inv);
 	}
 }
 

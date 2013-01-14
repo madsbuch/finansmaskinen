@@ -196,6 +196,10 @@ class products
 		return $product;
 	}
 
+    static function getByProductID($id){
+        throw new \Exception($id);
+    }
+
 	/**
 	 * insert product
 	 *

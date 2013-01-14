@@ -268,7 +268,7 @@ abstract class AbstractModel{
 	 *
 	 * @param $level int level of validation
 	 */
-	public function validate($level = 0){
+	final public function validate($level = 0){
 		$ret = array();
 		//validate this
 		if(method_exists($this, 'doValidate')){

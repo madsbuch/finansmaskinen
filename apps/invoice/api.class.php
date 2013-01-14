@@ -143,43 +143,82 @@ class invoice{
 		
 		$ubl = new \helper\parser\Ubl();
 		$ubl->createFromModel($inv->Invoice);
-		
-		//$ubl->prepare();
-		
-		//if(!$ubl->validate())
-		//	echo 'Document not validated';
-
 
 		return $ubl->getXML();
-		
-		if($stylesheet)
-			$convert->setStylesheet($stylesheet);
-		
-		return $convert->execute();
 	}
 	
 	
 	/**
 	* creates new invoice in the system
 	*
-	* if the invoice is payed, it'll be finalized as well
-	*/
-	public static function create($invoice){
+	* @param \model\finance\Invoice $invoice
+     * @return mixed
+     */
+	public static function create(\model\finance\Invoice $invoice){
 		$lodo = new \helper\lodo('invoices', 'invoice');
 		//create the object
 		$invoice = self::invoiceObject($invoice);
+
 		//fulltext indexed by reciever
 		$lodo->setFulltextIndex(array('Invoice.AccountingCustomerParty.Party.PartyName'));
 		$obj = $lodo->insert($invoice);
-		if($obj->isPayed)
-			return self::finalize((string) $obj->_id);
+
+        if($obj->isPayed)
+			return self::finalize($obj);
 		return $obj;
 	}
-	
-	/**
-	* updates an invoice
-	*/
-	public static function update($inv){
+
+    /**
+     * Insert a simpleinvoice object.
+     *
+     * Updating is throught the normal interface, so far
+     *
+     * @param \model\finance\invoice\SimpleInvoice $invoice
+     * @throws \exception\UserException
+     * @return invoice object
+     */
+    public static function simpleCreate(\model\finance\invoice\SimpleInvoice $invoice){
+        //some validation
+        if($ret = $invoice->validate($invoice::STRICT))
+            throw new \exception\UserException(__('SimpleInvoice not validated: %s', implode(', ', $ret)));
+
+        //map it to a new Invoice
+        $full = new \model\finance\Invoice(array(
+            'Invoice' => array(
+                'DocumentCurrencyCode' => $invoice->currency
+            ),
+            'contactID' => $invoice->contactID,
+            //tell that we use element id's
+            'objectIDs' => false,
+            'vat' => $invoice->vat,
+
+
+        ));
+
+        if(!empty($invoice->date))
+            $full->Invoice->IssueDate = $invoice->date;
+
+        //do some initialization
+        $full->product = array();
+        $full->Invoice->InvoiceLine = array();
+
+        foreach($invoice->products as $key => $prod){
+            $full->product->$key->index = $key;
+            $full->product->$key->id = $prod->productID;
+            $full->Invoice->InvoiceLine->$key->InvoicedQuantity = $prod->quantity;
+        }
+
+        //from here the normal system should be able to handle the rest.
+        return self::create($full, false);
+    }
+
+    /**
+     * update an invoice
+     *
+     * @param $inv
+     * @return \model\finance\Invoice
+     */
+    public static function update(\model\finance\Invoice $inv){
 		$lodo = new \helper\lodo('invoices', 'invoice');
 		//create the object
 		$invoice = self::invoiceObject($inv);
@@ -194,15 +233,10 @@ class invoice{
 	* called when an invoice is not marked as draft.
 	* takes an invoice object
 	*/
-	public static function finalize($inv){
+	public static function finalize(\model\finance\Invoice $inv){
 		//finalization of invoice requires it to be a valid structure.
-		try{
-			//and validates
-			$inv->validate();
-		}catch(\exception\NotValidatedException $e){
-			//if some validation error was detected, we throw an message to the user
-			throw new \exception\UserException(__('The invoice was not validated: %s', $e->getMessage()));
-		}
+		if($ret = $inv->validate($inv::WEAK))
+			throw new \exception\UserException(__('The invoice was not validated: %s', implode(', ', $ret)));
 
 		//try to add invoice number, or fail
 		$iNr = \api\companyProfile::increment('invoiceNumberNext');
@@ -260,6 +294,8 @@ class invoice{
 			'referenceText' => $inv->ref
 		);
 
+        //todo bookkeep to product system
+
 		\api\accounting::importTransactions($cats, $options);
 		$inv->isPayed = true;
 		self::update($inv);
@@ -311,27 +347,22 @@ class invoice{
 		
 	}
 
-	/**
-	 * creates an invoice object from a SimpleInvoice object
-	 *
-	 * @param \model\finance\invoice\SimpleInvoice $inv
-	 * @return \model\finance\Invoice
-	 */
-	public static function createFromSimple(\model\finance\invoice\SimpleInvoice $inv){
-
-	}
-
-	/**
-	 * This function does following to the invoice:
-	 *  - parses all data
-	 *  - validates that required fields are defined
-	 *  - fetches data from other parts of the system to emrge in
-	 *  - calculates totals
-	 *
-	 * if we talk an update, $old should contain the old invoice (which should be
-	 * a full object)
-	 */
-	private static function invoiceObject(\model\finance\Invoice $inv){
+    /**
+     * This function does following to the invoice:
+     *  - parses all data
+     *  - validates that required fields are defined
+     *  - fetches data from other parts of the system to emrge in
+     *  - calculates totals
+     *
+     * if we talk an update, $old should contain the old invoice (which should be
+     * a full object)
+     *
+     * @param \model\finance\Invoice $inv
+     * @param bool $objectIDs
+     * @return \model\finance\Invoice
+     * @throws \exception\UserException
+     */
+    private static function invoiceObject(\model\finance\Invoice $inv){
 		$core = new \helper\core('invoice');
 		// merge following details in:
 		//accountingSupplierParty, no reason to play with permissions
@@ -357,7 +388,12 @@ class invoice{
 		
 		//merge customer in
 		if(!empty($inv->contactID)){
-			$contact = \api\contacts::getContact($inv->contactID);
+            if($inv->objectIDs)
+			    $contact = \api\contacts::getContact($inv->contactID);
+            else{
+                $contact = \api\contacts::getByContactID($inv->contactID);
+                $inv->contactID = (string) $contact->_id;
+            }
 			$party = $contact->Party;
 			$toMerge['Invoice']['AccountingCustomerParty']['Party'] = $party->toArray();
 			
@@ -377,13 +413,27 @@ class invoice{
 		$vat = 0;
 		
 		//items from productlines
-		if(!empty($inv->product))
-			foreach($inv->product as $i => $prod){
-				//for calculating total
-				$total += $t = $inv->Invoice->InvoiceLine->$i->Price->PriceAmount->_content * 
-					$inv->Invoice->InvoiceLine->$i->InvoicedQuantity->_content;
-				
-				$p = \api\products::getOne($prod->id);
+		if(!empty($inv->product)){
+			foreach($inv->product as $i => &$prod){
+                //fetch external product
+                if(!empty($prod->id) && $inv->objectIDs)
+				    $p = \api\products::getOne($prod->id);
+                else{
+                    $p = \api\products::getByProductID($prod->id);
+                    $prod->id = (string) $p->_id;
+                }
+
+                //support for unitprice from the products
+                if(!isset($inv->Invoice->InvoiceLine->$i->Price->PriceAmount)){
+                    //TODO handle currencies (should we make a currency module allowin people to define their own?)
+                    $inv->Invoice->InvoiceLine->$i->Price->PriceAmount = $p->Price->PriceAmount;
+                }
+
+
+                //for calculating total
+                $total += $t = $inv->Invoice->InvoiceLine->$i->Price->PriceAmount->_content *
+                    $inv->Invoice->InvoiceLine->$i->InvoicedQuantity->_content;
+
 				
 				if($p)//make it possible to make an invoice on not saved products
 					$toMerge['Invoice']['InvoiceLine'][$i]['Item'] = $p->Item->toArray();
@@ -411,6 +461,11 @@ class invoice{
 					$toMerge['Invoice']['InvoiceLine'][$i]['TaxTotal']['TaxSubtotal']['TaxableAmount'] = $t;
 				}
 			}
+        }
+
+        //all id's are rewritten to object ones, save that they are so
+        $inv->objectIDs = true;
+
 		//populate to full UBL invoice
 		
 		//set MonetaryTotal
@@ -432,6 +487,14 @@ class invoice{
 		
 		return $inv;
 	}
+
+    //for later refactoring
+    private static function mergeContact($inv){
+
+    }
+    private static function mergeProducts($inv){
+
+    }
 	
 }
 

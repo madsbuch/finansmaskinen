@@ -13,8 +13,8 @@ class Product extends \model\AbstractModel{
 	protected $index;
 	
 	/**
-	* product id
-	*/
+	 * product id
+	 */
 	protected $id;
 	
 	/**

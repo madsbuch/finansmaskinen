@@ -7,6 +7,13 @@
 
 namespace model\finance\invoice;
 
+/**
+ * @property $date string
+ * @property $products
+ * @property $contactID
+ * @property $vat
+ * @property $currency
+ */
 class SimpleInvoice extends \model\AbstractModel
 {
 	protected $_autoassign = array(
@@ -51,6 +58,25 @@ class SimpleInvoice extends \model\AbstractModel
 	 */
 	protected $date;
 
+    /**
+     * level is not used, in all cercumstances, all fields should be set
+     *
+     * @param int $level
+     * @return array
+     */
+    function doValidate($level){
+        $ret = array();
+        if(empty($this->products))
+            $ret[] = 'At least one product is needed';
+        if(empty($this->contactID))
+            $ret[] = 'A contact is needed';
+        if(empty($this->vat))
+            $ret[] = 'Vat is not set';
 
+        //@TODO validate currency code, this requires helper function
+        if(empty($this->currency))
+            $ret[] = 'Currency was not set';
+        return $ret;
+    }
 
 }

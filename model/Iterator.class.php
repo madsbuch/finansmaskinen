@@ -60,6 +60,10 @@ class Iterator extends AbstractModel implements \IteratorAggregate, \ArrayAccess
 		$func = 'get_'.$name;
 		if(method_exists($this, $func))
 			return $this->$func();
+
+        if(!isset($this->_index[$name]))
+            $this->_index[$name] = new $this->_typeOfAll();
+
 		return $this->_index[$name];
 	}
 	
