@@ -63,12 +63,23 @@ class InvoiceTest extends UnitTestCase
 
 	function testPosting(){
 		//save some relevant account info
+		$this->bank = new \model\finance\accounting\Account($this->clientAcc->getAccount(12320));
+
+		//post the invoice
 		$ret = $this->client->post($this->insertedInvoice, 12320);
 		$this->assertTrue($ret['success']);
 	}
 
     function testBookkeepIntegrity(){
+	    global $invoiceSimpledata;
+		$bank = new \model\finance\accounting\Account($this->clientAcc->getAccount(12320));
 
+	    $amountBefore = $this->bank->income - $this->bank->outgoing;
+	    $amountAfter = $bank->income - $bank->outgoing;
+
+	    $diff = $amountAfter - $amountBefore;
+
+	    $this->assertTrue($diff == $invoiceSimpledata['bank'], 'diff was: '. $diff);
     }
 
 	//endregion

@@ -22,9 +22,13 @@ class ProductCategory implements Transactions
 	 */
 	function getDaybookTransaction()
 	{
+		//shift an element
 		$cat = array_shift($this->categories);
+
+		//if vat should be added
 		$vat = isset($cat->vatAmount) ? false : true;
 
+		//dispatch the the accounting helper
 		$transaction = $this->ah->automatedTransaction(
 			$cat->amount,
 			($vat ? $cat->accountInclVat : $cat->accountExclVat),
@@ -47,6 +51,7 @@ class ProductCategory implements Transactions
 	 */
 	function hasMore()
 	{
+		//every element is just shiftet, so when the list is empty, we don't have more.
 		return !empty($this->categories);
 	}
 

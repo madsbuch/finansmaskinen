@@ -221,7 +221,7 @@ $billIvalid = new \model\finance\Bill(array(
 //region invoices
 
 $invoiceSimpleObject = new \model\finance\invoice\SimpleInvoice(array(
-	'contactID' => 'OL-429131',
+	'contactID' => 'MG-425235',
 	'products' => array(
 		array(
 			'productID' => 'CH-422750',
@@ -231,12 +231,19 @@ $invoiceSimpleObject = new \model\finance\invoice\SimpleInvoice(array(
 			'productID' => 'RO-422758',
 			'quantity' => 3
 		),
+		array(
+			'productID' => 'KO-329695',
+			'quantity' => 2
+		)
 	),
 
 	'currency' => 'DKK',
-
-
 ));
+$invoiceSimpledata = array(
+
+	'bank' => 93125
+
+);
 
 //endregion
 
