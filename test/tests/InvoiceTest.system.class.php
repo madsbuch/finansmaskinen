@@ -31,9 +31,8 @@ class InvoiceTest extends UnitTestCase
      */
     function testCreate(){
 		global $invoiceSimpleObject;
-		$ret = $this->client->simpleCreate($invoiceSimpleObject->toArray());
-	    $this->assertTrue(is_string($ret));
-		$this->insertedID = $ret['id'];
+	    $this->insertedInvoice = $this->client->simpleCreate($invoiceSimpleObject->toArray());
+	    $this->assertTrue(is_string($this->insertedInvoice));
 	}
 
     /**
@@ -62,9 +61,10 @@ class InvoiceTest extends UnitTestCase
 
     }    */
 
-	function testBookkeep(){
+	function testPosting(){
 		//save some relevant account info
-		$this->client->post($this->insertedInvoice);
+		$ret = $this->client->post($this->insertedInvoice, 12320);
+		$this->assertTrue($ret['success']);
 	}
 
     function testBookkeepIntegrity(){

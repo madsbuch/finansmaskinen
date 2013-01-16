@@ -274,6 +274,13 @@ class invoice{
 		//fetch invoice
 		$inv = self::getOne($id);
 
+		//make sure the invoice is finalized before attempting to post to any systems
+		if(!isset($inv->Invoice->ID)){
+			$inv = self::finalize($inv);
+			$inv->draft = false;
+			$inv = self::update($inv);
+		}
+
 		//model\finance\products\Catagory to account to
 		$cats = array();
 		
@@ -301,20 +308,14 @@ class invoice{
 		//post the cat's the to accounting system
 		$inv->ref = __('Invoice %s', (string) $inv->Invoice->ID);
 
-		$options = array(
-			'referenceText' => $inv->ref
-		);
-
-		//make sure the invoice is finalized before attempting to post to any systems
-		if(!isset($inv->Invoice->ID)){
-			$inv = self::finalize($inv);
-			self::update($inv);
-		}
-
 	    //todo bookkeep to product system
 
 
 		//post to financial system
+		$options = array(
+			'referenceText' => $inv->ref,
+			'type' => 'ProductCategory'
+		);
 		\api\accounting::importTransactions($cats, $options);
 
 		//everything was an success

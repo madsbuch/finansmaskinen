@@ -32,7 +32,7 @@ class Transactions
 	 *
 	 * @var array
 	 */
-	private $transactions;
+	private $transactions = array();
 
 	function __construct(\helper\accounting\ObjectServer $srv){
 		$this->srv = $srv;
@@ -61,11 +61,15 @@ class Transactions
      * @internal param bool $autocommit
      */
     function insertTransaction(\model\finance\accounting\DaybookTransaction $transaction){
-		//throw an exception if anything is wrong
-		$this->validateTransaction($transaction);
 
+	    $this->addTransaction($transaction);
+	    $this->commit();
+
+		/*//throw an exception if anything is wrong
+		$this->validateTransaction($transaction);
 		$pdo = $this->db->dbh;
 		$pdo->beginTransaction();
+
 
 		//insert the transaction
 		$sthTrans = $pdo->prepare($this->queries->insertTransaction());
@@ -99,7 +103,7 @@ class Transactions
 		if (!$pdo->commit()){
 			$pdo->rollback();
 			throw new \exception\UserException(__('Insertion of transaction did not succeed'));
-		}
+		}*/
 	}
 
     /**
@@ -108,13 +112,61 @@ class Transactions
      * @param \model\finance\accounting\DaybookTransaction $t
      */
     function addTransaction(\model\finance\accounting\DaybookTransaction $t){
-
+		$this->transactions[] = $t;
     }
 
     /**
      * commits all queued transactions
      */
     function commit(){
+	    $pdo = $this->db->dbh;
+	    $pdo->beginTransaction();
+
+	    try{
+		    //take all transactions
+		    foreach($this->transactions as $t){
+			    $this->validateTransaction($t);
+
+			    //insert the transaction
+			    $sthTrans = $pdo->prepare($this->queries->insertTransaction());
+			    $sthTrans->execute(array(
+				    'date' => $t->date,
+				    'referenceText' => $t->referenceText,
+				    'approved' => $t->approved,
+				    'accounting_id' => $this->accounting,
+			    ));
+
+			    //get transaction id for the postings
+			    $transID = $pdo->lastInsertId();
+
+			    $sth = $pdo->prepare($this->queries->insertPosting());
+			    //stop if error
+			    if(!$sth){
+				    $pdo->rollback();
+				    throw new \Exception('Some error happended? ' . implode($pdo->errorInfo()));
+			    }
+
+			    //insert all the postings
+			    foreach ($t->postings as $p) {
+				    $sth->execute( array(
+					    'amount_in' => $p->positive ? $p->amount : 0,
+					    'amount_out' => $p->positive ? 0 : $p->amount,
+					    'grp' => $this->grp,
+					    'transaction_id' => $transID,
+					    'account' => $p->account));
+			    }
+
+		    }
+	    }catch(\Exception $e){
+		    $pdo->rollback();
+		    throw $e;
+	    }
+
+	    //commit the rows, if everything wen't well
+	    if (!$pdo->commit()){
+		    $pdo->rollback();
+		    throw new \exception\UserException(__('Insertion of transaction did not succeed'));
+	    }
 
     }
 

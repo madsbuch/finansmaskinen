@@ -391,27 +391,37 @@ class accounting
 		if(is_string($type)){
 			$strategyName = 'app\accounting\strategies\transactions\\'.$type;
 			$strategy = new $strategyName();
-			$transaction = $strategy->getDaybookTransaction($transaction);
+			$strategy->setData($transaction, $ah, $options);
+		}
+		else{
+			$strategy = new \app\accounting\strategies\transactions\Standard();
+			$strategy->setData($transaction, $ah, $options);
 		}
 
-		//test if it's is a daybookTransaction
-		if($transaction instanceof \model\finance\accounting\DaybookTransaction){
+
+		while($strategy->hasMore()){
+
+			$t = $strategy->getDaybookTransaction();
+
 			//if $ref is set explicitly, set it
-			if(empty($transaction->referenceText))
-				$transaction->referenceText = $ref;
+			if(empty($t->referenceText))
+				$t->referenceText = $ref;
 
 			//maybe calculate vat?
 			if($addVat)
-				$transaction = $ah->vatCalculate($transaction, $lAcc, $aAcc);
+				$t = $ah->vatCalculate($t, $lAcc, $aAcc);
 			//and calculate the balance
 			if($addBalance)
-				$transaction = $ah->balanceCalculate($transaction, $lAcc, $aAcc);
+				$t = $ah->balanceCalculate($t, $lAcc, $aAcc);
 
 			//and finally add all th stuff
-			$ah->transaction()->insertTransaction($transaction);
-			return;
+			$ah->transaction()->addTransaction($t);
 		}
 
+		//commit all transactions
+		$ah->transaction()->commit();
+
+		/*
 		//try to guess the type (deprecated). requires the transaction to be an array
 		reset($transaction);
 		$f = current($transaction);
@@ -428,13 +438,10 @@ class accounting
 					$vat,
 					$cat->vatAmount
 				);
-
 			}
 			$ah->commit();
             return true;
-		}
-
-		throw new \exception\UserException(__('Wasn\'t able to insert transaction'));
+		}*/
 	}
 
 	/**** ACCOUNTS ****/

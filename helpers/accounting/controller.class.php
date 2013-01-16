@@ -300,7 +300,7 @@ class accounting
 		$vat = is_int($vatAmount) ? $vatAmount : $amount * $vatObj->percentage / 100;
 
 		$ref = $ref ? $ref : uniqid();
-		$date = time();
+		$date = date('c');
 
 		$lAmount = $aAmount = $amount;
 
@@ -340,7 +340,7 @@ class accounting
             )
         ));
 
-		$this->addDaybookTransaction($transaction);
+		return $transaction;
 	}
 
 	/**** aux function adding functionality and transforming objects ****/
