@@ -21,6 +21,8 @@ class AccountingTest extends UnitTestCase
 	private $client;
 	private $accounting;//string of a known accounting
 
+    private $vatStatement;
+
 	/**
 	 * authenticate to the app, and stuff
 	 */
@@ -147,30 +149,47 @@ class AccountingTest extends UnitTestCase
 
     }
 
+    /**
+     * make sure we have som VAT to post
+     */
+    function testPostSomethingThatRequiresVat(){
+
+    }
+
 	/**
 	 * attempts to reset vat
      *
 	 */
 	function testVatReset(){
         //get value from holder account
+        $this->vatStatement = new \model\finance\accounting\VatStatement($this->client->getVatStatement());
 
         //make the system post
-        $this->client->resetVat(14260);
-
-        //test that holder account is incremented
+        $ret =  $this->client->resetVat();
+        $this->assertTrue($ret['success']);
+        $this->assertTrue($this->vatStatement->total != 0, 'this test requires, that there is something in vat statement.');
 	}
+
+    /**
+     * tests that the statement is actually resat.
+     */
+    function testVatStatmentResat(){
+        $vat = new \model\finance\accounting\VatStatement($this->client->getVatStatement());
+        $this->assertTrue($vat->total == 0, 'total not 0');
+        $this->assertTrue($vat->sales == 0, 'sales not 0');
+        $this->assertTrue($vat->bought == 0, 'bought not 0');
+    }
 
 	/**
 	 * attempts to mark vat as payed
 	 */
 	function testVatMarkAsPayed(){
-        //test the amount on the holder account
+        //attempt to mark vat as payed
 
-        //make the system mark the vat as payed
-
-        //test that the holder is 0
 
 	}
+
+
 
 }
 

@@ -86,11 +86,13 @@ class MysqlQueries implements \helper\accounting\Queries
         return 'select
             SUM(a_in) as amount_in,
             SUM(a_out) as amount_out,
-            type
+            type,
+            account
         from
         (select DISTINCT
             posts.id as post_id,
             vat.type as type,
+            vat.account as account,
             posts.amount_in as a_in,
             posts.amount_out as a_out
         from

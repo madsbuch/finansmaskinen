@@ -84,26 +84,63 @@ class Vat
 
     /**** SOME BEHAVIOR ****/
 
-	/**
-	 * @param $holderAccount
-	 */
+    /**
+     * @param $holderAccount
+     * @throws \Exception
+     */
 	function resetVatAccounting($holderAccount){
-		return;
 		$pdo = $this->srv->db->dbh;
 
+        //make sure this is atomic
+        $pdo->beginTransaction();
 
-		$accounts = array();
-		//get all accounts for vat, and their amounts
-		$vats = $this->getVatCodes();
-		foreach($vats as $v)
-			$accounts[$v->account] = true;
-		$accounts = array_keys($accounts);
+        $transaction = new \model\finance\accounting\DaybookTransaction();
+        $transaction->date = date('c');
+        $transaction->approved = true;
+        $transaction->referenceText = 'VAT reset on ' . $transaction->date;
+        $transaction->postings = array();
 
-		//add new amounts to the accounts, so they'll 0 up
-		$accounts = $this->getAccounts(0, $accounts);
+        $sth = $pdo->prepare($this->srv->queries->getSumsOnVatAccounts());
+        if(!$sth->execute(array('accounting' => $this->srv->accounting, 'grp' => $this->srv->grp)))
+            throw new \Exception("Was not abl to execute query.");
 
+        $holderPosting = new \model\finance\accounting\Posting();
+        $holderPosting->account = $holderAccount;
+        $holderPosting->positive = true;
+
+        $c = 0;
+        $holderAmount = 0;
+		foreach($sth->fetchAll() as $v){
+            //$v['type (1: sales, 2: bought), amount_in, amount_out, type']
+            $diff = abs($v['amount_in'] - $v['amount_out']);
+
+            switch ($v['type']) {
+                case 1:
+                    $holderAmount += $v['amount_in'] - $v['amount_out'];
+                    break;
+                case 2:
+                    $holderAmount -= $v['amount_in'] - $v['amount_out'];
+                    break;
+            }
+
+            //create the posting to reset this account
+            $posting = new \model\finance\accounting\Posting();
+            $posting->account = $v['account'];
+            $posting->amount = $diff;
+            $posting->positive = false;
+
+            $transaction->postings->$c = $posting;
+            $c++;
+        }
+
+        //finish the holer posting
+        $holderPosting->amount = $holderAmount;
+        $transaction->postings->$c = $holderPosting;
 
 		//add the differences to the holderAccount
+        $this->srv->controller->transaction()->nonTransactionalInsert($transaction, $pdo);
+
+        $pdo->commit();
 	}
 
     /**

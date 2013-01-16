@@ -88,6 +88,18 @@ class Account extends \model\AbstractModel
 	 */
 	protected $income;
 	protected $outgoing;
+
+    /**
+     * validates an account
+     *
+     * @param $level
+     */
+    function doValidate($level){
+        $ret = array();
+        if(!is_int($this->vatCode))
+            $ret[] = 'Vat code needs to be set.';
+
+    }
 }
 
 ?>

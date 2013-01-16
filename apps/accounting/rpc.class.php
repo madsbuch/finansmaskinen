@@ -122,13 +122,9 @@ class accounting extends \core\rpc
     /**
      * resets the vat accounting according to settings
      */
-    function resetVat($holder){
-        try {
-            \api\accounting::resetVat($holder);
-            $this->ret(array('success' => true));
-        } catch (\Exception $e) {
-            $this->throwException($e->getMessage(). '  ' . $e->getTraceAsString());
-        }
+    function resetVat(){
+        \api\accounting::resetVat();
+        $this->ret(array('success' => true));
     }
 
     /**

@@ -15,8 +15,9 @@ class DKVatSettlement implements Report
 
     /**
      * @param \helper\accounting\ObjectServer $srv
+     * @param null $pdo the VAT reset uses this
      */
-	function __construct(\helper\accounting\ObjectServer $srv){
+	function __construct(\helper\accounting\ObjectServer $srv, $pdo=null){
 		$this->srv = $srv;
 	}
 
@@ -39,10 +40,10 @@ class DKVatSettlement implements Report
         foreach ($sth->fetchAll() as $r) {
             switch ($r['type']) {
                 case 1:
-                    $ret->sales = $r['amount_in'] - $r['amount_out'];
+                    $ret->sales += $r['amount_in'] - $r['amount_out'];
                     break;
                 case 2:
-                    $ret->bought = $r['amount_in'] - $r['amount_out'];
+                    $ret->bought += $r['amount_in'] - $r['amount_out'];
                     break;
             }
         }

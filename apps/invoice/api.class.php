@@ -275,7 +275,7 @@ class invoice{
 		$inv = self::getOne($id);
 
 		//make sure the invoice is finalized before attempting to post to any systems
-		if(!isset($inv->Invoice->ID)){
+		if(empty($inv->Invoice->ID)){
 			$inv = self::finalize($inv);
 			$inv->draft = false;
 			$inv = self::update($inv);

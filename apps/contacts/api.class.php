@@ -151,7 +151,7 @@ class contacts extends \core\api{
         $lodo->addCondition(array('contactID' => (string) $id));
         $ret = $lodo->getObjects();
         if(count($ret) < 1)
-            throw new \exception\UserException(__('product with id "%s" doesn\'t exist', $id));
+            throw new \exception\UserException(__('Contact with id "%s" doesn\'t exist', $id));
         return $ret[0];
     }
 	
