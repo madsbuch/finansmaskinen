@@ -227,7 +227,9 @@ class Table extends \helper\layout\LayoutBlock
 					$toAdd->appendChild(call_user_func_array($colName[1], $args));
 					$ret->appendChild($toAdd);
 				} else {
-					$ret->appendChild($this->dom->createElement($c, (string)$this->getValue($index, $obj)));
+					$element = $this->dom->createElement($c);
+					$element->appendChild(new \DOMText((string) $this->getValue($index, $obj)));
+					$ret->appendChild($element);
 				}
 			}
 		}

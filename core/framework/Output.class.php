@@ -18,10 +18,10 @@ interface Output
 	 *
 	 * It is only outputting.
 	 *
-	 * @param $msg the message to shout to the user (already translated)
+	 * @param \Exception $e message to shout to the user (already translated)
 	 * @return void
 	 */
-	function handleException($msg);
+	function handleException($e);
 
 	/**
 	 * get the http header (\n seperated)

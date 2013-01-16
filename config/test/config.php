@@ -9,7 +9,7 @@
 */
 namespace config;
 define("DEBUG", true);
-define("CORE_CEHCK_PERMISSIONS", true);//shall the core classes check if the object can be created?
+define("CORE_CEHCK_PERMISSIONS", false);//shall the core classes check if the object can be created?
 
 //dirs
 define("ROOT", "/var/www/");//remember ending backslash

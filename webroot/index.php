@@ -44,8 +44,6 @@ if (DEBUG)
  */
 function __autoload($class)
 {
-
-
 	//std classes
 	if ($incl = realpath(ROOT . str_replace('\\', '/', $class) . '.class.php')) {
 		include_once($incl);
@@ -82,12 +80,14 @@ function __autoload($class)
 			return;
 		}
 		trigger_error("unable to load class: $class in $incl", E_USER_WARNING);
+		return;
 	} //loading the helper
+
 	/**
 	 * @TODO if there is a file named controller in a subdir, it might course
 	 * problems...
 	 */
-	elseif ($path[0] == "helper") {
+	if ($path[0] == "helper") {
 		array_shift($path);
 		if (is_string($path))
 			$path = ROOT . 'helpers/' . $path;
@@ -107,8 +107,11 @@ function __autoload($class)
 			return;
 		} else
 			trigger_error("unable to load class: $class in " . implode('/', $path), E_USER_WARNING);
-	} //load an app
-	elseif ($path[0] == "app" || $path[0] == "rpc") {
+		return;
+	}
+
+	//load an app
+	if ($path[0] == "app" || $path[0] == "rpc") {
 		$prim = $path[0] == "app" ? ROOT . 'apps/' . $className . '/controller.class.php' :
 			ROOT . 'apps/' . $className . '/rpc.class.php';
 
@@ -119,45 +122,71 @@ function __autoload($class)
 		elseif (file_exists($alt))
 			require_once $alt; else
 			trigger_error("unable to load class: $class in $prim or $alt", E_USER_WARNING);
-	} //load an app api class
-	elseif ($path[0] == "api") {
+		return;
+	}
+
+	//load an app api class
+	if ($path[0] == "api") {
 		$path = ROOT . 'apps/' . $className . '/api.class.php';
 		if (file_exists($path))
 			require_once $path;
 		else
 			trigger_error("unable to load class: $class in $path", E_USER_WARNING);
-	} //load start
-	elseif ($path[0] == "start") {
-		$alt = ROOT . implode('/', $path) . '.class.php';
 
-		array_pop($path);
-		$p = implode("/", $path); //we are sure that the include is in start
-		$controller = ROOT . $p . '/controller.class.php';
-		$api = ROOT . $p . '/api.class.php';
+		return;
+	}
 
-		if (file_exists($controller) && file_exists($api)) {
-			require_once $controller;
-			require_once $api;
-		} elseif (file_exists($alt))
-			require_once($alt); else
-			trigger_error("unable to load profile API and controller. $controller , $api or alt $alt", E_USER_WARNING);
-	} elseif ($path[0] == "config") {
+
+
+	if ($path[0] == "config") {
 		array_unshift($path, STRATEGY);
 		$path[0] = 'config';
 		$path[1] = STRATEGY;
 		$file = ROOT . implode('/', $path) . '.class.php';
 		require_once $file;
+		return;
 
-	} else {
-		$alt = ROOT . implode('/', $path) . '.class.php';
-		if (file_exists($alt))
-			require_once $alt;
-		elseif (DEBUG) {
-			debug_print_backtrace();
-			trigger_error("Tried loading nonexisting class: $class from $alt", E_USER_NOTICE);
-		}
 	}
+
+	$alt = ROOT . implode('/', $path) . '.class.php';
+	if (file_exists($alt))
+		require_once $alt;
+	elseif (DEBUG) {
+		debug_print_backtrace();
+		trigger_error("Tried loading nonexisting class: $class from $alt", E_USER_NOTICE);
+	}
+
 	//can't debug in this function becouse of doubble __construct in singleton implementation :´(
+}
+
+/**
+ * the outoloader for the start objects
+ *
+ * structure as:
+ *
+ * start\profile\
+ *
+ * @param $class
+ */
+function autoload_start($class){
+	$path = explode("\\", $class);
+	if ($path[0] != "start")
+		return;
+
+	$alt = ROOT . implode('/', $path) . '.class.php';
+	array_pop($path);
+	$p = implode("/", $path); //we are sure that the include is in start
+	$controller = ROOT . $p . '/controller.class.php';
+	$api = ROOT . $p . '/api.class.php';
+
+	if (file_exists($controller) && file_exists($api)) {
+		require_once $controller;
+		require_once $api;
+	}
+	elseif (file_exists($alt))
+		require_once($alt);
+	else
+		trigger_error("unable to load profile API and controller. $controller , $api or alt $alt", E_USER_WARNING);
 }
 
 function autoload_type($class)
@@ -168,6 +197,8 @@ function autoload_type($class)
 		require_once(ROOT . 'exception/' . implode('/', $class) . '.interface.php');
 }
 
+
+spl_autoload_register('autoload_start');
 spl_autoload_register('__autoload');
 spl_autoload_register('autoload_type');
 /*

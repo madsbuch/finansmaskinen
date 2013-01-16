@@ -10,7 +10,6 @@ class invoice extends \core\rpc {
 	public $docs = array(
 		'add' => 'adds invoice from the Invoice model. Returns the invoice',
 		'addUBL' => 'takes an UBL invoice, and inserts it.',
-		
 		'pay' => 'takes invoice ID and sets state as payed'
 	);
 	
@@ -27,16 +26,9 @@ class invoice extends \core\rpc {
 	 *
 	 */
 	function create($invoice){
-		try{
-			$invoice = $this->invoiceObject($invoice);
-
-			$invoice = \api\invoice::create($invoice);
-			
-			$this->ret((string) $invoice->_id);
-		}
-		catch(\exception\UserException $e){
-			$this->throwException($e->getMessage());
-		}
+		$invoice = $this->invoiceObject($invoice);
+		$invoice = \api\invoice::create($invoice);
+		$this->ret((string) $invoice->_id);
 	}
 
     /**
@@ -50,14 +42,9 @@ class invoice extends \core\rpc {
      * @internal param $easyInvoice
      */
 	function simpleCreate($simpleInvoice){
-        try{
-            $invoice = new \model\finance\invoice\SimpleInvoice($simpleInvoice);
-            $invoice = \api\invoice::simpleCreate($invoice);
-            $this->ret((string) $invoice->_id);
-        }
-        catch(\Exception $e){
-            $this->throwException($e->getMessage() . "\n\n" . $e->getTraceAsString());
-        }
+        $invoice = new \model\finance\invoice\SimpleInvoice($simpleInvoice);
+        $invoice = \api\invoice::simpleCreate($invoice);
+        $this->ret((string) $invoice->_id);
 	}
 
 	function update($invoice){
@@ -71,10 +58,15 @@ class invoice extends \core\rpc {
 	/**
 	 * post an invoice to the accounting
 	 *
+	 * if the invoice is a draft, the system will finalize it (adding invoice number)
+	 *
 	 * @param $id
+	 * @throws \exception\UserException
+	 * @return void
 	 */
-	function post($id){
-		$this->throwException("not yet implemented");
+	function post($id, $asset, $amount = null){
+		\api\invoice::bookkeep($id, $asset, $amount);
+		$this->ret(array('success' => true));
 	}
 
 	/**

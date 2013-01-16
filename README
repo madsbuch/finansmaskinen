@@ -11,6 +11,7 @@ Et framework til at køre applikationssystemer
 7. feature suggestion
 8. update an installation
 9. create new localization
+10. Databases
 
 
 ::::::::::::: 1 :::::::::::::
@@ -106,3 +107,10 @@ static/js/language/ copy one of the existing, and translate all entries
 /localization/[localID]-settings.lan change the settings for this
 
 
+::::::::::::: 10 :::::::::::::
+MySQL is pretty self explainatory as of the schema design
+
+mongo should have following index:
+db          collection      field
+finance     contacts        contactID
+finance     products        productID

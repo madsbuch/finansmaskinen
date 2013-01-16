@@ -29,12 +29,8 @@ class accounting extends \core\rpc
      * @internal param null $accounting string
      */
 	function getAccounting($accountingID=null){
-		try {
-			$accounting = \api\accounting::retrieve($accountingID);
-			$this->ret($accounting->toArray());
-		} catch (\exception\UserException $e) {
-			$this->throwException($e->getMessage());
-		}
+		$accounting = \api\accounting::retrieve($accountingID);
+		$this->ret($accounting->toArray());
 	}
 
 	/**** Account abstractions ****/
@@ -45,13 +41,9 @@ class accounting extends \core\rpc
 	 */
 	function createAccount($account)
 	{
-		try {
-			$account = $this->prepareAccountObj($account);
-			\api\accounting::createAccount($account);
-			$this->ret(array('success' => true));
-		} catch (\exception\UserException $e) {
-			$this->throwException($e->getMessage());
-		}
+		$account = $this->prepareAccountObj($account);
+		\api\accounting::createAccount($account);
+		$this->ret(array('success' => true));
 	}
 
     /**
@@ -64,12 +56,8 @@ class accounting extends \core\rpc
      */
 	function getAccounts($ids = array(), $accounting = null)
 	{
-		try {
-			$acc = \api\accounting::getAccountsByIds($ids);
-			$this->ret($acc);
-		} catch (\exception\UserException $e) {
-			$this->throwException($e->getMessage());
-		}
+		$acc = \api\accounting::getAccountsByIds($ids);
+		$this->ret($acc);
 	}
 
 	/**
@@ -80,12 +68,8 @@ class accounting extends \core\rpc
 	 */
 	function getAccount($id, $accounting = null)
 	{
-		try {
-			$acc = \api\accounting::getAccount($id);
-			$this->ret($acc->toArray());
-		} catch (\Exception $e) {
-			$this->throwException($e->getMessage());
-		}
+		$acc = \api\accounting::getAccount($id);
+		$this->ret($acc->toArray());
 	}
 
 	/**
@@ -96,12 +80,8 @@ class accounting extends \core\rpc
 	 * @param $id string id of the account to delete
 	 */
 	public function deleteAccount($id = null){
-		try {
-			\api\accounting::deleteAccount($id);
-			$this->ret(array('success' => true));
-		} catch (\Exception $e) {
-			$this->throwException($e->getMessage());
-		}
+		\api\accounting::deleteAccount($id);
+		$this->ret(array('success' => true));
 	}
 
 	/**** daybook transactions abstracations ****/
@@ -110,57 +90,33 @@ class accounting extends \core\rpc
      * @param $transaction
      */
     function createTransaction($transaction){
-		try {
-			$transaction = new \model\finance\accounting\DaybookTransaction($transaction);
-			\api\accounting::importTransactions($transaction);
-			$this->ret(array('success' => true));
-		} catch (\exception\UserException $e) {
-			$this->throwException($e->getMessage());
-		} catch(\Exception $e){
-			$this->throwException($e->getMessage() . $e->getTraceAsString());
-		}
+		$transaction = new \model\finance\accounting\DaybookTransaction($transaction);
+		\api\accounting::importTransactions($transaction);
+		$this->ret(array('success' => true));
 	}
 
     /**** VAT abstractions ****/
 
 
 	function getVatCodes(){
-		try {
-			$codes = \api\accounting::getVatCodes();
-			$ret = array();
-			foreach($codes as $c)
-				$ret[] = $c->toArray();
-			$this->ret($ret);
-		} catch (\exception\UserException $e) {
-			$this->throwException($e->getMessage());
-		} catch(\Exception $e){
-			$this->throwException($e->getMessage() . $e->getTraceAsString());
-		}
+		$codes = \api\accounting::getVatCodes();
+		$ret = array();
+		foreach($codes as $c)
+			$ret[] = $c->toArray();
+		$this->ret($ret);
 	}
 
 	function getVatCode($code){
-		try {
-			$code = \api\accounting::getVatCode($code);
-			$this->ret($code->toArray());
-		} catch (\exception\UserException $e) {
-			$this->throwException($e->getMessage());
-		} catch(\Exception $e){
-			$this->throwException($e->getMessage() . $e->getTraceAsString());
-		}
+		$code = \api\accounting::getVatCode($code);
+		$this->ret($code->toArray());
 	}
 
     /**
      * returns vat statement object
      */
     function getVatStatement(){
-        try {
-            $statement = \api\accounting::getRapport('vatStatement');
-            $this->ret($statement->toArray());
-        } catch (\exception\UserException $e) {
-            $this->throwException($e->getMessage());
-        } catch(\Exception $e){
-            $this->throwException($e->getMessage() . $e->getTraceAsString());
-        }
+        $statement = \api\accounting::getRapport('vatStatement');
+        $this->ret($statement->toArray());
     }
 
     /**

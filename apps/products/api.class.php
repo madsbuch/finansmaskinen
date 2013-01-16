@@ -134,10 +134,11 @@ class products
 	 * returns products associated to groups that the user is a part of. if not
 	 * products from alle groups are needed, $grp may be specified
 	 *
-	 * @param    limit    how many elements are to be returned?
-	 * @param    start    start offset for returning element
-	 * @param    grp        only elements from specified groups this is an array
-	 *
+	 * @param null $sort
+	 * @param null $conditions
+	 * @param null $limit
+	 * @param null $start
+	 * @return array
 	 */
 	static function get($sort = null, $conditions = null, $limit = null)
 	{
@@ -146,6 +147,8 @@ class products
 			$products->setLimit($limit);
 		if ($sort)
 			$products->sort($sort);
+		if($conditions)
+			$products->addCondition($conditions);
 
 		return $products->getObjects('\model\finance\Product');
 	}
@@ -173,9 +176,13 @@ class products
 	}
 
 	/**
-	 * returns a single product object
+	 * fetches single object
 	 *
-	 * this also merges financial stuff in, if there is access
+	 * exception is thrown if doesn't exist
+	 *
+	 * @param $id
+	 * @return null
+	 * @throws \exception\UserException
 	 */
 	static function getOne($id)
 	{
@@ -185,7 +192,7 @@ class products
 
 		//the object oriented way
 		if (is_null($product))
-			throw new \exception\UserException(__('Product "%s" not found', $id));
+			throw new \exception\UserException(__('Product with objectID "%s" not found', $id));
 
 		//fetch catagory
 		$cat = self::getCatagory($product->catagoryID);
@@ -197,7 +204,21 @@ class products
 	}
 
     static function getByProductID($id){
-        throw new \Exception($id);
+        $ps = self::get(null, array('productID' => $id), 1);
+
+	    if(count($ps) != 1)
+		    throw new \exception\UserException(__('Product with ID "%s" not found', $id));
+
+	    $product = $ps[0];
+
+	    //fetch catagory
+	    $cat = self::getCatagory($product->catagoryID);
+
+	    $product->inclVat = $cat->TaxCategoryInclVat;
+	    $product->exclVat = $cat->TaxCategoryExclVat;
+
+	    return $product;
+
     }
 
 	/**
@@ -289,8 +310,12 @@ class products
             $obj->productID .= '-'.(time() % 1000000);
         }
 
-        if(!self::checkProductID($obj->productID))
-            throw new \exception\UserException(__('ProductID is not unique.'));
+	    $excl = null;
+	    if(!empty($obj->_id))
+		    $excl = (string) $obj->_id;
+
+        if(self::idExists($obj->productID, $excl))
+            throw new \exception\UserException(__('product id "%s" is already used.', $obj->productID));
 
         return $obj;
     }
@@ -299,8 +324,16 @@ class products
      * @param $id string representation of the unique id to check if in the db
      * @param $exclude documents to be excluded (their mongoID's)
      */
-    private static function checkProductID($id, $exclude = null){
-        return true;
+    private static function idExists($id, $exclude = null){
+	    try{
+		    $obj = self::getByProductID($id);
+		    if((string) $obj->_id === $exclude)
+			    return false;
+		    return true;
+	    }
+	    catch(\Exception $e){
+		    return false;
+	    }
     }
 }
 

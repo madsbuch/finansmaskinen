@@ -52,7 +52,7 @@ class View extends \helper\layout\LayoutBlock{
 
 		$p = isset($this->obj->Invoice->AccountingCustomerParty->Party) ? $this->obj->Invoice->AccountingCustomerParty->Party : null;
 		if($p){
-			$contact->appendChild(new \DOMElement('b', $p->PartyName->Name));
+			$contact->appendChild(new \DOMText($p->PartyName->Name));
 			$contact->appendChild(new \DOMElement('br'));
 			$contact->appendChild(new \DOMText($p->PostalAddress->StreetName . ' ' .
 				$p->PostalAddress->BuildingNumber));
@@ -81,7 +81,7 @@ class View extends \helper\layout\LayoutBlock{
 			'val' => $this->obj->isPayed ? 'Ja' : 'Nej')));
 
 		if(!($t = strtotime((string)$this->obj->Invoice->IssueDate)))
-			$t = (string)$this->obj->Invoice->IssueDate;
+			$t = (string) $this->obj->Invoice->IssueDate;
 		$info->addObject(new \model\Base(array('key' => 'Oprettet',
 			'val' => date('d/m-Y', $t))));
 		

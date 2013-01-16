@@ -373,11 +373,10 @@ class lodo
 	}
 
 	/**
-	 * get objects
+	 * returns array of objects
 	 *
-	 * returns an array of all the objects or null if none
-	 *
-	 * $type the model elements are returned as instances of
+	 * @param null $type
+	 * @return array
 	 */
 	public function getObjects($type = null)
 	{

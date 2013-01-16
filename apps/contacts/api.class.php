@@ -151,7 +151,7 @@ class contacts extends \core\api{
         $lodo->addCondition(array('contactID' => (string) $id));
         $ret = $lodo->getObjects();
         if(count($ret) < 1)
-            return null;
+            throw new \exception\UserException(__('product with id "%s" doesn\'t exist', $id));
         return $ret[0];
     }
 	
@@ -256,12 +256,15 @@ class contacts extends \core\api{
      * @param $exclude documents to be excluded (their mongoID's)
      */
     private static function idExists($id, $exclude = null){
-        $obj = self::getByContactID($id);
-        if(is_null($obj))
-            return false;
-        if((string) $obj->_id === $exclude)
-            return false;
-        return true;
+	    try{
+	        $obj = self::getByContactID($id);
+		    if((string) $obj->_id === $exclude)
+			    return false;
+		    return true;
+	    }
+	    catch(\Exception $e){
+		    return false;
+	    }
     }
 }
 

@@ -197,14 +197,20 @@ class invoice{
 
         if(!empty($invoice->date))
             $full->Invoice->IssueDate = $invoice->date;
+	    else
+		    $full->Invoice->IssueDate = date('c');
 
         //do some initialization
         $full->product = array();
         $full->Invoice->InvoiceLine = array();
 
         foreach($invoice->products as $key => $prod){
-            $full->product->$key->index = $key;
+            //the product object
+	        $full->product->$key->index = $key;
             $full->product->$key->id = $prod->productID;
+
+	        //the corrosponding object in the Invoice structure
+	        $full->Invoice->InvoiceLine->$key->ID = $key;
             $full->Invoice->InvoiceLine->$key->InvoicedQuantity = $prod->quantity;
         }
 
@@ -226,13 +232,18 @@ class invoice{
 		$lodo->update($invoice);
 		return $invoice;
 	}
-	
+
 	/**
-	* finalizes invoice
-	*
-	* called when an invoice is not marked as draft.
-	* takes an invoice object
-	*/
+	 * inserts invoice number and stuff
+	 *
+	 * after this action, the invoice cannot be deleted, and invoice number cannot
+	 * be updated
+	 *
+	 * @param \model\finance\Invoice $inv
+	 * @return \model\finance\Invoice
+	 * @throws \exception\UserException
+	 * @throws \Exception
+	 */
 	public static function finalize(\model\finance\Invoice $inv){
 		//finalization of invoice requires it to be a valid structure.
 		if($ret = $inv->validate($inv::WEAK))
@@ -294,9 +305,19 @@ class invoice{
 			'referenceText' => $inv->ref
 		);
 
-        //todo bookkeep to product system
+		//make sure the invoice is finalized before attempting to post to any systems
+		if(!isset($inv->Invoice->ID)){
+			$inv = self::finalize($inv);
+			self::update($inv);
+		}
 
+	    //todo bookkeep to product system
+
+
+		//post to financial system
 		\api\accounting::importTransactions($cats, $options);
+
+		//everything was an success
 		$inv->isPayed = true;
 		self::update($inv);
 	}
@@ -347,26 +368,28 @@ class invoice{
 		
 	}
 
-    /**
-     * This function does following to the invoice:
-     *  - parses all data
-     *  - validates that required fields are defined
-     *  - fetches data from other parts of the system to emrge in
-     *  - calculates totals
-     *
-     * if we talk an update, $old should contain the old invoice (which should be
-     * a full object)
-     *
-     * @param \model\finance\Invoice $inv
-     * @param bool $objectIDs
-     * @return \model\finance\Invoice
-     * @throws \exception\UserException
-     */
+	/**
+	 * This function does following to the invoice:
+	 *  - parses all data
+	 *  - validates that required fields are defined
+	 *  - fetches data from other parts of the system to emrge in
+	 *  - calculates totals
+	 *
+	 * if we talk an update, $old should contain the old invoice (which should be
+	 * a full object)
+	 *
+	 * @param \model\finance\Invoice $inv
+	 * @throws \exception\UserException
+	 * @return \model\finance\Invoice
+	 */
     private static function invoiceObject(\model\finance\Invoice $inv){
 		$core = new \helper\core('invoice');
 		// merge following details in:
 		//accountingSupplierParty, no reason to play with permissions
 		$supplier = \api\companyProfile::getPublic($core->getTreeID());
+
+	    //data integrity
+	    $inv->parse();
 
 		//performing parsing on structure
 		//strict validation is done upon creation, is UBL is to be used
@@ -387,113 +410,138 @@ class invoice{
 				* 86400) + $inv->Invoice->IssueDate->_content;
 		
 		//merge customer in
-		if(!empty($inv->contactID)){
-            if($inv->objectIDs)
-			    $contact = \api\contacts::getContact($inv->contactID);
-            else{
-                $contact = \api\contacts::getByContactID($inv->contactID);
-                $inv->contactID = (string) $contact->_id;
-            }
-			$party = $contact->Party;
-			$toMerge['Invoice']['AccountingCustomerParty']['Party'] = $party->toArray();
-			
-			//merge leagalnumbers in
-			foreach(self::$legalEntities as $id => $val){
-				if(isset($contact->legalNumbers->$id)){
-					$toMerge['Invoice']['AccountingCustomerParty']['Party']['PartyLegalEntity']
-						['CompanyID']['_content'] = $contact->legalNumbers->$id;
-					$toMerge['Invoice']['AccountingCustomerParty']['Party']['PartyLegalEntity']
-						['CompanyID']['schemeID'] = $val;
-				}	
-			}
-		}
-		
-		//some totals for the products:
-		$total = 0;
-		$vat = 0;
-		
-		//items from productlines
-		if(!empty($inv->product)){
-			foreach($inv->product as $i => &$prod){
-                //fetch external product
-                if(!empty($prod->id) && $inv->objectIDs)
-				    $p = \api\products::getOne($prod->id);
-                else{
-                    $p = \api\products::getByProductID($prod->id);
-                    $prod->id = (string) $p->_id;
-                }
+		$inv = self::mergeContact($inv);
+	    $inv = self::mergeProducts($inv);
 
-                //support for unitprice from the products
-                if(!isset($inv->Invoice->InvoiceLine->$i->Price->PriceAmount)){
-                    //TODO handle currencies (should we make a currency module allowin people to define their own?)
-                    $inv->Invoice->InvoiceLine->$i->Price->PriceAmount = $p->Price->PriceAmount;
-                }
+	    //all id's are rewritten to object ones, save that they are so
+	    $inv->objectIDs = true;
 
-
-                //for calculating total
-                $total += $t = $inv->Invoice->InvoiceLine->$i->Price->PriceAmount->_content *
-                    $inv->Invoice->InvoiceLine->$i->InvoicedQuantity->_content;
-
-				
-				if($p)//make it possible to make an invoice on not saved products
-					$toMerge['Invoice']['InvoiceLine'][$i]['Item'] = $p->Item->toArray();
-				
-				//set LineExtensionAmount
-				$toMerge['Invoice']['InvoiceLine'][$i]['LineExtensionAmount'] = $t;
-				
-				//here we need the taxcatagory class
-				$tc = $inv->vat ? 'inclVat' : 'exclVat';
-				$vatAcc = $p->$tc;
-				
-				//some taxes:
-				if($vatAcc){
-					$toMerge['Invoice']['InvoiceLine'][$i]['TaxTotal']
-						['TaxSubtotal']['TaxCategory']['Percent']['_content'] 
-							= $vatAcc->percentage;
-					$toMerge['Invoice']['InvoiceLine'][$i]['TaxTotal']
-						['TaxSubtotal']['TaxCategory']['ID'] 
-							= $vatAcc->taxcatagoryID;
-					$vat += 	
-						$toMerge['Invoice']['InvoiceLine'][$i]['TaxTotal']['TaxSubtotal']['TaxAmount'] = 
-						$toMerge['Invoice']['InvoiceLine'][$i]['TaxTotal']['TaxAmount'] = 
-						($t * (string) $vatAcc->percentage) / 100;
-					
-					$toMerge['Invoice']['InvoiceLine'][$i]['TaxTotal']['TaxSubtotal']['TaxableAmount'] = $t;
-				}
-			}
-        }
-
-        //all id's are rewritten to object ones, save that they are so
-        $inv->objectIDs = true;
-
-		//populate to full UBL invoice
-		
-		//set MonetaryTotal
-		$toMerge['Invoice']['LegalMonetaryTotal']['PayableAmount']['_content'] = $total+$vat;
-		$toMerge['Invoice']['LegalMonetaryTotal']['LineExtensionAmount']['_content'] = $total;
-		//@TODO implement rabatter
-		$toMerge['Invoice']['LegalMonetaryTotal']['AllowanceTotalAmount']['_content'] = 0;
-		
-		//some tax totals
-		$toMerge['Invoice']['TaxTotal'][0]['TaxSubtotal']['TaxableAmount']['_content'] = $total;
-		$toMerge['Invoice']['TaxTotal'][0]['TaxSubtotal']['TaxAmount']['_content'] = $vat;
-		
 		//merge data in
 		$inv->merge($toMerge);
 		
 		//finalize, if finished
 		if(!$inv->draft)
 			$inv = self::finalize($inv);
-		
+
+	    //make sure data integrity is as should be
+	    $inv->parse();
+
 		return $inv;
 	}
 
-    //for later refactoring
-    private static function mergeContact($inv){
+	/**
+	 * @param \model\finance\Invoice $inv
+	 * @return \model\finance\Invoice
+	 */
+	private static function mergeContact(\model\finance\Invoice $inv){
+	    //merge supplier data in
+	    $toMerge = array();
+	    //merge customer in
+	    if(!empty($inv->contactID)){
+		    if($inv->objectIDs)
+			    $contact = \api\contacts::getContact($inv->contactID);
+		    else{
+			    $contact = \api\contacts::getByContactID($inv->contactID);
+			    $inv->contactID = (string) $contact->_id;
+		    }
+		    $party = $contact->Party;
+		    $toMerge['Invoice']['AccountingCustomerParty']['Party'] = $party->toArray();
 
+		    //merge leagalnumbers in
+		    foreach(self::$legalEntities as $id => $val){
+			    if(isset($contact->legalNumbers->$id)){
+				    $toMerge['Invoice']['AccountingCustomerParty']['Party']['PartyLegalEntity']
+				    ['CompanyID']['_content'] = $contact->legalNumbers->$id;
+				    $toMerge['Invoice']['AccountingCustomerParty']['Party']['PartyLegalEntity']
+				    ['CompanyID']['schemeID'] = $val;
+			    }
+		    }
+	    }
+
+	    $inv->merge($toMerge);
+	    return $inv;
     }
-    private static function mergeProducts($inv){
 
+	/**
+	 * @param \model\finance\Invoice $inv
+	 * @return \model\finance\Invoice
+	 */
+	private static function mergeProducts(\model\finance\Invoice $inv){
+	    $toMerge = array();
+
+	    //some totals for the products:
+	    $total = 0;
+	    $vat = 0;
+	    if(!empty($inv->product)){
+		    foreach($inv->product as $i => &$prod){
+			    //fetch external product
+			    if(!empty($prod->id) && $inv->objectIDs)
+				    $p = \api\products::getOne($prod->id);
+			    else{
+				    $p = \api\products::getByProductID($prod->id);
+				    $prod->id = (string) $p->_id;
+			    }
+
+			    $unitPrice = null;
+			    //support for unitprice from the products
+			    if(!isset($inv->Invoice->InvoiceLine->$i->Price->PriceAmount)){
+				    //TODO handle currencies (should we make a currency module allowin people to define their own?)
+				    $unitPrice = $p->Price->PriceAmount->_content;
+				    $toMerge['Invoice']['InvoiceLine'][$i]['Price']['PriceAmount'] = $p->Price->PriceAmount;
+
+				    //TODO when parse is fully implemented, this should be taken into account
+				    $toMerge['product'][$i]['origAmount'] = $p->Price->PriceAmount->_content;
+				    $toMerge['product'][$i]['origValuta'] = $p->Price->PriceAmount->currency;
+			    }
+			    else
+				    $unitPrice = $inv->Invoice->InvoiceLine->$i->Price->PriceAmount->_content;
+
+			    //for calculating total
+			    $total += $t = $unitPrice * $inv->Invoice->InvoiceLine->$i->InvoicedQuantity->_content;
+
+
+			    if($p)//make it possible to make an invoice on not saved products
+				    $toMerge['Invoice']['InvoiceLine'][$i]['Item'] = $p->Item->toArray();
+
+			    //set LineExtensionAmount
+			    $toMerge['Invoice']['InvoiceLine'][$i]['LineExtensionAmount'] = $t;
+
+			    //here we need the taxcatagory class
+			    $tc = $inv->vat ? 'inclVat' : 'exclVat';
+			    $vatAcc = $p->$tc;
+
+			    //some taxes:
+			    if($vatAcc){
+				    $toMerge['Invoice']['InvoiceLine'][$i]['TaxTotal']
+				    ['TaxSubtotal']['TaxCategory']['Percent']['_content']
+					    = $vatAcc->percentage;
+				    $toMerge['Invoice']['InvoiceLine'][$i]['TaxTotal']
+				    ['TaxSubtotal']['TaxCategory']['ID']
+					    = $vatAcc->taxcatagoryID;
+				    $vat +=
+				    $toMerge['Invoice']['InvoiceLine'][$i]['TaxTotal']['TaxSubtotal']['TaxAmount'] =
+				    $toMerge['Invoice']['InvoiceLine'][$i]['TaxTotal']['TaxAmount'] =
+					    ($t * (string) $vatAcc->percentage) / 100;
+
+				    $toMerge['Invoice']['InvoiceLine'][$i]['TaxTotal']['TaxSubtotal']['TaxableAmount'] = $t;
+			    }
+		    }
+	    }
+
+	    //populate to full UBL invoice
+
+	    //set MonetaryTotal
+	    $toMerge['Invoice']['LegalMonetaryTotal']['PayableAmount']['_content'] = $total+$vat;
+	    $toMerge['Invoice']['LegalMonetaryTotal']['LineExtensionAmount']['_content'] = $total;
+	    //@TODO implement rabatter
+	    $toMerge['Invoice']['LegalMonetaryTotal']['AllowanceTotalAmount']['_content'] = 0;
+
+	    //some tax totals
+	    $toMerge['Invoice']['TaxTotal'][0]['TaxSubtotal']['TaxableAmount']['_content'] = $total;
+	    $toMerge['Invoice']['TaxTotal'][0]['TaxSubtotal']['TaxAmount']['_content'] = $vat;
+
+	    $inv->merge($toMerge);
+	    return $inv;
     }
 	
 }

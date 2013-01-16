@@ -32,6 +32,7 @@ class InvoiceTest extends UnitTestCase
     function testCreate(){
 		global $invoiceSimpleObject;
 		$ret = $this->client->simpleCreate($invoiceSimpleObject->toArray());
+	    $this->assertTrue(is_string($ret));
 		$this->insertedID = $ret['id'];
 	}
 
@@ -47,19 +48,22 @@ class InvoiceTest extends UnitTestCase
     /**
      * tests if invoice can be finalized
      */
+	/* TODO this
     function testFinalize(){
 	    $this->insertedInvoice->draft = false;
 		$this->client->update($this->insertedInvoice);
 	}
+	*/
 
     /**
      * and whether finalization does the right thing
-     */
+     *//*
     function testFinalizeIntegrity(){
 
-    }
+    }    */
 
 	function testBookkeep(){
+		//save some relevant account info
 		$this->client->post($this->insertedInvoice);
 	}
 

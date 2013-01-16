@@ -81,7 +81,7 @@ class reqHandler{
         /** just preexecution stuff **/
 
 		//setting some more variables
-		$mainPageClass = 'start\\'.$profile.'\main';
+		$mainPageClass = 'start\\'.$profile.'\\' . (($request->ui == 'app') ? 'main' : $request->ui);
         //sets default errorhandler
         $eh->setOutput(new $mainPageClass($request));
         $request = $api::beforeExecution($request);

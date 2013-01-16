@@ -26,6 +26,11 @@ class Date extends \model\AbstractModel{
 		if($t = strtotime($this->_content))
 			$this->_content = date("c", $t);
 	}
+
+	/**** some aux ****/
+	function getUnixTime(){
+		return strtotime($this->_content);
+	}
 }
 
 ?>
