@@ -94,22 +94,27 @@ class Vat
         //make sure this is atomic
         $pdo->beginTransaction();
 
+        //setup transaction
         $transaction = new \model\finance\accounting\DaybookTransaction();
         $transaction->date = date('c');
         $transaction->approved = true;
         $transaction->referenceText = 'VAT reset on ' . $transaction->date;
         $transaction->postings = array();
 
+        //get vat accounts
         $sth = $pdo->prepare($this->srv->queries->getSumsOnVatAccounts());
         if(!$sth->execute(array('accounting' => $this->srv->accounting, 'grp' => $this->srv->grp)))
             throw new \Exception("Was not abl to execute query.");
 
+        //initialize posting for holder account
         $holderPosting = new \model\finance\accounting\Posting();
         $holderPosting->account = $holderAccount;
         $holderPosting->positive = true;
 
         $c = 0;
         $holderAmount = 0;
+
+        //loop through all accounts
 		foreach($sth->fetchAll() as $v){
             //$v['type (1: sales, 2: bought), amount_in, amount_out, type']
             $diff = abs($v['amount_in'] - $v['amount_out']);

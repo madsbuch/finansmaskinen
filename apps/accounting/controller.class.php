@@ -383,6 +383,10 @@ class accounting extends \core\app{
         $this->output_header = $this->header->getHeader();
         $this->output_content = $ret;
     }
+
+    function vatPayed(){
+
+    }
 	
 	/**
 	* Required functions

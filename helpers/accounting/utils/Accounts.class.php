@@ -133,7 +133,7 @@ class Accounts
 
 	/**
 	 * @param $code
-	 * @return mixed
+	 * @return \model\finance\accounting\Account
 	 * @throws \exception\UserException
 	 */
 	function getAccountByCode($code){

@@ -98,6 +98,8 @@ class Account extends \model\AbstractModel
         $ret = array();
         if(!is_int($this->vatCode))
             $ret[] = 'Vat code needs to be set.';
+        if(!isset($this->type))
+            $ret[] = 'type needs to be set';
 
     }
 }

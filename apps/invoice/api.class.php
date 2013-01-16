@@ -408,7 +408,7 @@ class invoice{
 
 		if(isset($inv->Invoice->IssueDate->_content))
 			$toMerge['Invoice']['PaymentMeans'][0]['PaymentDueDate']['_content'] = ($supplier->dueDays
-				* 86400) + $inv->Invoice->IssueDate->_content;
+				* 86400) + $inv->Invoice->IssueDate->getUnixTime();
 		
 		//merge customer in
 		$inv = self::mergeContact($inv);

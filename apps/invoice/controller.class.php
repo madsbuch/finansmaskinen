@@ -200,9 +200,9 @@ class invoice extends \core\app
 			//parsing the time
 			if (isset($arr['Invoice']['IssueDate']))
 				$arr['Invoice']['IssueDate'] =
-					\DateTime::createFromFormat('d/m/Y', $arr['Invoice']['IssueDate'])->getTimestamp();
+					date('c', \DateTime::createFromFormat('d/m/Y', $arr['Invoice']['IssueDate'])->getTimestamp());
 			else
-				$arr['Invoice']['IssueDate'] = time();
+				$arr['Invoice']['IssueDate'] = date('c');
 
 
 			//note if the invoice is finished
