@@ -80,6 +80,7 @@ interface Queries
      *  amount_in
      *  amount_out
      *  type
+     *  account
      *
      * it requires following parameters:
      *  accounting

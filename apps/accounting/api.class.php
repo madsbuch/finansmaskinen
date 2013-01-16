@@ -43,6 +43,11 @@ class accounting
 	 */
 	static function on_getWidget()
 	{
+        $settings = self::getSettings();
+        $holderAccount = self::getAccount($settings->vatSettlementAccount);
+        if($holderAccount->income - $holderAccount->outgoing != 0)
+            return new \app\accounting\layout\finance\widgets\PayVat($holderAccount);
+
 		$accounts = self::getAccounts(true);
 		return new \app\accounting\layout\finance\widgets\Accounts($accounts);
 	}
@@ -485,12 +490,13 @@ class accounting
 	 * return a single account
 	 *
 	 * @param string $id
-	 */
+     * @return \model\finance\accounting\Account
+     */
 	static function getAccount($id)
 	{
 		$acc = self::retrieve();
 		$acc = new \helper\accounting((string)$acc->_id);
-		return $acc->getAccount($id);
+		return $acc->accounts()->getAccountByCode($id);
 	}
 
 	/**

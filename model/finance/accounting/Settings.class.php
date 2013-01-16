@@ -9,6 +9,7 @@ namespace model\finance\accounting;
 
 /**
  * class representing settings
+ * @property $vatSettlementAccount
  */
 class Settings extends \model\AbstractModel// implements \app\companyProfile\Settings
 {

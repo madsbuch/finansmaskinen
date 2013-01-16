@@ -275,7 +275,7 @@ class invoice{
 		$inv = self::getOne($id);
 
 		//make sure the invoice is finalized before attempting to post to any systems
-		if(!isset($inv->Invoice->ID)){
+		if(empty($inv->Invoice->ID)){
 			$inv = self::finalize($inv);
 			$inv->draft = false;
 			$inv = self::update($inv);
@@ -408,7 +408,7 @@ class invoice{
 
 		if(isset($inv->Invoice->IssueDate->_content))
 			$toMerge['Invoice']['PaymentMeans'][0]['PaymentDueDate']['_content'] = ($supplier->dueDays
-				* 86400) + $inv->Invoice->IssueDate->_content;
+				* 86400) + $inv->Invoice->IssueDate->getUnixTime();
 		
 		//merge customer in
 		$inv = self::mergeContact($inv);

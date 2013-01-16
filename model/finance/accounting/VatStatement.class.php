@@ -7,6 +7,17 @@
 
 namespace model\finance\accounting;
 
+/**
+ * @property $sales;
+ * @property $bought;
+ * @property $oil;
+ * @property $electricity;
+ * @property $naturalAndCityGas;
+ * @property $carbon;
+ * @property $co2;
+ * @property $water;
+ * @property $total;
+ */
 class VatStatement extends \model\AbstractModel{
 	/**
 	* version

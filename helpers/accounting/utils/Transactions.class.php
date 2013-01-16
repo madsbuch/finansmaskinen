@@ -61,49 +61,8 @@ class Transactions
      * @internal param bool $autocommit
      */
     function insertTransaction(\model\finance\accounting\DaybookTransaction $transaction){
-
 	    $this->addTransaction($transaction);
 	    $this->commit();
-
-		/*//throw an exception if anything is wrong
-		$this->validateTransaction($transaction);
-		$pdo = $this->db->dbh;
-		$pdo->beginTransaction();
-
-
-		//insert the transaction
-		$sthTrans = $pdo->prepare($this->queries->insertTransaction());
-		$sthTrans->execute(array(
-			'date' => $transaction->date,
-			'referenceText' => $transaction->referenceText,
-			'approved' => $transaction->approved,
-			'accounting_id' => $this->accounting,
-		));
-
-		//get transaction id for the postings
-		$transID = $pdo->lastInsertId();
-
-		$sth = $pdo->prepare($this->queries->insertPosting());
-		//stop if error
-		if(!$sth){
-			$pdo->rollback();
-			throw new \Exception('Some error happended? ' . implode($pdo->errorInfo()));
-		}
-
-		//insert all the postings
-		foreach ($transaction->postings as $p) {
-			$sth->execute( array(
-				'amount_in' => $p->positive ? $p->amount : 0,
-				'amount_out' => $p->positive ? 0 : $p->amount,
-				'grp' => $this->grp,
-				'transaction_id' => $transID,
-				'account' => $p->account));
-		}
-		//commit the rows, if everything wen't well
-		if (!$pdo->commit()){
-			$pdo->rollback();
-			throw new \exception\UserException(__('Insertion of transaction did not succeed'));
-		}*/
 	}
 
     /**
@@ -125,49 +84,59 @@ class Transactions
 	    try{
 		    //take all transactions
 		    foreach($this->transactions as $t){
-			    $this->validateTransaction($t);
-
-			    //insert the transaction
-			    $sthTrans = $pdo->prepare($this->queries->insertTransaction());
-			    $sthTrans->execute(array(
-				    'date' => $t->date,
-				    'referenceText' => $t->referenceText,
-				    'approved' => $t->approved,
-				    'accounting_id' => $this->accounting,
-			    ));
-
-			    //get transaction id for the postings
-			    $transID = $pdo->lastInsertId();
-
-			    $sth = $pdo->prepare($this->queries->insertPosting());
-			    //stop if error
-			    if(!$sth){
-				    $pdo->rollback();
-				    throw new \Exception('Some error happended? ' . implode($pdo->errorInfo()));
-			    }
-
-			    //insert all the postings
-			    foreach ($t->postings as $p) {
-				    $sth->execute( array(
-					    'amount_in' => $p->positive ? $p->amount : 0,
-					    'amount_out' => $p->positive ? 0 : $p->amount,
-					    'grp' => $this->grp,
-					    'transaction_id' => $transID,
-					    'account' => $p->account));
-			    }
-
+			    $this->nonTransactionalInsert($t, $pdo);
 		    }
 	    }catch(\Exception $e){
 		    $pdo->rollback();
 		    throw $e;
 	    }
 
-	    //commit the rows, if everything wen't well
+	    //commit the rows, if everything went well
 	    if (!$pdo->commit()){
 		    $pdo->rollback();
 		    throw new \exception\UserException(__('Insertion of transaction did not succeed'));
 	    }
+    }
 
+    /**
+     * inserts a transaction non transactional
+     *
+     * this should only be used, if transactions are handled elsewhere
+     *
+     * @param $transaction the transaction to insert
+     * @param $pdo a pro object to insert on
+     */
+    function nonTransactionalInsert($t, $pdo){
+        $this->validateTransaction($t);
+
+        //insert the transaction
+        $sthTrans = $pdo->prepare($this->queries->insertTransaction());
+        $sthTrans->execute(array(
+            'date' => $t->date,
+            'referenceText' => $t->referenceText,
+            'approved' => $t->approved,
+            'accounting_id' => $this->accounting,
+        ));
+
+        //get transaction id for the postings
+        $transID = $pdo->lastInsertId();
+
+        $sth = $pdo->prepare($this->queries->insertPosting());
+        //stop if error
+        if(!$sth){
+            $pdo->rollback();
+            throw new \Exception('Some error happended? ' . implode($pdo->errorInfo()));
+        }
+
+        //insert all the postings
+        foreach ($t->postings as $p) {
+            $sth->execute( array(
+                'amount_in' => $p->positive ? $p->amount : 0,
+                'amount_out' => $p->positive ? 0 : $p->amount,
+                'grp' => $this->grp,
+                'transaction_id' => $transID,
+                'account' => $p->account));
+        }
     }
 
 	/**
