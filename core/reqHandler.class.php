@@ -105,13 +105,11 @@ class reqHandler{
 			$objName = '\\'.$request->ui.'\\'.$request->app;
 
 		//create apphandler and set output handler for errors
-
-		try{
-			$appHandler = new $objName($request);
-		}
-		catch(\Exception $e){
+		if(!class_exists($objName))
 			throw new \exception\PageNotFoundException(__('App not found'));
-		}
+
+		$appHandler = new $objName($request);
+
 		if($appHandler instanceof \core\framework\Output)
 			$eh->setOutput($appHandler);
 
