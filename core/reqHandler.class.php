@@ -106,12 +106,9 @@ class reqHandler{
 
 		//create apphandler and set output handler for errors
 
-		try{
-			$appHandler = new $objName($request);
-		}
-		catch(\Exception $e){
+		if(!class_exists($appHandler, true))
 			throw new \exception\PageNotFoundException(__('App not found'));
-		}
+
 		if($appHandler instanceof \core\framework\Output)
 			$eh->setOutput($appHandler);
 

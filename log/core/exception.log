@@ -632,3 +632,7 @@
 2013-01-17T19:00:16+00:00 ERROR {"message":"Page resources does not exist in app start\\finance\\main.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
 2013-01-17T19:09:56+00:00 ERROR {"message":"Page resources does not exist in app start\\finance\\main.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
 2013-01-17T19:09:57+00:00 ERROR {"message":"Page resources does not exist in app start\\finance\\main.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:31:46+00:00 ERROR {"message":"Page resources does not exist in app start\\finance\\main.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:31:46+00:00 ERROR {"message":"Page resources does not exist in app start\\finance\\main.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:44:39+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:44:40+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
