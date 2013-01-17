@@ -245,6 +245,10 @@ class invoice{
 	 * @throws \Exception
 	 */
 	public static function finalize(\model\finance\Invoice $inv){
+		//check if finalization is done
+        if(isset($inv->Invoice->ID))
+            return $inv;
+
 		//finalization of invoice requires it to be a valid structure.
 		if($ret = $inv->validate($inv::WEAK))
 			throw new \exception\UserException(__('The invoice was not validated: %s', implode(', ', $ret)));

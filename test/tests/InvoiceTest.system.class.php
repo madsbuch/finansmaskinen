@@ -79,7 +79,7 @@ class InvoiceTest extends UnitTestCase
 
 	    $diff = $amountAfter - $amountBefore;
 
-	    $this->assertTrue($diff == $invoiceSimpledata['bank'], 'diff was: '. $diff);
+	    $this->assertTrue($diff == $invoiceSimpledata['totalPrice'], 'diff was: '. $diff .' expected: ' . $invoiceSimpledata['totalPrice']);
     }
 
 	//endregion
