@@ -384,8 +384,24 @@ class accounting extends \core\app{
         $this->output_content = $ret;
     }
 
-    function vatPayed(){
+	function resetVat(){
+		\api\accounting::resetVat();
 
+		$this->header->redirect('/');
+		$this->output_header = $this->header->getHeader();
+		$this->output_content = '';
+
+	}
+
+	/**
+	 * @param null $account
+	 */
+	function vatPayed($account = null){
+	    \api\accounting::payVat($account);
+
+	    $this->header->redirect('/');
+	    $this->output_header = $this->header->getHeader();
+	    $this->output_content = '';
     }
 	
 	/**

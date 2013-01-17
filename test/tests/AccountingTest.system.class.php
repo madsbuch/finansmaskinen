@@ -184,9 +184,9 @@ class AccountingTest extends UnitTestCase
 	 * attempts to mark vat as payed
 	 */
 	function testVatMarkAsPayed(){
-        //attempt to mark vat as payed
-
-
+		global $invoiceSimpledata;
+		$ret = $this->client->payVat($invoiceSimpledata['bank']);
+		$this->assertTrue($ret['success']);
 	}
 
 

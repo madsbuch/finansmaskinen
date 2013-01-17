@@ -130,8 +130,9 @@ class accounting extends \core\rpc
     /**
      * marks vat as payed
      */
-    function payVat(){
-
+    function payVat($assetAccount){
+	    \api\accounting::payVat($assetAccount);
+	    $this->ret(array('success' => true));
     }
 
 	/**** Private aux ****/

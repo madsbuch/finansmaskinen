@@ -94,57 +94,67 @@ class Vat
         //make sure this is atomic
         $pdo->beginTransaction();
 
-        //setup transaction
-        $transaction = new \model\finance\accounting\DaybookTransaction();
-        $transaction->date = date('c');
-        $transaction->approved = true;
-        $transaction->referenceText = 'VAT reset on ' . $transaction->date;
-        $transaction->postings = array();
+		try{
+	        //setup transaction
+	        $transaction = new \model\finance\accounting\DaybookTransaction();
+	        $transaction->date = date('c');
+	        $transaction->approved = true;
+	        $transaction->referenceText = 'VAT reset on ' . $transaction->date;
+	        $transaction->postings = array();
 
-        //get vat accounts
-        $sth = $pdo->prepare($this->srv->queries->getSumsOnVatAccounts());
-        if(!$sth->execute(array('accounting' => $this->srv->accounting, 'grp' => $this->srv->grp)))
-            throw new \Exception("Was not abl to execute query.");
+	        //get vat accounts
+	        $sth = $pdo->prepare($this->srv->queries->getSumsOnVatAccounts());
+	        if(!$sth->execute(array('accounting' => $this->srv->accounting, 'grp' => $this->srv->grp)))
+	            throw new \Exception("Was not abl to execute query.");
 
-        //initialize posting for holder account
-        $holderPosting = new \model\finance\accounting\Posting();
-        $holderPosting->account = $holderAccount;
-        $holderPosting->positive = true;
+	        //initialize posting for holder account
+	        $holderPosting = new \model\finance\accounting\Posting();
+	        $holderPosting->account = $holderAccount;
 
-        $c = 0;
-        $holderAmount = 0;
+	        $c = 0;
+	        $holderAmount = 0;
 
-        //loop through all accounts
-		foreach($sth->fetchAll() as $v){
-            //$v['type (1: sales, 2: bought), amount_in, amount_out, type']
-            $diff = abs($v['amount_in'] - $v['amount_out']);
+	        //loop through all accounts
+			foreach($sth->fetchAll() as $v){
+	            //$v['type (1: sales, 2: bought), amount_in, amount_out, type, account']
+	            $diff = abs($v['amount_in'] - $v['amount_out']);
 
-            switch ($v['type']) {
-                case 1:
-                    $holderAmount += $v['amount_in'] - $v['amount_out'];
-                    break;
-                case 2:
-                    $holderAmount -= $v['amount_in'] - $v['amount_out'];
-                    break;
-            }
+				//some accounts might have 0
+				if($diff == 0)
+					continue;
 
-            //create the posting to reset this account
-            $posting = new \model\finance\accounting\Posting();
-            $posting->account = $v['account'];
-            $posting->amount = $diff;
-            $posting->positive = false;
+	            switch ($v['type']) {
+	                case 1:
+	                    $holderAmount += $v['amount_in'] - $v['amount_out'];
+	                    break;
+	                case 2:
+	                    $holderAmount -= $v['amount_in'] - $v['amount_out'];
+	                    break;
+	            }
 
-            $transaction->postings->$c = $posting;
-            $c++;
-        }
+	            //create the posting to reset this account
+	            $posting = new \model\finance\accounting\Posting();
+	            $posting->account = $v['account'];
+	            $posting->amount = $diff;
+	            $posting->positive = false;
 
-        //finish the holer posting
-        $holderPosting->amount = $holderAmount;
-        $transaction->postings->$c = $holderPosting;
+	            $transaction->postings->$c = $posting;
+	            $c++;
+	        }
 
-		//add the differences to the holderAccount
-        $this->srv->controller->transaction()->nonTransactionalInsert($transaction, $pdo);
+	        //finish the holer posting
+			$holderPosting->positive = $holderAmount > 0;
+			$holderAmount = abs($holderAmount);
+			$holderPosting->amount = $holderAmount;
+	        $transaction->postings->$c = $holderPosting;
 
+			//add the differences to the holderAccount
+	        $this->srv->controller->transaction()->nonTransactionalInsert($transaction, $pdo);
+
+		}catch(\Exception $e){
+			$pdo->rollback();
+			throw $e;
+		}
         $pdo->commit();
 	}
 
@@ -156,6 +166,39 @@ class Vat
      * @param $assetAccount
      */
     function vatPayed($holderAccount, $assetAccount){
+		//get account for holder
+	    $holder = $this->srv->controller->accounts()->getAccountByCode($holderAccount);
+
+	    //find out what to post
+	    $diff = abs($holder->income - $holder->outgoing);
+	    $holderUp = $holder->income < $holder->outgoing;
+
+	    if($diff == 0)
+		    return;
+
+	    //initialize transaction
+	    $transaction = new \model\finance\accounting\DaybookTransaction();
+	    $transaction->approved = true;
+	    $transaction->date = date('c');
+	    $transaction->referenceText = 'VAT marked as payed ' . $transaction->date;
+	    $transaction->postings = array();
+
+	    //create postings
+	    $hPost = new \model\finance\accounting\Posting();
+	    $hPost->account = $holderAccount;
+	    $hPost->positive = $holderUp;
+	    $hPost->amount = $diff;
+
+	    $aPost = new \model\finance\accounting\Posting();
+	    $aPost->account = $assetAccount;
+	    $aPost->positive = $holderUp;
+	    $aPost->amount = $diff;
+
+	    $transaction->postings->a = $hPost;
+	    $transaction->postings->b = $aPost;
+
+	    //attempt to insert
+	    $this->srv->controller->transaction()->insertTransaction($transaction);
 
 	}
 

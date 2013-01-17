@@ -572,7 +572,7 @@ class accounting
         $settings = self::getSettings();
 		$acc = self::retrieve();
 		$acc = new \helper\accounting((string)$acc->_id);
-		$acc->vat()->vatPayed($assetAccount);
+		$acc->vat()->vatPayed($settings->vatSettlementAccount, $assetAccount);
 	}
 
 	/**** RAPPORTS ****/

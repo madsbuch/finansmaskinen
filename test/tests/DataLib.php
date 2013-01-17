@@ -241,7 +241,8 @@ $invoiceSimpleObject = new \model\finance\invoice\SimpleInvoice(array(
 ));
 $invoiceSimpledata = array(
 
-	'bank' => 93125
+	'bank' => 12320,
+	'holder' => 14260
 
 );
 

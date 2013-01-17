@@ -59,7 +59,7 @@ class InvoiceTest extends UnitTestCase
      *//*
     function testFinalizeIntegrity(){
 
-    }    */
+    }*/
 
 	function testPosting(){
 		//save some relevant account info
