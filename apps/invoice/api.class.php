@@ -419,10 +419,10 @@ class invoice{
 
 		//merge data in
 		$inv->merge($toMerge);
-		
+
 		//finalize, if finished
-		if(!$inv->draft)
-			$inv = self::finalize($inv);
+        if(!$inv->draft)
+            $inv = self::finalize($inv);
 
 	    //make sure data integrity is as should be
 	    $inv->parse();

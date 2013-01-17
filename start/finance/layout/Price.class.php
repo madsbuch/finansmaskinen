@@ -15,10 +15,10 @@ class Price extends \helper\layout\LayoutBlock {
 	}
 	
 	function generate(){
-		return '<header class="jumbotron subhead" id="overview">
+		/*return '<header class="jumbotron subhead" id="overview">
 		<h1>Priser</h1>
 		<p class="lead">Forskellige virksomheder, forskellige prismodeller.</p>
-	</header><p>Kommer senere</p>';
+	</header><p>Kommer senere</p>';*/
 		return '
 	<header class="jumbotron subhead" id="overview">
 		<h1>Priser</h1>
@@ -97,6 +97,52 @@ class Price extends \helper\layout\LayoutBlock {
 	</div>
 	<hr />
 	<div class="row">
+	    <div class="span12">
+			<h3>Standardmoduler</h3>
+			<p>Alle moduler der følger med til en standard installation.</p>
+			<table class="table table-striped table-condensed">
+				<thead>
+					<tr>
+						<th>Modul</th>
+						<th>Beskrivelse</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Regnskab</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Regnskabshjælp</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Kontakter</td>
+						<td>Administrering af debitorer og kreditorer</td>
+					</tr>
+					<tr>
+						<td>Produkter</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Fakturering</td>
+						<td>Send fakturaer</td>
+					</tr>
+					<tr>
+						<td>Regninger</td>
+						<td>Indskriv regninger og hold styr på bilag</td>
+					</tr>
+					<tr>
+						<td>Nemhandel integration</td>
+						<td>Send fakturaer over nemhadenl systemet.*</td>
+					</tr>
+				</tbody>
+			</table>
+			<p>*Der er en fairuse grænse på nemhandel, så der maks kan modtages 50 dokumenter om måneden. Skal du bruge
+			flere er du velkommen til at kontakte os.</p>
+		</div>
+
+
 		<div class="span12">
 			<h3>Tilvalgsmoduler</h3>
 			<p>Her ser du moduler der er mulige at få koblet til. De der er gratis,
@@ -142,51 +188,6 @@ class Price extends \helper\layout\LayoutBlock {
 					</tr>
 				</tbody>
 			</table>
-		</div>
-
-		<div class="span12">
-			<h3>Standardmoduler</h3>
-			<p>Alle moduler der følger med til en standard installation.</p>
-			<table class="table table-striped table-condensed">
-				<thead>
-					<tr>
-						<th>Modul</th>
-						<th>Beskrivelse</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Regnskab</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Regnskabshjælp</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Kontakter</td>
-						<td>Administrering af debitorer og kreditorer</td>
-					</tr>
-					<tr>
-						<td>Produkter</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Fakturering</td>
-						<td>Send fakturaer</td>
-					</tr>
-					<tr>
-						<td>Regninger</td>
-						<td>Indskriv regninger og hold styr på bilag</td>
-					</tr>
-					<tr>
-						<td>Nemhandel integration</td>
-						<td>Send fakturaer over nemhadenl systemet.*</td>
-					</tr>
-				</tbody>
-			</table>
-			<p>*Der er en fairuse grænse på nemhandel, så der maks kan modtages 50 dokumenter om måneden. Skal du bruge
-			flere er du velkommen til at kontakte os.</p>
 		</div>
 	</div>';
 	}

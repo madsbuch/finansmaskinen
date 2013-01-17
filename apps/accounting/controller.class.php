@@ -396,8 +396,17 @@ class accounting extends \core\app{
 	/**
 	 * @param null $account
 	 */
-	function vatPayed($account = null){
-	    \api\accounting::payVat($account);
+	function vatPayed(){
+
+        $input = new \helper\parser\Post('model\Base');
+        $input->alterArray(function ($arr) {
+            $arr['AccountCode'] = (int)$arr['AccountCode'];
+            return $arr;
+        });
+
+        $input = $input->getObj();
+
+	    \api\accounting::payVat($input->AccountCode);
 
 	    $this->header->redirect('/');
 	    $this->output_header = $this->header->getHeader();

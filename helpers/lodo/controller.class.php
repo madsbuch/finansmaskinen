@@ -310,14 +310,16 @@ class lodo
 		return $obj;
 	}
 
-	/**
-	 * partially updates a document
-	 */
-	function update($obj)
+    /**
+     * updates an document, and saves it to the database.
+     *
+     * @param $obj
+     * @return mixed
+     * @throws \Exception
+     */
+    function update($obj)
 	{
 		//@TODO check permissions
-
-
 
 		$obj = $this->getArray($obj);
 		if (!$obj['_id'])
@@ -357,6 +359,7 @@ class lodo
 	 * transperant compared to the mongo one
 	 *
 	 * wraps it in the object set
+     * @return \model\AbstractModel
 	 */
 	function findOne()
 	{

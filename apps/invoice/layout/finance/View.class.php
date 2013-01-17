@@ -128,12 +128,13 @@ class View extends \helper\layout\LayoutBlock{
 		));
 		$info->setIterator($this->obj->Invoice->InvoiceLine);
 		$left->appendChild(\helper\html::importNode($dom, $info->generate()));
-		
-		if($this->obj->draft)
+
+		if($this->obj->draft){
 			$left->appendChild(\helper\html::importNode($dom, 
 				'<a class="btn btn-success btn-large" href="/invoice/edit/'.$this->obj->_id.
 				'">Færdiggør faktura</a> '));
-		elseif(!$this->obj->isPayed)
+        }
+        elseif(!$this->obj->isPayed){
 			$left->appendChild(\helper\html::importNode($dom, 
 				'<a class="btn btn-success btn-large" data-toggle="modal"
 					 href="#applyPayment">Marker som betalt og bogfør</a>
@@ -164,6 +165,7 @@ class View extends \helper\layout\LayoutBlock{
 </div>
 				
 				'));
+        }
 		
 		
 		//populating the widgets

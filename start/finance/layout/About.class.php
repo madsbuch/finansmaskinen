@@ -43,7 +43,7 @@ class About extends \helper\layout\LayoutBlock {
 
 		<div class="row" id="apps">
 			<div style="height:40px;" />
-			<h2>Moduler <small>Til ethvert formål.</small></h2>
+			<h2>Finansmaskinen <small>Til ethvert formål.</small></h2>
 			<div class="span5">
 				<h3>Ordremodul</h3>
 				<p>Vil du gerne at dine kunder kan placere en ordre ved dig? med dette modul er dette let og overskueligt.

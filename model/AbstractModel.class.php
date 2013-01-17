@@ -220,7 +220,7 @@ abstract class AbstractModel{
 	function merge($data, $overwrite=false){
 		foreach($data as $k => $v){
 			//if value isn't set, or overwrrite is used, do it
-			if((!isset($this->$k) || $overwrite) && !empty($v))
+			if((!isset($this->$k) && !empty($v)) || $overwrite)
 				$this->set($k, $v); //set the value
 			//check if we should propergate down
 			elseif(is_object($this->$k)
