@@ -106,7 +106,7 @@ class Accounts extends \helper\layout\LayoutBlock implements \helper\layout\Widg
 			$btn->setAttribute('style', 'text-align:right;position:absolute;bottom:10px;right:10px;width:50%;');
 			$btn->appendChild(
 				$this->importNode('<a href="/accounting/vat"
-					class="btn btn-primary">Angiv moms</a>', $this->edom));
+					class="btn btn-primary">'.__('VAT statement').'</a>', $this->edom));
 			
 			$this->wrapper->appendChild(
 				$this->importNode('

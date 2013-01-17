@@ -29,10 +29,20 @@ class Home extends \helper\layout\LayoutBlock {
 
 				<div class="hero-unit visible-desktop">
 					<h1>Velkommen</h1>
-					<p>Finansmaskinen er det nye regnskabsprogram til små virksomheder
-					og individuelle personer, der har brug for at føre regnskab og sende fakturaer</p>
-					<p>Det vi kan, er at være enormt brugervenlige og have en prismodel der er venlig
-					overfor små virksomheder.</p>
+					<p>
+					    Finansmaskinen er et enkelt og uforpligtende regnskabssystem. Systemet er for dig der ønsker at
+					    få styr på din økonomi på en hurtig og simpel måde.
+					</p>
+
+                    <p>
+                        Systemet er gratis for de 5 første fakturaer og regninger hver måned og du skal derfor ikke betale,
+                        hvis ikke du bruger mere.
+                    </p>
+
+                    <p>
+                        Dette betyder at du kan fokusere på udviklingen af din virksomhed i stedet for at koncentrere dig
+                        om at holde styr på moms, varelager og bogholderi.
+                    </p>
 					<a href="/index/about" class="btn btn-primary btn-large">Læs mere</a>
 				</div>
 			</div>

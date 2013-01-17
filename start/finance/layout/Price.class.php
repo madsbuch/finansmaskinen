@@ -15,10 +15,10 @@ class Price extends \helper\layout\LayoutBlock {
 	}
 	
 	function generate(){
-		/*return '<header class="jumbotron subhead" id="overview">
+		return '<header class="jumbotron subhead" id="overview">
 		<h1>Priser</h1>
 		<p class="lead">Forskellige virksomheder, forskellige prismodeller.</p>
-	</header><p>Kommer senere</p>';*/
+	</header><p>Kommer senere</p>';
 		return '
 	<header class="jumbotron subhead" id="overview">
 		<h1>Priser</h1>

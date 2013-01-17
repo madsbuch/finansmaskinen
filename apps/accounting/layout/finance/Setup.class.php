@@ -67,7 +67,7 @@ EOF;
 </header>
 <form action="/accounting/setup/done" method="post">
 	<div class="row">
-		<div class="well span5">
+		<div class="app-box span4">
 			<h2>Kontoplan</h2>
 			<p>For at holde styr på strømningerne af ens penge, sætter man nogle konti
 			op. Vi har lavet nogle standardkontoplaner, så du hurtigt kan komme igang.</p>
@@ -101,7 +101,7 @@ EOF;
 			</div>
 			
 		</div>
-		<div class="well span6">
+		<div class="app-box span4">
 			<h2>Regnskabsperiode</h2>
 			<p>Typisk starter et regnskab d. 1 januar og slutter d. 31 december,
 			men i visse tilfælde er det anderlede</p>
@@ -119,9 +119,7 @@ EOF;
 			</div>
 
 		</div>
-	</div>
-	<div class="row">
-		<div class="well form-inline span5">
+		<div class="app-box form-inline span4">
 			<h2>Momsperioder</h2>
 			<p>Moms skal indbetales til staten efter endt momsperiode. Vi vil
 			gerne vide hvornår du skal betale moms, så vi kan give dig en påmindelse</p>
@@ -129,13 +127,20 @@ EOF;
 			<input type="checkbox" name="vatQuater" class="checkbox" data-checkedLabel="Kvartalsmoms"
 				data-uncheckedLabel="Halvårsmoms" checked="checked" />
 		</div>
+
+	</div>
+
+
+
+	<div class="row">
+<!--
 		
 		<div class="well span6">
 			<h2>En kat</h2>
 			<img src="http://placekitten.com/g/400/100" style="width:100%;" />
 		</div>
+		-->
 	</div>
-
 	<span class="offset2">
 		<input type="submit" class="btn btn-primary btn-large offset3 span6" value="Videre" />
 	</span>
