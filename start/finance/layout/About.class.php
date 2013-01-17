@@ -69,7 +69,7 @@ class About extends \helper\layout\LayoutBlock {
 
             <div class="span5">
                 <a href="http://twitter.com/Finansmaskinen">
-                    <img src="http://static.finansmaskinen.dev/templates/finance/images/social/twitter.png" />
+                    <img src="'.$domain.'/templates/finance/images/social/twitter.png" />
                 </a>
                 <a href="http://www.facebook.com/pages/Finansmaskinendk/138902266186710">
                     <img src="'.$domain.'/templates/finance/images/social/facebook.png" />
