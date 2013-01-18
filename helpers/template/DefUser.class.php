@@ -112,7 +112,9 @@ class DefUser extends \helper\template\base\HTML{
 	}
 	
 	public function setCompany($title, $link){
-		$a = $this->dom->createElement('a', $title);
+		$t = new \DOMText($title);
+		$a = $this->dom->createElement('a');
+		$a->appendChild($t);
 		$a->setAttribute('href', $link);
 		
 		$this->dom->getElementById('companyItem')->appendChild($a);
@@ -120,7 +122,11 @@ class DefUser extends \helper\template\base\HTML{
 	
 	public function addCompanyList($title, $link){
 		$element = $this->dom->createElement('li');
-		$a = $this->dom->createElement('a', $title);
+
+		$t = new \DOMText($title);
+		$a = $this->dom->createElement('a');
+		$a->appendChild($t);
+
 		$a->setAttribute('href', $link);
 		$element->appendChild($a);
 		
