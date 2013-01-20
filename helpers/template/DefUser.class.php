@@ -5,23 +5,39 @@ namespace helper\template;
 class DefUser extends \helper\template\base\HTML{
 	
 	protected $addJsIncludes = array(
-		'/js/language/da_DK.js',//language,
-		'/bootstrap/js/jquery.js',
+		//language,
+		'/js/language/da_DK.js',
+
+		//framework
+		'/bootstrap/js/jquery.min.js',
+		'/bootstrap/js/bootstrap.js',
+
+		//plugins
 		'/js/plugins/jquery.placeholder.min.js',//IE placeholders, 
 		'/js/plugins/iphone-style-checkboxes.js',
-		'/bootstrap/js/bootstrap-transition.js',
-		'/bootstrap/js/bootstrap-alert.js',
-		'/bootstrap/js/bootstrap-modal.js',
-		'/bootstrap/js/bootstrap-dropdown.js',
-		'/bootstrap/js/bootstrap-tooltip.js',
-		'/bootstrap/js/bootstrap-popover.js',
+		//'/bootstrap/js/bootstrap-transition.js',
+		//'/bootstrap/js/bootstrap-alert.js',
+		//'/bootstrap/js/bootstrap-modal.js',
+		//'/bootstrap/js/bootstrap-dropdown.js',
+		//'/bootstrap/js/bootstrap-tooltip.js',
+		//'/bootstrap/js/bootstrap-popover.js',
 		'/js/plugins/jquery.dataTables.min.js',
 		'/js/plugins/jquery.dataTables.paging.js',
-		'/bootstrap/js/bootstrap-button.js',
+		//'/bootstrap/js/bootstrap-button.js',
 		'/js/libs/jquery-ui-1.8.17.custom.min.js',
 		'/js/plugins/picker.jquery.js',
 		'/js/plugins/jquery.pageguide.js',
-		'/bootstrap/js/application.js',
+
+
+		//some plugins
+		'/js/plugins/jquery.sheepItPlugin-1.0.0.min.js',
+		'/bootstrap/js/bootstrap-modal.js',
+		'/js/plugins/bootstrap-datepicker.js',
+		'/js/plugins/jquery.form.js',
+
+		//and customization
+		'/templates/finance/js/application.js',
+		'/templates/finance/js/init.js',
 	);
 	
 	protected $addCSSIncludes = array(
@@ -29,7 +45,7 @@ class DefUser extends \helper\template\base\HTML{
 		'/bootstrap/css/bootstrap-responsive.css',
 		'/css/plugins/iphone-style-checkboxes.css',
 		'/css/plugins/jquery.pageguide.css',
-		'/bootstrap/css/app.css',
+		'/templates/finance/css/app.css',
 	);
 	
 	protected $addCSS = '

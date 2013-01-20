@@ -12,7 +12,7 @@
 /**
  * actually the only thing that should be changed when in prod.
  */
-define('STRATEGY', 'production');
+define('STRATEGY', 'test');
 include '../config/'.STRATEGY.'/config.php';
 
 //some character settings:

@@ -43,6 +43,18 @@ class Catagory extends \model\AbstractModel{
 	protected $TaxCategoryInclVat;
 	protected $TaxCategoryExclVat;
 
+
+	/**
+	 * storage account, an account that holds the asset while on storage, asset
+	 * equity account the same amount is posted on
+	 *
+	 * income account  account salesprice is posted on when a unit is sold
+	 * expense account account costprice is posted on when a unit is sold
+	 *
+	 *
+	 *
+	 */
+
 	/**** Some other stuff ****/
 
 	protected $name;

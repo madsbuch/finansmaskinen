@@ -5,14 +5,6 @@ namespace app\invoice\layout\finance;
 use \helper\local as l;
 
 class Form extends \helper\layout\LayoutBlock{
-	
-	public $addJsIncludes = array(
-		'/bootstrap/js/bootstrap-modal.js',
-		'/js/plugins/jquery.sheepItPlugin-1.0.0.min.js',
-		'/js/plugins/bootstrap-datepicker.js',
-		'/js/plugins/jquery.form.js',
-		'/bootstrap/js/init.js',
-	);
 
     public $tutorialSlides = array(
         '#contactTutorial' => 'Kontakten der skal modtage fakturaen. Selv om kontaken kun skal have en, kan du endelig oprette den.',

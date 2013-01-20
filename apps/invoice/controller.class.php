@@ -136,15 +136,18 @@ class invoice extends \core\app
 	}
 
 	/**
-	 * exports invoice as mode
+	 * reads template and output from http parameters, and outputs as requested type with requested template
+	 *
+	 * @param null $id id of invoice
 	 */
 	function export($id = null)
 	{
-		$mode = $this->param['template'];
-		$data = \api\invoice::transform($id, $mode);
-		$this->header->setMime($mode);
+		$template = $this->param['template'];
+		$output = $this->param['output'];
+		$data = \api\invoice::transform($id, $template, $output);
+		$this->header->setMime($output);
 
-		if ($mode == 'pdf')
+		if ($output == 'pdf')
 			$this->header->download(__('Invoice') . '.pdf');
 
 		$this->output_header = $this->header->getHeader();
@@ -152,6 +155,20 @@ class invoice extends \core\app
 	}
 
 	/**** AJAX FUNCTION *****/
+
+	/**
+	 * mails an invoice
+	 *
+	 * param['template'] : the template
+	 * param[mail] : the mail
+	 * param['message'] : evt. message
+	 * param[subject] : the subject
+	 *
+	 * @param null $id
+	 */
+	function mailInvoice($id = null){
+
+	}
 
 	/**
 	 * register invoice as payed

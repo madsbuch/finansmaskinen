@@ -5,9 +5,10 @@ namespace helper;
 include "interfaces.php";
 
 abstract class transform{
-	
+
 	/**
-	 * create a new
+	 * @param $data
+	 * @return \helper\transform
 	 */
 	static function create($data){
 		$objString = get_called_class();

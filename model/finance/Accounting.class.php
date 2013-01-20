@@ -7,6 +7,20 @@
 
 namespace model\finance;
 
+/**
+ * @property $title;
+ * @property $reminders;
+ * @property $vat;
+ * @property $transactions;
+ * @property $accounts;
+ * @property $accountsByType;
+ * @property $current;
+ * @property $periodStart;
+ * @property $periodEnd;
+ * @property $predecessor;
+ * @property $vatTime;
+ * @property $closed;
+ */
 class Accounting extends \model\AbstractModel{
 	/**
 	* version

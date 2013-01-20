@@ -19,13 +19,13 @@ function reAttach () {
 	$('input, textarea').placeholder({ color: '#999' });
 	
 	//clickable rows i tables:
-	$("[data-href]").live("click", function(){
+	$("[data-href]").on("click", function(){
 		if($(this).attr('data-href'))
 			window.location = $(this).attr('data-href');
 		else if($(this).attr('id'))
 			window.location = $(this).attr('id'); 
 	});
-	$("tr").live("click", function(){
+	$("tr").on("click", function(){
 		if($(this).attr('data-href'))
 			window.location = $(this).attr('data-href');
 		else if($(this).attr('id'))
@@ -187,10 +187,10 @@ function reAttach () {
 	}
 	
 	//some validator classes
-	$(".money").live('blur change', function(){
+	$(".money").on('blur change', function(){
 		$(this).val(moneyFormat($(this).val()));
 	});
-	$(".number").live('blur change', function(){
+	$(".number").on('blur change', function(){
 		$(this).val(parsenumber($(this).val()));
 	})
 	

@@ -10,7 +10,7 @@ class Def extends \helper\template\base\HTML{
 	*/
 	protected $addJsIncludes = array(
 		'/bootstrap/js/jquery.js',
-		'/js/plugins/jquery.placeholder.min.js',//IE placeholders, 
+		'/js/plugins/jquery.placeholder.min.js',//IE placeholders,
 		'/bootstrap/js/bootstrap.min.js',
 		//'/bootstrap/js/bootstrap-alert.js',
 		//'/bootstrap/js/bootstrap-modal.js',
@@ -26,11 +26,16 @@ class Def extends \helper\template\base\HTML{
 		'/bootstrap/js/application.js',
 		'/bootstrap/js/init.js'
 	);
-	
+	    /*
 	protected $addCSSIncludes = array(
 		'/bootstrap/css/bootstrap.css',
 		'/bootstrap/css/bootstrap-responsive.css',
-		'/bootstrap/css/app.css',
+		'/templates/finance/css/app.css',
+	);*/
+	protected $addCSSIncludes = array(
+		'/bootstrap/css/bootstrap.min.css',
+		'/bootstrap/css/bootstrap-responsive.css',
+		'/templates/finance/css/app.css',
 	);
 	
 	protected $addCSS = '

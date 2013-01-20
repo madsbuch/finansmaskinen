@@ -220,8 +220,8 @@ class accounting
 	 * @param $id string id of accounting
 	 * @param bool $ts , populate with transactions?
 	 * @param bool $as
+	 * @throws \exception\UserException
 	 * @return null
-	 * @internal param $accounts , the return object is populated with details from MySQL
 	 */
 	static function retrieve($id = null, $ts = false, $as = false)
 	{
@@ -235,8 +235,12 @@ class accounting
 		else
 			$obj = $lodo->findOne(array('current' => true));
 
+		//return proper error message
 		if (is_null($obj->_id))
-			return null;
+			if($id)
+				throw new \exception\UserException(__('Accounting was not to retrieve.'));
+			else
+				throw new \exception\UserException(__('No current accounting.'));
 
         //see if object is in timelimits, and create new accounting if not so
         //make that new accounting current
@@ -617,16 +621,16 @@ class accounting
             ));
     }
 
-	static function export()
-	{
-	}
-
-	static function import()
-	{
-	}
-
-	static function backup()
-	{
+	/**
+	 * check accounting, and creates a new one if outdated.
+	 *
+	 * it returns the new accounting
+	 *
+	 * @param $accounting
+	 * @return \model\finance\Accounting
+	 */
+	private static function checkAccounting(\model\finance\Accounting $accounting){
+		return $accounting;
 	}
 }
 

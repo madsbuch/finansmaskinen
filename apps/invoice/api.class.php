@@ -93,9 +93,13 @@ class invoice{
 		$tpls = self::getTemplates();
 		$dlWidget = new \app\invoice\layout\finance\widgets\InvoiceDownloadWidget($invoice);
 		$dlWidget->setTemplates($tpls);
+
+		$sendW = new \app\invoice\layout\finance\widgets\InvoiceMailWidget($invoice);
+		$sendW->setTemplates($tpls);
+
 		return array(
-			new \app\invoice\layout\finance\widgets\InvoiceMailWidget($invoice),
-			$dlWidget);
+			$dlWidget,
+			$sendW);
 	}
 	
 	/**
@@ -343,20 +347,25 @@ class invoice{
 	 *
 	 * @param $invoice either an invoice object or id of invoice
 	 * @param $template either a template id, object, html or pdf
-	 *					for HTML and CSS a default tempalte is used
+	 *                    for HTML and CSS a default tempalte is used
+	 * @param string $output
+	 * @throws \Exception
+	 * @return
 	 */
-	public static function transform($invoice, $template){
+	public static function transform($invoice, $template = 'default', $output = 'html' ){
 		$inv = self::getOne($invoice);
-		
-		$file = null;
-		
-		if($template == 'html')
-			$file = \helper\transform\Model::create($inv)
-				->Savant(__DIR__.'/templates/default.tpl.php')->generate();
-		elseif($template == 'pdf')
-			$file = \helper\transform\Model::create($inv)
-				->Savant(__DIR__.'/templates/default.tpl.php')
-				->PDF('html')->generate();
+
+		$file = \helper\transform\Model::create($inv);
+
+		if($template == 'default')
+			$file = $file->Savant(__DIR__.'/templates/default.tpl.php');
+		else
+			throw new \Exception('Not yet implemented');
+
+		if($output == 'html')
+			$file = $file->generate();
+		elseif($output == 'pdf')
+			$file = $file->PDF('html')->generate();
 		else
 			throw new \Exception('Not yet implemented');
 		

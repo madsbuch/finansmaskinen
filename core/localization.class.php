@@ -50,14 +50,17 @@ class localization{
 	
 	
 	/** magic methods: **/
-	
+
 	/**
-	* this method looks up in the table, to see if there is a translation of
-	* the string
-	*
-	* for now, we are using crc32 for hashing. it is fast, and takes up only 32
-	* bit. if to many collisions, we might consider changing to md4/md5
-	*/
+	 * this method looks up in the table, to see if there is a translation of
+	 * the string
+	 *
+	 * for now, we are using crc32 for hashing. it is fast, and takes up only 32
+	 * bit. if to many collisions, we might consider changing to md4/md5
+	 * @param $str
+	 * @param $args
+	 * @return string
+	 */
 	static function lookup($str, $args){
 		$gotSomething = false;
 		

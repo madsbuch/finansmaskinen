@@ -99,27 +99,29 @@ EOF;
 					<a href="#" class="btn" data-dismiss="modal">OK</a>
 				</div>
 			</div>
-			
+
 		</div>
-		<div class="app-box span4">
+
+		<div class="app-box span4" style="height:260px;">
 			<h2>Regnskabsperiode</h2>
 			<p>Typisk starter et regnskab d. 1 januar og slutter d. 31 december,
 			men i visse tilfælde er det anderlede</p>
 			<p>Vælg periode for første regnskab</p>
-			<div class="input-append date span2" id="dps">
+
+			<div class="input-append date" style="width:50%; float:left;" id="dps">
 				Start:<br/>
-				<input type="text" name="startdate" class="span2" style="width:70%"
+				<input type="text" name="startdate" class="span2"  style="width:70%"
 					readonly="" /><span class="add-on"><i class="icon-th"></i></span>
 			</div>
 			
-			<div class="input-append date offset1 span2" id="dpe">
+			<div class="input-append date" style="width:50%; float:right;" id="dpe">
 				Slut:<br/>
 				<input type="text" name="enddate" class="date" style="width:70%"
 					readonly="" /><span class="add-on"><i class="icon-th"></i></span>
 			</div>
 
 		</div>
-		<div class="app-box form-inline span4">
+		<div class="app-box form-inline span4" style="height:260px;">
 			<h2>Momsperioder</h2>
 			<p>Moms skal indbetales til staten efter endt momsperiode. Vi vil
 			gerne vide hvornår du skal betale moms, så vi kan give dig en påmindelse</p>
