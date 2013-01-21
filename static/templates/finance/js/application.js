@@ -19,14 +19,15 @@ function reAttach () {
 	$('input, textarea').placeholder({ color: '#999' });
 	
 	//clickable rows i tables:
-	$("[data-href]").on("click", function(){
+	$(document).on("click", "[data-href]", function(){
 		if($(this).attr('data-href'))
 			window.location = $(this).attr('data-href');
 		else if($(this).attr('id'))
 			window.location = $(this).attr('id'); 
 	});
-	$("tr").on("click", function(){
-		if($(this).attr('data-href'))
+
+	$(document).on("click", 'tr', function(){
+        if($(this).attr('data-href'))
 			window.location = $(this).attr('data-href');
 		else if($(this).attr('id'))
 			window.location = $(this).attr('id'); 
@@ -51,7 +52,7 @@ function reAttach () {
 		    "bProcessing": true,
 		    "bServerSide": true,
 		    "sAjaxSource": src,
-		    "sPaginationType": "bootstrap",
+		    "sPaginationType": "bootstrap"
 		};
 		
 		var dt = this.dataTable(dtConfig);
@@ -187,10 +188,10 @@ function reAttach () {
 	}
 	
 	//some validator classes
-	$(".money").on('blur change', function(){
+	$(document).on('blur change', ".money", function(){
 		$(this).val(moneyFormat($(this).val()));
 	});
-	$(".number").on('blur change', function(){
+	$(document).on('blur change', ".number", function(){
 		$(this).val(parsenumber($(this).val()));
 	})
 	

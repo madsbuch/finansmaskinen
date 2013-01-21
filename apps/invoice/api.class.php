@@ -340,18 +340,18 @@ class invoice{
 		return new \model\finance\invoice\Template();
 	}
 
-	/**
-	 * takes invoice and a template, and transforms to some fileoutput
-	 * for now it only uses some standard template
-	 *
-	 *
-	 * @param $invoice either an invoice object or id of invoice
-	 * @param $template either a template id, object, html or pdf
-	 *                    for HTML and CSS a default tempalte is used
-	 * @param string $output
-	 * @throws \Exception
-	 * @return
-	 */
+    /**
+     * takes invoice and a template, and transforms to some fileoutput
+     * for now it only uses some standard template
+     *
+     *
+     * @param $invoice either an invoice object or id of invoice
+     * @param string $template either a template id, object, html or pdf
+     *                    for HTML and CSS a default tempalte is used
+     * @param string $output
+     * @throws \Exception
+     * @return mixed
+     */
 	public static function transform($invoice, $template = 'default', $output = 'html' ){
 		$inv = self::getOne($invoice);
 
@@ -373,13 +373,29 @@ class invoice{
 		//apply caching
 	}
 
-	/**
-	 * @param $invoiceID string id of invoice
-	 * @param $recipients array array of recipient emails
-	 * @param null $template template to user
-	 */
-	public static function mail($invoiceID, $recipients, $template = null){
-		
+    /**
+     * @param $invoiceID string id of invoice
+     * @param $recipients array array of recipient emails
+     * @param $subject
+     * @param $message
+     * @param null $template template to user
+     * @throws \exceptions\UserException
+     */
+	public static function email($invoiceID, $recipients, $subject, $message, $template = null){
+		$mail = new \helper\mail();
+
+        foreach($recipients as $r){
+            $mail->AddAddress($r);
+        }
+
+        $mail->AddReplyTo('noreply@finansmaskinen.dk', 'Finansmaskinen');
+        $mail->SetFrom('noreply@finansmaskinen.dk', 'Finansmaskinen');
+
+        $mail->Subject = $subject;
+        $mail->Body = $message;
+        $mail->AddStringAttachment(self::transform($invoiceID, $template, 'pdf'), 'faktura.pdf');
+        if(!$mail->Send())
+            throw new \exceptions\UserException(__('Something went wrong.'));
 	}
 
 	/**

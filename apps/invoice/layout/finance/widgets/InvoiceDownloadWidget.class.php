@@ -52,7 +52,7 @@ class InvoiceDownloadWidget extends \helper\layout\LayoutBlock implements \helpe
 				</div>
 			</div>
 			<br />
-			<input type="submit" class="btn btn-primary" value="Download" />
+			<input type="submit" class="btn btn-primary" value="Ok" />
 		</form>'));
 			
 		return $root;

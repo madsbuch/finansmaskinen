@@ -16,10 +16,10 @@ class mail extends \PHPMailer{
 		//setting the credentials
 		$p = \core\inputParser::getInstance()->getProfile();
 		$config = \config\config::$configs[$p]['mail']['smtp'];
-		$this->SMTPAuth   = true;
 		$this->IsSMTP();
-		$this->Host       = $config['server'];	// sets the SMTP server
-  		$this->Port       = $config['port'];	// set the SMTP port for the GMAIL server
+        $this->SMTPAuth   = true;
+		$this->Host       = $config['server'];	// SMTP server
+  		$this->Port       = $config['port'];	// SMTP port
   		$this->Username   = $config['user'];	// SMTP account username
   		$this->Password   = $config['pass'];
   		$this->CharSet = 'UTF-8';

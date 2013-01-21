@@ -28,17 +28,17 @@ class InvoiceMailWidget extends \helper\layout\LayoutBlock implements \helper\la
 
 		//some var
 		$nr  = $this->invoice->Invoice->ID;
-		$sender = $this->invoice->Invoice->AccountingCustomerParty->Party->PartyName->Name;
+		$sender = $this->invoice->Invoice->AccountingSupplierParty->Party->PartyName->Name;
 
 		//header
 		$h2 = $this->edom->createElement('h3', __('Mail '));
 		$h2->appendChild($this->edom->createElement('small', __('E-mail this invoice')));
 		$root->appendChild($h2);
 		$root->appendChild(\helper\html::importNode($dom, '
-		<form action="/invoice/export/'.$this->invoice->_id.'" method="get">
+		<form action="/invoice/doMail/'.$this->invoice->_id.'" method="get">
 			<div style="width:45%;float:left;">
 				<label>Modtager:</label>
-				<input style="width:95%;" type="text" name="mail" required="required" />
+				<input style="width:95%;" type="email" name="mail" required="required" />
 			</div>
 			<div style="width:45%;float:left;margin-left:1rem;">
 				<label>Template:</label>
@@ -57,7 +57,7 @@ class InvoiceMailWidget extends \helper\layout\LayoutBlock implements \helper\la
 				<input type="text" style="width:95%" name="subject" value="Faktura nr. '.$nr.'" />
 
 				<label>Besked:</label>
-				<textarea style="width:95%;height:100px;">Hermed fremsendes faktura nr. '.$nr.'
+				<textarea name="message" style="width:95%;height:100px;">Hermed fremsendes faktura nr. '.$nr.'
 
 Venlig hilsen '.htmlspecialchars($sender).'</textarea>
 			</div>

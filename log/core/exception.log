@@ -1102,3 +1102,363 @@
 2013-01-20T23:04:50+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
 2013-01-20T23:04:52+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
 2013-01-20T23:04:56+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T19:17:36+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T19:17:38+00:00 ERROR {"message":"Page resources does not exist in app start\\finance\\main.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T19:17:39+00:00 ERROR {"message":"Page resources does not exist in app start\\finance\\main.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T19:17:40+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T19:17:42+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T19:17:43+00:00 ERROR {"message":"Page assets does not exist in app \\app\\billing.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T19:17:44+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T19:17:46+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T19:18:10+00:00 ERROR {"message":"You don't have permission to access selected page","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T19:18:11+00:00 ERROR {"message":"You don't have permission to access selected page","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T19:18:14+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T19:18:16+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T19:25:14+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T19:25:38+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T21:19:14+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T21:19:16+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T21:19:21+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T21:19:27+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T21:19:40+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T21:20:17+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T21:23:05+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T21:35:59+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T21:38:55+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T21:39:04+00:00 ERROR {"message":"Message body empty","stack":"#0 \/var\/www\/plugins\/class.phpmailer.php(587): PHPMailer->PreSend()\n#1 \/var\/www\/apps\/invoice\/api.class.php(393): PHPMailer->Send()\n#2 \/var\/www\/apps\/invoice\/controller.class.php(175): api\\invoice::email('50e928981a5f01c...', Array, 'Faktura nr. 64', 'Hermed fremsend...', 'default')\n#3 [internal function]: app\\invoice->doMail('50e928981a5f01c...')\n#4 \/var\/www\/core\/reqHandler.class.php(150): call_user_func_array(Array, Array)\n#5 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#6 {main}"}
+2013-01-17T21:39:04+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T21:39:34+00:00 ERROR {"message":"Message body empty","stack":"#0 \/var\/www\/plugins\/class.phpmailer.php(587): PHPMailer->PreSend()\n#1 \/var\/www\/apps\/invoice\/api.class.php(393): PHPMailer->Send()\n#2 \/var\/www\/apps\/invoice\/controller.class.php(177): api\\invoice::email('50e928981a5f01c...', Array, 'Faktura nr. 64', 'Hermed fremsend...', 'default')\n#3 [internal function]: app\\invoice->doMail('50e928981a5f01c...')\n#4 \/var\/www\/core\/reqHandler.class.php(150): call_user_func_array(Array, Array)\n#5 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#6 {main}"}
+2013-01-17T21:39:34+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T21:41:00+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T21:42:20+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T21:45:14+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T21:45:15+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T21:45:32+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T21:48:28+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T21:49:15+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T21:49:23+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T21:49:36+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T21:50:05+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T21:50:54+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T21:56:09+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T21:59:53+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T21:59:56+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T21:59:57+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:00:09+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:02:02+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:02:03+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:05:30+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:05:32+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:05:39+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:05:41+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:06:04+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:14:03+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:16:17+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:16:19+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:16:39+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:16:52+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:17:10+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:17:12+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:17:35+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:17:37+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:17:44+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:17:47+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:18:01+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:18:04+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:18:07+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:18:08+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:19:26+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:20:14+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:20:18+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:20:19+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:20:19+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:20:20+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:20:22+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:20:23+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:20:27+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:20:34+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:21:02+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:21:26+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:21:34+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:21:46+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:21:49+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:22:53+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:23:18+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:23:59+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:24:04+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:24:24+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:25:11+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:25:58+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:27:34+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:27:36+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:27:59+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:28:28+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:28:29+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:28:33+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:28:42+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:28:45+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:29:56+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:29:59+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:30:04+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:30:06+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:30:09+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:31:05+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:31:09+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:31:12+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:31:41+00:00 ERROR {"message":"Page assets does not exist in app \\app\\contacts.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:31:43+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:32:11+00:00 ERROR {"message":"Page assets does not exist in app \\app\\contacts.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:32:13+00:00 ERROR {"message":"Page assets does not exist in app \\app\\contacts.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:32:22+00:00 ERROR {"message":"Page assets does not exist in app \\app\\contacts.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:32:24+00:00 ERROR {"message":"Page assets does not exist in app \\app\\contacts.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:32:29+00:00 ERROR {"message":"Page assets does not exist in app \\app\\contacts.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:32:30+00:00 ERROR {"message":"Page assets does not exist in app \\app\\contacts.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:32:35+00:00 ERROR {"message":"Page assets does not exist in app \\app\\contacts.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:32:36+00:00 ERROR {"message":"Page assets does not exist in app \\app\\contacts.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:33:41+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:33:42+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:33:45+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:33:53+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:37:04+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:38:45+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:38:48+00:00 ERROR {"message":"Page resources does not exist in app start\\finance\\main.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:38:49+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:38:51+00:00 ERROR {"message":"Page resources does not exist in app start\\finance\\main.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:38:57+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:39:33+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:43:59+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:52:07+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:53:37+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:53:48+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:53:54+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:53:56+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:53:56+00:00 ERROR {"message":"Page assets does not exist in app \\app\\contacts.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:53:58+00:00 ERROR {"message":"Page assets does not exist in app \\app\\contacts.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:54:02+00:00 ERROR {"message":"Page assets does not exist in app \\app\\contacts.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:54:04+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:54:06+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:54:38+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:58:01+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:58:16+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:58:35+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:59:01+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:59:03+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:59:04+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:59:05+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:59:06+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:59:07+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:59:16+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:59:17+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:59:17+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:59:29+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:59:38+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T22:59:55+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:00:09+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:05:06+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:05:28+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:05:29+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:05:31+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:05:45+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:05:48+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:05:49+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:05:51+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:05:55+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:06:04+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:06:18+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:06:19+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:06:22+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:06:25+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:06:38+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:06:44+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:06:46+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:06:48+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:06:50+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:06:56+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:07:11+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:10:53+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:10:55+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:11:22+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:11:24+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:11:25+00:00 ERROR {"message":"Page assets does not exist in app \\app\\billing.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:11:27+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:11:28+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:11:48+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:11:49+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:12:02+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:14:58+00:00 ERROR {"message":"Page assets does not exist in app \\app\\contacts.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:14:59+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-17T23:15:03+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T01:07:26+00:00 ERROR {"message":"You don't have permission to access selected page","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T01:07:26+00:00 ERROR {"message":"You don't have permission to access selected page","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T01:07:29+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T01:07:31+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T01:07:40+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T01:07:44+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T01:08:46+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T01:09:14+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T01:36:51+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T01:57:28+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T01:57:38+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T01:57:41+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T01:57:43+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T01:57:45+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T01:57:46+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T01:57:46+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T01:57:47+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T01:57:47+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T01:57:48+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T01:57:48+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T01:57:49+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T01:57:49+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:07:59+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:08:00+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:08:01+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:08:02+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:08:03+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:08:04+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:08:05+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:08:05+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:08:06+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:08:06+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:08:07+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:08:08+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:08:10+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:08:13+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:08:15+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:08:18+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:08:19+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:08:22+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:08:23+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:08:25+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:08:26+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:08:33+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:08:34+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:08:36+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:08:37+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:08:37+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:08:38+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:08:38+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:08:41+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:08:41+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:08:43+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:08:46+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:08:47+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:08:55+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:08:55+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:11:52+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:11:55+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:11:56+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:11:56+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:11:57+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:12:00+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:12:01+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:12:02+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:12:02+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:12:04+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:12:04+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:12:07+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:12:11+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:12:11+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:12:12+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:12:12+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:12:13+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:12:24+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:12:25+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:12:25+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:12:25+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:12:26+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:12:26+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:12:54+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:13:53+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:13:54+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:13:57+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:13:59+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:14:10+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:15:33+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:15:34+00:00 ERROR {"message":"Page resources does not exist in app start\\finance\\main.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:15:35+00:00 ERROR {"message":"Page resources does not exist in app start\\finance\\main.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:15:36+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:15:37+00:00 ERROR {"message":"Page resources does not exist in app start\\finance\\main.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:15:39+00:00 ERROR {"message":"Page resources does not exist in app start\\finance\\main.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:15:40+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:15:50+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:21:14+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:23:49+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:24:01+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:24:05+00:00 ERROR {"message":"Page resources does not exist in app start\\finance\\main.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:24:07+00:00 ERROR {"message":"Page resources does not exist in app start\\finance\\main.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:24:10+00:00 ERROR {"message":"Page resources does not exist in app start\\finance\\main.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:24:18+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:24:45+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:24:49+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:25:25+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:25:27+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:25:30+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:25:36+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:25:52+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:25:54+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:26:52+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:26:53+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:27:00+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:27:04+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:27:09+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:27:10+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:27:11+00:00 ERROR {"message":"Page assets does not exist in app \\app\\products.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:27:13+00:00 ERROR {"message":"Page assets does not exist in app \\app\\products.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:27:26+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:29:29+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:29:44+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:30:03+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:30:07+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:30:09+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:31:16+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:31:18+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:31:19+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:31:22+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:35:00+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:35:01+00:00 ERROR {"message":"Page assets does not exist in app \\app\\contacts.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:35:03+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:36:12+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:36:13+00:00 ERROR {"message":"Page assets does not exist in app \\app\\contacts.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:36:16+00:00 ERROR {"message":"Page assets does not exist in app \\app\\contacts.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:36:18+00:00 ERROR {"message":"Page assets does not exist in app \\app\\contacts.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:36:19+00:00 ERROR {"message":"Page assets does not exist in app \\app\\contacts.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:36:26+00:00 ERROR {"message":"Page assets does not exist in app \\app\\contacts.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:36:32+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:40:47+00:00 ERROR {"message":"Page assets does not exist in app \\app\\contacts.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:40:50+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:40:52+00:00 ERROR {"message":"Page assets does not exist in app \\app\\products.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:40:53+00:00 ERROR {"message":"Page assets does not exist in app \\app\\products.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:41:27+00:00 ERROR {"message":"Page assets does not exist in app \\app\\products.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:42:14+00:00 ERROR {"message":"Product with objectID \"506951df1a5f015d44000001.json\" not found","stack":"#0 \/var\/www\/apps\/products\/controller.class.php(94): api\\products::getOne('506951df1a5f015...')\n#1 [internal function]: app\\products->edit('506951df1a5f015...')\n#2 \/var\/www\/core\/reqHandler.class.php(150): call_user_func_array(Array, Array)\n#3 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#4 {main}"}
+2013-01-18T02:42:14+00:00 ERROR {"message":"Page assets does not exist in app \\app\\products.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:42:18+00:00 ERROR {"message":"Page assets does not exist in app \\app\\products.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:42:21+00:00 ERROR {"message":"Page assets does not exist in app \\app\\products.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:42:30+00:00 ERROR {"message":"Page assets does not exist in app \\app\\products.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:42:30+00:00 ERROR {"message":"Page assets does not exist in app \\app\\products.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:42:31+00:00 ERROR {"message":"Page assets does not exist in app \\app\\products.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:42:32+00:00 ERROR {"message":"Page assets does not exist in app \\app\\products.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:42:33+00:00 ERROR {"message":"Page assets does not exist in app \\app\\products.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:42:33+00:00 ERROR {"message":"Page assets does not exist in app \\app\\products.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:42:33+00:00 ERROR {"message":"Page assets does not exist in app \\app\\products.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:42:34+00:00 ERROR {"message":"Page assets does not exist in app \\app\\products.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:45:47+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:45:53+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:45:57+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:45:58+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:45:59+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:46:00+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:46:05+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:46:09+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:46:10+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:46:10+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:46:11+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:46:15+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:50:09+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:50:17+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:50:19+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:50:20+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:50:21+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:50:21+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T02:50:31+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-18T03:02:29+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}

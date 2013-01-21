@@ -38,15 +38,18 @@ class Table extends \helper\layout\LayoutBlock
 		$this->dom = new \DOMDocument();
 	}
 
-	/**
-	 * takes a lodo object and returns sorted json
-	 * this also applies formatting function applied
-	 * setIterator needs ta have the lodo
-	 *
-	 * @TODO fix it so the ufuction uses $this->attr
-	 *
-	 * @param $parameters http parameters
-	 */
+    /**
+     * takes a lodo object and returns sorted json
+     * this also applies formatting function applied
+     * setIterator needs ta have the lodo
+     *
+     * @TODO fix it so the ufuction uses $this->attr
+     *
+     * @param $param
+     * @param string $linkPrefix
+     * @return string
+     * @internal param \helper\layout\http $parameters parameters
+     */
 	function generateJson($param, $linkPrefix = '')
 	{
 		//format input

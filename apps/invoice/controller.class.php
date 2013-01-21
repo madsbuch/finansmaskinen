@@ -154,8 +154,6 @@ class invoice extends \core\app
 		$this->output_content = $data;
 	}
 
-	/**** AJAX FUNCTION *****/
-
 	/**
 	 * mails an invoice
 	 *
@@ -166,9 +164,26 @@ class invoice extends \core\app
 	 *
 	 * @param null $id
 	 */
-	function mailInvoice($id = null){
+	function doMail($id = null){
+        $subject = $this->param['subject'];
+        $msg = $this->param['message'];
+        $rec = $this->param['mail'];
+        $template = $this->param['template'];
 
+        \api\invoice::email($id, array($rec), $subject, $msg, $template);
+
+        $html = $this->getTpl();
+
+        $m = new \helper\layout\MessagePage('Congratz!',
+            '<p>'.__('Your mail was sent.').'</p>');
+
+        $html->add2content($m);
+
+        $this->output_header = $this->header->getHeader();
+        $this->output_content = $html->generate();
 	}
+
+    /**** AJAX FUNCTION *****/
 
 	/**
 	 * register invoice as payed

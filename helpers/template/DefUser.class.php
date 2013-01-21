@@ -9,29 +9,29 @@ class DefUser extends \helper\template\base\HTML{
 		'/js/language/da_DK.js',
 
 		//framework
-		'/bootstrap/js/jquery.min.js',
+        '/js/libs/jquery-1.7.2.min.js',
 		'/bootstrap/js/bootstrap.js',
 
 		//plugins
 		'/js/plugins/jquery.placeholder.min.js',//IE placeholders, 
 		'/js/plugins/iphone-style-checkboxes.js',
+
+        //those are removed when refactoring to new bootstrap is done
 		//'/bootstrap/js/bootstrap-transition.js',
 		//'/bootstrap/js/bootstrap-alert.js',
 		//'/bootstrap/js/bootstrap-modal.js',
 		//'/bootstrap/js/bootstrap-dropdown.js',
 		//'/bootstrap/js/bootstrap-tooltip.js',
 		//'/bootstrap/js/bootstrap-popover.js',
+        //'/bootstrap/js/bootstrap-button.js',
+
+        //some plugins
 		'/js/plugins/jquery.dataTables.min.js',
 		'/js/plugins/jquery.dataTables.paging.js',
-		//'/bootstrap/js/bootstrap-button.js',
-		'/js/libs/jquery-ui-1.8.17.custom.min.js',
+		'/js/libs/jquery-ui-1.10.0.custom.min.js',
 		'/js/plugins/picker.jquery.js',
 		'/js/plugins/jquery.pageguide.js',
-
-
-		//some plugins
 		'/js/plugins/jquery.sheepItPlugin-1.0.0.min.js',
-		'/bootstrap/js/bootstrap-modal.js',
 		'/js/plugins/bootstrap-datepicker.js',
 		'/js/plugins/jquery.form.js',
 
@@ -42,8 +42,6 @@ class DefUser extends \helper\template\base\HTML{
 	
 	protected $addCSSIncludes = array(
 		'/bootstrap/css/bootstrap.css',
-		'/bootstrap/css/bootstrap-responsive.css',
-		'/css/plugins/iphone-style-checkboxes.css',
 		'/css/plugins/jquery.pageguide.css',
 		'/templates/finance/css/app.css',
 	);
