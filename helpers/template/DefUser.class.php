@@ -26,9 +26,10 @@ class DefUser extends \helper\template\base\HTML{
         //'/bootstrap/js/bootstrap-button.js',
 
         //some plugins
+		'/js/libs/jquery-ui-1.10.0.custom.min.js',
+
 		'/js/plugins/jquery.dataTables.min.js',
 		'/js/plugins/jquery.dataTables.paging.js',
-		'/js/libs/jquery-ui-1.10.0.custom.min.js',
 		'/js/plugins/picker.jquery.js',
 		'/js/plugins/jquery.pageguide.js',
 		'/js/plugins/jquery.sheepItPlugin-1.0.0.min.js',
