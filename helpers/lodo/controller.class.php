@@ -325,12 +325,18 @@ class lodo
 		if (!$obj['_id'])
 			throw new \Exception('No id set on the object');
 
+
+
 		$this->conditions['_id'] = new \MongoID($obj['_id']);
 
 		$old = $this->findOne();
 
+		if(empty($old))
+			throw new \exception\UserException('Nothing to update');
+
 		$old->merge($obj, true);
 		$new = $old->toArray();
+
 
 		$new['_subsystem'] = $this->doSubsystem($new);
 

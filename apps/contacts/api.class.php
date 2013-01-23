@@ -225,11 +225,13 @@ class contacts extends \core\api{
 	
 	/**** SOME PRIVATE STUFF ****/
 
-    /**
-     * prepares the contact
-     *
-     * @param $obj
-     */
+	/**
+	 * prepares the contact
+	 *
+	 * @param $obj
+	 * @throws \exception\UserException
+	 * @return
+	 */
     private static function contactObj($obj){
 
         if(empty($obj->contactID)){
@@ -254,6 +256,7 @@ class contacts extends \core\api{
     /**
      * @param $id string representation of the unique id to check if in the db
      * @param $exclude documents to be excluded (their mongoID's)
+     * @return bool
      */
     private static function idExists($id, $exclude = null){
 	    try{

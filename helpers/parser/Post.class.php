@@ -28,12 +28,14 @@ class Post{
 	* whether output is an collection
 	*/
 	private $coll = false;
-	
+
 	/**
-	* object to put the data into
-	*
-	* @param $object object to populate, this should inherit AbstractModel
-	*/
+	 * object to put the data into
+	 *
+	 * @param $object object to populate, this should inherit AbstractModel
+	 * @param null $validation
+	 * @param string $delimiter
+	 */
 	function __construct($object, $validation = null, $delimiter = '-'){
 		$input = \helper\core::getPost();
 		if(count($input) == 0)

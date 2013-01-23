@@ -175,7 +175,7 @@ class Form extends \helper\layout\LayoutBlock{
 </form>
 		';
 		//merge in everything
-		if($this->c){
+		if(isset($this->c)){
 			$inject = array();
 			if(isset($this->c->ContactPerson)){
 				foreach($this->c->ContactPerson as $cp){

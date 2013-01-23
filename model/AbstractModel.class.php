@@ -171,13 +171,13 @@ abstract class AbstractModel{
 	public function set($name, $value){
 		$func = 'set_'.$name;
 		if(method_exists($this, $func))
-			$this->$func($value);
-		elseif(property_exists($this, $name)){
+			return $this->$func($value);
+		if(property_exists($this, $name)){
 			//if it's a collection
 			if(isset($this->_autoassign[$name]) && $this->_autoassign[$name][1]){
-				if(!isset($this->$name)){
-					$this->$name = new \model\Iterator($value, $this->_autoassign[$name][0]);
-				}
+				//we used to check if the value was set, and only overwrite if not...
+				//what is the policy here?
+				return $this->$name = new \model\Iterator($value, $this->_autoassign[$name][0]);
 			}
 			//it's an object of a certain type
 			elseif(isset($this->_autoassign[$name]) && !is_null($this->_autoassign[$name][0])){
@@ -192,15 +192,15 @@ abstract class AbstractModel{
 				else
 					throw new \Exception('autoaasign failed, ' . $this->_autoassign[$name][0] .
 						' don\'t exists');
-
+				return;
 			//it's a primitive value, we don't control
 			}
 			else
-				$this->$name = $value;
+				return $this->$name = $value;
 		
 		}
-		else
-			throw new \Exception('Property "'.$name.'" doesn\'t exist in '. get_class($this));
+
+		throw new \Exception('Property "'.$name.'" doesn\'t exist in '. get_class($this));
 	}
 	
 	public function get($name){
@@ -220,13 +220,16 @@ abstract class AbstractModel{
 	function merge($data, $overwrite=false){
 		foreach($data as $k => $v){
 			//if value isn't set, or overwrrite is used, do it
-			if((!isset($this->$k) && !empty($v)) || $overwrite)
+			if((!isset($this->$k) && !empty($v)) || $overwrite){
 				$this->set($k, $v); //set the value
+				var_dump($k);
+			}
 			//check if we should propergate down
 			elseif(is_object($this->$k)
                 && is_subclass_of($this->$k, 'model\AbstractModel')
-                && is_array($v))
+                && is_array($v)){
 				$this->$k->merge($v, $overwrite);
+			}
 		}
 	}
 

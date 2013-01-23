@@ -162,9 +162,9 @@ class contacts extends \core\app{
 		$cObj = $contact->getObj();
 		
 		$id = $cObj->_id;
-		
-		\api\contacts::update($cObj);
-		
+
+		$r = \api\contacts::update($cObj);
+
 		$this->header->redirect('/contacts/view/'.$id);
 		
 		$this->output_header = $this->header->getHeader();
