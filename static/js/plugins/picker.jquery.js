@@ -1,19 +1,27 @@
 $.widget( "custom.picker", $.ui.autocomplete, {
 	//make the categories
 	_renderMenu: function( ul, items ) {
-		var self = this,
-		currentCategory = "";
+		var self = this;
+        currentCategory = "";
 		$.each( items, function( index, item ) {
 			if ( item.category != currentCategory ) {
-				ul.append( "<li style='font-weight:bold;'>" + item.category + "</li>" );
+				ul.append( "<li style='font-weight:bold' class='ui-autocomplete-category'>" + item.category + "</li>" );
 				currentCategory = item.category;
 			}
 			ul.removeClass();
+
             //TODO fix this in a more beautiful way
+            //dropdowns in modals
             ul.css('z-index', 1100);
-			ul.addClass('typeahead dropdown-menu');
-			self._renderItem( ul, item );
+
+            //make the dropdown-menu styling work (positioning)
+            ul.css('position', 'relative');
+            ul.css('top', '0');
+            ul.css('left', '0');
+			ul.addClass('dropdown-menu');// dropdown-menu ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all');
+            self._renderItemData( ul, item );
 		});
+
 		//add modal form for insertion of objects
 		if(typeof self.element.attr('data-addForm') != 'undefined'){
 			$( "<li style=\"cursor:pointer;padding:4px;border-top:1px solid #ccc;\"></li>" )
@@ -29,7 +37,7 @@ $.widget( "custom.picker", $.ui.autocomplete, {
 		var description = '';
 		if(typeof item.desc != 'undefined')
 			description = "<br><p style=\"font-size:80%;color:#666;\">" + item.desc + "</p>";
-		return $( "<li></li>" )
+		return $( "<li role=\"presentation\"></li>" )
 			.data( "item.autocomplete", item )
 			.append( "<a href=\"#\">" + item.label + description + "</a>" )
 			.appendTo( ul );

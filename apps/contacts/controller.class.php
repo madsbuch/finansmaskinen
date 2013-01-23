@@ -232,7 +232,15 @@ class contacts extends \core\app{
 		}
 		
 		$obj = array_key_implode('-', $obj);
-		
+
+		$final = array();
+		foreach($obj as $k => $v){
+			if(!empty($v))
+				$final[$k] = $v;
+		}
+
+		$obj = $final;
+
 		$this->header->setMime('json');
 		$this->output_header = $this->header->getHeader();
 		$this->output_content = json_encode($obj);

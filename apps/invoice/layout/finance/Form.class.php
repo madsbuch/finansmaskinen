@@ -114,7 +114,9 @@ class Form extends \helper\layout\LayoutBlock{
                                         <label>Valuta:</label>
                                         <div class="input-append">
                                             <input type="text" class="picker" name="Invoice-DocumentCurrencyCode"
-                                                data-listLink="/index/currencies/" value="DKK"
+                                                data-listLink="/index/currencies/"
+                                                value="DKK"
+                                                data-loose="true"
                                                 id="Invoice-AccountingCustomerParty-currency"
                                                 data-replace="Invoice-DocumentCurrencyCode" required="true"
                                                 style="width:85%" /><a href="#Invoice-AccountingCustomerParty-currency"

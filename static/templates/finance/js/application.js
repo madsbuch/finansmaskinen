@@ -81,27 +81,30 @@ function reAttach () {
 	*/
 	$.fn.Picker = function(){
 		this.blur(function(){
-			if($(this).data('value'))
-				$(this).val($(this).data('value'));
+            //reset the form
+            if($(this).attr('data-loose') != 'true' && $(this).data('value') != 'loading..'){
+                $(this).val($(this).data('value'));
+            }
 		});
 		this.picker({
 			delay: 0,
 			disabled: false,
 			autoFocus: true,
-			source: function(r, c){
+			source: function(req, resp){
 				$.ajax({
-					url: $(this.element).attr('data-listLink')+r.term,
+					url: $(this.element).attr('data-listLink')+req.term,
+                    context: this,
 					success: function(data){
 						if(data.length < 1){
 							var str = $(this.element).attr('data-noRes') ? 
 								$(this.element).attr('data-noRes') : lan.pickerNoObjects;
 							data = [{label : str, id : null, category : ''}];
 						}
-						c(data);
+                        resp(data);
 					}
 				});
 			},
-			select: function(event, ui){
+            select: function( event, ui ){
 				//fetch object from server
 				var prefix = '';
 				if(typeof $(this).attr('data-prefix') != 'undefined'){
@@ -111,7 +114,6 @@ function reAttach () {
 					prefix = $(this).attr('id');
 				}
 				//set the content of field to label value (so custom values not are possible)
-				console.log(ui.item.id, ui.item.label);
 				if(typeof ui.item.id != 'undefined'){
 					$(this).data('value', ui.item.label)
 					$(this).val(ui.item.label);
@@ -143,28 +145,31 @@ function reAttach () {
 								console.log(prefix + key + ' = ' + val);
 							});
 
-                            //TODO trigger some action here
+                            //TODO trigger some action here for chained selects
 						}
 					});
 			},
 			close: function(event, ui){
-				//set field to saven data
-				if($(this).attr('data-loose') != 'true')
-					$(this).val($(this).data('value'));
-			}
+				//reset the form, maybe
+                if($(this).attr('data-loose') != 'true' && $(this).data('value') != 'loading..'){
+                    $(this).val($(this).data('value'));
+                }
+            }
 		});
-		console.log('attached');
 	}
+
 	$.fn.PickerDropdown = function(){
 		$(this).click(function () {
 			if(!!$($($(this).attr('href')).picker('widget')).is(':visible'))
 				$($(this).attr('href')).picker('close');
-			else
-				$($(this).attr('href')).picker('search', ' ');
+			else{
+				$($(this).attr('href')).picker( "search", " ");
+            }
+            return false;
 		});
-	}
-
-	$(".pickerDP").PickerDropdown();
+        return false;
+	};
+    $(".pickerDP").PickerDropdown();
     $(".picker").Picker();
 
 	//format numbers for currency
