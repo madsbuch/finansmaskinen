@@ -367,7 +367,7 @@ class invoice{
 		elseif($output == 'pdf')
 			$file = $file->PDF('html')->generate();
 		else
-			throw new \Exception('Not yet implemented');
+			throw new \Exception(__('output "%s" is not valid', $output));
 		
 		return $file;
 		//apply caching
@@ -379,7 +379,7 @@ class invoice{
      * @param $subject
      * @param $message
      * @param null $template template to user
-     * @throws \exceptions\UserException
+     * @throws \exception\UserException
      */
 	public static function email($invoiceID, $recipients, $subject, $message, $template = null){
 		$mail = new \helper\mail();
@@ -395,7 +395,7 @@ class invoice{
         $mail->Body = $message;
         $mail->AddStringAttachment(self::transform($invoiceID, $template, 'pdf'), 'faktura.pdf');
         if(!$mail->Send())
-            throw new \exceptions\UserException(__('Something went wrong.'));
+            throw new \exception\UserException(__('Something went wrong.'));
 	}
 
 	/**
