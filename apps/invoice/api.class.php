@@ -329,6 +329,7 @@ class invoice{
 			'referenceText' => $inv->ref,
 			'type' => 'ProductCategory'
 		);
+
 		\api\accounting::importTransactions($cats, $options);
 
 		//everything was an success

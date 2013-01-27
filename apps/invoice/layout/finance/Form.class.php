@@ -128,10 +128,13 @@ class Form extends \helper\layout\LayoutBlock{
 								</div>
 								<div class="span3">
 									<!-- Settings -->
-									<input class="checkbox totalCompute"
-										type="checkbox" data-checkedLabel="Med Moms"
-										data-uncheckedLabel="Uden Moms" checked="checked" name="vat"
-										id="vat" />
+									<label>Med moms:
+                                        <input class="totalCompute"
+                                            type="checkbox"
+                                            checked="checked"
+                                            name="vat"
+                                            id="vat" />
+                                    </label>
 									<br />
 									<input class="btn totalCompute" type="button" value="opdater beregninger" />
 									<br />

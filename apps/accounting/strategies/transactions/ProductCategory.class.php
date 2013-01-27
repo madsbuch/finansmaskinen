@@ -20,7 +20,6 @@ class ProductCategory implements Transactions
 	 */
 	private $ah;
 	private $options;
-	private $done = false;
 
 	/**
 	 * Takes some input data, and returns a transaction object
@@ -31,7 +30,8 @@ class ProductCategory implements Transactions
 	{
 		$returnTransaction = new \model\finance\accounting\DaybookTransaction(array(
 			'referenceText' => $this->options['referenceText'],
-			'date'          => date('c')
+			'date'          => date('c'),
+            'approved'      => true,
 		));
 		foreach($this->categories as $cat){
 			//if vat should be added
@@ -51,7 +51,7 @@ class ProductCategory implements Transactions
 			$returnTransaction = $this->ah->mergeTransactions($returnTransaction, $transaction);
 		}
 
-		$this->done = true;
+		$this->categories = null;
 
 		return $returnTransaction;
 	}
@@ -66,7 +66,7 @@ class ProductCategory implements Transactions
 	function hasMore()
 	{
 		//returning if result is returned
-		return !$this->done;
+		return !is_null($this->categories);
 	}
 
 	/**

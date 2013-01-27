@@ -81,19 +81,17 @@ class Transactions
 	    $pdo = $this->db->dbh;
 	    $pdo->beginTransaction();
 
-	    try{
-		    //take all transactions
-		    foreach($this->transactions as $t){
-			    $this->nonTransactionalInsert($t, $pdo);
-		    }
-	    }catch(\Exception $e){
-		    $pdo->rollback();
-		    throw $e;
-	    }
+        //take all transactions
+        foreach($this->transactions as $t){
+            if(!is_null($err = $this->nonTransactionalInsert($t, $pdo))){
+                $pdo->rollBack();
+                throw new \exception\UserException(__('Error in some transaction: %s', $err));
+            }
+        }
 
 	    //commit the rows, if everything went well
 	    if (!$pdo->commit()){
-		    $pdo->rollback();
+		    $pdo->rollBack();
 		    throw new \exception\UserException(__('Insertion of transaction did not succeed'));
 	    }
     }
@@ -103,20 +101,24 @@ class Transactions
      *
      * this should only be used, if transactions are handled elsewhere
      *
-     * @param $transaction the transaction to insert
+     * @param $t
      * @param $pdo a pro object to insert on
+     * @throws \Exception
+     * @return null|string null on success, error string on fail
      */
-    function nonTransactionalInsert($t, $pdo){
+    function nonTransactionalInsert($t, \PDO $pdo){
         $this->validateTransaction($t);
 
         //insert the transaction
         $sthTrans = $pdo->prepare($this->queries->insertTransaction());
-        $sthTrans->execute(array(
+
+        if(!$sthTrans->execute(array(
             'date' => $t->date,
             'referenceText' => $t->referenceText,
             'approved' => $t->approved,
             'accounting_id' => $this->accounting,
-        ));
+        )))
+            return 'error in transaction data';
 
         //get transaction id for the postings
         $transID = $pdo->lastInsertId();
@@ -124,19 +126,21 @@ class Transactions
         $sth = $pdo->prepare($this->queries->insertPosting());
         //stop if error
         if(!$sth){
-            $pdo->rollback();
-            throw new \Exception('Some error happended? ' . implode($pdo->errorInfo()));
+            return 'error in insert posting query';
         }
 
         //insert all the postings
         foreach ($t->postings as $p) {
-            $sth->execute( array(
+            if(!$sth->execute( array(
                 'amount_in' => $p->positive ? $p->amount : 0,
                 'amount_out' => $p->positive ? 0 : $p->amount,
                 'grp' => $this->grp,
                 'transaction_id' => $transID,
-                'account' => $p->account));
+                'account' => $p->account)))
+                return 'error in posting data';
         }
+
+        return null;
     }
 
 	/**
@@ -271,6 +275,8 @@ class Transactions
 		if(!strtotime($transaction->date))
 			throw new \exception\UserException(__('Date was not validated, was: "%s"', $transaction->date));
 
+        if(is_null($transaction->approved))
+            throw new \exception\UserException(__('Approved must not be null'));
 
 		//test that the different postings add correctly up
 		$balance = 0;
@@ -287,20 +293,17 @@ class Transactions
 				$balance -= $posting->positive ? $posting->amount : -1 * $posting->amount;
 		}
 		if($balance != 0)
-			throw new \exception\UserException(__('ReferenceText, %s,  already exist in this accounting.', $transaction->referenceText));
+			throw new \exception\UserException(__('Balace does not add up to 0, difference was: %s', abs($balance)));
 
+        //test for referencetext
 		$throw = false;
 		try{
 			$this->getTransactionByRef($transaction->referenceText);
-			$throw= true;
+			$throw = true;
 		}catch(\exception\UserException $e){}
 		if($throw)
-			throw new \exception\UserException(__('The referencetext already exists in the accounting'));
+			throw new \exception\UserException(__('ReferenceText, %s,  already exist in this accounting.', $transaction->referenceText));
 	}
-
-    private function addTransactionNoCommit($pdo, $queries){
-
-    }
 
 	/**
 	 * creates obfuscated id

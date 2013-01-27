@@ -19,15 +19,7 @@ class Home extends \helper\layout\LayoutBlock {
 		<div class="row">
 			<div class="span7">
 
-				<div class="app-box hidden-desktop">
-					<form class="navbar-form" method="post" action="/index">
-						<input type="text" name="mail" class="input-medium" placeholder="Email" />
-						<input type="password" name="password" class="input-medium" placeholder="Password" />
-						<button type="submit" class="btn">Log ind</button>
-					</form>
-				</div>
-
-				<div class="hero-unit visible-desktop">
+				<div class="hero-unit visible-desktop visible-tablet">
 					<h1>Velkommen</h1>
 					<p>
 					    Finansmaskinen er et enkelt og uforpligtende regnskabssystem. Systemet er for dig der ønsker at
@@ -48,6 +40,14 @@ class Home extends \helper\layout\LayoutBlock {
 			</div>
 
 			<div class="span5">
+			    <div class="app-box hidden-desktop">
+					<form class="navbar-form" method="post" action="/index">
+						<input type="text" name="mail" placeholder="Email" style="width:95%" />
+						<input type="password" name="password" placeholder="Password" style="width:95%" />
+						<p />
+						<button type="submit" class="btn" style="width:100%">Log ind</button>
+					</form>
+				</div>
 				<div class="app-box">
 					<form method="post" action="/index/createUser">
 						<h2>Opret konto</h2>

@@ -392,7 +392,7 @@ class accounting
 		$lAcc = isset($options['liability']) ? $options['liability'] : null;
 		$aAcc = isset($options['asset']) ? $options['asset'] : null;
 
-		//accounting heler
+		//accounting helper
 		$ah = new \helper\accounting((string) self::retrieve()->_id);
 
 		//converts to a transaction object
@@ -406,6 +406,7 @@ class accounting
 			$strategy->setData($transaction, $ah, $options);
 		}
 
+        $empty = true;
 
 		while($strategy->hasMore()){
 
@@ -424,32 +425,15 @@ class accounting
 
 			//and finally add all th stuff
 			$ah->transaction()->addTransaction($t);
+            $empty = false;
 		}
+
+        //thorw an error if no transaction was made
+        if($empty)
+            throw new \exception\UserException('No Transaction was inserted');
 
 		//commit all transactions
 		$ah->transaction()->commit();
-
-		/*
-		//try to guess the type (deprecated). requires the transaction to be an array
-		reset($transaction);
-		$f = current($transaction);
-		//collection of Catagories
-		if (is_a($f, 'model\finance\products\Catagory')) {
-			foreach ($transaction as $cat) {
-				$vat = isset($cat->vatAmount) ? false : true;
-				$ah->automatedTransaction(
-					$cat->amount,
-					($vat ? $cat->accountInclVat : $cat->accountExclVat),
-					$cat->accountLiability,
-					$cat->accountAssert,
-					$ref,
-					$vat,
-					$cat->vatAmount
-				);
-			}
-			$ah->commit();
-            return true;
-		}*/
 	}
 
 	/**** ACCOUNTS ****/
@@ -539,11 +523,12 @@ class accounting
 		return $acc->getVatCode($code);
 	}
 
-	/**
-	 * returns vatcode for given account
-	 *
-	 * @return \model\finance\accounting\VatCode
-	 */
+    /**
+     * returns vatcode for given account
+     *
+     * @param $account
+     * @return \model\finance\accounting\VatCode
+     */
 	static function getVatCodeForAccount($account)
 	{
 		$acc = self::retrieve();

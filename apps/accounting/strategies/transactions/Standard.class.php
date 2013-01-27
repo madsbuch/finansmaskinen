@@ -25,6 +25,8 @@ class Standard implements Transactions
 	function setData($input, $accountingHelper, $options)
 	{
 		$this->transaction = $input;
+        if(!$this->transaction instanceof \model\finance\accounting\DaybookTransaction)
+            throw new \Exception('Transaction was not recognized');
 	}
 
 	/**

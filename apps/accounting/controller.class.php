@@ -56,7 +56,7 @@ class accounting extends \core\app{
 		
 		$html->appendContent('<a href="/accounting/addTransaction" class="btn">Manuel postering</a>');
 
-		$ts = \api\accounting::getTransactions($accounting, 0, 10);
+		$ts = \api\accounting::getTransactions($accounting, 0, 100000);
 		
 		$accounting = new accounting\layout\finance\ViewTransactions($ts);
 		$html->appendContent($accounting);

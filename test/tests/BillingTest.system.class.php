@@ -94,7 +94,7 @@ class BillingTest extends UnitTestCase
 		global $bill;
 
 		$response = $this->billApi1 = $this->client->create($bill->toArray());
-		var_dump($response);
+
 		//tests response
 		$this->assertTrue($response['success']);
 		$this->assertTrue(is_string($response['id']));

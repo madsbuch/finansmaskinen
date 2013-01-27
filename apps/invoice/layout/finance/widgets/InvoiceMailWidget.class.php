@@ -42,7 +42,7 @@ class InvoiceMailWidget extends \helper\layout\LayoutBlock implements \helper\la
 			</div>
 			<div style="width:45%;float:left;margin-left:1rem;">
 				<label>Template:</label>
-				<select name="template">
+				<select style="width:95%;" name="template">
 					<option value="default" checked="checked">Standard</option>
 				</select>
 			</div>
