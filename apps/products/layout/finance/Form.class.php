@@ -86,9 +86,7 @@ class Form extends \helper\layout\LayoutBlock{
 					katalog."></i></small></h2>
 					
 				<div class="app-box">
-						<input type="checkbox" class="checkbox"
-							data-checkedLabel="Ja"
-							data-uncheckedLabel="Nej"
+						<input type="checkbox" class="{labelOn: \'Ja\', labelOff: \'Nej\'}"
 							name="inCatalog" id="inCatalog" />
 						<p>Hvis produktet er i dit katalog, kan folk sende
 						dig en ordre på det.</p>

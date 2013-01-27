@@ -7,39 +7,53 @@
 
 namespace app\accounting\strategies\transactions;
 
+/**
+ * this returns a single dayBook transaction based on an array of category objects
+ */
 class ProductCategory implements Transactions
 {
 
 	private $categories;
+
+	/**
+	 * @var \helper\accounting
+	 */
 	private $ah;
 	private $options;
+	private $done = false;
 
 	/**
 	 * Takes some input data, and returns a transaction object
 	 *
-	 * @internal param \app\accounting\strategies\transactions\the $input input data
 	 * @return \model\finance\accounting\DaybookTransaction
 	 */
 	function getDaybookTransaction()
 	{
-		//shift an element
-		$cat = array_shift($this->categories);
+		$returnTransaction = new \model\finance\accounting\DaybookTransaction(array(
+			'referenceText' => $this->options['referenceText'],
+			'date'          => date('c')
+		));
+		foreach($this->categories as $cat){
+			//if vat should be added
+			$vat = isset($cat->vatAmount) ? false : true;
 
-		//if vat should be added
-		$vat = isset($cat->vatAmount) ? false : true;
+			//dispatch the the accounting helper
+			$transaction = $this->ah->automatedTransaction(
+				$cat->amount,
+				($vat ? $cat->accountInclVat : $cat->accountExclVat),
+				$cat->accountLiability,
+				$cat->accountAssert,
+				$this->options['referenceText'],
+				$vat,
+				$cat->vatAmount
+			);
 
-		//dispatch the the accounting helper
-		$transaction = $this->ah->automatedTransaction(
-			$cat->amount,
-			($vat ? $cat->accountInclVat : $cat->accountExclVat),
-			$cat->accountLiability,
-			$cat->accountAssert,
-			$this->options['referenceText'],
-			$vat,
-			$cat->vatAmount
-		);
+			$returnTransaction = $this->ah->mergeTransactions($returnTransaction, $transaction);
+		}
 
-		return $transaction;
+		$this->done = true;
+
+		return $returnTransaction;
 	}
 
 	/**
@@ -51,8 +65,8 @@ class ProductCategory implements Transactions
 	 */
 	function hasMore()
 	{
-		//every element is just shiftet, so when the list is empty, we don't have more.
-		return !empty($this->categories);
+		//returning if result is returned
+		return !$this->done;
 	}
 
 	/**

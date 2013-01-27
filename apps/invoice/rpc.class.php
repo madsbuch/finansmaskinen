@@ -61,7 +61,8 @@ class invoice extends \core\rpc {
 	 * if the invoice is a draft, the system will finalize it (adding invoice number)
 	 *
 	 * @param $id
-	 * @throws \exception\UserException
+	 * @param $asset
+	 * @param null $amount
 	 * @return void
 	 */
 	function post($id, $asset, $amount = null){

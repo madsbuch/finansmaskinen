@@ -34,7 +34,10 @@ class DefUser extends \helper\template\base\HTML{
 		'/js/plugins/jquery.pageguide.js',
 		'/js/plugins/jquery.sheepItPlugin-1.0.0.min.js',
 		'/js/plugins/bootstrap-datepicker.js',
+		'/js/plugins/iButton/jquery.ibutton.min.js',
 		'/js/plugins/jquery.form.js',
+		'/js/plugins/bootstrap-datepicker.js',
+		'/js/plugins/jquery.metadata.js',
 
 		//and customization
 		'/templates/finance/js/application.js',
@@ -44,6 +47,8 @@ class DefUser extends \helper\template\base\HTML{
 	protected $addCSSIncludes = array(
 		'/bootstrap/css/bootstrap.css',
 		'/css/plugins/jquery.pageguide.css',
+		'/css/plugins/jquery.ibutton.min.css',
+		'/css/plugins/bootstrap-datepicker.css',
 		'/templates/finance/css/app.css',
 	);
 	

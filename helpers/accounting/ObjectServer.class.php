@@ -30,5 +30,8 @@ class ObjectServer
 
 	public $grp;
 
+	/**
+	 * @var string
+	 */
 	public $accounting;
 }

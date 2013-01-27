@@ -11,6 +11,7 @@ namespace helper\accounting;
  */
 class MysqlQueries implements \helper\accounting\Queries
 {
+	//region accounts
 	function getAllAccounts($grp, $flags = 0, $accounts=array()){
 		$add = ' AND flags & ' . $flags . ' = ' . $flags . '';
 
@@ -43,6 +44,34 @@ class MysqlQueries implements \helper\accounting\Queries
 			GROUP BY acc.code';
 	}
 
+	/**** Accounts ****/
+
+	function insertAccount(){
+		return 'INSERT INTO accounting_accounts
+			(`grp_id`, `code`, `default_reflection_account`, `name`, `type`, `vat`, `flags`)
+			VALUES
+			(:grp_id, :code, :dfa, :name, :type, :vat, :flags);';
+	}
+
+	function deleteAccount(){
+		return 'DELETE FROM accounting_accounts WHERE code = :code AND grp_id = :grp_id LIMIT 1';
+	}
+
+	//endregion
+
+	//region transactions
+	/**** transactions ****/
+
+	function getTransactions(){
+		return 'SELECT
+          id,
+          date,
+	      reference,
+	      approved
+	    FROM accounting_transactions WHERE accounting_id = :accounting
+	      ORDER BY date DESC LIMIT :start, :num';
+	}
+
 	function insertTransaction(){
 		return '
 			insert into
@@ -68,18 +97,30 @@ class MysqlQueries implements \helper\accounting\Queries
 		   :transaction_id );';
 	}
 
-	/**** Accounts ****/
-
-	function insertAccount(){
-		return 'INSERT INTO accounting_accounts
-			(`grp_id`, `code`, `default_reflection_account`, `name`, `type`, `vat`, `flags`)
-			VALUES
-			(:grp_id, :code, :dfa, :name, :type, :vat, :flags);';
+	function getTransactionByReference(){
+		return 'SELECT
+		        transaction.id as t_id,
+			    transaction.date as t_date,
+			    transaction.reference as t_reference,
+			    transaction.approved as t_approved,
+			    transaction.accounting_id as t_accounting_id,
+			    postings.id as p_id,
+			    postings.account_id as p_account_id,
+			    postings.amount_in as p_amount_in,
+			    postings.amount_out as p_amount_out,
+			    postings.transaction_id as p_transaction_id
+		FROM
+		    accounting_transactions as transaction,
+		    accounting_postings as postings
+		WHERE
+		        transaction.accounting_id = :accounting_id
+		    AND transaction.reference = :referenceText
+		    AND postings.transaction_id = transaction.id;';
 	}
 
-	function deleteAccount(){
-		return 'DELETE FROM accounting_accounts WHERE code = :code AND grp_id = :grp_id LIMIT 1';
-	}
+	//endregion
+
+	//region VAT
 
     /**** Vat ****/
     function getSumsOnVatAccounts(){
@@ -112,17 +153,7 @@ class MysqlQueries implements \helper\accounting\Queries
 
     }
 
-    /**** transactions ****/
-
-    function getTransactions(){
-        return 'SELECT
-          id,
-          date,
-	      reference,
-	      approved
-	    FROM accounting_transactions WHERE accounting_id = :accounting
-	      ORDER BY date DESC LIMIT :start, :num';
-    }
+	//endregion
 
 	/**** Postings ****/
 	function getPostings($accounting){

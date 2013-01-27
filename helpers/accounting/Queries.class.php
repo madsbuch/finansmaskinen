@@ -8,6 +8,8 @@ namespace helper\accounting;
 interface Queries
 {
 
+	//region accounts
+
 	/**
 	 * returns table as follows:
 	 *  id:         globally unique account id
@@ -23,19 +25,6 @@ interface Queries
 	 * @return string
 	 */
 	function getAllAccounts($grp);
-
-	/**
-	 * returns prepared statement for inserting transaction
-	 *
-	 * followinf named parameters exist:
-	 *  date
-	 *  referenceText   that are unique
-	 *  approved        whether it's approved
-	 *  accounting_id   id of accounting
-	 *
-	 * @return string
-	 */
-	function insertTransaction();
 
 	/**
 	 * posting insertion prepare
@@ -90,7 +79,23 @@ interface Queries
      */
     function getSumsOnVatAccounts();
 
-    /**** transactions ****/
+	//endregion
+
+	//region transactions
+    /**** TRANSACTION ****/
+
+	/**
+	 * returns prepared statement for inserting transaction
+	 *
+	 * followinf named parameters exist:
+	 *  date
+	 *  referenceText   that are unique
+	 *  approved        whether it's approved
+	 *  accounting_id   id of accounting
+	 *
+	 * @return string
+	 */
+	function insertTransaction();
 
     /**
      * returns a query to get all transactions, takes folloing parameters:
@@ -104,6 +109,17 @@ interface Queries
     function getTransactions();
 
 	/**
+	 * returns a query, that extracts a single reference based on
+	 *
+	 * takes
+	 *  referenceText   that are unique
+	 *  accounting_id   id of accounting
+	 *
+	 * @return string
+	 */
+	function getTransactionByReference();
+
+	/**
 	 * returns a query that takes following:
 	 *  start
 	 *  num
@@ -114,5 +130,7 @@ interface Queries
 	 * @return string
 	 */
 	function getPostings($accounting);
+
+	//endregion
 
 }

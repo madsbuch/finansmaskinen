@@ -205,8 +205,51 @@ class Transactions
 
 	}
 
-	function getTransactionByRef($ref){
-        null;
+	/**
+	 * @param $ref
+	 * @param null $pdo instance of pdo object, this is used if the function is a part og a transaction
+	 * @throws \exception\UserException
+	 * @return array
+	 */
+	function getTransactionByRef($ref, $pdo = null){
+		$pdo = isset($pdo) ? $pdo : $this->srv->db->dbh;
+
+		$sth = $pdo->prepare($this->srv->queries->getTransactionByReference());
+
+		$sth->execute(array(
+			'referenceText' => $ref,
+			'accounting_id' => $this->srv->accounting
+		));
+
+		$transaction = null;
+		$i = 0;
+
+		foreach ($sth->fetchAll() as $t) {
+			if(is_null($transaction)){
+				$transaction = new \model\finance\accounting\DaybookTransaction(array(
+					'_id'           => $t['t_id'],
+					'referenceText' => $t['t_reference'],
+					'postings'      => array(),
+					'date'          => $t['t_date'],
+					'approved'      => $t['t_approved']
+				));
+			}
+
+			$transaction->postings->$i = new \model\finance\accounting\Posting(array(
+				'_id'           => $t['p_id'],
+				'account'       => $t['p_account_id'],
+				'amount'        => abs($t['p_amount_in'] - $t['p_amount_out']),
+				'positive'      => $t['p_amount_in'] - $t['p_amount_out'] > 0,
+				'description'   => ''
+			));
+
+			$i++;
+		}
+
+		if(is_null($transaction))
+			throw new \exception\UserException(__('No transaction for reference: %s', $ref));
+
+		return $transaction;
 	}
 
 	/**** private functions ****/
@@ -244,11 +287,15 @@ class Transactions
 				$balance -= $posting->positive ? $posting->amount : -1 * $posting->amount;
 		}
 		if($balance != 0)
-			throw new \exception\UserException(__('assets and liabilities should equal up to 0. The difference is %s', abs($balance)));
-
-		if(!is_null($this->getTransactionByRef($transaction->referenceText)))
 			throw new \exception\UserException(__('ReferenceText, %s,  already exist in this accounting.', $transaction->referenceText));
 
+		$throw = false;
+		try{
+			$this->getTransactionByRef($transaction->referenceText);
+			$throw= true;
+		}catch(\exception\UserException $e){}
+		if($throw)
+			throw new \exception\UserException(__('The referencetext already exists in the accounting'));
 	}
 
     private function addTransactionNoCommit($pdo, $queries){

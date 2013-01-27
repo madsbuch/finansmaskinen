@@ -35,11 +35,9 @@ function reAttach () {
 	
 	/**
 	* nice checkboxes.
-	*
-	* data-checkedLabel    when checked
-	* data-uncheckedLabel  when unchecked
+	* need for a proper plugin for the new jquery/bootstrap
 	*/
-	$('.checkbox').iphoneStyle();
+	$('.checkbox').iButton();
 	
 	/**
 	* this creates datatable on tables with ajax class set

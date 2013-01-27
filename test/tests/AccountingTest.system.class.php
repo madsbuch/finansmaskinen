@@ -102,8 +102,13 @@ class AccountingTest extends UnitTestCase
 		$this->assertTrue($res['success']);
 	}
 
-	function testTransactionWasCorrect(){
+	function testNoRefDuplicates(){
+		global $daybookTransaction;
 
+		$this->expectException();
+
+		$res = $this->client->createTransaction($daybookTransaction->toArray());
+		$this->assertTrue($res['success']);
 	}
 
 	/**

@@ -16,6 +16,13 @@ namespace model\finance\accounting;
 class Posting extends \model\AbstractModel
 {
 	/**
+	 * object id
+	 *
+	 * @var int
+	 */
+	protected $_id;
+
+	/**
 	 * @var int account this posting belongs to
 	 */
 	protected $account;

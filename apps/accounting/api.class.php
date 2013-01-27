@@ -289,7 +289,6 @@ class accounting
 	 * @param $transactions
 	 * @param null $accounting
 	 * @throws \exception\UserException
-	 * @internal param array $transaction of transactions, this sytem makes sure, that
 	 * every transaction is applied
 	 */
 	static function addTransactions($transactions, $accounting = null)

@@ -222,7 +222,6 @@ abstract class AbstractModel{
 			//if value isn't set, or overwrrite is used, do it
 			if((!isset($this->$k) && !empty($v)) || $overwrite){
 				$this->set($k, $v); //set the value
-				var_dump($k);
 			}
 			//check if we should propergate down
 			elseif(is_object($this->$k)

@@ -3,16 +3,7 @@
 namespace app\accounting\layout\finance;
 
 class Setup extends \helper\layout\LayoutBlock{
-	
-	public $addJsIncludes = array(
-		'/js/plugins/bootstrap-datepicker.js',
-		'/bootstrap/js/bootstrap-modal.js'
-	);
-	
-	public $addCSSIncludes = array(
-		'/css/plugins/bootstrap-datepicker.css'
-	);
-	
+
 	public $addJs = <<< EOF
 	var descriptions = new Array();
 		
@@ -126,8 +117,7 @@ EOF;
 			<p>Moms skal indbetales til staten efter endt momsperiode. Vi vil
 			gerne vide hvornår du skal betale moms, så vi kan give dig en påmindelse</p>
 
-			<input type="checkbox" name="vatQuater" class="checkbox" data-checkedLabel="Kvartalsmoms"
-				data-uncheckedLabel="Halvårsmoms" checked="checked" />
+			<input type="checkbox" name="vatQuater" class="checkbox {labelOn: \'Kvartalsmoms\', labelOff: \'Halvårsmoms\'}" />
 		</div>
 
 	</div>

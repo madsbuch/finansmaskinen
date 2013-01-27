@@ -126,8 +126,7 @@ class accounting
 
 		$this->accCheck = $this->db->dbh->prepare('SELECT * FROM ' . self::ATABLE . '
 			WHERE grp_id = ' . $this->grp . ' AND code = ?;');
-		$this->refCheck = $this->db->dbh->prepare('SELECT * FROM ' . self::TRANST . '
-			WHERE ref = ? AND code = \'' . $accounting . '\';');
+
 	}
 
 	/**** access to classes, that handles the stuff ****/
@@ -242,33 +241,12 @@ class accounting
 	 *
 	 * @param $transaction \model\finance\accounting\DaybookTransaction
 	 *
+	 * @throws \exception\UserException
+	 * @return void
 	 * @deprecated moved to transaction util
 	 */
 	function addDaybookTransaction(\model\finance\accounting\DaybookTransaction $transaction){
-
         return $this->transaction()->insertTransaction($transaction);
-
-        $this->postings = $transaction->postings;
-		$this->transactionInfo = $transaction;
-
-		if(empty($transaction->postings) || $transaction->postings->count() < 1)
-			throw new \exception\UserException('Transaction must have postings');
-
-        //TODO refactor so this isn't needed
-		foreach($transaction->postings as $posting){
-			$this->addTransaction(new \model\finance\accounting\Transaction(array(
-				'value' => $posting->amount,
-				'positive' => $posting->positive,
-				'account' => $posting->account,
-				'ref' => $transaction->referenceText,
-				'date' => $transaction->date,
-				'approved' => $transaction->approved
-			)));
-		}
-	}
-
-	function getDaybookTransaction($ref){
-
 	}
 
 	/**** helper methods ****/
@@ -284,6 +262,7 @@ class accounting
      * @param null $ref
      * @param bool| $vat whether to add $vat (only if an vataccount is ass. with acc)
      * @param $vatAmount    Override calculation of vat, and use the specific amount
+     * @return \model\finance\accounting\DaybookTransaction
      */
 	function automatedTransaction(
 		$amount, //amount to insert, exl vat
@@ -351,6 +330,8 @@ class accounting
 	 * @param $dbTrans \model\finance\accounting\DaybookTransaction
 	 * @param $liabilityAccount int account to reflect salesVat
 	 * @param $assetAccount int account to reflect bourght vat
+	 * @throws \exception\UserException
+	 * @return \model\finance\accounting\DaybookTransaction
 	 */
 	function vatCalculate(\model\finance\accounting\DaybookTransaction $dbTrans,
 	                      $liabilityAccount, $assetAccount){
@@ -484,6 +465,35 @@ class accounting
 		}
 
 		return $dbTrans;
+	}
+
+	/**
+	 * takes an transaction (mergee) and merges them into main
+	 *
+	 * @param \model\finance\accounting\DaybookTransaction $main
+	 * @param \model\finance\accounting\DaybookTransaction $mergee
+	 * @return \model\finance\accounting\DaybookTransaction
+	 */
+	function mergeTransactions(\model\finance\accounting\DaybookTransaction $main, \model\finance\accounting\DaybookTransaction $mergee){
+		if(!isset($main->postings))
+			$main->postings = array();
+
+		$index = 100;//stort from 100 to avoid to many collisions
+
+		if(isset($mergee->postings)){
+			//go through all mergee's transaction
+			foreach($mergee->postings as $p){
+				//run untill we find a free spot
+				while(true){
+					$index++;
+					if(!isset($main->postings->$index)){
+						$main->postings->$index = $p;
+						break;
+					}
+				}
+			}
+		}
+		return $main;
 	}
 
 	/**

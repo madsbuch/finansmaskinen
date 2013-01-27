@@ -131,7 +131,12 @@ class invoice{
 	public static function getOne($id){
 		$lodo = new \helper\lodo('invoices', 'invoice');
 		$lodo->setReturnType('\model\finance\Invoice');
-		return $lodo->getFromId($id);
+		$obj = $lodo->getFromId($id);
+
+		if(empty($obj))
+			throw new \exception\UserException(__('No invoice'));
+
+		return $obj;
 	}
 	
 	/**
@@ -284,8 +289,8 @@ class invoice{
 
 		//make sure the invoice is finalized before attempting to post to any systems
 		if(empty($inv->Invoice->ID)){
-			$inv = self::finalize($inv);
 			$inv->draft = false;
+			$inv = self::finalize($inv);
 			$inv = self::update($inv);
 		}
 
@@ -328,6 +333,7 @@ class invoice{
 
 		//everything was an success
 		$inv->isPayed = true;
+
 		self::update($inv);
 	}
 	
