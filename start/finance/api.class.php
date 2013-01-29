@@ -103,8 +103,15 @@ class api extends \core\startapi{
 		
 		return $fUser;
 	}
-	
-	public static function activate($key, $mongoID){
+
+    /**
+     * todo, check activation key
+     *
+     * @param $key
+     * @param $mongoID
+     * @return bool
+     */
+    public static function activate($key, $mongoID){
 		$core = new \helper\core(null);
 		$db = $core->getDB('mongo');
 		$user = $db->getCollection('financeUsers')->findOne(array('_id' => new \MongoID($mongoID)));
@@ -114,11 +121,34 @@ class api extends \core\startapi{
 		$user = $db->getCollection('financeUsers')->save($user);
 		return true;
 	}
-	
-	/**
-	* checks whether a given user exists
-	*/
-	public static function findUser($mail){
+
+    /**
+     * agrees currently logged in user on tos
+     */
+    public static function agreeTos(){
+        $user = self::getUser();
+        $user->tosApproved = true;
+        $user->TosReApprove = false;
+
+        $core = new \helper\core(null);
+        $db = $core->getDB('mongo');
+
+        $db->getCollection('financeUsers')->update(
+            array('_id' => new \MongoID($user->_id)),
+            array('$set' => array(
+                'tosApproved' => true,
+                'TosReApprove' => false
+            )));
+    }
+
+
+    /**
+     * checks if an user exists, and returns object representing it
+     *
+     * @param $mail
+     * @return \model\finance\platform\User|null
+     */
+    public static function findUser($mail){
 		$core = new \helper\core(null);
 		$db = $core->getDB('mongo');
 		$user = $db->getCollection('financeUsers')->findOne(array('mail' => $mail));
@@ -161,11 +191,13 @@ class api extends \core\startapi{
 		}
 		return false;
 	}
-	
-	/**
-	* returns currently logges in user, if any
-	*/
-	public static function getUser(){
+
+    /**
+     * returns current logged in user
+     *
+     * @return \model\finance\platform\User
+     */
+    public static function getUser(){
 		$session = \core\session::getInstance();
 		if($user = $session->user_holder){
 			//unset($user->coreSecret, $user->coreID, $user->password);
@@ -365,7 +397,15 @@ class api extends \core\startapi{
 		//check if logged in
 		if(!($iterator = self::appIterator()))
 			return $request;
-		
+
+        //check for approved TOS
+        $user = self::getUser();
+        if(!$user->tosApproved){
+            $request->page = 'tos';
+            $request->app = 'main';
+            return $request;
+        }
+
 		//check whther the current app is in setup process
 		if($request->app != 'main' 
 			&& !$iterator[$request->app]->isSetup 

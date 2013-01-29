@@ -46,16 +46,17 @@ class invoice extends \core\app
 		$this->output_content = $html->generate();
 	}
 
-	/**
-	 * add new one
-	 */
-	function add()
+    /**
+     * create new invoice
+     */
+    function add()
 	{
 		$html = $this->getTpl();
 
 		$html->appendContent(\helper\layout\Element::heading('Fakturering', 'Opret faktura'));
 
 		$view = new invoice\layout\finance\Form();
+        $view->addConfirmationMessage(\api\companyProfile::getMessageForAction('Invoice'));
 
 		if ($this->param['reciever'])
 			$view->defaultContact($this->param['reciever']);
@@ -65,6 +66,31 @@ class invoice extends \core\app
 		$this->output_header = $this->header->getHeader();
 		$this->output_content = $html->generate();
 	}
+
+    /**
+     * edit an existing invoice, that is a draft
+     *
+     * @param null $id
+     */
+    function edit($id = null)
+    {
+        $html = $this->getTpl();
+        $html->appendContent(\helper\layout\Element::heading(__('Invoicing'),
+            __('Edit your invoice')));
+
+        $invoice = \api\invoice::getOne($id);
+
+        if ($invoice->draft){
+            $view = new invoice\layout\finance\Form($invoice);
+            $view->addConfirmationMessage(\api\companyProfile::getMessageForAction('Invoice'));
+            $html->appendContent($view);
+        }
+        else
+            $html->add2content('<div class="alert alert-info">' . __('Invoice is not a draft') . '</div>');
+
+        $this->output_header = $this->header->getHeader();
+        $this->output_content = $html->generate();
+    }
 
 	/**
 	 * shows page for mailing invoice
@@ -97,26 +123,6 @@ class invoice extends \core\app
 
 		$view = new invoice\layout\finance\View($invoice, $widgets);
 		$html->appendContent($view);
-
-		$this->output_header = $this->header->getHeader();
-		$this->output_content = $html->generate();
-	}
-
-	/**
-	 * form for editing invoice
-	 */
-	function edit($id = null)
-	{
-		$html = $this->getTpl();
-		$html->appendContent(\helper\layout\Element::heading(__('Invoicing'),
-			__('Edit your invoice')));
-
-		$invoice = \api\invoice::getOne($id);
-
-		if ($invoice->draft)
-			$html->appendContent(new invoice\layout\finance\Form($invoice));
-		else
-			$html->add2content('<div class="alert alert-info">' . __('Invoice is not a draft') . '</div>');
 
 		$this->output_header = $this->header->getHeader();
 		$this->output_content = $html->generate();

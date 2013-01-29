@@ -2,6 +2,15 @@
 
 namespace model\core;
 
+/**
+ * @property $app;
+ * @property $page;
+ * @property $ui;
+ * @property $fileType;
+ * @property $arguments;
+ * @property $id;
+ * @property $callback;
+ */
 class Request extends \model\AbstractModel{
 	/**
 	 * the app that the request uses

@@ -7,6 +7,19 @@
 
 namespace model\finance\platform;
 
+/**
+ * @property $_id
+ * @property $mail
+ * @property $name
+ * @property $password
+ * @property $activationKey
+ * @property $activated
+ * @property $coreSecret
+ * @property $coreID
+ * @property $settings
+ * @property $tosApproved;
+ * @property $TosReApprove;
+ */
 class User extends \model\AbstractModel{
 	/**
 	* user id, from mongo
@@ -29,7 +42,19 @@ class User extends \model\AbstractModel{
 	*/
 	protected $coreSecret;
 	protected $coreID;
-	
+
+    /**
+     * whether tos is approved
+     */
+    protected $tosApproved;
+
+    /**
+     * if tos is to reapprove
+     *
+     * @var bool
+     */
+    protected $TosReApprove;
+
 	/**
 	* some application settings
 	*
@@ -61,7 +86,7 @@ class User extends \model\AbstractModel{
 		if(is_null($this->coreID))
 			$this->coreID = $d;
 		else
-			throw new \Exception('Invalid operation'); 
+			throw new \Exception('Core id is protected and cannot be reset');
 	}
 }
 

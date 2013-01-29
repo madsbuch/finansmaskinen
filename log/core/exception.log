@@ -110,3 +110,110 @@
 2013-01-27T15:12:44+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
 2013-01-27T15:14:22+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
 2013-01-27T15:14:33+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-27T18:16:09+00:00 ERROR {"message":"You don't have permission to access selected page","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-27T18:16:10+00:00 ERROR {"message":"Page resources does not exist in app \\app\\accounting.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-27T18:16:14+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-27T18:16:18+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-27T18:16:23+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-27T18:17:49+00:00 ERROR {"message":"Unable to create account: 1234","stack":"#0 \/var\/www\/apps\/accounting\/api.class.php(447): helper\\accounting\\utils\\Accounts->createAccount(Object(model\\finance\\accounting\\Account))\n#1 \/var\/www\/apps\/accounting\/rpc.class.php(45): api\\accounting::createAccount(Object(model\\finance\\accounting\\Account))\n#2 [internal function]: rpc\\accounting->createAccount(Array)\n#3 \/var\/www\/core\/reqHandler.class.php(150): call_user_func_array(Array, Array)\n#4 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#5 {main}"}
+2013-01-27T18:17:50+00:00 ERROR {"message":"account 2100 cannot be deleted, as there is associated postings.","stack":"#0 \/var\/www\/apps\/accounting\/api.class.php(501): helper\\accounting\\utils\\Accounts->deleteAccount(2100)\n#1 \/var\/www\/apps\/accounting\/rpc.class.php(83): api\\accounting::deleteAccount(2100)\n#2 [internal function]: rpc\\accounting->deleteAccount(2100)\n#3 \/var\/www\/core\/reqHandler.class.php(150): call_user_func_array(Array, Array)\n#4 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#5 {main}"}
+2013-01-27T18:17:50+00:00 ERROR {"message":"Account 1234 doesn't exist.","stack":"#0 \/var\/www\/apps\/accounting\/api.class.php(486): helper\\accounting\\utils\\Accounts->getAccountByCode(1234)\n#1 \/var\/www\/apps\/accounting\/rpc.class.php(71): api\\accounting::getAccount(1234)\n#2 [internal function]: rpc\\accounting->getAccount(1234)\n#3 \/var\/www\/core\/reqHandler.class.php(150): call_user_func_array(Array, Array)\n#4 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#5 {main}"}
+2013-01-27T18:17:50+00:00 ERROR {"message":"ReferenceText, test \u00f8\u00e6\u00e5 51056f4b9cebe,  already exist in this accounting.","stack":"#0 \/var\/www\/helpers\/accounting\/utils\/Transactions.class.php(110): helper\\accounting\\utils\\Transactions->validateTransaction(Object(model\\finance\\accounting\\DaybookTransaction))\n#1 \/var\/www\/helpers\/accounting\/utils\/Transactions.class.php(86): helper\\accounting\\utils\\Transactions->nonTransactionalInsert(Object(model\\finance\\accounting\\DaybookTransaction), Object(PDO))\n#2 \/var\/www\/apps\/accounting\/api.class.php(436): helper\\accounting\\utils\\Transactions->commit()\n#3 \/var\/www\/apps\/accounting\/rpc.class.php(94): api\\accounting::importTransactions(Object(model\\finance\\accounting\\DaybookTransaction))\n#4 [internal function]: rpc\\accounting->createTransaction(Array)\n#5 \/var\/www\/core\/reqHandler.class.php(150): call_user_func_array(Array, Array)\n#6 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#7 {main}"}
+2013-01-27T18:17:50+00:00 ERROR {"message":"Balace does not add up to 0, difference was: 10000","stack":"#0 \/var\/www\/helpers\/accounting\/utils\/Transactions.class.php(110): helper\\accounting\\utils\\Transactions->validateTransaction(Object(model\\finance\\accounting\\DaybookTransaction))\n#1 \/var\/www\/helpers\/accounting\/utils\/Transactions.class.php(86): helper\\accounting\\utils\\Transactions->nonTransactionalInsert(Object(model\\finance\\accounting\\DaybookTransaction), Object(PDO))\n#2 \/var\/www\/apps\/accounting\/api.class.php(436): helper\\accounting\\utils\\Transactions->commit()\n#3 \/var\/www\/apps\/accounting\/rpc.class.php(94): api\\accounting::importTransactions(Object(model\\finance\\accounting\\DaybookTransaction))\n#4 [internal function]: rpc\\accounting->createTransaction(Array)\n#5 \/var\/www\/core\/reqHandler.class.php(150): call_user_func_array(Array, Array)\n#6 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#7 {main}"}
+2013-01-27T18:17:54+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-27T18:51:39+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-27T18:52:48+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-27T18:54:42+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-27T18:55:12+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-27T18:55:58+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-27T18:56:26+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-27T18:56:29+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-27T18:56:32+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-27T18:57:02+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-27T18:57:05+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-27T18:57:33+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-27T18:57:35+00:00 ERROR {"message":"Page resources does not exist in app start\\finance\\main.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-27T18:58:10+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T11:12:08+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T11:12:10+00:00 ERROR {"message":"SQLSTATE[HY000] [2003] Can't connect to MySQL server on '172.16.112.131' (111)","stack":"#0 \/var\/www\/core\/db.class.php(49): PDO->__construct('mysql:dbname=co...', 'appf', 'appfDB')\n#1 \/var\/www\/core\/auth.class.php(577): core\\db->__construct(Array)\n#2 \/var\/www\/core\/auth.class.php(205): core\\auth->getDB()\n#3 \/var\/www\/core\/auth.class.php(143): core\\auth->validateUser('111', 'e4f85a81a01c023...')\n#4 \/var\/www\/start\/finance\/api.class.php(145): core\\auth->login('111', 'e4f85a81a01c023...')\n#5 \/var\/www\/start\/finance\/controller.class.php(37): start\\finance\\api::login('madspbuch@gmail...', '123456')\n#6 [internal function]: start\\finance\\main->index()\n#7 \/var\/www\/core\/reqHandler.class.php(150): call_user_func_array(Array, Array)\n#8 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#9 {main}"}
+2013-01-29T11:12:10+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T11:12:24+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T11:36:40+00:00 ERROR {"message":"Page tos does not exist in app start\\finance\\main.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T11:36:40+00:00 ERROR {"message":"Page tos does not exist in app start\\finance\\main.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T11:36:42+00:00 ERROR {"message":"Page tos does not exist in app start\\finance\\main.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T11:36:42+00:00 ERROR {"message":"Page tos does not exist in app start\\finance\\main.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T11:38:26+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T11:58:49+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T11:58:52+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:01:15+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:01:18+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:05:01+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:05:14+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:05:18+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:05:22+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:05:25+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:05:31+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:05:39+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:05:59+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:06:04+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:06:07+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:06:11+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:06:14+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:06:52+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:06:53+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:06:54+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:07:23+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:07:24+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:07:26+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:07:46+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:08:36+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:08:37+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:08:40+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:08:43+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:08:45+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:08:46+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:09:13+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:09:14+00:00 ERROR {"message":"Page resources does not exist in app start\\finance\\main.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:09:15+00:00 ERROR {"message":"Page resources does not exist in app start\\finance\\main.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:09:16+00:00 ERROR {"message":"Page resources does not exist in app start\\finance\\main.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:09:17+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:09:19+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:11:57+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:12:47+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:12:50+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:12:55+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:12:55+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:12:55+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:13:18+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:13:37+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:13:39+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:13:40+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:13:40+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:13:41+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:16:34+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:19:54+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:56:41+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T13:13:43+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T13:13:43+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T13:13:44+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T13:14:37+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T13:24:39+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T13:24:47+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T13:25:44+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T13:26:36+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T13:27:28+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T13:27:47+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T13:27:48+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T13:28:08+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T13:28:13+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T13:28:18+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T13:29:29+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T13:29:30+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T13:29:32+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T13:29:33+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T13:29:35+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T13:29:37+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T13:29:44+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T13:29:49+00:00 ERROR {"message":"Page assets does not exist in app \\app\\invoice.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T13:29:56+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T13:34:17+00:00 ERROR {"message":"Page assets does not exist in app \\app\\billing.","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}

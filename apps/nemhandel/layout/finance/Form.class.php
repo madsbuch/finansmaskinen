@@ -1,6 +1,6 @@
 <?php
 
-namespace app\invoice\layout\finance;
+namespace app\nemhandel\layout\finance;
 
 class Form extends \helper\layout\LayoutBlock{
 	

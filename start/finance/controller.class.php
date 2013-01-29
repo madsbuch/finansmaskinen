@@ -201,6 +201,30 @@ class main extends \core\app implements \core\framework\Output
 		$this->output_header = $this->header->generate();
 		$this->output_content = $html->generate();
 	}
+
+    /**
+     * page for showing and agreeing on tos
+     */
+    function tos($agree = null){
+
+        //check if TOS is agreed
+        if($agree == 'agree'){
+            \start\finance\api::agreeTos();
+            $this->header->redirect("/index");
+            $this->output_header = $this->header->generate();
+            $this->output_content = '';
+            return;
+        }
+
+        $html = $this->getTpl();
+        $html->appendContent(\helper\layout\Element::heading(__('Terms of Service'),
+            __('We just have to agree on the rules.')));
+
+        $html->appendContent(new layout\Tos());
+
+        $this->output_header = $this->header->generate();
+        $this->output_content = $html->generate();
+    }
 	
 	/**
 	* page for activating account
@@ -562,8 +586,8 @@ class main extends \core\app implements \core\framework\Output
 	}
 	
 	/**** private functions ****/
-	
-	private function getTpl($page = 'none'){
+
+    private function getTpl($page = 'none'){
 		$html = $this->getSiteAPI()->getTemplate();
 
 		if(!$this->auth->isLoggedIn()){

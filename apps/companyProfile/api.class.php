@@ -56,14 +56,20 @@ class companyProfile{
 	const ACCOUNTCREDIT			= 1;
 	const ACCOUNTWITHDRAWABLE	= 2;
 	const ACCOUNTRESERVED		= 3;
-	
-	/**
-	* inserts money on main credit account
-	*
-	* this is not approved untill moneyApply is called
-	* account is either accountCredit or accountWithdrawable
-	*/
-	static function moneyInsert($amount, $ref, $account){
+
+    /**
+     * inserts money on main credit account
+     *
+     * this is not approved untill moneyApply is called
+     * account is either accountCredit or accountWithdrawable
+     *
+     * @param $amount
+     * @param $ref
+     * @param $account
+     * @return bool
+     * @throws \Exception
+     */
+    static function moneyInsert($amount, $ref, $account){
 		//get a database object
 		$pdo = new \helper\core('companyProfile');
 		$pdo = $pdo->getDB()->dbh;
@@ -84,11 +90,18 @@ class companyProfile{
 		return $sth->execute(array($amount, $account, $id, $ref, false));
 	}
 
-	/**
-	* not approved untill moneyApply
-	* account is either accountCredit or accountWithdrawable
-	*/
-	static function moneyWithdraw($amount, $ref, $account){
+    /**
+     * not approved untill moneyApply
+     * account is either accountCredit or accountWithdrawable
+     *
+     * @param $amount
+     * @param $ref
+     * @param $account
+     * @throws \exception\UserException
+     * @throws \Exception
+     * @return bool
+     */
+    static function moneyWithdraw($amount, $ref, $account, $allowSubZero = false){
 		//get a database object
 		$pdo = new \helper\core('companyProfile');
 		$pdo = $pdo->getDB()->dbh;
@@ -107,7 +120,8 @@ class companyProfile{
 		//and finally, the actual query
 		$sth = $pdo->prepare("INSERT INTO companyProfile_transactions (value, account, company_id, ref, approved) VALUES (?, ?, ?, ?, ?)");
 		
-		return $sth->execute(array($amount, $account, $id, $ref, false));
+		if(!$sth->execute(array($amount, $account, $id, $ref, false)))
+            throw new \exception\UserException('Withdrawal failed');
 	}
 	/**
 	* fails if there is not enough money on credit account
@@ -117,15 +131,16 @@ class companyProfile{
 	static function moneyReserve($amount, $ref){
 	
 	}
-	
-	
-	
-	/**
-	* deletes UNAPPROVED transactions
-	*
-	* this is equal to rollback
-	*/
-	static function moneyDelete($ref){
+
+
+    /**
+     * deletes unapproved transactions only
+     *
+     * @param $ref
+     * @return bool
+     * @throws \Exception
+     */
+    static function moneyDelete($ref){
 		//get a database
 		$pdo = new \helper\core('companyProfile');
 		$pdo = $pdo->getDB()->dbh;
@@ -142,13 +157,15 @@ class companyProfile{
 		
 		return $sth->execute(array($id, $ref));
 	}
-	
-	/**
-	* applies all transactions on a ref
-	*
-	* this is equal to commit
-	*/
-	static function moneyApply($ref){
+
+    /**
+     * applies a transaction
+     *
+     * @param $ref
+     * @return bool
+     * @throws \Exception
+     */
+    static function moneyApply($ref){
 		//get a database
 		$pdo = new \helper\core('companyProfile');
 		$pdo = $pdo->getDB()->dbh;
@@ -165,11 +182,15 @@ class companyProfile{
 		
 		return $sth->execute(array($id, $ref));
 	}
-	
-	/**
-	* returns result on an account
-	*/
-	static function moneyResult($account){
+
+    /**
+     * returns account sum
+     *
+     * @param $account
+     * @return int
+     * @throws \Exception
+     */
+    static function moneyResult($account){
 		//get a database
 		$pdo = new \helper\core('companyProfile');
 		$pdo = $pdo->getDB()->dbh;
@@ -190,12 +211,27 @@ class companyProfile{
 		
 		return (int) $res[0][0];
 	}
-	/**
-	* initialize company for this tree
-	*
-	* if a company already exists, this function will fail
-	*/
-	static function initialize($company){
+
+    /**** some quick ticket functions ****/
+
+    /**
+     * attempts to decrement tickets by $num, if it results in subzero
+     * nothing will be done and false is returned
+     *
+     * @param $num
+     * @return bool
+     */
+    static function useTicket($num){
+        return false;
+    }
+
+    /**
+     * initilizes company for a given tree
+     *
+     * @param $company
+     * @return bool|mixed
+     */
+    static function initialize($company){
 		$cp = new \helper\lodo('companyProfiles', 'companyProfile');
 		$o = $cp->getObjects();
 		
@@ -207,18 +243,20 @@ class companyProfile{
 		
 		return $cp->insert($company);
 	}
-	
-	/**
-	* get details about this company
-	*
-	* $fetchall populates the object with details from MySQL database and stuff
-	*/
-	static function retrieve($fetchAll=true){
+
+    /**
+     * fetches current company object
+     *
+     * @param bool $fetchAll populate with detals from MySQL?
+     * @throws \exception\UserException
+     * @return \model\finance\Company
+     */
+    static function retrieve($fetchAll=true){
 		$cp = new \helper\lodo('companyProfiles', 'companyProfile');
 		$o = $cp->getObjects('\model\finance\Company');
 		
 		if(count($o) < 1)
-			return null;
+		    throw new \exception\UserException('No company');
 		
 		$o = $o[0];
 		//merge some transaction from db in, and set account values
@@ -228,13 +266,16 @@ class companyProfile{
 		
 		return $o;
 	}
-	
-	/**
-	* a delta object that is merged in to the old one
-	*
-	* @TODO Too fucking bloated
-	*/
-	static function update($dObj){
+
+    /**
+     * update company
+     *
+     * TODO too bloated
+     *
+     * @param $dObj
+     * @return array|bool|mixed
+     */
+    static function update($dObj){
 		$o = self::retrieve();
 		
 		//initializing company, if none excists
@@ -262,14 +303,16 @@ class companyProfile{
 		$cp = new \helper\lodo('companyProfiles', 'companyProfile');
 		return $cp->save($ts);
 	}
-	
-	/**
-	* gets public details on a company
-	*
-	* the returns the Party object of the contact.
-	* @TODO remember to index the grp id field in the collection
-	*/
-	static function getPublic($treeID){
+
+    /**
+     * retrieves public details on company
+     *
+     * TODO remember to index the grp id field in the collection
+     *
+     * @param $treeID
+     * @return null
+     */
+    static function getPublic($treeID){
 		$core = new \helper\core('companyProfile');
 		$db = $core->getDB('mongo');
 		$ret = $db->getCollection('companyProfiles')->findOne(array('treeID' => (string) $treeID));
@@ -283,17 +326,59 @@ class companyProfile{
 		return $ret;
 	}
 
-	/**** module leves services ****/
+	/**** module level services ****/
 
-	/**
-	 * returns and increments value given by v
-	 *
-	 * e.g:
-	 * invoiceNumber
-	 *
-	 * @param $val string key to increment
-	 * @return int
-	 */
+    /**
+     * validates if $action is allowed, withdraws money and returns true on sucess
+     * false otherwise
+     *
+     * TODO remember to log
+     *
+     * @param $action string the action to perform
+     * @return bool
+     */
+    static function doAction($action){
+        $actionStrategy = '\app\companyProfile\strategies\onAction\\'.$action;
+        /** @var $actionStrategy \app\companyProfile\strategies\onAction\OnAction */
+        $actionStrategy = new $actionStrategy(self::retrieve());
+
+        //checks if the action is covered by subscription
+        if($actionStrategy->coveredBySubscription())
+            return true;
+
+        //check if the action cat be paid by ticket
+        if(self::useTicket($actionStrategy->getTicketPrice()))
+            return true;
+
+        //and finally attempt to withdraw money
+        if(self::moneyWithdraw($actionStrategy->getPrice(), '', self::ACCOUNTCREDIT))
+            return true;
+
+        return false;
+    }
+
+    /**
+     * @param $action
+     * @return string
+     */
+    static function getMessageForAction($action){
+        $actionStrategy = '\app\companyProfile\strategies\onAction\\'.$action;
+        /** @var $actionStrategy \app\companyProfile\strategies\onAction\OnAction */
+        $actionStrategy = new $actionStrategy(self::retrieve());
+        return $actionStrategy->getMessage();
+    }
+
+
+    /**
+     * returns and increments value given by v
+     *
+     * e.g:
+     * invoiceNumber
+     *
+     * @param $val string key to increment
+     * @throws \Exception
+     * @return int
+     */
 	static function increment($val){
 		$o = self::retrieve();
 		
@@ -327,16 +412,17 @@ class companyProfile{
 		return $o->settings->$for->settings;
 	}
 
-	/**
-	 * save some settings object
-	 *
-	 * this is editable by the user
-	 *
-	 * @param $for
-	 * @param $obj
+    /**
+     * save some settings object
+     *
+     * this is editable by the user
+     *
+     * @param $for
+     * @param $obj
      * @param $title string not translated shown title (single word, no special chars)
-     * @param $fiels array array as follows: "property in settingsObj" => not translated desc
-	 */
+     * @param $fields
+     * @internal param array $fiels array as follows: "property in settingsObj" => not translated desc
+     */
 	static function saveSettings($for, $obj, $title, $fields){
 		$o = self::retrieve();
 
@@ -362,6 +448,7 @@ class companyProfile{
      *
      * @param $for
      * @param $settings
+     * @throws \exception\UserException
      */
     static function updateSettings($for, $settings){
         $o = self::retrieve();
@@ -373,14 +460,16 @@ class companyProfile{
         self::update($o);
     }
 	
-	/**** functions for invoicing the customer ****/
-	
-	/**
-	* creates an invoice at finansmaskinen.dk and creates a bill for this customer
-	*
-	* the bill is unpaied
-	*/
-	static function doInvoice($credit, $valuta){
+	/**** interacting with finansmaskinen ****/
+
+    /**
+     * create an invoice sent by finansmaskinen (rpc)
+     * and added as bill to this company
+     *
+     * @param $credit
+     * @param $valuta
+     */
+    static function doInvoice($credit, $valuta){
 		//invoice to create
 		$invoice = array();
 		$invoice['AccountingCustomerParty'] = array();
@@ -393,11 +482,14 @@ class companyProfile{
 		
 		//insert the invoice as bill
 	}
-	
-	/**
-	* if the invoice was successfully paied, call this function
-	*/
-	static function payInvoice($id){
+
+
+    /**
+     * called when an invoice was successfully paid
+     *
+     * @param $id
+     */
+    static function payInvoice($id){
 	
 	}
 	
