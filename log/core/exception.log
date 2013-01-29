@@ -192,3 +192,4 @@
 2013-01-29T12:13:41+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
 2013-01-29T12:16:34+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
 2013-01-29T12:19:54+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}
+2013-01-29T12:56:41+00:00 ERROR {"message":"App not found","stack":"#0 \/var\/www\/webroot\/index.php(224): core\\reqHandler::init()\n#1 {main}"}

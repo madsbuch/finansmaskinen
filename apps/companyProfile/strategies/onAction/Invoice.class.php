@@ -18,6 +18,31 @@ class Invoice implements OnAction
     }
 
     /**
+     * returns true, if this action should not be billed
+     *
+     * this is if the action is covered by some monthly paud subscription
+     * and therefore is none paid
+     *
+     * @return bool
+     */
+    function coveredBySubscription()
+    {
+        return true;
+    }
+
+    /**
+     * returns the price in tickets
+     *
+     * if this is used, getPrice is not called
+     *
+     * @return int
+     */
+    function getTicketPrice()
+    {
+        // TODO: Implement getTicketPrice() method.
+    }
+
+    /**
      * returns the price of the action
      *
      * @return int

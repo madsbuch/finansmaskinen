@@ -90,11 +90,18 @@ class companyProfile{
 		return $sth->execute(array($amount, $account, $id, $ref, false));
 	}
 
-	/**
-	* not approved untill moneyApply
-	* account is either accountCredit or accountWithdrawable
-	*/
-	static function moneyWithdraw($amount, $ref, $account){
+    /**
+     * not approved untill moneyApply
+     * account is either accountCredit or accountWithdrawable
+     *
+     * @param $amount
+     * @param $ref
+     * @param $account
+     * @throws \exception\UserException
+     * @throws \Exception
+     * @return bool
+     */
+    static function moneyWithdraw($amount, $ref, $account, $allowSubZero = false){
 		//get a database object
 		$pdo = new \helper\core('companyProfile');
 		$pdo = $pdo->getDB()->dbh;
@@ -113,7 +120,8 @@ class companyProfile{
 		//and finally, the actual query
 		$sth = $pdo->prepare("INSERT INTO companyProfile_transactions (value, account, company_id, ref, approved) VALUES (?, ?, ?, ?, ?)");
 		
-		return $sth->execute(array($amount, $account, $id, $ref, false));
+		if(!$sth->execute(array($amount, $account, $id, $ref, false)))
+            throw new \exception\UserException('Withdrawal failed');
 	}
 	/**
 	* fails if there is not enough money on credit account
@@ -203,6 +211,19 @@ class companyProfile{
 		
 		return (int) $res[0][0];
 	}
+
+    /**** some quick ticket functions ****/
+
+    /**
+     * attempts to decrement tickets by $num, if it results in subzero
+     * nothing will be done and false is returned
+     *
+     * @param $num
+     * @return bool
+     */
+    static function useTicket($num){
+        return false;
+    }
 
     /**
      * initilizes company for a given tree
@@ -311,10 +332,29 @@ class companyProfile{
      * validates if $action is allowed, withdraws money and returns true on sucess
      * false otherwise
      *
+     * TODO remember to log
+     *
      * @param $action string the action to perform
+     * @return bool
      */
-    static function doPaidAction($action){
+    static function doAction($action){
+        $actionStrategy = '\app\companyProfile\strategies\anAction\\'.$action;
+        /** @var $actionStrategy \app\companyProfile\strategies\onAction\OnAction */
+        $actionStrategy = new $actionStrategy(self::retrieve());
 
+        //checks if the action is covered by subscription
+        if($actionStrategy->coveredBySubscription())
+            return true;
+
+        //check if the action cat be paid by ticket
+        if(self::useTicket($actionStrategy->getTicketPrice()))
+            return true;
+
+        //and finally attempt to withdraw money
+        if(self::moneyWithdraw($actionStrategy->getPrice(), '', self::ACCOUNTCREDIT))
+            return true;
+
+        return false;
     }
 
 
