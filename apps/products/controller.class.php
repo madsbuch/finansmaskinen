@@ -103,7 +103,7 @@ class products extends \core\app{
 	}
 	
 	/**
-	* view a catagory
+	* view a category
 	*/
 	function catagory($id = null){
 		$html = $this->getOutTpl();
@@ -113,8 +113,27 @@ class products extends \core\app{
 		
 		$catObj = \api\products::getCatagory($id);
 		
-		$html->appendContent(new \app\products\layout\finance\CatagoryView($catObj));
+		$html->appendContent(new \app\products\layout\finance\CategoryView($catObj));
 		
+		$this->output_header = $this->header->generate();
+		$this->output_content = $html->generate();
+	}
+	//make sure to have everything renamed
+	function  category($id = null){
+		return $this->catagory($id);
+	}
+
+	/**
+	 * lists categories
+	 */
+	function categories(){
+		$html = $this->getOutTpl();
+
+		$html->appendContent(\helper\layout\Element::heading(__('Categories'),
+			__('Administrate categories')));
+
+		$html->appendContent(new \app\products\layout\finance\ListCategories(\api\products::getAllCategories()));
+
 		$this->output_header = $this->header->generate();
 		$this->output_content = $html->generate();
 	}
@@ -316,7 +335,8 @@ class products extends \core\app{
 		$tpl = $this->getSiteAPI()->getTemplate();
 		$tpl->setSecondaryTitle(__('Products'));
 		$tpl->addSecondaryNav(__('View Products'), '/products');
-		$tpl->addSecondaryNav(__('Create Procuts'), '/products/add');
+		$tpl->addSecondaryNav(__('Create Product'), '/products/add');
+		$tpl->addSecondaryNav(__('Product categories'), '/products/categories');
 		return $tpl;
 	}
 	

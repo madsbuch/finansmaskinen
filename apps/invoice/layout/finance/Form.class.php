@@ -116,7 +116,6 @@ class Form extends \helper\layout\LayoutBlock{
                                             <input type="text" class="picker" name="Invoice-DocumentCurrencyCode"
                                                 data-listLink="/index/currencies/"
                                                 value="DKK"
-                                                data-loose="true"
                                                 id="Invoice-AccountingCustomerParty-currency"
                                                 data-replace="Invoice-DocumentCurrencyCode" required="true"
                                                 style="width:85%" /><a href="#Invoice-AccountingCustomerParty-currency"
@@ -213,11 +212,16 @@ class Form extends \helper\layout\LayoutBlock{
 								<input type="hidden" 
 									name="Invoice-InvoiceLine-#index#-ID" 
 									id="product-#index#-ID" value="#index#" />
-							
-								<input id="product-#index#-Price-PriceAmount-_content"
-									name="Invoice-InvoiceLine-#index#-Price-PriceAmount-_content"
-									type="text" class="totalCompute money" placeholder="Pris"
-									style="width:8%" />
+
+								<input type="text"
+									class="currencyCompute totalCompute money"
+									name="product-#index#-origAmount"
+									id="product-#index#-origAmount"
+									data-listLink="/index/currencies/"
+										data-replace="product-#index#-Price-PriceAmount-_content"
+										style="width:60px;" />
+
+
 								
 								
 								<input id="product-#index#-quantity"
@@ -227,7 +231,7 @@ class Form extends \helper\layout\LayoutBlock{
 					
 								<input id="lineTotal-#index#" name="trash" class="money"
 									style="width:8%" type="text" value="-,-" disabled="disabled" />
-							
+
 								<a href="#" class="btn settingsBox"
 									data-toggle="#settings-#index#"><i class="icon-wrench"
 									title="instillinger"></i></a>
@@ -245,14 +249,13 @@ class Form extends \helper\layout\LayoutBlock{
 										data-replace="product-#index#-Price-PriceAmount-currencyID"
 										style="width:30px" readonly="true" />
 								
-									<label>opr. beløb:</label>
-									<input type="text"
-										class="currencyCompute"
-										name="product-#index#-origAmount"
-										id="product-#index#-origAmount"
-										data-listLink="/index/currencies/"
-										data-replace="product-#index#-Price-PriceAmount-_content"
-										style="width:60px;" readonly="true" />
+									<label>Beløb:</label>
+									<input id="product-#index#-Price-PriceAmount-_content"
+										name="Invoice-InvoiceLine-#index#-Price-PriceAmount-_content"
+										type="text"
+										class="money" placeholder="Pris"
+										style="width:8%"
+										readonly="true"/>
 									
 									<label>nuværr. valuta:</label>
 									<input type="text"

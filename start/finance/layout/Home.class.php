@@ -52,7 +52,7 @@ class Home extends \helper\layout\LayoutBlock {
 					<form method="post" action="/index/createUser">
 						<h2>Opret konto</h2>
 						<input type="text" Placeholder="Betakode"
-						title="Betakode?!" data-content="Vi leger stadig, og af hensyn til leverandører og os selv, vendter vi lige lidt endnu med at vise jer hvad der står på menuen ;-)" class="descriptionPopoverLeft"
+						title="Betakode?!" data-content="Vi leger stadig, og af hensyn til leverandører og os selv, venter vi lige lidt endnu med at vise jer hvad der står på menuen ;-)" class="descriptionPopoverLeft"
 						style="width:90%;" name="beta" id="beta" />
 						<input type="text" Placeholder="Dit Navn" name="name" style="width:90%;" id="name" />
 

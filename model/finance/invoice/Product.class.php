@@ -1,11 +1,11 @@
 <?php
-/**
-* this represents a product. The UBL line is findable from the information in this
-*
-*/
-
 namespace model\finance\invoice;
 
+/**
+ * this object contains data, that are not a part of the UBL standard.
+ *
+ * e.g. accounting data
+ */
 class Product extends \model\AbstractModel{
 	/**
 	* make it easy to track products of a certain cat
@@ -13,9 +13,19 @@ class Product extends \model\AbstractModel{
 	protected $index;
 	
 	/**
-	 * product id
+	 * object id of the acutal product
+	 *
+	 * @var string
 	 */
 	protected $id;
+
+	/**
+	 * if it is to overkill to have a whole product for a line, this will just
+	 * hold the account to post the product on
+	 *
+	 * @var int
+	 */
+	protected $account;
 	
 	/**
 	* original amount

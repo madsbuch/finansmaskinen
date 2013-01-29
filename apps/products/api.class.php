@@ -121,6 +121,26 @@ class products
 	}
 
 	/**
+	 * due to misspelling
+	 *
+	 * @param $id
+	 * @return null
+	 */
+	static function getCategory($id){
+		return self::getCatagory($id);
+	}
+
+	/**
+	 * due to misspelling, refactor later
+	 *
+	 * @param $search
+	 * @return array
+	 */
+	static function getAllCategories($search = ""){
+		return self::getCats($search);
+	}
+
+	/**
 	 * this updates the catagory
 	 */
 	static function updateCat($cat)
@@ -137,7 +157,7 @@ class products
 	 * @param null $sort
 	 * @param null $conditions
 	 * @param null $limit
-	 * @param null $start
+	 * @internal param null $start
 	 * @return array
 	 */
 	static function get($sort = null, $conditions = null, $limit = null)
