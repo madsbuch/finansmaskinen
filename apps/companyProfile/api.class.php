@@ -338,7 +338,7 @@ class companyProfile{
      * @return bool
      */
     static function doAction($action){
-        $actionStrategy = '\app\companyProfile\strategies\anAction\\'.$action;
+        $actionStrategy = '\app\companyProfile\strategies\onAction\\'.$action;
         /** @var $actionStrategy \app\companyProfile\strategies\onAction\OnAction */
         $actionStrategy = new $actionStrategy(self::retrieve());
 
@@ -355,6 +355,17 @@ class companyProfile{
             return true;
 
         return false;
+    }
+
+    /**
+     * @param $action
+     * @return string
+     */
+    static function getMessageForAction($action){
+        $actionStrategy = '\app\companyProfile\strategies\onAction\\'.$action;
+        /** @var $actionStrategy \app\companyProfile\strategies\onAction\OnAction */
+        $actionStrategy = new $actionStrategy(self::retrieve());
+        return $actionStrategy->getMessage();
     }
 
 

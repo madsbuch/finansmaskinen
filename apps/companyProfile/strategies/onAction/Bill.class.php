@@ -50,4 +50,17 @@ class Bill implements OnAction
         //DKK 9.00
         return 900;
     }
+
+    /**
+     * returns a message for given action
+     *
+     * e.g. if the action costs 1 free ticket, a warning message is to be returned
+     * if the action costs $10 a message saying that $10 is wthdrawn should be returned
+     *
+     * @return string
+     */
+    function getMessage()
+    {
+        return 'Free for now.';
+    }
 }

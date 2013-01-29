@@ -14,6 +14,10 @@ abstract class api{
 	static function getProfileAPI(){
 	
 	}
+
+    static function getTemplate(){
+
+    }
 }
 
 ?>

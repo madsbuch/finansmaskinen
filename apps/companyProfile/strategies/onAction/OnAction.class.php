@@ -38,4 +38,14 @@ interface OnAction
      * @return int
      */
     function getPrice();
+
+    /**
+     * returns a message for given action
+     *
+     * e.g. if the action costs 1 free ticket, a warning message is to be returned
+     * if the action costs $10 a message saying that $10 is wthdrawn should be returned
+     *
+     * @return string
+     */
+    function getMessage();
 }

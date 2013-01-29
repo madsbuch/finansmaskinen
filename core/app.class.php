@@ -48,11 +48,13 @@ abstract class app{
 	public $cacheExpire = -1;
 	
 	/**** FUNCTIONALITY ****/
-	
-	/**
-	* get api for primary site
-	*/
-	function getSiteAPI(){
+
+    /**
+     * returns api for current site
+     *
+     * @return \core\api
+     */
+    function getSiteAPI(){
 		$site = \core\inputParser::getInstance()->getSite();
 		$site = 'start\\'.$site.'\api';
 		return new $site;

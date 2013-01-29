@@ -9,6 +9,7 @@
 
 namespace app\companyProfile\strategies\onAction;
 class Invoice implements OnAction
+
 {
     /**
      * @param $company the compay object
@@ -51,5 +52,18 @@ class Invoice implements OnAction
     {
         //DKK 19.00
         return 1900;
+    }
+
+    /**
+     * returns a message for given action
+     *
+     * e.g. if the action costs 1 free ticket, a warning message is to be returned
+     * if the action costs $10 a message saying that $10 is wthdrawn should be returned
+     *
+     * @return string
+     */
+    function getMessage()
+    {
+        return 'No payment for your subscription.';
     }
 }
