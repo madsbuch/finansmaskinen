@@ -29,7 +29,7 @@ class config{
 			'mysql' => array (
 				'dbname' => 'finance',
 				'driver' => 'mysql',
-				'host' => '172.16.112.128',
+				'host' => '172.16.112.131',
 				'username' => 'appf',
 				'password' => 'appfDB'
 			),
@@ -45,7 +45,7 @@ class config{
 			
 				'servers' => array(
 					array(
-						'host'          => '172.16.112.128',
+						'host'          => '172.16.112.131',
 						'port'          => 27017,
 						'username'      => null,
 						'password'      => null
@@ -78,7 +78,7 @@ class config{
 		'mysql' => array (
 			'dbname' => 'core',
 			'driver' => 'mysql',
-			'host' => '172.16.112.128',
+			'host' => '172.16.112.131',
 			'username' => 'appf',
 			'password' => 'appfDB'
 		),
@@ -92,7 +92,7 @@ class config{
 			
 			'servers' => array(
 				array(
-		            'host'          => '172.16.112.128',
+		            'host'          => '172.16.112.131',
 		            'port'          => 27017,
 		            'username'      => null,
 		            'password'      => null
@@ -106,7 +106,7 @@ class config{
 		'mysql' => array (
 			'dbname' => 'logs',
 			'driver' => 'mysql',
-			'host' => '172.16.112.128',
+			'host' => '172.16.112.131',
 			'username' => 'appf',
 			'password' => 'appfDB'
 		),
