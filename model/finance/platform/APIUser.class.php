@@ -7,6 +7,13 @@
 
 namespace model\finance\platform;
 
+/**
+ * @property $_id
+ * @property $mail
+ * @property  $apiKey
+ * @property  $coreSecret
+ * @property  $coreID
+ */
 class APIUser extends \model\AbstractModel{
 	/**
 	* user id, from mongo

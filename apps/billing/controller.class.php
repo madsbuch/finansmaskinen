@@ -86,6 +86,7 @@ class billing extends \core\app
 			'Tilføj ny regning'));
 
 		$form = new billing\layout\finance\Form();
+        $form->addConfirmationMessage(\api\companyProfile::getMessageForAction('Bill'));
 		$html->appendContent($form);
 
 		$this->output_header = $this->header->generate();
@@ -100,7 +101,8 @@ class billing extends \core\app
 		$bill = \api\billing::getOne($id);
 
 		$form = new billing\layout\finance\Form($bill );
-		$html->appendContent($form);
+        $form->addConfirmationMessage(\api\companyProfile::getMessageForAction('Bill'));
+        $html->appendContent($form);
 
 		$this->output_header = $this->header->generate();
 		$this->output_content = $html->generate();

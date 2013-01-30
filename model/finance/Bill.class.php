@@ -6,6 +6,20 @@
 
 namespace model\finance;
 
+/**
+ * @property $_id;
+ * @property $_external = array();
+ * @property $contactID;
+ * @property $paymentDate;
+ * @property $currency;
+ * @property $lines;
+ * @property $amountTotal;
+ * @property $attachments;
+ * @property $draft;
+ * @property $isPayed;
+ * @property $accounting;
+ * @property $ref;
+ */
 class Bill extends \model\AbstractModel
 {
 	protected $_autoassign = array(

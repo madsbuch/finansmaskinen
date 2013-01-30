@@ -33,8 +33,7 @@ class Form extends \helper\layout\LayoutBlock
      * @var array array of messages to present the user for, before final creation of bill
      */
     private $msg = array(
-		'Efter denne handling kan regingen ikke ændres.',
-		'Der vil blive trukket DKK 9,- fra din konto. køb abonnement <a target="_blank" href="/companyProfile/credit">her</a>'
+		'Efter denne handling kan regingen ikke ændres.'
     );
 
     /**
@@ -46,6 +45,13 @@ class Form extends \helper\layout\LayoutBlock
 		$this->bill = $bill;
         $this->contactID = $contact;
 	}
+
+    /**
+     * adds a message, that are shown upon confirmation
+     */
+    function addConfirmationMessage($msg){
+        $this->msg[] = $msg;
+    }
 
 	function generate()
 	{

@@ -35,7 +35,7 @@ class InvoiceDownloadWidget extends \helper\layout\LayoutBlock implements \helpe
 			<div class="row">
 				<div class="span3">
 					<label>Template:</label>
-					<select name="template">
+					<select name="template" style="width:80%">
 						<option value="default" checked="checked">Standard</option>
 					</select>
 				</div>
