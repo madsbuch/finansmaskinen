@@ -45,6 +45,8 @@ interface OnAction
      * e.g. if the action costs 1 free ticket, a warning message is to be returned
      * if the action costs $10 a message saying that $10 is wthdrawn should be returned
      *
+     * This is NON translated.
+     *
      * @return string
      */
     function getMessage();

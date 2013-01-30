@@ -354,7 +354,7 @@ class companyProfile{
         if(self::moneyWithdraw($actionStrategy->getPrice(), '', self::ACCOUNTCREDIT))
             return true;
 
-        return false;
+        throw new \exception\PaymentException('Upgrade subscription or insert money.');
     }
 
     /**

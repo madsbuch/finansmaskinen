@@ -193,6 +193,39 @@ class api extends \core\startapi{
 	}
 
     /**
+     * authenticates for API use
+     */
+    public static function authenticate(){
+        //make sure auth uses cache
+        $cache = \helper\cache::getInstance('File', 'coreAuthentication');
+        \core\auth::getInstance()->setCache($cache);
+
+        //retrive user credencials
+        $apiKey = \core\inputParser::getInstance()->getParameter('key');
+
+        //retrive uid and secret from those credencials
+        $user = self::getAPIKeys($apiKey, false);
+
+        if(!$user)
+            return;
+
+        if($user->count() > 1)
+            throw new \Exception('WOW! dafuq just happened (api key)');
+
+        $user = new \model\finance\platform\APIUser($user->getNext());
+        $realUser = self::findUser($user->mail);
+
+
+        //save user in session
+        $session = \core\session::getInstance();
+        $session->user_holder = $realUser;
+
+        //login
+        if($user)
+            \core\auth::getInstance()->login($user->coreID, $user->coreSecret);
+    }
+
+    /**
      * returns current logged in user
      *
      * @return \model\finance\platform\User
@@ -200,36 +233,8 @@ class api extends \core\startapi{
     public static function getUser(){
 		$session = \core\session::getInstance();
 		if($user = $session->user_holder){
-			//unset($user->coreSecret, $user->coreID, $user->password);
 			return $user;
 		}
-	}
-	
-	/**
-	* aythenticates for API use
-	*/
-	public static function authenticate(){
-		//make sure auth uses cache
-		$cache = \helper\cache::getInstance('File', 'coreAuthentication');
-		\core\auth::getInstance()->setCache($cache);
-		
-		//retrive user credencials
-		$apiKey = \core\inputParser::getInstance()->getParameter('key');
-		
-		//retrive uid and secret from those credencials
-		$user = self::getAPIKeys($apiKey, false);
-		
-		if(!$user)
-			return;
-		
-		if($user->count() > 1)
-			throw new \Exception('WOW! dafuq just happened (api key)');
-		
-		$user = new \model\finance\platform\APIUser($user->getNext());
-		
-		//login
-		if($user)
-			\core\auth::getInstance()->login($user->coreID, $user->coreSecret);
 	}
 	
 	/**
@@ -261,13 +266,15 @@ class api extends \core\startapi{
 		
 		return $u;
 	}
-	
-	/**
-	* returns mongocursor
-	*
-	* authenticate either by mail or key
-	*/
-	public static function getAPIKeys($id, $mail=true){
+
+    /**
+     * returns an APIkey object
+     *
+     * @param $id apiKey
+     * @param bool $mail
+     * @return \MongoCursor|null
+     */
+    public static function getAPIKeys($id, $mail=true){
 		if(!$mail)
 			$c = array('apiKey' => $id);
 		else

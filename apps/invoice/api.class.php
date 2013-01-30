@@ -249,14 +249,19 @@ class invoice{
 	 * be updated
 	 *
 	 * @param \model\finance\Invoice $inv
-	 * @return \model\finance\Invoice
 	 * @throws \exception\UserException
 	 * @throws \Exception
+     * @return \model\finance\Invoice
 	 */
 	public static function finalize(\model\finance\Invoice $inv){
-		//check if finalization is done
+
+		//check if finalization is done (defined by existing ID)
         if(isset($inv->Invoice->ID))
             return $inv;
+
+        //do the withdrawal
+        \api\companyProfile::doAction('Invoice');
+
 
 		//finalization of invoice requires it to be a valid structure.
 		if($ret = $inv->validate($inv::WEAK))
@@ -457,6 +462,7 @@ class invoice{
 		$inv->merge($toMerge);
 
 		//finalize, if finished
+        //TODO catch exception, we wanna save draft if it fails
         if(!$inv->draft)
             $inv = self::finalize($inv);
 

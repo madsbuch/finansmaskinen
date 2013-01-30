@@ -177,17 +177,21 @@ class billing extends \core\api
 
 	}
 
-	/**
-	 * returns bills
-	 *
-	 * returns bills associated to groups that the user is a part of. if not
-	 * bills from alle groups are needed, $grp may be specified
-	 *
-	 * @param    sort    sort by indexed fields
-	 * @param    limit    how many contacts are to be returned?
-	 * @param    start    start offset for returning contacts
-	 * @param    grp        only contacts from specified groups this is an array
-	 */
+    /**
+     * returns bills
+     *
+     * returns bills associated to groups that the user is a part of. if not
+     * bills from alle groups are needed, $grp may be specified
+     *
+     * @param sort|array $sort
+     * @param how|bool $limit
+     * @param start|int $start
+     * @internal param \api\sort $sort by indexed fields
+     * @internal param \api\how $limit many contacts are to be returned?
+     * @internal param \api\start $start offset for returning contacts
+     * @internal param \api\only $grp contacts from specified groups this is an array
+     * @return array
+     */
 	static function getList($sort = array(), $limit = false, $start = 0)
 	{
 		$bills = new \helper\lodo('bills', 'billing');
@@ -217,14 +221,15 @@ class billing extends \core\api
 		return $lodo->getObjects('\model\finance\Bill');
 	}
 
-	/**
-	 * updates a bill
-	 *
-	 * be aware, that not all fields are updateable if the bill is posted. if that
-	 * is the case, unposting is an option
-	 *
-	 * @return \model\finance\Bill.
-	 */
+    /**
+     * updates a bill
+     *
+     * be aware, that not all fields are updateable if the bill is posted. if that
+     * is the case, unposting is an option
+     *
+     * @param \model\finance\Bill $obj
+     * @return \model\finance\Bill.
+     */
 	static function update(\model\finance\Bill $obj)
 	{
 		$lodo = new \helper\lodo('bills', 'billing');
@@ -327,14 +332,16 @@ class billing extends \core\api
 		return $bill->ref;
 	}
 
-	/**
-	 * this function takes a bill, and performs all the queries to other parts
-	 * of the system, to make it ready.
-	 *
-	 * TODO Refactor! a function like this is also in invoice
-	 *
-	 * @return \model\finance\Bill
-	 */
+    /**
+     * this function takes a bill, and performs all the queries to other parts
+     * of the system, to make it ready.
+     *
+     * TODO Refactor! a function like this is also in invoice
+     *
+     * @param \model\finance\Bill $bill
+     * @throws \exception\UserException
+     * @return \model\finance\Bill
+     */
 	private static function billObject(\model\finance\Bill $bill)
 	{
 		//validates data
@@ -384,6 +391,9 @@ class billing extends \core\api
 		//set total
 		$bill->amountTotal = $total + $vat;
 
+        if(!$bill->draft)
+            $bill = self::finalize($bill);
+
 		return $bill;
 	}
 
@@ -391,7 +401,11 @@ class billing extends \core\api
 	 * finalize a bill;
 	 */
 	private static function finalize($bill){
+        //do the withdrawal
+        \api\companyProfile::doAction('Invoice');
 
+        //TODO giv regningen et fortløbende nummer
+        return $bill;
 	}
 }
 
