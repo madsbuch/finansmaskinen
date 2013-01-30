@@ -76,20 +76,24 @@ class Product extends \model\AbstractModel{
 	* VatCode
 	*/
 	protected $exclVat;
-	
+
 	/**
-	* quantity in stock. This is used to tell if a producted is available
-	*/
+	 * stock of products
+	 *
+	 * @var int
+	 */
 	protected $stock;
 	
 	/**
 	* location in the storage
 	*/
 	protected $location;
-	
+
 	/**
-	* whether this product should be listed in the public catalog
-	*/
+	 * whether this product should be listed in the public catalog
+	 *
+	 * @var bool
+	 */
 	protected $inCatalog;
 	
 	/**

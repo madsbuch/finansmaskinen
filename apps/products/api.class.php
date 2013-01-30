@@ -242,11 +242,13 @@ class products
     }
 
 	/**
-	 * insert product
+	 * inserting a product
 	 *
-	 * appended to all available groups, if none specified
+	 * @param $data
+	 * @return mixed
+	 * @throws \exception\UserException
 	 */
-	static function create($data, $grp = false)
+	static function create($data)
 	{
         $data = self::productObj($data);
 		$lodo = new \helper\lodo('products', 'products');
@@ -273,8 +275,11 @@ class products
 	}
 
 	/**
-	 * update prouct
+	 * update a product
 	 *
+	 * @param \model\finance\Product $data
+	 * @return mixed
+	 * @throws \exception\UserException
 	 */
 	static function update(\model\finance\Product $data)
 	{

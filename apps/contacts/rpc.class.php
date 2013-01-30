@@ -21,16 +21,11 @@ class contacts extends \core\rpc {
 	* adds a contact
 	*/
 	function add($contact){
-		try{
-			$contact = \helper\model\Arr::toModel($contact, '\model\finance\Contact');
-			
-			$contact = \api\contacts::create($contact);
-			
-			$this->ret((string) $contact->_id);
-		}
-		catch(\Exception $e){
-			$this->throwException($e->getMessage());
-		}
+		$contact = \helper\model\Arr::toModel($contact, '\model\finance\Contact');
+
+		$contact = \api\contacts::create($contact);
+
+		$this->ret((string) $contact->_id);
 	}
 }
 

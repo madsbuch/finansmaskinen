@@ -249,4 +249,30 @@ $invoiceSimpledata = array(
 
 //endregion
 
+//region products
+
+$product = new \model\finance\Product(array(
+	'Item' => array(
+	 	'Description' => 'Jah!! en meget flot beskrivelse & æøå',
+		'Name' => 'mel&nøtællå'
+	),
+	'Price' => array(
+		'PriceAmount' => array(
+			'_content' => 20000,
+			'currencyID' => 'DKK'
+		)
+
+	),
+	'stock' => 10,
+	'location' => 'I stuen',
+	'inCatalog' => true,
+	'productID' => uniqid('P-')
+));
+
+$productDetails = array(
+	'initStock' => 10,
+);
+
+//endregion
+
 ?>

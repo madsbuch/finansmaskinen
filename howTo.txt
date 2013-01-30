@@ -1,0 +1,6 @@
+:::: create a new action that should have a price
+
+create a new strategy in companyProfile/strategies/onAction
+
+use \api\companyProfile::getMessageForAction() to get a user message
+use \api\companyProfile::doAction("NameOfClass") that returns whether the action is approved
