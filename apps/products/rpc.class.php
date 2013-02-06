@@ -4,7 +4,10 @@
  * Date: 1/29/13
  * Time: 10:21 PM
  */
-class rpc extends \core\rpc
+
+namespace rpc;
+
+class products extends \core\rpc
 {
 	/**
 	 * requireLogin
@@ -26,11 +29,26 @@ class rpc extends \core\rpc
 	 * returns product specified by product id
 	 *
 	 * @param $productId
+	 * @throws \Exception
 	 * @return void
-	 * @internal param $id
 	 */
 	function get($productId){
+		$product = \api\products::getByProductID($productId);
+		$this->ret($product->toArray());
+	}
 
+	/**
+	 * adjusts stock on product.
+	 *
+	 * Be aware, that this is also done when invoicing and billing!!!
+	 *
+	 * @param $productID
+	 * @param $adjustment
+	 * @throws \Exception
+	 * @return void
+	 */
+	function adjustStock($productID, $adjustment){
+		throw new \Exception('Not yet implemented');
 	}
 
 	/**

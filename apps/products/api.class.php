@@ -253,7 +253,9 @@ class products
         $data = self::productObj($data);
 		$lodo = new \helper\lodo('products', 'products');
 		$core = new \helper\core('products');
-		$core->notify(__('Product %s created', $data->Item->Name));
+
+		//maybe to come later?
+		//$core->notify(__('Product %s created', $data->Item->Name));
 
 		//get grps to insert to
 		$cat = self::getCatagory($data->catagoryID);

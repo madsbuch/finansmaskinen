@@ -14,6 +14,8 @@ class ProductTest extends UnitTestCase
 {
 	//region RPC testing
 
+	private $client;
+
 	function setUp()
 	{
 		global $settings;
@@ -22,6 +24,7 @@ class ProductTest extends UnitTestCase
 	}
 
 	private $productID;
+	private $serviceID;
 
 	function testCreateProduct(){
 		global $product;
@@ -30,13 +33,30 @@ class ProductTest extends UnitTestCase
 	}
 
 	function testCreateService(){
-		//test integrity
+		global $productService;
+		$this->serviceID = $this->client->create($productService);
+		$this->assertTrue(strlen($this->serviceID) > 10);
 	}
 
+	function testNoIDDuplicates(){
+		global $product;
+		$this->expectException();
+		$this->client->create($product);
+	}
 
 	//product tests
 	function testAddToStock(){
+		global $product;
+		$pid = $product['productID'];
 
+		$old = new \model\finance\Product($this->client->get($pid));
+
+		//adjust
+		$this->client->adjustStock($pid, 10);
+
+		$new = new \model\finance\Product($this->client->get($pid));
+
+		$this->assertTrue($old->stock + 10 == $new->stock);
 	}
 
 	function testRemoveFromStock(){
@@ -51,6 +71,8 @@ class ProductTest extends UnitTestCase
 	function testRemoveFromStockService(){
 		//should do nothin, stock should be 0, and is not to be affected by this
 	}
+
+	//test if stock adjustment works from bills
 
 	/**
 	 * test that stock is incremented when a bill is added

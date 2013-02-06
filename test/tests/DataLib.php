@@ -251,10 +251,11 @@ $invoiceSimpledata = array(
 
 //region products
 
-$product = new \model\finance\Product(array(
+$product = array(
+	"catagoryID"=> "506951c51a5f010b46000003",
 	'Item' => array(
-	 	'Description' => 'Jah!! en meget flot beskrivelse & æøå',
-		'Name' => 'mel&nøtællå'
+	 	'Description' => 'æ product!',
+		'Name' => 'nutella på dåse'
 	),
 	'Price' => array(
 		'PriceAmount' => array(
@@ -267,10 +268,29 @@ $product = new \model\finance\Product(array(
 	'location' => 'I stuen',
 	'inCatalog' => true,
 	'productID' => uniqid('P-')
-));
+);
 
 $productDetails = array(
 	'initStock' => 10,
+);
+
+$productService = array(
+	"catagoryID"=> "506951c51a5f010b46000002",
+	'Item' => array(
+		'Description' => 'Dette er en ydelse & en fææl en ;)',
+		'Name' => 'y\'else'
+	),
+	'Price' => array(
+		'PriceAmount' => array(
+			'_content' => 20000,
+			'currencyID' => 'DKK'
+		)
+
+	),
+	'stock' => 10,
+	'location' => 'I stuen',
+	'inCatalog' => true,
+	'productID' => uniqid('P-')
 );
 
 //endregion
