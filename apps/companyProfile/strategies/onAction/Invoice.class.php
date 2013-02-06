@@ -28,7 +28,7 @@ class Invoice implements OnAction
      */
     function coveredBySubscription()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -40,7 +40,7 @@ class Invoice implements OnAction
      */
     function getTicketPrice()
     {
-        // TODO: Implement getTicketPrice() method.
+        return 0;
     }
 
     /**
@@ -64,6 +64,6 @@ class Invoice implements OnAction
      */
     function getMessage()
     {
-        return 'No payment for your subscription.';
+        return 'A ticket is taken.';
     }
 }

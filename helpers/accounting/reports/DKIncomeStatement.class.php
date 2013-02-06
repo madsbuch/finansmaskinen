@@ -7,7 +7,16 @@
 
 namespace helper\accounting\reports;
 
-class DKIncomeStatement
+class DKIncomeStatement implements Report
 {
 
+	/**
+	 * generates some report object
+	 *
+	 * @return mixed
+	 */
+	function generateReport()
+	{
+		// TODO: Implement generateReport() method.
+	}
 }

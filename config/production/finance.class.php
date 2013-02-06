@@ -44,6 +44,10 @@ class finance{
 	public static $settings = array(
 		//how much do we take for providing the binding for an offer in %
 		'offerFactor' => 30,
+
+		//company settings
+		'freeTierTime' => 2592000, //time in second between resets
+		'freeTierSize' => 5, //what is the the minimum value of the freetier value after reset
 	);
 	
 	/**

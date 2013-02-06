@@ -402,7 +402,7 @@ class billing extends \core\api
 	 */
 	private static function finalize($bill){
         //do the withdrawal
-        \api\companyProfile::doAction('Invoice');
+        \api\companyProfile::doAction('Bill');
 
         //TODO giv regningen et fortløbende nummer
         return $bill;

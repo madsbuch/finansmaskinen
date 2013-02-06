@@ -47,8 +47,9 @@ class reqHandler{
 		/**** check subdomains to see where the request should be dispatched to ****/
 		$domain = $inputParser->getReverseDomain();//$domain[2] contains level 1 sub
 
+
+		//handle subdomains, might benecesary to put this in composition:
 		$subDomain = isset($domain[2]) ? $domain[2] : null;
-		
 		//static files
 		if($subDomain == "static"){
 			\core\sendFile::staticFile($inputParser->getURI());

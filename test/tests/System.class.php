@@ -8,6 +8,13 @@
  */
 class SystemTest extends UnitTestCase {
 
+    //region Testvariables should be
+
+    private $executionTime = 5;//sec or less
+    private $memLimit = 128;//MB or more
+
+    //endregion
+
 	//region Plugins
     /**
      * tests that the mongodriver exists
@@ -49,6 +56,20 @@ class SystemTest extends UnitTestCase {
 	function testMemLimit(){
 
 	}
+
+    /**
+     * tests permissions and existance of log folder
+     */
+    function testLogFolder(){
+
+    }
+
+    /**
+     * tests that configuration exists and seams valid
+     */
+    function testConfiguration(){
+
+    }
 
 	//endregion
 }
