@@ -222,7 +222,22 @@ class companyProfile{
      * @return bool
      */
     static function useTicket($num){
-        return false;
+		/**
+		 * @var $company \model\finance\Company
+		 */
+		$company = self::retrieve();
+
+		//check if there is enough tickets
+		if($company->freeTier < $num)
+			return false;
+
+		//decrement
+		$company->freeTier = $company->freeTier - $num;
+
+		//save
+		self::update($company);
+
+        return true;
     }
 
     /**
@@ -253,12 +268,19 @@ class companyProfile{
      */
     static function retrieve($fetchAll=true){
 		$cp = new \helper\lodo('companyProfiles', 'companyProfile');
+
+		/**
+		 * @var $o \model\finance\Company
+		 */
 		$o = $cp->getObjects('\model\finance\Company');
 		
 		if(count($o) < 1)
 		    throw new \exception\UserException('No company');
-		
 		$o = $o[0];
+
+		if($o->lastFreeTierReset + \config\finance::$settings['freeTierTime'] < time())
+			$o = self::freeTierReset($o);
+
 		//merge some transaction from db in, and set account values
 		$o->accountReserved = 0;
 		$o->accountCredit = 0;
@@ -267,76 +289,94 @@ class companyProfile{
 		return $o;
 	}
 
-    /**
-     * update company
-     *
-     * TODO too bloated
-     *
-     * @param $dObj
-     * @return array|bool|mixed
-     */
-    static function update($dObj){
+	/**
+	 * update company
+	 *
+	 * @param $obj
+	 * @param bool $direct whether the object is directly put in to the DB, or merged
+	 * @internal param $dObj
+	 * @return array|bool|mixed
+	 */
+    static function update($obj, $direct = false){
+		//@TODO check permissions
+
+		$cp = new \helper\lodo('companyProfiles', 'companyProfile');
+		if($direct)
+			return $cp->save($obj);
+
 		$o = self::retrieve();
-		
-		//initializing company, if none excists
-		if(is_null($o))
-			return self::initialize($dObj);
-		
+
 		//we don't wanna save this in the db;
 		unset($o->transactions);
 		unset($o->accountReserved);
 		unset($o->accountCredit);
 		unset($o->accountWithdrawable);
-		
+
 		//imploding the keys
 		$a1 = array_key_implode('.', $o->toArray());
-		$a2 = array_key_implode('.', $dObj->toArray());
-		
+		$a2 = array_key_implode('.', $obj->toArray());
+
 		//merging
 		$f = array_merge($a1, $a2);
-		
+
 		//to save
 		$ts = array_key_explode('.', $f);
 		$ts = new \model\finance\Company($ts);
-		
+
 		//saving
-		$cp = new \helper\lodo('companyProfiles', 'companyProfile');
 		return $cp->save($ts);
 	}
 
-    /**
-     * retrieves public details on company
-     *
-     * TODO remember to index the grp id field in the collection
-     *
-     * @param $treeID
-     * @return null
-     */
+	/**
+	 * retrieves public details on company
+	 *
+	 * TODO remember to index the grp id field in the collection
+	 *
+	 * @param $treeID
+	 * @throws \exception\UserException
+	 * @return null
+	 */
     static function getPublic($treeID){
-		$core = new \helper\core('companyProfile');
-		$db = $core->getDB('mongo');
-		$ret = $db->getCollection('companyProfiles')->findOne(array('treeID' => (string) $treeID));
+		$lodo = new \helper\lodo('companyProfiles', 'companyProfile');
+		$lodo->setReturnType('\model\finance\Company');
+		$lodo->addCondition(array('treeID' => (string) $treeID));
+
+		$ret = $lodo->getObjects();
+
 		
-		$ret = new \model\finance\Company($ret);
-		
-		if(isset($ret->Public))
-			$ret = $ret->Public;
-		else
-			$ret = null;
-		return $ret;
+		if(isset($ret[0]->Public))
+			return $ret[0]->Public;
+
+		throw new \exception\UserException(__('supplier was not found'));
+	}
+
+	/**
+	 * @param $company
+	 * @return \model\finance\Company
+	 */
+	public static function freeTierReset(\model\finance\Company $company){
+		if($company->freeTier < \config\finance::$settings['freeTierSize'])
+			$company->freeTier = 5;
+
+		$company->lastFreeTierReset = time();
+
+		self::update($company, true);
+
+		return $company;
 	}
 
 	/**** module level services ****/
 
-    /**
-     * validates if $action is allowed, withdraws money and returns true on sucess
-     * false otherwise
-     *
-     * TODO remember to log
-     *
-     * @param $action string the action to perform
-     * @return bool
-     */
+	/**
+	 * validates if $action is allowed, withdraws money and returns true on sucess
+	 * false otherwise
+	 *
+	 * TODO remember to log
+	 *
+	 * @param $action string the action to perform
+	 * @throws \exception\PaymentException
+	 * @return bool
+	 */
     static function doAction($action){
         $actionStrategy = '\app\companyProfile\strategies\onAction\\'.$action;
         /** @var $actionStrategy \app\companyProfile\strategies\onAction\OnAction */
@@ -354,7 +394,7 @@ class companyProfile{
         if(self::moneyWithdraw($actionStrategy->getPrice(), '', self::ACCOUNTCREDIT))
             return true;
 
-        throw new \exception\PaymentException('Upgrade subscription or insert money.');
+        throw new \exception\PaymentException(__('Upgrade subscription or insert money.'));
     }
 
     /**

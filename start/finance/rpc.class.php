@@ -10,6 +10,20 @@ namespace start\finance;
 class rpc extends \core\rpc implements \core\framework\Output
 {
 
+    /**
+     * throw tos error
+     */
+    function tos(){
+        throw new \exception\UserException('Log in via webinterface to agree on tos');
+    }
+
+    /**
+     * api email gateway
+     */
+    function mailReceive(){
+
+    }
+
 	/**
 	 * this method is responsible for showing an error message
 	 * to the user if a noncought exception (including php errors)

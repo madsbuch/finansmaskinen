@@ -32,6 +32,7 @@ class Page extends \helper\layout\LayoutBlock{
 		<h2>Basale info</h2>
 		<div class="app-box" id="companyProfile_page_left">
 			<form method="post">
+				<input type="hidden" id="_id" name="_id" />
 				<h4>Postadresse</h4>
 				<label for="legal">Virksomhedsnavn: </label>
 				<input class="span4" type="text"
@@ -112,6 +113,11 @@ class Page extends \helper\layout\LayoutBlock{
 			</table>
 			<a href="/companyProfile/credit" class="btn btn-primary">Indsæt penge</a>
 			<a href="/companyProfile/transactions" class="btn">Seneste hændelser</a>
+
+			<h3>Fribilletter</h3>
+			Fribilletter: <input type="text" readonly="true" id="freeTier" name="freeTier" /> sidst nulstillet:
+			<input type="text" readonly="true" id="lastFreeTierReset" name="lastFreeTierReset" />
+
 		</div>
 		
 		<h2>Moduler</h2>
@@ -142,6 +148,7 @@ class Page extends \helper\layout\LayoutBlock{
 				</div>
 			</div>-->
 			<form method="post">
+				<input type="hidden" id="_id" name="_id" />
 				<div class="row">
 					<input type="hidden" value="DK:BANK" name="Public-PaymentMeans-PaymentChannelCode" />
 					<input type="hidden" value="1" name="Public-PaymentMeans-PaymentMeansCode" />

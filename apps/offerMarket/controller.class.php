@@ -58,7 +58,7 @@ class offerMarket extends \core\app{
 		}
 	
 		$html = $this->getTpl();
-		$html->appendContent(\helper\layout\Element::heading('Revisorbørsen', 
+		$html->appendContent(\helper\layout\Element::heading(__('Offer Market'),
 			'En lille introduktion'));
 			
 		$html->appendContent(new \app\offerMarket\layout\finance\Setup());

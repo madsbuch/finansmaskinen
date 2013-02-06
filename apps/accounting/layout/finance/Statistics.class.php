@@ -38,8 +38,8 @@ class Statistics extends \helper\layout\LayoutBlock{
 			
 			
 			$widget = $dom->createElement('div');
-			$widget->setAttribute('class', 'well well-small span5');
-			$widget->setAttribute('style', 'width:45%;height:250px;position: relative;');
+			$widget->setAttribute('class', 'app-box span6');
+			$widget->setAttribute('style', 'height:250px;position: relative;');
 			
 			$w->wrap($widget, $dom);
 			

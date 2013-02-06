@@ -192,12 +192,25 @@ class accounting extends \core\app{
 	/**
 	* creates and show repports
 	*/
-	function repport($repport = null, $id = null){
+	function repport($report = null, $id = null){
 		$html = $this->getOutTpl();
-		$html->appendContent(\helper\layout\Element::heading('Rapporter',
-			'Vælg den rapport du gerne vil have'));
-	
-		
+
+		$statement = null;
+		$ah = new \helper\accounting(\api\accounting::retrieve($id));
+
+		switch($report){
+			case 'incomeStatement' :
+				$statement = new \app\accounting\layout\finance\reports\IncomeStatement($ah->report('DKIncomeStatement'));
+				break;
+			case 'balanceStatement' :
+				$statement = new \app\accounting\layout\finance\reports\BalanceStatement($ah->report('DKBalance'));
+				break;
+			default:
+				throw new \exception\PageNotFoundException(__('Raport not found'));
+		}
+
+		$html->appendContent($statement);
+
 		$this->output_header = $this->header->getHeader();
 		$this->output_content = $html->generate();
 	}
@@ -273,7 +286,7 @@ class accounting extends \core\app{
 	function createAccount(){
 	
 	}
-	
+
 	/**
 	 * if term is set, then search is converted to constraints
 	 *
@@ -283,8 +296,10 @@ class accounting extends \core\app{
 	 *  sales, cost, liability, or asset.
 	 *
 	 * @param $search string
-	 * @param $filer string
+	 * @param bool $filter
 	 * @param $term string
+	 * @return void
+	 * @internal param string $filer
 	 */
 	function autocompleteAccounts($search = null, $filter = false, $term = null){
 		
@@ -394,7 +409,7 @@ class accounting extends \core\app{
 	}
 
 	/**
-	 * @param null $account
+	 * @return void
 	 */
 	function vatPayed(){
 
@@ -466,8 +481,8 @@ class accounting extends \core\app{
 		$tpl->addSecondaryNav('Kontoplan', '/accounting/accounts');
 		$tpl->addSecondaryNav('Transaktioner', '/accounting/transactions');
 		$tpl->addSecondaryNav('Moms', '/accounting/vat');
-		$tpl->addSecondaryNav('Balance', '/accounting/repport/balance');
-		$tpl->addSecondaryNav('Resultatopgørelse', '/accounting/repport/result');
+		$tpl->addSecondaryNav('Balance', '/accounting/repport/balanceStatement');
+		$tpl->addSecondaryNav('Resultatopgørelse', '/accounting/repport/incomeStatement');
 
 		$tpl->setMsg($this->getUserMsg());
 		$this->clearUserMsg();

@@ -32,10 +32,11 @@ class offerCreate extends \core\app{
 	
 	function index(){
 		$html = $this->getTpl();
-		$html->appendContent(\helper\layout\Element::heading('Regnskabsbørs',
-			'Opret en nyopgave...'));
-		
-		$html->appendContent(new offerCreate\layout\finance\Form());
+		$html->appendContent(\helper\layout\Element::heading('Regnskabshjælp',
+			'Kommer snart!'));
+
+		//TODO kommenter ind når denne er klar
+		//$html->appendContent(new offerCreate\layout\finance\Form());
 		
 		$this->output_header = $this->header->getHeader();
 		$this->output_content =$html->generate();
@@ -109,11 +110,13 @@ class offerCreate extends \core\app{
 	/**** private functions ****/
 	private function getTpl(){
 		$html = $this->getSiteAPI()->getTemplate();
-		
-		$html->setSecondaryTitle('Revisor børs');
+
+		/* TODO kommentar ind når klar
+		$html->setSecondaryTitle('Regnskabshjælp');
 		$html->addSecondaryNav(__('Create job'), '/offerCreate');
 		$html->addSecondaryNav(__('Your jobs'), '/offerCreate/view');
-		
+		*/
+
 		return $html;
 	}
 	

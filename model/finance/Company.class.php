@@ -8,6 +8,25 @@
 
 namespace model\finance;
 
+/**
+ * @property $_id;
+ * @property $_subsystem;
+ * @property $searchable;
+ * @property $treeID;
+ * @property $Public;
+ * @property $legalnumbers;
+ * @property $logo;
+ * @property $counters;
+ * @property $accountCredit;
+ * @property $accountWithdrawable;
+ * @property $accountReserved;
+ * @property $transactions;
+ * @property $freeTier;
+ * @property $lastFreeTierReset
+ * @property $abonnements;
+ * @property $coupons;
+ * @property $settings;
+ */
 class Company extends \model\AbstractModel{
 	/**** settings stuff ****/
 	
@@ -128,12 +147,18 @@ class Company extends \model\AbstractModel{
 	protected $transactions;
 	
 	/**
-	* free tier is used, of the company should be able to f.eks. create invoices
-	* for free, it doesn't work if those are just withdrawn from credit, as we
-	* would have to give out free money (if people use it to buy things, so the
-	* money end up on withdrawable credit.
-	*/
+	 * free tier is used, of the company should be able to f.eks. create invoices
+	 * for free, it doesn't work if those are just withdrawn from credit, as we
+	 * would have to give out free money (if people use it to buy things, so the
+	 * money end up on withdrawable credit.
+	 */
 	protected $freeTier;
+
+	/**
+	 * time for last reset.
+	 * @var int
+	 */
+	protected $lastFreeTierReset;
 	
 	/**
 	* associative array of abonnement objects
