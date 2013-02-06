@@ -28,7 +28,7 @@ class ProductTest extends UnitTestCase
 
 	function testCreateProduct(){
 		global $product;
-		$this->productID = $this->client->create($product->toArray());
+		$this->productID = $this->client->create($product);
 		$this->assertTrue(strlen($this->productID) > 10);
 	}
 
