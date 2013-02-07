@@ -42,6 +42,10 @@ class InvoiceTest extends UnitTestCase
     function testIntegrity(){
         //TODO this
 	}
+
+    function testRequiredContact(){
+    }
+
     /*
 
     /**

@@ -90,7 +90,7 @@ class Form extends \helper\layout\LayoutBlock
 									id="sender-"
 
 									data-replace="sender-Party-PartyName-Name-_content"
-
+									required="required"
 									data-listLink="/contacts/autocomplete/"
 									data-objLink="/contacts/getContact/"
 									data-addForm="#addNewContact"
@@ -122,8 +122,10 @@ class Form extends \helper\layout\LayoutBlock
 								<input type="text" class="picker"
 									name="currency"
 									id="currency"
-									data-listLink="/index/currencies/" value="DKK"
+									data-listLink="/index/currencies/"
+									value="DKK"
 									required="true"
+									data-loose="true"
 									style="width:85%" /><a href="#currency"
 									class="btn pickerDP add-on"><i class="icon-circle-arrow-down">
 									</i></a>
@@ -153,7 +155,6 @@ class Form extends \helper\layout\LayoutBlock
 									class="pPicker totalCompute lines-#index#-Item-Name-_content" style="width:60%"
 									data-listLink="/products/autocomplete/"
 									data-objLink="/products/getProduct/"
-
 									data-addForm="#addNewProduct"
 									data-titleIndex="addNewProduct"
 
@@ -241,8 +242,19 @@ class Form extends \helper\layout\LayoutBlock
 					</div>
 
 					<div id="productLine_controls">
-						<a href="#" id="productLine_add" class="addProduct
-							btn"><i class="icon-plus"></i> Tilføj Linje</a>
+							<a href="#" id="productLine_add"
+								title="Tilføj en linje uden et tilhørende produkt"
+								class="addProduct btn btn-info"><i class="icon-plus"></i> Tilføj linje</a>
+
+							<a href="#"
+								title="Tilføj et allerede eksisterende produkt"
+								id="productLine_add"
+								class="addProduct btn btn-info"><i class="icon-plus"></i> Tilføj produkt</a>
+
+							<a href="#addNewProduct"
+								data-toggle="modal"
+								class="btn"
+								title="Opret et nyt produkt"><i class="icon-plus"></i> Opret nyt produkt</a>
 					</div>
 
 					<div class="span4 offset8">
@@ -258,8 +270,10 @@ class Form extends \helper\layout\LayoutBlock
 		</div>
 
 		<div class="offset4">
-			<input type="submit" name="draft" class="btn btn-primary btn-large" value="Gem kladde" />
-			<a href="#createBill" class="btn btn-primary btn-large" data-toggle="modal">Opret Regning</a>
+			<div class="pull-right" style="margin-top:2rem;">
+				<input type="submit" name="draft" class="btn btn-info btn-large" value="Gem kladde" />
+				<a href="#createBill" class="btn btn-success btn-large" data-toggle="modal">Opret regning</a>
+			</div>
 		</div>
 
 		<div class="modal hide fade" id="createBill">

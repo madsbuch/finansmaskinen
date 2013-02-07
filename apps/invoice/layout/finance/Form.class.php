@@ -116,7 +116,7 @@ class Form extends \helper\layout\LayoutBlock{
                                         <label>Valuta:</label>
                                         <div class="input-append">
                                             <input type="text"
-                                            	class="picker"
+                                            	class="picker totalComputeBlur"
                                             	rel="tooltip"
                                             	name="Invoice-DocumentCurrencyCode"
                                                 data-listLink="/index/currencies/"
@@ -134,17 +134,13 @@ class Form extends \helper\layout\LayoutBlock{
 								</div>
 								<div class="span3">
 									<!-- Settings -->
-									<label>Med moms:
-                                        <input class="totalCompute"
-                                            type="checkbox"
-                                            checked="checked"
-                                            name="vat"
-                                            id="vat" />
-                                    </label>
+									<input class="totalCompute checkbox {labelOn: \'Med Moms\', labelOff: \'Uden Moms\'}"
+										type="checkbox"
+										checked="checked"
+										name="vat"
+										id="vat" />
 									<br />
-									<input class="btn totalCompute" type="button" value="opdater beregninger" />
-									<br /><br />
-									<p>Fortløbende nummer bliver sat på, når fakturaen bliver godkendt og sendt.</p>
+									<!-- <input class="btn totalCompute" type="button" value="opdater beregninger" /> -->
 								</div>
 								<div id="documentValutaSettings" class="span4">
 									<p>Se og rediger valutaer for denne faktura <i 

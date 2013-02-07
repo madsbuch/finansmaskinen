@@ -24,3 +24,9 @@ html {
 {
     z-index:4000 !important
 }
+
+/* bootstrap sets label display:block, iButton needs it inline */
+.ibutton-container label{
+    display:inline;
+    font-weight: bold;
+}
