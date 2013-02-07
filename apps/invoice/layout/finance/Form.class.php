@@ -89,7 +89,8 @@ class Form extends \helper\layout\LayoutBlock{
                                                 data-objLink="/contacts/getContact/"
                                                 data-addForm="#addNewContact"
                                                 data-titleIndex="addNewContact"
-                                                placeholder="Vælg kontakt" /><a href="#Invoice-AccountingCustomerParty-"
+                                                placeholder="Vælg kontakt"
+                                                required="required" /><a href="#Invoice-AccountingCustomerParty-"
                                                 class="btn pickerDP"><i class="icon-circle-arrow-down">
                                                 </i></a><a href="#addNewContact"
 													title="Tilføj en kontakt"
@@ -123,6 +124,7 @@ class Form extends \helper\layout\LayoutBlock{
                                                 title="valuta fakturaen sendes i. tooltip"
                                                 id="Invoice-AccountingCustomerParty-currency"
                                                 data-replace="Invoice-DocumentCurrencyCode" required="true"
+                                                data-loose="true"
                                                 style="width:85%" /><a href="#Invoice-AccountingCustomerParty-currency"
                                                 class="btn pickerDP add-on"><i class="icon-circle-arrow-down">
                                                 </i></a>
@@ -201,8 +203,8 @@ class Form extends \helper\layout\LayoutBlock{
 										data-listLink="/products/autocomplete/"
 										data-objLink="/products/getProduct/"
 
-										title="Eksisterende product"
-
+										title="Vælg et eksisterende product"
+										required="required"
 										data-addForm="#addNewProduct"
 										data-titleIndex="addNewProduct"
 									
@@ -220,19 +222,20 @@ class Form extends \helper\layout\LayoutBlock{
 								<input type="hidden" 
 									name="Invoice-InvoiceLine-#index#-ID" 
 									id="product-#index#-ID" value="#index#" />
-
 								<input type="text"
 									class="currencyCompute totalCompute money"
 									name="product-#index#-origAmount"
 									id="product-#index#-origAmount"
 
-									title="Pris pr enhed"
-
+									title="Pris pr. enhed i oprindelig valuta"
+									placeholder="Pris"
 									data-listLink="/index/currencies/"
 									data-replace="product-#index#-Price-PriceAmount-_content"
 									style="width:60px;" />
 
-
+								<span data-replace="product-#index#-Price-PriceAmount-currencyID">
+									---
+								</span>
 								
 								
 								<input id="product-#index#-quantity"
@@ -318,7 +321,7 @@ class Form extends \helper\layout\LayoutBlock{
 							<a href="#"
 								title="Tilføj et allerede eksisterende produkt"
 								id="productLine_add"
-								class="addProduct btn btn-info"><i class="icon-plus"></i> Tilføj produkt</a>
+								class="addProduct btn btn-info"><i class="icon-plus"></i> Tilføj linje</a>
 
 							<a href="#addNewProduct"
 								data-toggle="modal"

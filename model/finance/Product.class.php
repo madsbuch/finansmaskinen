@@ -58,7 +58,7 @@ class Product extends \model\AbstractModel{
 	 *
 	 * @var \model\ext\ubl2\Price
 	 */
-	protected $CostPrice;
+	protected $retailPrice;
 	
 	/**
 	* ubl\TaxCategory

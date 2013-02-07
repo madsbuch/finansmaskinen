@@ -75,7 +75,7 @@ function reAttach () {
 	*
 	* attr id prefix to add to object keys when substituting
 	*
-	* substituring is done by data-replace, if it exists, or id otherwise
+	* substituting is done by data-replace, if it exists, or id otherwise
 	*/
 	$.fn.Picker = function(){
 		this.blur(function(){
@@ -132,6 +132,7 @@ function reAttach () {
 							$.each(data, function(key, val){
 								$('*[data-replace="'+prefix + key+'"]').each(function(){
 									$(this).val(val);
+                                    $(this).text(val);
 								});
 								
 								$('#' + prefix + key).val(val);
