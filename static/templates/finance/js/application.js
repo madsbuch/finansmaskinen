@@ -163,6 +163,7 @@ function reAttach () {
 				$($(this).attr('href')).picker('close');
 			else{
 				$($(this).attr('href')).picker( "search", " ");
+                $($(this).attr('href')).focus();
             }
             return false;
 		});
@@ -198,7 +199,12 @@ function reAttach () {
 	$(document).on('blur change', ".number", function(){
 		$(this).val(parsenumber($(this).val()));
 	})
-	
+
+    //transformation
+    $(document).on('keyup', '.uppercase', function(){
+        $(this).val($(this).val().toUpperCase());
+    })
+
 	//some tutorialing
 	tl.pg.init({ /* optional preferences go here */ });
 }

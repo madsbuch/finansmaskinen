@@ -21,6 +21,8 @@ class Form extends \helper\layout\LayoutBlock{
 	public $addJs = '';
 	
 	private $invoice;
+
+	private $productModal;
 	
 	private $contactID;
 
@@ -34,9 +36,9 @@ class Form extends \helper\layout\LayoutBlock{
 	/**
 	* prefill some variables with the construcotr.
 	*/
-	function __construct($invoice = null, $widgets=null){
+	function __construct($invoice = null, \helper\layout\LayoutBlock $productModal){
 		$this->invoice = $invoice;
-		$this->widgets = $widgets;
+		$this->productModal = $productModal;
 	}
 	
 	/**
@@ -82,6 +84,7 @@ class Form extends \helper\layout\LayoutBlock{
                                             <input type="text" class="picker"
                                                 style="width:50%;"
                                                 data-prefix="Invoice-AccountingCustomerParty-"
+                                                title="Vælg modtageren, hvis denne ikke eksistere, kan du oprette en ny"
                                                 id="Invoice-AccountingCustomerParty-"
                                                 data-replace="Invoice-AccountingCustomerParty-Party-PartyName-Name-_content"
                                                 data-listLink="/contacts/autocomplete/"
@@ -104,19 +107,20 @@ class Form extends \helper\layout\LayoutBlock{
 
 									<br/>
 									<div id="invoiceDateTutorial">
-                                        <label>Faktureringsdato:</label>
+                                        <label>Faktureringsdato:
                                         <div class="input-append datepicker date">
                                             <input type="text" name="Invoice-IssueDate"
                                                 style="width:85%" readonly=""/><span
                                                 class="add-on"><i class="icon-th"></i></span>
                                         </div>
+                                        </label>
 								    </div>
 
                                     <div id="currencyTutorial">
                                         <label>Valuta:</label>
                                         <div class="input-append">
                                             <input type="text"
-                                            	class="picker totalComputeBlur"
+                                            	class="picker totalComputeBlur uppercase"
                                             	rel="tooltip"
                                             	name="Invoice-DocumentCurrencyCode"
                                                 data-listLink="/index/currencies/"
@@ -134,12 +138,13 @@ class Form extends \helper\layout\LayoutBlock{
 								</div>
 								<div class="span3">
 									<!-- Settings -->
-									<input class="totalCompute checkbox {labelOn: \'Med Moms\', labelOff: \'Uden Moms\'}"
-										type="checkbox"
-										checked="checked"
-										name="vat"
-										id="vat" />
-									<br />
+									<div>
+										<input class="totalCompute checkbox {labelOn: \'Med Moms\', labelOff: \'Uden Moms\'}"
+											type="checkbox"
+											checked="checked"
+											name="vat"
+											id="vat" />
+									</div>
 									<!-- <input class="btn totalCompute" type="button" value="opdater beregninger" /> -->
 								</div>
 								<div id="documentValutaSettings" class="span4">
@@ -154,15 +159,15 @@ class Form extends \helper\layout\LayoutBlock{
 											<input type="text" readonly="true" style="width:30px;"
 												name="ExchangeRates-#index#-sourceCurrencyCode"
 												id="ExchangeRates-#index#-sourceCurrencyCode" />
-										
-										
-											<i class="icon-arrow-right"></i> 
-										
+
+
+											<i class="icon-arrow-right"></i>
+
 											<input type="text" readonly="true" style="width:30px;"
 												name="ExchangeRates-#index#-targetCurrencyCode"
-												id="ExchangeRates-#index#-targetCurrencyCode" /> 
-										
-										
+												id="ExchangeRates-#index#-targetCurrencyCode" />
+
+
 											=
 											
 											<input type="text" value="#index#"
@@ -218,6 +223,7 @@ class Form extends \helper\layout\LayoutBlock{
 								<input type="hidden" 
 									name="Invoice-InvoiceLine-#index#-ID" 
 									id="product-#index#-ID" value="#index#" />
+
 								<input type="text"
 									class="currencyCompute totalCompute money"
 									name="product-#index#-origAmount"
@@ -229,8 +235,10 @@ class Form extends \helper\layout\LayoutBlock{
 									data-replace="product-#index#-Price-PriceAmount-_content"
 									style="width:60px;" />
 
-								<span data-replace="product-#index#-Price-PriceAmount-currencyID">
-									---
+								<span
+									id="Invoice-InvoiceLine-#index#-Price-PriceAmount-currencyID"
+									data-replace="product-#index#-Price-PriceAmount-currencyID">
+									___
 								</span>
 								
 								
@@ -325,9 +333,9 @@ class Form extends \helper\layout\LayoutBlock{
 								title="Opret et nyt produkt"><i class="icon-plus"></i> Opret nyt produkt</a>
 						</div>
 						<div class="span4 offset8">
-							<span class="span2">total eksl. moms:</span> <span id="invoiceTotal">0,00</span><br />
-							<span class="span2">moms:</span> <span id="invoiceTaxTotal">0,00</span><br />
-							<span class="span2" style="font-weight:bold;">fakturatotal:</span>
+							<span class="span2">Total eksl. moms:</span> <span id="invoiceTotal">0,00</span><br />
+							<span class="span2">Moms:</span> <span id="invoiceTaxTotal">0,00</span><br />
+							<span class="span2" style="font-weight:bold;">Fakturatotal:</span>
 							<span id="invoiceAllTotal" style="font-weight:bold;">0,00</span>
 							<hr />
 						</div>
@@ -343,18 +351,18 @@ class Form extends \helper\layout\LayoutBlock{
 		</div>
 
 		<!-- modals -->
-	
+
 		<div class="modal hide fade" id="createInvoice">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">×</button>
-				<h3>Opret salg</h3>
+				<h3>Opret faktura</h3>
 			</div>
 			<div class="modal-body">
 				<p>'.implode('</p><p>', $this->msg).'</p>
 			</div>
 			<div class="modal-footer">
 				<a href="#" class="btn" data-dismiss="modal">Anuller</a>
-				<input type="submit" name="finished" class="btn btn-primary" value="Opret salg" />
+				<input type="submit" name="finished" class="btn btn-primary" value="Opret faktura" />
 			</div>
 		</div>
 	
@@ -407,6 +415,8 @@ class Form extends \helper\layout\LayoutBlock{
 		</div>
 	</form>
 
+	<div id="modals" />
+
 	<div class="modal hide fade" id="addNewContact">
 		<form  method="post" action="/contacts/create/true" id="addNewContactForm">
 			<div class="modal-header">
@@ -454,108 +464,14 @@ class Form extends \helper\layout\LayoutBlock{
 			</div>
 		</form>
 	</div>
-
-	<div class="modal hide fade" id="addNewProduct">
-		<form method="post" action="/products/create/true" id="addNewProductForm">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">×</button>
-				<h3>'.__('Add product').'</h3>
-			</div>
-			<div class="modal-body">
-				<div class="row">
-					<div class="span1" style="width:45%;">
-						<label for="Item-Name">'.__('Name').':</label>
-						<input type="text" id="Item-Name" name="Item-Name" style="width:90%;" />
-					</div>
-				</div>
-				<div class="row">
-					<div class="span1" style="width:40%;">
-						<label for="Price-PriceAmount-Amount">'.__('Sales-valuta and price').':</label>
-						<div class="input-prepend input-append">
-							<input
-								type="text"
-								class="picker"
-								name="Price-PriceAmount-CurrencyID"
-								data-listLink="/index/currencies/"
-								id="Price-PriceAmount-CurrencyID"
-								required="required"
-								style="width:20%" /><a
-								href="#Price-PriceAmount-CurrencyID"
-								class="btn pickerDP add-on"><i
-								class="icon-circle-arrow-down">
-								</i></a><input
-								id="Price-PriceAmount-_content"
-								style="width:60%;"
-								name="Price-PriceAmount-_content"
-								class="money input-small"
-								placeholder="Pris" type="text" required="required" />
-						</div>
-					</div>
-		
-					<div class="span1" style="width:40%;">
-						<label class="vatAccount">'.__('Category').':</label>
-						<div class="input-append">
-							<input type="text" class="picker descriptionPopoverLeft" id="addProdData-"
-								style="width:60%" title="Katagori" data-content="Vælg hvilken
-								katagori produktet passer ind i."
-								data-listLink="/products/autocompleteCatagory/"
-								data-objLink="/products/getCatagory/" /><a href="#addProdData-"
-								class="btn pickerDP"><i class="icon-circle-arrow-down"></i></a>
-							</div>
-							<input type="hidden" id="addProdData-id" name="catagoryID" />
-					</div>
-				</div>
-				<div>
-					<div class="row">
-						<div class="accordion-heading span5">
-							<a class="accordion-toggle" data-toggle="collapse"
-								title="Tilføj flere informationer til dette produkt"
-								href="#productCreateExtras">
-								Flere informationer
-							</a>
-						</div>
-					</div>
-
-					<div class="row collapse out" id="productCreateExtras">
-						<div class="span1" style="width:40%;">
-							<label for="retailprice">'.__('Retail-valuta and price').':</label>
-							<div class="input-prepend input-append">
-								<input
-									type="text"
-									class="picker"
-									name="retailprice-CurrencyID"
-									data-listLink="/index/currencies/"
-									id="Price-PriceAmount-CurrencyID"
-									required="required"
-									style="width:20%" /><a
-									href="#Price-PriceAmount-CurrencyID"
-									class="btn pickerDP add-on"><i
-									class="icon-circle-arrow-down">
-									</i></a><input
-									id="Price-PriceAmount-_content"
-									style="width:60%;"
-									name="Price-PriceAmount-_content"
-									class="money input-small"
-									placeholder="Pris" type="text" required="required" />
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="modal-footer">
-				<a href="#" class="btn" data-dismiss="modal">Luk</a>
-				<input type="submit" class="btn btn-primary" value="Opret" />
-			</div>
-		</form>
-	</div>
 </div>
 		';
-		
+
+		$element = new \helper\html\HTMLMerger($ret, isset($this->invoice) ? $this->invoice : array());
+		$dom = $element->getDOM();
+		$element = $element->generate();
+
 		if($this->invoice){
-		
-			$element = new \helper\html\HTMLMerger($ret, $this->invoice);
-			$dom = $element->getDOM();
-			$element = $element->generate();
 		
 			//generate data for products
 			$inj = array();
@@ -607,8 +523,14 @@ class Form extends \helper\layout\LayoutBlock{
 			
 			$ret = $element;
 		}
-		
-		return $ret;
+
+		$xpath = new \DOMXpath($dom);
+		$modals = $xpath->query("//*[@id='modals']")->item(0);
+		$modals->appendChild($this->importContent($this->productModal, $dom));
+		//add the contact form
+
+
+		return $element;
 	}
 }
 
