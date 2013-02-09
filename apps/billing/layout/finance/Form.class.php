@@ -41,9 +41,11 @@ class Form extends \helper\layout\LayoutBlock
      */
     private $contactID;
 
-	function __construct($bill = null, $contact = null){
+	private $productModal;
+
+	function __construct($bill = null, $productModal = null){
 		$this->bill = $bill;
-        $this->contactID = $contact;
+        $this->productModal = $productModal;
 	}
 
     /**
@@ -90,7 +92,7 @@ class Form extends \helper\layout\LayoutBlock
 									id="sender-"
 
 									data-replace="sender-Party-PartyName-Name-_content"
-
+									required="required"
 									data-listLink="/contacts/autocomplete/"
 									data-objLink="/contacts/getContact/"
 									data-addForm="#addNewContact"
@@ -122,8 +124,10 @@ class Form extends \helper\layout\LayoutBlock
 								<input type="text" class="picker"
 									name="currency"
 									id="currency"
-									data-listLink="/index/currencies/" value="DKK"
+									data-listLink="/index/currencies/"
+									value="DKK"
 									required="true"
+									data-loose="true"
 									style="width:85%" /><a href="#currency"
 									class="btn pickerDP add-on"><i class="icon-circle-arrow-down">
 									</i></a>
@@ -153,7 +157,6 @@ class Form extends \helper\layout\LayoutBlock
 									class="pPicker totalCompute lines-#index#-Item-Name-_content" style="width:60%"
 									data-listLink="/products/autocomplete/"
 									data-objLink="/products/getProduct/"
-
 									data-addForm="#addNewProduct"
 									data-titleIndex="addNewProduct"
 
@@ -241,8 +244,19 @@ class Form extends \helper\layout\LayoutBlock
 					</div>
 
 					<div id="productLine_controls">
-						<a href="#" id="productLine_add" class="addProduct
-							btn"><i class="icon-plus"></i> Tilføj Linje</a>
+							<a href="#" id="productLine_add"
+								title="Tilføj en linje uden et tilhørende produkt"
+								class="addProduct btn btn-info"><i class="icon-plus"></i> Tilføj linje</a>
+
+							<a href="#"
+								title="Tilføj et allerede eksisterende produkt (for lagerføring)"
+								id="productLine_add"
+								class="addProduct btn btn-info"><i class="icon-plus"></i> Tilføj produkt</a>
+
+							<a href="#addNewProduct"
+								data-toggle="modal"
+								class="btn"
+								title="Opret et nyt produkt"><i class="icon-plus"></i> Opret nyt produkt</a>
 					</div>
 
 					<div class="span4 offset8">
@@ -258,8 +272,10 @@ class Form extends \helper\layout\LayoutBlock
 		</div>
 
 		<div class="offset4">
-			<input type="submit" name="draft" class="btn btn-primary btn-large" value="Gem kladde" />
-			<a href="#createBill" class="btn btn-primary btn-large" data-toggle="modal">Opret Regning</a>
+			<div class="pull-right" style="margin-top:2rem;">
+				<input type="submit" name="draft" class="btn btn-info btn-large" value="Gem kladde" />
+				<a href="#createBill" class="btn btn-success btn-large" data-toggle="modal">Opret regning</a>
+			</div>
 		</div>
 
 		<div class="modal hide fade" id="createBill">
@@ -277,6 +293,8 @@ class Form extends \helper\layout\LayoutBlock
 		</div>
 
 	</form>
+
+	<div id="modals" />
 
 	<div class="modal hide fade" id="addNewContact">
 		<form  method="post" action="/contacts/create/true" id="addNewContactForm">
@@ -324,68 +342,15 @@ class Form extends \helper\layout\LayoutBlock
 			</div>
 		</form>
 	</div>
-
-	<div class="modal hide fade" id="addNewProduct">
-		<form method="post" action="/products/create/true" id="addNewProductForm">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">×</button>
-				<h3>' . __('Add product') . '</h3>
-			</div>
-			<div class="modal-body">
-				<div class="row">
-					<div class="span1" style="width:45%;">
-						<label for="Item-Name">' . __('Name') . ':</label>
-						<input type="text" id="Item-Name" name="Item-Name" style="width:90%;" />
-					</div>
-				</div>
-				<div class="row">
-					<div class="span1" style="width:40%;">
-						<label for="Price-PriceAmount-Amount">' . __('Price') . ':</label>
-						<div class="input-prepend">
-							<input type="text" class="picker" name="Price-PriceAmount-CurrencyID"
-								data-listLink="/index/currencies/"
-								id="Price-PriceAmount-CurrencyID" required="required"
-								style="width:20%" /><a href="#Price-PriceAmount-CurrencyID"
-								class="btn pickerDP add-on"><i class="icon-circle-arrow-down">
-								</i></a><input id="Price-PriceAmount-_content" style="width:60%;"
-								name="Price-PriceAmount-_content" class="money input-small"
-								placeholder="Pris" type="text" required="required" />
-						</div>
-					</div>
-
-					<div class="span1" style="width:40%;">
-						<label class="vatAccount">' . __('Category') . '</label>
-						<div class="input-append">
-							<input type="text" class="picker descriptionPopoverLeft" id="addProdData-"
-								style="width:60%" title="Katagori" data-content="Vælg hvilken
-								katagori produktet passer ind i."
-								data-listLink="/products/autocompleteCatagory/"
-								data-objLink="/products/getCatagory/" /><a href="#addProdData-"
-								class="btn pickerDP"><i class="icon-circle-arrow-down"></i></a>
-							</div>
-							<input type="hidden" id="addProdData-id" name="catagoryID" />
-					</div>
-				</div>
-
-				<div class="alert alert-info">
-					<h4 class="alert-heading">' . __('OBS') . '!</h4>
-					' . __('It is only the most important data about your product you apply here.
-					Go to your product overview and add details to use further features.') . '
-				</div>
-			</div>
-			<div class="modal-footer">
-				<a href="#" class="btn" data-dismiss="modal">Luk</a>
-				<input type="submit" class="btn btn-primary" value="Opret" />
-			</div>
-		</form>
-	</div>
 </div>';
 
+		$element = new \helper\html\HTMLMerger($ret, $this->bill);
+		$dom = $element->getDOM();
+		$element = $element->generate();
+
 		//should we merge in more data?
-		if($this->bill){
-			$element = new \helper\html\HTMLMerger($ret, $this->bill);
-			$dom = $element->getDOM();
-			$element = $element->generate();
+		if(!empty($this->bill)){
+
 
 			//inject some productline
 			$inj = array();
@@ -427,7 +392,12 @@ class Form extends \helper\layout\LayoutBlock
 			$ret = $element;
 		}
 
-		return $ret;
+		$xpath = new \DOMXpath($dom);
+		$modals = $xpath->query("//*[@id='modals']")->item(0);
+		$modals->appendChild($this->importContent($this->productModal, $dom));
+		//add the contact form
+
+		return $element;
 	}
 }
 

@@ -108,13 +108,13 @@ class Form extends \helper\layout\LayoutBlock{
 	<input type="submit" class="btn btn-primary btn-large offset5" value="Gem produkt" />
 </form>
 		';
-		
+
 		//merge in everything
 		if($this->obj){
 			$ret = new \helper\html\HTMLMerger($ret, $this->obj);
 			$ret = $ret->generate();
 		}
-		
+
 		return $ret;
 	}
 }

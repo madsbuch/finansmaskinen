@@ -75,7 +75,7 @@ function reAttach () {
 	*
 	* attr id prefix to add to object keys when substituting
 	*
-	* substituring is done by data-replace, if it exists, or id otherwise
+	* substituting is done by data-replace, if it exists, or id otherwise
 	*/
 	$.fn.Picker = function(){
 		this.blur(function(){
@@ -132,6 +132,7 @@ function reAttach () {
 							$.each(data, function(key, val){
 								$('*[data-replace="'+prefix + key+'"]').each(function(){
 									$(this).val(val);
+                                    $(this).text(val);
 								});
 								
 								$('#' + prefix + key).val(val);
@@ -162,6 +163,7 @@ function reAttach () {
 				$($(this).attr('href')).picker('close');
 			else{
 				$($(this).attr('href')).picker( "search", " ");
+                $($(this).attr('href')).focus();
             }
             return false;
 		});
@@ -197,7 +199,12 @@ function reAttach () {
 	$(document).on('blur change', ".number", function(){
 		$(this).val(parsenumber($(this).val()));
 	})
-	
+
+    //transformation
+    $(document).on('keyup', '.uppercase', function(){
+        $(this).val($(this).val().toUpperCase());
+    })
+
 	//some tutorialing
 	tl.pg.init({ /* optional preferences go here */ });
 }

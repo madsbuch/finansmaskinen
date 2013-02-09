@@ -139,7 +139,12 @@ var ExchangeRate = {};
         });
 
         //comapute the totals
-        $(".totalCompute").live("blur keyup click", function () {
+        $(document).on("blur keyup click change", ".totalCompute", function () {
+            update(this);
+        });
+
+
+        $(document).on("blur", ".totalComputeBlur", function () {
             update(this);
         });
 
