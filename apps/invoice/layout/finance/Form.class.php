@@ -139,9 +139,10 @@ class Form extends \helper\layout\LayoutBlock{
 								<div class="span3">
 									<!-- Settings -->
 									<div>
-										<input class="totalCompute checkbox {labelOn: \'Med Moms\', labelOff: \'Uden Moms\'}"
+										<input
 											type="checkbox"
 											checked="checked"
+											class="totalCompute checkbox {labelOn: \'Med Moms\', labelOff: \'Uden Moms\'}"
 											name="vat"
 											id="vat" />
 									</div>
@@ -467,11 +468,11 @@ class Form extends \helper\layout\LayoutBlock{
 </div>
 		';
 
-		$element = new \helper\html\HTMLMerger($ret, isset($this->invoice) ? $this->invoice : array());
+		$element = new \helper\html\HTMLMerger($ret,  $this->invoice);
 		$dom = $element->getDOM();
 		$element = $element->generate();
 
-		if($this->invoice){
+		if(!empty($this->invoice)){
 		
 			//generate data for products
 			$inj = array();

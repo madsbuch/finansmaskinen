@@ -38,6 +38,10 @@ class HTMLMerger{
 	}
 	
 	function generate(){
+		//nothing is done, if null is passed
+		if(is_null($this->o))
+			return $this->dom->documentElement;
+
 		$xpath = new \DOMXpath($this->dom);
 		$q = $xpath->query("//*[@id]");
 		

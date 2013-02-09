@@ -87,7 +87,7 @@ class View extends \helper\layout\LayoutBlock{
 		
 		$info->addObject(new \model\Base(array('key' => 'Sidst rettidige betaling',
 			'val' => isset($this->obj->Invoice->PaymentMeans->first->PaymentDueDate->_content) ? date('d/m-Y', $this->obj->Invoice->PaymentMeans->first->PaymentDueDate->_content) : __('Not set'))));
-		
+
 
 		$info->additionalClasses('table-condensed');
 		$cr->appendChild(\helper\html::importNode($dom, $info->generate()));
@@ -140,10 +140,13 @@ class View extends \helper\layout\LayoutBlock{
 
 		//totals
 		$t = l::writeValuta($this->obj->Invoice->LegalMonetaryTotal->PayableAmount->_content, $currencyCode, true);
+		$tax = l::writeValuta((string) $this->obj->Invoice->TaxTotal->first->TaxSubtotal->TaxAmount, $currencyCode, true);
+		$exclTax = l::writeValuta((string) $this->obj->Invoice->LegalMonetaryTotal->LineExtensionAmount, $currencyCode, true);
+
 		$lowerRight->appendChild($this->importContent("<div>
 
-		<span class=\"span2\">Total eksl. moms:</span> <span id=\"invoiceTotal\">0,00</span><br />
-		<span class=\"span2\">Moms:</span> <span id=\"invoiceTaxTotal\">0,00</span><br />
+		<span class=\"span2\">Total eksl. moms:</span> <span id=\"invoiceTotal\">$exclTax</span><br />
+		<span class=\"span2\">Moms:</span> <span id=\"invoiceTaxTotal\">$tax</span><br />
 		<span class=\"span2\" style=\"font-weight:bold;\">Fakturatotal:</span>
 		<span id=\"invoiceAllTotal\" style=\"font-weight:bold;\">{$t}</span>
 
