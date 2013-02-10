@@ -1,0 +1,2 @@
+This file contains information on how to migrate database systems to latest version (primarily mysql
+as mongo already has migration system)

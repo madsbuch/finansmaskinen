@@ -24,6 +24,13 @@ class Vat
 
 	/**** SETTERS ****/
 
+	/**
+	 * @param \model\finance\accounting\VatCode $vatCode
+	 */
+	function update(\model\finance\accounting\VatCode $vatCode){
+
+	}
+
 	/**** GETTERS ****/
 
 	/**

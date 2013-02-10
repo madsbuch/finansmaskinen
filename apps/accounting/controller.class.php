@@ -212,7 +212,7 @@ class accounting extends \core\app{
 		$html->appendContent(\helper\layout\Element::heading(__('Moms kode'),
 			'Rediger ' . $code));
 
-		$html->appendContent(new accounting\layout\finance\EditVatCode(\api\accounting::getVatCodes()));
+		$html->appendContent(new accounting\layout\finance\EditVatCode(\api\accounting::getVatCode($code)));
 
 		$this->output_header = $this->header->getHeader();
 		$this->output_content = $html->generate();
@@ -310,7 +310,7 @@ class accounting extends \core\app{
 	}
 	
 	/**
-	* right noow inlined, move to here
+	* right now inlined, move to here
 	*/
 	function createAccount(){
 	
@@ -378,9 +378,23 @@ class accounting extends \core\app{
 		$this->output_header = $this->header->getHeader();
 		$this->output_content = $ret;
 	}
-	
-	function createVatCode(){
-	
+
+	/**
+	 * takes a vatcode object and saves, or creates it
+	 */
+	function updateVatCode(){
+		$input = new \helper\parser\Post('model\finance\accounting\VatCode');
+		$obj = $input->getObj();
+		var_dump($obj->toArray());
+
+		\api\accounting::updateVatCode($obj);
+
+		$this->header->redirect('/accounting/vatCodes');
+
+		die();
+
+		$this->output_header = $this->header->getHeader();
+		$this->output_content = '';
 	}
 
 	/**

@@ -69,6 +69,11 @@ class HTMLMerger{
 					$x->appendChild(new \DOMText($r));
 				}
 			}
+
+			$pre = $x->getAttributeNode('data-preselect');
+			if(empty($pre->value)){
+				$x->setAttribute('data-preselect', $r);
+			}
 		}
 		
 		return $this->dom->documentElement;

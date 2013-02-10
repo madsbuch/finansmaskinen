@@ -48,22 +48,35 @@ class VatCode extends \model\AbstractModel
 	protected $description;
 
 	/**
+	 * account that vat is posted on
+	 */
+	protected $account;
+
+	/**
+	 * for foreign buys
+	 *
+	 * TODO refactor to contraAccount
+	 *
+	 * @var int
+	 */
+	protected $counterAccount;
+
+	/**
 	 *
 	 */
 	protected $percentage;
 
-    /**
-     * account code
-     */
-	protected $account;
-
 	/**
-	 * how much this allows on deduction
+	 * How much is posted to the account
+	 *
 	 * @var
 	 */
 	protected $deductionPercentage;
 
-	protected $counterAccount;
+	/**
+	 * how much is posted to the counteraccount
+	 */
+	protected $contraDeductionPercentage;
 
 	/**
 	 * whether the foundation of comsutation is netto or brutto.
@@ -71,6 +84,8 @@ class VatCode extends \model\AbstractModel
 	 *
 	 * netto:  the vat was not added, vat = 25% of transaction value
 	 * brutto: the vat was added, vat = 20% of transaction value
+	 *
+	 * TODO refactor to Principle, and let values be net/gross
 	 *
 	 */
 	protected $net;

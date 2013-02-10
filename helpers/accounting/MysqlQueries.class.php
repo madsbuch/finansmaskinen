@@ -156,8 +156,13 @@ class MysqlQueries implements \helper\accounting\Queries
 
     }
 
+	function updateVatCode(){
+
+	}
+
 	//endregion
 
+	//region postings
 	/**** Postings ****/
 	function getPostings($accounting){
 		$limit = is_null($accounting) ? '' : 'AND transaction_id IN (select id from accounting_transactions WHERE accounting_id = \''.$accounting.'\')';
@@ -172,5 +177,7 @@ class MysqlQueries implements \helper\accounting\Queries
 			    '.$limit.'
 			limit :start,:num';
 	}
+
+	//endregion
 
 }

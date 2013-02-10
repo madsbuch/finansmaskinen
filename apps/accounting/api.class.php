@@ -542,6 +542,17 @@ class accounting
 	}
 
 	/**
+	 * attempts to update vat code
+	 *
+	 * @param $vatCode
+	 */
+	static function updateVatCode($vatCode){
+		$acc = self::retrieve();
+		$acc = new \helper\accounting((string)$acc->_id);
+		return $acc->vat()->update($vatCode);
+	}
+
+	/**
 	 * marks vat as reset in the current accounting
      *
      *

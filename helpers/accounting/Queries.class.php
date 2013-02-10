@@ -79,6 +79,23 @@ interface Queries
      */
     function getSumsOnVatAccounts();
 
+	/**
+	 * returns a string that updates a vatcode object to the DB
+	 * following fields may be set
+	 *  code - name of the code that needs to be set
+	 *  type
+	 *  name
+	 *  description           -
+	 *  account
+	 *  counterAccount        -
+	 *  percentage
+	 *  deductionPercentage   -
+	 *  counterDeductionPercentage
+	 *
+	 * @return string
+	 */
+	function updateVatCode();
+
 	//endregion
 
 	//region transactions
