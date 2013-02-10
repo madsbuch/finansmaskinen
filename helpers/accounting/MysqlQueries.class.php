@@ -157,6 +157,27 @@ class MysqlQueries implements \helper\accounting\Queries
     }
 
 	function updateVatCode(){
+		return '
+		UPDATE
+			accounting_vat_codes
+		SET
+			`name` = :name,
+			`type` = :type,
+			`percentage` = :percentage,
+			`account` = :account,
+			`ubl_taxCatagory` = :taxCategoryID,
+			`description` = :description,
+			`contra_account` = :contraAccount,
+			`deduction_percentage` = :deductionPercentage,
+			`contra_deduction_percentage` = :contraDeductionPercentage,
+			`principle` = :principle
+		WHERE
+				grp_id = :grp
+			AND vat_code = :code
+		';
+	}
+
+	function createVatCode(){
 
 	}
 

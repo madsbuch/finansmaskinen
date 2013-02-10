@@ -101,8 +101,8 @@ class accounting
 	/**
 	 * instanciate with details of the group and the accounting
 	 *
-	 * @param $accounting    the id of the accounting related to
-	 * @param $grp            the groups the account are related to
+	 * @param $accounting string    the id of the accounting related to
+	 * @param $grp int            the group the account are related to
 	 */
 	function __construct($accounting, $grp = null)
 	{
@@ -594,31 +594,12 @@ class accounting
 	/**
 	 * returns a single vatcode object
 	 *
+	 * @param $code
 	 * @return \model\finance\accounting\VatCode
 	 */
 	function getVatCode($code)
 	{
-		$pdo = $this->db->dbh;
-
-		$sth = $pdo->prepare('SELECT * FROM accounting_vat_codes WHERE vat_code = ? AND grp_id = ?');
-
-		$ret = array();
-		$sth->execute(array($code, $this->grp));
-
-		foreach ($sth->fetchAll() as $t) {
-			return new \model\finance\accounting\VatCode(array(
-				'_id' => $t['id'],
-				'name' => $t['name'],
-				'code' => $t['vat_code'],
-				'type' => $t['type'],
-				'account' => $t['account'],
-				'percentage' => $t['percentage'],
-				'counterAccount' => $t['counter_account'],
-				'net' => $t['netto'],
-				'taxcatagoryID' => $t['ubl_taxCatagory']
-			));
-		}
-		return false;
+		return $this->vat()->getVatCode($code);
 	}
 
 	/**

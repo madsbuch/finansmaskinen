@@ -71,7 +71,7 @@ class HTMLMerger{
 			}
 
 			$pre = $x->getAttributeNode('data-preselect');
-			if(empty($pre->value)){
+			if($pre && empty($pre->value)){
 				$x->setAttribute('data-preselect', $r);
 			}
 		}

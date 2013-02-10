@@ -385,13 +385,10 @@ class accounting extends \core\app{
 	function updateVatCode(){
 		$input = new \helper\parser\Post('model\finance\accounting\VatCode');
 		$obj = $input->getObj();
-		var_dump($obj->toArray());
 
 		\api\accounting::updateVatCode($obj);
 
-		$this->header->redirect('/accounting/vatCodes');
-
-		die();
+		$this->header->redirect('/accounting/viewVatCode/'.$obj->code);
 
 		$this->output_header = $this->header->getHeader();
 		$this->output_content = '';

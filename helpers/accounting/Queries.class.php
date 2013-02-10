@@ -85,16 +85,26 @@ interface Queries
 	 *  code - name of the code that needs to be set
 	 *  type
 	 *  name
-	 *  description           -
+	 *  description
 	 *  account
-	 *  counterAccount        -
+	 *  contraAccount
 	 *  percentage
-	 *  deductionPercentage   -
-	 *  counterDeductionPercentage
+	 *  deductionPercentage
+	 *  contraDeductionPercentage
+	 *  principle
+	 *  taxCategoryID
+	 *  grp - the group
 	 *
 	 * @return string
 	 */
 	function updateVatCode();
+
+	/**
+	 * the same sa the update function, only difference is that code is for insertion and not queryring
+	 *
+	 * @return string
+	 */
+	function createVatCode();
 
 	//endregion
 

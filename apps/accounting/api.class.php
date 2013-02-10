@@ -545,6 +545,7 @@ class accounting
 	 * attempts to update vat code
 	 *
 	 * @param $vatCode
+	 * @return void
 	 */
 	static function updateVatCode($vatCode){
 		$acc = self::retrieve();

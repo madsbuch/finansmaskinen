@@ -7,10 +7,17 @@
 namespace model\finance\accounting;
 
 /**
+ * @property int $code
  * @property int $percentage
  * @property int $type
  * @property int $name
  * @property int $account
+ * @property $description
+ * @property $counterAccount
+ * @property $deductionPercentage
+ * @property $contraDeductionPercentage
+ * @property $principle
+ * @property $taxcatagoryID
  */
 class VatCode extends \model\AbstractModel
 {
@@ -19,6 +26,12 @@ class VatCode extends \model\AbstractModel
 	 */
 	protected $_version = '1.0';
 	protected $_model = 'finance\VatCode';
+
+	/**
+	 * row id
+	 * @var int
+	 */
+	protected $_id;
 
 	/**
 	 *
@@ -54,9 +67,6 @@ class VatCode extends \model\AbstractModel
 
 	/**
 	 * for foreign buys
-	 *
-	 * TODO refactor to contraAccount
-	 *
 	 * @var int
 	 */
 	protected $counterAccount;
@@ -85,15 +95,22 @@ class VatCode extends \model\AbstractModel
 	 * netto:  the vat was not added, vat = 25% of transaction value
 	 * brutto: the vat was added, vat = 20% of transaction value
 	 *
-	 * TODO refactor to Principle, and let values be net/gross
-	 *
+	 * @deprecated use principle
+	 * @var string
 	 */
 	protected $net;
+
+	/**
+	 * @var string gross or netto, how the vat is calculated
+	 */
+	protected $principle;
 
 	/**
 	 * ubl stuff
 	 *
 	 * the taxcatagory id is used to fetch the taxcatagory.
+	 *
+	 * TODO refactor to rename
 	 */
 	protected $taxcatagoryID;
 

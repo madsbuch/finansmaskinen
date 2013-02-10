@@ -26,12 +26,75 @@ class Vat
 
 	/**
 	 * @param \model\finance\accounting\VatCode $vatCode
+	 * @throws \exception\UserException
+	 * @throws \Exception
 	 */
 	function update(\model\finance\accounting\VatCode $vatCode){
+		$pdo = $this->srv->db->dbh;
+
+		$sth = $pdo->prepare($this->srv->queries->updateVatCode());
+
+		if(!$sth)
+			throw new \Exception('Could not prepare query');
+
+		//merge objects,
+		$old = $this->getVatCode($vatCode->code);
+		$vatCode->merge($old->toArray());
+
+		if(!$sth->execute(array(
+			'code'                          =>  $vatCode->code,
+			'type'                          =>  $vatCode->type,
+			'name'                          =>  $vatCode->name,
+			'description'                   =>  $vatCode->description,
+			'account'                       =>  $vatCode->account,
+			'contraAccount'                 =>  $vatCode->counterAccount,
+			'percentage'                    =>  $vatCode->percentage,
+			'deductionPercentage'           =>  $vatCode->deductionPercentage,
+			'contraDeductionPercentage'     =>  $vatCode->contraDeductionPercentage,
+			'principle'                     =>  $vatCode->principle,
+			'taxCategoryID'                 =>  $vatCode->taxcatagoryID,
+			'grp'                           =>  $this->srv->grp,
+		)))
+			throw new \exception\UserException(__('Was not able to update vat code'));
 
 	}
 
 	/**** GETTERS ****/
+
+	/**
+	 * @param $code
+	 * @return \model\finance\accounting\VatCode
+	 * @throws \Exception
+	 */
+	function getVatCode($code)
+	{
+		$pdo = $this->srv->db->dbh;
+
+		$sth = $pdo->prepare('SELECT *
+			FROM accounting_vat_codes WHERE vat_code = ? AND grp_id = ?');
+
+		if(!$sth)
+			throw new \Exception('Query failed');
+
+		$ret = array();
+		$sth->execute(array($code, $this->srv->grp));
+
+		foreach ($sth->fetchAll() as $t) {
+			return new \model\finance\accounting\VatCode(array(
+				'_id' => $t['id'],
+				'name' => $t['name'],
+				'code' => $t['vat_code'],
+				'type' => $t['type'],
+				'account' => $t['account'],
+				'percentage' => $t['percentage'],
+				'counterAccount' => $t['counter_account'],
+				'net' => $t['netto'],
+				'taxcatagoryID' => $t['ubl_taxCatagory'],
+				'deductionPercentage' => $t['deduction_percentage'],
+				'description' => $t['description'],
+			));
+		}
+	}
 
 	/**
 	 * returns list of all vatCodes

@@ -20,6 +20,7 @@ class EditVatCode extends \helper\layout\LayoutBlock
 	{
 		$s = '
 		<form action="/accounting/updateVatCode" method="post">
+			<input type="hidden" name="code" id="code" />
 			<div class="row" id="">
 				<div class="span4">
 					<h3>Generelt</h3>
@@ -30,7 +31,7 @@ class EditVatCode extends \helper\layout\LayoutBlock
 				    <label> Beskrivelse:</label>
 				    <input type="text" name="description" id="description" />
 		            <label>Type</label>
-		            <select>
+		            <select data-refere=".vatType" id="type" name="type">
 		                <option>Salg</option>
 		                <option>Køb</option>
 		            </select>
@@ -72,7 +73,8 @@ class EditVatCode extends \helper\layout\LayoutBlock
 				<div class="span4">
 					<h3>Betydning</h3>
 					<p>Med denne momskode betaler du <span style="font-weight:bold;" class="percentVal"></span><b>%</b>
-					af startbeløbet i moms, og får <span class="deductionVal" style="font-weight:bold;"></span><b>%</b> af startbeløbet tilbage.</p>
+					af før-moms beløbet i moms, og får <span class="deductionVal" style="font-weight:bold;"></span><b>%</b> af før-moms beløbet tilbage.</p>
+					<p>Denne kode kan bruges ved <span class="vatType"></span></p>
 				</div>
 			</div>
 			<div class="row">
