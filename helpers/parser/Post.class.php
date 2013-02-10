@@ -32,7 +32,7 @@ class Post{
 	/**
 	 * object to put the data into
 	 *
-	 * @param $object object to populate, this should inherit AbstractModel
+	 * @param $object string object to populate, this should inherit AbstractModel
 	 * @param null $validation
 	 * @param string $delimiter
 	 */

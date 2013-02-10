@@ -121,10 +121,10 @@ class accounting extends \core\app{
 		$this->output_header = $this->header->getHeader();
 		$this->output_content = $html->generate();
 	}
-	
+
 	/**
-	* shows list of accounts, and some details
-	*/
+	 *
+	 */
 	function accounts(){
 		$html = $this->getOutTpl();
 		//check for input
@@ -171,11 +171,11 @@ class accounting extends \core\app{
 		$this->output_header = $this->header->getHeader();
 		$this->output_content = $html->generate();
 	}
-	
+
 	/**
-	* used to show and pay vat
-	*/	
-	function vat($id=null){
+	 * show current vat statement
+	 */
+	function vat(){
 		$html = $this->getOutTpl();
 		$html->appendContent(\helper\layout\Element::heading(__('Vatstatement'),
 			'Nedenfor ser du de felter du skal indgive til Skat'));
@@ -185,6 +185,35 @@ class accounting extends \core\app{
 		
 		$html->appendContent(new accounting\layout\finance\Vat($statement));
 		
+		$this->output_header = $this->header->getHeader();
+		$this->output_content = $html->generate();
+	}
+
+	/**
+	 * show vatCodes and make it possible to create new ones
+	 */
+	function vatCodes(){
+		$html = $this->getOutTpl();
+		$html->appendContent(\helper\layout\Element::heading(__('Moms koder'),
+			'Se, rediger og opret momskoder'));
+
+		$html->appendContent(new accounting\layout\finance\vatCodes(\api\accounting::getVatCodes()));
+
+		$this->output_header = $this->header->getHeader();
+		$this->output_content = $html->generate();
+	}
+
+	/**
+	 *
+	 * @param $code
+	 */
+	function viewVatCode($code){
+		$html = $this->getOutTpl();
+		$html->appendContent(\helper\layout\Element::heading(__('Moms kode'),
+			'Rediger ' . $code));
+
+		$html->appendContent(new accounting\layout\finance\EditVatCode(\api\accounting::getVatCode($code)));
+
 		$this->output_header = $this->header->getHeader();
 		$this->output_content = $html->generate();
 	}
@@ -281,19 +310,15 @@ class accounting extends \core\app{
 	}
 	
 	/**
-	* right noow inlined, move to here
+	* right now inlined, move to here
 	*/
 	function createAccount(){
 	
 	}
 
 	/**
-	 * if term is set, then search is converted to constraints
-	 *
-	 * f.eks. payable, equity
-	 *
-	 * if filer = type, term can take:
-	 *  sales, cost, liability, or asset.
+	 * if filter = true, then search is a filter, and term is a search, otherwise
+	 * search is the search
 	 *
 	 * @param $search string
 	 * @param bool $filter
@@ -305,22 +330,21 @@ class accounting extends \core\app{
 		
 		$e = false; //equity only
 		$p = false; //payable only
-		$s = false; //sales only
-		$c = false; //cost accounts only
+		$type = null;
 		
 		if($filter){
 			if($search == 'equity')
 				$e = true;
 			elseif($search == 'payable')
 				$p = true;
-			elseif($search == 'sales')
-				$s = true;
+			elseif($search == 'expense')
+				$type = 3;
 			elseif($search == 'costs')
-				$c = true;
+				$type = 4;
 			$search = $term;
 		}
 		
-		$objs = \api\accounting::getAccounts($p, $e);
+		$objs = \api\accounting::getAccounts($p, $e, $type);
 		
 		//format for the autocompleter
 		$ret = array();
@@ -354,9 +378,20 @@ class accounting extends \core\app{
 		$this->output_header = $this->header->getHeader();
 		$this->output_content = $ret;
 	}
-	
-	function createVatCode(){
-	
+
+	/**
+	 * takes a vatcode object and saves, or creates it
+	 */
+	function updateVatCode(){
+		$input = new \helper\parser\Post('model\finance\accounting\VatCode');
+		$obj = $input->getObj();
+
+		\api\accounting::updateVatCode($obj);
+
+		$this->header->redirect('/accounting/viewVatCode/'.$obj->code);
+
+		$this->output_header = $this->header->getHeader();
+		$this->output_content = '';
 	}
 
 	/**

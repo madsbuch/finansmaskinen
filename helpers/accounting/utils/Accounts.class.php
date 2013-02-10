@@ -105,12 +105,13 @@ class Accounts
 	 *
 	 * @param $flags int, binary representation of flags. see constants, used for quereing
 	 * @param array $accounts
+	 * @param null $type
 	 * @return array
 	 */
-	function getAccounts($flags = 0, $accounts = array())
+	function getAccounts($flags = 0, $accounts = array(), $type = null)
 	{
 		$pdo = $this->db->dbh;
-		$sth = $pdo->prepare($this->queries->getAllAccounts($this->grp, $flags, $accounts));
+		$sth = $pdo->prepare($this->queries->getAllAccounts($this->grp, $flags, $accounts, $type));
 
 		$ret = array();
 		$sth->execute(array($this->accounting));

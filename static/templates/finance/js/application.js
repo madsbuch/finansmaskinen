@@ -203,7 +203,18 @@ function reAttach () {
     //transformation
     $(document).on('keyup', '.uppercase', function(){
         $(this).val($(this).val().toUpperCase());
-    })
+    });
+
+	//refering
+	$('[data-refere]').on('change keyup', function(){
+		var val = $(this).attr('value');
+		$($(this).attr('data-refere')).text(val);
+	});
+	//initialize, so that the text is there at start
+	$('[data-refere]').each(function(){
+		var val = $(this).attr('value');
+		$($(this).attr('data-refere')).text(val);
+	});
 
 	//some tutorialing
 	tl.pg.init({ /* optional preferences go here */ });

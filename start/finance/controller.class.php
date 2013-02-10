@@ -293,6 +293,15 @@ class main extends \core\app implements \core\framework\Output
 		$this->output_content = $html->generate();
 	}
 
+	public function whatsNew(){
+		$html = $this->getTpl();
+		$html->appendContent(\helper\layout\Element::heading(__('What\'s new'),
+			__('The update history')));
+		$html->add2content(new layout\WhatsNew());
+		$this->output_header = $this->header->getHeader();
+		$this->output_content = $html->generate();
+	}
+
 	
 	/**
 	* shows the auth struct 

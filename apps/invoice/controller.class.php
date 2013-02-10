@@ -265,8 +265,8 @@ class invoice extends \core\app
 
 			if (isset($arr['ExchangeRates']))
 				foreach ($arr['ExchangeRates'] as &$er) {
-					//casting to int, you can only sell natural numbers of stuff
-					$er['calculationRate'] = (int)l::readValuta($er['calculationRate']);
+					$er['calculationRate'] = l::readNum($er['calculationRate']);
+
 				}
 
 			//unsetting all the fields that are not a part of the model

@@ -23,13 +23,16 @@ class local{
 			return $valuta . ' ' . $num;
 		return $num;
 	}
-	
+
 	/**
-	* reads a number for internal storage (int)
-	*
-	* @param	valuta don't have to be set. the function will assume 1/100'th is
-	*			the smallest part in the valuta
-	*/
+	 * reads a number for internal storage (int)
+	 *
+	 * @param $num
+	 * @param null $value
+	 * @return int
+	 * @internal param \helper\don $valuta 't have to be set. the function will assume 1/100'th is
+	 *            the smallest part in the valuta
+	 */
 	static function readValuta($num, $value=null){
 		//explode by comma
 		$num = explode(l::$commaSeparator, $num);
@@ -63,15 +66,16 @@ class local{
 		$num = explode(l::$commaSeparator, $number);
 		//remove thousands
 		$left = str_replace(l::$thousandsSeparator, '', $num[0]);
-		
-		return (float) $num[0] . '.' . (isset($num[1]) ? $num[1] : '');
+
+		return (float) ($left . '.' . (isset($num[1]) ? $num[1] : ''));
 	}
 	
 	/**
 	* writes number with localization in account
 	*/
-	static function writeNum($number){
-	
+	static function writeNum($num){
+		$num = number_format ($num, 5, l::$commaSeparator, l::$thousandsSeparator);
+		return $num;
 	}
 }
 

@@ -11,8 +11,9 @@ namespace helper\accounting;
  */
 class MysqlQueries implements \helper\accounting\Queries
 {
+	/**** Accounts ****/
 	//region accounts
-	function getAllAccounts($grp, $flags = 0, $accounts=array()){
+	function getAllAccounts($grp, $flags = 0, $accounts=array(), $type = null){
 		$add = ' AND flags & ' . $flags . ' = ' . $flags . '';
 
 		if(is_array($accounts)){
@@ -22,6 +23,10 @@ class MysqlQueries implements \helper\accounting\Queries
 				$first = 'OR';
 			}
 			$add .= '';
+		}
+
+		if(!is_null($type)){
+			$add .= ' AND acc.type = '.(int) $type;
 		}
 
 		return '
@@ -43,8 +48,6 @@ class MysqlQueries implements \helper\accounting\Queries
 			    '.$add.'
 			GROUP BY acc.code';
 	}
-
-	/**** Accounts ****/
 
 	function insertAccount(){
 		return 'INSERT INTO accounting_accounts
@@ -153,8 +156,34 @@ class MysqlQueries implements \helper\accounting\Queries
 
     }
 
+	function updateVatCode(){
+		return '
+		UPDATE
+			accounting_vat_codes
+		SET
+			`name` = :name,
+			`type` = :type,
+			`percentage` = :percentage,
+			`account` = :account,
+			`ubl_taxCatagory` = :taxCategoryID,
+			`description` = :description,
+			`contra_account` = :contraAccount,
+			`deduction_percentage` = :deductionPercentage,
+			`contra_deduction_percentage` = :contraDeductionPercentage,
+			`principle` = :principle
+		WHERE
+				grp_id = :grp
+			AND vat_code = :code
+		';
+	}
+
+	function createVatCode(){
+
+	}
+
 	//endregion
 
+	//region postings
 	/**** Postings ****/
 	function getPostings($accounting){
 		$limit = is_null($accounting) ? '' : 'AND transaction_id IN (select id from accounting_transactions WHERE accounting_id = \''.$accounting.'\')';
@@ -169,5 +198,7 @@ class MysqlQueries implements \helper\accounting\Queries
 			    '.$limit.'
 			limit :start,:num';
 	}
+
+	//endregion
 
 }

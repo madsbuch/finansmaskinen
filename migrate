@@ -1,0 +1,4 @@
+This file contains information on how to migrate database systems to latest version (primarily mysql
+as mongo already has migration system)
+
+ALTER TABLE `finance`.`accounting_vat_codes` ADD COLUMN `description` TINYTEXT NULL  AFTER `ubl_taxCatagory` , ADD COLUMN `contra_account` INT NULL  AFTER `description` , ADD COLUMN `deduction_percentage` FLOAT NULL  AFTER `contra_account` , ADD COLUMN `contra_deducation_percentage` FLOAT NULL  AFTER `deduction_percentage` , ADD COLUMN `principle` VARCHAR(45) NULL  AFTER `contra_deduction_percentage` ;
