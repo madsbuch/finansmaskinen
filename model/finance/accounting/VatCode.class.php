@@ -38,12 +38,12 @@ class VatCode extends \model\AbstractModel
 	protected $type;
 
 	/**
-	 *
+	 * some name
 	 */
 	protected $name;
 
 	/**
-	 *
+	 * some description
 	 */
 	protected $description;
 
@@ -56,6 +56,12 @@ class VatCode extends \model\AbstractModel
      * account code
      */
 	protected $account;
+
+	/**
+	 * how much this allows on deduction
+	 * @var
+	 */
+	protected $deductionPercentage;
 
 	protected $counterAccount;
 

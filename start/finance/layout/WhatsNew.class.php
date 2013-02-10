@@ -14,6 +14,7 @@ class WhatsNew extends \helper\layout\LayoutBlock
 	{
 		return '
 		<h2>Søndag d. 10/2</h2>
+		<p>Denne opdatering kan give problemer indtil nye statiske filer er opdaterede, slet midlertidige filer hvis der er problmer</p>
 		<h3>TOS</h3>
 		<p>Vi har indført at en Terms of service skal godkendes.</p>
 

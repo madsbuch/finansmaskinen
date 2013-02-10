@@ -84,11 +84,12 @@ class Form extends \helper\layout\LayoutBlock
 				<h2>Afsender og instillinger</h2>
 				<div class="app-box">
 					<div class="row">
-						<div class="span6">
+						<div class="span3">
 							<label>Afsender</label>
 							<div class="input-append" id="billingContact">
-								<input type="text" class="picker"
-									style="width:50%;"
+								<input
+									type="text"
+									class="picker"
 									id="sender-"
 
 									data-replace="sender-Party-PartyName-Name-_content"
@@ -106,19 +107,19 @@ class Form extends \helper\layout\LayoutBlock
 							</div>
 							<input type="hidden" name="contactID"
 								id="sender-contactID" />
+						</div>
 
-							<br/>
+						<div class="span3">
 							<label>' . __('Duedate') . '</label>
 							<div class="input-append datepicker date">
 								<input type="text" name="paymentDate"
 									id="paymentDate"
-									style="width:85%" readonly=""/><span
+									readonly=""/><span
 									class="add-on"><i class="icon-th"></i></span>
 							</div>
 						</div>
 
-						<div class="span5">
-
+						<div class="span3">
 							<label>Valuta:</label>
 							<div class="input-append">
 								<input type="text" class="picker"
@@ -128,15 +129,22 @@ class Form extends \helper\layout\LayoutBlock
 									value="DKK"
 									required="true"
 									data-loose="true"
-									style="width:85%" /><a href="#currency"
+									/><a
+									href="#currency"
 									class="btn pickerDP add-on"><i class="icon-circle-arrow-down">
 									</i></a>
 							</div>
-							<br />
-							<br />
-							<input class="btn totalCompute" type="button" value="opdater" />
+						</div>
 
-							<br />
+						<div>
+							<label>Priser</label>
+								<input
+									type="checkbox"
+									checked="checked"
+									class="totalCompute checkbox {labelOn: \'Inkl. moms\', labelOff: \'Excl. moms\'}"
+									name="vat"
+									id="vat" />
+
 						</div>
 					</div>
 				</div>
@@ -149,19 +157,41 @@ class Form extends \helper\layout\LayoutBlock
 				<div id="productLine">
 					<div id="productLine_template">
 						<div class="span12">
-							<div class="input-append" style="float:left;width:15%;">
+							<div class="input-append product hide" style="width:30%;float:left;">
 								<input
 									id="lines-#index#-"
 									name="trash"
 									type="text"
-									class="pPicker totalCompute lines-#index#-Item-Name-_content" style="width:60%"
+									class="pPicker totalCompute lines-#index#-Item-Name-_content"
+		                            style="width:75%"
 									data-listLink="/products/autocomplete/"
 									data-objLink="/products/getProduct/"
 									data-addForm="#addNewProduct"
 									data-titleIndex="addNewProduct"
+		                            title="Tilføj et kendt produkt, lagerføring bliver aktiveret"
+									placeholder="produkt" /><a href="#lines-#index#-"
+									class="btn pickerDroP add-on"><i class="icon-circle-arrow-down"></i></a>
+							</div>
+		                    <div class="hide line input-append" style="width:30%;float:left;">
 
-									placeholder="Kendt produkt?" /><a href="#lines-#index#-"
-									class="btn pickerDroP"><i class="icon-circle-arrow-down"></i></a>
+									<input
+										style="width:75%;"
+										type="text"
+										class="pPicker"
+										id="lines-#index#-account-"
+										data-replace="lines-#index#-account-name"
+										name="trash"
+										placeholder="Konto"
+										title="konto der skal bogføres til"
+										data-listLink="/accounting/autocompleteAccounts/expense/true/"
+										data-objLink="/accounting/getAccount/"
+
+										/><a
+										style="width:10px;"
+										href="#lines-#index#-account-"
+										class="btn pickerDroP add-on"><i
+										class="icon-circle-arrow-down"></i></a>
+
 							</div>
 
                             <input
@@ -169,36 +199,10 @@ class Form extends \helper\layout\LayoutBlock
                                 name="lines-#index#-text"
                                 id="line-#index#-text"
                                 placeholder="Beskrivese"
-                                style="float:left; width:27%;" />
+                                title="Beskrivese af denne linje"
+                                style="float:left;width:30%;" />
 
 							<p id="#index#" class="readIndex hide" />
-
-							<div class="input-append" style="float:left;width:15%;margin-left:5px;">
-								<input type="text" class="pPicker"
-									id="lines-#index#-account-"
-									data-replace="lines-#index#-account-name"
-									name="trash"
-									placeholder="Konto"
-									style="width:60%"
-									data-listLink="/accounting/autocompleteAccounts/"
-									data-objLink="/accounting/getAccount/" /><a href="#lines-#index#-account-"
-									class="btn pickerDroP"><i class="icon-circle-arrow-down"></i></a>
-							</div>
-
-
-							<div class="input-append" style="float:left;width:5%;">
-								<input type="text"
-									name="lines-#index#-vatCode"
-									id="lines-#index#-inclVat-code"
-									placeholder="Moms"
-									style="width:45%"
-
-									data-listLink="/accounting/autocompleteVatCode/"
-									data-objLink="/accounting/getVatCode/"
-
-									class="input-small lines-#index#-account-vatCode pPicker" /><a href="#lines-#index#-inclVat-code"
-									class="btn pickerDroP add-on"><i class="icon-circle-arrow-down"></i></a>
-							</div>
 
 							<input id="lines-#index#-quantity"
 								name="lines-#index#-quantity"
@@ -213,27 +217,46 @@ class Form extends \helper\layout\LayoutBlock
 							<input id="lineTotal-#index#" name="trash" type="text"
 								style="width:8%" value="-,-" disabled="disabled" />
 
-							<a href="#" class="btn" id="productLine_remove_current"
-								title="Fjern"><i class="icon-minus" title="Fjern linje"></i></a>
+							<a  href="#"
+								class="btn settingsBox"
+		                        title="instillinger"
+								data-toggle="#settings-#index#"><i
+								class="icon-wrench"
+								></i></a>
+
+							<a href="#"
+								class="btn"
+								id="productLine_remove_current"
+								title="Fjern linje"><i
+								class="icon-minus"
+								title="Fjern linje"></i></a>
 
 							<div class="form-inline hide"
-								id="settings-#index#" style="margin-bottom:10px;">
+								id="settings-#index#"
+								style="margin-bottom:1rem;">
+								<div class="input-append">
+									<input type="text"
+										style="width:70%;"
+										name="lines-#index#-vatCode"
+										id="lines-#index#-inclVat-code"
+										placeholder="Moms"
+										data-listLink="/accounting/autocompleteVatCode/"
+										data-objLink="/accounting/getVatCode/"
 
-								<label>moms:</label>
-								<input type="text"
-									name="trash"
-									id="lines-#index#-inclVat-percentage"
-									data-replace="lines-#index#-inclVat-codepercentage" />
+										class="input-small lines-#index#-account-vatCode pPicker"
 
-								<label>produkt:</label>
-							    <input type="text" id="lines-#index#-productID" name="lines-#index#-productID" />
+										/><a
+										href="#lines-#index#-inclVat-code"
+										class="btn pickerDroP add-on"><i
+										class="icon-circle-arrow-down"></i></a>
+								</div>
 
-							    <label>Konto</label>
-							    <input type="text"
-							        data-replace="lines-#index#-account-code"
-							        id="lines-#index#-account"
-							        name="lines-#index#-account" />
-
+							    <input
+							        class="hide"
+							        style="margin-left:100px;"
+							        type="text"
+							        id="lines-#index#-productID"
+							        name="lines-#index#-productID" />
 							</div>
 
 						</div>
@@ -244,13 +267,16 @@ class Form extends \helper\layout\LayoutBlock
 					</div>
 
 					<div id="productLine_controls">
-							<a href="#" id="productLine_add"
+							<a href="#"
+								id="productLine_add"
+								data-tpl="line"
 								title="Tilføj en linje uden et tilhørende produkt"
 								class="addProduct btn btn-info"><i class="icon-plus"></i> Tilføj linje</a>
 
 							<a href="#"
+								data-tpl="product"
 								title="Tilføj et allerede eksisterende produkt (for lagerføring)"
-								id="productLine_add"
+								id="productLine_add_product"
 								class="addProduct btn btn-info"><i class="icon-plus"></i> Tilføj produkt</a>
 
 							<a href="#addNewProduct"

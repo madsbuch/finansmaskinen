@@ -64,12 +64,12 @@ class ListAccounts extends \helper\layout\LayoutBlock{
 						</div>
 					</div>
 					<div class="span2">
-						<input type="checkbox" class="checkbox" data-checkedLabel="Beholdning"
-							data-uncheckedLabel="Ikke beholdning" name="allowPayments" />
+						<input type="checkbox" class="checkbox {labelOn: \'Beholdning\', labelOff: \'Ikke beholdning\'}"
+							name="allowPayments" />
 					</div>
 					<div class="span3 offset2">
 						<input type="submit" Value="Opret konto" class="btn btn-primary" />
-						<a href="#vatCode" data-toggle="modal" class="btn">Momskonti</a>
+						<a href="/accounting/vatCodes" class="btn">Momskonti</a>
 					</div>
 				</div>
 			</form>

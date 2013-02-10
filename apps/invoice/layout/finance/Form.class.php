@@ -109,7 +109,9 @@ class Form extends \helper\layout\LayoutBlock{
 									<div id="invoiceDateTutorial">
                                         <label>Faktureringsdato:
                                         <div class="input-append datepicker date">
-                                            <input type="text" name="Invoice-IssueDate"
+                                            <input type="text"
+                                                name="Invoice-IssueDate"
+                                                id="Invoice-IssueDate-_content"
                                                 style="width:85%" readonly=""/><span
                                                 class="add-on"><i class="icon-th"></i></span>
                                         </div>
@@ -237,6 +239,7 @@ class Form extends \helper\layout\LayoutBlock{
 									style="width:60px;" />
 
 								<span
+									title="Oprindelig valuta for denne linje"
 									id="Invoice-InvoiceLine-#index#-Price-PriceAmount-currencyID"
 									data-replace="product-#index#-Price-PriceAmount-currencyID">
 									___
@@ -508,7 +511,7 @@ class Form extends \helper\layout\LayoutBlock{
 					$t = array();
 					$t['ExchangeRates-#index#-sourceCurrencyCode'] = $rate->sourceCurrencyCode;
 					$t['ExchangeRates-#index#-targetCurrencyCode'] = $rate->targetCurrencyCode;
-					$t['ExchangeRates-#index#-calculationRate'] = l::writeValuta($rate->calculationRate);
+					$t['ExchangeRates-#index#-calculationRate'] = l::writeNum($rate->calculationRate);
 					$injEx[] = (object) $t;
 				}
 		

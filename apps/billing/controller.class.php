@@ -188,8 +188,10 @@ class billing extends \core\app
 	/**
 	 * deletes a file
 	 *
-	 * @param $id mongo id of the object
-	 * @param $pic,
+	 * @param null $file
+	 * @return void
+	 * @internal param \app\mongo $id id of the object
+	 * @internal param $pic ,
 	 */
 	function fileDelete($file = null)
 	{

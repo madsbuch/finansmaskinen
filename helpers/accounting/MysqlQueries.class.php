@@ -11,8 +11,9 @@ namespace helper\accounting;
  */
 class MysqlQueries implements \helper\accounting\Queries
 {
+	/**** Accounts ****/
 	//region accounts
-	function getAllAccounts($grp, $flags = 0, $accounts=array()){
+	function getAllAccounts($grp, $flags = 0, $accounts=array(), $type = null){
 		$add = ' AND flags & ' . $flags . ' = ' . $flags . '';
 
 		if(is_array($accounts)){
@@ -22,6 +23,10 @@ class MysqlQueries implements \helper\accounting\Queries
 				$first = 'OR';
 			}
 			$add .= '';
+		}
+
+		if(!is_null($type)){
+			$add .= ' AND acc.type = '.(int) $type;
 		}
 
 		return '
@@ -43,8 +48,6 @@ class MysqlQueries implements \helper\accounting\Queries
 			    '.$add.'
 			GROUP BY acc.code';
 	}
-
-	/**** Accounts ****/
 
 	function insertAccount(){
 		return 'INSERT INTO accounting_accounts

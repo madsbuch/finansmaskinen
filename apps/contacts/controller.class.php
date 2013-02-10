@@ -208,8 +208,8 @@ class contacts extends \core\app{
 		foreach($objects as $o){
 			$ret[] = array(
 				'id' => (string) $o->_id,
-				'label' => $o->Party->PartyName->Name->_content,
-				'category' => strtoupper(substr($o->Party->PartyName, 0, 1)));
+				'label' => isset($o->Party->PartyName->Name->_content) ? $o->Party->PartyName->Name->_content : __('Undefined'),
+				'category' => isset($o->Party->PartyName) ? strtoupper(substr($o->Party->PartyName, 0, 1)) :strtoupper(substr(__('Undefined'), 0, 1)));
 		}
 		$this->header->setMime('json');
 		$this->output_header = $this->header->getHeader();

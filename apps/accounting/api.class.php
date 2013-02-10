@@ -454,7 +454,7 @@ class accounting
 	 * @param bool $onlyEquity
 	 * @return array
 	 */
-	static function getAccounts($onlyPayable = false, $onlyEquity = false)
+	static function getAccounts($onlyPayable = false, $onlyEquity = false, $type= null)
 	{
 		$acc = self::retrieve();
 		$acc = new \helper\accounting((string)$acc->_id);
@@ -462,7 +462,7 @@ class accounting
 		$flag = 0;
 		$flag = $onlyPayable ? $flag | 1 : $flag;
 		$flag = $onlyEquity ? $flag | 2 : $flag;
-		return $acc->accounts()->getAccounts($flag);
+		return $acc->accounts()->getAccounts($flag, array(), $type);
 	}
 
 	/**

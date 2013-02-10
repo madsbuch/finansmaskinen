@@ -149,7 +149,14 @@ var ExchangeRate = {};
         });
 
         //do the datepicker
-        var now = new Date();
+        //check for existing value
+        if($(".datepicker input").val().length < 2){
+            var now = new Date();
+        }
+        else{
+            var now = new Date($(".datepicker input").val());
+        }
+        //make the rest
         now = now.getUTCDate() + "/" + (now.getUTCMonth() + 1) + "/" + now.getUTCFullYear();
         $(".datepicker input").val(now);
         $(".datepicker").data("date", now);
@@ -262,6 +269,7 @@ var ExchangeRate = {};
 
         //initialise productsform
         var preSelIndex = 0;
+		var toAdd = 'line';
         productsForm = $("#productLine").sheepIt({
             separator:"",
             allowRemoveLast:true,
@@ -269,13 +277,27 @@ var ExchangeRate = {};
             allowRemoveAll:true,
             allowAdd:true,
             allowAddN:true,
-            minFormsCount:0,
+            minFormsCount:1,
             iniFormsCount:1,
+            afterClone: function(source, clone) {
+                if(toAdd == 'line')
+					clone.find('.line').show();
+				else
+					clone.find('.product').show();
+				console.log(toAdd);
+            },
             afterAdd:function (source, newForm) {
                 $(".pPicker").Picker();
                 $(".pickerDroP").PickerDropdown();
             }
         });
+        $('#productLine_add_product').on('click', function(){
+			//signal that we add a product line
+			toAdd = 'product';
+			productsForm.addForm();
+			toAdd = 'line';
+			return false;
+        })
 
         //check for injection
         if (typeof $("#productLine").attr('data-inject') != 'undefined')
