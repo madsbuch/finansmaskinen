@@ -32,8 +32,8 @@ class EditVatCode extends \helper\layout\LayoutBlock
 				    <input type="text" name="description" id="description" />
 		            <label>Type</label>
 		            <select data-refere=".vatType" id="type" name="type">
-		                <option>Salg</option>
-		                <option>Køb</option>
+		                <option value="1">Salg</option>
+		                <option value="2">Køb</option>
 		            </select>
 				</div>
 				<div class="span4">

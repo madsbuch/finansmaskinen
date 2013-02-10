@@ -50,9 +50,23 @@ class HTMLMerger{
 			$path = $x->getAttribute('data-replace') ? $x->getAttribute('data-replace') : $x->getAttribute('id');
 			$r = (string) array_recurse_value($path, $this->o, '-');
 			
-			
+			//if we have a select element
+			if($x->tagName == 'select'){
+				//go through options
+				foreach($x->childNodes as $c){
+					if(!($c instanceof \DOMElement))
+						continue;
+					$aNode = $c->getAttributeNode('value');
+					if($aNode && $aNode->value == $r){
+						$c->setAttribute('selected', 'selected');
+						break;
+					}
+
+				}
+
+			}
 			//if we set checked attribute
-			if($x->getAttribute('type') == 'checkbox'){
+			elseif($x->getAttribute('type') == 'checkbox'){
 				if($r == '1')
 					$x->setAttribute('checked', 'checked');
 				else

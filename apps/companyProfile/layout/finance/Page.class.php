@@ -72,66 +72,7 @@ class Page extends \helper\layout\LayoutBlock{
 			<img src="http://placekitten.com/g/400/300" class="span4" />
 			<input type="file" id="logo" />-->
 		</div>
-	</div>
-	<div class="span7">
-		<h2>Penge</h2>
-		<div class="app-box" id="companyProfile_page_money">
-			<p>Nedenstående er de 3 konti du har ved os.</p>
-			
-			<table class="table table-striped table-condensed">
-				<thead>
-					<tr>
-						<th>Konto</th>
-						<th>Beløb</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr class="descriptionPopoverLeft" title="Indestående"
-					data-content="De penge du har på denne konto, er penge
-					du har indsat, og som er tilgode til at købe hjælp for.
-					Hvis du bruger pay as you go, er det her pengene bliver
-					trukket fra">
-						<td>Indestående</td>
-						<td id="accountCredit">DKK </td>
-					</tr>
-					<tr class="descriptionPopoverLeft" title="Reserverede"
-					data-content="Pengene der er her, er reservede. Hvis du
-					har accepteret et tilbud på regnskabshjælp, ryger pengene
-					herover indtil opgaven er udført.">
-						<td>Reservede</td>
-						<td id="accountReserved">DKK </td>
-					</tr>
-					<tr class="descriptionPopoverLeft" title="Reserverede"
-					data-content="Hvis du har udført et stykke arbejde for
-					en anden, eller på anden vis har tjen penge gennem
-					Finansmaskinen, ender pengene her. De her penge kan du
-					hæve ved at sende en faktura til Finansmaskinen">
-						<td>Penge der kan hæves</td>
-						<td id="accountWithdrawable">DKK </td>
-					</tr>
-				</tbody>
-			</table>
-			<a href="/companyProfile/credit" class="btn btn-primary">Indsæt penge</a>
-			<a href="/companyProfile/transactions" class="btn">Seneste hændelser</a>
 
-			<h3>Fribilletter</h3>
-			Fribilletter: <input type="text" readonly="true" id="freeTier" name="freeTier" /> sidst nulstillet:
-			<input type="text" readonly="true" id="lastFreeTierReset" name="lastFreeTierReset" />
-
-		</div>
-		
-		<h2>Moduler</h2>
-		<div class="app-box">
-			<p>Instillinger for nedenstående:</p>
-			<div id="companyProfile_module_table_holder">
-			</div>
-			
-			<div class="clearfix" />
-			<a href="/companyProfile/modules" class="btn btn-primary pull-right">Tilføj flere moduler</a>
-			<div class="clearfix" />
-			
-		</div>
-		
 		<h2>Standard konto</h2>
 		<div class="app-box">
 			<p>Nedenfor kan du angive en dansk bankkonto, denne vil blive sat som
@@ -169,6 +110,64 @@ class Page extends \helper\layout\LayoutBlock{
 				<input type="submit" value="Gem" class="pull-right btn btn-primary" />
 			</form>
 			<div class="clearfix" />
+		</div>
+	</div>
+	<div class="span7">
+		<h2>Penge</h2>
+		<div class="app-box" id="companyProfile_page_money">
+			<table class="table table-striped table-condensed">
+				<thead>
+					<tr>
+						<th>Konto</th>
+						<th>Beløb</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="descriptionPopoverLeft"
+					title="De penge du har på denne konto, er penge
+					du har indsat, og som er tilgode til at købe hjælp for.
+					Hvis du bruger pay as you go, er det her pengene bliver
+					trukket fra">
+						<td>Indestående</td>
+						<td id="accountCredit">DKK </td>
+					</tr>
+					<tr class="descriptionPopoverLeft"
+					title="Pengene der er her, er reservede. Hvis du
+					har accepteret et tilbud på regnskabshjælp, ryger pengene
+					herover indtil opgaven er udført.">
+						<td>Reservede</td>
+						<td id="accountReserved">DKK </td>
+					</tr>
+					<tr class="descriptionPopoverLeft"
+					title="Hvis du har udført et stykke arbejde for
+					en anden, eller på anden vis har tjen penge gennem
+					Finansmaskinen, ender pengene her. De her penge kan du
+					hæve ved at sende en faktura til Finansmaskinen">
+						<td>Penge der kan hæves</td>
+						<td id="accountWithdrawable">DKK </td>
+					</tr>
+				</tbody>
+			</table>
+			<a href="/companyProfile/credit" class="btn btn-primary">Indsæt penge</a>
+			<a href="/companyProfile/transactions" class="btn">Seneste hændelser</a>
+		</div>
+		<h2>Fribilletter</h2>
+		<div class="app-box">
+			Fribilletter: <span id="freeTier" />, sidst nulstillet:
+			<span id="lastFreeTierReset" />
+
+		</div>
+		
+		<h2>Moduler</h2>
+		<div class="app-box">
+			<p>Instillinger for nedenstående:</p>
+			<div id="companyProfile_module_table_holder">
+			</div>
+			
+			<div class="clearfix" />
+			<a href="/companyProfile/modules" class="btn btn-primary pull-right">Tilføj flere moduler</a>
+			<div class="clearfix" />
+			
 		</div>
 	</div>
 </div>';

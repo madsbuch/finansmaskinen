@@ -130,14 +130,25 @@ class DefUser extends \helper\template\base\HTML{
 		$element->appendChild($a);
 		$this->dom->getElementById('secondaryNav')->appendChild($element);
 	}
-	
-	public function setCompany($title, $link){
+
+
+	public function setCompany($title, $link, $freeTickets = null, $buyLink = null){
 		$t = new \DOMText($title);
 		$a = $this->dom->createElement('a');
 		$a->appendChild($t);
 		$a->setAttribute('href', $link);
 		
 		$this->dom->getElementById('companyItem')->appendChild($a);
+
+		if(!is_null($freeTickets)){
+			$t = new \DOMText(__('( %s )', $freeTickets));
+			$a = $this->dom->createElement('a');
+			$a->appendChild($t);
+			$a->setAttribute('href', $buyLink);
+			$a->setAttribute('title', __('Buy credit'));
+
+			$this->dom->getElementById('companyItemCredit')->appendChild($a);
+		}
 	}
 	
 	public function addCompanyList($title, $link){
@@ -154,6 +165,7 @@ class DefUser extends \helper\template\base\HTML{
 			$element,
 			$this->dom->getElementById('otherTreeBefore'));
 	}
+
 
 	private function prepareSecNav(){
 		//if not elements, we don't wan't the holder to be there

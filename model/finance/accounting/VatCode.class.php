@@ -69,7 +69,7 @@ class VatCode extends \model\AbstractModel
 	 * for foreign buys
 	 * @var int
 	 */
-	protected $counterAccount;
+	protected $contraAccount;
 
 	/**
 	 *

@@ -80,19 +80,7 @@ class Vat
 		$sth->execute(array($code, $this->srv->grp));
 
 		foreach ($sth->fetchAll() as $t) {
-			return new \model\finance\accounting\VatCode(array(
-				'_id' => $t['id'],
-				'name' => $t['name'],
-				'code' => $t['vat_code'],
-				'type' => $t['type'],
-				'account' => $t['account'],
-				'percentage' => $t['percentage'],
-				'counterAccount' => $t['counter_account'],
-				'net' => $t['netto'],
-				'taxcatagoryID' => $t['ubl_taxCatagory'],
-				'deductionPercentage' => $t['deduction_percentage'],
-				'description' => $t['description'],
-			));
+			return $this->ObjectFromRow($t);
 		}
 	}
 
@@ -108,16 +96,7 @@ class Vat
 		$sth->execute(array($this->srv->accounting));
 
 		foreach ($sth->fetchAll() as $t) {
-			$ret[] = new \model\finance\accounting\VatCode(array(
-				'_id' => $t['id'],
-				'name' => $t['name'],
-				'code' => $t['vat_code'],
-				'type' => $t['type'],
-				'account' => $t['account'],
-				'counterAccount' => $t['counter_account'],
-				'net' => $t['netto'],
-				'taxcatagoryID' => $t['ubl_taxCatagory']
-			));
+			$ret[] = $this->ObjectFromRow($t);
 		}
 		return $ret;
 	}
@@ -137,17 +116,7 @@ class Vat
         $sth->execute(array($type, $this->srv->grp));
 
         foreach ($sth->fetchAll() as $t) {
-            $ret[] = new \model\finance\accounting\VatCode(array(
-                '_id' => $t['id'],
-                'name' => $t['name'],
-                'code' => $t['vat_code'],
-                'type' => $t['type'],
-                'account' => $t['account'],
-                'percentage' => $t['percentage'],
-                'counterAccount' => $t['counter_account'],
-                'net' => $t['netto'],
-                'taxcatagoryID' => $t['ubl_taxCatagory']
-            ));
+            $ret[] = $this->ObjectFromRow($t);
         }
         return $ret;
     }
@@ -270,6 +239,25 @@ class Vat
 	    //attempt to insert
 	    $this->srv->controller->transaction()->insertTransaction($transaction);
 
+	}
+
+	/**** AUX ****/
+
+	private function ObjectFromRow($row){
+		return new \model\finance\accounting\VatCode(array(
+			'_id' =>                        $row['id'],
+			'code' =>                       $row['vat_code'],
+			'type' =>                       $row['type'],
+			'name' =>                       $row['name'],
+			'description' =>                $row['description'],
+			'account' =>                    $row['account'],
+			'contraAccount' =>              $row['contra_account'],
+			'percentage' =>                 $row['percentage'],
+			'deductionPercentage' =>        $row['deduction_percentage'],
+			'contraDeductionPercentage' =>  $row['contra_deduction_percentage'],
+			'principle' =>                  $row['principle'],
+			'taxcatagoryID' =>              $row['ubl_taxCatagory'],
+		));
 	}
 
 }

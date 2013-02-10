@@ -343,8 +343,13 @@ class api extends \core\startapi{
 			foreach(\core\auth::getInstance()->getApps() as $app){
 				$objname = "\api\\".$app->name;
 				$appname = $objname::getTitle();
-				if($app->id == 3)
-					$ret->setCompany($appname, '/'.$app->name);
+
+				//special case for company profile
+				if($app->id == 3){
+					$tickets = \api\companyProfile::retrieve(false)->freeTier;
+					$ret->setCompany($appname, '/'.$app->name, $tickets, '/companyProfile/credit');
+
+				}
 				else
 					$ret->addPrimaryNav($appname, '/'.$app->name);
 			}
