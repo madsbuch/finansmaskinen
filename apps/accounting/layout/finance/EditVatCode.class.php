@@ -31,15 +31,16 @@ class EditVatCode extends \helper\layout\LayoutBlock
 				    <label> Beskrivelse:</label>
 				    <input type="text" name="description" id="description" />
 		            <label>Type</label>
-		            <select data-refere=".vatType" id="type" name="type">
+		            <select id="type" name="type">
 		                <option value="1">Salg</option>
 		                <option value="2">Køb</option>
 		            </select>
 				</div>
 				<div class="span4">
 					<h3>Konti og satser</h3>
+
 				    <label> Konto:</label>
-				    <div class="input-append" title="konto momsen bliver ført over på">
+					<div class="input-append" title="konto momsen bliver ført over på">
 							<input
 								type="text"
 								class="picker a-name"
@@ -74,7 +75,6 @@ class EditVatCode extends \helper\layout\LayoutBlock
 					<h3>Betydning</h3>
 					<p>Med denne momskode betaler du <span style="font-weight:bold;" class="percentVal"></span><b>%</b>
 					af før-moms beløbet i moms, og får <span class="deductionVal" style="font-weight:bold;"></span><b>%</b> af før-moms beløbet tilbage.</p>
-					<p>Denne kode kan bruges ved <span class="vatType"></span></p>
 				</div>
 			</div>
 			<div class="row">

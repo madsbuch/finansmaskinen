@@ -388,7 +388,7 @@ class accounting extends \core\app{
 
 		\api\accounting::updateVatCode($obj);
 
-		$this->header->redirect('/accounting/viewVatCode/'.$obj->code);
+		$this->header->redirect('/accounting/vatCodes/');
 
 		$this->output_header = $this->header->getHeader();
 		$this->output_content = '';

@@ -18,43 +18,63 @@ class CategoryView extends \helper\layout\LayoutBlock{
 
 
 		$ret = '
-		<div class="row">
-			<form method="post">
-				<div class="span6">
-					<h2>Konti</h2>
+		<form method="post">
+			<div class="row">
+				<div class="span4">
+					<h2>Drift</h2>
 
-					<div class="row">
-						<div class="span3">
-							<label>Indkomstskonto inkl. moms</label>
-							<input type="text" id="accountInclVat" />
-						</div>
-					 	<div class="span3">
-					 		<label>Indkomstskonto excl. moms</label>
-							<input type="text" id="accountExclVat" />
-					 	</div>
+					<label>Indkomstskonto inkl. moms</label>
+
+					<div class="input-append" title="konto momsen bliver ført over på">
+							<input
+								type="text"
+								class="picker a-name"
+								id="a-"
+								data-listLink="/accounting/autocompleteAccounts/"
+								data-objLink="/accounting/getAccount/"
+								data-replace="accountInclVat"
+								data-preselect=""
+								data-refere=".accInclVat"
+								/><a
+								href="#a-"
+								class="btn pickerDP add-on"><i
+								class="icon-circle-arrow-down"></i></a>
 					</div>
 
-					<div class="row">
-						<div class="span3">
-					 		<label>Udgiftskonto inkl. moms</label>
-							<input type="text" id="expenseAccountInclVat" />
-					 	</div>
-					 	<div class="span3">
-					 		<label>Udgiftskonto excl. moms</label>
-							<input type="text" id="expenseAccountExclVat" />
-					 	</div>
+					<input type="hidden" data-replace="a-code" id="accountInclVat" name="accountInclVat" />
 
-					</div>
+
+
+			        <label>Indkomstskonto excl. moms</label>
+					<input type="text" data-refere=".accExclVat" id="accountExclVat" />
+
+			        <label>Udgiftskonto inkl. moms</label>
+					<input type="text" id="expenseAccountInclVat" />
+
+			        <label>Udgiftskonto excl. moms</label>
+					<input type="text" id="expenseAccountExclVat" />
+				</div>
+				<div class="span4">
+					<h2>Balance</h2>
 					<label>Egenkapital</label>
-					<input type="text" id="accountLiability" class="span4" />
+					<input type="text" id="accountLiability" />
 					<label>Lagerkonto. (Lad denne være tom, hvis ikke der skal aktiveres lagerføring)</label>
-					<input type="text" id="stockAccount" class="span4" />
-
-					<input type="submit" value="Opdater" class="btn btn-primary pull-right" />
+					<input type="text" id="stockAccount" />
 
 				</div>
-		 	</form>
-		</div>
+				<div class="span4">
+					<h2>Betydning</h2>
+					<p>Når du laver en faktura med et produkt fra denne kategori, bliver indtægten posteret til
+					<span class="accInclVat" style="font-weight: bold;" /> hvis den er med moms og
+					<span class="accExclVat" style="font-weight: bold;" /> hvis den er uden.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span12">
+					<input type="submit" value="Opdater" class="btn btn-success btn-large pull-right" />
+				</div>
+			</div>
+		</form>
 		';
 
 		//merge in everything

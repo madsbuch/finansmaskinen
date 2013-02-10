@@ -14,7 +14,18 @@ function reAttach () {
 	$(".descriptionPopover").popover()
 	$(".descriptionPopoverLeft").popover({"placement" : "left"})
 	$(".descriptionPopoverTop").popover({"placement" : "top"})
-	
+
+	//refering
+	$('[data-refere]').on('pickerUpdate change keyup blur', function(){
+		var val = $(this).attr('value');
+		$($(this).attr('data-refere')).text(val);
+	});
+	//initialize, so that the text is there at start
+	$('[data-refere]').each(function(){
+		val = $(this).attr('value');
+		$($(this).attr('data-refere')).text(val);
+	});
+
 	//placeholders in IE
 	$('input, textarea').placeholder({ color: '#999' });
 	
@@ -145,6 +156,7 @@ function reAttach () {
 							});
 
                             //TODO trigger some action here for chained selects
+							$.event.trigger('pickerUpdate');
 						}
 					});
 			},
@@ -204,17 +216,6 @@ function reAttach () {
     $(document).on('keyup', '.uppercase', function(){
         $(this).val($(this).val().toUpperCase());
     });
-
-	//refering
-	$('[data-refere]').on('change keyup', function(){
-		var val = $(this).attr('value');
-		$($(this).attr('data-refere')).text(val);
-	});
-	//initialize, so that the text is there at start
-	$('[data-refere]').each(function(){
-		var val = $(this).attr('value');
-		$($(this).attr('data-refere')).text(val);
-	});
 
 	//some tutorialing
 	tl.pg.init({ /* optional preferences go here */ });
