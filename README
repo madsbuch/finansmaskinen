@@ -14,7 +14,7 @@ Et framework til at køre applikationssystemer
 10. Databases
 
 
-::::::::::::: 1 :::::::::::::
+== Setup ==
 webServer:
 needed domains to point the system:
 	www.-
