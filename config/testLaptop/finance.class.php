@@ -46,8 +46,8 @@ class finance{
 		'offerFactor' => 30,
 
 		//company settings
-		'freeTierTime' => 86400, //time in second between resets
-		'freeTierSize' => 5, //what is the the minimum value of the freetier value after reset
+		'freeTierTime' => 1800, //time in second between resets
+		'freeTierSize' => 100, //what is the the minimum value of the freetier value after reset
 	);
 	
 	/**

@@ -318,7 +318,7 @@ class billing extends \core\api
 		$daybookTransaction->postings = $collection;
 		$daybookTransaction->approved = true;
 		$daybookTransaction->date = date('c');
-		$bill->ref = $daybookTransaction->referenceText = __('Bill %s', base_convert(crc32($bill->_id), 10, 35));
+		$bill->ref = $daybookTransaction->referenceText = __('Bill %s', $bill->billNumber);
 
 		//port the transactions to the accounting system
 		\api\accounting::importTransactions($daybookTransaction, array(
@@ -400,11 +400,12 @@ class billing extends \core\api
 	/**
 	 * finalize a bill;
 	 */
-	private static function finalize($bill){
+	private static function finalize(\model\finance\Bill $bill){
         //do the withdrawal
         \api\companyProfile::doAction('Bill');
 
-        //TODO giv regningen et fortløbende nummer
+        $bill->billNumber = \api\companyProfile::increment('billNumber');
+
         return $bill;
 	}
 }

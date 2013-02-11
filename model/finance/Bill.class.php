@@ -11,6 +11,7 @@ namespace model\finance;
  * @property $_external = array();
  * @property $contactID;
  * @property $paymentDate;
+ * @property $billNumber;
  * @property $currency;
  * @property $lines;
  * @property $amountTotal;
@@ -51,6 +52,13 @@ class Bill extends \model\AbstractModel
 	 * last date for paying this bill
 	 */
 	protected $paymentDate;
+
+	/**
+	 * is set when the bill is finalized
+	 *
+	 * @var int
+	 */
+	protected $billNumber;
 
 	/**
 	 * curremcy of this invoice
