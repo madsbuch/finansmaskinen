@@ -171,10 +171,12 @@ class invoice extends \core\app
 	 * @param null $id
 	 */
 	function doMail($id = null){
-        $subject = $this->param['subject'];
-        $msg = $this->param['message'];
-        $rec = $this->param['mail'];
-        $template = $this->param['template'];
+		$input = new \helper\parser\Post('\model\Base');
+		$obj = $input->getObj();
+        $subject = $obj->subject;
+        $msg = $obj->message;
+        $rec = $obj->mail;
+        $template = $obj->template;
 
         \api\invoice::email($id, array($rec), $subject, $msg, $template);
 

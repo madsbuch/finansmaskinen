@@ -35,7 +35,7 @@ class InvoiceMailWidget extends \helper\layout\LayoutBlock implements \helper\la
 		$h2->appendChild($this->edom->createElement('small', __('E-mail this invoice')));
 		$root->appendChild($h2);
 		$root->appendChild(\helper\html::importNode($dom, '
-		<form action="/invoice/doMail/'.$this->invoice->_id.'" method="get">
+		<form action="/invoice/doMail/'.$this->invoice->_id.'" method="post">
 			<div style="width:45%;float:left;">
 				<label>Modtager:</label>
 				<input style="width:95%;" type="email" name="mail" required="required" />
