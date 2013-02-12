@@ -37,7 +37,7 @@ class Bill implements OnAction
      */
     function getTicketPrice()
     {
-        // TODO: Implement getTicketPrice() method.
+        return 1;
     }
 
     /**
@@ -61,6 +61,6 @@ class Bill implements OnAction
      */
     function getMessage()
     {
-        return 'Free for now.';
+        return '1 ticket will be taken.';
     }
 }

@@ -240,7 +240,6 @@ class Form extends \helper\layout\LayoutBlock{
 
 								<span
 									title="Oprindelig valuta for denne linje"
-									id="Invoice-InvoiceLine-#index#-Price-PriceAmount-currencyID"
 									data-replace="product-#index#-Price-PriceAmount-currencyID">
 									___
 								</span>

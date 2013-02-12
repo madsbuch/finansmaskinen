@@ -79,8 +79,8 @@ class View extends \helper\layout\LayoutBlock
 		));
 		$info->showHeader = false;
 
-		$info->addObject(new \model\Base(array('key' => 'Fakturanummer',
-			'val' => isset($this->obj->Invoice->ID->_content) ? $this->obj->Invoice->ID->_content : '-')));
+		$info->addObject(new \model\Base(array('key' => 'Bilagsnummer',
+			'val' => $this->obj->billNumber)));
 
 		$info->addObject(new \model\Base(array('key' => 'Betalt',
 			'val' => $this->obj->isPayed ? 'Ja' : 'Nej')));
@@ -95,12 +95,6 @@ class View extends \helper\layout\LayoutBlock
 		/* this is not correct, as we wanna show all paymentMeans, and not only the first one
 		$info->addObject(new \model\Base(array('key' => 'Sidst rettidige betaling',
 			'val' => date('d/m-Y', $this->obj->Invoice->PaymentMeans->first->PaymentDueDate->_content))));*/
-
-		if (isset($this->obj->Invoice->LegalMonetaryTotal->PayableAmount))
-			$info->addObject(new \model\Base(array('key' => 'Total',
-				'val' => l::writeValuta(
-					$this->obj->Invoice->LegalMonetaryTotal->PayableAmount->_content,
-					$this->obj->Invoice->DocumentCurrencyCode->_content, true))));
 
 		$info->additionalClasses('table-condensed');
 		$cr->appendChild(\helper\html::importNode($dom, $info->generate()));

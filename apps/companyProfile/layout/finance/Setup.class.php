@@ -36,12 +36,10 @@ class Setup extends \helper\layout\LayoutBlock{
 				<div class="controls controls-row">
 					<input  type="text" class="span3"
 						id="Public-Party-PostalAddress-StreetName"
-						name="Public-Party-PostalAddress-StreetName"
-						placeholder="f.eks. mågevej" />
+						name="Public-Party-PostalAddress-StreetName" />
 					<input  type="text" class="span1"
 						id="Public-Party-PostalAddress-BuildingNumber"
-						name="Public-Party-PostalAddress-BuildingNumber"
-						placeholder="f.eks. 32" />
+						name="Public-Party-PostalAddress-BuildingNumber" />
 				</div>
 				
 				<div class="controls controls-row">
@@ -62,6 +60,7 @@ class Setup extends \helper\layout\LayoutBlock{
 					<div class="span3">
 						<label for="legal">Faktureringsnummer: </label>
 						<input style="width:100%" id="counters-invoiceNumberNext"
+							value="1"
 							name="counters-invoiceNumberNext" type="text" />
 						<span class="help-inline">Dette er det fortløbende nummer din 
 						næste faktura får. Har du allerede sendt fakturaer, skal denne
@@ -71,8 +70,11 @@ class Setup extends \helper\layout\LayoutBlock{
 					<div class="span3">
 						<label for="legal">standard betalingsfrist: </label>
 						<div class="input-append" style="width:100%;">
-							<input style="width:80%" id="Public-dueDays" name="Public-dueDays"
-							placeholder="f.eks. 30" type="text" /><span class="add-on">Dage</span>
+							<input style="width:80%"
+								value="30"
+								id="Publi1c-dueDays" name="Public-dueDays"
+								type="text" />
+							<span class="add-on">Dage</span>
 						</div>
 					<span class="help-inline">Standard betalingsfrist angiver hvor lang tid folk har til at betale dig. 30 dage bruges af mange.</span>
 					</div>

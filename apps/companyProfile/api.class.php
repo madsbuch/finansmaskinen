@@ -414,6 +414,7 @@ class companyProfile{
      *
      * e.g:
      * invoiceNumber
+     * billNumber
      *
      * @param $val string key to increment
      * @throws \Exception
@@ -421,9 +422,12 @@ class companyProfile{
      */
 	static function increment($val){
 		$o = self::retrieve();
-		
+
+		//TODO check write permisssions
+
+		//if the value doesn't exist, initialize to 1
 		if(!isset($o->counters->$val))
-			throw new \Exception('no accounting to retrieve (lack of permissions)');
+			$o->counters->$val = 1;
 		
 		//save number to return
 		$ret = $o->counters->$val;

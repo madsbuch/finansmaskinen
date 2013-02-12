@@ -86,12 +86,12 @@ class Form extends \helper\layout\LayoutBlock
 					<div class="row">
 						<div class="span3">
 							<label>Afsender</label>
-							<div class="input-append" id="billingContact">
+							<div class="input-append span2" id="billingContact">
 								<input
 									type="text"
 									class="picker"
 									id="sender-"
-
+									style="width:85%;"
 									data-replace="sender-Party-PartyName-Name-_content"
 									required="required"
 									data-listLink="/contacts/autocomplete/"
@@ -111,22 +111,35 @@ class Form extends \helper\layout\LayoutBlock
 
 						<div class="span3">
 							<label>' . __('Duedate') . '</label>
-							<div class="input-append datepicker date">
+							<div class="input-append datepicker date span2">
 								<input type="text" name="paymentDate"
 									id="paymentDate"
+									style="width:85%;"
 									readonly=""/><span
 									class="add-on"><i class="icon-th"></i></span>
 							</div>
 						</div>
 
+						<div class="span2">
+							<label>Moms er</label>
+								<input
+									type="checkbox"
+									checked="checked"
+									class="totalCompute checkbox {labelOn: \'Inkl.\', labelOff: \'Excl.\'}"
+									name="vat"
+									id="vat" />
+
+						</div>
+
 						<div class="span3">
 							<label>Valuta:</label>
-							<div class="input-append">
+							<div class="input-append span2">
 								<input type="text" class="picker"
 									name="currency"
 									id="currency"
 									data-listLink="/index/currencies/"
 									value="DKK"
+									style="width:85%;"
 									required="true"
 									data-loose="true"
 									/><a
@@ -134,17 +147,6 @@ class Form extends \helper\layout\LayoutBlock
 									class="btn pickerDP add-on"><i class="icon-circle-arrow-down">
 									</i></a>
 							</div>
-						</div>
-
-						<div>
-							<label>Priser</label>
-								<input
-									type="checkbox"
-									checked="checked"
-									class="totalCompute checkbox {labelOn: \'Inkl. moms\', labelOff: \'Excl. moms\'}"
-									name="vat"
-									id="vat" />
-
 						</div>
 					</div>
 				</div>

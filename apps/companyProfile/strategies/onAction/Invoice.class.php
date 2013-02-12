@@ -40,7 +40,7 @@ class Invoice implements OnAction
      */
     function getTicketPrice()
     {
-        return 0;
+        return 1;
     }
 
     /**
@@ -64,6 +64,6 @@ class Invoice implements OnAction
      */
     function getMessage()
     {
-        return 'A ticket is taken.';
+        return '1 ticket will be taken.';
     }
 }

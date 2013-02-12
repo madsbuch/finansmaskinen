@@ -1,4 +1,5 @@
-appf
+Finansmaskinen - Application framework
+======================================
 
 Et framework til at køre applikationssystemer
 
@@ -13,8 +14,10 @@ Et framework til at køre applikationssystemer
 9. create new localization
 10. Databases
 
+.. contents::
 
-::::::::::::: 1 :::::::::::::
+Setup
+-----
 webServer:
 needed domains to point the system:
 	www.-
@@ -52,7 +55,9 @@ mongoDB:
 wkhtmltox
 it didn't work on centos for me, untill i installed qt-devel (yum install qt qt-devel)
 
-::::::::::::: 2 :::::::::::::
+Add new site / domain
+---------------------
+
 to add domain:
 
  - go to config/router.php
@@ -65,15 +70,19 @@ To add new site:
  - if needed, create start folder and system
  
  
-::::::::::::: 3 :::::::::::::
+Tmps
+----
+
 session_start i index.php slettes. mongoDB bruges i stedet til at håndtere caching og sessions
 
-::::::::::::: 4 :::::::::::::
+Conventions
+-----------
 
 For core files:
 	the function cron, is a reserved callback. I has to be defined statically.
 	
-::::::::::::: 5 :::::::::::::
+Future feature
+--------------
 
 Push replication
 	Every app must have an API, from where users can access, modify and add
@@ -84,7 +93,9 @@ filedispatcher
 	en handler der kan håndtere filer, og "start" skal have en dispatcher, 
 	der sender filen ud.
 	
-::::::::::::: 6 :::::::::::::
+Security
+--------
+
 expose_php = false, no reason to tell that we use php
 keep http headers to a minimum.
 
