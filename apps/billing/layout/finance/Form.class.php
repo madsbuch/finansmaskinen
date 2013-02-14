@@ -86,7 +86,8 @@ class Form extends \helper\layout\LayoutBlock
 					<div class="row">
 						<div class="span3">
 							<label>Afsender</label>
-							<div class="input-append span2" id="billingContact">
+							<div class="input-append span2" id="billingContact"
+								title="Hvem har sendt regningen? hvis denne kontakt ikke eksistere, da opret den.">
 								<input
 									type="text"
 									class="picker"
@@ -109,7 +110,7 @@ class Form extends \helper\layout\LayoutBlock
 								id="sender-contactID" />
 						</div>
 
-						<div class="span3">
+						<div class="span3" title="Hvornår skal regningen senest betales?">
 							<label>' . __('Duedate') . '</label>
 							<div class="input-append datepicker date span2">
 								<input type="text" name="paymentDate"
@@ -120,7 +121,7 @@ class Form extends \helper\layout\LayoutBlock
 							</div>
 						</div>
 
-						<div class="span2">
+						<div class="span2" title="Er moms medregnet i de priser der angives?">
 							<label>Moms er</label>
 								<input
 									type="checkbox"
@@ -142,6 +143,7 @@ class Form extends \helper\layout\LayoutBlock
 									style="width:85%;"
 									required="true"
 									data-loose="true"
+									title="Hvilken valuta er regningen betalt i?"
 									/><a
 									href="#currency"
 									class="btn pickerDP add-on"><i class="icon-circle-arrow-down">
@@ -168,14 +170,14 @@ class Form extends \helper\layout\LayoutBlock
 		                            style="width:75%"
 									data-listLink="/products/autocomplete/"
 									data-objLink="/products/getProduct/"
-									data-addForm="#addNewProduct"
 									data-titleIndex="addNewProduct"
 		                            title="Tilføj et kendt produkt, lagerføring bliver aktiveret"
 									placeholder="produkt" /><a href="#lines-#index#-"
 									class="btn pickerDroP add-on"><i class="icon-circle-arrow-down"></i></a>
 							</div>
-		                    <div class="hide line input-append" style="width:30%;float:left;">
+		                    <div class="hide line" style="width:30%;float:left;">
 
+								<div class="input-append" style="width:50%;float:left;">
 									<input
 										style="width:75%;"
 										type="text"
@@ -184,7 +186,7 @@ class Form extends \helper\layout\LayoutBlock
 										data-replace="lines-#index#-account-name"
 										name="trash"
 										placeholder="Konto"
-										title="konto der skal bogføres til"
+										title="Vælg den konto denne linje skal bogføres til."
 										data-listLink="/accounting/autocompleteAccounts/expense/true/"
 										data-objLink="/accounting/getAccount/"
 
@@ -193,6 +195,24 @@ class Form extends \helper\layout\LayoutBlock
 										href="#lines-#index#-account-"
 										class="btn pickerDroP add-on"><i
 										class="icon-circle-arrow-down"></i></a>
+									</div>
+									<div class="input-append" style="width:30%;margin-left:2rem;float:left;">
+										<input type="text"
+											style="width:70%;"
+											name="lines-#index#-vatCode"
+											id="lines-#index#-inclVat-code"
+											placeholder="Moms"
+											title="Vælg den type moms der passer på lenjen"
+											data-listLink="/accounting/autocompleteVatCode/"
+											data-objLink="/accounting/getVatCode/"
+
+											class="input-small lines-#index#-account-vatCode pPicker"
+
+											/><a
+											href="#lines-#index#-inclVat-code"
+											class="btn pickerDroP add-on"><i
+											class="icon-circle-arrow-down"></i></a>
+									</div>
 
 							</div>
 
@@ -201,30 +221,38 @@ class Form extends \helper\layout\LayoutBlock
                                 name="lines-#index#-text"
                                 id="line-#index#-text"
                                 placeholder="Beskrivese"
-                                title="Beskrivese af denne linje"
+                                title="Beskriv eventuelt hvad linjen indeholder"
                                 style="float:left;width:30%;" />
 
 							<p id="#index#" class="readIndex hide" />
 
 							<input id="lines-#index#-quantity"
+								required="true"
 								name="lines-#index#-quantity"
 								type="text" class="add-on totalCompute" placeholder="Antal"
-								style="width:8%;margin-left:15px;" />
+								style="width:8%;margin-left:15px;"
+								title="Hvor mange er der indkøbt af enheden?"/>
 
 							<input id="lines-#index#-amount"
+								required="true"
 								name="lines-#index#-amount"
+								data-replace="lines-#index#-retailPrice-_content"
+								title="Hvad har hver enhed kostet?"
 								type="text" class="totalCompute" placeholder="Pris"
 								style="width:8%" />
 
-							<input id="lineTotal-#index#" name="trash" type="text"
+							<input
+								id="lineTotal-#index#"
+								name="trash" type="text"
+								title="Dette er linjens totalbeløb"
 								style="width:8%" value="-,-" disabled="disabled" />
 
-							<a  href="#"
+							<!--<a  href="#"
 								class="btn settingsBox"
 		                        title="instillinger"
 								data-toggle="#settings-#index#"><i
 								class="icon-wrench"
-								></i></a>
+								></i></a>-->
 
 							<a href="#"
 								class="btn"
@@ -236,22 +264,6 @@ class Form extends \helper\layout\LayoutBlock
 							<div class="form-inline hide"
 								id="settings-#index#"
 								style="margin-bottom:1rem;">
-								<div class="input-append">
-									<input type="text"
-										style="width:70%;"
-										name="lines-#index#-vatCode"
-										id="lines-#index#-inclVat-code"
-										placeholder="Moms"
-										data-listLink="/accounting/autocompleteVatCode/"
-										data-objLink="/accounting/getVatCode/"
-
-										class="input-small lines-#index#-account-vatCode pPicker"
-
-										/><a
-										href="#lines-#index#-inclVat-code"
-										class="btn pickerDroP add-on"><i
-										class="icon-circle-arrow-down"></i></a>
-								</div>
 
 							    <input
 							        class="hide"
@@ -336,15 +348,6 @@ class Form extends \helper\layout\LayoutBlock
 				<input name="Party-PartyName" type="text"
 					class="span5" required="true" />
 
-				<h4>Juridiske numre <small>Udfyld dem du kan</small></h4>
-				<label>CVR</label>
-				<input name="legalNumbers-DKCVR"
-					type="text" class="span5" />
-
-				<label>EAN</label>
-				<input name="legalNumbers-DKEAN"
-					type="text" class="span5"  />
-
 				<h4>Adresse</h4>
 				<label for="legal">Vej og vejnummer: </label>
 				<div class="controls controls-row">
@@ -363,6 +366,16 @@ class Form extends \helper\layout\LayoutBlock
 					<input name="Party-PostalAddress-CityName"
 						type="text" class="span4" />
 				</div>
+
+				<h4>Juridiske numre <small>Udfyld dem du kan</small></h4>
+				<label>CVR</label>
+				<input name="legalNumbers-DKCVR"
+					type="text" class="span5" />
+
+				<label>EAN</label>
+				<input name="legalNumbers-DKEAN"
+					type="text" class="span5"  />
+
 			</div>
 			<div class="modal-footer">
 				<a href="#" class="btn" data-dismiss="modal">Luk</a>

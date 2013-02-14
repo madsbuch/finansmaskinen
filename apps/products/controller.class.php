@@ -180,13 +180,13 @@ class products extends \core\app{
 		else
 			$c = "Der skete en fejl";
 		
-		//if(!$ajax)
-		//	$this->header->redirect('/products');
-		//else{
+		if(!$ajax)
+			$this->header->redirect('/products');
+		else{
 			$this->header->setMime('json');
 			$c = json_encode($obj ? $obj->toArray() : $c);
-		//}
-		
+		}
+
 		$this->output_header = $this->header->getHeader();
 		$this->output_content = $c;
 	}

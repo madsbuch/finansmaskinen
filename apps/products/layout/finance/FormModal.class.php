@@ -39,7 +39,7 @@ class FormModal extends \helper\layout\LayoutBlock
 					<div class="input-prepend input-append">
 						<input
 							type="text"
-							class="picker"
+							class="picker uppercase"
 							name="Price-PriceAmount-CurrencyID"
 							data-listLink="/index/currencies/"
 							id="Price-PriceAmount-CurrencyID"
@@ -94,7 +94,7 @@ class FormModal extends \helper\layout\LayoutBlock
 						<div class="input-prepend input-append">
 							<input
 								type="text"
-								class="picker"
+								class="picker uppercase"
 								name="retailPrice-CurrencyID"
 								data-listLink="/index/currencies/"
 								id="retailPrice-CurrencyID"

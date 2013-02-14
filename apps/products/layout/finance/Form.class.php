@@ -31,28 +31,73 @@ class Form extends \helper\layout\LayoutBlock{
 						</div>
 						
 '.($this->obj ? '<input type="hidden" name="_id" value="' . $this->obj->_id .'" />' : '').'
-						
+
 						<div class="span4">
-							<label for="Price-PriceAmount">Pris:</label>
-							<div class="input-prepend">
-								<input type="text" class="picker" name="Price-PriceAmount-currencyID"
-									data-listLink="/index/currencies/"
-									id="Price-PriceAmount-currencyID" required="required"
-									style="width:10%" /><a href="#Price-PriceAmount-currencyID"
-									class="btn pickerDP add-on"><i class="icon-circle-arrow-down">
-									</i></a><input id="Price-PriceAmount-_content" style="width:70%;"
-									name="Price-PriceAmount-_content" class="money input-small"
-									placeholder="Pris" type="text" required="required" />
+							<div class="row">
+								<label for="Price-PriceAmount">Salgs-valuta og pris:</label>
+								<div class="input-prepend input-append" title="Indtast prisen produktet sælges til.">
+									<input
+										type="text"
+										class="picker uppercase"
+										name="Price-PriceAmount-CurrencyID"
+										id="Price-PriceAmount-CurrencyID"
+										data-listLink="/index/currencies/"
+										value="DKK"
+										data-loose="true"
+										required="true"
+
+										style="width:20%" /><a
+										href="#Price-PriceAmount-CurrencyID"
+										class="btn pickerDP add-on"><i
+										class="icon-circle-arrow-down">
+										</i></a><input
+
+										required="true"
+										style="width:60%;"
+										name="Price-PriceAmount-_content"
+										id="Price-PriceAmount-_content"
+										class="money input-small"
+										type="text" />
+								</div>
+							</div>
+							<div class="row">
+								<label for="Price-PriceAmount">Indkøbs-valuta og pris:</label>
+								<div class="input-prepend input-append" title="Indtast indkøbprisen.">
+									<input
+										type="text"
+										class="picker uppercase"
+										name="retailPrice-CurrencyID"
+										data-listLink="/index/currencies/"
+										id="retailPrice-CurrencyID"
+										value="DKK"
+										'.(is_null($this->obj) ? '' : ' readonly="true" ').'
+										data-loose="true"
+										required="true"
+
+										style="width:20%" /><a
+										href="#retailPrice-CurrencyID"
+										class="btn pickerDP add-on"><i
+										class="icon-circle-arrow-down">
+										</i></a><input
+
+										required="true"
+										id="retailPrice-_content"
+										'.(is_null($this->obj) ? '' : ' readonly="true" ').'
+										value="0"
+										style="width:60%;"
+										name="retailPrice-_content"
+										class="money input-small"
+										type="text" />
+								</div>
 							</div>
 						</div>
 						
 						<div class="span3">
 							<label class="vatAccount">Katagori</label>
 							<div class="input-append">
-								<input type="text" class="picker descriptionPopoverLeft" id="addProdData-"
+								<input type="text" class="picker" id="addProdData-"
 									placeholder="Katagori" required="required"
-									style="width:80%" title="Katagori" data-content="Vælg hvilken
-									katagori produktet passer ind i."
+									style="width:80%" title="Vaælg en kategori for produktet"
 									data-listLink="/products/autocompleteCatagory/"
 									data-objLink="/products/getCatagory/" '.
 									($this->obj ? 'data-preselect="'.$this->obj->catagoryID.'"' : '').'
@@ -68,31 +113,17 @@ class Form extends \helper\layout\LayoutBlock{
 		</div>
 		<div class="row">
 			<div class="span4">
-				<h2>Lager <small><i class="icon-info-sign descriptionPopover"
-					title="Lager"
-					data-content="Lager status for produktet."></i></small></h2>
+				<h2>Lager</h2>
 				<div class="app-box">
 						Antal på lager:
 						<input type="text" style="width:90%"
-						name="stock" id="stock" />
+						name="stock" id="stock" value="0" />
 						Placering:
 						<input type="text" style="width:90%" name="location" id="location" />
 				</div>
 			</div>
-			<div class="span4">
-				<h2>Katalog <small><i class="icon-info-sign descriptionPopover"
-					title="Digitale katalog"
-					data-content="Instillinger for dette produkt i dit digitale
-					katalog."></i></small></h2>
-					
-				<div class="app-box">
-						<input type="checkbox" class="{labelOn: \'Ja\', labelOff: \'Nej\'}"
-							name="inCatalog" id="inCatalog" />
-						<p>Hvis produktet er i dit katalog, kan folk sende
-						dig en ordre på det.</p>
-				</div>
-			</div>
-			<div class="span4">
+
+			<div class="span8">
 				<h2>Ekstra detaljer</h2>
 				<div class="app-box">
 				    Produkt ID:
@@ -100,12 +131,11 @@ class Form extends \helper\layout\LayoutBlock{
 						name="productID" id="productID" />
 					<label>Beskrivelse</label>
 					<textarea name="Item-Description" id="Item-Description" style="width:90%"></textarea>
-					<label>Produktbilleder</label>
 				</div>
 			</div>
 		</div>
 	</div>
-	<input type="submit" class="btn btn-primary btn-large offset5" value="Gem produkt" />
+	<input type="submit" class="btn btn-success btn-large pull-right" style="margin-top:2rem;" value="Gem produkt" />
 </form>
 		';
 

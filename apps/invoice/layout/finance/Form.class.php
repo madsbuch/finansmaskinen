@@ -238,11 +238,14 @@ class Form extends \helper\layout\LayoutBlock{
 									data-replace="product-#index#-Price-PriceAmount-_content"
 									style="width:60px;" />
 
-								<span
+								<input
 									title="Oprindelig valuta for denne linje"
-									data-replace="product-#index#-Price-PriceAmount-currencyID">
-									___
-								</span>
+									id="product-#index#-Price-PriceAmount-currencyID"
+									name="trash"
+									readonly="true"
+									style="width:30px;border:0px;background-color:transparent;"
+									data-replace="product-#index#-Price-PriceAmount-currencyID" />
+
 								
 								
 								<input id="product-#index#-quantity"
