@@ -102,6 +102,14 @@ class BillingTest extends UnitTestCase
 	}
 
 	/**
+	 * should fail
+	 */
+	function testIBothAccountAndProduct(){
+		$this->expectException();
+
+	}
+
+	/**
 	 * tests that we can retrive just creted bill
 	 */
 	function testApiRetrieve()

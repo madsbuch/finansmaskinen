@@ -11,20 +11,21 @@ class Line extends \model\AbstractModel
 {
 
 	/**
-	 * id
+	 * Either a product id or an Account and vatCode has to be supplied
+	 *
+	 *
+	 *
+	 * @var string
 	 */
 	protected $productID;
 
 	/**
-	 * bookkeeping account
-	 * MANDATORY
+	 * bookkeeping account for the line
 	 */
 	protected $account;
 
 	/**
-	 * used for this line
-	 *
-	 * if not used, vatCode from account is used
+	 * Vatcode for the line
 	 */
 	protected $vatCode;
 
@@ -53,6 +54,15 @@ class Line extends \model\AbstractModel
 	 */
 	protected $lineTotal;
 
+	function doValidate($level = 0){
+		$ret = array();
+		if(isset($this->productID) && (isset($this->vatCode) || isset($this->account)))
+			$ret[] = 'Not both a product and account/vat code may be set';
+
+		if((isset($this->vatCode) && !isset($this->account)) ||
+			(isset($this->vatCode) && !isset($this->account)))
+			$ret[] = 'Both account and vatcode has to be set, not just one.';
+	}
 
 }
 

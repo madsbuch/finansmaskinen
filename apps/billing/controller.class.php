@@ -85,7 +85,9 @@ class billing extends \core\app
 		$html->appendContent(\helper\layout\Element::heading('Regninger',
 			'Tilføj ny regning'));
 
-		$form = new billing\layout\finance\Form(array(),  new \app\products\layout\finance\FormModal());
+		$form = new billing\layout\finance\Form(array(),
+			new \app\products\layout\finance\FormModal(),
+			new \app\contacts\layout\finance\ModalForm());
         $form->addConfirmationMessage(\api\companyProfile::getMessageForAction('Bill'));
 		$html->appendContent($form);
 
@@ -100,7 +102,9 @@ class billing extends \core\app
 
 		$bill = \api\billing::getOne($id);
 
-		$form = new billing\layout\finance\Form($bill,  new \app\products\layout\finance\FormModal());
+		$form = new billing\layout\finance\Form($bill,
+			new \app\products\layout\finance\FormModal(),
+			new \app\contacts\layout\finance\ModalForm());
         $form->addConfirmationMessage(\api\companyProfile::getMessageForAction('Bill'));
         $html->appendContent($form);
 

@@ -55,7 +55,9 @@ class invoice extends \core\app
 
 		$html->appendContent(\helper\layout\Element::heading('Fakturering', 'Opret faktura'));
 
-		$view = new invoice\layout\finance\Form(null, new \app\products\layout\finance\FormModal());
+		$view = new invoice\layout\finance\Form(null,
+			new \app\products\layout\finance\FormModal(),
+			new \app\contacts\layout\finance\ModalForm());
         $view->addConfirmationMessage(\api\companyProfile::getMessageForAction('Invoice'));
 
 		if ($this->param['reciever'])
@@ -81,7 +83,9 @@ class invoice extends \core\app
         $invoice = \api\invoice::getOne($id);
 
         if ($invoice->draft){
-            $view = new invoice\layout\finance\Form($invoice, new \app\products\layout\finance\FormModal());
+            $view = new invoice\layout\finance\Form($invoice,
+	            new \app\products\layout\finance\FormModal(),
+	            new \app\contacts\layout\finance\ModalForm());
             $view->addConfirmationMessage(\api\companyProfile::getMessageForAction('Invoice'));
             $html->appendContent($view);
         }
