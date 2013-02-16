@@ -6,7 +6,7 @@ var productsForm = {};
 var ExchangeRate = {};
 
 !function ($) {
-    //the invoice form
+    //region invoice form
     $('#invoiceAddTrigger').each(function () {
         //this function updates the field containing the total value
         function update() {
@@ -135,7 +135,7 @@ var ExchangeRate = {};
             ExchangeRate.inject(jQuery.parseJSON($("#ExchangeRate").attr('data-inject')));
 
         $('.settingsBox').live('click', function () {
-            $($(this).attr('data-toggle')).toggle();
+            $($(this).attr('data-toggle')).toggle(400);
         });
 
         //comapute the totals
@@ -181,8 +181,10 @@ var ExchangeRate = {};
         });
         updatePrices();
 
-    });//invoice form end
+    });
+	//endregion
 
+	//region Billing form
     $('#billingAddTrigger').each(function () {
         //this function updates the field containing the total value
         function update() {
@@ -219,51 +221,6 @@ var ExchangeRate = {};
             $('#allTotal').html(currency + ' ' + moneyFormat(total + totalTax));
         }
 
-        /**
-         * takes productid return some rate object
-         */
-        function getRate(index) {
-            //check the rates
-            var from = $('#product-' + index + '-origValuta').val(); //set by backend
-            var to = $('#Invoice-AccountingCustomerParty-currency').val();
-
-            //no need to note that
-            if (from == to)
-                return {'from':from, 'to':to, rate:1};
-
-            //check if the valutas are set
-            for (var i in ExchangeRate.getAllForms()) {
-                //stop execution, if exchange rate allready exists
-                if ($('#ExchangeRates-' + i + '-targetCurrencyCode').val() == to &&
-                    $('#ExchangeRates-' + i + '-sourceCurrencyCode').val() == from)
-                    return {'from':from, 'to':to, rate:$('#ExchangeRates-' + i + '-calculationRate').val()};
-            }
-
-            if (to == "" || from == "" || typeof to == 'undefined' || typeof from == 'undefined')
-                return {'from':from, 'to':to, rate:1};//stop execution
-
-            ExchangeRate.addForm();
-            var i = ExchangeRate.getFormsCount();
-            $('#ExchangeRates-' + (i - 1) + '-sourceCurrencyCode').val(from);
-            $('#ExchangeRates-' + (i - 1) + '-targetCurrencyCode').val(to);
-            $('#ExchangeRates-' + (i - 1) + '-calculationRate').val('loading..');
-
-            var rateField = '#ExchangeRates-' + (i - 1) + '-calculationRate';
-
-            console.log("/index/currency/" + from + "/" + to + "/1");
-
-            $.get("/index/currency/" + from + "/" + to + "/1", function (data) {
-                if (data == null)
-                    $(rateField).val('Angiv manuel valuta');
-                else
-                    $(rateField).val(data.toA);
-                //do some priceupdating
-                updatePrices();
-            });
-
-            return {'from':from, 'to':to, rate:NaN};
-        }
-
 
         var reciever = getUrlVars();
 
@@ -275,6 +232,7 @@ var ExchangeRate = {};
             allowRemoveLast:true,
             allowRemoveCurrent:true,
             allowRemoveAll:true,
+			maxFormsCount: 0,
             allowAdd:true,
             allowAddN:true,
             minFormsCount:1,
@@ -291,13 +249,14 @@ var ExchangeRate = {};
                 $(".pickerDroP").PickerDropdown();
             }
         });
+		//add functionality for product click
         $('#productLine_add_product').on('click', function(){
 			//signal that we add a product line
 			toAdd = 'product';
 			productsForm.addForm();
 			toAdd = 'line';
 			return false;
-        })
+        });
 
         //check for injection
         if (typeof $("#productLine").attr('data-inject') != 'undefined')
@@ -337,28 +296,13 @@ var ExchangeRate = {};
         $(".pPicker").Picker();
         $(".pickerDroP").PickerDropdown();
 
-        //initialise exchangerates
-        ExchangeRate = $("#ExchangeRate").sheepIt({
-            separator:"",
-            allowRemoveLast:true,
-            allowRemoveCurrent:true,
-            allowRemoveAll:true,
-            allowAdd:true,
-            allowAddN:true,
-            minFormsCount:0,
-            iniFormsCount:0
-        });
-
-        //check for injections
-        if (typeof $("#ExchangeRate").attr('data-inject') != 'undefined')
-            ExchangeRate.inject(jQuery.parseJSON($("#ExchangeRate").attr('data-inject')));
 
         $('.settingsBox').live('click', function () {
-            $($(this).attr('data-toggle')).toggle();
+            $($(this).attr('data-toggle')).toggle(400);
         });
 
         //comapute the totals
-        $(".totalCompute").live("blur click", function () {
+        $(".totalCompute").live("blur click keyup", function () {
             update(this);
         });
 
@@ -388,6 +332,7 @@ var ExchangeRate = {};
         });
         update();
 
-    });//billing form end
+    });
+	//endregion
 
 }(window.jQuery)

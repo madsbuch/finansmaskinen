@@ -345,6 +345,9 @@ class billing extends \core\api
 	private static function billObject(\model\finance\Bill $bill)
 	{
 		//validates data
+		$errors = $bill->validate();
+		if(!empty($errors))
+			throw new \exception\UserException($errors);
 
 		//test contact this is removes because we let the model objects do validation
 		//if (is_string($bill->contactID) && !\api\contacts::getContact($bill->contactID))

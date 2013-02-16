@@ -247,12 +247,12 @@ class Form extends \helper\layout\LayoutBlock
 								title="Dette er linjens totalbeløb"
 								style="width:8%" value="-,-" disabled="disabled" />
 
-							<!--<a  href="#"
+							<a  href="#"
 								class="btn settingsBox"
 		                        title="instillinger"
 								data-toggle="#settings-#index#"><i
 								class="icon-wrench"
-								></i></a>-->
+								></i></a>
 
 							<a href="#"
 								class="btn"
@@ -266,11 +266,27 @@ class Form extends \helper\layout\LayoutBlock
 								style="margin-bottom:1rem;">
 
 							    <input
-							        class="hide"
-							        style="margin-left:100px;"
 							        type="text"
 							        id="lines-#index#-productID"
 							        name="lines-#index#-productID" />
+								<input
+							        type="text"
+							        id="lines-#index#-vatPercent"
+							        data-replace="lines-#index#-inclVat-codepercentage"
+							        name="trash" />
+							    <input
+							        type="text"
+							        id="lines-#index#-vatDeductionPercent"
+							        data-replace="lines-#index#-inclVat-codedeductionPercentage"
+							        name="trash" />
+							    <input
+							        type="text"
+							        id="lines-#index#-vatPrinciple"
+							        name="trash" />
+							    <input
+							        type="text"
+							        id="lines-#index#-vatAdd"
+							        name="trash" />
 							</div>
 
 						</div>
