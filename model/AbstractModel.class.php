@@ -184,7 +184,8 @@ abstract class AbstractModel{
 				//try to create an object
 				$first = explode('\\', $this->_autoassign[$name][0]);
 				if($first[0] == 'model' || (isset($first[1]) && $first[1] == 'model')){
-					$this->$name = new $this->_autoassign[$name][0]($value);
+					$objectType = $this->_autoassign[$name][0];
+					$this->$name = new $objectType($value);
 				}
 				//attemp to cast it to a primitive type :)
 				elseif(settype($value, $this->_autoassign[$name][0]))
@@ -268,7 +269,9 @@ abstract class AbstractModel{
 	 *
 	 * the doValidate function should return an array of errors
 	 *
+	 *
 	 * @param $level int level of validation
+	 * @return array
 	 */
 	final public function validate($level = 0){
 		$ret = array();

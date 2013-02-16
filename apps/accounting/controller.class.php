@@ -243,6 +243,15 @@ class accounting extends \core\app{
 		$this->output_header = $this->header->getHeader();
 		$this->output_content = $html->generate();
 	}
+
+	/**
+	 * alias
+	 * @param null $report
+	 * @param null $id
+	 */
+	function report($report = null, $id = null){
+		return self::repport($report, $id);
+	}
 	
 	/************************************ AJAX ********************************/
 	/**

@@ -131,7 +131,8 @@ class billing extends \core\api
 	/*************************** EXTERNAL API FUNCTIONS ***********************/
 
 	/**
-	 * @param $id
+	 * @param string $id
+	 * @throws \exception\UserException
 	 * @return \model\finance\Bill
 	 */
 	public static function getOne($id)
@@ -336,7 +337,6 @@ class billing extends \core\api
      * this function takes a bill, and performs all the queries to other parts
      * of the system, to make it ready.
      *
-     * TODO Refactor! a function like this is also in invoice
      *
      * @param \model\finance\Bill $bill
      * @throws \exception\UserException
@@ -401,13 +401,18 @@ class billing extends \core\api
 	}
 
 	/**
-	 * finalize a bill;
+	 * finalizes the bill
+	 *
+	 * @param \model\finance\Bill $bill
+	 * @return \model\finance\Bill
 	 */
 	private static function finalize(\model\finance\Bill $bill){
         //do the withdrawal
         \api\companyProfile::doAction('Bill');
 
         $bill->billNumber = \api\companyProfile::increment('billNumber');
+
+		//do stock adjust here
 
         return $bill;
 	}

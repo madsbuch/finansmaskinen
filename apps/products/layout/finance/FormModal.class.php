@@ -26,6 +26,7 @@ class FormModal extends \helper\layout\LayoutBlock
 				<div class="span1" style="width:45%;">
 					<label for="Item-Name">'.__('Name').':</label>
 					<input
+						required="true"
 						type="text"
 						id="Item-Name"
 						name="Item-Name"
@@ -67,6 +68,7 @@ class FormModal extends \helper\layout\LayoutBlock
 					<div class="input-append">
 						<input type="text"
 							class="picker"
+							required="true"
 							id="addProdData-"
 							style="width:60%"
 							title="Katagori, produkter har lagerføring, ydelser her ikke."
@@ -75,6 +77,36 @@ class FormModal extends \helper\layout\LayoutBlock
 							class="btn pickerDP"><i class="icon-circle-arrow-down"></i></a>
 						</div>
 						<input type="hidden" id="addProdData-id" name="catagoryID" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="span1" style="width:40%;">
+					<label for="retailprice">'.__('Retail-valuta and price').':</label>
+					<div class="input-prepend input-append">
+						<input
+							type="text"
+							class="picker uppercase"
+							name="retailPrice-CurrencyID"
+							required="true"
+							data-listLink="/index/currencies/"
+							id="retailPrice-CurrencyID"
+							title="Valuta for prisen"
+							value="DKK"
+							data-loose="true"
+							style="width:20%" /><a
+							href="#retailPrice-CurrencyID"
+							class="btn pickerDP add-on"><i
+							class="icon-circle-arrow-down">
+							</i></a><input
+							id="retailPrice-_content"
+							value="0,00"
+							required="true"
+							style="width:60%;"
+							name="retailPrice-_content"
+							class="money input-small"
+							title="Pris"
+							type="text" />
+					</div>
 				</div>
 			</div>
 			<div>
@@ -89,30 +121,12 @@ class FormModal extends \helper\layout\LayoutBlock
 				</div>
 
 				<div class="row collapse out" id="productCreateExtras">
-					<div class="span1" style="width:40%;">
-						<label for="retailprice">'.__('Retail-valuta and price').':</label>
-						<div class="input-prepend input-append">
-							<input
-								type="text"
-								class="picker uppercase"
-								name="retailPrice-CurrencyID"
-								data-listLink="/index/currencies/"
-								id="retailPrice-CurrencyID"
-								title="Valuta for prisen"
-								value="DKK"
-								data-loose="true"
-								style="width:20%" /><a
-								href="#retailPrice-CurrencyID"
-								class="btn pickerDP add-on"><i
-								class="icon-circle-arrow-down">
-								</i></a><input
-								id="retailPrice-_content"
-								style="width:60%;"
-								name="retailPrice-_content"
-								class="money input-small"
-								title="Pris"
-								type="text" />
-						</div>
+					<div class="span5">
+						<label>Produkt ID:</label>
+						<input type="text" style="width:90%"
+							name="productID" id="productID" />
+						<label>Beskrivelse</label>
+						<textarea name="Item-Description" id="Item-Description" style="width:90%"></textarea>
 					</div>
 				</div>
 			</div>
