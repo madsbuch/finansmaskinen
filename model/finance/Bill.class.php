@@ -106,6 +106,13 @@ class Bill extends \model\AbstractModel
 	protected $isPayed;
 
 	/**
+	 * whether vat is included on the lines
+	 *
+	 * @var bool
+	 */
+	protected $vatIncluded;
+
+	/**
 	 * the accounting this bill is posted to. null if none.
 	 * if this values is null, the bill is not accounted
 	 */

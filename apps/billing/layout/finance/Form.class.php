@@ -7,14 +7,6 @@ use \helper\local as l;
 class Form extends \helper\layout\LayoutBlock
 {
 
-	public $addJsIncludes = array(
-		'/bootstrap/js/bootstrap-modal.js',
-		'/js/plugins/jquery.sheepItPlugin-1.0.0.min.js',
-		'/js/plugins/bootstrap-datepicker.js',
-		'/js/plugins/jquery.form.js',
-		'/bootstrap/js/init.js',
-	);
-
 	public $addCSSIncludes = array(
 		'/css/plugins/bootstrap-datepicker.css'
 	);
@@ -131,8 +123,8 @@ class Form extends \helper\layout\LayoutBlock
 									type="checkbox"
 									checked="checked"
 									class="totalCompute checkbox {labelOn: \'Inkl.\', labelOff: \'Excl.\'}"
-									name="vat"
-									id="vat" />
+									name="vatIncluded"
+									id="vatIncluded" />
 
 						</div>
 
@@ -185,7 +177,7 @@ class Form extends \helper\layout\LayoutBlock
 									<input
 										style="width:75%;"
 										type="text"
-										class="pPicker"
+										class="pPicker accountPicker"
 										id="lines-#index#-account-"
 										data-replace="lines-#index#-account-name"
 										name="trash"
@@ -209,8 +201,8 @@ class Form extends \helper\layout\LayoutBlock
 											title="Vælg den type moms der passer på lenjen"
 											data-listLink="/accounting/autocompleteVatCode/"
 											data-objLink="/accounting/getVatCode/"
-
-											class="input-small lines-#index#-account-vatCode pPicker"
+		                                    data-propagate="true"
+											class="input-small lines-#index#-account-vatCode pPicker vatCodeInput totalCompute"
 
 											/><a
 											href="#lines-#index#-inclVat-code"
@@ -269,6 +261,12 @@ class Form extends \helper\layout\LayoutBlock
 								id="settings-#index#"
 								style="margin-bottom:1rem;">
 
+								<input
+									type="text"
+									id="lines-#index#-account"
+									name="lines-#index#-account"
+									data-replace="lines-#index#-account-code" />
+
 							    <input
 							        type="text"
 							        id="lines-#index#-productID"
@@ -286,10 +284,7 @@ class Form extends \helper\layout\LayoutBlock
 							    <input
 							        type="text"
 							        id="lines-#index#-vatPrinciple"
-							        name="trash" />
-							    <input
-							        type="text"
-							        id="lines-#index#-vatAdd"
+							        value="brutto"
 							        name="trash" />
 							</div>
 
@@ -320,10 +315,18 @@ class Form extends \helper\layout\LayoutBlock
 					</div>
 
 					<div class="span4 offset8">
-						<span class="span2">total eksl. moms:</span> <span id="total">0,00</span><br />
-						<span class="span2">moms:</span> <span id="taxTotal">0,00</span><br />
-						<span class="span2" style="font-weight:bold;">fakturatotal:</span>
-						<span id="allTotal" style="font-weight:bold;">0,00</span>
+						<span class="span2">Total eksl. moms:</span> <span id="total">0,00</span><br />
+						<span title="Beløbet du har betalt til SKAT i moms">
+							<span class="span2">Moms:</span> <span id="taxTotal">0,00</span><br />
+						</span>
+						<span title="Dette er beløbet SKAT betaler tilbage">
+							<span class="span2">Momsfradrag:</span> <span id="deductionTaxTotal">0,00</span><br />
+						</span>
+
+						<span title="Dette beløb skal være det der står på din bon/faktura.">
+							<span class="span2" style="font-weight:bold;">Total:</span>
+							<span id="allTotal" style="font-weight:bold;">0,00</span>
+						</span>
 						<hr />
 					</div>
 

@@ -197,14 +197,41 @@ var ExchangeRate = {};
             var currency = $('#currency').val();
             var total = 0;//total excl taxes
             var totalTax = 0;//total incl taxes
+			var deductionTax = 0;
+
             //run through all the products
             for (var i in productsForm.getAllForms()) {
+				console.log(i);
                 //fetch price
-                var price = parsenumber($('#lines-' + i + '-amount').val());
-                var quantity = parsenumber($('#lines-' + i + '-quantity').val());
-                var vat = parsenumber($('#lines-' + i + '-inclVat-percentage').val());
+                var price             = parsenumber($('#lines-' + i + '-amount').val());
+                var quantity          = parsenumber($('#lines-' + i + '-quantity').val());
+
+				//those fields are not accessibel, so normal notation is used
+				var vatPercent        = parseFloat($('#lines-' + i + '-vatPercent').val());
+				var deductionPercent  = parseFloat($('#lines-' + i + '-vatDeductionPercent').val());
+
+				vatPercent = isNaN(vatPercent) ? 0 : vatPercent;
+				deductionPercent = isNaN(deductionPercent) ? 0 : deductionPercent;
+
                 //multiply by quantity
                 price = price * quantity;
+
+				var vat = 0;
+
+				console.log(i, vatPercent, deductionPercent);
+
+				//decide how to calculate VAT
+				if($('#vatIncluded').is(':checked')){
+					vatPercent = 100 * (1 - (100/(100 + vatPercent)));
+				}
+				vat = price * (vatPercent / 100);
+
+				//subtract vat from price
+				if($('#vatIncluded').is(':checked')){
+					price -= vat;
+				}
+
+				deductionTax += price * (deductionPercent/100);
 
                 //update linetotal
                 $('#lineTotal-' + i).val(currency + ' ' + moneyFormat(price));
@@ -213,14 +240,14 @@ var ExchangeRate = {};
 
                 //do the total
                 total += price;
-                totalTax += price * vat / 100;
+                totalTax += vat;
             }
             //set the absolute totals
             $('#total').html(currency + ' ' + moneyFormat(total));
             $('#taxTotal').html(currency + ' ' + moneyFormat(totalTax));
+			$('#deductionTaxTotal').html(currency + ' ' + moneyFormat(deductionTax));
             $('#allTotal').html(currency + ' ' + moneyFormat(total + totalTax));
         }
-
 
         var reciever = getUrlVars();
 
@@ -302,7 +329,7 @@ var ExchangeRate = {};
         });
 
         //comapute the totals
-        $(".totalCompute").live("blur click keyup", function () {
+        $(".totalCompute").live("blur click keyup change", function () {
             update(this);
         });
 

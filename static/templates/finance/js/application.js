@@ -70,24 +70,25 @@ function reAttach () {
 	$('.ajaxTable').tables();
 	
 	/**
-	* picker:
-	*
-	* use as follows:
-	*
-	* attr data-listLink link collection of objects
-	* attr data-objLink link to fetch selected object (id is appended to link)
-	* attr data-loose if the plugin should not reset the content on deselect, set to true
-	* attr data-addForm if set, this form is opened as modal
-	* attr data-titleIndex index of the add title
-	* attr data-preselect if the selector should preselect
-	* attr data-fetchLabel the variable from where the value to the input field
-	* attr data-prefix prefix objects when substituting. id is used if this is not set
-	* is select (when preselecting, so the value is correct)
-	*
-	* attr id prefix to add to object keys when substituting
-	*
-	* substituting is done by data-replace, if it exists, or id otherwise
-	*/
+	 * picker:
+	 *
+	 * use as follows:
+	 *
+	 * attr data-listLink link collection of objects
+	 * attr data-objLink link to fetch selected object (id is appended to link)
+	 * attr data-loose if the plugin should not reset the content on deselect, set to true
+	 * attr data-addForm if set, this form is opened as modal
+	 * attr data-titleIndex index of the add title
+	 * attr data-preselect if the selector should preselect
+	 * attr data-fetchLabel the variable from where the value to the input field
+	 * attr data-prefix prefix objects when substituting. id is used if this is not set
+	 * attr data-propagate if another picker affects this one, it'll propagate (with val())
+	 * is select (when preselecting, so the value is correct)
+	 *
+	 * attr id prefix to add to object keys when substituting
+	 *
+	 * substituting is done by data-replace, if it exists, or id otherwise
+	 */
 	$.fn.Picker = function(){
 		this.blur(function(){
             //reset the form
@@ -129,36 +130,11 @@ function reAttach () {
 				}
 				
 				if(typeof $(this).attr('data-objLink') != 'undefined')
-					$.ajax({
-						url: $(this).attr('data-objLink') + ui.item.id,
-						context: this, //genia-fucking-alt :D (gør at callback bliver kald "fra" dette object)
-						success: function(data){
-						
-							//setting label
-							var index = $(this).attr('data-fetchLabel');
-							if(typeof index != 'undefined')
-								$(this).val(data[index]);
-						
-							//populate the data from the object to the right input forms
-							$.each(data, function(key, val){
-								$('*[data-replace="'+prefix + key+'"]').each(function(){
-									$(this).val(val);
-                                    $(this).text(val);
-								});
-								
-								$('#' + prefix + key).val(val);
+					mapRemoteObject($(this).attr('data-objLink') + ui.item.id,
+						prefix,
+						$(this).attr('data-fetchLabel'));
 
-                                //support for classnames, this will be final, as this supports
-                                //arbritary many listeners
-                                $('.' + prefix + key).val(val);
-
-								console.log(prefix + key + ' = ' + val);
-							});
-
-                            //TODO trigger some action here for chained selects
-							$.event.trigger('pickerUpdate');
-						}
-					});
+				$(this).trigger('pickerUpdate', this);
 			},
 			close: function(event, ui){
 				//reset the form, maybe
@@ -167,7 +143,7 @@ function reAttach () {
                 }
             }
 		});
-	}
+	};
 
 	$.fn.PickerDropdown = function(){
 		$(this).click(function () {
@@ -229,7 +205,58 @@ function reAttach () {
 	reAttach();
 }(window.jQuery)
 
+/**
+ * a function that maps an remote object into the structure
+ * @param link       URL to the object
+ * @param prefix     prefix til ID og data-replace værdier
+ * @param fetchLabel Index in the object for this
+ */
+function mapRemoteObject(link, prefix, fetchLabel){
+	$.ajax({
+		url: link,
+		context: this, //genia-fucking-alt :D (gør at callback bliver kald "fra" dette object)
+		success: function(data){
 
+			function prop(that){
+				mapRemoteObject(that.attr('data-objLink') + that.val(),
+					that.attr('id'),
+					undefined);
+			}
+
+			//setting label
+			var index = fetchLabel;
+			if(typeof index != 'undefined')
+				$(this).val(data[index]);
+
+			//populate the data from the object to the right input forms
+			$.each(data, function(key, val){
+				$('*[data-replace="'+prefix + key+'"]').each(function(){
+					$(this).val(val);
+					$(this).text(val);
+					if($(this).attr('data-propagate'))
+						prop(this);
+				});
+
+				$('#' + prefix + key).val(val);
+
+				if($('#' + prefix + key).attr('data-propagate'))
+					prop($('#' + prefix + key));
+
+				//support for classnames, this will be final, as this supports
+				//arbritary many listeners
+				$('.' + prefix + key).val(val);
+
+				if($('.' + prefix + key).attr('data-propagate'))
+					prop($('.' + prefix + key));
+
+				console.log(prefix + key + ' = ' + val);
+			});
+
+			//TODO trigger some action here for chained selects
+			$.event.trigger('pickerUpdate');
+		}
+	});
+};
 
 function getUrlVars() {
     var vars = {};
