@@ -377,8 +377,6 @@ class Vat extends \helper\layout\LayoutBlock{
 								<tr>
 									<td class="dataitem-right" nowrap="nowrap">
 
-										<a href="/" class="btn">Anuller</a>
-										<a href="/accounting/resetVat" class="btn btn-primary descriptionPopover" data-content="Når du trykker på denne knap er du ikke færdig.\nDu skal ind på skat\'s hjemmeside og indbrette tallene, før du trykker på denne knap">Nulstil</a>
 									</td>
 								</tr>
 							</tbody>
@@ -388,6 +386,12 @@ class Vat extends \helper\layout\LayoutBlock{
 				</div>
 			</div>
 			<div class="h-tab-btns-bottom pad-TwoSides">
+			</div>
+		</div>
+		<div class="row">
+			<div class="pull-right">
+				<a href="/" class="btn btn-large btn-info">Annuller</a>
+				<a href="/accounting/resetVat" class="btn btn-large btn-success" title="Når du trykker på denne knap er du ikke færdig.Du skal ind på skat\'s hjemmeside og indbrette tallene, før du trykker på denne knap">Nulstil</a>
 			</div>
 		</div>
 	</div>

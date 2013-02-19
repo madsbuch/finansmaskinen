@@ -347,11 +347,17 @@ class billing extends \core\api
 		//validates data
 		$errors = $bill->validate();
 		if(!empty($errors))
-			throw new \exception\UserException($errors);
+			throw new \exception\UserException(implode(' ', $errors));
 
-		//test contact this is removes because we let the model objects do validation
-		//if (is_string($bill->contactID) && !\api\contacts::getContact($bill->contactID))
-		//	throw new \exception\UserException(__('Contact %s doesn\' exist', $bill->contactID));
+		//test if contact exists
+		$contact = null;
+		if (\api\contacts::getContact($bill->contactID) || $contact = \api\contacts::getByContactID($bill->contactID)){
+			//if contact came from contactID, we rewrite
+			if(!is_null($contact))
+				$bill->contactID = (string) $contact->_id;
+		}
+		else //no contact
+			throw new \exception\UserException(__('Contact %s doesn\' exist', $bill->contactID));
 
 		//set standard values
 		if (!isset($bill->draft)) //assuming draft

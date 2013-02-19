@@ -162,8 +162,8 @@ class Form extends \helper\layout\LayoutBlock{
 		</div>
 	</div><!-- end upper half -->
 	<div class="row">
-		<div class="offset5">
-			<input type="submit" class="btn btn-primary btn-large" Value="'.($this->c ? __('Update') : __('Create contact')).'" />
+		<div class="pull-right">
+			<input type="submit" class="btn btn-success btn-large" Value="'.($this->c ? __('Update') : __('Create contact')).'" />
 		</div>
 	</div>
 </form>

@@ -122,6 +122,13 @@ class Bill extends \model\AbstractModel
 	 * ref from the accounting, used when the bill is bookkeeped, to e.g. rewind the changes and undraft
 	 */
 	protected $ref;
+
+	function doValidate($level){
+		$ret = array();
+		if(!is_string($this->contactID))
+			$ret[] = 'Your bill must have a contact.';
+		return $ret;
+	}
 }
 
 ?>
