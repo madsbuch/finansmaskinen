@@ -173,7 +173,8 @@ class localization{
      * @return string
      */
     static function getKey($str){
-        return base_convert(crc32($str), 10, 36);
+	    //k is prepended to make sure it is treaded as a string (PHP's fucking type system)
+        return 'k'.base_convert(crc32($str), 10, 36);
     }
 	
 	

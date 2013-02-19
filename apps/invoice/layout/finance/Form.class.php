@@ -83,7 +83,7 @@ class Form extends \helper\layout\LayoutBlock{
 						<div class="app-box">
 							<div class="row">
 								<div class="span4">
-
+									<label>Vælg kontakt</label>
 								    <div id="contactTutorial">
                                         <div class="input-append">
                                             <input type="text" class="picker"
@@ -109,8 +109,6 @@ class Form extends \helper\layout\LayoutBlock{
                                             id="Invoice-AccountingCustomerParty-contactID" />
                                     </div>
 
-
-									<br/>
 									<div id="invoiceDateTutorial">
                                         <label>Faktureringsdato:
                                         <div class="input-append datepicker date">
@@ -122,8 +120,11 @@ class Form extends \helper\layout\LayoutBlock{
                                         </div>
                                         </label>
 								    </div>
-
-                                    <div id="currencyTutorial">
+								
+								</div>
+								<div class="span3">
+									<!-- Settings -->
+									<div id="currencyTutorial">
                                         <label>Valuta:</label>
                                         <div class="input-append">
                                             <input type="text"
@@ -141,10 +142,7 @@ class Form extends \helper\layout\LayoutBlock{
                                                 </i></a>
                                         </div>
 									</div>
-								
-								</div>
-								<div class="span3">
-									<!-- Settings -->
+									<label>Moms:</label>
 									<div>
 										<input
 											type="checkbox"
@@ -162,7 +160,7 @@ class Form extends \helper\layout\LayoutBlock{
 										Alle beløb bliver oversat fra respektive valuta til dokumentvaluta
 										via disse kurser."></i> </p>
 									<div id="ExchangeRate" 
-										style="height: 150px; overflow: auto;">
+										style="height: 85px; overflow: auto;">
 										<div id="ExchangeRate_template">
 											<input type="text" readonly="true" style="width:30px;"
 												name="ExchangeRates-#index#-sourceCurrencyCode"
