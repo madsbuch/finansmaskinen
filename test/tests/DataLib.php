@@ -114,7 +114,7 @@ $daybookTransaction = new \model\finance\accounting\DaybookTransaction(array(
  * and runtime add a contact from there
  */
 $bill = new \model\finance\Bill(array(
-	'contactID' => '50968e5d1a5f011d05000000',
+	'contactID' => 'test',
 	'paymentDate' => '2012-10-29',
 
 	'currency' => 'DKK',

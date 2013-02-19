@@ -171,7 +171,10 @@ class Page extends \helper\layout\LayoutBlock{
 		</div>
 	</div>
 </div>';
-		
+
+		//format the date
+		$this->company->lastFreeTierReset = date('d / m - Y',$this->company->lastFreeTierReset);
+
 		//merging some data in
 		$element = new \helper\html\HTMLMerger($ret, $this->company);
 		$dom = $element->getDOM();
