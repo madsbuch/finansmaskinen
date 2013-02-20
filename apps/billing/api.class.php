@@ -372,12 +372,6 @@ class billing extends \core\api
 		//items from productlines
 		if (!empty($bill->lines))
 			foreach ($bill->lines as &$prod) {
-				//some validation
-				if ($prod->quantity <= 0)//quantity not negative
-					throw new \exception\UserException(__('Quantity must be more than 0, value: %s', $prod->quantity));
-				if(empty($prod->account))//account available
-					throw new \exception\UserException(__('Billingline identified by "%s" has no accountnumber.', $prod->text));
-
 				$tAmount = $prod->amount * $prod->quantity;
 
 				//***calculate vat total:
