@@ -62,6 +62,11 @@ class Line extends \model\AbstractModel
 		if((isset($this->vatCode) && !isset($this->account)) ||
 			(isset($this->vatCode) && !isset($this->account)))
 			$ret[] = 'Both account and vatcode has to be set, not just one.';
+
+		if ($this->quantity <= 0)//quantity not negative
+			$ret[] = 'Quantity must be more than 0';
+
+		return $ret;
 	}
 
 }

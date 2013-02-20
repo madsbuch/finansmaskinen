@@ -12,9 +12,9 @@ class Iterator extends AbstractModel implements \IteratorAggregate, \ArrayAccess
 	/**
 	* all elements are set to this type
 	*/
-	private $_typeOfAll;
-	private $_pointer;
-	private $_index;
+	protected $_typeOfAll;
+	protected $_pointer;
+	protected $_index;
 	
 	function __construct($data, $typeOfAll){
 		$this->_index = new \ArrayObject();
@@ -84,7 +84,7 @@ class Iterator extends AbstractModel implements \IteratorAggregate, \ArrayAccess
 	function getIterator(){
 		return $this->_index->getIterator();
 	}
-	
+
 	function toArray(){
 		$ret = array();
 		foreach($this->_index as $k => $v)
@@ -100,6 +100,8 @@ class Iterator extends AbstractModel implements \IteratorAggregate, \ArrayAccess
 	function count(){
 		return count($this->_index);
 	}
+
+
 }
 
 ?>

@@ -288,6 +288,14 @@ abstract class AbstractModel{
 				$ret = array_merge($ret, $errors);
 			}
 		}
+
+		//if it's an iterator
+		if(isset($this->_index)){
+			foreach($this->_index as $i){
+				$ret =  array_merge($ret, $i->validate());
+			}
+		}
+
 		return $ret;
 	}
 
