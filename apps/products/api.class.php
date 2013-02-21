@@ -315,13 +315,32 @@ class products
 	 * takes products, adjusts the database, and retuns the transactions needed
 	 * for the accounting.
 	 *
-	 * @param $products array(array(productsID => adjustment (negative, sold num, positive bought) ))
-	 * @param $ref    if set, this function put the transaction into the accounting, but does not
-	 *                approve thme
+	 * the reason for the products array is to make the operation transactional (atomic)
+	 *
+	 * TODO should we return a transaction used for the balance adjustement?!
+	 *
+	 * @param $products array array(array(id => productID, price => price, quantity => quantity))
+	 * @internal param null $price int price pr. item the price the product was registered on, if not set, default price is used.
 	 */
-	static function adjust($products, $ref = null)
+	static function addToStock($products)
 	{
+		/*if($quantity < 1){
+			throw new \exception\UserException(__('Quantity must be more than 0, was %s', $quantity));
+		}*/
+	}
 
+	/**
+	 *
+	 * the reason for the products array is to make the operation transactional (atomic)
+	 *
+	 * @param $products
+	 * @internal param null $price int price pr. item the price the product was sold for
+	 */
+	static function removeFromStock($products)
+	{
+		/*if($quantity < 1){
+			throw new \exception\UserException(__('Quantity must be more than 0, was %s', $quantity));
+		} */
 	}
 
     /**** SOME PRIVATE AUX ****/

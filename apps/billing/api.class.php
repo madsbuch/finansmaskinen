@@ -303,6 +303,23 @@ class billing extends \core\api
 		//accounts to post to
 		$daybookTransaction = new \model\finance\accounting\DaybookTransaction();
 
+		/**
+		//do stock adjust here
+		$toAdd = array();
+		foreach($bill->lines as $line){
+			/**
+			 * @var $line \model\finance\bill\Line
+			 *//*
+			if(isset($line->productID)){
+				$toAdd[] = array(
+					'id' => $line->productID,
+					'price' => $line->amount / $line->quantity,
+					'quantity' => $line->quantity
+				);
+			}
+			\api\products::addToStock($toAdd);
+		}*/
+
 		//iterate through products
 		$collection = array();
 		if(!empty($bill->lines)){
@@ -372,24 +389,33 @@ class billing extends \core\api
 		//items from productlines
 		if (!empty($bill->lines))
 			foreach ($bill->lines as &$prod) {
+				/**
+				 * @var $prod \model\finance\bill\Line
+				 */
 				$tAmount = $prod->amount * $prod->quantity;
 
 				//***calculate vat total:
 
-				//fetch vat from accounting
-				$percentage = 0;
-				if($prod->vatCode)//if vatcode exists
-					$percentage = \api\accounting::getVatCode($prod->vatCode)->percentage;
-				else//fetch from accountcode
-					$percentage = \api\accounting::getVatCodeForAccount($prod->account)->percentage;
+				if(isset($prod->productID)){
+					//fetch details from product system
+				}
+				//here we do the logic for an account
+				elseif($prod->account){
+					//fetch vat from accounting
+					$percentage = 0;
+					if($prod->vatCode)//if vatcode exists
+						$percentage = \api\accounting::getVatCode($prod->vatCode)->percentage;
+					else//fetch from accountcode
+						$percentage = \api\accounting::getVatCodeForAccount($prod->account)->percentage;
 
-				$vat += ($tAmount * $percentage) / 100;
+					$vat += ($tAmount * $percentage) / 100;
 
-				//set linetotal
-				$prod->lineTotal = ($tAmount * $percentage) / 100 + $tAmount;
+					//set linetotal
+					$prod->lineTotal = ($tAmount * $percentage) / 100 + $tAmount;
 
-				//for calculating total
-				$total += $tAmount;
+					//for calculating total
+					$total += $tAmount;
+				}
 			}
 		//set total
 		$bill->amountTotal = $total + $vat;
@@ -411,8 +437,6 @@ class billing extends \core\api
         \api\companyProfile::doAction('Bill');
 
         $bill->billNumber = \api\companyProfile::increment('billNumber');
-
-		//do stock adjust here
 
         return $bill;
 	}

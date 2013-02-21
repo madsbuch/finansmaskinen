@@ -6,7 +6,15 @@
  */
 
 namespace model\finance\bill;
-
+/**
+ * @property $productID;
+ * @property $account;
+ * @property $vatCode;
+ * @property $text;
+ * @property $amount;
+ * @property $quantity;
+ * @property $lineTotal;
+ */
 class Line extends \model\AbstractModel
 {
 

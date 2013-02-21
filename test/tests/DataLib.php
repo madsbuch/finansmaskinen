@@ -119,18 +119,16 @@ $bill = new \model\finance\Bill(array(
 
 	'currency' => 'DKK',
 	'lines' => array(
+		//some
 		array(
-			'productID' => '506951df1a5f015d44000001',
 			'account' => 2100,
 			'text' => 'Just added productline',
 			'amount' => 10000,
 			'quantity' => 1,
 		),
+		//a product
 		array(
-			'productID' => '506f38e91a5f011555000000',
-			'account' => 2100,
-			'vatCode' => 'I25',
-			'text' => 'another one',
+			'productID' => 'lager',
 			'amount' => 5000,
 			'quantity' => 2,
 		),
