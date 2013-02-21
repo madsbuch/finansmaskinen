@@ -279,7 +279,7 @@ class companyProfile{
 		$o = $cp->getObjects('\model\finance\Company');
 		
 		if(count($o) < 1)
-		    throw new \exception\UserException('No company');
+		    self::initialize();
 		$o = $o[0];
 
 		if($o->lastFreeTierReset + \config\finance::$settings['freeTierTime'] < time())

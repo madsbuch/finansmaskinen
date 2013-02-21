@@ -205,12 +205,13 @@ class invoice extends \core\app
 		$input = new \helper\parser\Post('model\Base');
 		$input->alterArray(function ($arr) {
 			$arr['assAcc'] = (int)$arr['assAcc'];
+			$arr['actualAmount'] = l::readValuta($arr['actualAmount']);
 			return $arr;
 		});
 
 		$input = $input->getObj();
 
-		\api\invoice::bookkeep($id, $input->assAcc);
+		\api\invoice::bookkeep($id, $input->assAcc, $input->actualAmount);
 
 		$this->header->redirect('/invoice/view/' . (string)$id);
 		$this->output_header = $this->header->getHeader();

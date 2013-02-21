@@ -190,6 +190,7 @@ class View extends \helper\layout\LayoutBlock{
 				<input type="text" class="money span4"
 					required="true"
 					style="width:80%"
+					name="actualAmount"
 					value="'.$tNoCurrency.'"
 					id="actualAmount" /><span class="add-on" data-replace="amountToPaycurrency"> '.$currencyCode.' </span>
 			</div>

@@ -12,8 +12,9 @@ class DkkSolitaire {
 			'code' => 'U25',
 			'name' => 'Udgående (Salg)',
 			'percentage' => 25.0,
+			'deductionPercentage' => 25,
 			'account' => 14262,
-			'counterAccount' => null,
+			'contraAccount' => null,
 			'net' => true,
 			'taxcatagoryID' => 'StandardRated',
 			'type' => 1
@@ -22,8 +23,9 @@ class DkkSolitaire {
 			'code' => 'I25',
 			'name' => 'Indgående (Køb)',
 			'percentage' => 25.0,
+			'deductionPercentage' => 25,
 			'account' => 14261,
-			'counterAccount' => null,
+			'contraAccount' => null,
 			'net' => true,
 			'taxcatagoryID' => 'StandardRated',
 			'type' => 2
@@ -31,18 +33,20 @@ class DkkSolitaire {
 		array(
 			'code' => 'REP',
 			'name' => 'Repræsentation',
-			'percentage' => 6.25,
+			'percentage' => 25,
+			'deductionPercentage' => 6.25,
 			'account' => 14261,
-			'counterAccount' => null,
+			'contraAccount' => null,
 			'net' => true,
 			'type' => 2
 		),
 		array(
 			'code' => 'HREP',
 			'name' => 'Repræsentation - hotelbesøg',
-			'percentage' => 12.5,
+			'percentage' => 25,
+			'deductionPercentage' => 12.5,
 			'account' => 14261,
-			'counterAccount' => null,
+			'contraAccount' => null,
 			'net' => true,
 			'type' => 2
 		),
