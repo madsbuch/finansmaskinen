@@ -277,7 +277,7 @@ class invoice{
 		
 		return $inv;
 	}
-	
+
 	/**
 	 * bookkeeps invoice.
 	 *
@@ -285,10 +285,9 @@ class invoice{
 	 *
 	 * @param $id string the id of the invoice
 	 * @param $asset int the asset account the money is recived on.
-	 * @param $amount int if the invoice is of different currency than the asset
-	 *					account,  this is required.
+	 * @param null $actualAmount if the currency is different from the account posted on, then this should denote the actual inserted amount, conversion is then done on linebasis
 	 */
-	static function bookkeep($id, $asset, $amount = null){
+	static function bookkeep($id, $asset, $actualAmount = null){
 		//fetch invoice
 		$inv = self::getOne($id);
 
@@ -301,7 +300,15 @@ class invoice{
 
 		//model\finance\products\Catagory to account to
 		$cats = array();
-		
+
+		$rate = 1;
+		if(!is_null($actualAmount)){
+			//calculate a transformation rate
+			if(!isset($inv->Invoice->LegalMonetaryTotal->PayableAmount))
+				throw new \exception\UserException(__('Invoice.LegalMonetaryTotal.PayableAmount was not set'));
+			$rate = $actualAmount / $inv->Invoice->LegalMonetaryTotal->PayableAmount;
+		}
+
 		//iterate through products
 		if(!empty($inv->product)){
 			foreach($inv->product as $i => $prod){
@@ -316,11 +323,11 @@ class invoice{
 					$cats[$p->catagoryID]->accountAssert = $asset;
 					//initialize raw amount
 					$cats[$p->catagoryID]->amount = 0;
-					$cats[$p->catagoryID]->vat = $inv->vat;
+					$cats[$p->catagoryID]->vat = $inv->vat * $rate;
 				}
 				
 				//note raw value to post to this catagory
-				$cats[$p->catagoryID]->amount += $inv->Invoice->InvoiceLine->$i->LineExtensionAmount->_content;
+				$cats[$p->catagoryID]->amount += $rate * $inv->Invoice->InvoiceLine->$i->LineExtensionAmount->_content;
 			}
 		}
 		//post the cat's the to accounting system

@@ -21,10 +21,14 @@ class companyProfile{
 	* Returns user friendly name of app (in current language)
 	*/
 	static function getTitle($getName = true){
-		$company = self::retrieve();
-		return isset($company->Public->Party->PartyName->Name->_content) ? 
-			$company->Public->Party->PartyName->Name->_content : 
-			__('Your company');
+		try{
+			$company = self::retrieve();
+			return isset($company->Public->Party->PartyName->Name->_content) ?
+				$company->Public->Party->PartyName->Name->_content :
+				__('Your company');
+		} catch(\exception\UserException $e){
+			return __('Your company');
+		}
 	}
 
 	static function on_getAppSettings($companyObject){

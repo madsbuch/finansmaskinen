@@ -9,7 +9,8 @@ namespace model\finance\accounting;
 /**
  * @property string $name
  * @property int $code
- * @property int $defaultReflaction
+ * @property string $currency
+ * @property int $defaultReflection
  * @property string $vatCode
  * @property int $type
  * @property bool $allowPayments
@@ -39,6 +40,12 @@ class Account extends \model\AbstractModel
 	 * the account code
 	 */
 	protected $code;
+
+	/**
+	 * Currency fo this account
+	 * @var string
+	 */
+	protected $currency;
 
 	/**
 	 * default account, to reflect this account.

@@ -39,7 +39,8 @@ class MysqlQueries implements \helper\accounting\Queries
 			    acc.flags,
 			    acc.grp_id,
 			    SUM(posts.amount_in) as amount_in,
-			    SUM(posts.amount_out) as amount_out
+			    SUM(posts.amount_out) as amount_out,
+			    acc.currency
 			FROM
 			    accounting_accounts as acc
 			    LEFT OUTER JOIN accounting_postings as posts ON posts.account_id = acc.id

@@ -346,8 +346,14 @@ class api extends \core\startapi{
 
 				//special case for company profile
 				if($app->id == 3){
-					$tickets = \api\companyProfile::retrieve(false)->freeTier;
-					$ret->setCompany($appname, '/'.$app->name, $tickets, '/companyProfile/credit');
+					$tickets = false;
+					try{
+						$tickets = \api\companyProfile::retrieve(false)->freeTier;
+					} catch(\Exception $e){}
+					if($tickets !== false)
+						$ret->setCompany($appname, '/'.$app->name, $tickets, '/companyProfile/credit');
+					else
+						$ret->setCompany($appname, '/'.$app->name);
 
 				}
 				else
@@ -356,9 +362,13 @@ class api extends \core\startapi{
 			
 			//add companies that the user have access to
 			foreach(\core\auth::getInstance()->getTrees() as $tree){
-				$public = \api\companyProfile::getPublic($tree);
-				$name = isset($public->Party->PartyName->Name->_content) ? 
-					$public->Party->PartyName->Name->_content : __('Unnamed company');
+				try{
+					$public = \api\companyProfile::getPublic($tree);
+					$name = isset($public->Party->PartyName->Name->_content) ?
+						$public->Party->PartyName->Name->_content : __('Unnamed company');
+				}catch (\Exception $e){
+					$name = __('Unnamed company');
+				}
 				$ret->addCompanyList($name, '/index/changeTree/'.$tree);
 			}
 			

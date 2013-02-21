@@ -10,6 +10,7 @@ namespace model\finance;
 /**
  * @property $title;
  * @property $reminders;
+ * @property $currency
  * @property $vat;
  * @property $transactions;
  * @property $accounts;
@@ -46,7 +47,14 @@ class Accounting extends \model\AbstractModel{
 	* a list of reminders
 	*/
 	protected $reminders;
-	
+
+	/**
+	 * Currency for this accounting
+	 *
+	 * @var string
+	 */
+	protected $currency;
+
 	/**
 	* when to do vat
 	*/

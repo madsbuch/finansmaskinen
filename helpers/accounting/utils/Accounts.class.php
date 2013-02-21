@@ -82,6 +82,9 @@ class Accounts
 
 	/**
 	 * @param int $accountCode
+	 * @throws \exception\UserException
+	 * @throws \exception\PermissionException
+	 * @return bool
 	 */
 	function deleteAccount($accountCode){
 		if (count($this->srv->controller->postings()->getPostingsForAccount($accountCode, 0, 1, false)) > 0)
@@ -125,7 +128,8 @@ class Accounts
 				'allowPayments' => ($t['flags'] & $this->controller->PAYABLE) == $this->controller->PAYABLE ? true : false,
 				'isEquity' => ($t['flags'] & $this->controller->EQUITY) == $this->controller->EQUITY ? true : false,
 				'income' => $t['amount_in'] ? $t['amount_in'] : 0,
-				'outgoing' => $t['amount_out'] ? $t['amount_out'] : 0
+				'outgoing' => $t['amount_out'] ? $t['amount_out'] : 0,
+				'currency' => $t['currency']
 			));
 		}
 

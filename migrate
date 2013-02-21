@@ -3,8 +3,11 @@ as mongo already has migration system)
 
 use finance;
 ALTER TABLE `finance`.`accounting_vat_codes`
-ADD COLUMN `description` TINYTEXT NULL  AFTER `ubl_taxCatagory` ,
-ADD COLUMN `contra_account` INT NULL  AFTER `description` ,
-ADD COLUMN `deduction_percentage` FLOAT NULL  AFTER `contra_account` ,
-ADD COLUMN `contra_deduction_percentage` FLOAT NULL  AFTER `deduction_percentage` ,
-ADD COLUMN `principle` VARCHAR(45) NULL  AFTER `contra_deduction_percentage` ;
+	ADD COLUMN `description` TINYTEXT NULL  AFTER `ubl_taxCatagory` ,
+	ADD COLUMN `contra_account` INT NULL  AFTER `description` ,
+	ADD COLUMN `deduction_percentage` FLOAT NULL  AFTER `contra_account` ,
+	ADD COLUMN `contra_deduction_percentage` FLOAT NULL  AFTER `deduction_percentage` ,
+	ADD COLUMN `principle` VARCHAR(45) NULL  AFTER `contra_deduction_percentage` ;
+
+use finance;
+ALTER TABLE `finance`.`accounting_accounts` ADD COLUMN `currency` CHAR(3) NULL  AFTER `flags` ;

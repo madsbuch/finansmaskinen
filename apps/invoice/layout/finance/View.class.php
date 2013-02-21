@@ -140,6 +140,7 @@ class View extends \helper\layout\LayoutBlock{
 
 		//totals
 		$t = l::writeValuta($this->obj->Invoice->LegalMonetaryTotal->PayableAmount->_content, $currencyCode, true);
+		$tNoCurrency = l::writeValuta($this->obj->Invoice->LegalMonetaryTotal->PayableAmount->_content, $currencyCode, false);
 		$tax = l::writeValuta((string) $this->obj->Invoice->TaxTotal->first->TaxSubtotal->TaxAmount, $currencyCode, true);
 		$exclTax = l::writeValuta((string) $this->obj->Invoice->LegalMonetaryTotal->LineExtensionAmount, $currencyCode, true);
 
@@ -171,14 +172,28 @@ class View extends \helper\layout\LayoutBlock{
 		</div>
 		<div class="modal-body">
 			
-			<label>Hvilken konto er pengene kommet ind på:</label>
-			<div class="input-append">
+
+			<div class="input-append span4">
+				<label>Hvilken konto er pengene kommet ind på:</label>
 				<input type="text" class="picker"
-					id="amountToPay" style="width:80%"
+					id="amountToPay"
+					style="width:80%"
+					required="true"
 					data-listLink="/accounting/autocompleteAccounts/payable/do/"
 					data-objLink="/accounting/getAccount/" /><a href="#amountToPay"
 					class="btn pickerDP"><i class="icon-circle-arrow-down"></i></a>
 			</div>
+
+
+			<div class="input-append span4">
+				<label>Faktisk indsatte bløb i kontoens valuta:</label>
+				<input type="text" class="money span4"
+					required="true"
+					style="width:80%"
+					value="'.$tNoCurrency.'"
+					id="actualAmount" /><span class="add-on" data-replace="amountToPaycurrency"> '.$currencyCode.' </span>
+			</div>
+
 			<input type="hidden" id="amountToPaycode" name="assAcc" />
 		</div>
 		<div class="modal-footer">

@@ -221,7 +221,7 @@ class accounting
 	 * @param bool $ts , populate with transactions?
 	 * @param bool $as
 	 * @throws \exception\UserException
-	 * @return null
+	 * @return \model\finance\Accounting
 	 */
 	static function retrieve($id = null, $ts = false, $as = false)
 	{
@@ -452,17 +452,27 @@ class accounting
 	 *
 	 * @param bool $onlyPayable
 	 * @param bool $onlyEquity
+	 * @param null $type
 	 * @return array
 	 */
 	static function getAccounts($onlyPayable = false, $onlyEquity = false, $type= null)
 	{
-		$acc = self::retrieve();
-		$acc = new \helper\accounting((string)$acc->_id);
+		$accounting = self::retrieve();
+		$acc = new \helper\accounting((string)$accounting->_id);
 
 		$flag = 0;
 		$flag = $onlyPayable ? $flag | 1 : $flag;
 		$flag = $onlyEquity ? $flag | 2 : $flag;
-		return $acc->accounts()->getAccounts($flag, array(), $type);
+
+		$accounts =  $acc->accounts()->getAccounts($flag, array(), $type);
+
+		foreach($accounts as &$a){
+
+			if(!isset($a->currency))
+				$a->currency = $accounting->currency; //by reference
+		}
+
+		return $accounts;
 	}
 
 	/**
