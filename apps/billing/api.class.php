@@ -315,8 +315,11 @@ class billing extends \core\api
 				 */
 				//it's a line without product
 			    if(isset($line->account)){
+				    $lineAmount = $bill->vatIncluded ?
+					    abs(($line->amount - $line->vatAmount) * $line->quantity) :
+					    abs($line->amount * $line->quantity);
 					$posting = new \model\finance\accounting\Posting(array(
-					   'amount' => abs($line->amount * $line->quantity),
+					   'amount' => $lineAmount,
 					   'positive' => ($line->amount >= 0 ? true : false),
 						'overrideVat' => $line->vatCode,
 					   'account' => $line->account
@@ -427,9 +430,8 @@ class billing extends \core\api
 					//subtract vat from price, if vat was included
 					if($bill->vatIncluded){
 						$tAmount -= $v;
-						$prod->amount = $tAmount / $prod->quantity;
-						$prod->vatAmount = $v / $prod->quantity;
 					}
+					$prod->vatAmount = $v / $prod->quantity;
 
 					//set linetotal
 					$prod->lineTotal = $tAmount;

@@ -62,7 +62,17 @@ class Home extends \helper\layout\LayoutBlock {
 						<input type="password" Placeholder="Kode igen" style="width:90%;" name="repass" />
 
 						<br />
-						<input type="submit" class="btn btn-primary" value="Opret konto" />
+						<input type="submit" class="btn btn-success btn-large pull-right" value="Opret konto" />
+						<div class="clearfix" />
+					</form>
+				</div>
+				<div class="app-box">
+					<h2>Mailingliste</h2>
+					<form action="http://finansmaskinen.us6.list-manage.com/subscribe/post?u=c615122e5c&amp;id=56c7287c11" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+						<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required="true" style="width:90%;" />
+						<div class="clearfix">
+							<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn-success btn-large pull-right" />
+						</div>
 					</form>
 				</div>
 				<div class="app-box">

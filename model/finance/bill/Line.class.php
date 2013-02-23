@@ -52,6 +52,9 @@ class Line extends \model\AbstractModel
 
 	/**
 	 * primarily used for re-adding vat if vat was included
+	 *
+	 * this is VAT pr. unit
+	 *
 	 * @var int
 	 */
 	protected $vatAmount;
@@ -62,7 +65,9 @@ class Line extends \model\AbstractModel
 	protected $quantity;
 
 	/**
-	 * autoimatically calculated lineTotal
+	 * autoimatically calculated lineTotal excl. vat
+	 *
+	 *
 	 * @var int
 	 */
 	protected $lineTotal;

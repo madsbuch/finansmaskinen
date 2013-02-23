@@ -70,7 +70,6 @@ class Form extends \helper\layout\LayoutBlock{
 										data-listLink="/index/currencies/"
 										id="retailPrice-CurrencyID"
 										value="DKK"
-										'.(is_null($this->obj) ? '' : ' readonly="true" ').'
 										data-loose="true"
 										required="true"
 
@@ -82,7 +81,6 @@ class Form extends \helper\layout\LayoutBlock{
 
 										required="true"
 										id="retailPrice-_content"
-										'.(is_null($this->obj) ? '' : ' readonly="true" ').'
 										value="0"
 										style="width:60%;"
 										name="retailPrice-_content"

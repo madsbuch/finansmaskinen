@@ -365,10 +365,6 @@ class Form extends \helper\layout\LayoutBlock
 	<div id="modals" />
 </div>';
 
-		if(isset($this->bill->vatIncluded) && $this->bill->vatIncluded)
-			foreach($this->bill->lines as &$line)
-				$line->amount += $line->vatAmount;
-
 		$element = new \helper\html\HTMLMerger($ret, $this->bill);
 		$dom = $element->getDOM();
 		$element = $element->generate();

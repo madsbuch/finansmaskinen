@@ -25,10 +25,11 @@ class TransactionForm extends \helper\layout\LayoutBlock{
 		    allowAddN: true,
 		    maxFormsCount: 10,
 		    minFormsCount: 0,
-		    iniFormsCount: 0,
+		    iniFormsCount: 2,
 		    afterAdd : function(source, form){
 		    	form.find(".tPicker").Picker();
 				form.find(".tCheckbox").iphoneStyle();
+				$(this).trigger("reattach");
 			},
 		});
 		
@@ -52,13 +53,12 @@ class TransactionForm extends \helper\layout\LayoutBlock{
 		<form method="post" action="/accounting/createTransaction">
 			<div class="row">
 				<div class="form-inline">
-					<h2>Posteringer</h2>
-					
 					<div class="row">
 						<div class="span8">
 							<input
 								type="text"
 								name="referenceText"
+								required="true"
 								class="span2 descriptionPopover"
 								placeholder="Reference"
 								style="width:47%" />
@@ -74,8 +74,11 @@ class TransactionForm extends \helper\layout\LayoutBlock{
 							</div>
 						</div>
 						<div>
-							<input type="checkbox" id="approved" name="approved" class="checkbox"
-								data-checkedLabel="Godkendt" data-uncheckedLabel="Afventer" />
+							<input
+								type="checkbox"
+								id="approved"
+								name="approved"
+								class="checkbox {labelOn: \'Godkendt.\', labelOff: \'Afventer.\'}" />
 						</div>
 					</div>
 					
@@ -83,20 +86,24 @@ class TransactionForm extends \helper\layout\LayoutBlock{
 					<br /><br />
 						
 					<div id="transaction">
-					
 						<div class="row" id="transaction_template" style="padding-bottom:4px;">
 							<div class="span8">
-							
-								<input type="text"
-								    class="tPicker"
-								    id="t#index#"
-								    name="showbox"
-									style="width:60%"
-									placeholder="Konto"
-									data-listLink="/accounting/autocompleteAccounts/"
-									data-objLink="/accounting/getAccount/"
-									value=""
-									/>
+								<div class="input-append span4">
+									<input type="text"
+									    class="tPicker"
+									    id="t#index#"
+									    name="trash"
+										style="width:80%"
+										placeholder="Konto"
+										data-listLink="/accounting/autocompleteAccounts/"
+										data-objLink="/accounting/getAccount/"
+										required="true"
+										/><a
+										style="width:10px;"
+										href="#t#index#"
+										class="btn pickerDroP add-on"><i
+										class="icon-circle-arrow-down"></i></a>
+								</div>
 								
 								<input
 									type="hidden"
@@ -106,20 +113,17 @@ class TransactionForm extends \helper\layout\LayoutBlock{
 								
 								<input
 									type="text"
+									required="true"
 									id="postings-#index#-amount"
 									name="postings-#index#-amount"
 									placeholder="Beløb"
-									class="money"
-									style="width:26%" />
+									class="money span3" />
 							</div>
 							<div class="span2">
-								<input
-									type="checkbox"
-									id="postings-#index#-positive"
-									name="postings-#index#-positive"
-									class="tCheckbox"
-									data-checkedLabel="'.__('Credit').'"
-									data-uncheckedLabel="'.__('Debit').'" />
+								<label>Debit:</label>
+								<input type="radio" id="#index#-b" name="postings-#index#-positive" value="true" checked="checked" />
+								Credit:
+								<input type="radio" id="#index#-c" name="postings-#index#-positive" value="false" checked="checked" />
 							</div>
 							<div>
 								<a href="#" class="btn" id="transaction_remove_current"
@@ -142,8 +146,8 @@ class TransactionForm extends \helper\layout\LayoutBlock{
 			</div>
 			
 			<div class="row">
-				<div class="offset5">
-					<input type="submit" class="btn btn-primary btn-large" Value="Opret Postering" />
+				<div class="offset10">
+					<input type="submit" class="btn btn-success btn-large" Value="Opret Postering" />
 				</div>
 			</div>
 		</form>

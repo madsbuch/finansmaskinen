@@ -270,13 +270,13 @@ class accounting extends \core\app{
 		$input = new \helper\parser\Post('model\finance\accounting\DaybookTransaction');
 		$input->alterArray(function($arr){
 			if(!isset($arr['date']))
-				$arr['date'] = time();//creating
+				$arr['date'] = time('c');//creating
 			else
-				$arr['date'] = \DateTime::createFromFormat('d/m/Y', $arr['date'])->getTimestamp();//parsing
+				$arr['date'] = \DateTime::createFromFormat('d/m/Y', $arr['date'])->format('c');//parsing
 			foreach($arr['postings'] as &$p){
 				$p['amount'] = l::readValuta($p['amount']);
 
-				if(isset($p['positive']))
+				if($p['positive'] == 'true')
 					$p['positive'] = true;
 				else
 					$p['positive'] = false;
@@ -287,7 +287,7 @@ class accounting extends \core\app{
 			else
 				$arr['approved'] = false;
 
-			unset($arr['showbox']);
+			unset($arr['trash']);
 
 			return $arr;
 		});

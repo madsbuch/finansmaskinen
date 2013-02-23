@@ -173,17 +173,14 @@ class AccountingTest extends UnitTestCase
         $ret =  $this->client->resetVat();
         $this->assertTrue($ret['success']);
         $this->assertTrue($this->vatStatement->total != 0, 'this test requires, that there is something in vat statement.');
+
+		//test whether it worked
+		$vat = new \model\finance\accounting\VatStatement($this->client->getVatStatement());
+		$this->assertTrue($vat->total == 0, 'total not 0');
+		$this->assertTrue($vat->sales == 0, 'sales not 0');
+		$this->assertTrue($vat->bought == 0, 'bought not 0');
 	}
 
-    /**
-     * tests that the statement is actually resat.
-     */
-    function testVatStatmentResat(){
-        $vat = new \model\finance\accounting\VatStatement($this->client->getVatStatement());
-        $this->assertTrue($vat->total == 0, 'total not 0');
-        $this->assertTrue($vat->sales == 0, 'sales not 0');
-        $this->assertTrue($vat->bought == 0, 'bought not 0');
-    }
 
 	/**
 	 * attempts to mark vat as payed

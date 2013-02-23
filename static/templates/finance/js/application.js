@@ -49,7 +49,7 @@ function reAttach () {
 	* need for a proper plugin for the new jquery/bootstrap
 	*/
 	$('.checkbox').iButton();
-	
+
 	/**
 	* this creates datatable on tables with ajax class set
 	*/
@@ -203,6 +203,7 @@ function reAttach () {
 //initialise everything
 !function ($) {
 	reAttach();
+	$(document).on('reattach', reAttach());
 }(window.jQuery)
 
 /**

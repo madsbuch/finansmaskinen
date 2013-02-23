@@ -80,13 +80,10 @@ class View extends \helper\layout\LayoutBlock
 		$info->showHeader = false;
 
 		$info->addObject(new \model\Base(array('key' => 'Bilagsnummer',
-			'val' => $this->obj->billNumber)));
+			'val' => isset($this->obj->billNumber) ? $this->obj->billNumber : __('Undefined'))));
 
 		$info->addObject(new \model\Base(array('key' => 'Betalt',
 			'val' => $this->obj->isPayed ? 'Ja' : 'Nej')));
-
-		$info->addObject(new \model\Base(array('key' => 'Beløb',
-			'val' => l::writeValuta($this->obj->amountTotal, $this->obj->currency, true))));
 
 		if (!is_null($this->obj->paymentDate))
 			$info->addObject(new \model\Base(array('key' => 'Rettidig betaling før',
@@ -128,15 +125,27 @@ class View extends \helper\layout\LayoutBlock
 		$info->setIterator($this->obj->lines);
 		$left->appendChild(\helper\html::importNode($dom, $info->generate()));
 
+		//lower boxes
+		$lowerLeft = $dom->createElement('div');
+		$lowerLeft->setAttribute('class', 'span3');
+		$lowerRight = $dom->createElement('div');
+		$lowerRight->setAttribute('class', 'offset3');
+		$lowerRow = $dom->createElement('div');
+		$lowerRow->setAttribute('class', 'row');
+
+		$lowerRow->appendChild($lowerLeft);
+		$lowerRow->appendChild($lowerRight);
+
+		$left->appendChild($lowerRow);
+
 		if ($this->obj->draft)
-			$left->appendChild(\helper\html::importNode($dom,
+			$lowerLeft->appendChild(\helper\html::importNode($dom,
 				'<a class="btn btn-success btn-large" href="/billing/edit/' . $this->obj->_id .
 					'">Færdiggør regning</a> '));
 		elseif (!$this->obj->isPayed)
-			$left->appendChild(\helper\html::importNode($dom,
+			$lowerLeft->appendChild(\helper\html::importNode($dom,
 				'<a class="btn btn-success btn-large" data-toggle="modal"
 					 href="#applyPayment">Marker som betalt og bogfør</a>
-
 <div class="modal hide fade" id="applyPayment">
 	<form method="post" action="/billing/pay/' . $this->obj->_id . '" id="addNewProductForm">
 		<div class="modal-header">
@@ -172,9 +181,28 @@ class View extends \helper\layout\LayoutBlock
 			<input type="submit" class="btn btn-primary" value="Marker som betalt" />
 		</div>
 	</form>
-</div>
+</div>'));
 
-				'));
+		//calculate total vat
+		$totalVat = 0;
+		foreach($this->obj->lines as $l){
+			$totalVat += $l->vatAmount * $l->quantity;
+		}
+
+		//totals
+		$totalExclVat = l::writeValuta($this->obj->amountTotal - $totalVat, $this->obj->currency, true);
+		$Vat = l::writeValuta($totalVat, $this->obj->currency, true);
+		$t = l::writeValuta($this->obj->amountTotal, $this->obj->currency, true);
+
+		$lowerRight->appendChild($this->importContent("<div>
+
+		<span class=\"span2\">Total eksl. moms:</span> <span id=\"invoiceTotal\">$totalExclVat</span><br />
+		<span class=\"span2\">Moms:</span> <span id=\"invoiceTaxTotal\">$Vat</span><br />
+		<span class=\"span2\" style=\"font-weight:bold;\">Fakturatotal:</span>
+		<span id=\"invoiceAllTotal\" style=\"font-weight:bold;\">{$t}</span>
+
+		</div>", $dom));
+
 
 		//populating the widgets
 		foreach ($this->widgets as $w) {

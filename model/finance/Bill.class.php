@@ -79,7 +79,7 @@ class Bill extends \model\AbstractModel
 	/**
 	 * total, inclusive everything
 	 *
-	 * this is overwritten in preperation of object
+	 * this is overwritten in preparation of object
 	 *
 	 * @var int
 	 */
