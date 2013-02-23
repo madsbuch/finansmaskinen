@@ -303,39 +303,48 @@ class billing extends \core\api
 		//accounts to post to
 		$daybookTransaction = new \model\finance\accounting\DaybookTransaction();
 
-		/**
-		//do stock adjust here
-		$toAdd = array();
-		foreach($bill->lines as $line){
-			/**
-			 * @var $line \model\finance\bill\Line
-			 *//*
-			if(isset($line->productID)){
-				$toAdd[] = array(
-					'id' => $line->productID,
-					'price' => $line->amount / $line->quantity,
-					'quantity' => $line->quantity
-				);
-			}
-			\api\products::addToStock($toAdd);
-		}*/
-
-		//iterate through products
+		//iterate the lines
 		$collection = array();
 		if(!empty($bill->lines)){
+
+			$toAdd = array();
+
 			foreach($bill->lines as $line){
-			   $posting = new \model\finance\accounting\Posting(array(
-				   'amount' => abs($line->amount) * $line->quantity,
-				   'positive' => ($line->amount >= 0 ? true : false),
-				   'account' => $line->account
-			   ));
-				$collection[] = $posting;
+				/**
+				 * @var $line \model\finance\bill\Line
+				 */
+				//it's a line without product
+			    if(isset($line->account)){
+					$posting = new \model\finance\accounting\Posting(array(
+					   'amount' => abs($line->amount * $line->quantity),
+					   'positive' => ($line->amount >= 0 ? true : false),
+						'overrideVat' => $line->vatCode,
+					   'account' => $line->account
+				   ));
+					$collection[] = $posting;
+			    }
+			    //it's a product
+				else{
+					//create
+
+					$toAdd[] = array(
+						'id' => $line->productID,
+						//price it was bought for
+						'price' => $line->amount,
+						'quantity' => $line->quantity
+					);
+				}
 			}
+
+			//do stock adjustment
+			\api\products::addToStock($toAdd);
 		}
+
 		//set variables:
 		$daybookTransaction->postings = $collection;
 		$daybookTransaction->approved = true;
 		$daybookTransaction->date = date('c');
+
 		$bill->ref = $daybookTransaction->referenceText = __('Bill %s', $bill->billNumber);
 
 		//port the transactions to the accounting system
@@ -387,11 +396,13 @@ class billing extends \core\api
 		$vat = 0;
 
 		//items from productlines
-		if (!empty($bill->lines))
+		if (!empty($bill->lines)){
 			foreach ($bill->lines as &$prod) {
 				/**
 				 * @var $prod \model\finance\bill\Line
 				 */
+
+				//total line amount
 				$tAmount = $prod->amount * $prod->quantity;
 
 				//***calculate vat total:
@@ -402,21 +413,36 @@ class billing extends \core\api
 				//here we do the logic for an account
 				elseif($prod->account){
 					//fetch vat from accounting
-					$percentage = 0;
-					if($prod->vatCode)//if vatcode exists
-						$percentage = \api\accounting::getVatCode($prod->vatCode)->percentage;
-					else//fetch from accountcode
-						$percentage = \api\accounting::getVatCodeForAccount($prod->account)->percentage;
+					$percentage = \api\accounting::getVatCode($prod->vatCode)->percentage;
 
-					$vat += ($tAmount * $percentage) / 100;
+					//calculate vat percentage, when vat was added
+					if($bill->vatIncluded){
+						$percentage = 100 * (1 - (100/(100 + $percentage)));
+					}
+
+					// calculate line vat, and add it to vat total
+					$v = $tAmount * ($percentage / 100);
+					$vat += $v;
+
+					//subtract vat from price, if vat was included
+					if($bill->vatIncluded){
+						$tAmount -= $v;
+						$prod->amount = $tAmount / $prod->quantity;
+						$prod->vatAmount = $v / $prod->quantity;
+					}
 
 					//set linetotal
-					$prod->lineTotal = ($tAmount * $percentage) / 100 + $tAmount;
+					$prod->lineTotal = $tAmount;
 
 					//for calculating total
 					$total += $tAmount;
+
+					//var_dump($bill->vatIncluded, $prod->toArray(), $percentage);
+					//die();
 				}
 			}
+		}
+
 		//set total
 		$bill->amountTotal = $total + $vat;
 

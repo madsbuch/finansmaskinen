@@ -14,6 +14,7 @@ require_once __DIR__ . '/../../helpers/rpc/Finance.class.php';
 /**
  * Test the billing abstractions
  */
+
 class BillingTest extends UnitTestCase
 {
 
@@ -91,9 +92,9 @@ class BillingTest extends UnitTestCase
 	 */
 	function testApiCreate()
 	{
-		global $bill;
+		global $billAccountOnly;
 
-		$response = $this->billApi1 = $this->client->create($bill->toArray());
+		$response = $this->billApi1 = $this->client->create($billAccountOnly->toArray());
 
 		//tests response
 		$this->assertTrue($response['success']);
@@ -113,14 +114,14 @@ class BillingTest extends UnitTestCase
 	 */
 	function testApiRetrieve()
 	{
-		global $bill, $billDetail;
+		global $billAccountOnly, $billAccountOnlyDetail;
 		$b = $this->billApi1 = $this->client->get($this->billApi1);
 		$this->fetchedBill = $b = new \model\finance\Bill($b);
 
 		//some integrity tests
-		$this->assertIdentical(count($b->lines), count($bill->lines), 'lines are not preserved');
+		$this->assertIdentical(count($b->lines), count($billAccountOnly->lines), 'lines are not preserved');
 		$this->assertTrue(\DateTime::createFromFormat(\DateTime::ISO8601, $b->paymentDate) instanceof \DateTime, "date is not properly formatted");
-		$this->assertEqual($b->amountTotal, $billDetail['amountTotal'], 'total is calculated wrong, should be ' . $billDetail['amountTotal'] . ', is ' . $b->amountTotal);
+		$this->assertEqual($b->amountTotal, $billAccountOnlyDetail['amountTotal'], 'total is calculated wrong, should be ' . $billAccountOnlyDetail['amountTotal'] . ', is ' . $b->amountTotal);
 	}
 
 	/*	function testInvalidCreate(){
@@ -132,8 +133,8 @@ class BillingTest extends UnitTestCase
 
 	function testFailOnNegativeQuantity()
 	{
-		global $bill;
-		$b = clone $bill;
+		global $billAccountOnly;
+		$b = clone $billAccountOnly;
 		$this->expectException();
 		$b->lines->first->quantity = -4;
 		$this->client->create($b->toArray());
@@ -141,8 +142,8 @@ class BillingTest extends UnitTestCase
 
 	function testInvalidContactId()
 	{
-		global $bill;
-		$b = clone $bill;
+		global $billAccountOnly;
+		$b = clone $billAccountOnly;
 		$this->expectException();
 		$b->contactID = 'blahBlahBlah';
 		$this->client->create($b->toArray());
@@ -150,8 +151,8 @@ class BillingTest extends UnitTestCase
 
 	function testInvalidproductId()
 	{
-		global $bill;
-		$b = clone $bill;
+		global $billAccountOnly;
+		$b = clone $billAccountOnly;
 		$this->expectException();
 		$b->lines->first->productID = 'sdf3333ertr42y5';
 		$this->client->create($b->toArray());
@@ -193,11 +194,11 @@ class BillingTest extends UnitTestCase
 	 */
 	function testFinalize()
 	{
-		global $billDetail;
+		global $billAccountOnlyDetail;
 		//save account values
 		$this->expense = new \model\finance\accounting\Account($this->clientAcc->getAccount('2100'));
-		$this->asset = new \model\finance\accounting\Account($this->clientAcc->getAccount($billDetail['asset']));
-		$this->liability = new \model\finance\accounting\Account($this->clientAcc->getAccount($billDetail['liability']));
+		$this->asset = new \model\finance\accounting\Account($this->clientAcc->getAccount($billAccountOnlyDetail['asset']));
+		$this->liability = new \model\finance\accounting\Account($this->clientAcc->getAccount($billAccountOnlyDetail['liability']));
 		$this->vat = new \model\finance\accounting\Account($this->clientAcc->getAccount('14261'));
 
 		//setting draft to false
@@ -205,7 +206,7 @@ class BillingTest extends UnitTestCase
 		$ret = $this->billApi1 = $this->client->update($this->fetchedBill->toArray());
 
 		//marking the bill as payed
-		$this->client->post((string) $this->fetchedBill->_id, $billDetail['asset'], $billDetail['liability']);
+		$this->client->post((string) $this->fetchedBill->_id, $billAccountOnlyDetail['asset'], $billAccountOnlyDetail['liability']);
 	}
 
 	/**
@@ -219,27 +220,87 @@ class BillingTest extends UnitTestCase
 	 * tests that accounting is updated
 	 */
 	function testAccountingUpdated(){
-		global $billDetail;
+		global $billAccountOnlyDetail;
 
 		//we only check on income, as there should only be increments
 		$expense = new \model\finance\accounting\Account($this->clientAcc->getAccount(2100));
-		$asset = new \model\finance\accounting\Account($this->clientAcc->getAccount($billDetail['asset']));
-		$liability = new \model\finance\accounting\Account($this->clientAcc->getAccount($billDetail['liability']));
+		$asset = new \model\finance\accounting\Account($this->clientAcc->getAccount($billAccountOnlyDetail['asset']));
+		$liability = new \model\finance\accounting\Account($this->clientAcc->getAccount($billAccountOnlyDetail['liability']));
 		$vat = new \model\finance\accounting\Account($this->clientAcc->getAccount(14261));
 
 		//checking that accounts are done right
 
 		//extra on the operation account
-		$incomeAmountExpected = $this->expense->income + $billDetail['amountIncome'];
+		$incomeAmountExpected = $this->expense->income + $billAccountOnlyDetail['amountIncome'];
 
 		//less in the bank
-		$assetAmountExpected = $this->asset->outgoing + $billDetail['amountTotal'];
+		$assetAmountExpected = $this->asset->outgoing + $billAccountOnlyDetail['amountTotal'];
 
 		//less on the liability
-		$liabilityAmountExpected = $this->liability->outgoing + $billDetail['amountIncome'];
+		$liabilityAmountExpected = $this->liability->outgoing + $billAccountOnlyDetail['amountIncome'];
 
 		//more on the vat account
-		$vatAmountExpected = $this->vat->income + $billDetail['amountVat'];
+		$vatAmountExpected = $this->vat->income + $billAccountOnlyDetail['amountVat'];
+
+		$this->assertEqual($incomeAmountExpected, $expense->income,
+			"income was not posted properly, should be $incomeAmountExpected, was ". $expense->income);
+
+		$this->assertEqual($assetAmountExpected, $asset->outgoing,
+			"asset was not posted properly, should be $assetAmountExpected, was ". $asset->income);
+
+		$this->assertEqual($liabilityAmountExpected, $liability->outgoing,
+			"liability was not posted properly, should be $liabilityAmountExpected, was ". $liability->income);
+
+		$this->assertEqual($vatAmountExpected, $vat->income,
+			"vat was not posted properly, should be $vatAmountExpected, was ". $vat->income);
+
+
+	}
+
+	/*** TESTING VAT INCLUDED ***/
+	function testApiCreateVatIncluded()
+	{
+		global $billAccountOnlyVatIncluded, $billAccountOnlyDetail;
+		$response = $this->billApi1 = $this->client->create($billAccountOnlyVatIncluded->toArray());
+		$this->billApi1 = $response['id'];
+
+		$b = $this->billApi1 = $this->client->get($this->billApi1);
+		$this->fetchedBill = $b = new \model\finance\Bill($b);
+	}
+	function testFinalizeVatIncluded()
+	{
+		global $billAccountOnlyDetailVatIncluded;
+		//save account values
+		$this->expense = new \model\finance\accounting\Account($this->clientAcc->getAccount('2100'));
+		$this->asset = new \model\finance\accounting\Account($this->clientAcc->getAccount($billAccountOnlyDetailVatIncluded['asset']));
+		$this->liability = new \model\finance\accounting\Account($this->clientAcc->getAccount($billAccountOnlyDetailVatIncluded['liability']));
+		$this->vat = new \model\finance\accounting\Account($this->clientAcc->getAccount('14261'));
+
+		//marking the bill as payed
+		$this->client->post((string) $this->fetchedBill->_id, $billAccountOnlyDetailVatIncluded['asset'], $billAccountOnlyDetailVatIncluded['liability']);
+	}
+	function testAccountingUpdatedVatIncluded(){
+		global $billAccountOnlyDetailVatIncluded;
+
+		//we only check on income, as there should only be increments
+		$expense = new \model\finance\accounting\Account($this->clientAcc->getAccount(2100));
+		$asset = new \model\finance\accounting\Account($this->clientAcc->getAccount($billAccountOnlyDetailVatIncluded['asset']));
+		$liability = new \model\finance\accounting\Account($this->clientAcc->getAccount($billAccountOnlyDetailVatIncluded['liability']));
+		$vat = new \model\finance\accounting\Account($this->clientAcc->getAccount(14261));
+
+		//checking that accounts are done right
+
+		//extra on the operation account
+		$incomeAmountExpected = $this->expense->income + $billAccountOnlyDetailVatIncluded['amountIncome'];
+
+		//less in the bank
+		$assetAmountExpected = $this->asset->outgoing + $billAccountOnlyDetailVatIncluded['amountTotal'];
+
+		//less on the liability
+		$liabilityAmountExpected = $this->liability->outgoing + $billAccountOnlyDetailVatIncluded['amountIncome'];
+
+		//more on the vat account
+		$vatAmountExpected = $this->vat->income + $billAccountOnlyDetailVatIncluded['amountVat'];
 
 		$this->assertEqual($incomeAmountExpected, $expense->income,
 			"income was not posted properly, should be $incomeAmountExpected, was ". $expense->income);

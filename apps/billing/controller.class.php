@@ -127,6 +127,12 @@ class billing extends \core\app
 				$arr['draft'] = true;
 			unset($arr['finished']);
 
+			//check if create bill was pressed
+			if(isset($arr['vatIncluded']))
+				$arr['vatIncluded'] = true;
+			else
+				$arr['vatIncluded'] = false;
+
 			//parsing the time
 			if (isset($arr['paymentDate']))
 				$arr['paymentDate'] =
@@ -137,6 +143,14 @@ class billing extends \core\app
 			//some quantaty and unitprice stuff
 			foreach ($arr['lines'] as &$il) {
 				$il['amount'] = l::readValuta($il['amount']);
+
+				//unset if fields are not set
+				if(empty($il['account']))
+					unset($il['account']);
+				if(empty($il['productID']))
+					unset($il['productID']);
+				if(empty($il['vatCode']))
+					unset($il['vatCode']);
 			}
 
 			//for some js plugins to work, the namefield must be set:

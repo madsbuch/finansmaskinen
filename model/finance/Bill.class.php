@@ -18,6 +18,7 @@ namespace model\finance;
  * @property $attachments;
  * @property $draft;
  * @property $isPayed;
+ * @property $vatIncluded
  * @property $accounting;
  * @property $ref;
  */

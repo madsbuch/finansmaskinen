@@ -29,6 +29,7 @@ class Posting extends \model\AbstractModel
 
 	/**
 	 * override vatCode for account
+	 *
 	 * @var string
 	 */
 	protected $overrideVat;

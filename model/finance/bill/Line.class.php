@@ -12,6 +12,7 @@ namespace model\finance\bill;
  * @property $vatCode;
  * @property $text;
  * @property $amount;
+ * @property $vatAmount
  * @property $quantity;
  * @property $lineTotal;
  */
@@ -20,8 +21,6 @@ class Line extends \model\AbstractModel
 
 	/**
 	 * Either a product id or an Account and vatCode has to be supplied
-	 *
-	 *
 	 *
 	 * @var string
 	 */
@@ -45,11 +44,17 @@ class Line extends \model\AbstractModel
 	protected $text;
 
 	/**
-	 * the total amount is a multiplum of this and quantity
+	 * unitprice
 	 *
 	 * @var int
 	 */
 	protected $amount;
+
+	/**
+	 * primarily used for re-adding vat if vat was included
+	 * @var int
+	 */
+	protected $vatAmount;
 
 	/**
 	 * @var int
@@ -68,7 +73,7 @@ class Line extends \model\AbstractModel
 			$ret[] = 'Not both a product and account/vat code may be set';
 
 		if((isset($this->vatCode) && !isset($this->account)) ||
-			(isset($this->vatCode) && !isset($this->account)))
+			(!isset($this->vatCode) && isset($this->account)))
 			$ret[] = 'Both account and vatcode has to be set, not just one.';
 
 		if ($this->quantity <= 0)//quantity not negative

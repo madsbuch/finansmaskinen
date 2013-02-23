@@ -19,6 +19,9 @@ class Form extends \helper\layout\LayoutBlock
 		at holde styr på hvem der skylder hvad.',
 	);
 
+	/**
+	 * @var \model\finance\Bill
+	 */
 	private $bill;
 
     /**
@@ -234,7 +237,9 @@ class Form extends \helper\layout\LayoutBlock
 								name="lines-#index#-amount"
 								data-replace="lines-#index#-retailPrice-_content"
 								title="Hvad har hver enhed kostet?"
-								type="text" class="totalCompute" placeholder="Pris"
+								type="text"
+								class="totalCompute money"
+								placeholder="Pris"
 								style="width:8%" />
 
 							<input
@@ -359,6 +364,10 @@ class Form extends \helper\layout\LayoutBlock
 
 	<div id="modals" />
 </div>';
+
+		if(isset($this->bill->vatIncluded) && $this->bill->vatIncluded)
+			foreach($this->bill->lines as &$line)
+				$line->amount += $line->vatAmount;
 
 		$element = new \helper\html\HTMLMerger($ret, $this->bill);
 		$dom = $element->getDOM();

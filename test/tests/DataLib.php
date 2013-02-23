@@ -122,6 +122,7 @@ $bill = new \model\finance\Bill(array(
 		//some
 		array(
 			'account' => 2100,
+			'vatCode' => 'I25',
 			'text' => 'Just added productline',
 			'amount' => 10000,
 			'quantity' => 1,
@@ -137,7 +138,6 @@ $bill = new \model\finance\Bill(array(
 	'draft' => true,
 	'isPayed' => false,
 ));
-
 /**
  * details on bill to check against
  */
@@ -145,6 +145,77 @@ $billDetail = array(
 	'amountTotal' => 25000,
 	'amountIncome' => 20000,
 	'amountVat' => 5000,
+
+	'asset' => 12320,
+	'liability' => 13110
+);
+
+$billAccountOnly = new \model\finance\Bill(array(
+	'contactID' => 'test',
+	'paymentDate' => '2012-10-29',
+
+	'currency' => 'DKK',
+	'lines' => array(
+		//some
+		array(
+			'account' => 2100,
+			'vatCode' => 'I25',
+			'text' => 'Just added productline',
+			'amount' => 10000,
+			'quantity' => 1,
+		),
+		//a product
+		array(
+			'account' => 2100,
+			'vatCode' => 'I25',
+			'text' => 'Just added productline',
+			'amount' => 5000,
+			'quantity' => 2,
+		),
+	),
+	'amountTotal' => 0,
+	'draft' => true,
+	'isPayed' => false,
+));
+$billAccountOnlyDetail = array(
+	'amountTotal' => 25000,
+	'amountIncome' => 20000,
+	'amountVat' => 5000,
+	'asset' => 12320,
+	'liability' => 13110
+);
+
+$billAccountOnlyVatIncluded = new \model\finance\Bill(array(
+	'contactID' => 'test',
+	'paymentDate' => '2012-10-29',
+	'vatIncluded' => true,
+	'currency' => 'DKK',
+	'lines' => array(
+		//some
+		array(
+			'account' => 2100,
+			'vatCode' => 'I25',
+			'text' => 'Just added productline',
+			'amount' => 10000,
+			'quantity' => 1,
+		),
+		//a product
+		array(
+			'account' => 2100,
+			'vatCode' => 'I25',
+			'text' => 'Just added productline',
+			'amount' => 5000,
+			'quantity' => 2,
+		),
+	),
+	'amountTotal' => 0,
+	'draft' => false,
+	'isPayed' => false,
+));
+$billAccountOnlyDetailVatIncluded = array(
+	'amountTotal' => 20000,
+	'amountIncome' => 16000,
+	'amountVat' => 4000,
 
 	'asset' => 12320,
 	'liability' => 13110
