@@ -148,22 +148,6 @@ var ExchangeRate = {};
             update(this);
         });
 
-        //do the datepicker
-        //check for existing value
-        if($(".datepicker input").val().length < 2){
-            var now = new Date();
-        }
-        else{
-            var now = new Date($(".datepicker input").val());
-        }
-        //make the rest
-        now = now.getUTCDate() + "/" + (now.getUTCMonth() + 1) + "/" + now.getUTCFullYear();
-        $(".datepicker input").val(now);
-        $(".datepicker").data("date", now);
-        $(".datepicker").datepicker({
-            format:"dd/mm/yyyy",
-            weekStart:1
-        });
 
         $('#addNewProductForm').ajaxForm({
             success:function (responseText, statusText, xhr, $form) {
@@ -179,6 +163,24 @@ var ExchangeRate = {};
                 console.log(responseText);
             }
         });
+
+		//do the datepicker
+		//check for existing value
+		if($(".datepicker input").val().length < 2){
+			var now = new Date();
+		}
+		else{
+			var now = new Date($(".datepicker input").val());
+		}
+		//make the rest
+		now = now.getUTCDate() + "/" + (now.getUTCMonth() + 1) + "/" + now.getUTCFullYear();
+		$(".datepicker input").val(now);
+		$(".datepicker").data("date", now);
+		$(".datepicker").datepicker({
+			format:"dd/mm/yyyy",
+			weekStart:1
+		});
+
         updatePrices();
 
     });
@@ -333,16 +335,6 @@ var ExchangeRate = {};
             update(this);
         });
 
-        //do the datepicker
-        var now = new Date();
-        now = now.getUTCDate() + "/" + (now.getUTCMonth() + 1) + "/" + now.getUTCFullYear();
-        $(".datepicker input").val(now);
-        $(".datepicker").data("date", now);
-        $(".datepicker").datepicker({
-            format:"dd/mm/yyyy",
-            weekStart:1
-        });
-
         $('#addNewProductForm').ajaxForm({
             success:function (responseText, statusText, xhr, $form) {
                 $('#addNewProduct').modal('hide');
@@ -357,7 +349,29 @@ var ExchangeRate = {};
                 console.log(responseText);
             }
         });
-        update();
+
+		//do the datepicker
+		//check for existing value
+		if($(".datepicker input").val().length < 2){
+			var now = new Date();
+		}
+		else{
+			var now = new Date($(".datepicker input").val());
+		}
+		//make the rest
+		now = now.getUTCDate() + "/" + (now.getUTCMonth() + 1) + "/" + now.getUTCFullYear();
+		$(".datepicker input").val(now);
+		$(".datepicker").data("date", now);
+		$(".datepicker").datepicker({
+			format:"dd/mm/yyyy",
+			weekStart:1
+		});
+
+		//give the browser ½ a second to get ready
+		var interval = setInterval(function(){
+			update();
+			clearInterval(interval);
+		},500);
 
     });
 	//endregion

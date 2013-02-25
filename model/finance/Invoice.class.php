@@ -25,7 +25,7 @@ class Invoice extends \model\AbstractModel{
 	protected $_autoassign = array(
 		'Invoice' => array('\model\ext\ubl2\Invoice', false),
 		'productIDs' => array(null, true),
-		'ExchangeRates' => array('\model\Base', true),
+		'ExchangeRates' => array('\model\finance\invoice\Rate', true),
 		'product' => array('\model\finance\invoice\Product', true),
 	);
 	
@@ -52,10 +52,10 @@ class Invoice extends \model\AbstractModel{
      * @var bool
      */
     protected $objectIDs = true;
-	
+
 	/**
-	* instance of to \finance\ubl\Item
-	*/
+	 * @var \model\ext\ubl2\Invoice
+	 */
 	protected $Invoice;
 	
 	/**

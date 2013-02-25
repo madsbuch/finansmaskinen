@@ -50,6 +50,16 @@ class DkkSolitaire {
 			'net' => true,
 			'type' => 2
 		),
+		array(
+			'code' => 'INGEN',
+			'name' => 'Ingen moms',
+			'percentage' => 0,
+			'deductionPercentage' => 0,
+			'account' => 14261,
+			'contraAccount' => null,
+			'net' => true,
+			'type' => 2
+		),
 	);
 	//default accounts
 	public static $accounts = array(

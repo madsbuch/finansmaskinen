@@ -86,5 +86,12 @@ class InvoiceTest extends UnitTestCase
 	    $this->assertTrue($diff == $invoiceSimpledata['totalPrice'], 'diff was: '. $diff .' expected: ' . $invoiceSimpledata['totalPrice']);
     }
 
+	function testInvoiceOfAnotherCurrency(){
+		global $invoiceSimpleObject;
+		$invoiceSimpleObject->currency = 'EUR';
+		$this->insertedInvoice = $this->client->simpleCreate($invoiceSimpleObject->toArray());
+		$this->assertTrue(is_string($this->insertedInvoice));
+	}
+
 	//endregion
 }

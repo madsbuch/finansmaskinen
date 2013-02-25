@@ -42,8 +42,10 @@ class ListAccounts extends \helper\layout\LayoutBlock{
 				<div class="row">
 					<div class="span5 form-inline">
 						<div class="row">
-							<input type="text" placeholder="Kode" style="width:15%;" name="code" />
-							<input type="text" placeholder="Navn" style="width:20%;" name="name" />
+							<input type="text" placeholder="Kode" required="true" style="width:15%;" name="code"
+							 	title="Koden for kontoen der skal oprettes." />
+							<input type="text" placeholder="Navn" required="true" style="width:20%;" name="name"
+							 	title="Et let forståeligt navn, der beskriver kontoen."/>
 						
 						
 						

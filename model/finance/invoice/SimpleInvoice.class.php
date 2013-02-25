@@ -13,12 +13,14 @@ namespace model\finance\invoice;
  * @property $contactID
  * @property $vat
  * @property $currency
+ * @property $exchangeRates
  */
 class SimpleInvoice extends \model\AbstractModel
 {
 	protected $_autoassign = array(
 		'products' => array('\model\finance\invoice\SimpleProduct', true),
 		'contact' => array('string', false),
+		'exchangeRates' => array('\model\finance\invoice\Rate', true)
 	);
 
     /**
@@ -50,6 +52,12 @@ class SimpleInvoice extends \model\AbstractModel
 	 */
 	protected $currency;
 
+	/**
+	 * exchange rates associated
+	 *
+	 * @var \model\finance\invoice\Rate
+	 */
+	protected $exchangeRates;
 
 	/**
 	 * date of the invoice

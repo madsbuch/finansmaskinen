@@ -195,6 +195,8 @@ function reAttach () {
 
 	//some tutorialing
 	tl.pg.init({ /* optional preferences go here */ });
+
+
 }
 
 /*********** GLOBAL STUFf *************/

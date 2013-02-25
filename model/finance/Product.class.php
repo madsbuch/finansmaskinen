@@ -12,6 +12,23 @@
 
 namespace model\finance;
 
+/**
+
+ * @property $_id;
+ * @property $_subsystem;
+ * @property $catagoryID;
+ * @property $Item;
+ * @property $Price;
+ * @property $retailPrice;
+ * @property $TaxCategory;
+ * @property $inclVat;
+ * @property $exclVat;
+ * @property $stock;
+ * @property $location;
+ * @property $inCatalog;
+ * @property $reserved;
+ * @property $productID;
+ */
 class Product extends \model\AbstractModel{
 	/**
 	* versining
@@ -47,10 +64,10 @@ class Product extends \model\AbstractModel{
 	protected $Item;
 	
 	/**
-	* ubl\Price
-	*
-	* the price
-	*/
+	 * ubl\Price
+	 *
+	 * @var \model\ext\ubl2\Price
+	 */
 	protected $Price;
 
 	/**

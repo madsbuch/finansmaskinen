@@ -151,7 +151,6 @@ class Form extends \helper\layout\LayoutBlock{
 											name="vat"
 											id="vat" />
 									</div>
-									<!-- <input class="btn totalCompute" type="button" value="opdater beregninger" /> -->
 								</div>
 								<div id="documentValutaSettings" class="span4">
 									<p>Se og rediger valutaer for denne faktura <i 
@@ -241,13 +240,26 @@ class Form extends \helper\layout\LayoutBlock{
 									data-replace="product-#index#-Price-PriceAmount-_content"
 									style="width:60px;" />
 
-								<input
+								<!-- <input
 									title="Oprindelig valuta for denne linje"
-									id="product-#index#-Price-PriceAmount-currencyID"
-									name="trash"
+
+									name="product-#index#-origValuta"
+									id="product-#index#-origValuta"
+
+									data-replace="product-#index#-Price-PriceAmount-currencyID"
+
 									readonly="true"
-									style="width:30px;border:0px;background-color:transparent;"
-									data-replace="product-#index#-Price-PriceAmount-currencyID" />
+									style="width:30px;border:0px;background-color:transparent;" /> -->
+
+								<input
+										type="text"
+										class="currencyCompute"
+										name="product-#index#-origValuta"
+										id="product-#index#-origValuta"
+										data-listLink="/index/currencies/"
+										data-replace="product-#index#-Price-PriceAmount-currencyID"
+										style="width:30px;"
+										readonly="true" />
 
 								
 								
@@ -268,15 +280,6 @@ class Form extends \helper\layout\LayoutBlock{
 							
 								<div class="form-inline hide"
 									id="settings-#index#" style="margin-bottom:10px;">
-									<label>opr. valuta:</label>
-									<input type="text"
-										class="currencyCompute"
-										name="product-#index#-origValuta"
-										id="product-#index#-origValuta"
-										data-listLink="/index/currencies/"
-										data-replace="product-#index#-Price-PriceAmount-currencyID"
-										style="width:30px" readonly="true" />
-								
 									<label>Beløb:</label>
 									<input id="product-#index#-Price-PriceAmount-_content"
 										name="Invoice-InvoiceLine-#index#-Price-PriceAmount-_content"

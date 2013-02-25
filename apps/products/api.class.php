@@ -223,7 +223,12 @@ class products
 		return $product;
 	}
 
-    static function getByProductID($id){
+	/**
+	 * @param $id
+	 * @return \model\finance\Product
+	 * @throws \exception\UserException
+	 */
+	static function getByProductID($id){
         $ps = self::get(null, array('productID' => $id), 1);
 
 	    if(count($ps) != 1)

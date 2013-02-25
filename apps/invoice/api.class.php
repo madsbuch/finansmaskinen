@@ -204,6 +204,9 @@ class invoice{
 
         ));
 
+	    if(isset($invoice->exchangeRates))
+		    $full->ExchangeRates = $invoice->exchangeRates;
+
         if(!empty($invoice->date))
             $full->Invoice->IssueDate = $invoice->date;
 	    else
@@ -214,6 +217,8 @@ class invoice{
         $full->Invoice->InvoiceLine = array();
 
         foreach($invoice->products as $key => $prod){
+	        $realProd = \api\products::getByProductID($prod->productID);
+
             //the product object
 	        $full->product->$key->index = $key;
             $full->product->$key->id = $prod->productID;
@@ -286,6 +291,7 @@ class invoice{
 	 * @param $id string the id of the invoice
 	 * @param $asset int the asset account the money is recived on.
 	 * @param null $actualAmount if the currency is different from the account posted on, then this should denote the actual inserted amount, conversion is then done on linebasis
+	 * @throws \exception\UserException
 	 */
 	static function bookkeep($id, $asset, $actualAmount = null){
 		//fetch invoice
@@ -306,7 +312,8 @@ class invoice{
 			//calculate a transformation rate
 			if(!isset($inv->Invoice->LegalMonetaryTotal->PayableAmount))
 				throw new \exception\UserException(__('Invoice.LegalMonetaryTotal.PayableAmount was not set'));
-			$rate = $actualAmount / $inv->Invoice->LegalMonetaryTotal->PayableAmount;
+
+			$rate = $actualAmount / (int) $inv->Invoice->LegalMonetaryTotal->PayableAmount->_content;
 		}
 
 		//iterate through products
@@ -536,12 +543,23 @@ class invoice{
 			    //support for unitprice from the products
 			    if(!isset($inv->Invoice->InvoiceLine->$i->Price->PriceAmount)){
 				    //TODO handle currencies (should we make a currency module allowin people to define their own?)
-				    $unitPrice = $p->Price->PriceAmount->_content;
-				    $toMerge['Invoice']['InvoiceLine'][$i]['Price']['PriceAmount'] = $p->Price->PriceAmount;
+
+				    $priceAmount = $p->Price->PriceAmount;
+
+				    //translating rate
+				    $rate = self::getRate($priceAmount->currencyID, (string) $inv->Invoice->DocumentCurrencyCode, $priceAmount->_content);
+				    if($rate !== false){
+						$priceAmount->_content = $priceAmount->_content * $rate;
+					    $priceAmount->currencyID = (string) $inv->Invoice->DocumentCurrencyCode;
+				    }
+
+
+				    $unitPrice = $priceAmount->_content;
+				    $toMerge['Invoice']['InvoiceLine'][$i]['Price']['PriceAmount'] = $priceAmount;
 
 				    //TODO when parse is fully implemented, this should be taken into account
 				    $toMerge['product'][$i]['origAmount'] = $p->Price->PriceAmount->_content;
-				    $toMerge['product'][$i]['origValuta'] = $p->Price->PriceAmount->currency;
+				    $toMerge['product'][$i]['origValuta'] = $p->Price->PriceAmount->currencyID;
 			    }
 			    else
 				    $unitPrice = $inv->Invoice->InvoiceLine->$i->Price->PriceAmount->_content;
@@ -593,7 +611,34 @@ class invoice{
 	    $inv->merge($toMerge);
 	    return $inv;
     }
-	
+
+	/**
+	 * finds the exchange rate from source to target.
+	 *
+	 * first it searches the bill, if there is no defined rate, it'll go external
+	 *
+	 * @param $source string
+	 * @param $target string
+	 * @param $inv \model\finance\Invoice
+	 * @return bool
+	 */
+	private static function getRate($source, $target, $inv){
+		if(isset($inv->ExchangeRates)){
+			foreach($inv->ExchangeRates as $rate){
+				/**
+				 * @var $rate \model\finance\invoice\Rate
+				 */
+				if(strtoupper(trim($rate->targetCurrencyCode)) === strtoupper(trim($target))
+					&& strtoupper(trim($rate->sourceCurrencyCode)) === strtoupper(trim($source)))
+					return $rate->calculationRate;
+			}
+		}
+
+		//find the rate elsewhere
+
+		//no rate
+		return false;
+	}
 }
 
 ?>
