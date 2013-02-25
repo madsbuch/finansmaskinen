@@ -51,8 +51,17 @@ class invoice extends \core\rpc {
 		$this->throwException("not yet implemented");
 	}
 
-	function get($id){
-		$this->throwException("not yet implemented");
+	/**
+	 * returns raw invoice object
+	 *
+	 * @param $id string invoice id
+	 */
+	function getRaw($id){
+		$inv = \api\invoice::getOne($id);
+		if(!is_null($inv))
+			$this->ret($inv->toArray());
+		else
+			$this->throwException("Invoice not found");
 	}
 
 	/**

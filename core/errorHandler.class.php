@@ -115,7 +115,7 @@ class errorHandler
 
 			//error message if we are en debug mode
 			if(DEBUG)
-				echo "$errno  $errstr  $errfile $errline <br />\n";
+				throw new \ErrorException($errstr, $errno, 0, $errfile, $errline);
 			return;
 		}
 

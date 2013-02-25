@@ -118,8 +118,8 @@ class View extends \helper\layout\LayoutBlock{
 				if(isset($inv->product->$pid))
 					$tr->setAttribute('data-href', '/products/view/'.(string)$inv->product->$pid->id);
 				
-				return new \DOMText(l::writeValuta($p->Price->PriceAmount->_content, 
-				(empty($p->Price->PriceAmount->currencyID) ? $inv->Invoice->DocumentCurrencyCode : $p->Price->PriceAmount->currencyID), true));
+				return new \DOMText(l::writeValuta($p->LineExtensionAmount->_content,
+				(empty($p->LineExtensionAmount->currencyID) ? $inv->Invoice->DocumentCurrencyCode : $p->Price->PriceAmount->currencyID), true));
 			}, array($this->obj))
 		));
 		$info->setIterator($this->obj->Invoice->InvoiceLine);

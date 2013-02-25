@@ -87,10 +87,38 @@ class InvoiceTest extends UnitTestCase
     }
 
 	function testInvoiceOfAnotherCurrency(){
-		global $invoiceSimpleObject;
+		//create invoice that requres translation
+		global $invoiceSimpleObject, $invoiceSimpledata;
 		$invoiceSimpleObject->currency = 'EUR';
 		$this->insertedInvoice = $this->client->simpleCreate($invoiceSimpleObject->toArray());
 		$this->assertTrue(is_string($this->insertedInvoice));
+
+		//test that the currency translation was done right
+		$bill = new \model\finance\Invoice($this->client->getRaw($this->insertedInvoice));
+		$rate = $invoiceSimpleObject->exchangeRates->get_first()->calculationRate;
+		$total = $invoiceSimpledata['totalPrice'];
+		$shouldBe = $total * $rate;
+		$was = $bill->Invoice->LegalMonetaryTotal->PayableAmount->_content;
+		$this->assertTrue($shouldBe == $was, "Total of invoice should be " . $shouldBe . " but was " . $was . ", rate: $rate , total: $total");
+
+		//save the old value
+		$this->bank = new \model\finance\accounting\Account($this->clientAcc->getAccount(12320));
+
+		//post it
+		$ret = $this->client->post($this->insertedInvoice, 12320, $invoiceSimpledata['totalPrice']);
+		$this->assertTrue($ret['success']);
+	}
+
+	function testBookkeepIntegrityForTheOtherCurrency(){
+		global $invoiceSimpledata;
+		$bank = new \model\finance\accounting\Account($this->clientAcc->getAccount(12320));
+
+		$amountBefore = $this->bank->income - $this->bank->outgoing;
+		$amountAfter = $bank->income - $bank->outgoing;
+
+		$diff = $amountAfter - $amountBefore;
+
+		$this->assertTrue($diff == $invoiceSimpledata['totalPrice'], 'diff was: '. $diff .' expected: ' . $invoiceSimpledata['totalPrice']);
 	}
 
 	//endregion

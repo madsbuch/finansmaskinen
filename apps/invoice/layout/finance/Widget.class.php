@@ -39,7 +39,7 @@ class Widget extends \helper\layout\LayoutBlock implements \helper\layout\Widget
 					function($data){
 						return new \DOMText(l::writeValuta(
 							$data->LegalMonetaryTotal->PayableAmount->_content,
-							$data->DocumentCurrencyCode->_content, true));
+							(string) $data->DocumentCurrencyCode, true));
 					}
 				),
 				'.' => array(__('Duedate'), function($data, $dom, $field, $row){

@@ -306,7 +306,7 @@ $invoiceSimpleObject = new \model\finance\invoice\SimpleInvoice(array(
 		)
 	),
 
-	'currency' => 'EUR',
+	'currency' => 'DKK',
 	'exchangeRates' => array(
 		array(
 			'sourceCurrencyCode' => 'DKK',

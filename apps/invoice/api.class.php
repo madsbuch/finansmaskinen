@@ -125,8 +125,9 @@ class invoice{
 	}
 
 	/**
-	 * @param $id the id of the invoice
-	 * @return /model/finance/Invoice
+	 * @param $id string the id of the invoice
+	 * @throws \exception\UserException
+	 * @return null /model/finance/Invoice
 	 */
 	public static function getOne($id){
 		$lodo = new \helper\lodo('invoices', 'invoice');
@@ -313,7 +314,8 @@ class invoice{
 			if(!isset($inv->Invoice->LegalMonetaryTotal->PayableAmount))
 				throw new \exception\UserException(__('Invoice.LegalMonetaryTotal.PayableAmount was not set'));
 
-			$rate = $actualAmount / (int) $inv->Invoice->LegalMonetaryTotal->PayableAmount->_content;
+			$t = $inv->Invoice->LegalMonetaryTotal->PayableAmount->_content;
+			$rate = $actualAmount / $t;
 		}
 
 		//iterate through products
@@ -330,11 +332,12 @@ class invoice{
 					$cats[$p->catagoryID]->accountAssert = $asset;
 					//initialize raw amount
 					$cats[$p->catagoryID]->amount = 0;
-					$cats[$p->catagoryID]->vat = $inv->vat * $rate;
+					//VAT percent
+					$cats[$p->catagoryID]->vat = $inv->vat;
 				}
 				
 				//note raw value to post to this catagory
-				$cats[$p->catagoryID]->amount += $rate * $inv->Invoice->InvoiceLine->$i->LineExtensionAmount->_content;
+				$cats[$p->catagoryID]->amount += $inv->Invoice->InvoiceLine->$i->LineExtensionAmount->_content * $rate;
 			}
 		}
 		//post the cat's the to accounting system
@@ -542,27 +545,40 @@ class invoice{
 			    $unitPrice = null;
 			    //support for unitprice from the products
 			    if(!isset($inv->Invoice->InvoiceLine->$i->Price->PriceAmount)){
-				    //TODO handle currencies (should we make a currency module allowin people to define their own?)
-
+				    //handle currencies
 				    $priceAmount = $p->Price->PriceAmount;
 
 				    //translating rate
-				    $rate = self::getRate($priceAmount->currencyID, (string) $inv->Invoice->DocumentCurrencyCode, $priceAmount->_content);
+				    $rate = self::getRate($priceAmount->currencyID, (string) $inv->Invoice->DocumentCurrencyCode, $inv);
 				    if($rate !== false){
-						$priceAmount->_content = $priceAmount->_content * $rate;
-					    $priceAmount->currencyID = (string) $inv->Invoice->DocumentCurrencyCode;
+					    $priceAmount->_content = $priceAmount->_content * $rate;
+					    $priceAmount->currencyID = (string) $inv->Invoice->DocumentCurrencyCode->_content;
 				    }
-
 
 				    $unitPrice = $priceAmount->_content;
 				    $toMerge['Invoice']['InvoiceLine'][$i]['Price']['PriceAmount'] = $priceAmount;
 
 				    //TODO when parse is fully implemented, this should be taken into account
 				    $toMerge['product'][$i]['origAmount'] = $p->Price->PriceAmount->_content;
-				    $toMerge['product'][$i]['origValuta'] = $p->Price->PriceAmount->currencyID;
+				    $toMerge['product'][$i]['origValuta'] = (string) $p->Price->PriceAmount->currencyID;
 			    }
-			    else
-				    $unitPrice = $inv->Invoice->InvoiceLine->$i->Price->PriceAmount->_content;
+			    else{
+				    $s = $inv->Invoice->InvoiceLine->$i->Price->PriceAmount->currencyID;
+				    $t = (string) $inv->Invoice->DocumentCurrencyCode;
+				    //translating rate
+				    $rate = self::getRate($s, $t, $inv);
+				    if($rate !== false){
+					    //set the currency
+					    $inv->Invoice->InvoiceLine->$i->Price->PriceAmount->currencyID = $t;
+				    }
+				    else{
+					    //if rate was not set, we leave the currency and amount
+					    $rate = 1;
+				    }
+
+				    $unitPrice = $inv->Invoice->InvoiceLine->$i->Price->PriceAmount->_content * $rate;
+
+			    }
 
 			    //for calculating total
 			    $total += $t = $unitPrice * $inv->Invoice->InvoiceLine->$i->InvoicedQuantity->_content;
@@ -623,13 +639,22 @@ class invoice{
 	 * @return bool
 	 */
 	private static function getRate($source, $target, $inv){
+		$target = trim(strtoupper($target));
+		$source = trim(strtoupper($source));
+
+		if($target === $source)
+			return 1;
+
 		if(isset($inv->ExchangeRates)){
+
 			foreach($inv->ExchangeRates as $rate){
 				/**
 				 * @var $rate \model\finance\invoice\Rate
 				 */
-				if(strtoupper(trim($rate->targetCurrencyCode)) === strtoupper(trim($target))
-					&& strtoupper(trim($rate->sourceCurrencyCode)) === strtoupper(trim($source)))
+				$t = strtoupper(trim($rate->targetCurrencyCode));
+				$s = strtoupper(trim($rate->sourceCurrencyCode));
+				if(     $t === $target
+					&&  $s  === $source)
 					return $rate->calculationRate;
 			}
 		}
