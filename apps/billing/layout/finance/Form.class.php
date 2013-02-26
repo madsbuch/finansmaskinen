@@ -206,6 +206,8 @@ class Form extends \helper\layout\LayoutBlock
 											data-listLink="/accounting/autocompleteVatCode/"
 											data-objLink="/accounting/getVatCode/"
 		                                    data-propagate="true"
+		                                    data-remove="Ingen moms"
+
 											class="input-small lines-#index#-account-vatCode pPicker vatCodeInput totalCompute"
 
 											/><a

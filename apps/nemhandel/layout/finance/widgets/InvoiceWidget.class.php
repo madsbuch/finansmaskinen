@@ -1,8 +1,8 @@
 <?php
 
-namespace app\invoice\layout\finance\widgets;
+namespace app\nemhandel\layout\finance\widgets;
 
-class InvoiceDownloadWidget extends \helper\layout\LayoutBlock implements \helper\layout\Widget{
+class InvoiceWidget extends \helper\layout\LayoutBlock implements \helper\layout\Widget{
 	
 	private $wrapper;
 	private $edom;

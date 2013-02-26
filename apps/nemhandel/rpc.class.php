@@ -19,22 +19,15 @@ class contacts extends \core\rpc {
 	* requireLogin
 	*/
 	static public $requireLogin = true;
-	
+
 	/**
-	* adds a contact
-	*/
+	 * attempt to push an invoice through nemhandel
+	 *
+	 * @param $invoice id of invoice
+	 */
 	function send($invoice){
 		
 	}
-	
-	/**
-	*
-	*/
-	function getSince($timestamp, $offset = 0){
-	
-	}
-	
-	
 }
 
 ?>

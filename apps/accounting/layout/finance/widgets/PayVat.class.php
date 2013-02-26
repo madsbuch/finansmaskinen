@@ -35,18 +35,22 @@ class PayVat extends \helper\layout\LayoutBlock implements \helper\layout\Widget
     function generate()
     {
         //calculate amount
-        $amount = $this->account->income - $this->account->outgoing;
+	    if(!is_null($this->account->income))
+            $amount = $this->account->income - $this->account->outgoing;
+	    else
+	        $amount = __('VAT account is not properly set.');
 
         $this->wrapper->setAttribute('id', 'accounting_widget_container');
 
-        if($amount > 0)
+        if(is_string($amount) || $amount > 0)
             $color = '#f33';
         else
             $color = '#3f3';
 
 
         $ret = '<h2>Moms <small>Betaling af moms</small></h2>
-        <div style="font-weight:bold;font-size:450%;color:'.$color.';text-align:center;margin-top:60px;">'.l::writeValuta($amount).'</div>
+        <div style="font-weight:bold;font-size:450%;color:'.$color.';text-align:center;margin-top:60px;">'.
+	        (is_string($amount) ? ' Fejl i konto. ' : l::writeValuta($amount)).'</div>
         ';
 
         $content = \helper\html::importNode($this->edom, $ret);

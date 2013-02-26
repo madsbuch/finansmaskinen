@@ -54,11 +54,11 @@ class Widget extends \helper\layout\LayoutBlock implements \helper\layout\Widget
 		else {
 			$insertion = new \helper\layout\Table(array(
 				'contact.Party.PartyName' => __('Sender'),
-				'bill.amountTotal' => array(
+				'bill' => array(
 					__('Amount'),
 					function ($data) {
 						return isset($data) ?
-							new \DOMText(l::writeValuta($data))
+							new \DOMText(l::writeValuta($data->amountTotal, $data->currency, true))
 							:
 							new \DOMText('Error');
 					}

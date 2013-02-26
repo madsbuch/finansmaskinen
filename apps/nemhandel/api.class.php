@@ -13,24 +13,7 @@ class nemhandel{
 	* dependencies of this module
 	*/
 	public static $dependencies = array('contacts', 'companyProfile', 'products', 'accounting');
-	
-	/**
-	* getThumbnail
-	*
-	* returns link to thumbnail
-	*/
-	static function getThumbnail(){
-		
-	}
-	
-	/**
-	* get accepted filetypes
-	*
-	* if the app handles files, these are the fileendings appepted
-	*/
-	static function getAcceptetFiletypes(){
-		
-	}
+
 	
 	/**
 	* getTitle
@@ -41,40 +24,47 @@ class nemhandel{
 		return "Nemhandel";
 	}
 	
-	/**
-	* get description
-	*
-	* returns user readable description of app (in users language)
-	*/
-	static function getDescription(){
-		return "Nemhandel";
-	}
-	
-	static function export(){}
-	static function import(){}
-	
-	/**
-	* handles a file. f.eks. used for integratio n with xml or so
-	*/
-	static function handleFile($file){
-	
-	}
-	
-	/**
-	* the same as export?
-	* or maybe this is a automated stuff, that backs up to some user defined
-	* storage (ftp ect)
-	*/
-	static function backup(){}
-	
 	/*************************** Plugins to other apps ***********************/
-	
+
 	/**
-	* returns something if this ontact is available for nemhandel
-	*/
-	static function on_contactGetLatest($contact){
-		return new \app\invoice\layout\finance\ContactWidget(
-			self::get(null, 3, array('contactID' => (string) $contact->_id)), $contact);
+	 * show form for allowing to send invoice through nemhandel or displaying details if invoice
+	 * was sent
+	 *
+	 * @param $invoice \model\finance\Invoice
+	 * @return \app\invoice\layout\finance\ContactWidget
+	 */
+	static function on_getInvoicePostCreate($invoice){
+		return new \app\nemhandel\layout\finance\widgets\InvoiceWidget($invoice);
+	}
+
+	/**
+	 * returns widget that tells whether the invoice is validated, or if it
+	 * needs some fields to be set.
+	 *
+	 * @param $invoice \model\finance\Invoice
+	 */
+	static function on_getInvoiceDraft($invoice){
+
+	}
+
+	/**** ACTUAL API METHODS ****/
+
+	/**
+	 * transforms and queues an invoice to send
+	 *
+	 * @param \app\invoice\layout\finance\ContactWidget $invoice
+	 */
+	static function SendQueue(\app\invoice\layout\finance\ContactWidget $invoice){
+
+	}
+
+	/**
+	 * returns currenct status on invoice
+	 *
+	 * @param $invoiceID
+	 */
+	static function getSatus($invoiceID){
+
 	}
 	
 	

@@ -117,6 +117,7 @@ class View extends \helper\layout\LayoutBlock
 				//adding th link
 				$pid = (string)$p->productID;
 				//@TODO WTF! sheepIT doesn't add #index# after injection, make sure it does, so we can get some id's
+				if(!empty($pid))
 				$tr->setAttribute('data-href', '/products/view/' . (string)$pid);
 
 				return new \DOMText(l::writeValuta($p->lineTotal));
@@ -157,6 +158,7 @@ class View extends \helper\layout\LayoutBlock
 			<label>Hvilken beholdning blev pengene trukket fra:</label>
 			<div class="input-append">
 				<input type="text" class="picker"
+					required="true"
 					id="amountToPay" style="width:80%"
 					data-listLink="/accounting/autocompleteAccounts/payable/do/"
 					data-objLink="/accounting/getAccount/" /><a href="#amountToPay"
@@ -167,6 +169,7 @@ class View extends \helper\layout\LayoutBlock
 			<div class="input-append">
 				<input
 					type="text"
+					required="true"
 					class="picker"
 					id="lia" style="width:80%"
 					data-listLink="/accounting/autocompleteAccounts/equity/do/"

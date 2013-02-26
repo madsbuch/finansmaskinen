@@ -44,7 +44,15 @@ class accounting
 	static function on_getWidget()
 	{
         $settings = self::getSettings();
-        $holderAccount = self::getAccount($settings->vatSettlementAccount);
+		$holderAccount = new \model\finance\accounting\Account();
+
+		try{
+            $holderAccount = self::getAccount($settings->vatSettlementAccount);
+		}
+		catch (\Exception $e){}
+		if(is_null($holderAccount->income))
+			return new \app\accounting\layout\finance\widgets\PayVat($holderAccount);
+
         if($holderAccount->income - $holderAccount->outgoing != 0)
             return new \app\accounting\layout\finance\widgets\PayVat($holderAccount);
 
