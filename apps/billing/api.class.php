@@ -62,7 +62,7 @@ class billing extends \core\api
 	static function on_contactGetLatest($contactObj)
 	{
 		//@TODO check permissions, user should have permission to view bills
-        $bills = self::get(null,  array('isPayed' => false, 'contactID' => (string) $contactObj->_id), 3);
+        $bills = self::get(null,  array('contactID' => (string) $contactObj->_id), 3);
         $objects = array();
         foreach($bills as $b){
             $obj = new \stdClass;
@@ -391,6 +391,9 @@ class billing extends \core\api
 		//set standard values
 		if (!isset($bill->draft)) //assuming draft
 			$bill->draft = true;
+
+		if(!isset($bill->isPayed))
+			$bill->isPayed = false;
 		//final merging array
 		$toMerge = array();
 

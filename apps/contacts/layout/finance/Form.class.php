@@ -104,7 +104,7 @@ class Form extends \helper\layout\LayoutBlock{
 				<div class="input-append">
 					<input type="text" name="currency" placeholder="Standard valuta"
 						style="width:82%" data-listLink="/index/currencies/"
-						class="picker" id="currency"
+						class="picker uppercase" id="currency"
 						title="Valuta" data-content="Valuta der som standard vil
 						blive antaget, hvis andet ikke er angivet." /><a href="#currency"
 						class="btn pickerDP add-on"><i class="icon-circle-arrow-down"></i></a>

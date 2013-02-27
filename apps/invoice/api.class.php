@@ -456,13 +456,15 @@ class invoice{
 			throw new \exception\UserException(__("Validation errors on invoice:\n * %s\n ", implode("\n * ", $errs)));
 		$inv->parse();
 
+	    if(!isset($inv->isPayed))
+		    $inv->isPayed = false;
+	    if(!isset($inv->draft))
+		    $inv->draft = true;
 
 		//merge supplier data in
 		$toMerge = array();
 		$toMerge['Invoice']['AccountingSupplierParty']['Party'] = $supplier->Party->toArray();
 		$toMerge['Invoice']['PaymentMeans'][0] = $supplier->PaymentMeans->toArray();
-        if(!isset($inv->isPayed))
-            $inv->isPayed = false;
 
 		if(isset($inv->Invoice->IssueDate->_content))
 			$toMerge['Invoice']['PaymentMeans'][0]['PaymentDueDate']['_content'] = ($supplier->dueDays
