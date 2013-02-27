@@ -10,4 +10,7 @@ ALTER TABLE `finance`.`accounting_vat_codes`
 	ADD COLUMN `principle` VARCHAR(45) NULL  AFTER `contra_deduction_percentage` ;
 
 use finance;
-ALTER TABLE `finance`.`accounting_accounts` ADD COLUMN `currency` CHAR(3) NULL  AFTER `flags` ;
+ALTER TABLE `finance`.`accounting_accounts`
+ADD COLUMN `currency` CHAR(3) NULL  AFTER `flags` ;
+
+:::::::::::: FINANSMASKINEN:DK ER OPDATERET MED OVENTÅENDE :::::::::::::::::

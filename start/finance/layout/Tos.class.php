@@ -26,6 +26,7 @@ class Tos extends \helper\layout\LayoutBlock
 		<p>Vi tager dog forbehold for prisændringer i forbindelse med ændring af status fra private
 		til public BETA</p>
 
+		<br />
 		<h3>Beskyttelse af dine personlige oplysninger</h3>
 		<p>Finansmaskinen tager beskyttelsen af dine oplysninger meget seriøst. Dine informationer
 		bliver derfor ikke videregivet til nogen andre, og vi kommer kun til at anvende dine data
@@ -37,6 +38,7 @@ class Tos extends \helper\layout\LayoutBlock
 		til politiet.</p>
 		<p>Ingen af dine personlige oplysninger vil blive solgt eller givet til andre virksomheder.</p>
 
+		<br />
 		<h3>Lov om behandling af personoplysninger</h3>
 		<p>De data, som vi registrerer er reguleret af “Lov om behandling af personoplysninger”.
 		Datatilsynet fører tilsyn med enhver behandling der omfattes af loven.  Loven angiver bl.a.
@@ -46,10 +48,12 @@ class Tos extends \helper\layout\LayoutBlock
 		mod de data, vi har registrert om dig.</p>
 		<p>Dine oplysninger vil blive slettet hvis du afmelder din bruger på Finansmaskinen.dk</p>
 
+		<br />
 		<h3>Cookies</h3>
 		<p>På finansmaskinen anvender vi Session Cookies, de bruges til at genkende din computer når
 		du logger ind. Dette muliggør at du kan logge ind på finansmaskinen.dk</p>
 
+		<br />
 		<h3>Generelt:</h3>
 		<p>For at anvende vores system skal du være indforstået med ovennævnte handelsbetingelser.</p>
 		<p>Finansmaskinen kan ikke drages til ansvar for bl.a. forsinkelser eller virus som er
@@ -57,7 +61,7 @@ class Tos extends \helper\layout\LayoutBlock
 		fejl i regnskabet.</p>
 		<p>FInansmaskinen er derudover underlagt de til enhver tid gældende love og regler om
 		produktansvar i Danmark og EU.</p>
-        <a href="/main/tos/agree" class="btn btn-primary">Enig!</a>
+        <a href="/main/tos/agree" class="btn btn-success pull-right btn-large">Enig</a>
         ';
     }
 }

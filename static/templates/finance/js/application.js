@@ -204,7 +204,7 @@ function reAttach () {
 
 //initialise everything
 !function ($) {
-	reAttach();
+	//reAttach();
 	$(document).on('reattach', reAttach());
 }(window.jQuery)
 

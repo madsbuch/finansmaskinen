@@ -133,7 +133,7 @@ class accounting
 
         //adding vat codes
         foreach ($preset::$vatCodes as $vc) //add vatcodes
-			$accHelper->createVatCode(new \model\finance\accounting\VatCode($vc));
+			$accHelper->vat()->createVatCode(new \model\finance\accounting\VatCode($vc));
 
         //adding default accounts
 		foreach ($preset::$accounts as $acc) //add accounts

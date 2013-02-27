@@ -50,16 +50,6 @@ class DkkSolitaire {
 			'net' => true,
 			'type' => 2
 		),
-		array(
-			'code' => 'INGEN',
-			'name' => 'Ingen moms',
-			'percentage' => 0,
-			'deductionPercentage' => 0,
-			'account' => 14261,
-			'contraAccount' => null,
-			'net' => true,
-			'type' => 2
-		),
 	);
 	//default accounts
 	public static $accounts = array(
@@ -196,6 +186,10 @@ class DkkSolitaire {
 			'description' => 'Ydelser der sælges, og pålægges moms',
 			'accountInclVat' => 1200,
 			'accountExclVat' => 1999,
+
+			'expenseAccountInclVat' => 1200,
+			'expenseAccountExclVat' => 1999,
+
 			'accountLiability' => 13110
 		),
 		array(
@@ -203,7 +197,12 @@ class DkkSolitaire {
 			'description' => 'Produkter der sælges, og pålægges moms',
 			'accountInclVat' => 1100,
 			'accountExclVat' => 1999,
-			'accountLiability' => 13110
+
+			'expenseAccountInclVat' => 1100,
+			'expenseAccountExclVat' => 1999,
+
+			'accountLiability' => 13110,
+			'stockAccount' => 12110
 		)
 	);
 

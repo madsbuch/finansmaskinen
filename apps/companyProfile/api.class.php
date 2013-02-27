@@ -279,7 +279,7 @@ class companyProfile{
 		$o = $cp->getObjects('\model\finance\Company');
 		
 		if(count($o) < 1)
-		    self::initialize();
+		    return self::initialize(new \model\finance\Company());
 		$o = $o[0];
 
 		if($o->lastFreeTierReset + \config\finance::$settings['freeTierTime'] < time())
@@ -326,6 +326,9 @@ class companyProfile{
 		//to save
 		$ts = array_key_explode('.', $f);
 		$ts = new \model\finance\Company($ts);
+
+	    //var_dump($ts);
+	    //die();
 
 		//saving
 		return $cp->save($ts);

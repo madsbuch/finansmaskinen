@@ -179,7 +179,14 @@ class MysqlQueries implements \helper\accounting\Queries
 	}
 
 	function createVatCode(){
-
+		return '
+		INSERT INTO
+			accounting_vat_codes
+			(`name`, `type`, `percentage`, `account`, `ubl_taxCatagory`, `description`, `contra_account`, `deduction_percentage`,
+				`contra_deduction_percentage`, `principle`, `grp_id`, `vat_code`)
+		VALUES
+			(:name, :type, :percentage, :account, :taxCategoryID, :description, :contraAccount, :deductionPercentage,
+				:contraDeductionPercentage, :principle, :grp, :code);';
 	}
 
 	//endregion

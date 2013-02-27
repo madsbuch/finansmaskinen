@@ -20,10 +20,10 @@ class nemhandel extends \core\app{
 	function __construct(){
 		$this->header = new \helper\header();
 	}
-	
+
 	/**
-	* the index
-	*/
+	 *
+	 */
 	function index(){
 		$html = $this->getTpl();
 		
@@ -32,6 +32,14 @@ class nemhandel extends \core\app{
 		
 		$this->output_header = $this->header->getHeader();
 		$this->output_content = $html->generate();
+	}
+
+	/**
+	 * shows a single
+	 * @param $id
+	 */
+	function view($id){
+
 	}
 	
 	function getOutputHeader(){

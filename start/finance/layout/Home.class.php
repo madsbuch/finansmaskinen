@@ -51,27 +51,30 @@ class Home extends \helper\layout\LayoutBlock {
 				<div class="app-box">
 					<form method="post" action="/index/createUser">
 						<h2>Opret konto</h2>
-						<input type="text" Placeholder="Betakode"
-						title="Betakode?!" data-content="Vi leger stadig, og af hensyn til leverandører og os selv, venter vi lige lidt endnu med at vise jer hvad der står på menuen ;-)" class="descriptionPopoverLeft"
-						style="width:90%;" name="beta" id="beta" />
-						<input type="text" Placeholder="Dit Navn" name="name" style="width:90%;" id="name" />
+						<input type="text" Placeholder="Betakode" required="true"
+							title="Vi leger stadig, og af hensyn til leverandører og os selv, venter vi lige lidt endnu med at vise jer hvad der står på menuen ;-)"
+							class="descriptionPopoverLeft"
+							style="width:90%;" name="beta" id="beta" />
+						<input type="text" required="true" Placeholder="Dit Navn" name="name" style="width:90%;" id="name" />
 
-						<input type="text" Placeholder="Mail" style="width:90%;" name="mail" id="mail" />
+						<input type="email" required="true" Placeholder="Mail" style="width:90%;" name="mail" id="mail" />
 
-						<input type="password" Placeholder="Kode" style="width:90%;" name="pass" />
-						<input type="password" Placeholder="Kode igen" style="width:90%;" name="repass" />
+						<input type="password" required="true" Placeholder="Kode" style="width:90%;" name="pass" />
+						<input type="password" required="true" Placeholder="Kode igen" style="width:90%;" name="repass" />
 
 						<br />
-						<input type="submit" class="btn btn-success btn-large pull-right" value="Opret konto" />
-						<div class="clearfix" />
+						<div class="clearfix">
+							<input type="submit" value="Opret konto" class="btn btn-success btn-large pull-right" />
+						</div>
 					</form>
 				</div>
 				<div class="app-box">
-					<h2>Mailingliste</h2>
+					<h2>Vil du holdes opdateret?</h2>
+					<p>Få en mail når, vi mangler testere eller lancerer.</p>
 					<form action="http://finansmaskinen.us6.list-manage.com/subscribe/post?u=c615122e5c&amp;id=56c7287c11" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
-						<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required="true" style="width:90%;" />
+						<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Din e-mail" required="true" style="width:90%;" />
 						<div class="clearfix">
-							<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn-success btn-large pull-right" />
+							<input type="submit" value="Tak for interessen" name="subscribe" id="mc-embedded-subscribe" class="btn btn-success btn-large pull-right" />
 						</div>
 					</form>
 				</div>

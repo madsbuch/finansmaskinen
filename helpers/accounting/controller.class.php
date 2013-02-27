@@ -552,6 +552,7 @@ class accounting
 	/**** VAT ****/
 	function createVatCode($vatCode)
 	{
+		return $this->vat()->createVatCode($vatCode);
 		if (is_null($this->grp))
 			throw new \Exception('Action not possible, insufficient permissions');
 

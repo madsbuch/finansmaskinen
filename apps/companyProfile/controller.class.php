@@ -28,14 +28,15 @@ class companyProfile extends \core\app {
 		$html = $this->getOutTpl();
 		$html->appendContent(\helper\layout\Element::heading('Dine virksomhed',
 			'Administrer din virksomhed'));
-		
+
+		//check update
 		$input = new \helper\parser\Post('\model\finance\Company');
 		$company = $input->getObj();
 		if($company){
 			\api\companyProfile::update($company);
 		}
 		
-		$obj = \api\companyProfile::retrieve($company);
+		$obj = \api\companyProfile::retrieve(true);
 		$settings = $this->callAll('getAppSettings', array($obj));
 		$page = new companyProfile\layout\finance\Page($obj, $settings);
 		$html->appendContent($page);

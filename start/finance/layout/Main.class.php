@@ -54,8 +54,8 @@ class Main extends \helper\layout\LayoutBlock {
 			
 			
 			$widget = $dom->createElement('div');
-			$widget->setAttribute('class', 'app-box span6');
-			$widget->setAttribute('style', 'height:250px;position:relative;');
+			$widget->setAttribute('class', 'span6 app-box front-box');
+
 			
 			$w->wrap($widget, $dom);
 			

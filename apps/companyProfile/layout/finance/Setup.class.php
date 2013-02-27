@@ -103,7 +103,7 @@ class Setup extends \helper\layout\LayoutBlock{
 		</div>
 	</div>
 	<span class="offset2">
-		<input type="submit" class="btn btn-primary btn-large offset3 span6" value="Videre" />
+		<input type="submit" class="btn btn-success btn-large offset3 span6" value="Videre" />
 	</span>
 </form>';
 		

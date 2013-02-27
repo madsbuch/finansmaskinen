@@ -25,6 +25,41 @@ class Vat
 	/**** SETTERS ****/
 
 	/**
+	 * @param $vatCode
+	 * @return bool
+	 * @throws \Exception
+	 */
+	function createVatCode(\model\finance\accounting\VatCode $vatCode)
+	{
+		if (is_null($this->srv->grp))
+			throw new \Exception('Action not possible, insufficient permissions');
+
+		$pdo = $this->srv->db->dbh;
+		if(!$sth = $pdo->prepare($this->srv->queries->createVatCode()))
+			throw new \Exception("Vat code query could not be prepared");
+
+		if (!$sth->execute(array(
+			'code'                          =>  $vatCode->code,
+			'type'                          =>  $vatCode->type,
+			'name'                          =>  $vatCode->name,
+			'description'                   =>  $vatCode->description,
+			'account'                       =>  $vatCode->account,
+			'contraAccount'                 =>  $vatCode->counterAccount,
+			'percentage'                    =>  $vatCode->percentage,
+			'deductionPercentage'           =>  $vatCode->deductionPercentage,
+			'contraDeductionPercentage'     =>  $vatCode->contraDeductionPercentage,
+			'principle'                     =>  $vatCode->principle,
+			'taxCategoryID'                 =>  $vatCode->taxcatagoryID,
+			'grp'                           =>  $this->srv->grp,
+		))
+		) {
+			if (DEBUG)
+				throw new \Exception(var_dump($sth->errorInfo()));
+			throw new \Exception('account code is already used:');
+		}
+	}
+
+	/**
 	 * @param \model\finance\accounting\VatCode $vatCode
 	 * @throws \exception\UserException
 	 * @throws \Exception

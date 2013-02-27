@@ -70,7 +70,7 @@ EOF;
 					<option value="DkkMusician">Musiker</option>
 					<option value="none">Jeg sætter selv alting op</option>
 				</select><input class="btn" type="button" data-toggle="modal"
-					data-target="#details" value="Hjælp" style="width:30%" />
+					data-target="#details" value="Hjælp" style="width:20%" />
 			</div>
 			<div class="alert alert-error hide" id="noneAlert">
 				<h5 class="header">OBS!</h5>
@@ -134,7 +134,7 @@ EOF;
 		-->
 	</div>
 	<span class="offset2">
-		<input type="submit" class="btn btn-primary btn-large offset3 span6" value="Videre" />
+		<input type="submit" class="btn btn-success btn-large offset3 span6" value="Videre" />
 	</span>
 </form>';
 		
