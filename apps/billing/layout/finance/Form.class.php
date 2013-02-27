@@ -161,141 +161,147 @@ class Form extends \helper\layout\LayoutBlock
 				<div id="productLine">
 					<div id="productLine_template">
 						<div class="span12">
-							<div class="input-append product hide" style="width:30%;float:left;">
-								<input
-									id="lines-#index#-"
-									name="trash"
-									type="text"
-									class="pPicker totalCompute lines-#index#-Item-Name-_content"
-		                            style="width:75%"
-									data-listLink="/products/autocomplete/"
-									data-objLink="/products/getProduct/"
-									data-titleIndex="addNewProduct"
-		                            title="Tilføj et kendt produkt, lagerføring bliver aktiveret"
-									placeholder="produkt" /><a href="#lines-#index#-"
-									class="btn pickerDroP add-on"><i class="icon-circle-arrow-down"></i></a>
-							</div>
-		                    <div class="hide line" style="width:30%;float:left;">
-
-								<div class="input-append" style="width:50%;float:left;">
+							<div class="row">
+								<div class=" span5 input-append product hide">
 									<input
-										style="width:75%;"
-										type="text"
-										class="pPicker accountPicker"
-										id="lines-#index#-account-"
-										data-replace="lines-#index#-account-name"
+										id="lines-#index#-"
 										name="trash"
-										placeholder="Konto"
-										title="Vælg den konto denne linje skal bogføres til."
-										data-listLink="/accounting/autocompleteAccounts/expense/true/"
-										data-objLink="/accounting/getAccount/"
+										type="text"
+										class="pPicker totalCompute lines-#index#-Item-Name-_content"
+			                            style="width:75%"
+										data-listLink="/products/autocomplete/"
+										data-objLink="/products/getProduct/"
+										data-titleIndex="addNewProduct"
+			                            title="Tilføj et kendt produkt, lagerføring bliver aktiveret"
+										placeholder="produkt" /><a href="#lines-#index#-"
+										class="btn pickerDroP add-on"><i class="icon-circle-arrow-down"></i></a>
+								</div>
 
-										/><a
-										style="width:10px;"
-										href="#lines-#index#-account-"
-										class="btn pickerDroP add-on"><i
-										class="icon-circle-arrow-down"></i></a>
-									</div>
-									<div class="input-append" style="width:30%;margin-left:2rem;float:left;">
-										<input type="text"
-											style="width:70%;"
-											name="lines-#index#-vatCode"
-											id="lines-#index#-inclVat-code"
-											placeholder="Moms"
-											title="Vælg den type moms der passer på lenjen"
-											data-listLink="/accounting/autocompleteVatCode/"
-											data-objLink="/accounting/getVatCode/"
-		                                    data-propagate="true"
-		                                    data-remove="Ingen moms"
-
-											class="input-small lines-#index#-account-vatCode pPicker vatCodeInput totalCompute"
+			                    <div class="span5 hide line">
+									<div class="input-append" style="width:50%;float:left;">
+										<input
+											style="width:75%;"
+											type="text"
+											class="pPicker accountPicker"
+											id="lines-#index#-account-"
+											data-replace="lines-#index#-account-name"
+											name="trash"
+											placeholder="Konto"
+											title="Vælg den konto denne linje skal bogføres til."
+											data-listLink="/accounting/autocompleteAccounts/expense/true/"
+											data-objLink="/accounting/getAccount/"
 
 											/><a
-											href="#lines-#index#-inclVat-code"
+											style="width:10px;"
+											href="#lines-#index#-account-"
 											class="btn pickerDroP add-on"><i
 											class="icon-circle-arrow-down"></i></a>
-									</div>
+										</div>
+										<div class="input-append" style="width:30%;margin-left:2rem;float:left;">
+											<input type="text"
+												style="width:70%;"
+												name="lines-#index#-vatCode"
+												id="lines-#index#-inclVat-code"
+												placeholder="Moms"
+												title="Vælg den type moms der passer på lenjen"
+												data-listLink="/accounting/autocompleteVatCode/"
+												data-objLink="/accounting/getVatCode/"
+			                                    data-propagate="true"
+			                                    data-remove="Ingen moms"
 
-							</div>
+												class="input-small lines-#index#-account-vatCode pPicker vatCodeInput totalCompute"
 
-                            <input
-                                type="text"
-                                name="lines-#index#-text"
-                                id="line-#index#-text"
-                                placeholder="Beskrivese"
-                                title="Beskriv eventuelt hvad linjen indeholder"
-                                style="float:left;width:30%;" />
+												/><a
+												href="#lines-#index#-inclVat-code"
+												class="btn pickerDroP add-on"><i
+												class="icon-circle-arrow-down"></i></a>
+										</div>
 
-							<p id="#index#" class="readIndex hide" />
+								</div>
 
-							<input id="lines-#index#-quantity"
-								required="true"
-								name="lines-#index#-quantity"
-								type="text" class="add-on totalCompute" placeholder="Antal"
-								style="width:8%;margin-left:15px;"
-								title="Hvor mange er der indkøbt af enheden?"/>
+	                            <input
+	                                type="text"
+	                                name="lines-#index#-text"
+	                                id="line-#index#-text"
+	                                placeholder="Beskrivese"
+	                                title="Beskriv eventuelt hvad linjen indeholder"
+	                                class="span3" />
 
-							<input id="lines-#index#-amount"
-								required="true"
-								name="lines-#index#-amount"
-								data-replace="lines-#index#-retailPrice-_content"
-								title="Hvad har hver enhed kostet?"
-								type="text"
-								class="totalCompute money"
-								placeholder="Pris"
-								style="width:8%" />
-
-							<input
-								id="lineTotal-#index#"
-								name="trash" type="text"
-								title="Dette er linjens totalbeløb"
-								style="width:8%" value="-,-" disabled="disabled" />
-
-							<a  href="#"
-								class="btn settingsBox"
-		                        title="instillinger"
-								data-toggle="#settings-#index#"><i
-								class="icon-wrench"
-								></i></a>
-
-							<a href="#"
-								class="btn"
-								id="productLine_remove_current"
-								title="Fjern linje"><i
-								class="icon-minus"
-								title="Fjern linje"></i></a>
-
-							<div class="form-inline hide"
-								id="settings-#index#"
-								style="margin-bottom:1rem;">
+								<p id="#index#" class="readIndex hide" />
 
 								<input
+									id="lines-#index#-quantity"
+									required="true"
+									name="lines-#index#-quantity"
 									type="text"
-									id="lines-#index#-account"
-									name="lines-#index#-account"
-									data-replace="lines-#index#-account-code" />
+									class="span1 add-on totalCompute" placeholder="Antal"
+									title="Hvor mange er der indkøbt af enheden?"/>
 
-							    <input
-							        type="text"
-							        id="lines-#index#-productID"
-							        name="lines-#index#-productID" />
+								<input id="lines-#index#-amount"
+									required="true"
+									name="lines-#index#-amount"
+									data-replace="lines-#index#-retailPrice-_content"
+									title="Hvad har hver enhed kostet?"
+									type="text"
+									class="span1 totalCompute money"
+									placeholder="Pris"
+									style="width:8%" />
+
 								<input
-							        type="text"
-							        id="lines-#index#-vatPercent"
-							        data-replace="lines-#index#-inclVat-codepercentage"
-							        name="trash" />
-							    <input
-							        type="text"
-							        id="lines-#index#-vatDeductionPercent"
-							        data-replace="lines-#index#-inclVat-codedeductionPercentage"
-							        name="trash" />
-							    <input
-							        type="text"
-							        id="lines-#index#-vatPrinciple"
-							        value="brutto"
-							        name="trash" />
-							</div>
+									id="lineTotal-#index#"
+									name="trash" type="text"
+									title="Dette er linjens totalbeløb"
+									class="span1"
+									style="width:8%"
+									value="-,-"
+									disabled="disabled" />
 
+								<!--
+									<a  href="#"
+										class="btn settingsBox"
+				                        title="instillinger"
+										data-toggle="#settings-#index#"><i
+										class="icon-wrench"
+										></i></a>-->
+
+								<a href="#"
+									class="btn"
+									id="productLine_remove_current"
+									title="Fjern linje"><i
+									class="icon-minus"
+									title="Fjern linje"></i></a>
+
+								<div class="form-inline hide"
+									id="settings-#index#"
+									style="margin-bottom:1rem;">
+
+									<input
+										type="text"
+										id="lines-#index#-account"
+										name="lines-#index#-account"
+										data-replace="lines-#index#-account-code" />
+
+								    <input
+								        type="text"
+								        id="lines-#index#-productID"
+								        name="lines-#index#-productID" />
+									<input
+								        type="text"
+								        id="lines-#index#-vatPercent"
+								        data-replace="lines-#index#-inclVat-codepercentage"
+								        name="trash" />
+								    <input
+								        type="text"
+								        id="lines-#index#-vatDeductionPercent"
+								        data-replace="lines-#index#-inclVat-codedeductionPercentage"
+								        name="trash" />
+								    <input
+								        type="text"
+								        id="lines-#index#-vatPrinciple"
+								        value="brutto"
+								        name="trash" />
+								</div>
+							</div>
 						</div>
 					</div>
 

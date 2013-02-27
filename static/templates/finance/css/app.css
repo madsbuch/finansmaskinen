@@ -2,7 +2,7 @@
 -------------------------------------------------- */
 
 * {
-	position: relative;
+	/*position: relative;*/
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 }
@@ -44,5 +44,6 @@ html {
 /**MISC**/
 
 .front-box{
-	height:250px;
+	position: relative;
+	height:260px;
 }
