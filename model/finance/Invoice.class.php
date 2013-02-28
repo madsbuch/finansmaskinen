@@ -130,6 +130,10 @@ class Invoice extends \model\AbstractModel{
 		$ret = array();
 		if(empty($this->Invoice))
 			$ret[] = __('The invoice needs the actual invoice object');
+
+		if(empty($this->contactID))
+			$ret[] = __('The invoice needs a contact');
+
 		return $ret;
 	}
 }

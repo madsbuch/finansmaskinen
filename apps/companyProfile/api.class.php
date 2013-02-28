@@ -94,17 +94,18 @@ class companyProfile{
 		return $sth->execute(array($amount, $account, $id, $ref, false));
 	}
 
-    /**
-     * not approved untill moneyApply
-     * account is either accountCredit or accountWithdrawable
-     *
-     * @param $amount
-     * @param $ref
-     * @param $account
-     * @throws \exception\UserException
-     * @throws \Exception
-     * @return bool
-     */
+	/**
+	 * not approved untill moneyApply
+	 * account is either accountCredit or accountWithdrawable
+	 *
+	 * @param $amount
+	 * @param $ref
+	 * @param $account
+	 * @param bool $allowSubZero
+	 * @throws \exception\UserException
+	 * @throws \Exception
+	 * @return bool
+	 */
     static function moneyWithdraw($amount, $ref, $account, $allowSubZero = false){
 		//get a database object
 		$pdo = new \helper\core('companyProfile');
@@ -301,8 +302,13 @@ class companyProfile{
 	 * @internal param $dObj
 	 * @return array|bool|mixed
 	 */
-    static function update($obj, $direct = false){
+    static function update(\model\finance\Company $obj, $direct = false){
 		//@TODO check permissions
+
+	    //unsets illegal fields
+	    foreach(\model\finance\Company::$_blacklist as $b){
+		    unset($obj->$b);
+	    }
 
 		$cp = new \helper\lodo('companyProfiles', 'companyProfile');
 		if($direct)
