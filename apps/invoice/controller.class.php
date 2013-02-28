@@ -97,6 +97,25 @@ class invoice extends \core\app
     }
 
 	/**
+	 * remove invoice
+	 *
+	 * @param $id id of invoice
+	 */
+	function remove($id){
+		\api\invoice::remove($id);
+
+		$html = $this->getTpl();
+
+		$m = new \helper\layout\MessagePage('Deleted!',
+			'<p>'.__('Your invoice was deleted.').'</p>');
+
+		$html->add2content($m);
+
+		$this->output_header = $this->header->getHeader();
+		$this->output_content = $html->generate();
+	}
+
+	/**
 	 * shows page for mailing invoice
 	 */
 	function mail($id = null)

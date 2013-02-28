@@ -26,8 +26,9 @@ class Draft extends \helper\layout\LayoutBlock implements \helper\layout\Widget{
 		$h2 = $this->edom->createElement('h3', __('Draft'));
 		$root->appendChild($h2);
 		$root->appendChild(\helper\html::importNode($dom, '
-		<div>
+		<div class="clearfix">
 			<p>'.__('This invoice is an draft. Finish is to send or download it.').'</p>
+			<a href="/invoice/remove/'.$this->invoice->_id.'" class="btn btn-warning pull-right">'.__('Delete this draft.').'</a>
 		</div>'));
 			
 		return $root;

@@ -16,23 +16,70 @@ class ListAccounts extends \helper\layout\LayoutBlock{
 	function generate(){
 		$list = $this->iterator;
 		
-		$getTotal = function($obj, $dom){
-						return new \DOMText(l::writeValuta($obj->income - $obj->outgoing));
-					};
+		$getTotal = function($obj, $dom, $field, $row){
+			$row->setAttribute('data-href', '/accounting/viewAccount/'.$obj->_id);
+			return new \DOMText(l::writeValuta($obj->income - $obj->outgoing));
+		};
 		
 		//the descriptor for making the table from the objects
-		$table = new \helper\layout\Table(array(
+		$descriptor = array(
 			'code' => 'Kode',
 			'name' => 'Navn',
 			'vatCode' => 'Momskode',
 			'.' => array('Indestående', $getTotal)
-		));
-		
-		$table->setNull('-');
-		$table->setEmpty(__('No accountings to show'));
-		$table->setItterator($list);
-		
-		$table = $table->generate();
+		);
+		$descriptorBalance = array(
+			'code' => 'Kode',
+			'name' => 'Navn',
+			'.' => array('Indestående', $getTotal)
+		);
+
+		$assertTable = new \helper\layout\Table($descriptorBalance);
+		$assertTable->setNull('-');
+		$assertTable->setEmpty(__('No accountings to show'));
+
+		$liabilityTable = new \helper\layout\Table($descriptorBalance);
+		$liabilityTable->setNull('-');
+		$liabilityTable->setEmpty(__('No accountings to show'));
+
+		$incomeTable = new \helper\layout\Table($descriptor);
+		$incomeTable->setNull('-');
+		$incomeTable->setEmpty(__('No accountings to show'));
+
+		$expenseTable = new \helper\layout\Table($descriptor);
+		$expenseTable->setNull('-');
+		$expenseTable->setEmpty(__('No accountings to show'));
+
+
+		foreach($list as $account){
+			/**
+			 * @var $account \model\finance\accounting\Account
+			 */
+			switch($account->type){
+				case 1:
+					$assertTable->addObject($account);
+					break;
+				case 2:
+					$liabilityTable->addObject($account);
+					break;
+				case 3:
+					$expenseTable->addObject($account);
+					break;
+				case 4:
+					$incomeTable->addObject($account);
+					break;
+			}
+		}
+
+		$assertTable->additionalClasses('span6');
+		$liabilityTable->additionalClasses('span6');
+		$incomeTable->additionalClasses('span6');
+		$expenseTable->additionalClasses('span6');
+
+		$assertTable = $assertTable->generate();
+		$liabilityTable = $liabilityTable->generate();
+		$incomeTable = $incomeTable->generate();
+		$expenseTable = $expenseTable->generate();
 		
 		$dom = new \DOMDocument();
 		$root = $dom->createElement('div');
@@ -98,7 +145,29 @@ class ListAccounts extends \helper\layout\LayoutBlock{
 			</div>');
 		
 		$root->appendChild($form);
-		$root->appendChild(\helper\html::importNode($dom, $table));
+
+		$top = $dom->createElement('div');
+		$top->setAttribute('class', 'row');
+
+		$top->appendChild($dom->createElement('h1', 'Drift'));
+
+		$top->appendChild(\helper\html::importNode($dom, $incomeTable));
+		$top->appendChild(\helper\html::importNode($dom, $expenseTable));
+
+		$root->appendChild($top);
+
+
+
+		$bottom = $dom->createElement('div');
+		$bottom->setAttribute('class', 'row');
+
+		$bottom->appendChild($dom->createElement('h1', 'Balance'));
+
+		$bottom->appendChild(\helper\html::importNode($dom, $assertTable));
+		$bottom->appendChild(\helper\html::importNode($dom, $liabilityTable));
+
+		$root->appendChild($bottom);
+
 		return $root;
 	}
 }
