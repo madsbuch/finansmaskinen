@@ -113,8 +113,10 @@ class ListAccounts extends \helper\layout\LayoutBlock{
 						</div>
 					</div>
 					<div class="span2">
-						<input type="checkbox" class="checkbox {labelOn: \'Beholdning\', labelOff: \'Ikke beholdning\'}"
-							name="allowPayments" />
+						<input type="checkbox"
+							class="checkbox {labelOn: \'Beholdning\', labelOff: \'Ikke beholdning\'}"
+							name="allowPayments"
+							 value="on"/>
 					</div>
 					<div class="span3 offset2">
 						<input type="submit" Value="Opret konto" class="btn btn-primary" />

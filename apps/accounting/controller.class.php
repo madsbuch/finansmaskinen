@@ -129,14 +129,17 @@ class accounting extends \core\app{
 		$html = $this->getOutTpl();
 		//check for input
 		$input = new \helper\parser\Post('\model\finance\accounting\Account');
+
+
 		$object = $input->getObj();
-		
+
 		// add account, if present (ajax enabled?)
-		if($object){
-			if(is_null($object->allowPayments))
-				$object->allowPayments = false;
-			else
+		if(!is_null($object)){
+			if($object->allowPayments == 'on')
 				$object->allowPayments = true;
+			else
+				$object->allowPayments = false;
+
 			try{
 				if(\api\accounting::createAccount($object)){
 					$c = new \helper\layout\UserMsg('
