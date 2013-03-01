@@ -176,6 +176,20 @@ class accounting extends \core\app{
 	}
 
 	/**
+	 * @param $id
+	 */
+	function viewAccount($id){
+		$html = $this->getOutTpl();
+		$html->appendContent(\helper\layout\Element::heading(__('Account'),
+			__('Details for account')));
+
+		
+
+		$this->output_header = $this->header->getHeader();
+		$this->output_content = $html->generate();
+	}
+
+	/**
 	 * show current vat statement
 	 */
 	function vat(){
