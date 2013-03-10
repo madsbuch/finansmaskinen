@@ -21,7 +21,7 @@ class AccountingTest extends UnitTestCase
 	private $client;
 	private $accounting;//string of a known accounting
 
-    private $vatStatement;
+	private $vatStatement;
 
 	/**
 	 * authenticate to the app, and stuff
@@ -141,38 +141,50 @@ class AccountingTest extends UnitTestCase
 		$this->assertTrue(isset($vatcode));
 	}
 
-    function testAccessVat(){
-        $vatStatement = $this->client->getVatStatement();
-        $this->assertTrue(isset($vatStatement));
-    }
+	function testAccessVat(){
+		$vatStatement = $this->client->getVatStatement();
+		$this->assertTrue(isset($vatStatement));
+	}
 
-    function testPostToVat(){
+	function testAutomatedPost(){
+		//test REP code, for 100DKK 118.74 should be posted to account, 6.25 to the vat account
+		//applies equity account, assert account and vat code, let the system do everything else.
 
-    }
+		$transaction = new \model\finance\accounting\DaybookTransaction(array(
+			'referenceText' => 'test' . uniqid(),
+			'postings' => array(
+				array(
+					'account' => 1100,
+					'overrideVat' => 'REP',
+					'amount' => 10000,
+					'positive' => true,
+					'description' => 'dette er en test',
+				),
+			),
+			'approved' => true,
 
-    function testActuallyPosted(){
+		));
+	}
 
-    }
+	/**
+	 * make sure we have som VAT to post
+	 */
+	function testPostSomethingThatRequiresVat(){
 
-    /**
-     * make sure we have som VAT to post
-     */
-    function testPostSomethingThatRequiresVat(){
-
-    }
+	}
 
 	/**
 	 * attempts to reset vat
-     *
+	 *
 	 */
 	function testVatReset(){
-        //get value from holder account
-        $this->vatStatement = new \model\finance\accounting\VatStatement($this->client->getVatStatement());
+		//get value from holder account
+		$this->vatStatement = new \model\finance\accounting\VatStatement($this->client->getVatStatement());
 
-        //make the system post
-        $ret =  $this->client->resetVat();
-        $this->assertTrue($ret['success']);
-        $this->assertTrue($this->vatStatement->total != 0, 'this test requires, that there is something in vat statement.');
+		//make the system post
+		$ret =  $this->client->resetVat();
+		$this->assertTrue($ret['success']);
+		$this->assertTrue($this->vatStatement->total != 0, 'this test requires, that there is something in vat statement.');
 
 		//test whether it worked
 		$vat = new \model\finance\accounting\VatStatement($this->client->getVatStatement());

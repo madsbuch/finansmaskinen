@@ -14,6 +14,7 @@ namespace model\finance\accounting;
  * @property $postings array
  * @property $date int
  * @property $approved bool
+ * @property $_id
  */
 class DaybookTransaction extends \model\AbstractModel
 {
@@ -32,7 +33,7 @@ class DaybookTransaction extends \model\AbstractModel
 
 
 	/**
-	 * @var postings
+	 * @var \model\finance\accounting\Posting
 	 */
 	protected $postings;
 

@@ -8,8 +8,7 @@
 
 namespace helper\html;
 
-class HTMLMerger{
-	private $dom;
+class HTMLMerger extends \helper\layout\LayoutBlock{
 	private $element;
 	private $o;
 	
@@ -27,7 +26,7 @@ class HTMLMerger{
 	* $remove makes sure the id field goes away
 	*/
 	function __construct($html, $object){
-		$this->dom = new \DOMDocument();
+		parent::__construct();
 		$this->element = \helper\html::importNode($this->dom, $html);
 		$this->dom->appendChild($this->element);
 		$this->o = $object;

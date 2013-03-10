@@ -347,6 +347,20 @@ class accounting
 	}
 
 	/**
+	 * returns a daybooktransaction
+	 * @param $id
+	 * @return \model\finance\accounting\DaybookTransaction
+	 */
+	static function getTransaction($id){
+		$acc = self::retrieve();
+
+		$acc = (string)$acc->_id;
+		$acc = new \helper\accounting($acc);
+
+		return $acc->transaction()->getTransactionByID($id);
+	}
+
+	/**
 	 * approves transactions of given refere
 	 *
 	 * this is similar to commit in databases

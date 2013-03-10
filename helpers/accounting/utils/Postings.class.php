@@ -25,6 +25,7 @@ class Postings
 	 * @param int $start
 	 * @param int $num
 	 * @param bool $limitToCurrentAccounting
+	 * @throws \Exception
 	 * @return array
 	 */
 	function getPostingsForAccount($accountCode, $start=0, $num=1000, $limitToCurrentAccounting=true){
@@ -50,6 +51,30 @@ class Postings
 				'account' => $accountCode,
 				'amount' => abs($t['amount_in'] - $t['amount_out']),
 				'positive' => ($t['amount_in'] > 0)
+			));
+		}
+
+		return $ret;
+	}
+
+	function getPostingsForTransaction($transactionID){
+		$sth = $this->srv->db->dbh->prepare($this->srv->queries->getPostingsForTransaction());
+		if(!$sth)
+			throw new  \Exception('Unable to perform query');
+
+		$ret = array();
+
+		$sth->execute(array(
+			'transactionID' => $transactionID,
+		));
+
+		foreach ($sth->fetchAll() as $p) {
+			$ret[]  = new \model\finance\accounting\Posting(array(
+				'_id' => $p['id'],
+				'account' => $p['account_id'],
+				'amount' => abs($p['amount_in'] + $p['amount_out']),
+				'positive' => $p['amount_in'] - $p['amount_out'] > 0
+
 			));
 		}
 

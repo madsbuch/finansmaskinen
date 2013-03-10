@@ -73,7 +73,8 @@ class accounting extends \core\app{
 	function transaction($id = null){
 		$html = $this->getOutTpl();
 
-		$html->appendContent(new \app\accounting\layout\finance\ViewSingleTransaction(null));
+		$t = \api\accounting::getTransaction($id);
+		$html->appendContent(new \app\accounting\layout\finance\ViewSingleTransaction($t));
 
 		$this->output_header = $this->header->getHeader();
 		$this->output_content = $html->generate();
@@ -183,10 +184,17 @@ class accounting extends \core\app{
 		$html->appendContent(\helper\layout\Element::heading(__('Account'),
 			__('Details for account')));
 
-		
+		$view = new \app\accounting\layout\finance\ViewAccount(
+			\api\accounting::getAccount($id),
+			array());
+		$html->appendContent($view);
 
 		$this->output_header = $this->header->getHeader();
 		$this->output_content = $html->generate();
+	}
+
+	function updateAccount(){
+		throw new \exception\UserException(__('Not yet implemented.'));
 	}
 
 	/**

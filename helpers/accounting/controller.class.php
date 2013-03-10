@@ -342,6 +342,9 @@ class accounting
 
 		//go through all postings and fetch VAT codes
 		foreach($dbTrans->postings as $post){
+			/**
+			 * @property \model\finance\accounting\VatCode
+			 */
 			$vat = isset($post->overrideVat) ? $this->getVatCode($post->overrideVat) : $this->getVatCodeForAccount($post->account);
 			//check that there is an vat object
 			if(is_null($vat))
@@ -357,7 +360,9 @@ class accounting
 			}
 
 			//increment amount taking percentage in account
-			$vatCodes[$vat->code]['amount'] += $post->amount * ($vat->percentage / 100);
+			$vatCodes[$vat->code]['amount'] += $post->amount * ($vat->deductionPercentage / 100);
+
+			//add the reversed perentage amount to the account
 		}
 
 		//add postings for vatcodes
@@ -553,33 +558,6 @@ class accounting
 	function createVatCode($vatCode)
 	{
 		return $this->vat()->createVatCode($vatCode);
-		if (is_null($this->grp))
-			throw new \Exception('Action not possible, insufficient permissions');
-
-		$pdo = $this->db->dbh;
-		$sth = $pdo->prepare('INSERT INTO `accounting_vat_codes`
-			(`grp_id`, `vat_code`, `name`, `type`, `percentage`, `account`, `counter_account`, `ubl_taxCatagory`)
-			VALUES
-			(?, ?, ?, ?, ?, ?, ?, ?);');
-
-		if (!is_array($vatCode))
-			$vatCode = array($vatCode);
-		foreach ($vatCode as $v)
-			if (!$sth->execute(array(
-				$this->grp,
-				$v->code,
-				$v->name,
-				$v->type,
-				$v->percentage,
-				$v->account,
-				$v->counterAccount,
-				$v->taxcatagoryID,))
-			) {
-				if (DEBUG)
-					throw new \Exception(var_dump($sth->errorInfo()));
-				throw new \Exception('account code is already used:');
-			}
-		return true;
 	}
 
 	/**

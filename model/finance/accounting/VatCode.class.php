@@ -72,12 +72,12 @@ class VatCode extends \model\AbstractModel
 	protected $contraAccount;
 
 	/**
-	 *
+	 * used to calculate the base price from a price wth added VAT
 	 */
 	protected $percentage;
 
 	/**
-	 * How much is posted to the account
+	 * Used to calculate how much to post on the VAT account
 	 *
 	 * @var
 	 */
