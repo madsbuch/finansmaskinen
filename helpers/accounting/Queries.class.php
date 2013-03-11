@@ -124,16 +124,17 @@ interface Queries
 	 */
 	function insertTransaction();
 
-    /**
-     * returns a query to get all transactions, takes folloing parameters:
-     *  start   starting row
-     *  num     row number limit
-     *  accounting
-     *
-     *
-     * @return string
-     */
-    function getTransactions();
+	/**
+	 * returns a query to get all transactions, takes folloing parameters:
+	 *  start   starting row
+	 *  num     row number limit
+	 *  accounting
+	 *
+	 *
+	 * @param $id
+	 * @return string
+	 */
+    function getTransactions($id = null);
 
 	/**
 	 * returns a query, that extracts a single reference based on
@@ -157,6 +158,14 @@ interface Queries
 	 * @return string
 	 */
 	function getPostings($accounting);
+
+	/**
+	 * returns a query that takes followng:
+	 *  transactionID   id of transactions postings are for.
+	 *
+	 * @return string
+	 */
+	function getPostingsForTransaction();
 
 	//endregion
 

@@ -14,17 +14,21 @@ class ViewTransactions extends \helper\layout\LayoutBlock{
 	
 	function generate(){
 		
-		$genAppr = function($a, $dom){
-							if($a){
-								$toRet = $dom->createElement('span', __('Godkendt'));
-								$toRet->setAttribute('class', 'label label-success');
-							}
-							else{
-								$toRet = $dom->createElement('span', __('Ikke godkendt'));
-								$toRet->setAttribute('class', 'label label-important');
-							}
-							return $toRet;
-						};
+		$genAppr = function($o, $dom, $field, $row){
+			if($o->approved){
+				$toRet = $dom->createElement('span', __('Godkendt'));
+				$toRet->setAttribute('class', 'label label-success');
+			}
+			else{
+				$toRet = $dom->createElement('span', __('Ikke godkendt'));
+				$toRet->setAttribute('class', 'label label-important');
+			}
+
+			//adding link to row
+			$row->setAttribute('data-href', '/accounting/transaction/'.$o->_id);
+
+			return $toRet;
+		};
 
 		$genDate = function($a, $dom){
 							$toRet = new \DOMText(date('d/m/Y', strtotime($a)));
@@ -33,12 +37,7 @@ class ViewTransactions extends \helper\layout\LayoutBlock{
 		$table = new \helper\layout\Table(array(
 			'referenceText' => 'Reference',
 			'date' => array('Dato', $genDate),
-			'approved' => array('Status', $genAppr),
-			'_id' => array('More', function($id, $dom){
-				$a = $dom->createElement('a', __('More'));
-				$a->setAttribute('href', '/accounting/transaction/'.$id);
-				return $a;
-			})
+			'.' => array('Status', $genAppr),
 		));
 		
 		$table->setNull('-');

@@ -17,7 +17,10 @@ class ListAccounts extends \helper\layout\LayoutBlock{
 		$list = $this->iterator;
 		
 		$getTotal = function($obj, $dom, $field, $row){
-			$row->setAttribute('data-href', '/accounting/viewAccount/'.$obj->_id);
+			/**
+			 * @var $obj \model\finance\accounting\Account
+			 */
+			$row->setAttribute('data-href', '/accounting/viewAccount/'.$obj->code);
 			return new \DOMText(l::writeValuta($obj->income - $obj->outgoing));
 		};
 		

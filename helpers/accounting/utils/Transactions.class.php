@@ -204,9 +204,39 @@ class Transactions
 	 * returns transaction by transactionID
 	 *
 	 * @param $id
+	 * @return \model\finance\accounting\DaybookTransaction
+	 * @throws \Exception
 	 */
 	function getTransactionByID($id){
+		$pdo = $this->db->dbh;
 
+		//trnsaction data
+		$ret = null;
+		//following is because emulation of prepares recognizes limit :start, :num as strings, which makes an syntax error
+		$pdo->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
+		$sth = $pdo->prepare($this->queries->getTransactions());
+		if(!$sth)
+			throw new  \Exception('Unable to perform query: ' . implode('; ', $pdo->errorInfo()));
+
+		$sth->execute(array(
+			'accounting' => $this->accounting,
+			'start' => 0,
+			'num' => 1
+		));
+
+		foreach ($sth->fetchAll() as $t) {
+			$ret = new \model\finance\accounting\DaybookTransaction(array(
+				'referenceText' => $t['reference'],
+				'date' => $t['date'],
+				'approved' => $t['approved'],
+				'_id' => $t['id']
+			));
+		}
+
+		//postings
+		$ret->postings = $this->srv->controller->postings()->getPostingsForTransaction($ret->_id);
+
+		return $ret;
 	}
 
 	/**

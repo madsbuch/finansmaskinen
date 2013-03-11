@@ -66,13 +66,16 @@ class MysqlQueries implements \helper\accounting\Queries
 	//region transactions
 	/**** transactions ****/
 
-	function getTransactions(){
+	function getTransactions($id = null){
+
+		$id = is_null($id) ? '' : ' AND id = '.(int) $id;
+
 		return 'SELECT
           id,
           date,
 	      reference,
 	      approved
-	    FROM accounting_transactions WHERE accounting_id = :accounting
+	    FROM accounting_transactions WHERE accounting_id = :accounting '.$id.'
 	      ORDER BY date DESC LIMIT :start, :num';
 	}
 
@@ -82,23 +85,6 @@ class MysqlQueries implements \helper\accounting\Queries
 			    accounting_transactions (date, reference, approved, accounting_id)
 			values
 			    (:date, :referenceText, :approved, :accounting_id);';
-	}
-
-	function insertPosting(){
-		return '
-		INSERT INTO accounting_postings
-		    (`account_id`, `amount_in`, `amount_out`, `transaction_id`)
-		VALUES(
-		    (select
-		        id
-		    from
-		        accounting_accounts as a
-		    WHERE
-		            a.code = :account
-		        AND a.grp_id = :grp),
-		   :amount_in,
-		   :amount_out,
-		   :transaction_id );';
 	}
 
 	function getTransactionByReference(){
@@ -205,6 +191,34 @@ class MysqlQueries implements \helper\accounting\Queries
 			    account_id = (select id from accounting_accounts where grp_id = :grp and code = :accountCode)
 			    '.$limit.'
 			limit :start,:num';
+	}
+
+	function insertPosting(){
+		return '
+		INSERT INTO accounting_postings
+		    (`account_id`, `amount_in`, `amount_out`, `transaction_id`)
+		VALUES(
+		    (select
+		        id
+		    from
+		        accounting_accounts as a
+		    WHERE
+		            a.code = :account
+		        AND a.grp_id = :grp),
+		   :amount_in,
+		   :amount_out,
+		   :transaction_id );';
+	}
+
+	function getPostingsForTransaction(){
+		return '
+			SELECT
+				*
+			FROM
+				accounting_postings
+			WHERE
+				transaction_id = :transactionID;
+		';
 	}
 
 	//endregion
