@@ -71,7 +71,7 @@ class Postings
 		foreach ($sth->fetchAll() as $p) {
 			$ret[]  = new \model\finance\accounting\Posting(array(
 				'_id' => $p['id'],
-				'account' => $p['account_id'],
+				'account' => $p['account_code'],
 				'amount' => abs($p['amount_in'] + $p['amount_out']),
 				'positive' => $p['amount_in'] - $p['amount_out'] > 0
 

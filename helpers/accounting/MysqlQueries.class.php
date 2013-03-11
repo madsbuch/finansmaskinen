@@ -213,11 +213,13 @@ class MysqlQueries implements \helper\accounting\Queries
 	function getPostingsForTransaction(){
 		return '
 			SELECT
-				*
+				ap.*, aa.code as account_code
 			FROM
-				accounting_postings
+				accounting_postings as ap,
+				accounting_accounts as aa
 			WHERE
-				transaction_id = :transactionID;
+					transaction_id = :transactionID
+				AND	ap.account_id = aa.id;
 		';
 	}
 

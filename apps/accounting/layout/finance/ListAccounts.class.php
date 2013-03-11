@@ -21,18 +21,23 @@ class ListAccounts extends \helper\layout\LayoutBlock{
 			 * @var $obj \model\finance\accounting\Account
 			 */
 			$row->setAttribute('data-href', '/accounting/viewAccount/'.$obj->code);
+			$field->setAttribute('style', 'width:20%;');
 			return new \DOMText(l::writeValuta($obj->income - $obj->outgoing));
+		};
+		$code = function($obj, $dom, $field, $row){
+			$field->setAttribute('style', 'width:15%;');
+			return new \DOMText($obj);
 		};
 		
 		//the descriptor for making the table from the objects
 		$descriptor = array(
-			'code' => 'Kode',
+			'code' => array('Kode', $code),
 			'name' => 'Navn',
 			'vatCode' => 'Momskode',
 			'.' => array('Indestående', $getTotal)
 		);
 		$descriptorBalance = array(
-			'code' => 'Kode',
+			'code' => array('Kode', $code),
 			'name' => 'Navn',
 			'.' => array('Indestående', $getTotal)
 		);
@@ -123,7 +128,6 @@ class ListAccounts extends \helper\layout\LayoutBlock{
 					</div>
 					<div class="span3 offset2">
 						<input type="submit" Value="Opret konto" class="btn btn-primary" />
-						<a href="/accounting/vatCodes" class="btn">Momskonti</a>
 					</div>
 				</div>
 			</form>
