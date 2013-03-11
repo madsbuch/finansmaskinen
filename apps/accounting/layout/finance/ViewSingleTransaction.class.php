@@ -59,7 +59,7 @@ class ViewSingleTransaction extends \helper\layout\LayoutBlock
 		$table = new \helper\layout\Table(array(
 			'account' => __('Account'),
 			'.' => array(__('Amount'), function($o){
-				return new \DOMText(($o->positive ? '' : '') . $o->amount);
+				return new \DOMText(($o->positive ? '' : '-') . l::writeValuta($o->amount));
 			}),
 		));
 		$table->setEmpty(__('No postings on this transaction.'));

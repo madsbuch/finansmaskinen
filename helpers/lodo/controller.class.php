@@ -213,6 +213,8 @@ class lodo
 	 * this is also used as tags
 	 *
 	 * @param $grp array of grps to apply
+	 * @throws \Exception
+	 * @return bool
 	 */
 	function setGroups($grp)
 	{
@@ -261,13 +263,14 @@ class lodo
 	}
 
     /**
-     * marks an object as deleted
+     * marks a single object as deleted
      *
      * @param $id
      */
     function delete($id)
 	{
-
+		//update the document
+		$this->collection->update(array('_id' => new \MongoId($id), array('$set' => array('_subsystem.deleted' => true))));
 	}
 
 	/**
@@ -310,13 +313,14 @@ class lodo
 		return $obj;
 	}
 
-    /**
-     * updates an document, and saves it to the database.
-     *
-     * @param $obj
-     * @return mixed
-     * @throws \Exception
-     */
+	/**
+	 * updates an document, and saves it to the database.
+	 *
+	 * @param $obj
+	 * @throws \exception\UserException
+	 * @throws \Exception
+	 * @return mixed
+	 */
     function update($obj)
 	{
 		//@TODO check permissions
@@ -346,19 +350,19 @@ class lodo
 	}
 
 	/**
-	 * allow locking of object
+	 * @throws \Exception
 	 */
 	function lock()
 	{
-
+		throw new \Exception('Not implemented');
 	}
 
 	/**
-	 * unloack
+	 * @throws \Exception
 	 */
 	function unlock()
 	{
-
+		throw new \Exception('Not implemented');
 	}
 
 	/**

@@ -21,12 +21,20 @@ class Shortcuts extends \helper\layout\LayoutBlock implements \helper\layout\Wid
 	function generate(){
 
 
-		$content = \helper\html::importNode($this->edom, '<h2>Genveje <small>Til det relevante i dit regnskab</small></h2><p>et par genveje her</p>');
+		$content = \helper\html::importNode($this->edom, '<h2>Genveje <small>Til det relevante i dit regnskab</small></h2>');
 
 		$accounts = $this->edom->createElement('a', 'Kontoplan');
 		$accounts->setAttribute('href', '/accounting/accounts');
-
+		$accounts->setAttribute('class', 'btn btn-large');
+		$accounts->setAttribute('style', 'height:70px;margin:1rem;');
 		$content->appendChild($accounts);
+
+		$sc = $this->edom->createElement('a', 'Momskonti');
+		$sc->setAttribute('href', '/accounting/vatCodes');
+		$sc->setAttribute('class', 'btn btn-large');
+		$sc->setAttribute('style', 'height:70px;margin:1rem;');
+		$content->appendChild($sc);
+
 		$this->wrapper->appendChild($content);
 		
 		
