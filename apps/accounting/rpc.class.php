@@ -89,9 +89,10 @@ class accounting extends \core\rpc
     /**
      * @param $transaction
      */
-    function createTransaction($transaction){
+    function createTransaction($transaction, $options = null){
 		$transaction = new \model\finance\accounting\DaybookTransaction($transaction);
-		\api\accounting::importTransactions($transaction);
+	    $options = new \model\finance\accounting\options\Transaction($options);
+		\api\accounting::importTransactions($transaction, $options);
 		$this->ret(array('success' => true));
 	}
 

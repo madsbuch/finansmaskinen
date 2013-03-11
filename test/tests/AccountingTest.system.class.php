@@ -152,18 +152,36 @@ class AccountingTest extends UnitTestCase
 
 		$transaction = new \model\finance\accounting\DaybookTransaction(array(
 			'referenceText' => 'test' . uniqid(),
+			'date' => date('c'),
 			'postings' => array(
 				array(
 					'account' => 1100,
-					'overrideVat' => 'REP',
+					'overrideVat' => 'HREP',
 					'amount' => 10000,
 					'positive' => true,
 					'description' => 'dette er en test',
 				),
 			),
 			'approved' => true,
-
 		));
+
+		$options = new model\finance\accounting\options\Transaction(array(
+			'calculateVat' => true,
+			'liabilityAccount' => 13110,
+			'assetAccount' => 12320
+		));
+
+		//before
+		$ba     = $this->client->getAccount(12320);
+		$bl     = $this->client->getAccount(13110);
+		$b1100  = $this->client->getAccount(1100);
+
+		$this->client->createTransaction($transaction->toArray(), $options->toArray());
+
+		//after
+		$aa     = $this->client->getAccount(12320);
+		$al     = $this->client->getAccount(13110);
+		$a1100  = $this->client->getAccount(1100);
 	}
 
 	/**

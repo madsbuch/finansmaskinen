@@ -341,7 +341,7 @@ class accounting
 		$vatCodes = array();
 
 		//go through all postings and fetch VAT codes
-		foreach($dbTrans->postings as $post){
+		foreach($dbTrans->postings as &$post){
 			/**
 			 * @property \model\finance\accounting\VatCode
 			 */
@@ -363,6 +363,7 @@ class accounting
 			$vatCodes[$vat->code]['amount'] += $post->amount * ($vat->deductionPercentage / 100);
 
 			//add the reversed perentage amount to the account
+			$post->amount += $post->amount * (($vat->percentage - $vat->deductionPercentage) / 100);
 		}
 
 		//add postings for vatcodes

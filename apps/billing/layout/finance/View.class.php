@@ -79,8 +79,8 @@ class View extends \helper\layout\LayoutBlock
 		));
 		$info->showHeader = false;
 
-		$info->addObject(new \model\Base(array('key' => 'Bilagsnummer',
-			'val' => isset($this->obj->billNumber) ? $this->obj->billNumber : __('Undefined'))));
+		$info->addObject(new \model\Base(array('key' => 'Bilag',
+			'val' => isset($this->obj->billNumber) ? $this->obj->ref : __('Undefined'))));
 
 		$info->addObject(new \model\Base(array('key' => 'Betalt',
 			'val' => $this->obj->isPayed ? 'Ja' : 'Nej')));

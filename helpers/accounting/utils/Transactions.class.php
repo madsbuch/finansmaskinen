@@ -214,14 +214,13 @@ class Transactions
 		$ret = null;
 		//following is because emulation of prepares recognizes limit :start, :num as strings, which makes an syntax error
 		$pdo->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
-		$sth = $pdo->prepare($this->queries->getTransactions());
+		$sth = $pdo->prepare($this->queries->getSingleTransaction());
 		if(!$sth)
 			throw new  \Exception('Unable to perform query: ' . implode('; ', $pdo->errorInfo()));
 
 		$sth->execute(array(
 			'accounting' => $this->accounting,
-			'start' => 0,
-			'num' => 1
+			'id' => $id,
 		));
 
 		foreach ($sth->fetchAll() as $t) {

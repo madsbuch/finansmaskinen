@@ -547,8 +547,6 @@ class accounting extends \core\app{
 		$tpl = $this->getSiteAPI()->getTemplate();
 		$tpl->setSecondaryTitle('Regnskab');
 		$tpl->addSecondaryNav('Alle Regnskaber', '/accounting/accountings');
-		$tpl->addSecondaryNav('Kontoplan', '/accounting/accounts');
-		$tpl->addSecondaryNav('Transaktioner', '/accounting/transactions');
 		$tpl->addSecondaryNav('Moms', '/accounting/vat');
 		$tpl->addSecondaryNav('Balance', '/accounting/repport/balanceStatement');
 		$tpl->addSecondaryNav('Resultatopgørelse', '/accounting/repport/incomeStatement');

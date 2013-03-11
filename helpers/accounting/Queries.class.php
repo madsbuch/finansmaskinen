@@ -131,10 +131,19 @@ interface Queries
 	 *  accounting
 	 *
 	 *
-	 * @param $id
+	 * @internal param $id
 	 * @return string
 	 */
-    function getTransactions($id = null);
+    function getTransactions();
+
+	/**
+	 * takes:
+	 *  id
+	 *  account_id
+	 *
+	 * @return string
+	 */
+	function getSingleTransaction();
 
 	/**
 	 * returns a query, that extracts a single reference based on

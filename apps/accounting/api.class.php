@@ -398,21 +398,24 @@ class accounting
 	 *
 	 *
 	 * @param $transaction mixed The data containing the actial transaction. This is of various types
-	 * @param $options array because of the flexible nature on the functions, objects are defined here
+	 * @param $options \model\finance\accounting\options\Transaction because of the flexible nature on the functions, objects are defined here
 	 * @throws \exception\UserException
 	 * @return bool
 	 */
-	static function importTransactions($transaction, $options = array())
+	static function importTransactions($transaction, $options = null)
 	{
+		if(is_array($options) || is_null($options))
+			$options = new \model\finance\accounting\options\Transaction($options);
+
 		//getting the parameters
-		$type = isset($options['type']) ? $options['type'] : null;
-		$ref = isset($options['referenceText']) ? $options['referenceText'] : null;
+		$type = isset($options->dataType) ? $options->dataType : null;
+		$ref = isset($options->referenceText) ? $options->referenceText : null;
 
-		$addVat =     isset($options['calculateVat'])     ? $options['calculateVat']     : false;
-		$addBalance = isset($options['calculateBalance']) ? $options['calculateBalance'] : false;
+		$addVat =     isset($options->calculateVat)     ? $options->calculateVat     : false;
+		$addBalance = isset($options->calculateBalance) ? $options->calculateBalance : false;
 
-		$lAcc = isset($options['liability']) ? $options['liability'] : null;
-		$aAcc = isset($options['asset']) ? $options['asset'] : null;
+		$lAcc = isset($options->liabilityAccount) ? $options->liabilityAccount : null;
+		$aAcc = isset($options->assetAccount) ? $options->assetAccount : null;
 
 		//accounting helper
 		$ah = new \helper\accounting((string) self::retrieve()->_id);
@@ -542,7 +545,7 @@ class accounting
 	{
 		$acc = self::retrieve();
 		$acc = new \helper\accounting((string)$acc->_id);
-		return $acc->getVatCodes();
+		return $acc->vat()->getVatCodes();
 	}
 
 	/**

@@ -66,17 +66,24 @@ class MysqlQueries implements \helper\accounting\Queries
 	//region transactions
 	/**** transactions ****/
 
-	function getTransactions($id = null){
-
-		$id = is_null($id) ? '' : ' AND id = '.(int) $id;
-
+	function getTransactions(){
 		return 'SELECT
           id,
           date,
 	      reference,
 	      approved
-	    FROM accounting_transactions WHERE accounting_id = :accounting '.$id.'
+	    FROM accounting_transactions WHERE accounting_id = :accounting
 	      ORDER BY date DESC LIMIT :start, :num';
+	}
+
+
+	function getSingleTransaction(){
+		return 'SELECT
+          id,
+          date,
+	      reference,
+	      approved
+	    FROM accounting_transactions WHERE id = :id AND accounting_id = :accounting';
 	}
 
 	function insertTransaction(){
