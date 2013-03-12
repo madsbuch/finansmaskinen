@@ -13,4 +13,4 @@ use finance;
 ALTER TABLE `finance`.`accounting_accounts`
 ADD COLUMN `currency` CHAR(3) NULL  AFTER `flags` ;
 
-:::::::::::: FINANSMASKINEN:DK ER OPDATERET MED OVENTÅENDE :::::::::::::::::
+:::::::::::: FINANSMASKINEN.DK ER OPDATERET MED OVENTÅENDE :::::::::::::::::
