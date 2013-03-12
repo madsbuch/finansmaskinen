@@ -374,8 +374,6 @@ class companyProfile{
 
 		$company->lastFreeTierReset = time();
 
-		var_dump($company->freeTier);
-
 		self::update($company, true, false);
 
 		return $company;

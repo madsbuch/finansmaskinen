@@ -124,25 +124,17 @@ class Page extends \helper\layout\LayoutBlock{
 				</thead>
 				<tbody>
 					<tr
-					title="De penge du har på denne konto, er penge
-					du har indsat, og som er tilgode til at købe hjælp for.
-					Hvis du bruger pay as you go, er det her pengene bliver
-					trukket fra">
+					title="De penge du har på denne konto, er penge du har indsat, og som er tilgode til at købe hjælp for. Hvis du bruger pay as you go, er det her pengene bliver trukket fra">
 						<td>Indestående</td>
 						<td id="accountCredit">DKK </td>
 					</tr>
 					<tr
-					title="Pengene der er her, er reservede. Hvis du
-					har accepteret et tilbud på regnskabshjælp, ryger pengene
-					herover indtil opgaven er udført.">
+					title="Pengene der er her, er reservede. Hvis du har accepteret et tilbud på regnskabshjælp, ryger pengene herover indtil opgaven er udført.">
 						<td>Reservede</td>
 						<td id="accountReserved">DKK </td>
 					</tr>
 					<tr
-					title="Hvis du har udført et stykke arbejde for
-					en anden, eller på anden vis har tjen penge gennem
-					Finansmaskinen, ender pengene her. De her penge kan du
-					hæve ved at sende en faktura til Finansmaskinen">
+					title="Hvis du har udført et stykke arbejde for en anden, eller på anden vis har tjen penge gennem Finansmaskinen, ender pengene her. De her penge kan du hæve ved at sende en faktura til Finansmaskinen">
 						<td>Penge der kan hæves</td>
 						<td id="accountWithdrawable">DKK </td>
 					</tr>

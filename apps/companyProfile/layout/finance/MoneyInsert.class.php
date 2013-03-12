@@ -21,8 +21,13 @@ class MoneyInsert extends \helper\layout\LayoutBlock{
 	function __construct($unpaid){
 		$this->unpaid = $unpaid;
 	}
-	
+
 	function generate(){
+		$year = '';
+		for($i=0;$i<10;$i++){
+			$year .= '<option>' . (date('Y') + $i) . '</option>' . "\n";
+		}
+
 		$ret = '
 <div class="row">
 	<div class="span3">
@@ -49,12 +54,27 @@ class MoneyInsert extends \helper\layout\LayoutBlock{
 
 				<div class="span1">
 					<label>Måned:</label>
-					<input class="span1" type="text" name="month" />
+					<select name="month" class="span1">
+						<option >1</option>
+						<option >2</option>
+						<option >3</option>
+						<option >4</option>
+						<option >5</option>
+						<option >6</option>
+						<option >7</option>
+						<option >8</option>
+						<option >9</option>
+						<option >10</option>
+						<option >11</option>
+						<option >12</option>
+					</select>
 				</div>
 
 				<div class="span1">
 					<label>År:</label>
-					<input class="span1" type="text" name="year" />
+					<select name="year" class="span1">
+						'.$year.'
+					</select>
 				</div>
 
 				<input type="submit" value="Indsæt" class="btn btn-success btn-large pull-right" />
