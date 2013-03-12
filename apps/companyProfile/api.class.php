@@ -297,18 +297,19 @@ class companyProfile{
 	/**
 	 * update company
 	 *
-	 * @param $obj
+	 * @param \model\finance\Company $obj
 	 * @param bool $direct whether the object is directly put in to the DB, or merged
-	 * @internal param $dObj
+	 * @param bool $safe whether to unset illegal fields
 	 * @return array|bool|mixed
 	 */
-    static function update(\model\finance\Company $obj, $direct = false){
+    static function update(\model\finance\Company $obj, $direct = false, $safe=true){
 		//@TODO check permissions
 
 	    //unsets illegal fields
-	    foreach(\model\finance\Company::$_blacklist as $b){
-		    unset($obj->$b);
-	    }
+	    if($safe)
+		    foreach(\model\finance\Company::$_blacklist as $b){
+			    unset($obj->$b);
+		    }
 
 		$cp = new \helper\lodo('companyProfiles', 'companyProfile');
 		if($direct)
@@ -369,11 +370,13 @@ class companyProfile{
 	 */
 	public static function freeTierReset(\model\finance\Company $company){
 		if($company->freeTier < \config\finance::$settings['freeTierSize'])
-			$company->freeTier = 5;
+			$company->freeTier = \config\finance::$settings['freeTierSize'];
 
 		$company->lastFreeTierReset = time();
 
-		self::update($company, true);
+		var_dump($company->freeTier);
+
+		self::update($company, true, false);
 
 		return $company;
 	}
