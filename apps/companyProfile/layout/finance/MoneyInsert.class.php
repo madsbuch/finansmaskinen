@@ -25,24 +25,45 @@ class MoneyInsert extends \helper\layout\LayoutBlock{
 	function generate(){
 		$ret = '
 <div class="row">
-	<div class="span5">
+	<div class="span3">
 		<h2>Indsæt kredit</h2>
-		<div id="companyProfile_insert_left">
+		<div id="companyProfile_insert_left" class="app-box">
 			<form method="post">
-				<label>beløb</label>
-				<div class="input-append" style="width:100%;">
-					<input style="width:80%" id="Public-dueDays" name="toInsert" type="text"
-					placeholder="f.eks. 800" class="money" /><span class="add-on">DKK</span>
+				<div class="span2">
+					<label>Beløb</label>
+					<div class="input-append" style="width:100%;">
+						<input style="width:80%" id="Public-dueDays" name="toInsert" type="text"
+						placeholder="f.eks. 800" class="money" /><span class="add-on">DKK</span>
+					</div>
 				</div>
-				<input type="submit" value="Indsæt" class="btn btn-primary" />
+
+				<div class="span2">
+					<label>Kortnummer:</label>
+					<input style="width:100%;" type="text" name="cardNumber" />
+				</div>
+
+				<div class="span2">
+					<label>CVC:</label>
+					<input style="width:100%;" type="text" name="cvc" />
+				</div>
+
+				<div class="span1">
+					<label>Måned:</label>
+					<input class="span1" type="text" name="month" />
+				</div>
+
+				<div class="span1">
+					<label>År:</label>
+					<input class="span1" type="text" name="year" />
+				</div>
+
+				<input type="submit" value="Indsæt" class="btn btn-success btn-large pull-right" />
 			</form>
-			<p>Når du ovenfår trykker "Indsæt", modtager du en regning. Når den
-			er betalt bliver din konto justeret</p>
-			<p>Alt hvad der koster penge på sitet, er penge du har sat ind her.
-			Måndsabonnementer er ligeledes også beløb der trækkes fra her.</p>
+
+			<div class="clearfix" />
 		</div>
 	</div>
-	<div class="span7">
+	<div class="span9">
 		<h2>Tidligere og nuværende regninger</h2>
 		<div class="well" id="companyProfile_insert_right">
 			<table class="table table-striped table-condensed">

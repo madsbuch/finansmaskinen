@@ -20,7 +20,7 @@ class Page extends \helper\layout\LayoutBlock{
 	/**
 	* prefill some variables with the construcotr.
 	*/
-	function __construct($company, $settings){
+	function __construct(\model\finance\Company $company, $settings){
 		$this->company = $company;
 		$this->settings = $settings;
 	}
@@ -123,7 +123,7 @@ class Page extends \helper\layout\LayoutBlock{
 					</tr>
 				</thead>
 				<tbody>
-					<tr class="descriptionPopoverLeft"
+					<tr
 					title="De penge du har på denne konto, er penge
 					du har indsat, og som er tilgode til at købe hjælp for.
 					Hvis du bruger pay as you go, er det her pengene bliver
@@ -131,14 +131,14 @@ class Page extends \helper\layout\LayoutBlock{
 						<td>Indestående</td>
 						<td id="accountCredit">DKK </td>
 					</tr>
-					<tr class="descriptionPopoverLeft"
+					<tr
 					title="Pengene der er her, er reservede. Hvis du
 					har accepteret et tilbud på regnskabshjælp, ryger pengene
 					herover indtil opgaven er udført.">
 						<td>Reservede</td>
 						<td id="accountReserved">DKK </td>
 					</tr>
-					<tr class="descriptionPopoverLeft"
+					<tr
 					title="Hvis du har udført et stykke arbejde for
 					en anden, eller på anden vis har tjen penge gennem
 					Finansmaskinen, ender pengene her. De her penge kan du
@@ -146,16 +146,16 @@ class Page extends \helper\layout\LayoutBlock{
 						<td>Penge der kan hæves</td>
 						<td id="accountWithdrawable">DKK </td>
 					</tr>
+					<tr
+					title="Fribilletter der giver dig en grænse før du skal have pungen op
+						af lommen">
+						<td>Fibilletter</td>
+						<td><span id="freeTier" /> (Nustillet: <span id="lastFreeTierReset" />) </td>
+					</tr>
 				</tbody>
 			</table>
 			<a href="/companyProfile/credit" class="btn btn-primary">Indsæt penge</a>
 			<a href="/companyProfile/transactions" class="btn">Seneste hændelser</a>
-		</div>
-		<h2>Fribilletter</h2>
-		<div class="app-box">
-			Fribilletter: <span id="freeTier" />, sidst nulstillet:
-			<span id="lastFreeTierReset" />
-
 		</div>
 		
 		<h2>Moduler</h2>
@@ -171,9 +171,9 @@ class Page extends \helper\layout\LayoutBlock{
 		</div>
 	</div>
 </div>';
-
 		//format the date
 		$this->company->lastFreeTierReset = date('d / m - Y',$this->company->lastFreeTierReset);
+		$this->company->freeTier = is_null($this->company->freeTier) ? 'Null' : $this->company->freeTier;
 
 		//merging some data in
 		$element = new \helper\html\HTMLMerger($ret, $this->company);

@@ -9,7 +9,8 @@ class ListAccountings extends \helper\layout\LayoutBlock{
 	}
 	
 	function generate(){
-		$genPer = function($obj){
+		$genPer = function($obj, $dom, $field, $row){
+			$row->setAttribute('data-href', '/accounting/accounting/'.$obj->_id);
 			return new \DOMText(date('\d. j M Y', $obj->periodStart) . ' til ' . date('\d. j M Y', $obj->periodEnd));
 		};
 	

@@ -32,6 +32,7 @@ class accounting extends \core\app{
 		$w = array(
 			new accounting\layout\finance\widgets\Accounts($payableAcc, false),
 			new accounting\layout\finance\widgets\Shortcuts(),
+			new accounting\layout\finance\widgets\Settings(),
 		);
 		
 		$accounting = new accounting\layout\finance\Statistics($w);
@@ -106,7 +107,7 @@ class accounting extends \core\app{
 	/**
 	* shows list of all accountings, or current in null given
 	*/
-	function accountings($id=null){
+	function accountings(){
 		$html = $this->getOutTpl();
 		$html->appendContent(\helper\layout\Element::heading('Dine Regnskaber',
 			'-'));
@@ -119,6 +120,19 @@ class accounting extends \core\app{
 		$accs = new accounting\layout\finance\ListAccountings($objs);
 		$html->appendContent($accs);
 		
+		$this->output_header = $this->header->getHeader();
+		$this->output_content = $html->generate();
+	}
+
+	function accounting($id){
+		$html = $this->getOutTpl();
+		$html->appendContent(\helper\layout\Element::heading('Regnskab',
+			'-'));
+
+		$objs = \api\accounting::getAll();
+		$accs = new accounting\layout\finance\ViewAccounting(null);
+		$html->appendContent($accs);
+
 		$this->output_header = $this->header->getHeader();
 		$this->output_content = $html->generate();
 	}
