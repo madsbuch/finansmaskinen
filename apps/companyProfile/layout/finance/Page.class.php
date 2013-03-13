@@ -2,11 +2,12 @@
 
 namespace app\companyProfile\layout\finance;
 
+use \helper\local as l;
+
 class Page extends \helper\layout\LayoutBlock{
 	
 	private $company;
 	private $settings;
-	private $subscriptions;
 	
 	public $tutorialSlides = array(
 		'#companyProfile_page_left' => 'Her er dine vigtigste virksomhedsinformationer.
@@ -18,10 +19,9 @@ class Page extends \helper\layout\LayoutBlock{
 	/**
 	* prefill some variables with the construcotr.
 	*/
-	function __construct(\model\finance\Company $company, $settings, $subscriptions = array()){
+	function __construct(\model\finance\Company $company, $settings){
 		$this->company = $company;
 		$this->settings = $settings;
-		$this->subscriptions = $subscriptions;
 	}
 	
 	function generate(){
@@ -34,7 +34,9 @@ class Page extends \helper\layout\LayoutBlock{
 				<input type="hidden" id="_id" name="_id" />
 				<h4>Postadresse</h4>
 				<label for="legal">Virksomhedsnavn: </label>
-				<input class="span3" type="text"
+				<input class="span3"
+					required="true"
+					type="text"
 					id="Public-Party-PartyName"
 					name="Public-Party-PartyName" />
 					
@@ -154,11 +156,15 @@ class Page extends \helper\layout\LayoutBlock{
 			<h4>Abonnementer.</h4>
 			<div id="companyProfile_module_subscriptions_table_holder" />
 
+			<div class="pull-right">
+				<a href="/companyProfile/modules" class="btn btn-success">Godkend</a>
+			</div>
+			<div class="clearfix" />
+
 			<h4>Instillinger:</h4>
 			<div id="companyProfile_module_table_holder" />
 			
 			<div class="pull-right">
-				<a href="/companyProfile/modules" class="btn">Administrer Abonnementer</a>
 				<a href="/companyProfile/modules" class="btn btn-primary">Tilføj flere moduler</a>
 			</div>
 			<div class="clearfix" />
@@ -196,19 +202,25 @@ class Page extends \helper\layout\LayoutBlock{
 
 		//And table for generating subscriptions
 		$tableS = new \helper\layout\Table(array(
-			'title' => array('title', function($title, $dom, $td, $tr){
-				$ret = $dom->createElement('b', $title);
-				return $ret;
+			'appName' => 'title',
+			'.' => array('Instillinger', function($sub, $dom, $td, $tr){
+				$element = $dom->createElement('input');
+				$element->setAttribute('type', 'checkbox');
+				$element->setAttribute('class', 'checkbox  {labelOn: \'Tilmeldt\', labelOff: \'Frameldt\'}');
+				return $element;
+
 			}),
-			'.' => array('Instillinger', function($model, $dom, $td, $tr){
-				$tr->setAttribute('data-toggle', 'modal');
-				$tr->setAttribute('data-target', $model->modalID);
-				$tr->setAttribute('style', 'cursor:pointer;');
-				$tr->appendChild(\helper\html::importNode($dom, $model->settingsModal->generate()));
-				return new \DOMText('');
+			'price' => array('price', function($price){
+				return new \DOMText(l::writeValuta($price, 'DKK'));
+			}),
+			'expirationDate' => array('expire', function($date){
+				$date = (int) $date;
+				if($date < time())
+					return new \DOMText('Ikke tilmeldt');
+				return new \DOMText(date('c', (int) $date));
 			})
 		));
-		$tableS->setIterator($this->subscriptions);
+		$tableS->setIterator($this->company->subscriptions);
 		$tableS->setEmpty(__('You have no module with subscriptions.'));
 		$tableS->showHeader = false;
 		$tableS = $this->importContent($tableS, $dom);

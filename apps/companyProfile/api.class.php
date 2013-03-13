@@ -240,7 +240,7 @@ class companyProfile{
 		$company->freeTier = $company->freeTier - $num;
 
 		//save
-		self::update($company);
+		self::update($company, true, false);
 
         return true;
     }
@@ -260,19 +260,21 @@ class companyProfile{
 		
 		$core = new \helper\core('companyProfile');
 		$company->treeID = $core->getTreeID();
-		
+
+	    $company = self::resolveApps($company, true);
+
 		return $cp->insert($company);
 	}
 
-    /**
-     * fetches current company object
-     *
-     * @param bool $fetchAll populate with detals from MySQL?
-     * @throws \exception\UserException
-     * @return \model\finance\Company
-     */
-    static function retrieve($fetchAll=true){
-		$cp = new \helper\lodo('companyProfiles', 'companyProfile');
+	/**
+	 * fetches current company object
+	 *
+	 * @param bool $fetchAll populate with detals from MySQL?
+	 * @param bool $update
+	 * @return \model\finance\Company
+	 */
+    static function retrieve($fetchAll=true, $update = false){
+	    $cp = new \helper\lodo('companyProfiles', 'companyProfile');
 
 		/**
 		 * @var $o \model\finance\Company
@@ -290,7 +292,11 @@ class companyProfile{
 		$o->accountReserved = 0;
 		$o->accountCredit = 0;
 		$o->accountWithdrawable = 0;
-		
+
+	    if($update){
+		    self::resolveApps($o);
+	    }
+
 		return $o;
 	}
 
@@ -317,12 +323,6 @@ class companyProfile{
 
 		$o = self::retrieve();
 
-		//we don't wanna save this in the db;
-		unset($o->transactions);
-		unset($o->accountReserved);
-		unset($o->accountCredit);
-		unset($o->accountWithdrawable);
-
 		//imploding the keys
 		$a1 = array_key_implode('.', $o->toArray());
 		$a2 = array_key_implode('.', $obj->toArray());
@@ -335,7 +335,6 @@ class companyProfile{
 		$ts = new \model\finance\Company($ts);
 
 	    //var_dump($ts);
-	    //die();
 
 		//saving
 		return $cp->save($ts);
@@ -517,7 +516,8 @@ class companyProfile{
 
         self::update($o);
     }
-	
+
+
 	/**** interacting with finansmaskinen ****/
 
     /**
@@ -556,6 +556,38 @@ class companyProfile{
 	*/
 	static function getInvoices(){
 	
+	}
+
+	/**** PRIVATE AUX ****/
+
+	/**
+	 * reads the userstruct for apps and puts it in to the subscription structure
+	 * this is so that the user can subscribe for monthly pay
+	 */
+	private static function resolveApps(\model\finance\Company $company = null, $ret = false){
+		$core = new \helper\core('companyProfile');
+
+		if(is_null($company))
+			$company = self::retrieve();
+
+		if(!isset($company->subscriptions))
+			$company->subscriptions = array();
+
+		foreach($core->callAll('getCompanyProfileSubscription') as $sub){
+			$app = $sub->appName;
+			if(isset($company->subscriptions->$app)){
+				//update the existing (price)
+				$company->subscriptions->$app->price = $sub->price;
+			}
+			else{
+				//insert it
+				$company->subscriptions->$app = $sub;
+			}
+		}
+		if($ret)
+			return $company;
+
+		self::update($company, true, false);
 	}
 }
 ?>

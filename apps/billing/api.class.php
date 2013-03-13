@@ -74,13 +74,13 @@ class billing extends \core\api
 	}
 
 	/**
-	 * getThumbnail
-	 *
-	 * returns link to thumbnail
+	 * returns an empty subscription object for companyProfile
 	 */
-	static function getThumbnail()
-	{
-
+	static function on_getCompanyProfileSubscription(){
+		return new \model\finance\company\Subscription(array(
+			'appName'   => 'billing',
+			'price'     => 4900
+		));
 	}
 
 	/**
@@ -159,10 +159,6 @@ class billing extends \core\api
 		//readies the bill
 		$bill = self::billObject($bill);
 
-		//finalize, if finished
-		if (!$bill->draft)
-			self::finalize($bill);
-
 		//makes it searchable
 		$lodo->setFulltextIndex(self::$fulltextIndex);
 		$bill = $lodo->insert($bill);
@@ -239,10 +235,6 @@ class billing extends \core\api
 
 		//create the object
 		$obj = self::billObject($obj);
-
-		//finalize, if finished
-		if (!$obj->draft)
-			self::finalize($obj);
 
 		//save the bill
 		$lodo->setFulltextIndex(self::$fulltextIndex);

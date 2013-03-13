@@ -357,7 +357,7 @@ class products
                 $p = (string) $obj->Item->Name;
             else
                 $p = base_convert(time(), 10, 36);
-            $obj->productID = strtoupper(substr($p, 0, 2));
+            $obj->productID = mb_strtoupper(mb_substr($p, 0, 2));
             $obj->productID .= '-'.(time() % 1000000);
         }
 

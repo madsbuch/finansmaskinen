@@ -293,9 +293,12 @@ class lodo
 
 		//for later use, make sure we return file of same type as we recieve
 		if (is_object($obj))
-
 			$c = get_class($obj);
+
+
+
 		$obj = $this->getArray($obj);
+
 		//validation
 		if (!isset($obj['_subsystem'])) {
 			$obj['_subsystem']['created_at'] = time();

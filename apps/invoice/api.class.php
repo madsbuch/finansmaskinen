@@ -85,6 +85,16 @@ class invoice{
 			'modalID' => '#app_invoice_layout_finance_misc_SettingsModal'
 		));
 	}
+
+	/**
+	 * returns an empty subscription object for companyProfile
+	 */
+	static function on_getCompanyProfileSubscription(){
+		return new \model\finance\company\Subscription(array(
+			'appName'   => 'invoice',
+			'price'     => 4900
+		));
+	}
 	
 	/**
 	* yeah, we provide callback for ourself ;)

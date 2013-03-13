@@ -25,7 +25,8 @@ class Setup extends \helper\layout\LayoutBlock{
 				<label for="legal">Virksomhedsnavn: </label>
 				<input class="span4" type="text"
 					id="Public-Party-PartyName"
-					name="Public-Party-PartyName" />
+					name="Public-Party-PartyName"
+					required="true" />
 					
 				<label for="legal">CVR: </label>
 				<input class="span4" type="text"

@@ -59,20 +59,24 @@ abstract class app{
 		$site = 'start\\'.$site.'\api';
 		return new $site;
 	}
-	
+
 	/**
-	* call a function on all available apps (their api's)
-	*
-	* this function calls $functionName on all available api's.
-	*
-	* e.g. the contact app has the ability to show a little activity from other
-	* apps, when a contact is viewed. The contact app then calls:
-	*  $this->callAll('getContactActivity').
-	*
-	* this returns a collection (array), of values returned by the functions called
-	* contact may require the return to be of a vertain type, an error will be thrown
-	* if it is not the case
-	*/
+	 * call a function on all available apps (their api's)
+	 *
+	 * this function calls $functionName on all available api's.
+	 *
+	 * e.g. the contact app has the ability to show a little activity from other
+	 * apps, when a contact is viewed. The contact app then calls:
+	 *  $this->callAll('getContactActivity').
+	 *
+	 * this returns a collection (array), of values returned by the functions called
+	 * contact may require the return to be of a vertain type, an error will be thrown
+	 * if it is not the case
+	 *
+	 * @param $functionName
+	 * @param null $args
+	 * @return array
+	 */
 	function callAll($functionName, $args=null){
 		$apps = $this->getSiteAPI()->appIterator();
 		$ret = array();
@@ -125,16 +129,16 @@ abstract class app{
 		else
 			unset(\core\session::getInstance()->coreUserMessage[$key]);
 	}
-	
+
 	/**
-	* notify the user
-	*
-	* add notification to some groups notification stack
-	* @param $grp	the group to notify
-	* @param $link	last part of the url, eg /contacts/view/-someid-
-	* @param $link	the actual message, this is localized later on, see documentation
-	*				for __() for formatting (in short, like php's sprintf)
-	*/
+	 * notify the user
+	 *
+	 * add notification to some groups notification stack
+	 * @param $grp    the group to notify
+	 * @param \core\last $link the actual message, this is localized later on, see documentation
+	 *                for __() for formatting (in short, like php's sprintf)
+	 * @param $msg
+	 */
 	function notify($grp, $link, $msg){
 	
 	}

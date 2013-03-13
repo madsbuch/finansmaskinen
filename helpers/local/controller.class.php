@@ -39,7 +39,7 @@ class local{
 		
 		$num[0] = str_replace(l::$thousandsSeparator, '', $num[0]);
 		
-		$num[1] = isset($num[1]) ? substr($num[1], 0, 2) : '00';
+		$num[1] = isset($num[1]) ? mb_substr($num[1], 0, 2) : '00';
 		
 		if(strlen($num[1]) == 1)
 			$num[1] .= '0';

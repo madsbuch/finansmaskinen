@@ -56,16 +56,21 @@ class contacts extends \core\api{
 	*
 	*/
 	/**
-	* returns contacts
-	*
-	* returns contacts associated to groups that the user is a part of. if not
-	* contacts from alle groups are needed, $grp may be specified
-	*
-	* @param	sort	sort by indexed fields
-	* @param	limit	how many contacts are to be returned?
-	* @param	start	start offset for returning contacts
-	* @param	grp		only contacts from specified groups this is an array
-	*/
+	 * returns contacts
+	 *
+	 * returns contacts associated to groups that the user is a part of. if not
+	 * contacts from alle groups are needed, $grp may be specified
+	 *
+	 * @param sort|array $sort
+	 * @param how|bool $limit
+	 * @param start|int $start
+	 * @param only|bool $grp
+	 * @return array
+	 * @internal param \api\sort $sort by indexed fields
+	 * @internal param \api\how $limit many contacts are to be returned?
+	 * @internal param \api\start $start offset for returning contacts
+	 * @internal param \api\only $grp contacts from specified groups this is an array
+	 */
 	static function getContactList($sort = array(), $limit=false, $start=0, $grp=false){
 		$contacts = new \helper\lodo('contacts', 'contacts');
 		if(!$grp)
@@ -239,7 +244,7 @@ class contacts extends \core\api{
                 $p = (string) $obj->Party->PartyName->Name;
             else
                 $p = base_convert(time(), 10, 36);
-            $obj->contactID = strtoupper(substr($p, 0, 2));
+            $obj->contactID = mb_strtoupper(mb_substr($p, 0, 2));
             $obj->contactID .= '-'.(time() % 1000000);
         }
 

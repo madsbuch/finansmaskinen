@@ -272,10 +272,10 @@ class Transactions
 			}
 		}
 
-		$transaction->postings = $this->srv->controller->postings()->getPostingsForTransaction($transaction->_id);
-
 		if(is_null($transaction))
 			throw new \exception\UserException(__('No transaction for reference "%s" in this accounting', $ref));
+
+		$transaction->postings = $this->srv->controller->postings()->getPostingsForTransaction($transaction->_id);
 
 		return $transaction;
 	}

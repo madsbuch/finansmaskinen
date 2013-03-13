@@ -39,6 +39,38 @@ class core{
 			$this->appObj = $this->apps[$app];
 		}
 	}
+
+	/**** INTERACTING WITH APPS ****/
+	//region apps
+
+	function callAll($functionName, $args=null){
+		$site = $this->pageInfo->getSite();
+		$site = 'start\\'.$site.'\api';
+		$site = new $site;
+		$apps = $site->appIterator();
+		$ret = array();
+		foreach($apps as $app){
+			$callback = array('api\\'.$app->name, 'on_'.$functionName);
+			if(method_exists($callback[0], $callback[1])){
+				$r = null;
+				if($args)
+					$r = call_user_func_array($callback, $args);
+				else
+					$r = call_user_func($callback);
+
+				//@TODO check type, if $returnType is set
+
+				if(is_array($r))
+					$ret = array_merge($ret, $r);
+				else
+					$ret[] = $r;
+			}
+		}
+		return $ret;
+	}
+
+	//enregion
+
 	/******************** ABSTRACTIONS FOR WORKING ON AUTH ********************/
 	
 	/**

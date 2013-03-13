@@ -25,7 +25,7 @@ class Bill implements OnAction
      */
     function coveredBySubscription()
     {
-        return true;
+        return false;
     }
 
     /**

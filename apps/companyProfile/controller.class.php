@@ -159,7 +159,7 @@ class companyProfile extends \core\app {
 		$input = new \helper\parser\Post('\model\finance\Company');
 		$company = $input->getObj();
 		if($company){
-			\api\companyProfile::initialize($company);
+			\api\companyProfile::update($company);
 			$this->getSiteAPI()->finishSetup('companyProfile');
 			$this->header->redirect('/index');
 		}
