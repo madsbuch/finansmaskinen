@@ -50,6 +50,12 @@ class Bill extends \model\AbstractModel
 	protected $contactID;
 
 	/**
+	 * mey be merged in
+	 * @var \model\finance\Contact
+	 */
+	protected $contact;
+
+	/**
 	 * last date for paying this bill
 	 */
 	protected $paymentDate;

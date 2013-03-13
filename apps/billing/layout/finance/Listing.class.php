@@ -10,31 +10,30 @@ class Listing extends \helper\layout\LayoutBlock{
 	
 	function generate(){
 		$list = $this->iterator;
-		
-		//method for generating link to contact info
-		$generateLink = function($link, $dom){
-							$toRet = $dom->createElement('a', __('More info'));
-							$toRet->setAttribute('href', '/billing/view/'.$link);
-							return $toRet;
-						};
+
 		//method to generate the date
-		$generateDate = function($ts){
-							return new \DOMText(date("d/m-Y h:i " , $ts));
-						};
-						
-		//method to decide which type
-		$generateType = function($object, $dom){
-							$toRet = $dom->createElement('span', __('Company'));
-							return $toRet;
-						};
+		$generateDate = function($o, $dom, $field, $row){
+			$row->setAttribute('data-href', '/billing/view/'.$o->_id);
+			return new \DOMText(date("d/m-Y h:i " , $o->_subsystem['updated_at']));
+		};
+
 		
 		//the descriptor for making the table from the objects
 		$table = new \helper\layout\Table(array(
-			'id' => __('ID'),
-			'Party.PartyName' => __('Company'),
-			'.' => array(__('Type'), $generateType),
-			'_subsystem.updated_at' => array(__('Last activity'), $generateDate),
-			'_id' => array(__('Link'), $generateLink)
+			'contactID' => __('Afsender'),
+			'.' => array(__('Last activity'), $generateDate),
+			'isPayed' => array(__('Betalt'), function($p, $d){
+				$e = $d->createElement('span');
+				if($p){
+					$e->appendChild(new \DOMText('Betalt'));
+					$e->setAttribute('class', 'label label-success');
+				}
+				else{
+					$e->appendChild(new \DOMText('Ikke betalt'));
+					$e->setAttribute('class', 'label label-important');
+				}
+				return $e;
+			})
 		));
 		
 		$table->setNull('-');

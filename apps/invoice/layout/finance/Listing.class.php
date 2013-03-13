@@ -22,15 +22,28 @@ class Listing extends \helper\layout\LayoutBlock{
 							return $toRet;
 						};
 		//method to generate the date
-		$generateDate = function($ts){
-							return new \DOMText(date("d/m-Y h:i " , $ts));
-						};
+		$generateDate = function($o, $dom, $field, $row){
+		    $row->setAttribute('data-href', '/invoice/view/'.$o->_id);
+			return new \DOMText(date("d/m-Y h:i " , $o->_subsystem['updated_at']));
+		};
 		
 		//the descriptor for making the table from the objects
 		$table = new \helper\layout\Table(array(
 			'Invoice.AccountingCustomerParty.Party.PartyName' => __('Reciever'),
-			'_id' => array(__('More'), $generateLink),
-			'_subsystem.created_at' => array(__('Last activity'), $generateDate)));
+			'.' => array(__('Last activity'), $generateDate),
+			'isPayed' => array(__('Payed'), function($p, $d){
+				$e = $d->createElement('span');
+				if($p){
+					$e->appendChild(new \DOMText('Betalt'));
+					$e->setAttribute('class', 'label label-success');
+				}
+				else{
+					$e->appendChild(new \DOMText('Ikke betalt'));
+					$e->setAttribute('class', 'label label-important');
+				}
+				return $e;
+			})
+		));
 		
 		$table->setNull('-');
 		$table->setEmpty(__('No invoices to show'));

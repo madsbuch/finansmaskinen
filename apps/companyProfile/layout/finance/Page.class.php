@@ -5,10 +5,8 @@ namespace app\companyProfile\layout\finance;
 class Page extends \helper\layout\LayoutBlock{
 	
 	private $company;
-	
-	public $addJs = array(
-		'/bootstrap/js/bootstrap-popover.js'
-	);
+	private $settings;
+	private $subscriptions;
 	
 	public $tutorialSlides = array(
 		'#companyProfile_page_left' => 'Her er dine vigtigste virksomhedsinformationer.
@@ -20,33 +18,34 @@ class Page extends \helper\layout\LayoutBlock{
 	/**
 	* prefill some variables with the construcotr.
 	*/
-	function __construct(\model\finance\Company $company, $settings){
+	function __construct(\model\finance\Company $company, $settings, $subscriptions = array()){
 		$this->company = $company;
 		$this->settings = $settings;
+		$this->subscriptions = $subscriptions;
 	}
 	
 	function generate(){
 		$ret = '
 <div class="row">
-	<div class="span5">
+	<div class="span4">
 		<h2>Basale info</h2>
 		<div class="app-box" id="companyProfile_page_left">
 			<form method="post">
 				<input type="hidden" id="_id" name="_id" />
 				<h4>Postadresse</h4>
 				<label for="legal">Virksomhedsnavn: </label>
-				<input class="span4" type="text"
+				<input class="span3" type="text"
 					id="Public-Party-PartyName"
 					name="Public-Party-PartyName" />
 					
 				<label for="legal">CVR: </label>
-				<input class="span4" type="text"
+				<input class="span3" type="text"
 					id="legalnumbers-DKCVR"
 					name="legalnumbers-DKCVR" />
 				
 				<label for="legal">Vej og vejnummer: </label>
 				<div class="controls controls-row">
-					<input  type="text" class="span3"
+					<input  type="text" class="span2"
 						id="Public-Party-PostalAddress-StreetName"
 						name="Public-Party-PostalAddress-StreetName"
 						placeholder="f.eks. mågevej" />
@@ -61,7 +60,7 @@ class Page extends \helper\layout\LayoutBlock{
 					<input class="span1" type="text"
 						id="Public-Party-PostalAddress-PostalZone"
 						name="Public-Party-PostalAddress-PostalZone" />
-					<input class="span3" type="text"
+					<input class="span2" type="text"
 						id="Public-Party-PostalAddress-CityName"
 						name="Public-Party-PostalAddress-CityName" />
 				</div>
@@ -93,18 +92,18 @@ class Page extends \helper\layout\LayoutBlock{
 				<div class="row">
 					<input type="hidden" value="DK:BANK" name="Public-PaymentMeans-PaymentChannelCode" />
 					<input type="hidden" value="1" name="Public-PaymentMeans-PaymentMeansCode" />
-					<div class="span1" style="width:40%">
+					<div class="span1">
 						<label>Regnr.</label>
 						<input type="text"
 							id="Public-PaymentMeans-PayeeFinancialAccount-FinancialInstitutionBranch-ID-_content"
 							name="Public-PaymentMeans-PayeeFinancialAccount-FinancialInstitutionBranch-ID"
-							style="width:100%;" />
+							class="span1" />
 					</div>
-					<div class="span1" style="width:45%">
+					<div class="span2">
 						<label>Kontonr.</label>
 						<input type="text" name="Public-PaymentMeans-PayeeFinancialAccount-ID"
 							id="Public-PaymentMeans-PayeeFinancialAccount-ID-_content"
-							style="width:100%;" />
+							class="span2" />
 					</div>
 				</div>
 				<input type="submit" value="Gem" class="pull-right btn btn-primary" />
@@ -112,7 +111,7 @@ class Page extends \helper\layout\LayoutBlock{
 			<div class="clearfix" />
 		</div>
 	</div>
-	<div class="span7">
+	<div class="span8">
 		<h2>Penge</h2>
 		<div class="app-box" id="companyProfile_page_money">
 			<table class="table table-striped table-condensed">
@@ -152,12 +151,16 @@ class Page extends \helper\layout\LayoutBlock{
 		
 		<h2>Moduler</h2>
 		<div class="app-box">
-			<p>Instillinger for nedenstående:</p>
-			<div id="companyProfile_module_table_holder">
-			</div>
+			<h4>Abonnementer.</h4>
+			<div id="companyProfile_module_subscriptions_table_holder" />
+
+			<h4>Instillinger:</h4>
+			<div id="companyProfile_module_table_holder" />
 			
-			<div class="clearfix" />
-			<a href="/companyProfile/modules" class="btn btn-primary pull-right">Tilføj flere moduler</a>
+			<div class="pull-right">
+				<a href="/companyProfile/modules" class="btn">Administrer Abonnementer</a>
+				<a href="/companyProfile/modules" class="btn btn-primary">Tilføj flere moduler</a>
+			</div>
 			<div class="clearfix" />
 			
 		</div>
@@ -171,7 +174,7 @@ class Page extends \helper\layout\LayoutBlock{
 		$element = new \helper\html\HTMLMerger($ret, $this->company);
 		$dom = $element->getDOM();
 		
-		//creating table
+		//creating table for settings
 		$table = new \helper\layout\Table(array(
 			'title' => array('title', function($title, $dom, $td, $tr){
 				$ret = $dom->createElement('b', $title);
@@ -189,14 +192,35 @@ class Page extends \helper\layout\LayoutBlock{
 		$table->setEmpty(__('You have no module with settings.'));
 		$table->showHeader = false;
 		$table = $this->importContent($table, $dom);
-		
+
+
+		//And table for generating subscriptions
+		$tableS = new \helper\layout\Table(array(
+			'title' => array('title', function($title, $dom, $td, $tr){
+				$ret = $dom->createElement('b', $title);
+				return $ret;
+			}),
+			'.' => array('Instillinger', function($model, $dom, $td, $tr){
+				$tr->setAttribute('data-toggle', 'modal');
+				$tr->setAttribute('data-target', $model->modalID);
+				$tr->setAttribute('style', 'cursor:pointer;');
+				$tr->appendChild(\helper\html::importNode($dom, $model->settingsModal->generate()));
+				return new \DOMText('');
+			})
+		));
+		$tableS->setIterator($this->subscriptions);
+		$tableS->setEmpty(__('You have no module with subscriptions.'));
+		$tableS->showHeader = false;
+		$tableS = $this->importContent($tableS, $dom);
 		
 		$element = $element->generate();
 		
 		//appending the table
 		$xpath = new \DOMXpath($dom);
-		$forTable = $xpath->query("//*[@id='companyProfile_module_table_holder']")->item(0);
-		$forTable->appendChild($table);
+		$forTable = $xpath->query("//*[@id='companyProfile_module_table_holder']")
+			->item(0)->appendChild($table);
+		$forTable = $xpath->query("//*[@id='companyProfile_module_subscriptions_table_holder']")
+			->item(0)->appendChild($tableS);
 
 		return $element;
 	}

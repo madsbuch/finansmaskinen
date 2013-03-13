@@ -57,11 +57,7 @@ class Settings extends \helper\layout\LayoutBlock implements \helper\layout\Widg
 		$sc->setAttribute('style', 'height:70px;margin:1rem;');
 		$content->appendChild($sc);
 
-		$sc = $this->edom->createElement('a', 'Transaktioner');
-		$sc->setAttribute('href', '/accounting/transactions');
-		$sc->setAttribute('class', 'btn btn-large');
-		$sc->setAttribute('style', 'height:70px;margin:1rem;');
-		$content->appendChild($sc);
+
 
 		$this->wrapper->appendChild($content);
 

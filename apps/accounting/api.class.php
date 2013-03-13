@@ -349,14 +349,17 @@ class accounting
 	/**
 	 * returns a daybooktransaction
 	 * @param $id
+	 * @param bool $byReference
 	 * @return \model\finance\accounting\DaybookTransaction
 	 */
-	static function getTransaction($id){
+	static function getTransaction($id, $byReference = false){
 		$acc = self::retrieve();
 
 		$acc = (string)$acc->_id;
 		$acc = new \helper\accounting($acc);
 
+		if($byReference)
+			return $acc->transaction()->getTransactionByRef($id);
 		return $acc->transaction()->getTransactionByID($id);
 	}
 
