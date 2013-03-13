@@ -388,10 +388,11 @@ class companyProfile{
 	 * TODO remember to log
 	 *
 	 * @param $action string the action to perform
+	 * @param null $appName name of app issuing the action, if not set, it is read from core helper
 	 * @throws \exception\PaymentException
 	 * @return bool
 	 */
-    static function doAction($action){
+    static function doAction($action, $appName = null){
         $actionStrategy = '\app\companyProfile\strategies\onAction\\'.$action;
         /** @var $actionStrategy \app\companyProfile\strategies\onAction\OnAction */
         $actionStrategy = new $actionStrategy(self::retrieve());

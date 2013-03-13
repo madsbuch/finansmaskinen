@@ -96,23 +96,11 @@ class MysqlQueries implements \helper\accounting\Queries
 
 	function getTransactionByReference(){
 		return 'SELECT
-		        transaction.id as t_id,
-			    transaction.date as t_date,
-			    transaction.reference as t_reference,
-			    transaction.approved as t_approved,
-			    transaction.accounting_id as t_accounting_id,
-			    postings.id as p_id,
-			    postings.account_id as p_account_id,
-			    postings.amount_in as p_amount_in,
-			    postings.amount_out as p_amount_out,
-			    postings.transaction_id as p_transaction_id
-		FROM
-		    accounting_transactions as transaction,
-		    accounting_postings as postings
-		WHERE
-		        transaction.accounting_id = :accounting_id
-		    AND transaction.reference = :referenceText
-		    AND postings.transaction_id = transaction.id;';
+          id,
+          date,
+	      reference,
+	      approved
+	    FROM accounting_transactions WHERE reference = :referenceText AND accounting_id = :accounting_id';
 	}
 
 	//endregion

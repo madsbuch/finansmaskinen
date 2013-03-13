@@ -70,11 +70,19 @@ class accounting extends \core\app{
 	 * shows details on a single transaction
 	 *
 	 * @param null $id int
+	 * @param bool $byReference
+	 * @return void
 	 */
-	function transaction($id = null){
+	function transaction($id = null, $byReference = false){
 		$html = $this->getOutTpl();
 
-		$t = \api\accounting::getTransaction($id);
+		$t = null;
+
+		if($byReference){
+			$t = \api\accounting::getTransaction(urldecode($id), true);
+		}else
+			$t = \api\accounting::getTransaction($id);
+
 		$html->appendContent(new \app\accounting\layout\finance\ViewSingleTransaction($t));
 
 		$this->output_header = $this->header->getHeader();
@@ -126,12 +134,17 @@ class accounting extends \core\app{
 
 	function accounting($id){
 		$html = $this->getOutTpl();
-		$html->appendContent(\helper\layout\Element::heading('Regnskab',
-			'-'));
 
-		$objs = \api\accounting::getAll();
-		$accs = new accounting\layout\finance\ViewAccounting(null);
-		$html->appendContent($accs);
+		$acc = \api\accounting::retrieve($id);
+
+		$html->appendContent(\helper\layout\Element::heading('Regnskab',
+			$acc->title));
+
+
+		$view = new accounting\layout\finance\ViewAccounting($acc, array(
+			new \app\accounting\layout\finance\widgets\Shortcuts($id)
+		));
+		$html->appendContent($view);
 
 		$this->output_header = $this->header->getHeader();
 		$this->output_content = $html->generate();
@@ -352,7 +365,7 @@ class accounting extends \core\app{
 			return;
 		}
 		
-		$this->header->redirect("/accounting/transactions");
+		$this->header->redirect("/accounting/transaction/".$objs->referenceText.'/byReference');
 		$this->output_header = $this->header->generate();
 		$this->output_content = '';
 	}

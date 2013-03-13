@@ -232,6 +232,9 @@ class Transactions
 			));
 		}
 
+		if(empty($ret->_id))
+			throw new \exception\UserException(__('Transaction was not to find in this accounting'));
+
 		//postings
 		$ret->postings = $this->srv->controller->postings()->getPostingsForTransaction($ret->_id);
 
@@ -260,27 +263,19 @@ class Transactions
 		foreach ($sth->fetchAll() as $t) {
 			if(is_null($transaction)){
 				$transaction = new \model\finance\accounting\DaybookTransaction(array(
-					'_id'           => $t['t_id'],
-					'referenceText' => $t['t_reference'],
+					'_id'           => $t['id'],
+					'referenceText' => $t['reference'],
 					'postings'      => array(),
-					'date'          => $t['t_date'],
-					'approved'      => $t['t_approved']
+					'date'          => $t['date'],
+					'approved'      => $t['approved']
 				));
 			}
-
-			$transaction->postings->$i = new \model\finance\accounting\Posting(array(
-				'_id'           => $t['p_id'],
-				'account'       => $t['p_account_id'],
-				'amount'        => abs($t['p_amount_in'] - $t['p_amount_out']),
-				'positive'      => $t['p_amount_in'] - $t['p_amount_out'] > 0,
-				'description'   => ''
-			));
-
-			$i++;
 		}
 
+		$transaction->postings = $this->srv->controller->postings()->getPostingsForTransaction($transaction->_id);
+
 		if(is_null($transaction))
-			throw new \exception\UserException(__('No transaction for reference: %s', $ref));
+			throw new \exception\UserException(__('No transaction for reference "%s" in this accounting', $ref));
 
 		return $transaction;
 	}

@@ -23,7 +23,7 @@ namespace model\finance;
  * @property $transactions;
  * @property $freeTier;
  * @property $lastFreeTierReset
- * @property $abonnements;
+ * @property $subscriptions;
  * @property $coupons;
  * @property $settings;
  */
@@ -47,7 +47,8 @@ class Company extends \model\AbstractModel{
 		'Public' => array('\model\finance\company\PublicProperties', false),
 		'legalnumbers' => array('\model\Base', false),
 		'counters' => array('\model\Base', false),
-		'settings' => array('model\finance\company\SettingsObj', true)
+		'settings' => array('model\finance\company\SettingsObj', true),
+		'subscriptions' => array('\model\finance\company\Subscription', true)
 	);
 	
 	/**
@@ -69,7 +70,7 @@ class Company extends \model\AbstractModel{
 		'accountReserved',
 		'transactions',
 		'freeTier',
-		'abonnements',
+		'subscriptions',
 		'coupons',
 		'data',
 		'routings',
@@ -159,11 +160,12 @@ class Company extends \model\AbstractModel{
 	 * @var int
 	 */
 	protected $lastFreeTierReset;
-	
+
 	/**
-	* associative array of abonnement objects
-	*/
-	protected $abonnements;
+	 * list of subscription objects
+	 * @var
+	 */
+	protected $subscriptions;
 	
 	/**
 	* coupons
@@ -206,6 +208,15 @@ class Company extends \model\AbstractModel{
 		if(isset($arr['invoiceNumberNext'])){
 			$arr['counters']['invoiceNumberNext'] = $arr['invoiceNumberNext'];
 			unset($arr['invoiceNumberNext']);
+		}
+		return $arr;
+	}
+
+	function upgrade_v11($arr){
+		$arr['_version'] = 'v12';
+		if(isset($arr['abonnements'])){
+			$arr['subscriptions'] = $arr['abonnements'];
+			unset($arr['abonnements']);
 		}
 		return $arr;
 	}

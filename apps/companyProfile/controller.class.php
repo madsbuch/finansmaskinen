@@ -103,6 +103,13 @@ class companyProfile extends \core\app {
 		$this->output_header = $this->header->generate();
 		$this->output_content = $html->generate();
 	}
+
+	/**
+	 * administrate subscriptions
+	 */
+	function subscription(){
+
+	}
 	
 	/**
 	* shows the page for paying an invoice
@@ -119,11 +126,11 @@ class companyProfile extends \core\app {
 	}
 	
 	/**** SOME AJAX FUNCTIONS ****/
-	
+
 	/**
-	* creates an invoice, and redirects to the pay page
-	*/
-	function invoice(){
+	 * Administrate a payment
+	 */
+	function doPayment(){
 
 	}
 

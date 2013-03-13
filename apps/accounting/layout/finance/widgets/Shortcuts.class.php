@@ -22,7 +22,7 @@ class Shortcuts extends \helper\layout\LayoutBlock implements \helper\layout\Wid
 	 */
 	function __construct($accountingID = null){
 		parent::__construct();
-		$this->accountingID = $accountingID;
+		$this->accountingID = is_null($accountingID) ? '' : $accountingID;
 	}
 
 	function wrap($wrapper, $dom){
@@ -33,22 +33,28 @@ class Shortcuts extends \helper\layout\LayoutBlock implements \helper\layout\Wid
 	function generate(){
 
 
-		$content = \helper\html::importNode($this->edom, '<h2>Indstillinger <small>Indstillinger ved dit regnskab</small></h2>');
+		$content = \helper\html::importNode($this->edom, '<h2>Regnskab <small>Detaljer for regnskab.</small></h2>');
 
 		$sc = $this->edom->createElement('a', 'Moms');
-		$sc->setAttribute('href', '/accounting/vat');
+		$sc->setAttribute('href', '/accounting/vat/' . $this->accountingID);
+		$sc->setAttribute('class', 'btn btn-large');
+		$sc->setAttribute('style', 'height:70px;margin:1rem;');
+		$content->appendChild($sc);
+
+		$sc = $this->edom->createElement('a', 'Transaktioner');
+		$sc->setAttribute('href', '/accounting/transactions');
 		$sc->setAttribute('class', 'btn btn-large');
 		$sc->setAttribute('style', 'height:70px;margin:1rem;');
 		$content->appendChild($sc);
 
 		$sc = $this->edom->createElement('a', 'Balance');
-		$sc->setAttribute('href', '/accounting/repport/balanceStatement');
+		$sc->setAttribute('href', '/accounting/repport/balanceStatement/' . $this->accountingID);
 		$sc->setAttribute('class', 'btn btn-large');
 		$sc->setAttribute('style', 'height:70px;margin:1rem;');
 		$content->appendChild($sc);
 
 		$sc = $this->edom->createElement('a', 'Resultat');
-		$sc->setAttribute('href', '/accounting/repport/incomeStatement');
+		$sc->setAttribute('href', '/accounting/repport/incomeStatement/' . $this->accountingID);
 		$sc->setAttribute('class', 'btn btn-large');
 		$sc->setAttribute('style', 'height:70px;margin:1rem;');
 		$content->appendChild($sc);
