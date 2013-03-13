@@ -476,6 +476,8 @@ class invoice{
 
 		//merge supplier data in
 		$toMerge = array();
+	    if(is_null($supplier->Party))
+		    throw new \exception\UserException('You haven\'t set your details.');
 		$toMerge['Invoice']['AccountingSupplierParty']['Party'] = $supplier->Party->toArray();
 		$toMerge['Invoice']['PaymentMeans'][0] = $supplier->PaymentMeans->toArray();
 

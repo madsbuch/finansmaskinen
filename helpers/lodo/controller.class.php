@@ -90,8 +90,7 @@ class lodo
 	 *
 	 * @param $collection:    string    the collection to fetch data from
 	 * @param $app            the requesting app. for fetchin groups
-	 * @param $treeID:        treeid, only groups within this tree are used.
-	if not set, default is used.
+	 * @param $treeID:        treeid, only groups within this tree are used. if not set, default is used.
 	 */
 	function __construct($collection, $app, $treeID = false)
 	{

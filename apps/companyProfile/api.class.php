@@ -278,7 +278,7 @@ class companyProfile{
 		 * @var $o \model\finance\Company
 		 */
 		$o = $cp->getObjects('\model\finance\Company');
-		
+
 		if(count($o) < 1)
 		    return self::initialize(new \model\finance\Company());
 		$o = $o[0];
@@ -356,7 +356,6 @@ class companyProfile{
 		$lodo->addCondition(array('treeID' => (string) $treeID));
 
 		$ret = $lodo->getObjects();
-
 		
 		if(isset($ret[0]->Public))
 			return $ret[0]->Public;
