@@ -23,6 +23,7 @@ class UserMsg extends LayoutBlock{
 	
 	function setTitle($str){
 		$this->title = $str;
+		return $this;
 	}
 	
 	/**

@@ -56,7 +56,7 @@ class companyProfile{
 	/*************************** EXTERNAL API FUNCTIONS ***********************/
 	
 	/**** some of all those money functions ****/
-	
+	//region money
 	const ACCOUNTCREDIT			= 1;
 	const ACCOUNTWITHDRAWABLE	= 2;
 	const ACCOUNTRESERVED		= 3;
@@ -216,8 +216,11 @@ class companyProfile{
 		
 		return (int) $res[0][0];
 	}
+	//endregion
+
 
     /**** some quick ticket functions ****/
+	//region tickets
 
     /**
      * attempts to decrement tickets by $num, if it results in subzero
@@ -245,6 +248,8 @@ class companyProfile{
         return true;
     }
 
+	//endregion
+
     /**
      * initilizes company for a given tree
      *
@@ -270,6 +275,7 @@ class companyProfile{
 	 * fetches current company object
 	 *
 	 * @param bool $fetchAll populate with detals from MySQL?
+	 * @param bool $update
 	 * @param bool $update
 	 * @return \model\finance\Company
 	 */
@@ -338,6 +344,37 @@ class companyProfile{
 
 		//saving
 		return $cp->save($ts);
+	}
+
+	/**
+	 * updates subscriptions
+	 *
+	 * changes shoud be array(
+	 *      app => true/false (whether the app is subscribed)
+	 * )
+	 *
+	 * @param $changes
+	 */
+	static function updateSubscriptions($changes){
+		$retrivals = array();
+		$company = self::retrieve(true, true);
+		foreach($changes as $c){
+
+			//if activating, add retrival to array
+
+			//if deactivating, do it
+
+		}
+		self::paySubscriptions($company);
+	}
+
+	/**
+	 * updates and saves
+	 *
+	 * @param \model\finance\Company $company
+	 */
+	static function paySubscriptions(\model\finance\Company $company){
+
 	}
 
 	/**

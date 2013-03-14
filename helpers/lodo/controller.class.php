@@ -204,6 +204,17 @@ class lodo
 	}
 
 	/**
+	 * links documents from other collection
+	 *
+	 * @param $collection
+	 * @param $source
+	 * @param $target
+	 */
+	function link($collection, $source, $target){
+
+	}
+
+	/**
 	 * explicitly specify group.
 	 *
 	 * THIS OVERWRITES THE GROUPS ALLREADY SPECIFIED
