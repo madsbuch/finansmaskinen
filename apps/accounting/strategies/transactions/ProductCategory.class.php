@@ -29,7 +29,7 @@ class ProductCategory implements Transactions
 	function getDaybookTransaction()
 	{
 		$returnTransaction = new \model\finance\accounting\DaybookTransaction(array(
-			'referenceText' => $this->options['referenceText'],
+			'referenceText' => $this->options->referenceText,
 			'date'          => date('c'),
             'approved'      => true,
 		));
@@ -43,7 +43,7 @@ class ProductCategory implements Transactions
 				($vat ? $cat->accountInclVat : $cat->accountExclVat),
 				$cat->accountLiability,
 				$cat->accountAssert,
-				$this->options['referenceText'],
+				$this->options->referenceText,
 				$vat,
 				$cat->vatAmount
 			);
