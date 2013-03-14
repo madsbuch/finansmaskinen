@@ -13,7 +13,7 @@ class View extends \helper\layout\LayoutBlock{
 	/**
 	* prefill some variables with the construcotr.
 	*/
-	function __construct($obj, $widgets){
+	function __construct(\model\finance\Invoice $obj, $widgets){
 		$this->obj = $obj;
 		$this->widgets = $widgets;
 	}
@@ -70,13 +70,21 @@ class View extends \helper\layout\LayoutBlock{
 		//the rest of the details
 		$info = new \helper\layout\Table(array(
 			'key' => 'something',
-			'val' => 'som value'
+			'.' => array('som value', function($o, $d, $f, $r){
+				if(isset($o->link) && !is_null($o->link))
+					$r->setAttribute('data-href', $o->link);
+				return new \DOMText($o->val);
+			})
 		));
 		$info->showHeader = false;
 		
+		$info->addObject(new \model\Base(array('key' => 'Bilag',
+			'val' => isset($this->obj->ref) ? $this->obj->ref : '-',
+			'link' => isset($this->obj->ref) ? '/accounting/transaction/'.$this->obj->ref.'/byReference' : null)));
+
 		$info->addObject(new \model\Base(array('key' => 'Fakturanummer',
 			'val' => isset($this->obj->Invoice->ID->_content) ? $this->obj->Invoice->ID->_content : '-')));
-		
+
 		$info->addObject(new \model\Base(array('key' => 'Betalt',
 			'val' => $this->obj->isPayed ? 'Ja' : 'Nej')));
 
