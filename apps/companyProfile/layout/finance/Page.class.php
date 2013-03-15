@@ -154,11 +154,13 @@ class Page extends \helper\layout\LayoutBlock{
 		<h2>Moduler</h2>
 		<div class="app-box">
 			<h4>Abonnementer.</h4>
-			<div id="companyProfile_module_subscriptions_table_holder" />
+			<form method="post" action="/companyProfile/editSubscriptions">
+				<div id="companyProfile_module_subscriptions_table_holder" />
 
-			<div class="pull-right">
-				<a href="/companyProfile/modules" class="btn btn-success">Godkend</a>
-			</div>
+				<div class="pull-right">
+					<input type="submit" value="Godkend" class="btn btn-success" />
+				</div>
+			</form>
 			<div class="clearfix" />
 
 			<h4>Instillinger:</h4>
@@ -202,27 +204,29 @@ class Page extends \helper\layout\LayoutBlock{
 
 		//And table for generating subscriptions
 		$tableS = new \helper\layout\Table(array(
-			'appName' => 'title',
-			'.' => array('Instillinger', function($sub, $dom, $td, $tr){
+			'appName' => __('Module'),
+			'.' => array(__('Subscribe'), function($sub, $dom, $td, $tr){
 				$element = $dom->createElement('input');
 				$element->setAttribute('type', 'checkbox');
+				$element->setAttribute('name', $sub->appName);
 				$element->setAttribute('class', 'checkbox  {labelOn: \'Tilmeldt\', labelOff: \'Frameldt\'}');
 				return $element;
 
 			}),
-			'price' => array('price', function($price){
-				return new \DOMText(l::writeValuta($price, 'DKK'));
+			'price' => array(__('Price'), function($price){
+				return new \DOMText(l::writeValuta($price, 'DKK', true));
 			}),
-			'expirationDate' => array('expire', function($date){
+			'expirationDate' => array(__('Expiry Date'), function($date){
+				if(empty($date))
+					return new \DOMText('Ikke tilmeldt');
 				$date = (int) $date;
 				if($date < time())
-					return new \DOMText('Ikke tilmeldt');
+					return new \DOMText('Uløbet');
 				return new \DOMText(date('c', (int) $date));
 			})
 		));
 		$tableS->setIterator($this->company->subscriptions);
 		$tableS->setEmpty(__('You have no module with subscriptions.'));
-		$tableS->showHeader = false;
 		$tableS = $this->importContent($tableS, $dom);
 		
 		$element = $element->generate();

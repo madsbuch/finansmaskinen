@@ -107,8 +107,16 @@ class companyProfile extends \core\app {
 	/**
 	 * administrate subscriptions
 	 */
-	function subscription(){
+	function editSubscriptions(){
+		$html = $this->getOutTpl();
 
+		\api\companyProfile::retrieve(false, true);
+
+		$obj = new \helper\layout\UserMsg('Dine abonnementer er nu opdateret');
+		$html->appendContent($obj->setTitle('Opdatering lykkedes'));
+
+		$this->output_header = $this->header->generate();
+		$this->output_content = $html->generate();
 	}
 	
 	/**
