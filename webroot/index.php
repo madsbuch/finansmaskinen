@@ -4,7 +4,7 @@
  *
  * This file provides basic inclusion and setup of the system
  */
-
+//apd_set_pprof_trace();
 /**
  * some really global seetings:
  */
