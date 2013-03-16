@@ -74,7 +74,7 @@ abstract class app{
 	 * if it is not the case
 	 *
 	 * @param $functionName
-	 * @param null $args
+	 * @param null $args array
 	 * @return array
 	 */
 	function callAll($functionName, $args=null){

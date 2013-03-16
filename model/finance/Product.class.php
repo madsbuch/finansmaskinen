@@ -44,6 +44,7 @@ class Product extends \model\AbstractModel{
 		'Price' => array('\model\ext\ubl2\Price', false),
 		'TaxCategory' => array('\model\ext\ubl2\TaxCategory', true),
 		'stock' => array('integer', false),
+		'stockItems' => array('\model\finance\products\StockItem', true),
 		'inCatalog' => array('bool', false)
 	);
 	
@@ -100,6 +101,11 @@ class Product extends \model\AbstractModel{
 	 * @var int
 	 */
 	protected $stock;
+
+	/**
+	 * @var \model\finance\products\StockItem
+	 */
+	protected $stockItems;
 	
 	/**
 	* location in the storage

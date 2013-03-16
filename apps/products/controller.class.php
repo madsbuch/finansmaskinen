@@ -70,13 +70,20 @@ class products extends \core\app{
 		
 		$html->appendContent(\helper\layout\Element::heading('Produkter',
 			'Detaljer for produkt'));
-		
+
+
+		//retrieve object
 		$prd = \api\products::getOne($id);
-		
+
+
+
 		if(!$prd)
 			$html->appendContent('<div class="alert alert-info">'.__('Product doesn\'t exist').'</div>');
-		else
-			$html->appendContent(new \app\products\layout\finance\View($prd));
+		else{
+			//retrieve widgets
+			$widgets = $this->callAll('getProductsWidget', array($prd));
+			$html->appendContent(new \app\products\layout\finance\View($prd, $widgets));
+		}
 		
 		$this->output_header = $this->header->generate();
 		$this->output_content = $html->generate();
