@@ -48,6 +48,8 @@ class finance{
 		//company settings
 		'freeTierTime' => 86400, //time in second between resets
 		'freeTierSize' => 50, //what is the the minimum value of the freetier value after reset
+
+		'subscriptionPeriod' => 2678400,//31 days
 	);
 	
 	/**

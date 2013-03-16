@@ -48,6 +48,7 @@ class finance{
 		//company settings
 		'freeTierTime' => 10, //time in second between resets
 		'freeTierSize' => 100, //what is the the minimum value of the freetier value after reset
+
 	);
 	
 	/**

@@ -130,9 +130,13 @@ abstract class HTML{
 		foreach($this->addCSSIncludes as $incl){
 			//@TODO some site awareness
 			$ele = $this->dom->createElement('link');
-			
-			$ele->setAttribute('href', \config\config::$protocol.'://'
-				.\config\config::$domain['static']
+
+			$prepend = \config\config::$protocol.'://'.\config\config::$domain['static'];
+			if(substr($incl, 0, 4) == 'http'){
+				$prepend = '';
+			}
+
+			$ele->setAttribute('href', $prepend
 				.$incl);
 			$ele->setAttribute('rel', 'stylesheet');
 			

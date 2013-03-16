@@ -48,19 +48,19 @@ abstract class template{
 		foreach($this->addJsIncludes as $incl){
 			//@TODO some site awareness
 			$ele = $this->dom->createElement('script');
-			
+
 			$ele->setAttribute('src', \config\config::$protocol
 				.'://'
 				.\config\config::$domain['static']
 				.$incl);
 			$body->appendChild($ele);
 		}
-		
+
 		//and css includes
 		foreach($this->addCSSIncludes as $incl){
 			//@TODO some site awareness
 			$ele = $this->dom->createElement('link');
-			
+
 			$ele->setAttribute('href', \config\config::$protocol.'://'
 				.\config\config::$domain['static']
 				.$incl);

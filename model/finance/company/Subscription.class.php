@@ -2,6 +2,13 @@
 
 namespace model\finance\company;
 
+/**
+ * @property $lastPayment;
+ * @property $expirationDate;
+ * @property $appName;
+ * @property $price;
+ * @property $isSubscribed;
+ */
 class Subscription extends \model\AbstractModel{
 
 	/**

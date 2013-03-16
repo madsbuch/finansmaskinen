@@ -110,7 +110,19 @@ class companyProfile extends \core\app {
 	function editSubscriptions(){
 		$html = $this->getOutTpl();
 
-		\api\companyProfile::retrieve(false, true);
+		$input = new \helper\parser\Post('\model\Base');
+
+		$input->alterArray(function($arr){
+			foreach($arr as &$a){
+				if($a == 'on')
+					$a = true;
+				else
+					$a = false;
+			}
+			return $arr;
+		});
+
+		\api\companyProfile::updateSubscriptions($input->getObj());
 
 		$obj = new \helper\layout\UserMsg('Dine abonnementer er nu opdateret');
 		$html->appendContent($obj->setTitle('Opdatering lykkedes'));

@@ -211,7 +211,7 @@ class lodo
 	 * @param $target
 	 */
 	function link($collection, $source, $target){
-
+		throw new \Exception('Not yet implemented');
 	}
 
 	/**

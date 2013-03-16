@@ -13,7 +13,12 @@ class Page extends \helper\layout\LayoutBlock{
 		'#companyProfile_page_left' => 'Her er dine vigtigste virksomhedsinformationer.
 			Dem kan frit redigere og ændre.',
 		'#companyProfile_page_money' => 'Beløb på de konti du har.
-			Klik på seneste hændelser for at se strømninger for pengene.'
+			Klik på seneste hændelser for at se strømninger for pengene.',
+		'#companyProfile_module_subscriptions_table_holder' => 'Moduler du kan tilmelde abonnementer på.
+			Hvis du blot ønsker en enkelt månede, kan du tilmelde dig, og framelde dig igen
+			med det samme.'
+
+
 	);
 	
 	/**
@@ -175,7 +180,7 @@ class Page extends \helper\layout\LayoutBlock{
 	</div>
 </div>';
 		//format the date
-		$this->company->lastFreeTierReset = date('d / m - Y',$this->company->lastFreeTierReset);
+		$this->company->lastFreeTierReset = date('d/m - Y',$this->company->lastFreeTierReset);
 		$this->company->freeTier = is_null($this->company->freeTier) ? 'Null' : $this->company->freeTier;
 
 		//merging some data in
@@ -206,9 +211,21 @@ class Page extends \helper\layout\LayoutBlock{
 		$tableS = new \helper\layout\Table(array(
 			'appName' => __('Module'),
 			'.' => array(__('Subscribe'), function($sub, $dom, $td, $tr){
+				$e = $dom->createElement('input');
+				$e->setAttribute('type', 'hidden');
+				$e->setAttribute('name', $sub->appName);
+				$e->setAttribute('value', 'off');
+
+				$td->appendChild($e);
+
 				$element = $dom->createElement('input');
 				$element->setAttribute('type', 'checkbox');
+				$element->setAttribute('value', 'on');
 				$element->setAttribute('name', $sub->appName);
+
+				if($sub->isSubscribed)
+					$element->setAttribute('checked', 'checked');
+
 				$element->setAttribute('class', 'checkbox  {labelOn: \'Tilmeldt\', labelOff: \'Frameldt\'}');
 				return $element;
 
@@ -222,7 +239,7 @@ class Page extends \helper\layout\LayoutBlock{
 				$date = (int) $date;
 				if($date < time())
 					return new \DOMText('Uløbet');
-				return new \DOMText(date('c', (int) $date));
+				return new \DOMText(date('d/m - Y', (int) $date));
 			})
 		));
 		$tableS->setIterator($this->company->subscriptions);

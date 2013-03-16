@@ -85,13 +85,18 @@ class contacts extends \core\api{
 		return $contacts->getObjects();
 		
 	}
-	
+
 	/**
-	* damn, so bloated
-	*
-	* @param $search fulltext search
-	* ...
-	*/
+	 * damn, so bloated
+	 *
+	 * @param $search fulltext search
+	 * @param null $sort
+	 * @param null $condition
+	 * @param null $limit
+	 * @param null $start
+	 * @param bool $cursor
+	 * @return array
+	 */
 	static function get($search=null,
 						$sort = null,
 						$condition = null,
@@ -161,15 +166,16 @@ class contacts extends \core\api{
     }
 	
 	/**
-	* insert contact
-	*
-	* appended to all available groups, if none specified
-	* @param $data mixed	either a UBL cocument string, a UBL parser object
-	*						VCARD or a lodo object. if false, a lodo object for
-	*						population is returned
-	*
-	* @TODO maḱe create aware
-	*/
+	 * insert contact
+	 *
+	 * appended to all available groups, if none specified
+	 * @param $data mixed	either a UBL cocument string, a UBL parser object
+	 *						VCARD or a lodo object. if false, a lodo object for
+	 *						population is returned
+	 *
+	 * @return mixed
+	 * @TODO maḱe create aware
+	 */
 	static function create(\model\finance\Contact $data){
         $data = self::contactObj($data);
         $lodo = new \helper\lodo('contacts', 'contacts');
@@ -213,14 +219,19 @@ class contacts extends \core\api{
 	*/
 	static function retrieveExternal($id){
 		$contact = self::getContact($id);
-		
+
 		if(!isset($contact->apiID) || !isset($contact->apiUrl))
 			throw new \exception\UserException('No external data on this contact');
 
 		//do the retrival stuff
 		$rpc = new \helper\rpc\Finance($contact->apiUrl . '/companyProfile', true);
 		$toMerge = $rpc->getPublic($contact->apiID);
-		
+
+		if(isset($toMerge['error'])){
+			throw new \Exception($toMerge['error']);
+		}
+
+
 		$tm['Party'] = $toMerge['Party'];
 		
 		$contact->merge($tm, true);

@@ -349,32 +349,52 @@ class companyProfile{
 	/**
 	 * updates subscriptions
 	 *
-	 * changes shoud be array(
+	 * changes shoud be model\Base(
 	 *      app => true/false (whether the app is subscribed)
 	 * )
 	 *
 	 * @param $changes
+	 * @throws \exception\UserException
 	 */
 	static function updateSubscriptions($changes){
-		$retrivals = array();
 		$company = self::retrieve(true, true);
-		foreach($changes as $c){
+		foreach($changes as $app => $a){
 
-			//if activating, add retrival to array
-
-			//if deactivating, do it
+			if(!isset($company->subscriptions->$app))
+				throw new \exception\UserException(__('Module was not found'));
+			//set it
+			$company->subscriptions->$app->isSubscribed = $a;
 
 		}
 		self::paySubscriptions($company);
 	}
 
 	/**
-	 * updates and saves
+	 * updates and saves raw(!!!)
 	 *
 	 * @param \model\finance\Company $company
 	 */
 	static function paySubscriptions(\model\finance\Company $company){
 
+		foreach($company->subscriptions as $sub){
+			/** @var $sub \model\finance\company\Subscription */
+
+			//check if this app i subscriped
+			if(!$sub->isSubscribed)
+				continue;
+			//check if it has expired
+			if($sub->expirationDate > time())
+				continue;
+
+			//attempt to do new payment
+			self::moneyWithdraw($sub->price, __('Subscription for %s', $sub->appName), self::ACCOUNTCREDIT);
+
+			$sub->lastPayment = time();
+			$sub->expirationDate = time() + \config\finance::$settings['subscriptionPeriod'];
+
+		}
+
+		self::update($company, true, false);
 	}
 
 	/**
