@@ -6,10 +6,6 @@ class MoneyInsert extends \helper\layout\LayoutBlock{
 	
 	private $unpaid;
 	
-	public $addJs = array(
-		'/bootstrap/js/bootstrap-popover.js'
-	);
-	
 	public $tutorialSlides = array(
 		'#companyProfile_insert_left' => 'Her har du muligheden for at oprette en faktura til dig selv, med det beløb du gerne vil have indsat på din konto.',
 		'#companyProfile_insert_right' => 'Denne boks viser de fakturaer vi allerede har udstedt til denne virksomhed'

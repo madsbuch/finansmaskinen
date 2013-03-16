@@ -28,6 +28,7 @@ class StockWidget extends \helper\layout\LayoutBlock implements \helper\layout\W
 		$h2 = $this->edom->createElement('h3', 'Udvikling');
 		$h2->appendChild($this->edom->createElement('small', 'af lageret og priser'));
 		$root->appendChild($h2);
+		if(isset($this->prd->stockItems))
 		foreach($this->prd->stockItems as $si){
 			$root->appendChild(\helper\html::importNode($dom, "pris:". l::writeValuta($si->price->_content) . " antal:" . $si->adjustmentQuantity));
 		}

@@ -4,10 +4,6 @@ namespace app\invoice\layout\finance;
 
 class Setup extends \helper\layout\LayoutBlock{
 	
-	public $addJs = array(
-		'/bootstrap/js/bootstrap-popover.js'
-	);
-	
 	/**
 	* prefill some variables with the construcotr.
 	*/
