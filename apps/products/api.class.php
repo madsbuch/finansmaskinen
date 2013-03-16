@@ -65,6 +65,10 @@ class products
 		return new \app\products\layout\finance\widgets\BillingWidget($invoice);
 	}
 
+	static function on_getProductsWidget($prd){
+		return new \app\products\layout\finance\widgets\StockWidget($prd);
+	}
+
 	/************************** INTERNAL APP API CALLS ************************/
 
 	/**** CATAGORIES ****/
@@ -324,14 +328,24 @@ class products
 	 *
 	 * TODO should we return a transaction used for the balance adjustement?!
 	 *
-	 * @param $products array array(array(id => productID, price => price, quantity => quantity))
+	 * @param $productID
+	 * @param \model\finance\products\StockItem $stockItem
+	 * @throws \exception\UserException
+	 * @internal param array $products array(array(id => productID, price => price, quantity => quantity))
 	 * @internal param null $price int price pr. item the price the product was registered on, if not set, default price is used.
 	 */
-	static function addToStock($products)
+	static function adjustStock($productID, \model\finance\products\StockItem $stockItem)
 	{
-		/*if($quantity < 1){
-			throw new \exception\UserException(__('Quantity must be more than 0, was %s', $quantity));
-		}*/
+		$stockItem->parse();
+		$e = $stockItem->validate();
+		if(!empty($e)){
+			throw new \exception\UserException(__('Errors in stockItem: %s' . implode(', ', $e)));
+		}
+
+		//push it on:
+		$lodo = self::getLodoInternal();
+		$lodo->addCondition(array('_id' => new \MongoId($productID)));
+		$lodo->push('stockItems', $stockItem);
 	}
 
 	/**
@@ -374,6 +388,7 @@ class products
     /**
      * @param $id string representation of the unique id to check if in the db
      * @param $exclude documents to be excluded (their mongoID's)
+     * @return bool
      */
     private static function idExists($id, $exclude = null){
 	    try{
@@ -386,6 +401,19 @@ class products
 		    return false;
 	    }
     }
+
+	/**
+	 * @return \helper\lodo
+	 */
+	private static function getLodoInternal(){
+		$lodo = new \helper\lodo('products', 'products');
+
+		$lodo->setFulltextIndex(array(
+			'Item.Name._content',
+			'Item.Description._content'
+		));
+		return $lodo;
+	}
 }
 
 ?>

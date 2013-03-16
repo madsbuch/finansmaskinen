@@ -344,6 +344,7 @@ class invoice{
 		//iterate through products
 		if(!empty($inv->product)){
 			foreach($inv->product as $i => $prod){
+				/** @var $prod \model\finance\invoice\Product  */
 				$p = \api\products::getOne($prod->id);
 				//no product was to find, we continue...
 				if(!$p)
@@ -358,9 +359,17 @@ class invoice{
 					//VAT percent
 					$cats[$p->catagoryID]->vat = $inv->vat;
 				}
-				
+
+				$il = $inv->Invoice->InvoiceLine->$i;
+
 				//note raw value to post to this catagory
-				$cats[$p->catagoryID]->amount += $inv->Invoice->InvoiceLine->$i->LineExtensionAmount->_content * $rate;
+				$cats[$p->catagoryID]->amount += $il->LineExtensionAmount->_content * $rate;
+
+				\api\products::adjustStock($prod->id, new \model\finance\products\StockItem(array(
+					'adjustmentQuantity' => $il->InvoicedQuantity->_content,
+					'price' => $il->LineExtensionAmount->_content / $il->InvoicedQuantity->_content,
+					'date' => new \MongoDate()
+				)));
 			}
 		}
 		//post the cat's the to accounting system

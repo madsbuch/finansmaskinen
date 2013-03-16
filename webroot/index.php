@@ -4,7 +4,7 @@
  *
  * This file provides basic inclusion and setup of the system
  */
-
+//apd_set_pprof_trace();
 /**
  * some really global seetings:
  */
@@ -12,7 +12,7 @@
 /**
  * actually the only thing that should be changed when in prod.
  */
-define('STRATEGY', 'test');
+define('STRATEGY', 'testLaptop');
 include '../config/'.STRATEGY.'/config.php';
 
 //some character settings:

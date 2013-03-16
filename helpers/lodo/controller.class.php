@@ -120,6 +120,8 @@ class lodo
 		$this->sort(array('_subsystem.updated_at' => -1));
 	}
 
+	//region setters
+
 	function setGroupCondition()
 	{
 		//intify, shoud be done down low
@@ -152,17 +154,6 @@ class lodo
 			$cond[] = new \MongoRegex('/^' . $e . '/u');
 		}
 		$this->addCondition(array('_subsystem.fulltext_index' => array('$all' => $cond)));
-	}
-
-	/**
-	 * returns a cursor over the conditions
-	 */
-	function getCursor()
-	{
-		$c = $this->collection->find($this->conditions, $this->fields);
-		$c = $c->limit($this->limit);
-		$c = $c->sort($this->order);
-		return $c;
 	}
 
 	/**
@@ -204,17 +195,6 @@ class lodo
 	}
 
 	/**
-	 * links documents from other collection
-	 *
-	 * @param $collection
-	 * @param $source
-	 * @param $target
-	 */
-	function link($collection, $source, $target){
-		throw new \Exception('Not yet implemented');
-	}
-
-	/**
 	 * explicitly specify group.
 	 *
 	 * THIS OVERWRITES THE GROUPS ALLREADY SPECIFIED
@@ -244,6 +224,30 @@ class lodo
 	function setReturnType($class)
 	{
 		$this->c = $class;
+	}
+
+	//endregion
+
+	/**
+	 * returns a cursor over the conditions
+	 */
+	function getCursor()
+	{
+		$c = $this->collection->find($this->conditions, $this->fields);
+		$c = $c->limit($this->limit);
+		$c = $c->sort($this->order);
+		return $c;
+	}
+
+	/**
+	 * links documents from other collection
+	 *
+	 * @param $collection
+	 * @param $source
+	 * @param $target
+	 */
+	function link($collection, $source, $target){
+
 	}
 
     /**
@@ -360,6 +364,16 @@ class lodo
 		unset($new['_id']);
 
 		return $this->collection->update($this->conditions, $new, array('safe' => true));
+	}
+
+	/**
+	 * pushes object to field directly
+	 *
+	 * @param $field
+	 * @param $object
+	 */
+	function push($field, $object){
+		$this->collection->update($this->conditions, array('$push' => array($field => $this->getArray($object))));
 	}
 
 	/**

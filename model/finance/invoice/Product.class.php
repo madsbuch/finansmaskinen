@@ -5,6 +5,12 @@ namespace model\finance\invoice;
  * this object contains data, that are not a part of the UBL standard.
  *
  * e.g. accounting data
+ *
+ * @property protected $index;
+ * @property  $id;
+ * @property  $account;
+ * @property  $origAmount;
+ * @property  $origValuta;
  */
 class Product extends \model\AbstractModel{
 	/**

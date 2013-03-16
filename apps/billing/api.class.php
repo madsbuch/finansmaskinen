@@ -311,28 +311,24 @@ class billing extends \core\api
 					    abs(($line->amount - $line->vatAmount) * $line->quantity) :
 					    abs($line->amount * $line->quantity);
 					$posting = new \model\finance\accounting\Posting(array(
-					   'amount' => $lineAmount,
-					   'positive' => ($line->amount >= 0 ? true : false),
+						'amount' => $lineAmount,
+						'positive' => ($line->amount >= 0 ? true : false),
 						'overrideVat' => $line->vatCode,
-					   'account' => $line->account
+						'account' => $line->account
 				   ));
 					$collection[] = $posting;
 			    }
 			    //it's a product
 				else{
-					//create
-
-					$toAdd[] = array(
-						'id' => $line->productID,
-						//price it was bought for
+					//do stock adjustment
+					//TODO, is it necessary with strict transactions here?
+					\api\products::adjustStock($line->productID, new \model\finance\products\StockItem(array(
+						'adjustmentQuantity' => -1 * $line->quantity,
 						'price' => $line->amount,
-						'quantity' => $line->quantity
-					);
+						'date' => new \MongoDate()
+					)));
 				}
 			}
-
-			//do stock adjustment
-			\api\products::addToStock($toAdd);
 		}
 
 		//set variables:
