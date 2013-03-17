@@ -27,6 +27,8 @@ class Amount extends \model\AbstractModel{
 	function set_CurrencyID($val){
 		$this->currencyID = $val;
 	}
+
+	//validate whether ISO 4217
 }
 
 ?>

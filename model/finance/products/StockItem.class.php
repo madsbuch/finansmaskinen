@@ -9,21 +9,35 @@
 
 namespace model\finance\products;
 
+/**
+ * @property $adjustmentQuantity;
+ * @property $sold;
+ * @property $price;
+ * @property $date;
+ */
+
 class StockItem extends \model\AbstractModel
 {
 
 	protected $_autoassign = array(
-		'price' => array('\model\ext\ubl2\Price', false),
+		'price' => array('model\ext\ubl2\field\Amount', false),
 	);
 
 	/**
-	 * negative for sold, positive for bought
+	 * positive int, how many was bought or sold?
 	 *
-	 * @var
+	 * @var int
 	 */
 	protected $adjustmentQuantity;
 
-	protected $contraCount;
+	/**
+	 * if this object represents some bought units, this represents how many
+	 * there is back, it's initialized to the same amount as $adjustmentQuantity.
+	 * the reson is that it is easier to query for all those items that is not 0
+	 *
+	 * @var int
+	 */
+	protected $sold;
 
 	/**
 	 * price elements are bought or sold for
@@ -48,5 +62,11 @@ class StockItem extends \model\AbstractModel
 			$ret[] = 'adjustmentQuantity cannot be 0';
 
 		return $ret;
+	}
+
+	function doParse(){
+		if(is_numeric($this->date))
+			$this->date = new \MongoDate($this->date);
+
 	}
 }

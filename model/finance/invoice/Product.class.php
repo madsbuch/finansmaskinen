@@ -34,7 +34,7 @@ class Product extends \model\AbstractModel{
 	protected $account;
 	
 	/**
-	* original amount
+	* unitprice in original valuta
 	*/
 	protected $origAmount;
 	

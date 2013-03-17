@@ -4,17 +4,19 @@ namespace helper;
 use \core\localization as l;
 
 class local{
-	
+
 	/**
-	* converts a int to a string representation of some valuta
-	*
-	*
-	*
-	* @param $num the string representation
-	* @param $valuta the valuta code
-	* @param $asNum if true, the output is just the number, otherwise, the valuta
-	*				is prepended
-	*/
+	 * converts a int to a string representation of some valuta
+	 *
+	 *
+	 *
+	 * @param $num the string representation
+	 * @param $valuta the valuta code
+	 * @param bool $asString
+	 * @return string
+	 * @internal param \helper\if $asNum true, the output is just the number, otherwise, the valuta
+	 *                is prepended
+	 */
 	static function writeValuta($num, $valuta = null, $asString=false){
 		//formatting number as a valuta. Remeber to devide with the decimal devisor, often 100
 		$num = number_format ($num/100, 2, l::$commaSeparator, l::$thousandsSeparator);
@@ -22,6 +24,10 @@ class local{
 		if($asString)
 			return $valuta . ' ' . $num;
 		return $num;
+	}
+
+	static function writeAmountObj(\model\ext\ubl2\field\Amount $obj, $printCurrency = false){
+		return self::writeValuta($obj->_content, $obj->currencyID, $printCurrency);
 	}
 
 	/**

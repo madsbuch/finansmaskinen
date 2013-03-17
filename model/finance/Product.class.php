@@ -45,6 +45,8 @@ class Product extends \model\AbstractModel{
 		'TaxCategory' => array('\model\ext\ubl2\TaxCategory', true),
 		'stock' => array('integer', false),
 		'stockItems' => array('\model\finance\products\StockItem', true),
+		'soldItems' => array('\model\finance\products\StockItem', true),
+		'boughtItems' => array('\model\finance\products\StockItem', true),
 		'inCatalog' => array('bool', false)
 	);
 	
@@ -104,8 +106,23 @@ class Product extends \model\AbstractModel{
 
 	/**
 	 * @var \model\finance\products\StockItem
+	 * @deprecated
 	 */
 	protected $stockItems;
+
+	/**
+	 * list of sold items
+	 *
+	 * @var \model\finance\products\StockItem
+	 */
+	protected $soldItems;
+
+	/**
+	 * list of bought items
+	 *
+	 * @var \model\finance\products\StockItem
+	 */
+	protected $boughtItems;
 	
 	/**
 	* location in the storage

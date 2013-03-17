@@ -367,7 +367,10 @@ class invoice{
 
 				\api\products::adjustStock($prod->id, new \model\finance\products\StockItem(array(
 					'adjustmentQuantity' => $il->InvoicedQuantity->_content,
-					'price' => $il->LineExtensionAmount->_content / $il->InvoicedQuantity->_content,
+					'price' => array(
+						'_content' => $prod->origAmount,
+						'currencyID' => $prod->origValuta
+					),
 					'date' => new \MongoDate()
 				)));
 			}

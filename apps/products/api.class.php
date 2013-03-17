@@ -342,10 +342,21 @@ class products
 			throw new \exception\UserException(__('Errors in stockItem: %s' . implode(', ', $e)));
 		}
 
+		//find where to array_push
+		$pushField = '';
+		$stockAdjust = $stockItem->adjustmentQuantity;
+		if($stockItem->adjustmentQuantity > 0){
+			$pushField = 'boughtItems';
+		}
+		else{
+			$pushField = 'soldItems';
+			$stockAdjust = $stockItem->adjustmentQuantity = $stockAdjust * -1;
+		}
+
 		//push it on:
 		$lodo = self::getLodoInternal();
 		$lodo->addCondition(array('_id' => new \MongoId($productID)));
-		$lodo->push('stockItems', $stockItem);
+		$lodo->push($pushField, $stockItem);
 	}
 
 	/**
