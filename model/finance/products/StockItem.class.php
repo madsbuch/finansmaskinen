@@ -14,6 +14,8 @@ namespace model\finance\products;
  * @property $sold;
  * @property $price;
  * @property $date;
+ * @property $issuingApp;
+ * @property $issuingObject;
  */
 
 class StockItem extends \model\AbstractModel
@@ -37,7 +39,7 @@ class StockItem extends \model\AbstractModel
 	 *
 	 * @var int
 	 */
-	protected $sold;
+	protected $soldCount;
 
 	/**
 	 * price elements are bought or sold for
@@ -54,6 +56,20 @@ class StockItem extends \model\AbstractModel
 	 * @var
 	 */
 	protected $date;
+
+	/**
+	 * backreference to app that caused this adjustment to happen
+	 *
+	 * @var
+	 */
+	protected $issuingApp;
+
+	/**
+	 * object in app, for causing this adjustment
+	 *
+	 * @var
+	 */
+	protected $issuingObject;
 
 
 	function doValidate($level){

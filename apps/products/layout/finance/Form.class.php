@@ -113,9 +113,6 @@ class Form extends \helper\layout\LayoutBlock{
 			<div class="span4">
 				<h2>Lager</h2>
 				<div class="app-box">
-						Antal på lager:
-						<input type="text" style="width:90%"
-						name="stock" id="stock" value="0" />
 						Placering:
 						<input type="text" style="width:90%" name="location" id="location" />
 				</div>

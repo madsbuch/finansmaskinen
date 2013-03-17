@@ -228,9 +228,11 @@ class invoice{
 
         ));
 
+	    //add eventual exchange rates
 	    if(isset($invoice->exchangeRates))
 		    $full->ExchangeRates = $invoice->exchangeRates;
 
+	    //set the date
         if(!empty($invoice->date))
             $full->Invoice->IssueDate = $invoice->date;
 	    else
@@ -363,16 +365,19 @@ class invoice{
 				$il = $inv->Invoice->InvoiceLine->$i;
 
 				//note raw value to post to this catagory
+				var_dump($il->toArray());
 				$cats[$p->catagoryID]->amount += $il->LineExtensionAmount->_content * $rate;
-
+				//adjust the stock
 				\api\products::adjustStock($prod->id, new \model\finance\products\StockItem(array(
 					'adjustmentQuantity' => $il->InvoicedQuantity->_content,
 					'price' => array(
 						'_content' => $prod->origAmount,
 						'currencyID' => $prod->origValuta
 					),
-					'date' => new \MongoDate()
-				)));
+					'date' => new \MongoDate(),
+					'issuingApp' => 'invoice',
+					'issuingObject' => (string) $inv->_id
+				)), false);
 			}
 		}
 		//post the cat's the to accounting system

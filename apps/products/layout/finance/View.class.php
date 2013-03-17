@@ -9,7 +9,7 @@ class View extends \helper\layout\LayoutBlock{
 	private $product;
 	private $widgets;
 	
-	public function __construct($product, $widgets=array()){
+	public function __construct(\model\finance\Product $product, $widgets=array()){
 		$this->product = $product;
 		$this->widgets = $widgets;
 	}
@@ -49,7 +49,7 @@ class View extends \helper\layout\LayoutBlock{
                 $this->product->productID : '-'))));
 		
 		$info->addObject(new \model\Base(array('key' => 'Beskrivelse',
-			'val' => (isset(
+			'val' => (!empty(
 				$this->product->Item->Description) ? 
 				$this->product->Item->Description : '-'))));
 		
@@ -57,7 +57,13 @@ class View extends \helper\layout\LayoutBlock{
 			'val' => (isset(
 				$this->product->Price->PriceAmount->_content) ? 
 				l::writeValuta($this->product->Price->PriceAmount->_content, $this->product->Price->PriceAmount->currencyID, true) : '-'))));
-		
+
+		$info->addObject(new \model\Base(array('key' => 'Lager',
+			'val' => (isset(
+			$this->product->stock) ?
+				$this->product->stock : '-'))));
+
+
 			
 		$left->appendChild(\helper\html::importNode($dom, $info->generate()));
 		

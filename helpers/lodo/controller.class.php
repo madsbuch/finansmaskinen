@@ -39,6 +39,12 @@ class lodo
 	private $conditions;
 
 	/**
+	 * updates to perform on next update
+	 * @var array
+	 */
+	private $updates;
+
+	/**
 	 * the order of the results
 	 */
 	private $order;
@@ -366,31 +372,33 @@ class lodo
 		return $this->collection->update($this->conditions, $new, array('safe' => true));
 	}
 
+	//region functions
 	/**
 	 * pushes object to field directly
 	 *
 	 * @param $field
+	 *
 	 * @param $object
+	 * @param bool $immediateExecution
 	 */
-	function push($field, $object){
-		$this->collection->update($this->conditions, array('$push' => array($field => $this->getArray($object))));
+	function push($field, $object, $immediateExecution = true){
+		$this->updates['$push'][$field] = $this->getArray($object);
+		if($immediateExecution)
+			$this->executeUpdate();
 	}
 
 	/**
-	 * @throws \Exception
+	 * @param $field
+	 * @param $amount
+	 * @param bool $immediateExecution
 	 */
-	function lock()
-	{
-		throw new \Exception('Not implemented');
+	function increment($field, $amount, $immediateExecution = true){
+		$this->updates['$inc'][$field] = $amount;
+		if($immediateExecution)
+			$this->executeUpdate();
 	}
 
-	/**
-	 * @throws \Exception
-	 */
-	function unlock()
-	{
-		throw new \Exception('Not implemented');
-	}
+	//endregion
 
 	/**
 	 * transperant compared to the mongo one
@@ -465,9 +473,16 @@ class lodo
 	}
 
 	/**
-	 * optimizes collection
+	 * execute a update query
+	 */
+	function executeUpdate(){
+		$this->collection->update($this->conditions, $this->updates);
+	}
+
+	/**
+	 * indexes fields in collection
 	 *
-	 * additional indexes is defined by $index
+	 * @param $index
 	 */
 	public function optimizeCollection($index)
 	{
@@ -479,7 +494,7 @@ class lodo
 	}
 
 	/******************************** AUX *************************************/
-
+	//region private aux
 	/**
 	 * prepares the subsystem for insertion
 	 *
@@ -609,4 +624,6 @@ class lodo
 		}
 		return $toWriteTo;
 	}
+
+	//endregion
 }

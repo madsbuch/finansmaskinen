@@ -330,11 +330,12 @@ class products
 	 *
 	 * @param $productID
 	 * @param \model\finance\products\StockItem $stockItem
+	 * @param $increment
 	 * @throws \exception\UserException
 	 * @internal param array $products array(array(id => productID, price => price, quantity => quantity))
 	 * @internal param null $price int price pr. item the price the product was registered on, if not set, default price is used.
 	 */
-	static function adjustStock($productID, \model\finance\products\StockItem $stockItem)
+	static function adjustStock($productID, \model\finance\products\StockItem $stockItem, $increment)
 	{
 		$stockItem->parse();
 		$e = $stockItem->validate();
@@ -345,18 +346,20 @@ class products
 		//find where to array_push
 		$pushField = '';
 		$stockAdjust = $stockItem->adjustmentQuantity;
-		if($stockItem->adjustmentQuantity > 0){
+		if($increment){
 			$pushField = 'boughtItems';
 		}
 		else{
 			$pushField = 'soldItems';
-			$stockAdjust = $stockItem->adjustmentQuantity = $stockAdjust * -1;
+			$stockAdjust = $stockAdjust * -1;
 		}
 
 		//push it on:
 		$lodo = self::getLodoInternal();
 		$lodo->addCondition(array('_id' => new \MongoId($productID)));
-		$lodo->push($pushField, $stockItem);
+		$lodo->push($pushField, $stockItem, false);
+		$lodo->increment('stock', $stockAdjust, false);
+		$lodo->executeUpdate();
 	}
 
 	/**
