@@ -71,7 +71,6 @@ class Accounts
 			$this->setTags($pdo->lastInsertId(), $a->tags);
 
 		}
-		return true;
 	}
 
 	/**
@@ -83,12 +82,10 @@ class Accounts
 	function updateAccount(\model\finance\accounting\Account $acc){
 		$pdo = $this->db->dbh;
 		$sth = $pdo->prepare($this->queries->updateAccount());
-
-		var_dump($sth, $this->mapObjectToDBArray($acc));
-
 		if (!$sth->execute($this->mapObjectToDBArray($acc))){
 			throw new \exception\UserException(__('Unable to update account: %s', $acc->code));
 		}
+		$this->setTags($acc->code, $acc->tags);
 	}
 
 	/**
@@ -117,10 +114,19 @@ class Accounts
 	 *
 	 * @param $accountID
 	 * @param $tags
+	 * @param bool $isCode
 	 */
-	function setTags($accountID, $tags){
+	function setTags($accountID, $tags, $isCode=false){
+		$tags = array_unique($tags);
 		$pdo = $this->db->dbh;
-		$sth = $pdo->prepare($this->queries->deleteAccount());
+		if($isCode){
+			$sth = $pdo->prepare($this->queries->setTagsByAccountCode($tags));
+			$sth->execute(array('account_id' => $accountID));
+		}
+		else{
+			$sth = $pdo->prepare($this->queries->setTagsByAccountCode($tags));
+			$sth->execute(array('code' => $accountID, 'grp_id' => $this->srv->grp));
+		}
 	}
 
 	/**** GETTERS ****/
@@ -190,7 +196,15 @@ class Accounts
 	 * @return array
 	 */
 	function getTagsForAccount($accountID){
-		return array();
+		$pdo = $this->srv->db->dbh;
+		$sth = $pdo->prepare($this->srv->queries->getTags());
+		$sth->execute(array('account_id' => $accountID));
+
+		$ret = array();
+		foreach($sth->fetchAll() as $r)
+			$ret[] = $r['tag'];
+
+		return $ret;
 	}
 
 	/**

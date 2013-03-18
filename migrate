@@ -25,3 +25,7 @@ CREATE  TABLE `finance`.`accounting_account_tags` (
     REFERENCES `finance`.`accounting_accounts` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
+
+ALTER TABLE `finance`.`accounting_account_tags` CHANGE COLUMN `tag` `tag` VARCHAR(45) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NOT NULL
+, DROP PRIMARY KEY
+, ADD PRIMARY KEY (`account_id`, `tag`) ;

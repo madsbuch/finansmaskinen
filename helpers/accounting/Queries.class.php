@@ -122,6 +122,24 @@ interface Queries
 	 */
 	function setTags($tags);
 
+	/**
+	 * takes
+	 *  code - code of account
+	 *  grp_id
+	 *
+	 * @param $tags
+	 * @return mixed
+	 */
+	function setTagsByAccountCode($tags);
+
+	/**
+	 * takes
+	 *  account_id object id of account
+	 *
+	 * @return string
+	 */
+	function getTags();
+
 	//endregion
 
 	//region transactions

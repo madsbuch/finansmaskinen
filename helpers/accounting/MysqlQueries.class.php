@@ -195,6 +195,23 @@ class MysqlQueries implements \helper\accounting\Queries
 		";
 	}
 
+	function setTagsByAccountCode($tags){
+		$insert = '(@id,\'' . implode('\'), (@id, \'', $tags) . '\')';
+		return "
+			SET @id = (SELECT id FROM accounting_accounts WHERE grp_id = :grp_id AND code = :code);
+			DELETE FROM accounting_account_tags WHERE account_id = @id;
+			INSERT INTO
+				accounting_account_tags (account_id, tag)
+			VALUES $insert;
+
+		";
+	}
+
+
+	function getTags(){
+		return 'SELECT tag FROM accounting_account_tags WHERE account_id = :account_id;';
+	}
+
 	//endregion
 
 	//region postings
