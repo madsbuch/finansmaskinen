@@ -181,6 +181,7 @@ class accounting
 	 */
 	function addTransaction($transaction)
 	{
+		throw new \Exception('Not supported');
 		//some validation
 		if ($transaction->value <= 0)
 			throw new \exception\UserException(__('Value of transaction has to be more than 0 on account: %s', $transaction->account));
@@ -236,15 +237,6 @@ class accounting
 
 	/**** daybook transactions ****/
 
-	/**
-	 * adds all postings from daybooktransaction object
-	 *
-	 * @param $transaction \model\finance\accounting\DaybookTransaction
-	 *
-	 * @throws \exception\UserException
-	 * @return void
-	 * @deprecated moved to transaction util
-	 */
 	function addDaybookTransaction(\model\finance\accounting\DaybookTransaction $transaction){
         return $this->transaction()->insertTransaction($transaction);
 	}
@@ -474,6 +466,17 @@ class accounting
 	}
 
 	/**
+	 * compresses a transaction without changing it's meaning (equal postings in one
+	 * posting)
+	 *
+	 * @param $transaction
+	 * @return mixed
+	 */
+	function compressTransaction($transaction){
+		return $transaction;
+	}
+
+	/**
 	 * takes an transaction (mergee) and merges them into main
 	 *
 	 * @param \model\finance\accounting\DaybookTransaction $main
@@ -600,27 +603,6 @@ class accounting
 	function getVatCodeByType($type)
 	{
         return $this->vat()->getVatByType($type);
-		$pdo = $this->db->dbh;
-
-		$sth = $pdo->prepare('SELECT * FROM accounting_vat_codes WHERE type = ? AND grp_id = ?');
-
-		$ret = array();
-		$sth->execute(array($type, $this->grp));
-
-		foreach ($sth->fetchAll() as $t) {
-			$ret[] = new \model\finance\accounting\VatCode(array(
-				'_id' => $t['id'],
-				'name' => $t['name'],
-				'code' => $t['vat_code'],
-				'type' => $t['type'],
-				'account' => $t['account'],
-				'percentage' => $t['percentage'],
-				'counterAccount' => $t['counter_account'],
-				'net' => $t['netto'],
-				'taxcatagoryID' => $t['ubl_taxCatagory']
-			));
-		}
-		return $ret;
 	}
 
 	/**** ACCOUNTS ****/

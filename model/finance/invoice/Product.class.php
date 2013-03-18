@@ -39,8 +39,10 @@ class Product extends \model\AbstractModel{
 	protected $origAmount;
 	
 	/**
-	* original valuta
-	*/
+	 * original valuta
+	 *
+	 * TODO have it migrated to originalCurrency
+	 */
 	protected $origValuta;
 }
 

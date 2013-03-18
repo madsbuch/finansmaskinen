@@ -243,8 +243,6 @@ class invoice{
         $full->Invoice->InvoiceLine = array();
 
         foreach($invoice->products as $key => $prod){
-	        $realProd = \api\products::getByProductID($prod->productID);
-
             //the product object
 	        $full->product->$key->index = $key;
             $full->product->$key->id = $prod->productID;
@@ -365,7 +363,6 @@ class invoice{
 				$il = $inv->Invoice->InvoiceLine->$i;
 
 				//note raw value to post to this catagory
-				var_dump($il->toArray());
 				$cats[$p->catagoryID]->amount += $il->LineExtensionAmount->_content * $rate;
 				//adjust the stock
 				\api\products::adjustStock($prod->id, new \model\finance\products\StockItem(array(
@@ -578,7 +575,7 @@ class invoice{
 	    $vat = 0;
 	    if(!empty($inv->product)){
 		    foreach($inv->product as $i => &$prod){
-			    //fetch external product
+			    //fetc product
 			    if(!empty($prod->id) && $inv->objectIDs)
 				    $p = \api\products::getOne($prod->id);
 			    else{
@@ -587,10 +584,10 @@ class invoice{
 			    }
 
 			    $unitPrice = null;
-			    //support for unitprice from the products
+			    //support for fetching unitprice from the products
 			    if(!isset($inv->Invoice->InvoiceLine->$i->Price->PriceAmount)){
-				    //handle currencies
-				    $priceAmount = $p->Price->PriceAmount;
+				    //handle currencies (damn you clone)
+				    $priceAmount = clone $p->Price->PriceAmount;
 
 				    //translating rate
 				    $rate = self::getRate($priceAmount->currencyID, (string) $inv->Invoice->DocumentCurrencyCode, $inv);
@@ -600,6 +597,7 @@ class invoice{
 				    }
 
 				    $unitPrice = $priceAmount->_content;
+				    //merge the actual price in
 				    $toMerge['Invoice']['InvoiceLine'][$i]['Price']['PriceAmount'] = $priceAmount;
 
 				    //TODO when parse is fully implemented, this should be taken into account

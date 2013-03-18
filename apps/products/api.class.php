@@ -205,7 +205,7 @@ class products
 	 * exception is thrown if doesn't exist
 	 *
 	 * @param $id
-	 * @return null
+	 * @return \model\finance\Product
 	 * @throws \exception\UserException
 	 */
 	static function getOne($id)
@@ -335,7 +335,7 @@ class products
 	 * @internal param array $products array(array(id => productID, price => price, quantity => quantity))
 	 * @internal param null $price int price pr. item the price the product was registered on, if not set, default price is used.
 	 */
-	static function adjustStock($productID, \model\finance\products\StockItem $stockItem, $increment)
+	static function adjustStock($productID, \model\finance\products\StockItem $stockItem, $bought)
 	{
 		$stockItem->parse();
 		$e = $stockItem->validate();
@@ -346,7 +346,7 @@ class products
 		//find where to array_push
 		$pushField = '';
 		$stockAdjust = $stockItem->adjustmentQuantity;
-		if($increment){
+		if($bought){
 			$pushField = 'boughtItems';
 		}
 		else{

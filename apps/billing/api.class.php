@@ -323,10 +323,12 @@ class billing extends \core\api
 					//do stock adjustment
 					//TODO, is it necessary with strict transactions here?
 					\api\products::adjustStock($line->productID, new \model\finance\products\StockItem(array(
-						'adjustmentQuantity' => -1 * $line->quantity,
+						'adjustmentQuantity' => $line->quantity,
 						'price' => $line->amount,
-						'date' => new \MongoDate()
-					)));
+						'date' => new \MongoDate(),
+						'issuingApp' => 'billing',
+						'issuingObject' => (string) $bill->_id
+					)), true);
 				}
 			}
 		}
@@ -339,12 +341,12 @@ class billing extends \core\api
 		$bill->ref = $daybookTransaction->referenceText = __('Bill %s', $bill->billNumber);
 
 		//port the transactions to the accounting system
-		\api\accounting::importTransactions($daybookTransaction, array(
+		\api\accounting::importTransactions($daybookTransaction, new \model\finance\accounting\options\Transaction(array(
 			'liability' => $liability,
 			'asset' => $asset,
 			'calculateVat' => true,
 			'calculateBalance' => true
-		));
+		)));
 		$bill->isPayed = true;
 		self::update($bill);
 		return $bill->ref;
@@ -396,16 +398,29 @@ class billing extends \core\api
 				 * @var $prod \model\finance\bill\Line
 				 */
 
+				//merge in product details from product
+				if(isset($prod->productID)){
+					$product = \api\products::getOne($prod->productID);
+
+					if(!isset($prod->account))
+						;
+
+					if(!isset($prod->amount))
+						$prod->amount = $product->retailPrice->_content;
+
+					//fetch details from product system
+					//get account and vatcode
+					//amount if not set
+				}
+
 				//total line amount
 				$tAmount = $prod->amount * $prod->quantity;
 
 				//***calculate vat total:
 
-				if(isset($prod->productID)){
-					//fetch details from product system
-				}
+
 				//here we do the logic for an account
-				elseif($prod->account){
+				if($prod->account){
 					//fetch vat from accounting
 					$percentage = \api\accounting::getVatCode($prod->vatCode)->percentage;
 

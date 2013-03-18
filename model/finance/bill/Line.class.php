@@ -22,6 +22,9 @@ class Line extends \model\AbstractModel
 	/**
 	 * Either a product id or an Account and vatCode has to be supplied
 	 *
+	 * thisis object id of product (for now, later on it should also
+	 * support product code)
+	 *
 	 * @var string
 	 */
 	protected $productID;
@@ -82,7 +85,7 @@ class Line extends \model\AbstractModel
 			$ret[] = 'Both account and vatcode has to be set, not just one.';
 
 		if ($this->quantity <= 0)//quantity not negative
-			$ret[] = 'Quantity must be more than 0';
+			$ret[] = 'Quantity must be greater than 0';
 
 		return $ret;
 	}

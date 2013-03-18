@@ -92,7 +92,6 @@ class InvoiceTest extends UnitTestCase
 		$invoiceSimpleObject->currency = 'EUR';
 		$this->insertedInvoice = $this->client->simpleCreate($invoiceSimpleObject->toArray());
 		$this->assertTrue(is_string($this->insertedInvoice));
-
 		//test that the currency translation was done right
 		$bill = new \model\finance\Invoice($this->client->getRaw($this->insertedInvoice));
 		$rate = $invoiceSimpleObject->exchangeRates->get_first()->calculationRate;
