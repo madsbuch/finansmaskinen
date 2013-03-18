@@ -208,7 +208,7 @@ class MysqlQueries implements \helper\accounting\Queries
 	}
 
 
-	function getTags(){
+	function getTagsForAccount(){
 		return 'SELECT tag FROM accounting_account_tags WHERE account_id = :account_id;';
 	}
 

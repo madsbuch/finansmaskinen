@@ -197,7 +197,7 @@ class Accounts
 	 */
 	function getTagsForAccount($accountID){
 		$pdo = $this->srv->db->dbh;
-		$sth = $pdo->prepare($this->srv->queries->getTags());
+		$sth = $pdo->prepare($this->srv->queries->getTagsForAccount());
 		$sth->execute(array('account_id' => $accountID));
 
 		$ret = array();

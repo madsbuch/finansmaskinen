@@ -138,7 +138,7 @@ interface Queries
 	 *
 	 * @return string
 	 */
-	function getTags();
+	function getTagsForAccount();
 
 	//endregion
 

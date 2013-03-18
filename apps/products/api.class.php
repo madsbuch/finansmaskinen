@@ -314,67 +314,53 @@ class products
 		return $lodo->update($data);
 	}
 
-	static function delete($objID)
-	{
-		$lodo = new helper_lodo('products', 'products');
-		return $lodo->delete($objID);
-	}
-
 	/**
-	 * takes products, adjusts the database, and retuns the transactions needed
-	 * for the accounting.
-	 *
-	 * the reason for the products array is to make the operation transactional (atomic)
-	 *
-	 * TODO should we return a transaction used for the balance adjustement?!
+	 * adds new element to stock
 	 *
 	 * @param $productID
 	 * @param \model\finance\products\StockItem $stockItem
-	 * @param $increment
 	 * @throws \exception\UserException
-	 * @internal param array $products array(array(id => productID, price => price, quantity => quantity))
-	 * @internal param null $price int price pr. item the price the product was registered on, if not set, default price is used.
 	 */
-	static function adjustStock($productID, \model\finance\products\StockItem $stockItem, $bought)
-	{
+	static function addToStock($productID, \model\finance\products\StockItem $stockItem){
+		//validate
 		$stockItem->parse();
 		$e = $stockItem->validate();
 		if(!empty($e)){
 			throw new \exception\UserException(__('Errors in stockItem: %s' . implode(', ', $e)));
 		}
 
-		//find where to array_push
-		$pushField = '';
-		$stockAdjust = $stockItem->adjustmentQuantity;
-		if($bought){
-			$pushField = 'boughtItems';
-		}
-		else{
-			$pushField = 'soldItems';
-			$stockAdjust = $stockAdjust * -1;
-		}
-
-		//push it on:
 		$lodo = self::getLodoInternal();
 		$lodo->addCondition(array('_id' => new \MongoId($productID)));
-		$lodo->push($pushField, $stockItem, false);
-		$lodo->increment('stock', $stockAdjust, false);
+		$lodo->push('boughtItems', $stockItem, false);
+		$lodo->increment('stock', $stockItem->adjustmentQuantity, false);
 		$lodo->executeUpdate();
 	}
 
 	/**
+	 * removes element from stock, and returnes prices they where insert with
 	 *
-	 * the reason for the products array is to make the operation transactional (atomic)
-	 *
-	 * @param $products
-	 * @internal param null $price int price pr. item the price the product was sold for
+	 * @param $productID
+	 * @param \model\finance\products\StockItem $stockItem
+	 * @throws \exception\UserException
 	 */
-	static function removeFromStock($products)
-	{
-		/*if($quantity < 1){
-			throw new \exception\UserException(__('Quantity must be more than 0, was %s', $quantity));
-		} */
+	static function removeFromStock($productID, \model\finance\products\StockItem $stockItem){
+		//validate
+		$stockItem->parse();
+		$e = $stockItem->validate();
+		if(!empty($e)){
+			throw new \exception\UserException(__('Errors in stockItem: %s' . implode(', ', $e)));
+		}
+
+		//update the structure
+		$lodo = self::getLodoInternal();
+		$lodo->addCondition(array('_id' => new \MongoId($productID)));
+		$lodo->push('soldItems', $stockItem, false);
+		$lodo->increment('stock', -1 * $stockItem->adjustmentQuantity, false);
+		$lodo->executeUpdate();
+
+		//return some prices for use when accounting, but only is stock is set
 	}
+
 
     /**** SOME PRIVATE AUX ****/
 

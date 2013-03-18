@@ -365,7 +365,7 @@ class invoice{
 				//note raw value to post to this catagory
 				$cats[$p->catagoryID]->amount += $il->LineExtensionAmount->_content * $rate;
 				//adjust the stock
-				\api\products::adjustStock($prod->id, new \model\finance\products\StockItem(array(
+				\api\products::removeFromStock($prod->id, new \model\finance\products\StockItem(array(
 					'adjustmentQuantity' => $il->InvoicedQuantity->_content,
 					'price' => array(
 						'_content' => $prod->origAmount,
@@ -374,7 +374,7 @@ class invoice{
 					'date' => new \MongoDate(),
 					'issuingApp' => 'invoice',
 					'issuingObject' => (string) $inv->_id
-				)), false);
+				)));
 			}
 		}
 		//post the cat's the to accounting system
