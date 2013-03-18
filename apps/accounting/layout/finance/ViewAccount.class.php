@@ -32,12 +32,17 @@ class ViewAccount extends \helper\layout\LayoutBlock
 		$left->appendChild($this->importContent('<h3>'.__('Account details').'</h3>'));
 		$left->setAttribute('class', 'span5');
 
+		$this->account->tags = implode(', ', $this->account->tags);
+
 		$block = new \helper\html\HTMLMerger('
 		<div class="app-box">
 			<form method="post" action="/accounting/updateAccount">
 				<input type="hidden" name="_id" id="_id" />
 				<label>kode</label>
-				<input type="text" name="code" id="code" class="span4" />
+				<input type="text" name="code" id="code" class="span4"  />
+
+				<label>Tags</label>
+				<input type="text" name="tags" id="tags" class="span4" />
 
 				<label>Navn:</label>
 				<input type="text" name="name" id="name" class="span4" />

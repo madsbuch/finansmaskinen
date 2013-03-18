@@ -62,22 +62,33 @@ class Accounts
 			$account = array($account);
 
 		foreach ($account as $a) {
-			$flag = 0;
-			$flag = $a->allowPayments ? $flag | $this->controller->PAYABLE : $flag;
-			$flag = $a->isEquity ? $flag | $this->controller->EQUITY : $flag;
-			if (!$sth->execute(array(
-				'grp_id' => $this->grp,
-				'code' => $a->code,
-				'dfa' => $a->defaultReflection,
-				'name' => $a->name,
-				'type' => $a->type,
-				'vat' => $a->vatCode,
-				'flags' => $flag,))
-			) {
+			/** @var $a \model\finance\accounting\Account */
+			if (!$sth->execute($this->mapObjectToDBArray($a))){
 				throw new \exception\UserException(__('Unable to create account: %s', $a->code));
 			}
+
+			//do the tags
+			$this->setTags($pdo->lastInsertId(), $a->tags);
+
 		}
 		return true;
+	}
+
+	/**
+	 * updates an account object
+	 *
+	 * @param \model\finance\accounting\Account $acc
+	 * @throws \exception\UserException
+	 */
+	function updateAccount(\model\finance\accounting\Account $acc){
+		$pdo = $this->db->dbh;
+		$sth = $pdo->prepare($this->queries->updateAccount());
+
+		var_dump($sth, $this->mapObjectToDBArray($acc));
+
+		if (!$sth->execute($this->mapObjectToDBArray($acc))){
+			throw new \exception\UserException(__('Unable to update account: %s', $acc->code));
+		}
 	}
 
 	/**
@@ -101,10 +112,23 @@ class Accounts
 		return true;
 	}
 
+	/**
+	 * makes sure only tags in the array $tags is in the tags table.
+	 *
+	 * @param $accountID
+	 * @param $tags
+	 */
+	function setTags($accountID, $tags){
+		$pdo = $this->db->dbh;
+		$sth = $pdo->prepare($this->queries->deleteAccount());
+	}
+
 	/**** GETTERS ****/
 
 	/**
 	 * returns some account objects
+	 *
+	 * TODO richer querying... maybe a dedicated object?
 	 *
 	 * @param $flags int, binary representation of flags. see constants, used for quereing
 	 * @param array $accounts
@@ -129,7 +153,8 @@ class Accounts
 				'isEquity' => ($t['flags'] & $this->controller->EQUITY) == $this->controller->EQUITY ? true : false,
 				'income' => $t['amount_in'] ? $t['amount_in'] : 0,
 				'outgoing' => $t['amount_out'] ? $t['amount_out'] : 0,
-				'currency' => $t['currency']
+				'currency' => $t['currency'],
+				'tags' => $this->getTagsForAccount($t['id']),
 			));
 		}
 
@@ -148,5 +173,60 @@ class Accounts
 			throw new \exception\UserException(__('Account %s doesn\'t exist.', $code));
 		return $accounts[0];
 	}
+
+	/**
+	 * returns a collection of accounts based on a given tag
+	 *
+	 * @param $tag
+	 */
+	function getByTag($tag){
+
+	}
+
+	/**
+	 *
+	 *
+	 * @param $accountID int object id of account
+	 * @return array
+	 */
+	function getTagsForAccount($accountID){
+		return array();
+	}
+
+	/**
+	 * returns an array of tags (strings).
+	 * all tags are returned if search is not set,
+	 * otherwise tags that matches search are returned
+	 *
+	 * @param null $search
+	 */
+	function getTags($search = null){
+
+	}
+
+	//region private aux
+
+	/**
+	 * does the mapping!
+	 *
+	 * @param \model\finance\accounting\Account $acc
+	 * @return array
+	 */
+	private function mapObjectToDBArray(\model\finance\accounting\Account $acc){
+		$flag = 0;
+		$flag = $acc->allowPayments ? $flag | $this->controller->PAYABLE : $flag;
+		$flag = $acc->isEquity ? $flag | $this->controller->EQUITY : $flag;
+		return array(
+			'grp_id' => $this->grp,
+			'code' => $acc->code,
+			'dfa' => $acc->defaultReflection,
+			'name' => $acc->name,
+			'type' => $acc->type,
+			'vat' => $acc->vatCode,
+			'currency' => $acc->currency,
+			'flags' => $flag);
+	}
+
+	//endregion
 
 }

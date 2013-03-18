@@ -220,10 +220,6 @@ class accounting extends \core\app{
 		$this->output_content = $html->generate();
 	}
 
-	function updateAccount(){
-		throw new \exception\UserException(__('Not yet implemented.'));
-	}
-
 	/**
 	 * show current vat statement
 	 */
@@ -316,6 +312,27 @@ class accounting extends \core\app{
 	*/
 	function createAccounting(){
 	
+	}
+
+	function updateAccount(){
+		$input = new \helper\parser\Post('model\finance\accounting\Account');
+		$input->alterArray(function($arr){
+			$arr['tags'] = explode(',', $arr['tags']);
+			//trimming all values
+			array_walk($arr['tags'], function(&$v){
+				$v = trim($v);
+			});
+
+			return $arr;
+		});
+
+		$acc = $input->getObj();
+
+		\api\accounting::updateAccount($acc);
+
+		$this->header->redirect("/accounting/accounts");
+		$this->output_header = $this->header->generate();
+		$this->output_content = '';
 	}
 	
 	function createTransaction($jsonRet = false){

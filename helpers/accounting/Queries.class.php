@@ -55,6 +55,13 @@ interface Queries
 	function insertAccount();
 
 	/**
+	 * return a query that updates an account.
+	 * parameters is the same as the insert function
+	 * @return string
+	 */
+	function updateAccount();
+
+	/**
 	 * returns prepared statement that deletes an account
 	 * parameters:
 	 *  code
@@ -105,6 +112,15 @@ interface Queries
 	 * @return string
 	 */
 	function createVatCode();
+
+	/**
+	 * takes
+	 *  account_id
+	 *
+	 * @param $tags array of tags
+	 * @return string
+	 */
+	function setTags($tags);
 
 	//endregion
 

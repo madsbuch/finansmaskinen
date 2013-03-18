@@ -50,6 +50,26 @@ class DkkSolitaire {
 			'net' => true,
 			'type' => 2
 		),
+		array(
+			'code' => 'IV25',
+			'name' => 'Køb af varer indenfor EU',
+			'percentage' => 25,
+			'deductionPercentage' => 25,
+			'account' => 14263,
+			'contraAccount' => 14261,
+			'net' => true,
+			'type' => 2
+		),
+		array(
+			'code' => 'IY25',
+			'name' => 'Køb af ydelser indenfor EU',
+			'percentage' => 25,
+			'deductionPercentage' => 25,
+			'account' => 14264,
+			'contraAccount' => 14261,
+			'net' => true,
+			'type' => 2
+		),
 	);
 	//default accounts
 	public static $accounts = array(
@@ -172,6 +192,18 @@ class DkkSolitaire {
 		array(
 			'name' => 'Salgsmoms',
 			'code' => 14262,
+			'type' => 2,
+			'allowPayments' => false
+		),
+		array(
+			'name' => 'Varer købt i udlandet',
+			'code' => 14263,
+			'type' => 2,
+			'allowPayments' => false
+		),
+		array(
+			'name' => 'Ydelser købt i udlandet',
+			'code' => 14264,
 			'type' => 2,
 			'allowPayments' => false
 		),

@@ -52,9 +52,23 @@ class MysqlQueries implements \helper\accounting\Queries
 
 	function insertAccount(){
 		return 'INSERT INTO accounting_accounts
-			(`grp_id`, `code`, `default_reflection_account`, `name`, `type`, `vat`, `flags`)
+			(`grp_id`, `code`, `default_reflection_account`, `name`, `type`, `vat`, `flags`, `currency`)
 			VALUES
-			(:grp_id, :code, :dfa, :name, :type, :vat, :flags);';
+			(:grp_id, :code, :dfa, :name, :type, :vat, :flags, :currency);';
+	}
+	function updateAccount(){
+		return '
+		UPDATE accounting_accounts
+		SET
+			`default_reflection_account` = :dfa,
+			`name` = :name,
+			`type` = :type,
+			`vat` =  :vat,
+			`flags` = :flags,
+			`currency` = :currency
+		WHERE
+				grp_id = :grp_id
+			AND code = :code;';
 	}
 
 	function deleteAccount(){
@@ -168,6 +182,17 @@ class MysqlQueries implements \helper\accounting\Queries
 		VALUES
 			(:name, :type, :percentage, :account, :taxCategoryID, :description, :contraAccount, :deductionPercentage,
 				:contraDeductionPercentage, :principle, :grp, :code);';
+	}
+
+	function setTags($tags){
+		$insert = '(:account_id,' . implode('\'), (:account_id, \'', $tags) . ')';
+		return "
+			DELETE FROM accounting_account_tags WHERE id = :account_id;
+			INSERT INTO
+				accounting_account_tags (account_id, tag)
+			VALUES $insert;
+
+		";
 	}
 
 	//endregion

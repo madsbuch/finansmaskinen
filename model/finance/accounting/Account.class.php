@@ -10,6 +10,7 @@ namespace model\finance\accounting;
  * @property string $name
  * @property int $code
  * @property string $currency
+ * @property array $tags
  * @property int $defaultReflection
  * @property string $vatCode
  * @property int $type
@@ -46,6 +47,11 @@ class Account extends \model\AbstractModel
 	 * @var string
 	 */
 	protected $currency;
+
+	/**
+	 * @var array of tags
+	 */
+	protected $tags;
 
 	/**
 	 * default account, to reflect this account.

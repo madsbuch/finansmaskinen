@@ -14,3 +14,14 @@ ALTER TABLE `finance`.`accounting_accounts`
 ADD COLUMN `currency` CHAR(3) NULL  AFTER `flags` ;
 
 :::::::::::: FINANSMASKINEN.DK ER OPDATERET MED OVENTÅENDE :::::::::::::::::
+
+CREATE  TABLE `finance`.`accounting_account_tags` (
+  `account_id` INT NOT NULL ,
+  `tag` VARCHAR(45) NULL ,
+  PRIMARY KEY (`account_id`) ,
+  INDEX `fk_accounting_account_tags_1_idx` (`account_id` ASC) ,
+  CONSTRAINT `fk_accounting_account_tags_1`
+    FOREIGN KEY (`account_id` )
+    REFERENCES `finance`.`accounting_accounts` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);

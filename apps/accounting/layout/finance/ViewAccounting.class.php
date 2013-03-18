@@ -50,11 +50,14 @@ class ViewAccounting extends \helper\layout\LayoutBlock{
 			'val' => $this->acc->current ?
 				'Ja' : 'Nej')));
 
+		$left->appendChild(\helper\html::importNode($dom, $info->generate()));
+
+		if(!$this->acc->current)
+			$left->appendChild(\helper\html::importNode($dom, '<h4>Påmindelser tilknyttet</h4>'));
+
 		if(!$this->acc->current)
 			$left->appendChild(\helper\html::importNode($dom, \helper\layout\Element::primaryButton(
-				'/contacts/extRetrive/'.$this->contact->_id, 'Gør primær')));
-
-		$left->appendChild(\helper\html::importNode($dom, $info->generate()));
+				'/accounting/someBlah/'.$this->acc->_id, 'Gør primær')));
 
 
 
@@ -64,7 +67,7 @@ class ViewAccounting extends \helper\layout\LayoutBlock{
 		//populating the right side
 		foreach($this->widgets as $w){
 			$widget = $dom->createElement('div');
-			$widget->setAttribute('class', 'well');
+			$widget->setAttribute('class', 'app-box');
 			$w->wrap($widget, $dom);
 			$widget = $w->generate();
 			$right->appendChild($widget);

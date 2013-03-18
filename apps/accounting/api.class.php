@@ -475,6 +475,11 @@ class accounting
 		return $acc->accounts()->createAccount($account);
 	}
 
+	static function updateAccount($account){
+		$acc = new \helper\accounting(null);
+		return $acc->accounts()->updateAccount($account);
+	}
+
 	/**
 	 * returns a list of given accounts
 	 *
