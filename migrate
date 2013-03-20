@@ -15,6 +15,7 @@ ADD COLUMN `currency` CHAR(3) NULL  AFTER `flags` ;
 
 :::::::::::: FINANSMASKINEN.DK ER OPDATERET MED OVENTÅENDE :::::::::::::::::
 
+use finance;
 CREATE  TABLE `finance`.`accounting_account_tags` (
   `account_id` INT NOT NULL ,
   `tag` VARCHAR(45) NULL ,

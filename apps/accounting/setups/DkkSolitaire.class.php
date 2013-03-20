@@ -79,7 +79,8 @@ class DkkSolitaire {
 			'code' => 2100,
 			'vatCode' => 'I25',
 			'type' => 3,//expenses
-			'allowPayments' => false
+			'allowPayments' => false,
+			'tags' => array()
 		),
 		array(
 			'name' => 'Salgsfremmende omkostninger',
