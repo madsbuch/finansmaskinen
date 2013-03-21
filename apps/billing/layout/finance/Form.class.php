@@ -358,14 +358,14 @@ class Form extends \helper\layout\LayoutBlock
 		<div class="modal hide fade" id="createBill">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">×</button>
-				<h3>Opret salg</h3>
+				<h3>Opret regning</h3>
 			</div>
 			<div class="modal-body">
 				<p>'.implode('</p><p>', $this->msg).'</p>
 			</div>
 			<div class="modal-footer">
 				<a href="#" class="btn" data-dismiss="modal">Anuller</a>
-				<input type="submit" name="finished" class="btn btn-primary" value="Opret salg" />
+				<input type="submit" name="finished" class="btn btn-primary" value="Opret regning" />
 			</div>
 		</div>
 

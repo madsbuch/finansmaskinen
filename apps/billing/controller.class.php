@@ -62,8 +62,13 @@ class billing extends \core\app
 
 		$html->appendContent(\helper\layout\Element::heading(__('Billing'), __('Details for bill')));
 
-		$widgets = $this->callAll('getBillingPostCreate', array(null));
 		$bill = \api\billing::getOne($id);
+
+		if($bill->draft)
+			$widgets = $this->callAll('getBillingPreCreate', array($bill));
+		else
+			$widgets = $this->callAll('getBillingPostCreate', array($bill));
+
 		$party = \api\contacts::getContact($bill->contactID);
 
         if(!isset($party->Party))

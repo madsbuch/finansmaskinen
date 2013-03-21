@@ -56,6 +56,10 @@ class billing extends \core\api
 		return new \app\billing\layout\finance\Widget($objects);
 	}
 
+	static function on_getBillingPreCreate($bill){
+		return new \app\billing\layout\finance\widgets\Draft($bill);
+	}
+
 	/**
 	 * returns latest activity to use for the contacts
 	 */

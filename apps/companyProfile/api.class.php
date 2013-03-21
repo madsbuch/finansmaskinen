@@ -101,12 +101,14 @@ class companyProfile{
 	 * @param $amount
 	 * @param $ref
 	 * @param $account
+	 * @param bool $apply
+	 * @param null $company
 	 * @param bool $allowSubZero
 	 * @throws \exception\UserException
 	 * @throws \Exception
 	 * @return bool
 	 */
-    static function moneyWithdraw($amount, $ref, $account, $allowSubZero = false){
+    static function moneyWithdraw($amount, $ref, $account, $apply = false, $company = null, $allowSubZero = false){
 		//get a database object
 		$pdo = new \helper\core('companyProfile');
 		$pdo = $pdo->getDB()->dbh;
@@ -115,17 +117,27 @@ class companyProfile{
 			throw new \Exception('account was not recognized');	
 		if(!is_int($amount) && $amount > 0)
 			throw new \Exception('amount has to be integer >0');
-		$obj = self::retrieve(false);
-		if(!$obj)
+
+	    //get companyObject
+	    if(is_null($company))
+		    $company = self::retrieve(false);
+		if(!$company)
 			throw new \Exception('company has to be initialized');
-		$id = $obj->_id;
+
+	    $id = $company->_id;
 		
 		$amount = -1 * $amount;
 		
 		//and finally, the actual query
-		$sth = $pdo->prepare("INSERT INTO companyProfile_transactions (value, account, company_id, ref, approved) VALUES (?, ?, ?, ?, ?)");
+		$sth = $pdo->prepare("
+			INSERT INTO
+				companyProfile_transactions
+			(value, account, company_id, ref, approved)
+				VALUES
+			(?, ?, ?, ?, ?)
+		");
 		
-		if(!$sth->execute(array($amount, $account, $id, $ref, false)))
+		if(!$sth->execute(array($amount, $account, $id, $ref, $apply)))
             throw new \exception\UserException('Withdrawal failed');
 	}
 	/**
@@ -183,37 +195,58 @@ class companyProfile{
 		$id = $obj->_id;
 		
 		//and execute
-		$sth = $pdo->prepare("UPDATE companyProfile_transactions SET approved = 1 WHERE company_id = ? AND ref = ?");
+		$sth = $pdo->prepare("
+			UPDATE
+				companyProfile_transactions
+			SET
+				approved = 1
+			WHERE
+					company_id = ?
+				AND ref = ?
+		");
 		
 		return $sth->execute(array($id, $ref));
 	}
 
-    /**
-     * returns account sum
-     *
-     * @param $account
-     * @return int
-     * @throws \Exception
-     */
-    static function moneyResult($account){
+	/**
+	 * returns account sum
+	 *
+	 * @param $account
+	 * @param null $company
+	 * @throws \Exception
+	 * @return int
+	 */
+    static function moneyResult($account, $company = null){
 		//get a database
 		$pdo = new \helper\core('companyProfile');
 		$pdo = $pdo->getDB()->dbh;
 		
 		//some object fetch and validation
-		$obj = self::retrieve(false);
-		if(!$obj)
+	    if(is_null($company))
+		    $company = self::retrieve(false);
+		if(!$company)
 			throw new \Exception('company has to be initialized');
 		
-		$id = $obj->_id;
+		$id = $company->_id;
 		
 		//and execute
-		$sth = $pdo->prepare("SELECT SUM(value) FROM companyProfile_transactions WHERE company_id = ? AND account = ? AND approved = 1");
-		
+		$sth = $pdo->prepare("
+			SELECT
+				SUM(value) as sum
+			FROM
+				companyProfile_transactions
+			WHERE
+					company_id = ?
+				AND account = ?
+				AND approved = 1");
+
+	    if(!$sth)
+		    throw new \Exception('Could not prepare query for retrieving money sum');
+
 		$sth->execute(array($id, $account));
 		
 		$res = $sth->fetchAll();
-		
+
 		return (int) $res[0][0];
 	}
 	//endregion
@@ -279,7 +312,7 @@ class companyProfile{
 	 * @param bool $update
 	 * @return \model\finance\Company
 	 */
-    static function retrieve($fetchAll=true, $update = false){
+    static function retrieve($fetchAll=false, $update = false){
 	    $cp = new \helper\lodo('companyProfiles', 'companyProfile');
 
 		/**
@@ -295,9 +328,12 @@ class companyProfile{
 			$o = self::freeTierReset($o);
 
 		//merge some transaction from db in, and set account values
-		$o->accountReserved = 0;
-		$o->accountCredit = 0;
-		$o->accountWithdrawable = 0;
+	    if($fetchAll){
+			$o->accountReserved = self::moneyResult(self::ACCOUNTRESERVED, $o);
+			$o->accountCredit = self::moneyResult(self::ACCOUNTCREDIT, $o);;
+			$o->accountWithdrawable = self::moneyResult(self::ACCOUNTWITHDRAWABLE, $o);
+
+	    }
 
 	    if($update){
 		    self::resolveApps($o);
@@ -387,7 +423,7 @@ class companyProfile{
 				continue;
 
 			//attempt to do new payment
-			self::moneyWithdraw($sub->price, __('Subscription for %s', $sub->appName), self::ACCOUNTCREDIT);
+			self::moneyWithdraw($sub->price, __('Subscription for %s', $sub->appName), self::ACCOUNTCREDIT, true, $company);
 
 			$sub->lastPayment = time();
 			$sub->expirationDate = time() + \config\finance::$settings['subscriptionPeriod'];
@@ -461,7 +497,7 @@ class companyProfile{
             return true;
 
         //and finally attempt to withdraw money
-        if(self::moneyWithdraw($actionStrategy->getPrice(), '', self::ACCOUNTCREDIT))
+        if(self::moneyWithdraw($actionStrategy->getPrice(), '', self::ACCOUNTCREDIT, true))
             return true;
 
         throw new \exception\PaymentException(__('Upgrade subscription or insert money.'));

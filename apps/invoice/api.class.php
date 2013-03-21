@@ -343,6 +343,7 @@ class invoice{
 
 		//iterate through products
 		if(!empty($inv->product)){
+			$toRemove = array();
 			foreach($inv->product as $i => $prod){
 				/** @var $prod \model\finance\invoice\Product  */
 				$p = \api\products::getOne($prod->id);
@@ -365,7 +366,7 @@ class invoice{
 				//note raw value to post to this catagory
 				$cats[$p->catagoryID]->amount += $il->LineExtensionAmount->_content * $rate;
 				//adjust the stock
-				\api\products::removeFromStock($prod->id, new \model\finance\products\StockItem(array(
+				$toRemove[$prod->id][] = new \model\finance\products\StockItem(array(
 					'adjustmentQuantity' => $il->InvoicedQuantity->_content,
 					'price' => array(
 						'_content' => $prod->origAmount,
@@ -374,8 +375,10 @@ class invoice{
 					'date' => new \MongoDate(),
 					'issuingApp' => 'invoice',
 					'issuingObject' => (string) $inv->_id
-				)));
+				));
+
 			}
+			\api\products::removeFromStock($toRemove);
 		}
 		//post the cat's the to accounting system
 		$inv->ref = __('Invoice %s', (string) $inv->Invoice->ID);
