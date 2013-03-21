@@ -32,6 +32,8 @@ class StockItem extends \model\AbstractModel
 	 */
 	protected $adjustmentQuantity;
 
+
+
 	/**
 	 * if this object represents some bought units, this represents how many
 	 * there is back, it's initialized to the same amount as $adjustmentQuantity.
