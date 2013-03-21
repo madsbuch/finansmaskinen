@@ -106,10 +106,13 @@ class core{
 	function getCommonGroup($grpString){
 		return $this->grp->getCommonGroup($grpString);
 	}
-	
+
 	/**
-	* returns the main group for this app
-	*/
+	 * returns the main group for app
+	 *
+	 * @return mixed
+	 * @throws \Exception
+	 */
 	function getMainGroup(){
 		foreach($this->grp->getGrpForApp($this->app, true) as $g){
 			if(isset($g->metaInfo['mainFor']) && $g->metaInfo['mainFor'] == $this->appObj->id)
@@ -117,7 +120,12 @@ class core{
 		}
 		throw new \Exception('No main group');
 	}
-	
+
+	/**
+	 * return the tree id
+	 *
+	 * @return mixed
+	 */
 	function getTreeID(){
 		return $this->grp->getTree();
 	}

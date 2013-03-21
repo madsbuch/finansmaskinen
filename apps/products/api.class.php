@@ -57,14 +57,6 @@ class products
 
 	/**************************** WIDGETS *************************************/
 
-	//static function on_getInvoicePostCreate($invoice){
-	//	return new \app\products\layout\finance\widgets\InvoiceWidget($invoice);
-	//}
-	static function on_getBillingPostCreate($invoice)
-	{
-		return new \app\products\layout\finance\widgets\BillingWidget($invoice);
-	}
-
 	static function on_getProductsWidget($prd){
 		return new \app\products\layout\finance\widgets\StockWidget($prd);
 	}
@@ -84,11 +76,13 @@ class products
 
 		$mainGrp = $core->getMainGroup();
 		if (!$mainGrp)
-			return null;
+			throw new \exception\UserException(__('Not allowed action'));
 
+		//create a new group under the group for the app
 		$newGroup = $core->createGroup($mainGrp);
 		$core->setMeta($newGroup, 'name', $cat->name);
-		$core->reFetch(); //otherwise the other operations can not be done
+		//refetch to make sure the user has the updated info
+		$core->reFetch();
 
 		$lodo = new \helper\lodo('productCatagories', 'products');
 		$lodo->setFulltextIndex(array('name', 'description'));
@@ -315,50 +309,82 @@ class products
 	}
 
 	/**
-	 * adds new element to stock
+	 * takes array of productID => stockItem:
+	 * array(
+	 *  productID => array(\model\finance\products\StockItem())
+	 *  ...
+	 * )
 	 *
-	 * @param $productID
-	 * @param \model\finance\products\StockItem $stockItem
+	 * for ensuring transactions
+	 *
+	 * @param $products
 	 * @throws \exception\UserException
 	 */
-	static function addToStock($productID, \model\finance\products\StockItem $stockItem){
+	static function addToStock($products){
 		//validate
-		$stockItem->parse();
-		$e = $stockItem->validate();
-		if(!empty($e)){
-			throw new \exception\UserException(__('Errors in stockItem: %s' . implode(', ', $e)));
+		foreach($products as $productID => $pArr){
+			foreach($pArr as $stockItem){
+				$stockItem->parse();
+				$e = $stockItem->validate();
+				if(!empty($e)){
+					throw new \exception\UserException(__('Errors in stockItem: %s' . implode(', ', $e)));
+				}
+			}
 		}
 
-		$lodo = self::getLodoInternal();
-		$lodo->addCondition(array('_id' => new \MongoId($productID)));
-		$lodo->push('boughtItems', $stockItem, false);
-		$lodo->increment('stock', $stockItem->adjustmentQuantity, false);
-		$lodo->executeUpdate();
+		foreach($products as $productID => $pArr){
+			foreach($pArr as $stockItem){
+				$lodo = self::getLodoInternal();
+				$lodo->addCondition(array('_id' => new \MongoId($productID)));
+				$lodo->push('boughtItems', $stockItem, false);
+				$lodo->increment('stock', $stockItem->adjustmentQuantity, false);
+				$lodo->executeUpdate();
+
+				unset($lodo);
+			}
+		}
 	}
 
 	/**
-	 * removes element from stock, and returnes prices they where insert with
+	 * takes array of product id's, and how many to sell:
+	 * array(
+	 *  id => array(\model\finance\products\StockItem(), ...)
+	 *  ...
+	 * )
 	 *
-	 * @param $productID
-	 * @param \model\finance\products\StockItem $stockItem
+	 * @param $products
 	 * @throws \exception\UserException
+	 * @internal param $productID
+	 * @internal param \model\finance\products\StockItem $stockItem
 	 */
-	static function removeFromStock($productID, \model\finance\products\StockItem $stockItem){
-		//validate
-		$stockItem->parse();
-		$e = $stockItem->validate();
-		if(!empty($e)){
-			throw new \exception\UserException(__('Errors in stockItem: %s' . implode(', ', $e)));
+	static function removeFromStock($products){
+		//do the validation
+		foreach($products as $productID => $pArr){
+			foreach($pArr as $stockItem){
+				$stockItem->parse();
+				$e = $stockItem->validate();
+				if(!empty($e)){
+					throw new \exception\UserException(__('Errors in stockItem: %s' . implode(', ', $e)));
+				}
+				//check if there is enough products here
+			}
 		}
 
-		//update the structure
-		$lodo = self::getLodoInternal();
-		$lodo->addCondition(array('_id' => new \MongoId($productID)));
-		$lodo->push('soldItems', $stockItem, false);
-		$lodo->increment('stock', -1 * $stockItem->adjustmentQuantity, false);
-		$lodo->executeUpdate();
+		//do the decrement here
+		foreach($products as $productID => $pArr){
+			foreach($pArr as $stockItem){
+				//update the structure
+				$lodo = self::getLodoInternal();
+				$lodo->addCondition(array('_id' => new \MongoId($productID)));
+				$lodo->push('soldItems', $stockItem, false);
+				$lodo->increment('stock', -1 * $stockItem->adjustmentQuantity, false);
+				$lodo->executeUpdate();
 
-		//return some prices for use when accounting, but only is stock is set
+				unset($lodo);
+
+				//return some prices for use when accounting, but only is stock is set
+			}
+		}
 	}
 
 
