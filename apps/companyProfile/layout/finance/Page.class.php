@@ -183,6 +183,11 @@ class Page extends \helper\layout\LayoutBlock{
 		$this->company->lastFreeTierReset = date('d/m - Y',$this->company->lastFreeTierReset);
 		$this->company->freeTier = is_null($this->company->freeTier) ? 'Null' : $this->company->freeTier;
 
+		$this->company->accountWithdrawable = l::writeValuta($this->company->accountWithdrawable);
+		$this->company->accountCredit = l::writeValuta($this->company->accountCredit);
+		$this->company->accountReserved = l::writeValuta($this->company->accountReserved);
+
+
 		//merging some data in
 		$element = new \helper\html\HTMLMerger($ret, $this->company);
 		$dom = $element->getDOM();

@@ -117,6 +117,8 @@ class Accounts
 	 * @param bool $isCode
 	 */
 	function setTags($accountID, $tags, $isCode=false){
+		if(empty($tags))
+			return;
 		$tags = array_unique($tags);
 		$pdo = $this->db->dbh;
 		if($isCode){
