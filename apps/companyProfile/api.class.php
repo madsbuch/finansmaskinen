@@ -73,7 +73,7 @@ class companyProfile{
      * @return bool
      * @throws \Exception
      */
-    static function moneyInsert($amount, $ref, $account){
+    static function moneyInsert($amount, $ref, $account, $applied = false){
 		//get a database object
 		$pdo = new \helper\core('companyProfile');
 		$pdo = $pdo->getDB()->dbh;
@@ -91,7 +91,7 @@ class companyProfile{
 		$sth = $pdo->prepare("INSERT INTO companyProfile_transactions
 			(value, account, company_id, ref, approved) VALUES (?, ?, ?, ?, ?)");
 		
-		return $sth->execute(array($amount, $account, $id, $ref, false));
+		return $sth->execute(array($amount, $account, $id, $ref, $applied));
 	}
 
 	/**
@@ -139,6 +139,7 @@ class companyProfile{
 		
 		if(!$sth->execute(array($amount, $account, $id, $ref, $apply)))
             throw new \exception\UserException('Withdrawal failed');
+	    return true;
 	}
 	/**
 	* fails if there is not enough money on credit account

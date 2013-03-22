@@ -21,7 +21,7 @@ class Invoice implements OnAction
     /**
      * returns true, if this action should not be billed
      *
-     * this is if the action is covered by some monthly paud subscription
+     * this is if the action is covered by some monthly payed subscription
      * and therefore is none paid
      *
      * @return bool

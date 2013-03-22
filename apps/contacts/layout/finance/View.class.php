@@ -112,7 +112,7 @@ class View extends \helper\layout\LayoutBlock{
 		//populating the right side
 		foreach($this->widgets as $w){
 			$widget = $dom->createElement('div');
-			$widget->setAttribute('class', 'well');
+			$widget->setAttribute('class', 'app-box');
 			$w->wrap($widget, $dom);
 			$widget = $w->generate();
 			$right->appendChild($widget);
