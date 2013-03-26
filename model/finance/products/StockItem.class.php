@@ -32,7 +32,12 @@ class StockItem extends \model\AbstractModel
 	 */
 	protected $adjustmentQuantity;
 
-
+	/**
+	 * sku id, as for now, this is just some hash based on the price
+	 *
+	 * @var string
+	 */
+	protected $sku;
 
 	/**
 	 * if this object represents some bought units, this represents how many

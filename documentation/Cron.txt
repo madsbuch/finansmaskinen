@@ -1,0 +1,10 @@
+There is 3 events that a api can listen on for cron:
+
+on_cronFast -	is ran every ~5 minutes, more if theres is a lot of app servers.
+				This is ran on all app-servers, so remember to lock documents
+				or be sure that they are not concurrently accessed
+
+on_cronSlow -	Ran every ~6 hour (?), more for cleaning
+
+on_cronSafe - 	Safe for concurrency, only run on one app server, this is run
+				at same frequency as on_cronSlow

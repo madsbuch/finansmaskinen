@@ -15,10 +15,10 @@ class Price extends \helper\layout\LayoutBlock {
 	}
 	
 	function generate(){
-		return '<header class="jumbotron subhead" id="overview">
+		/*return '<header class="jumbotron subhead" id="overview">
 		<h1>Priser</h1>
 		<p class="lead">Forskellige virksomheder, forskellige prismodeller.</p>
-	</header><p>Kommer senere</p>';
+	</header><p>Kommer senere</p>';*/
 		return '
 	<header class="jumbotron subhead" id="overview">
 		<h1>Priser</h1>
@@ -26,74 +26,31 @@ class Price extends \helper\layout\LayoutBlock {
 	</header>
 	<div class="row">
 
-		<div class="span3">
-			<h2>Gratis!</h2>
+		<div class="span4">
+			<h2>Standard</h2>
 			<p style="font-weight: bold;">
-				5 fribiletter pr. måned
+				5 gratis enheder pr. måned.
 			</p>
 			<p>Lav 5 fakturaer eller indskrivninger hver måned, helt gratis!</p>
 			<p>Denne løsning er ideel for den lille virksomhed eller freelancer, der ikke behøver at sende fakturaer
 			alle måneder</p>
 		</div>
 
-		<div class="span3">
+		<div class="span4">
 			<h2>Pay as you go</h2>
-			<table class="table table-striped table-bordered table-condensed">
-				<thead>
-					<tr>
-						<th>Service</th>
-						<th>Pris</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Sende en faktura</td>
-						<td>DKK 19,-</td>
-					</tr>
-					<tr>
-						<td>Indskrive en regning</td>
-						<td>DKK 9,-</td>
-					</tr>
-				</tbody>
-			</table>
 			<p>Denne løsning er ideel for små virksomheder og freelancere, der
-			kun sender enkelte fakturaer om måneden.</p>
-			<p>Alt andet, som regnskab, håndtering af kontakter og produkter, er
-			gratis.</p>
+			kun lige går over gratisgrænsen</p>
+			<p>De handlinger der var et gratis antal af, får nu en en lille pris, så du ikke behøver at købe
+			abonnement.</p>
 		</div>
 
-		<div class="span3">
+		<div class="span4">
 			<h2>Abonnement</h2>
-			<table class="table table-striped table-bordered table-condensed">
-				<thead>
-					<tr>
-						<th>Periode</th>
-						<th>Pris</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>3 måneder</td>
-						<td>DKK 357,- (DKK 119,- pr. månede)</td>
-					</tr>
-					<tr>
-						<td>12 måneder</td>
-						<td>DKK 1188,- (DKK 99,- pr. månede)</td>
-					</tr>
-				</tbody>
-			</table>
-			<p>Du betaler et engangsbeløb, og alle standard moduler er frit tilgængelige</p>
+			<p>Er der moduler du bruger rigtig meget? Så meget at det ville være meget dyrt, hvis du skulle betale
+			pr enhed?</p>
+			<p>Så giver vi muligheden for, at du kan tilkøbe dette modul som abonnement. Du betaler et fast beløb
+			hver månede, og kan herefter udføre ligeså mange handlinger du vil, for denne pris.</p>
 		</div>
-		
-		<div class="span3">
-			<h2>Installation</h2>
-			<p>Vil du lade os stå for dine nemhandel fakturaer, og integrere det
-			i dit system? Har du spicielle behov i forhold til brugere? Vil du
-			have et private setup af hele systemet?</p>
-			<p>Giv os et ring, eller send os en mail, så kan vi helt sikkert finde
-			en løsning</p>
-		</div>
-		
 	</div>
 	<hr />
 	<div class="row">
@@ -104,37 +61,40 @@ class Price extends \helper\layout\LayoutBlock {
 				<thead>
 					<tr>
 						<th>Modul</th>
-						<th>Beskrivelse</th>
+						<th>Pay as you go enhed.</th>
+						<th>Abonnement</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
 						<td>Regnskab</td>
-						<td></td>
+						<td>-</td>
+						<td>-</td>
 					</tr>
 					<tr>
 						<td>Regnskabshjælp</td>
-						<td></td>
+						<td>-</td>
+						<td>-</td>
 					</tr>
 					<tr>
 						<td>Kontakter</td>
-						<td>Administrering af debitorer og kreditorer</td>
+						<td>-</td>
+						<td>-</td>
 					</tr>
 					<tr>
 						<td>Produkter</td>
-						<td></td>
+						<td>-</td>
+						<td>-</td>
 					</tr>
 					<tr>
 						<td>Fakturering</td>
-						<td>Send fakturaer</td>
+						<td>19,- pr oprettet faktura</td>
+						<td>49,-</td>
 					</tr>
 					<tr>
 						<td>Regninger</td>
-						<td>Indskriv regninger og hold styr på bilag</td>
-					</tr>
-					<tr>
-						<td>Nemhandel integration</td>
-						<td>Send fakturaer over nemhadenl systemet.*</td>
+						<td>9,- pr. oprettet regning</td>
+						<td>49,-</td>
 					</tr>
 				</tbody>
 			</table>

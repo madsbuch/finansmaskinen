@@ -46,7 +46,6 @@ class DefUser extends \helper\template\base\HTML{
 	
 	protected $addCSSIncludes = array(
 		'/bootstrap/css/bootstrap.min.css',
-		'/bootstrap/css/flat-ui.css',
 		'/css/plugins/jquery.pageguide.css',
 		'/css/plugins/jquery.ibutton.min.css',
 		'/css/plugins/bootstrap-datepicker.css',
