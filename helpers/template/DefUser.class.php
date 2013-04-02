@@ -46,6 +46,15 @@ class DefUser extends \helper\template\base\HTML{
 	
 	protected $addCSSIncludes = array(
 		'/bootstrap/css/bootstrap.min.css',
+
+		//some framework
+		'/templates/finance/framework/theme/scripts/select2/select2.css',
+		'/templates/finance/framework/bootstrap/extend/jasny-bootstrap/css/jasny-bootstrap.min.css',
+		'/templates/finance/framework/bootstrap/extend/jasny-bootstrap/css/jasny-bootstrap-responsive.min.css',
+		'/templates/finance/framework/bootstrap/extend/bootstrap-wysihtml5/css/bootstrap-wysihtml5-0.0.2.css',
+
+		'/templates/finance/framework/theme/css/style.min.css',
+
 		'/css/plugins/jquery.pageguide.css',
 		'/css/plugins/jquery.ibutton.min.css',
 		'/css/plugins/bootstrap-datepicker.css',

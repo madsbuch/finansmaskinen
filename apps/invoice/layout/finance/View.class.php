@@ -60,6 +60,11 @@ class View extends \helper\layout\LayoutBlock{
 			$contact->appendChild(new \DOMText($p->PostalAddress->PostalZone . ' ' .
 				$p->PostalAddress->CityName));
 			$contact->appendChild(new \DOMElement('br'));
+			$contact->appendChild(new \DOMElement('br'));
+
+			$contact->appendChild(\helper\html::importNode($dom, '
+					<a href="" class="btn btn-large border-only btn-primary">Gå til kontakt</a>'));
+
 			$cl->appendChild($contact);
 		}
 		//details that is in the right side
