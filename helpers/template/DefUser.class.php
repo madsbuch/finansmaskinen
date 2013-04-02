@@ -16,15 +16,6 @@ class DefUser extends \helper\template\base\HTML{
 		'/js/plugins/jquery.placeholder.min.js',//IE placeholders, 
 		'/js/plugins/iphone-style-checkboxes.js',
 
-        //those are removed when refactoring to new bootstrap is done
-		//'/bootstrap/js/bootstrap-transition.js',
-		//'/bootstrap/js/bootstrap-alert.js',
-		//'/bootstrap/js/bootstrap-modal.js',
-		//'/bootstrap/js/bootstrap-dropdown.js',
-		//'/bootstrap/js/bootstrap-tooltip.js',
-		//'/bootstrap/js/bootstrap-popover.js',
-        //'/bootstrap/js/bootstrap-button.js',
-
         //some plugins
 		'/js/libs/jquery-ui-1.10.0.custom.min.js',
 
@@ -42,16 +33,19 @@ class DefUser extends \helper\template\base\HTML{
 		//and customization
 		'/templates/finance/js/application.js',
 		'/templates/finance/js/init.js',
+
+		'/templates/finance/framework/theme/scripts/less-1.3.3.min.js'
 	);
 	
 	protected $addCSSIncludes = array(
-		'/bootstrap/css/bootstrap.min.css',
+		'/templates/finance/framework/bootstrap/css/bootstrap.min.css',
 
 		//some framework
-		'/templates/finance/framework/theme/scripts/select2/select2.css',
 		'/templates/finance/framework/bootstrap/extend/jasny-bootstrap/css/jasny-bootstrap.min.css',
 		'/templates/finance/framework/bootstrap/extend/jasny-bootstrap/css/jasny-bootstrap-responsive.min.css',
 		'/templates/finance/framework/bootstrap/extend/bootstrap-wysihtml5/css/bootstrap-wysihtml5-0.0.2.css',
+
+		'/templates/finance/framework/theme/scripts/select2/select2.css',
 
 		'/templates/finance/framework/theme/css/style.min.css',
 
@@ -60,12 +54,6 @@ class DefUser extends \helper\template\base\HTML{
 		'/css/plugins/bootstrap-datepicker.css',
 		'/templates/finance/css/app.css',
 	);
-	
-	protected $addCSS = '
-		body {
-			padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-		}
-	';
 	
 	function __construct(){
 		parent::__construct('/defUser/finance');
