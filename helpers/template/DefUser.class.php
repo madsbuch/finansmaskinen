@@ -38,17 +38,18 @@ class DefUser extends \helper\template\base\HTML{
 	);
 	
 	protected $addCSSIncludes = array(
-		'/templates/finance/framework/bootstrap/css/bootstrap.min.css',
-
+		//'/templates/finance/framework/bootstrap/css/bootstrap.min.css',
+        '/bootstrap/css/bootstrap.min.css',
 		//some framework
 		'/templates/finance/framework/bootstrap/extend/jasny-bootstrap/css/jasny-bootstrap.min.css',
 		'/templates/finance/framework/bootstrap/extend/jasny-bootstrap/css/jasny-bootstrap-responsive.min.css',
-		'/templates/finance/framework/bootstrap/extend/bootstrap-wysihtml5/css/bootstrap-wysihtml5-0.0.2.css',
 
-		'/templates/finance/framework/theme/scripts/select2/select2.css',
 
-		'/templates/finance/framework/theme/css/style.min.css',
+		'/templates/finance/framework/theme/css/style.css',
 
+        //plugins
+        '/templates/finance/framework/theme/scripts/select2/select2.css',
+        '/templates/finance/framework/bootstrap/extend/bootstrap-wysihtml5/css/bootstrap-wysihtml5-0.0.2.css',
 		'/css/plugins/jquery.pageguide.css',
 		'/css/plugins/jquery.ibutton.min.css',
 		'/css/plugins/bootstrap-datepicker.css',
@@ -169,18 +170,17 @@ class DefUser extends \helper\template\base\HTML{
 		if(!$this->dom->getElementById('secondaryNav')){
 			//add the stuff here
 
+
 			$navEleA = $this->dom->createElement('a');
 			$navEleA->setAttribute('class', 'dropdown-toggle');
 			$navEleA->setAttribute('id', 'secondaryNavTitle');
 			$navEleA->setAttribute('data-toggle', 'dropdown');
 			$navEleA->setAttribute('href', '#');
-			$c = $this->dom->createElement('b');
-			$c->setAttribute('class', 'caret');
-			$navEleA->appendChild($c);
+
 
 			$navEleB = $this->dom->createElement('ul');
 			$navEleB->setAttribute('id', 'secondaryNav');
-			$navEleB->setAttribute('class', 'dropdown-menu');
+			$navEleB->setAttribute('class', 'menu hide dropdown-menu');
 
 			$this->dom->getElementById('secNavHolder')->appendChild($navEleA);
 			$this->dom->getElementById('secNavHolder')->appendChild($navEleB);
