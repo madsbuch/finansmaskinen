@@ -48,7 +48,7 @@ class Main extends \helper\layout\LayoutBlock {
 		foreach($this->widgets as $w){
 			if($c % 2 == 0){
 				$row = $dom->createElement('div');
-				$row->setAttribute('class', 'row-fluid');
+				$row->setAttribute('class', 'row');
 				$ret->appendChild($row);
 			}
 			
