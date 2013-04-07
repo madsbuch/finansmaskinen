@@ -85,7 +85,11 @@ class header{
 	function setResponse($code){
 		$this->header["HTTP/1.0 404 Not Found"] = '';
 	}
-	
+
+    function cache($time){
+        $this->header['Cache-Control'] = 'max-age='.$time;
+    }
+
 	function download($filename){
 		$this->header["Content-Disposition:"] = 'attachment; filename='.$filename;
 	}

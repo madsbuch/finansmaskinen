@@ -426,6 +426,22 @@ class main extends \core\app implements \core\framework\Output
 		$this->output_header = $this->header->getHeader();
 		$this->output_content = json_encode($ret);
 	}
+
+    /**
+     * returns an avatar from user, currently gravatar is used
+     *
+     * @param $key
+     */
+    function getAvatar($key){
+        //setting the mime
+        $this->header->setMime('jpg');
+        //client cache for an hour
+        $this->header->cache(3600);
+
+        $this->output_header = $this->header->getHeader();
+        //TODO add server caching
+        $this->output_content = file_get_contents('http://www.gravatar.com/avatar/'.$key.'?s=74&d=mm');
+    }
 	
 	/**
 	* returns the file, with the right mime type

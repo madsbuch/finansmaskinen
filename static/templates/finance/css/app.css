@@ -29,6 +29,11 @@ html {
 	border-radius: 4px;*/
 }
 
+input{
+    color:#666 !important;
+    padding:0.5rem !important;
+}
+
 
 
 [data-href]{
