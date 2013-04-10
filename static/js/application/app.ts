@@ -53,6 +53,9 @@ class App{
 					}
 				});
 		});
+	}
+
+	chartJQPlot(){
 
 	}
 }

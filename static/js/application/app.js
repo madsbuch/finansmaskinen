@@ -33,6 +33,8 @@ var App = (function () {
             });
         });
     };
+    App.prototype.chartJQPlot = function () {
+    };
     return App;
 })();
 var app = new App();
