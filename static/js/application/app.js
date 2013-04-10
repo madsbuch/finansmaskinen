@@ -7,7 +7,9 @@ var App = (function () {
     App.prototype.charts = function () {
         $("*[data-charts_barData]").each(function (index, elem) {
             var data = $.parseJSON($(this).attr('data-charts_barData'));
-            var p = $.plot($(this), data, {
+            var ticks = data.ticks;
+            var numbers = data.data;
+            var p = $.plot($(this), numbers, {
                 grid: {
                     markingsColor: "rgba(0,0,0, 0.02)",
                     backgroundColor: null,
@@ -25,10 +27,13 @@ var App = (function () {
                 },
                 xaxis: {
                     mode: "categories",
+                    ticks: ticks,
                     tickLength: 0
                 }
             });
         });
+    };
+    App.prototype.chartJQPlot = function () {
     };
     return App;
 })();

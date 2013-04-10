@@ -2,4 +2,8 @@ class Invoice{
     constructor(){
 
     }
+
+    update(){
+        
+    }
 }

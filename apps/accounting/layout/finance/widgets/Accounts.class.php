@@ -28,16 +28,24 @@ class Accounts extends \helper\layout\LayoutBlock implements \helper\layout\Widg
     public $addJs;
     private function setJS(){
     	$data = array();
+	    $ticks = array();
+	    $i = 0;
     	foreach($this->data as $account){
     		$data[] = array(
 			    $account->name,
 			    l::nonLocalWriteValuta($account->income - $account->outgoing));
+		    $ticks[] = array($i, $account->name);
+		    $i++;
     	}
 
 	    $series = array();
 	    $series[0]['data'] = $data;
 
-	    $this->chartData = json_encode($series);
+	    $bar['data'] = $series;
+	    $bar['ticks'] = $ticks;
+
+
+	    $this->chartData = json_encode($bar);
 	}
 		
 	private $data;
@@ -71,8 +79,35 @@ class Accounts extends \helper\layout\LayoutBlock implements \helper\layout\Widg
 		$this->wrapper->appendChild($h2);
 
 		$div = $this->edom->createElement('div');
-		$div->setAttribute('style', 'height: 150px;font-size: 14px;line-height: 1.2em;');
-		$div->setAttribute('data-charts_barData',$this->chartData);
+		$div->setAttribute('style', 'height: 160px;font-size: 14px;line-height: 1.2em;');
+		$div->setAttribute('data-charts_barData',$this->chartData);/*
+		'[
+	{
+		"label": "Failed",
+		"data": [[0,10]],
+		"bars": { "show": true }
+	},
+	{
+		"label": "Passed",
+		"data": [[1,15]],
+		"bars": { "show": true }
+	},
+	{
+		"label": "Not Run",
+		"data": [[2,30]],
+		"bars": { "show": true }
+	},
+	{
+		"label": "Blocked",
+		"data": [[3,5]],
+		"bars": { "show": true }
+	},
+	{
+		"label": "In Progress",
+		"data": [[4,40]],
+		"bars": { "show": true }
+	}
+]');*/
 		$this->wrapper->appendChild($div);
 
 		
