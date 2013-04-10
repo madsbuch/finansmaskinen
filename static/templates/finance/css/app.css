@@ -22,11 +22,6 @@ html {
 	margin-bottom: 1.5rem;
 	border: 1px solid #ddd;
 	background-color: #fafafa;
-	/*
-	background-color: #f7f7f7;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;*/
 }
 
 .add-on, .btn {
@@ -46,18 +41,26 @@ html {
     z-index:4000 !important
 }
 
-/* bootstrap sets label display:block, iButton needs it inline */
-.ibutton-container label{
-    display:inline;
-    font-weight: bold;
-}
-.ibutton-container{
-    box-sizing: content-box;
-}
-
 /**MISC**/
 
 .front-box{
 	position: relative;
 	height:260px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+/** FIXES **/
+
+/* the theme ;-) */
+#content {
+	padding: 0px;
+}
+/* bootstrap sets label display:block, iButton needs it inline */
+.ibutton-container label{
+	display:inline;
+	font-weight: bold;
+}
+.ibutton-container{
+	box-sizing: content-box;
 }
