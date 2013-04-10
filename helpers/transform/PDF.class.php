@@ -9,8 +9,6 @@
 
 namespace helper\transform;
 
-require_once PLUGINDIR.'tcpdf/tcpdf.php';
-
 //include savant stuff there
 
 class PDF extends \helper\transform{

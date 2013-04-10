@@ -11,16 +11,7 @@ namespace app\accounting\layout\finance\widgets;
 use \helper\local as l;
 
 class Accounts extends \helper\layout\LayoutBlock implements \helper\layout\Widget {
-	
-	/**
-	* some javascript includes for this layout
-	*/
-	public $addJsIncludes = array(
-		'/js/plugins/jqplot/jquery.jqplot.min.js',
-		'/js/plugins/jqplot/modules/jqplot.barRenderer.min.js',
-		'/js/plugins/jqplot/modules/jqplot.categoryAxisRenderer.min.js',
-		'/js/plugins/jqplot/modules/jqplot.pointLabels.min.js',
-    );
+
     
 	public $tutorialSlides = array(
 		'#accounting_widget_container' => 'Denne boks viser, hvordan dine fysiske pengebeholdninger burde værer. Er der de samme beløb på dem i virkeligheden som her? Så er dit regnskab formegentligt gjort rigtigt.'
@@ -67,14 +58,15 @@ class Accounts extends \helper\layout\LayoutBlock implements \helper\layout\Widg
 	}
 		
 	private $data;
-	private $fronpage;
-	
-	
+	private $frontpage;
+
+
 	/**
-	* the data to show on the widget, is as argument.
-	*
-	* @param $frontpage whether to include links for fronpage
-	*/
+	 * the data to show on the widget, is as argument.
+	 *
+	 * @param $data
+	 * @param \app\accounting\layout\finance\widgets\whether|bool $frontpage whether to include links for fronpage
+	 */
 	function __construct($data, $frontpage=true){
 		$this->data = $data;
 		$this->frontpage = $frontpage;

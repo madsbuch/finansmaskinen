@@ -30,11 +30,21 @@ class DefUser extends \helper\template\base\HTML{
 		'/js/plugins/bootstrap-datepicker.js',
 		'/js/plugins/jquery.metadata.js',
 
+		'/templates/finance/framework/theme/scripts/select2/select2.js',
+
 		//and customization
 		'/templates/finance/js/application.js',
 		'/templates/finance/js/init.js',
 
-		'/templates/finance/framework/theme/scripts/less-1.3.3.min.js'
+		'/templates/finance/framework/theme/scripts/less-1.3.3.min.js',
+
+		//flot charts
+		'/templates/finance/framework/theme/scripts/flot/jquery.flot.js',
+		'/templates/finance/framework/theme/scripts/flot/jquery.flot.pie.js',
+		'/templates/finance/framework/theme/scripts/flot/jquery.flot.tooltip.js',
+		'/templates/finance/framework/theme/scripts/flot/jquery.flot.selection.js',
+		'/templates/finance/framework/theme/scripts/flot/jquery.flot.resize.js',
+		'/templates/finance/framework/theme/scripts/flot/jquery.flot.orderBars.js',
 	);
 	
 	protected $addCSSIncludes = array(

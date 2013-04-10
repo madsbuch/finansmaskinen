@@ -11,12 +11,16 @@ class ViewAccount extends \helper\layout\LayoutBlock
 {
 	private $account;
 	private $postings;
+	private $allTags;
 
-	function __construct(\model\finance\accounting\Account $account, $postings = array()){
+	function __construct(\model\finance\accounting\Account $account,
+	                     $postings = array(),
+	                     $allTags=array()){
 		parent::__construct();
 
 		$this->postings = $postings;
 		$this->account = $account;
+		$this->allTags = $allTags;
 	}
 
 
@@ -42,7 +46,8 @@ class ViewAccount extends \helper\layout\LayoutBlock
 				<input type="text" name="code" id="code" class="span4"  />
 
 				<label>Tags</label>
-				<input type="text" name="tags" id="tags" class="span4" />
+				<input type="text" name="tags" id="tags" class="span4" data-tags=\'["hej", "med", "dig"]\' />
+				<div class="clearfix" />
 
 				<label>Navn:</label>
 				<input type="text" name="name" id="name" class="span4" />

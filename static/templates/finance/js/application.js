@@ -196,6 +196,13 @@ function reAttach () {
 	//some tutorialing
 	tl.pg.init({ /* optional preferences go here */ });
 
+	//tags
+	$.each($('*[data-tags]'),function(){
+		console.log($.parseJSON($(this).attr('data-tags')));
+		$(this).select2({
+			tags: $.parseJSON($(this).attr('data-tags'))
+		});
+	});
 
 }
 
@@ -301,3 +308,6 @@ function parsenumber(n)
 	return n;
 }
 
+function chartInitialize(){
+	$('')
+}
