@@ -35,9 +35,7 @@ class invoice extends \core\app
 		$html->appendContent(\helper\layout\Element::heading('Fakturering', 'Alle fakturaer'));
 
 		//create the toplink
-		$html->appendContent(Element::primaryButton(
-			'/invoice/add',
-			'<i class="icon-plus" /> ' . __('Create invoice')));
+
 
 		$list = \api\invoice::get();
 		$html->appendContent(new \app\invoice\layout\finance\Listing($list));

@@ -371,6 +371,8 @@ class api extends \core\startapi{
 				}
 				$ret->addCompanyList($name, '/index/changeTree/'.$tree);
 			}
+
+            $ret->setAvatar(self::getUser()->mail);
 			
 			return $ret;
 		}

@@ -30,8 +30,9 @@ class header{
 		$str = "";
 		if(empty($this->header))
 			return null;
-		foreach($this->header as $name => $value)
-			$str = "$name $value\n";
+		foreach($this->header as $name => $value){
+			$str .= "$name $value\n";
+        }
 		return $str;
 	}
 	
@@ -87,7 +88,8 @@ class header{
 	}
 
     function cache($time){
-        $this->header['Cache-Control'] = 'max-age='.$time;
+        $this->header['Pragma:'] = 'cache';
+        $this->header['Cache-Control:'] = 'public';
     }
 
 	function download($filename){

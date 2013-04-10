@@ -71,10 +71,10 @@ class Form extends \helper\layout\LayoutBlock{
 		if(!isset($this->contactID) && isset($this->invoice->contactID))
 			$this->contactID = $this->invoice->contactID;
 		$ret = '
-<div>
+<div class="row">
+    <div id="invoiceAddTrigger" />
 	<form method="post" action="/invoice/create">
 		'.($this->invoice ? '<input type="hidden" name="_id" value="'.$this->invoice->_id.'" />' : '').'
-		<div id="invoiceAddTrigger" />
 		<div class="row">
 			<div class="span8">
 				<div class="row">

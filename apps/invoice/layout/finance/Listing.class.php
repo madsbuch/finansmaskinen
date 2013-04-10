@@ -11,6 +11,7 @@ class Listing extends \helper\layout\LayoutBlock{
 	* prefill some variables with the construcotr.
 	*/
 	function __construct($objs){
+        parent::__construct();
 		$this->objs = $objs;
 	}
 	
@@ -48,7 +49,15 @@ class Listing extends \helper\layout\LayoutBlock{
 		$table->setNull('-');
 		$table->setEmpty(__('No invoices to show'));
 		$table->setItterator($this->objs);
-		return $table->generate();
+        $root = $this->dom->createElement('div');
+        $root->setAttribute('class', 'row span12');
+
+        $root->appendChild($this->importContent(\helper\layout\Element::primaryButton(
+            '/invoice/add',
+            '<i class="icon-plus" /> ' . __('Create invoice')), $this->dom));
+
+        $root->appendChild($this->importContent($table, $this->dom));
+		return $root;
 	}
 }
 

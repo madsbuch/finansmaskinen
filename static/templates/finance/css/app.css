@@ -1,7 +1,7 @@
 /* boxes
 -------------------------------------------------- */
 
-* {
+html {
 	/*position: relative;*/
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -29,9 +29,10 @@ html {
 	border-radius: 4px;*/
 }
 
-input{
-    color:#666 !important;
-    padding:0.5rem !important;
+.add-on, .btn {
+    -webkit-border-radius: 0px !important;
+    -moz-border-radius: 0px !important;
+    border-radius: 0px !important;
 }
 
 
@@ -49,6 +50,9 @@ input{
 .ibutton-container label{
     display:inline;
     font-weight: bold;
+}
+.ibutton-container{
+    box-sizing: content-box;
 }
 
 /**MISC**/

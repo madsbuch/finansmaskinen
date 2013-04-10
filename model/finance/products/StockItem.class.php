@@ -29,6 +29,7 @@ class StockItem extends \model\AbstractModel
 	 * positive int, how many was bought or sold?
 	 *
 	 * @var int
+     * @deprecated stockCount insted, we don't need to do statistics
 	 */
 	protected $adjustmentQuantity;
 
@@ -42,11 +43,10 @@ class StockItem extends \model\AbstractModel
 	/**
 	 * if this object represents some bought units, this represents how many
 	 * there is back, it's initialized to the same amount as $adjustmentQuantity.
-	 * the reson is that it is easier to query for all those items that is not 0
 	 *
 	 * @var int
 	 */
-	protected $soldCount;
+	protected $stockCount;
 
 	/**
 	 * price elements are bought or sold for

@@ -63,7 +63,7 @@ class View extends \helper\layout\LayoutBlock{
 			$contact->appendChild(new \DOMElement('br'));
 
 			$contact->appendChild(\helper\html::importNode($dom, '
-					<a href="" class="btn btn-large border-only btn-primary">Gå til kontakt</a>'));
+					<a href="/contacts/view/'.$this->obj->contactID.'" class="btn btn-large border-only btn-primary">Gå til kontakt</a>'));
 
 			$cl->appendChild($contact);
 		}

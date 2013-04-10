@@ -148,6 +148,10 @@ class DefUser extends \helper\template\base\HTML{
 			$this->dom->getElementById('companyItem')->appendChild($a);
 		}
 	}
+
+    public function setAvatar($mail){
+        $this->dom->getElementById('avatar')->setAttribute('src', 'http://gravatar.com/avatar/' . md5(trim(strtolower($mail))) . '?s=74&d=mm' );
+    }
 	
 	public function addCompanyList($title, $link){
 		$element = $this->dom->createElement('li');
