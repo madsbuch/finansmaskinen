@@ -332,6 +332,7 @@ class products
 			}
 		}
 
+		//insert the sku's or update existing
 		foreach($products as $productID => $pArr){
 			foreach($pArr as $stockItem){
 				$lodo = self::getLodoInternal();

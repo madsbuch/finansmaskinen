@@ -12,7 +12,12 @@ use \helper\local as l;
 
 class Accounts extends \helper\layout\LayoutBlock implements \helper\layout\Widget {
 
-    
+	/**
+	 * @var \DOMDocument
+	 */
+	private $edom;
+	private $wrapper;
+
 	public $tutorialSlides = array(
 		'#accounting_widget_container' => 'Denne boks viser, hvordan dine fysiske pengebeholdninger burde værer. Er der de samme beløb på dem i virkeligheden som her? Så er dit regnskab formegentligt gjort rigtigt.'
 	);
@@ -22,39 +27,17 @@ class Accounts extends \helper\layout\LayoutBlock implements \helper\layout\Widg
     */
     public $addJs;
     private function setJS(){
-    	$ticks = array();
     	$data = array();
     	foreach($this->data as $account){
-    		$ticks[] = $account->name;
-    		$data[] = l::nonLocalWriteValuta($account->income - $account->outgoing);
-    		$label[] = l::writeValuta($account->income - $account->outgoing);
+    		$data[] = array(
+			    $account->name,
+			    l::nonLocalWriteValuta($account->income - $account->outgoing));
     	}
-		$this->addJs = '
-		   	$(document).ready(function(){
-				var data = ['.implode(',', $data).'];
-				var ticks = ["'.implode('","', $ticks).'"];
-		
-				plot1 = $.jqplot(\'accounting-stat\', [data], {
-					// Only animate if we\'re not using excanvas (not in IE 7 or IE 8)..
-					animate: !$.jqplot.use_excanvas,
-					seriesDefaults:{
-						renderer:$.jqplot.BarRenderer,
-						pointLabels: {
-							show: true,
-							labels:[\''.implode('\',\'', $label).'\'] },
-						rendererOptions: {
-							varyBarColor: true
-						}
-					},
-					axes: {
-						xaxis: {
-							renderer: $.jqplot.CategoryAxisRenderer,
-							ticks: ticks
-						}
-					},
-					highlighter: { show: false }
-				});
-			});';
+
+	    $series = array();
+	    $series[0]['data'] = $data;
+
+	    $this->chartData = json_encode($series);
 	}
 		
 	private $data;
@@ -82,15 +65,16 @@ class Accounts extends \helper\layout\LayoutBlock implements \helper\layout\Widg
 		$this->setJS();
 		
 		$this->wrapper->setAttribute('id', 'accounting_widget_container');
-		
-		$ret = '
-		<h2>Regnskab <small>Beholdninger</small></h2>
-		<div id="accounting-stat" style="height:150px;width:100%;">
-		</div>';
 
-		$content = \helper\html::importNode($this->edom, $ret);
-		
-		$this->wrapper->appendChild($content);
+		$h2 = $this->edom->createElement('h2', 'Regnskab');
+		$h2->appendChild(new \DOMElement('small', ' Beholdninger'));
+		$this->wrapper->appendChild($h2);
+
+		$div = $this->edom->createElement('div');
+		$div->setAttribute('style', 'height: 150px;font-size: 14px;line-height: 1.2em;');
+		$div->setAttribute('data-charts_barData',$this->chartData);
+		$this->wrapper->appendChild($div);
+
 		
 		
 		if($this->frontpage){

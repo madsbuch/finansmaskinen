@@ -39,12 +39,10 @@ class DefUser extends \helper\template\base\HTML{
 		'/templates/finance/framework/theme/scripts/less-1.3.3.min.js',
 
 		//flot charts
-		'/templates/finance/framework/theme/scripts/flot/jquery.flot.js',
-		'/templates/finance/framework/theme/scripts/flot/jquery.flot.pie.js',
-		'/templates/finance/framework/theme/scripts/flot/jquery.flot.tooltip.js',
-		'/templates/finance/framework/theme/scripts/flot/jquery.flot.selection.js',
-		'/templates/finance/framework/theme/scripts/flot/jquery.flot.resize.js',
-		'/templates/finance/framework/theme/scripts/flot/jquery.flot.orderBars.js',
+		'/js/plugins/flot/jquery.flot.js',
+		'/js/plugins/flot/jquery.flot.categories.js',
+
+		'/js/application/app.js',
 	);
 	
 	protected $addCSSIncludes = array(
