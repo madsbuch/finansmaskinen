@@ -293,6 +293,27 @@ class main extends \core\app implements \core\framework\Output
 		$this->output_content = $html->generate();
 	}
 
+    public function avatar(){
+        /**** echo out some content ****/
+        //static page, let's try some caching :D
+        /*$cache = \helper\cache::getInstance('File', 'financeMainHTML');
+        $o = $cache->get('aboutPage');
+
+        if(!is_null($o) && false)
+            $this->output_content = $o;
+        else{
+            $html = $this->getTpl('about');
+            $html->add2content(new layout\About);
+            $this->output_content = $html->generate();
+            //cachinf for full 2 hours ;)
+            $cache->set('aboutPage', $this->output_content, 7200);
+        }*/
+        $html = $this->getTpl();
+        $html->add2content(new layout\Avatar());
+        $this->output_header = $this->header->getHeader();
+        $this->output_content = $html->generate();
+    }
+
 	public function whatsNew(){
 		$html = $this->getTpl();
 		$html->appendContent(\helper\layout\Element::heading(__('What\'s new'),
@@ -426,6 +447,22 @@ class main extends \core\app implements \core\framework\Output
 		$this->output_header = $this->header->getHeader();
 		$this->output_content = json_encode($ret);
 	}
+
+    /**
+     * returns an avatar from user, currently gravatar is used
+     *
+     * @param $key
+     */
+    function getAvatar($key){
+        //setting the mime
+        $this->header->setMime('jpg');
+        //client cache for an hour
+        $this->header->cache(3600);
+
+        $this->output_header = $this->header->getHeader();
+        //TODO add server caching
+        $this->output_content = file_get_contents('http://www.gravatar.com/avatar/'.$key.'?s=74&d=mm');
+    }
 	
 	/**
 	* returns the file, with the right mime type

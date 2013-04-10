@@ -149,15 +149,19 @@ class DefUser extends \helper\template\base\HTML{
 		$this->dom->getElementById('companyItem')->appendChild($a);
 
 		if(!is_null($freeTickets)){
-			$t = new \DOMText(__('( %s )', $freeTickets));
+			$t = new \DOMText(' '.__('( %s )', $freeTickets));
 			$a = $this->dom->createElement('a');
 			$a->appendChild($t);
 			$a->setAttribute('href', $buyLink);
-			$a->setAttribute('title', __('Buy credit'));
+			$a->setAttribute('title', __('Number of freetickets this month. Click to buy credit'));
 
-			$this->dom->getElementById('companyItemCredit')->appendChild($a);
+			$this->dom->getElementById('companyItem')->appendChild($a);
 		}
 	}
+
+    public function setAvatar($mail){
+        $this->dom->getElementById('avatar')->setAttribute('src', 'http://gravatar.com/avatar/' . md5(trim(strtolower($mail))) . '?s=74&d=mm' );
+    }
 	
 	public function addCompanyList($title, $link){
 		$element = $this->dom->createElement('li');

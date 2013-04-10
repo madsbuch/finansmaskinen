@@ -346,6 +346,8 @@ class products
 	}
 
 	/**
+     * If stock account is specified in the productcatagory, an exception is thrown if the product
+     * goes below 0, nothing is done to the database.
 	 * takes array of product id's, and how many to sell:
 	 * array(
 	 *  id => array(\model\finance\products\StockItem(), ...)
@@ -354,11 +356,9 @@ class products
 	 *
 	 * @param $products
 	 * @throws \exception\UserException
-	 * @internal param $productID
-	 * @internal param \model\finance\products\StockItem $stockItem
 	 */
 	static function removeFromStock($products){
-		//do the validation
+		//do the validation and test if stock is high enough
 		foreach($products as $productID => $pArr){
 			foreach($pArr as $stockItem){
 				$stockItem->parse();

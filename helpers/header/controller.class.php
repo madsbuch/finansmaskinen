@@ -30,8 +30,9 @@ class header{
 		$str = "";
 		if(empty($this->header))
 			return null;
-		foreach($this->header as $name => $value)
-			$str = "$name $value\n";
+		foreach($this->header as $name => $value){
+			$str .= "$name $value\n";
+        }
 		return $str;
 	}
 	
@@ -85,7 +86,12 @@ class header{
 	function setResponse($code){
 		$this->header["HTTP/1.0 404 Not Found"] = '';
 	}
-	
+
+    function cache($time){
+        $this->header['Pragma:'] = 'cache';
+        $this->header['Cache-Control:'] = 'public';
+    }
+
 	function download($filename){
 		$this->header["Content-Disposition:"] = 'attachment; filename='.$filename;
 	}
