@@ -25,8 +25,10 @@ class App{
 		//setup bar charts
 		$("*[data-charts_barData]").each(function(index, elem){
 			var data = $.parseJSON($(this).attr('data-charts_barData'));
+			var ticks = data.ticks;
+			var numbers = data.data;
 			var p = $.plot($(this),
-				 data ,
+				numbers ,
 				{
 					grid: {
 						markingsColor: "rgba(0,0,0, 0.02)",
@@ -46,7 +48,8 @@ class App{
 					},
 					xaxis: {
 						mode: "categories",
-						tickLength: 0,
+						ticks: ticks,
+						tickLength: 0
 					}
 				});
 		});
