@@ -33,24 +33,24 @@ class MoneyInsert extends \helper\layout\LayoutBlock{
 				<div class="span2">
 					<label>Beløb</label>
 					<div class="input-append" style="width:100%;">
-						<input style="width:80%" id="Public-dueDays" name="toInsert" type="text"
+						<input disabled="disabled" style="width:80%" id="Public-dueDays" name="toInsert" type="text"
 						placeholder="f.eks. 800" class="money" /><span class="add-on">DKK</span>
 					</div>
 				</div>
 
 				<div class="span2">
 					<label>Kortnummer:</label>
-					<input style="width:100%;" type="text" name="cardNumber" />
+					<input disabled="disabled" style="width:100%;" type="text" name="cardNumber" />
 				</div>
 
 				<div class="span2">
 					<label>CVC:</label>
-					<input style="width:100%;" type="text" name="cvc" />
+					<input disabled="disabled" style="width:100%;" type="text" name="cvc" />
 				</div>
 
 				<div class="span1">
 					<label>Måned:</label>
-					<select name="month" class="span1">
+					<select name="month" class="span1" disabled="disabled">
 						<option >1</option>
 						<option >2</option>
 						<option >3</option>
@@ -68,7 +68,7 @@ class MoneyInsert extends \helper\layout\LayoutBlock{
 
 				<div class="span1">
 					<label>År:</label>
-					<select name="year" class="span1">
+					<select disabled="disabled" name="year" class="span1">
 						'.$year.'
 					</select>
 				</div>
@@ -80,7 +80,7 @@ class MoneyInsert extends \helper\layout\LayoutBlock{
 		</div>
 	</div>
 	<div class="span9">
-		<h2>Tidligere og nuværende regninger</h2>
+		<h2>Tidligere overførrelser</h2>
 		<div class="well" id="companyProfile_insert_right">
 			<table class="table table-striped table-condensed">
 				<thead>
@@ -95,14 +95,13 @@ class MoneyInsert extends \helper\layout\LayoutBlock{
 						<td>19/04-2012</td>
 						<td>DKK 200,00</td>
 						<td>
-							<span class="label label-important">Ikke betalt</span>
-							<a href="/companyProfile/cancel/someID">Anuller</a>
+							<span class="label label-important">Problem</span>
 						</td>
 					</tr>
 					<tr data-href="/companyProfile/credit/pay/someID" style="cursor:pointer;">
 						<td>19/04-2012</td>
 						<td>DKK 200,00</td>
-						<td><span class="label label-success">Betalt</span></td>
+						<td><span class="label label-success">Godkendt</span></td>
 					</tr>
 				</tbody>
 			</table>

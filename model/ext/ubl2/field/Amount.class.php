@@ -8,6 +8,14 @@
 
 namespace model\ext\ubl2\field;
 
+/**
+ * Class Amount
+ *
+ * @property $currencyID
+ * @property $_content
+ *
+ * @package model\ext\ubl2\field
+ */
 class Amount extends \model\AbstractModel{
 	protected $_fieldvarAsAttr = true;
 	protected $_namespace =
@@ -28,7 +36,12 @@ class Amount extends \model\AbstractModel{
 		$this->currencyID = $val;
 	}
 
+    function doParse(){
+        //ensuring int
+        $this->_content = (int) $this->_content;
+    }
 	//validate whether ISO 4217
+
 }
 
 ?>

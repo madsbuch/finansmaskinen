@@ -98,7 +98,7 @@ class InvoiceTest extends UnitTestCase
 		$total = $invoiceSimpledata['totalPrice'];
 		$shouldBe = $total * $rate;
 		$was = $bill->Invoice->LegalMonetaryTotal->PayableAmount->_content;
-		$this->assertTrue($shouldBe == $was, "Total of invoice should be " . $shouldBe . " but was " . $was . ", rate: $rate , total: $total");
+		$this->assertTrue((int) $shouldBe == (int) $was, "Total of invoice should be " . (int) $shouldBe . " but was " . (int) $was . ", rate: $rate , total: $total");
 
 		//save the old value
 		$this->bank = new \model\finance\accounting\Account($this->clientAcc->getAccount(12320));

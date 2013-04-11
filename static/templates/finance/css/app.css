@@ -55,6 +55,7 @@ html {
 /* the theme ;-) */
 #content {
 	padding: 0px;
+	margin-top: 20px;
 }
 /* bootstrap sets label display:block, iButton needs it inline */
 .ibutton-container label{

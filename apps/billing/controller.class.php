@@ -200,6 +200,10 @@ class billing extends \core\app
 		$this->output_content = '';
 	}
 
+	function remove($id){
+		throw new \exception\UserException('Ikke implmenteret endnu');
+	}
+
 	/**
 	 * takes a file, and returns JSON for the blueimp plugin
 	 */

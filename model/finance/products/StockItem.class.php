@@ -11,6 +11,8 @@ namespace model\finance\products;
 
 /**
  * @property $adjustmentQuantity;
+ * @property $sku
+ * @property $stockCount
  * @property $sold;
  * @property $price;
  * @property $date;
@@ -53,7 +55,7 @@ class StockItem extends \model\AbstractModel
 	 *
 	 * this is unitprice
 	 *
-	 * @var \model\ext\ubl2\Price
+	 * @var \model\ext\ubl2\field\Amount
 	 */
 	protected $price;
 

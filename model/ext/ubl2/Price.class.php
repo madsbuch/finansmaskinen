@@ -7,6 +7,12 @@
 
 namespace model\ext\ubl2;
 
+/**
+ * Class Price
+ *
+ *
+ * @package model\ext\ubl2
+ */
 class Price extends \model\AbstractModel{
 	
 	protected $_namespace = array('cac',

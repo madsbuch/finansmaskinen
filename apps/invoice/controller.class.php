@@ -100,6 +100,7 @@ class invoice extends \core\app
 	 * @param $id id of invoice
 	 */
 	function remove($id){
+		throw new \exception\UserException('Ikke implmenteret endnu');
 		\api\invoice::remove($id);
 
 		$html = $this->getTpl();

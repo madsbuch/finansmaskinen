@@ -315,76 +315,95 @@ class products
 	 *  ...
 	 * )
 	 *
-	 * for ensuring transactions
+	 * for ensuring transactional handling
+	 *
 	 *
 	 * @param $products
 	 * @throws \exception\UserException
 	 */
 	static function addToStock($products){
-		//validate
+		$products = array();
+		//iterate through all items
 		foreach($products as $productID => $pArr){
 			foreach($pArr as $stockItem){
 				$stockItem->parse();
+
+				//validate product object
 				$e = $stockItem->validate();
 				if(!empty($e)){
 					throw new \exception\UserException(__('Errors in stockItem: %s' . implode(', ', $e)));
 				}
+
+				//fetch product
+                if(!isset($products[$productID]))
+                    $products[$productID] = self::getOne($productID);
+
+				//calculate sku number
+				$sku = $stockItem->price->currencyID . $stockItem->price->_content;
+
+				//create new SKU or update existing
+				if(isset($products[$productID]->stockItems->$sku))
+					$products[$productID]->stockItems->$sku->stockCount += $stockItem->stockCount;
+				else
+					$products[$productID]->stockItems->$sku = $stockItem;
 			}
 		}
 
-		//insert the sku's or update existing
-		foreach($products as $productID => $pArr){
-			foreach($pArr as $stockItem){
-				$lodo = self::getLodoInternal();
-				$lodo->addCondition(array('_id' => new \MongoId($productID)));
-				$lodo->push('boughtItems', $stockItem, false);
-				$lodo->increment('stock', $stockItem->adjustmentQuantity, false);
-				$lodo->executeUpdate();
-
-				unset($lodo);
-			}
-		}
+        //saving products
+        foreach($products as $p){
+			self::update($p);
+        }
 	}
 
 	/**
      * If stock account is specified in the productcatagory, an exception is thrown if the product
      * goes below 0, nothing is done to the database.
-	 * takes array of product id's, and how many to sell:
 	 * array(
 	 *  id => array(\model\finance\products\StockItem(), ...)
 	 *  ...
 	 * )
 	 *
+	 *
 	 * @param $products
 	 * @throws \exception\UserException
 	 */
 	static function removeFromStock($products){
-		//do the validation and test if stock is high enough
+		$products = array();
+		//iterate through all items
 		foreach($products as $productID => $pArr){
 			foreach($pArr as $stockItem){
+				if(!($stockItem instanceof \model\finance\products\StockItem))
+					throw new \exception\UserException(__('wrong type supplied'));
+
 				$stockItem->parse();
 				$e = $stockItem->validate();
 				if(!empty($e)){
 					throw new \exception\UserException(__('Errors in stockItem: %s' . implode(', ', $e)));
 				}
+
+				//fetch products
+				if(!isset($products[$productID]))
+					$products[$productID] = self::getOne($productID);
+
+				//calculate sku number
+				$sku = $stockItem->price->currencyID . $stockItem->price->_content;
+
+				//check if the sku number exists
+				if(!isset($products[$productID]->stockItems->$sku))
+					throw new \exception\UserException(__('SKU doesn\'t exist, cannot remove from stock'));
+
 				//check if there is enough products here
+				if($products[$productID]->stockItems->$sku->stockCount < $stockItem->stockCount)
+					throw new \exception\UserException(__('Not enough on stock'));
+
+				//decrement count here (not saved untill success for all)
+				$products[$productID]->stockItems->$sku->stockCount -= $stockItem->stockCount;
 			}
 		}
 
-		//do the decrement here
-		foreach($products as $productID => $pArr){
-			foreach($pArr as $stockItem){
-				//update the structure
-				$lodo = self::getLodoInternal();
-				$lodo->addCondition(array('_id' => new \MongoId($productID)));
-				$lodo->push('soldItems', $stockItem, false);
-				$lodo->increment('stock', -1 * $stockItem->adjustmentQuantity, false);
-				$lodo->executeUpdate();
-
-				unset($lodo);
-
-				//return some prices for use when accounting, but only is stock is set
-			}
+		//saving products
+		foreach($products as $p){
+			self::update($p);
 		}
 	}
 
