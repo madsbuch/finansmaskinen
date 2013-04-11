@@ -316,11 +316,13 @@ class Form extends \helper\layout\LayoutBlock
 								title="Tilføj en linje uden et tilhørende produkt"
 								class="addProduct btn btn-info"><i class="icon-plus"></i> Tilføj linje</a>
 
+							<!--
 							<a href="#"
 								data-tpl="product"
 								title="Tilføj et allerede eksisterende produkt (for lagerføring)"
 								id="productLine_add_product"
 								class="addProduct btn btn-info"><i class="icon-plus"></i> Tilføj produkt</a>
+							-->
 
 							<a href="#addNewProduct"
 								data-toggle="modal"
