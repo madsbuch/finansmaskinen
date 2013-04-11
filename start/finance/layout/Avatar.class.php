@@ -23,6 +23,7 @@ class Avatar extends \helper\layout\LayoutBlock {
         </header>
     <div class="row">
         <p>Du kan få dit eget billede i hjørnet ved at oprette en konto på <a href="http://www.gravatar.com/">Gravatar</a>.</p>
+        <p>Ingen informationer om din brug af finansmaskinen bliver videregivet.</p>
     </div>
 		';
 	}

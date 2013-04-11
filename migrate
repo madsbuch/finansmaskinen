@@ -13,11 +13,11 @@ use finance;
 ALTER TABLE `finance`.`accounting_accounts`
 ADD COLUMN `currency` CHAR(3) NULL  AFTER `flags` ;
 
-:::::::::::: FINANSMASKINEN.DK ER OPDATERET MED OVENTÅENDE :::::::::::::::::
+
 
 use finance;
 CREATE  TABLE `finance`.`accounting_account_tags` (
-  `account_id` INT NOT NULL ,
+  `account_id` INT NOT NULLw ,
   `tag` VARCHAR(45) NULL ,
   PRIMARY KEY (`account_id`) ,
   INDEX `fk_accounting_account_tags_1_idx` (`account_id` ASC) ,
@@ -30,3 +30,5 @@ CREATE  TABLE `finance`.`accounting_account_tags` (
 ALTER TABLE `finance`.`accounting_account_tags` CHANGE COLUMN `tag` `tag` VARCHAR(45) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NOT NULL
 , DROP PRIMARY KEY
 , ADD PRIMARY KEY (`account_id`, `tag`) ;
+
+:::::::::::: FINANSMASKINEN.DK ER OPDATERET MED OVENTÅENDE :::::::::::::::::

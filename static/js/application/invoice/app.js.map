@@ -1,1 +1,1 @@
-{"version":3,"file":"app.js","sources":["app.ts"],"names":[],"mappings":"AAAA;IACI;AAEC;IAED,2BAAA;AAEC;IAPL"}
+{"version":3,"file":"app.js","sources":["app.ts"],"names":["Invoice","Invoice.constructor","Invoice.update"],"mappings":"AAAA;IACIA,SADEA,OAAOA;IAGTC,CAACA;IAEDD,2BAAAA;IAEAE,CAACA;IACLF;AAACA,CAAAA,IAAA"}

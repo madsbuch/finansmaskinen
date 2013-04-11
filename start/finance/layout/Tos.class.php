@@ -15,6 +15,9 @@ class Tos extends \helper\layout\LayoutBlock
     function generate()
     {
         return '
+
+		<a href="/main/tos/agree" class="btn btn-success pull-right btn-large">Enig</a>
+
         <h3>Handelsbetingelser:</h3>
 
 		<p>Eftersom vi stadig kører i private BETA skal vi gøre dig opmærksom på,

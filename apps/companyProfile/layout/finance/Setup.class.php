@@ -16,7 +16,7 @@ class Setup extends \helper\layout\LayoutBlock{
 	<div class="row">
 		<div class="span5">
 			<h2>Basale info</h2>
-			<div class="well">
+			<div class="app-box">
 				<h4>Postadresse</h4>
 				<label for="legal">Virksomhedsnavn: </label>
 				<input class="span4" type="text"
@@ -52,7 +52,7 @@ class Setup extends \helper\layout\LayoutBlock{
 		</div>
 		<div class="span7">
 			<h2>Fakturering</h2>
-			<div class="well">
+			<div class="app-box">
 				<div class="row">
 					<div class="span3">
 						<label for="legal">Faktureringsnummer: </label>
@@ -78,7 +78,7 @@ class Setup extends \helper\layout\LayoutBlock{
 				</div>
 			</div>
 			<h2>Standard konto</h2>
-			<div class="well">
+			<div class="app-box">
 				<p>Angiv en konto dine kunder kan betale dig på</p>
 				<div class="row">
 					<input type="hidden" value="DK:BANK" name="Public-PaymentMeans-PaymentChannelCode" />

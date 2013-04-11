@@ -368,6 +368,7 @@ class products
 	 * @throws \exception\UserException
 	 */
 	static function removeFromStock($products){
+		return;//remove when this feature is to be implmented!
 		$products = array();
 		//iterate through all items
 		foreach($products as $productID => $pArr){

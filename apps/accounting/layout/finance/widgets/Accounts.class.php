@@ -80,34 +80,7 @@ class Accounts extends \helper\layout\LayoutBlock implements \helper\layout\Widg
 
 		$div = $this->edom->createElement('div');
 		$div->setAttribute('style', 'height: 160px;font-size: 14px;line-height: 1.2em;');
-		$div->setAttribute('data-charts_barData',$this->chartData);/*
-		'[
-	{
-		"label": "Failed",
-		"data": [[0,10]],
-		"bars": { "show": true }
-	},
-	{
-		"label": "Passed",
-		"data": [[1,15]],
-		"bars": { "show": true }
-	},
-	{
-		"label": "Not Run",
-		"data": [[2,30]],
-		"bars": { "show": true }
-	},
-	{
-		"label": "Blocked",
-		"data": [[3,5]],
-		"bars": { "show": true }
-	},
-	{
-		"label": "In Progress",
-		"data": [[4,40]],
-		"bars": { "show": true }
-	}
-]');*/
+		$div->setAttribute('data-charts_barData',$this->chartData);
 		$this->wrapper->appendChild($div);
 
 		
