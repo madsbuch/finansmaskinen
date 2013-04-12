@@ -26,7 +26,7 @@ class products extends \core\app{
 		$html = $this->getOutTpl();
 		
 		$html->appendContent(\helper\layout\Element::heading('Produkter',
-			'Alle produkter'));
+			'Her kan du se en oversigt over alle dine oprettede produkter.'));
 		
 	//create the addlink
 		$html->appendContent(\helper\layout\Element::primaryButton(
