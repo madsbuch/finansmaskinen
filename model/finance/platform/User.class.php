@@ -19,6 +19,8 @@ namespace model\finance\platform;
  * @property $settings
  * @property $tosApproved;
  * @property $TosReApprove;
+ * @property $resetPasswordKey;
+ * @property $resetPasswordIssued;
  */
 class User extends \model\AbstractModel{
 	/**
@@ -43,7 +45,21 @@ class User extends \model\AbstractModel{
 	protected $coreSecret;
 	protected $coreID;
 
-    /**
+	/**
+	 * key used for resetting password
+	 *
+	 * @var string
+	 */
+	protected $resetPasswordKey;
+
+	/**
+	 * Time for when resetting the password was issued.
+	 *
+	 * @var \Date
+	 */
+	protected $resetPasswordIssued;
+
+	/**
      * whether tos is approved
      */
     protected $tosApproved;

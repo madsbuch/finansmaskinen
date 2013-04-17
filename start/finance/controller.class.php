@@ -186,6 +186,29 @@ class main extends \core\app implements \core\framework\Output
 		$this->output_content = $html->generate();
 	}
 
+	function reset($userID, $resetKey){
+		$post = new \helper\parser\Post('\model\Base');
+		$object = $post->getObj();
+
+		if(!empty($object->p1)){
+			if($object->p1 !=  $object->p2)
+				throw new \exception\UserException(__('Passwords must match Go back and try again'));
+			//reset here
+			api::resetPassword($object->p1, $resetKey, $userID);
+			throw new \exception\SuccessException(__('Password was reset, try to log in.'));
+		}
+
+		$html = $this->getTpl();
+		$html->appendContent(\helper\layout\Element::heading(__('Reset password'),
+			__('Type a new password of your choice..')));
+
+		$html->appendContent(new layout\Reset());
+
+		$this->output_header = $this->header->generate();
+		$this->output_content = $html->generate();
+
+	}
+
     /**
      * page for showing and agreeing on tos
      */

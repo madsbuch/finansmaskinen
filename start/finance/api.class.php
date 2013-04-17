@@ -31,6 +31,56 @@ class api extends \core\startapi{
 		}
 
 		//send link for resetting the password
+		$user->resetPasswordKey = sha1(time() . $user->mail);
+		$user->resetPasswordIssued = time();
+
+		$core = new \helper\core(null);
+		$db = $core->getDB('mongo');
+		$db->getCollection('financeUsers')->save($user->toArray(),array('safe' => true));
+
+		$mail = new \helper\mail();
+		$mail->AddReplyTo('info@finansmaskinen.dk', 'Finansmaskinen');
+		$mail->AddAddress($user->mail);
+		$mail->SetFrom('info@finansmaskinen.dk', 'Finansmaskinen');
+
+		$content = new \start\finance\layout\mails\ResendPassword($user);
+		$tpl = new \helper\template\DefMail();
+		$tpl->appendContent($content);
+
+		$mail->MsgHTML($tpl->generate());
+		$mail->AltBody = $tpl->generateAlt();
+		$mail->Subject = $tpl->generateSubject();
+		$mail->Send();
+
+		throw new \exception\SuccessException(__('resetmail was resend.'));
+
+	}
+
+	/**
+	 * @param $newPass
+	 * @param $resetKey
+	 * @param $userID
+	 * @throws \exception\UserException
+	 */
+	static function resetPassword($newPass, $resetKey, $userID){
+		$core = new \helper\core(null);
+		$db = $core->getDB('mongo');
+		$user = new \model\finance\platform\User(
+			$db->getCollection('financeUsers')->find(
+				array('_id' => new \MongoId($userID))));
+
+		var_dump($resetKey, $user->resetPasswordKey);
+
+		if($user->resetPasswordKey != $resetKey)
+			throw new \exception\UserException(__('wrong resetkey.'));
+
+		if($user->resetPasswordIssued > time() + 3600)
+			throw new \exception\UserException(__('The reset was expired, try again.'));
+
+		$user->password = self::hashPassword($newPass, $user->mail);
+
+		//and update
+		$db->getCollection('financeUsers')->update(array('_id' => new \MongoId($user->_id)), $user->toArray(), array('safe' => true));
 	}
 
 	/**
