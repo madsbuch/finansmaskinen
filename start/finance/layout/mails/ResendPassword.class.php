@@ -14,7 +14,7 @@ class ResendPassword extends \helper\layout\LayoutBlock{
 	
 	public function generate(){
 		$link = \config\config::$configs['finance']['settings']['protocol'].'://'.\config\config::$configs['finance']['domains']['web'];
-		$codeLink = $link.'/index/reset/'.$this->user->_id.'/'.$this->user->resetPasswordKey;
+		$codeLink = $link.'/index/reset/'.$this->user->mail.'/'.$this->user->resetPasswordKey;
 
 		return "
 <h1>Nyt password</h1>

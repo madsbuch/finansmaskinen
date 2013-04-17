@@ -59,17 +59,12 @@ class api extends \core\startapi{
 	/**
 	 * @param $newPass
 	 * @param $resetKey
-	 * @param $userID
+	 * @param $mail
 	 * @throws \exception\UserException
+	 * @internal param $userID
 	 */
-	static function resetPassword($newPass, $resetKey, $userID){
-		$core = new \helper\core(null);
-		$db = $core->getDB('mongo');
-		$user = new \model\finance\platform\User(
-			$db->getCollection('financeUsers')->find(
-				array('_id' => new \MongoId($userID))));
-
-		var_dump($resetKey, $user->resetPasswordKey);
+	static function resetPassword($newPass, $resetKey, $mail){
+		$user = self::findUser($mail);
 
 		if($user->resetPasswordKey != $resetKey)
 			throw new \exception\UserException(__('wrong resetkey.'));
@@ -80,6 +75,8 @@ class api extends \core\startapi{
 		$user->password = self::hashPassword($newPass, $user->mail);
 
 		//and update
+		$core = new \helper\core(null);
+		$db = $core->getDB('mongo');
 		$db->getCollection('financeUsers')->update(array('_id' => new \MongoId($user->_id)), $user->toArray(), array('safe' => true));
 	}
 

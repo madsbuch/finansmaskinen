@@ -186,7 +186,7 @@ class main extends \core\app implements \core\framework\Output
 		$this->output_content = $html->generate();
 	}
 
-	function reset($userID, $resetKey){
+	function reset($mail, $resetKey){
 		$post = new \helper\parser\Post('\model\Base');
 		$object = $post->getObj();
 
@@ -194,7 +194,7 @@ class main extends \core\app implements \core\framework\Output
 			if($object->p1 !=  $object->p2)
 				throw new \exception\UserException(__('Passwords must match Go back and try again'));
 			//reset here
-			api::resetPassword($object->p1, $resetKey, $userID);
+			api::resetPassword($object->p1, $resetKey, $mail);
 			throw new \exception\SuccessException(__('Password was reset, try to log in.'));
 		}
 
@@ -613,6 +613,10 @@ class main extends \core\app implements \core\framework\Output
 			$this->header->setResponse(404);
 			$c = new \helper\layout\MessagePage('ARG! 404',
 				'<p>'.__('The requested page does not exist.').'</p>');
+		}
+		elseif($e instanceof \exception\SuccessException){
+			$c = new \helper\layout\MessagePage('Success!',
+				'<p>'.$e->getMessage().'</p>');
 		}
 		elseif($e instanceof \exception\UserException){
 			$c = new \helper\layout\MessagePage('En fejl?',
