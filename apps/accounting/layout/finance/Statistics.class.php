@@ -23,7 +23,6 @@ class Statistics extends \helper\layout\LayoutBlock{
 	function generate(){
 		$dom = $this->dom;
 		$ret = $dom->createElement('div');
-		$ret->setAttribute('class', 'row');
 		
 		$c = 0;
 		

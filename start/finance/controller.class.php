@@ -34,28 +34,12 @@ class main extends \core\app implements \core\framework\Output
 		
 		$err = null;
 
-		if($data && ($err = api::login($data->mail, $data->password))){
+		if($data && api::login($data->mail, $data->password)){
 			//if login, then redirect to home
 			$this->header->redirect("/index/apps");
 			$this->output_header = $this->header->generate();
 			$this->output_content = '';
 			return;
-		}
-		
-		if($err === 0){
-			$msg = new \helper\layout\UserMsg('Din bruger er ikke aktiveret.
-			Skal vi sende din aktiveringsmail igen?');
-			$msg->setButton('Send aktiveringskode', '/index/activate/resend');
-			$msg->setTitle('Ikke aktiveret?');
-			$this->setUserMsg('index_user_not_activated', $msg);
-		}
-				
-		if($err === false){
-			$msg = new \helper\layout\UserMsg('Kan du huske din adgangskode? Vil du have mulighedden
-				for at nulstille den?');
-			$msg->setButton('Nulstil adgangskode', '/index/password/reset');
-			$msg->setTitle('Ups, nogle informationer passede ikke.');
-			$this->setUserMsg('index_user_wrong_cred', $msg);
 		}
 		
 		/**** echo out some frontpage ****/
@@ -200,6 +184,29 @@ class main extends \core\app implements \core\framework\Output
 			\start\finance\api::getAPIKeys($u->mail)));
 		$this->output_header = $this->header->generate();
 		$this->output_content = $html->generate();
+	}
+
+	function reset($userID, $resetKey){
+		$post = new \helper\parser\Post('\model\Base');
+		$object = $post->getObj();
+
+		if(!empty($object->p1)){
+			if($object->p1 !=  $object->p2)
+				throw new \exception\UserException(__('Passwords must match Go back and try again'));
+			//reset here
+			api::resetPassword($object->p1, $resetKey, $userID);
+			throw new \exception\SuccessException(__('Password was reset, try to log in.'));
+		}
+
+		$html = $this->getTpl();
+		$html->appendContent(\helper\layout\Element::heading(__('Reset password'),
+			__('Type a new password of your choice..')));
+
+		$html->appendContent(new layout\Reset());
+
+		$this->output_header = $this->header->generate();
+		$this->output_content = $html->generate();
+
 	}
 
     /**
@@ -446,6 +453,23 @@ class main extends \core\app implements \core\framework\Output
 		$this->header->setMime('json');
 		$this->output_header = $this->header->getHeader();
 		$this->output_content = json_encode($ret);
+	}
+
+	/**
+	 * a function for fixing everything
+	 */
+	function fix(){
+		//get what people psted
+		$post = new \helper\parser\Post('\model\Base');
+		$data = $post->getObj();
+
+		if(empty($data->mail)){
+			throw new \exception\UserException(__('No e-mail was provided'));
+		}
+
+		api::recoverAccount($data->mail);
+
+		throw new \exception\SuccessException(__('Nothing happened'));
 	}
 
     /**

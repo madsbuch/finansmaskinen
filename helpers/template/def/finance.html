@@ -46,8 +46,10 @@
                     <span/>
                     <input type="password" name="password" class="input-medium" placeholder="Password" />
                     <span/>
-					<button type="submit" class="btn">Log ind</button>
+					<button type="submit" class="btn btn-primary">Log ind</button>
+					<a href="#loginProblems" class="btn" data-toggle="modal">  Problemer?</a>
 				</form>
+
 			</div>
 		</div>
 	</div>
@@ -68,6 +70,25 @@
 	  })();
 
 	</script>
+
+	<div class="modal hide fade" id="loginProblems">
+		<form method="post" action="/index/fix">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h3>Probleer med at logge ind?</h3>
+			</div>
+			<div class="modal-body">
+				<p>Indtast din mail, derefter sender vi dig hurtigst muligt instruktioner.</p>
+				<label>Mail:</label>
+				<input type="email" name="mail" />
+			</div>
+			<div class="modal-footer">
+				<a href="#" data-dismiss="modal" class="btn">Luk</a>
+				<input type="submit" class="btn btn-success" value="Fix problem" />
+			</div>
+		</form>
+	</div>
+
   </body>
 </html>
 

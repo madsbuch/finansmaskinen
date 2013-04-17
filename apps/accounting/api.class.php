@@ -56,7 +56,10 @@ class accounting
         if($holderAccount->income - $holderAccount->outgoing != 0)
             return new \app\accounting\layout\finance\widgets\PayVat($holderAccount);
 
-		$accounts = self::getAccounts(true);
+		//we show the statistics accounts
+		$accounts = self::getAccountsForTags(array('frontpage'));
+		if(empty($accounts))
+			$accounts = self::getAccounts(true);
 		return new \app\accounting\layout\finance\widgets\Accounts($accounts);
 	}
 
@@ -129,7 +132,7 @@ class accounting
 		$preset = '\app\accounting\setups\\' . $options->preset;
 		$preset = new $preset();
 
-		$accHelper = new \helper\accounting((string)$accObj->_id);
+		$accHelper = new \helper\accounting($accObj);
 
         //adding vat codes
         foreach ($preset::$vatCodes as $vc) //add vatcodes
@@ -306,7 +309,7 @@ class accounting
 		if (!$accObj)
 			throw new \exception\UserException(__('No valid accounting selected'));
 
-		$acc = new \helper\accounting((string) $accObj->_id);
+		$acc = new \helper\accounting($accObj);
 
 		//if a single transaction, wrap it into a collection type
 		if (!is_array($transactions) &&
@@ -354,8 +357,6 @@ class accounting
 	 */
 	static function getTransaction($id, $byReference = false){
 		$acc = self::retrieve();
-
-		$acc = (string)$acc->_id;
 		$acc = new \helper\accounting($acc);
 
 		if($byReference)
@@ -421,7 +422,7 @@ class accounting
 		$aAcc = isset($options->assetAccount) ? $options->assetAccount : null;
 
 		//accounting helper
-		$ah = new \helper\accounting((string) self::retrieve()->_id);
+		$ah = new \helper\accounting(self::retrieve());
 
 		//converts to a transaction object
 		if(is_string($type)){
@@ -471,12 +472,14 @@ class accounting
 	 */
 	static function createAccount($account)
 	{
-		$acc = new \helper\accounting(null);
+		$acc = self::retrieve();
+		$acc = new \helper\accounting($acc);
 		return $acc->accounts()->createAccount($account);
 	}
 
 	static function updateAccount($account){
-		$acc = new \helper\accounting(null);
+		$acc = self::retrieve();
+		$acc = new \helper\accounting($acc);
 		return $acc->accounts()->updateAccount($account);
 	}
 
@@ -491,7 +494,7 @@ class accounting
 	static function getAccounts($onlyPayable = false, $onlyEquity = false, $type= null)
 	{
 		$accounting = self::retrieve();
-		$acc = new \helper\accounting((string)$accounting->_id);
+		$acc = new \helper\accounting($accounting);
 
 		$flag = 0;
 		$flag = $onlyPayable ? $flag | 1 : $flag;
@@ -525,7 +528,7 @@ class accounting
 	static function getAccount($id)
 	{
 		$acc = self::retrieve();
-		$acc = new \helper\accounting((string)$acc->_id);
+		$acc = new \helper\accounting($acc);
 		return $acc->accounts()->getAccountByCode($id);
 	}
 
@@ -540,8 +543,27 @@ class accounting
 	static function deleteAccount($id)
 	{
 		$acc = self::retrieve();
-		$acc = new \helper\accounting((string)$acc->_id);
+		$acc = new \helper\accounting($acc);
 		return $acc->accounts()->deleteAccount((int)$id);
+	}
+
+	/**
+	 * returns all tags the user has
+	 */
+	static function getTags($search = null){
+		$acc = self::retrieve();
+		$acc = new \helper\accounting($acc);
+		return $acc->accounts()->getTags($search);
+	}
+
+	/**
+	 * @param $tags array
+	 */
+	static function getAccountsForTags($tags){
+		$acc = self::retrieve();
+		$acc = new \helper\accounting($acc);
+		return $acc->accounts()->getByTag($tags);
+
 	}
 
 	/**** VAT ****/
@@ -552,7 +574,7 @@ class accounting
 	static function getVatCodes()
 	{
 		$acc = self::retrieve();
-		$acc = new \helper\accounting((string)$acc->_id);
+		$acc = new \helper\accounting($acc);
 		return $acc->vat()->getVatCodes();
 	}
 
@@ -562,7 +584,7 @@ class accounting
 	static function getVatCode($code)
 	{
 		$acc = self::retrieve();
-		$acc = new \helper\accounting((string)$acc->_id);
+		$acc = new \helper\accounting($acc);
 		return $acc->getVatCode($code);
 	}
 
@@ -575,7 +597,7 @@ class accounting
 	static function getVatCodeForAccount($account)
 	{
 		$acc = self::retrieve();
-		$acc = new \helper\accounting((string)$acc->_id);
+		$acc = new \helper\accounting($acc);
 		return $acc->getVatCodeForAccount($account);
 	}
 
@@ -592,7 +614,7 @@ class accounting
 	 */
 	static function updateVatCode($vatCode){
 		$acc = self::retrieve();
-		$acc = new \helper\accounting((string)$acc->_id);
+		$acc = new \helper\accounting($acc);
 		return $acc->vat()->update($vatCode);
 	}
 
@@ -604,7 +626,7 @@ class accounting
 	static function resetVat(){
         $settings = self::getSettings();
 		$acc = self::retrieve();
-		$acc = new \helper\accounting((string)$acc->_id);
+		$acc = new \helper\accounting($acc);
 		$acc->vat()->resetVatAccounting($settings->vatSettlementAccount);
 	}
 
@@ -613,8 +635,7 @@ class accounting
 	 */
 	static function payVat($assetAccount){
         $settings = self::getSettings();
-		$acc = self::retrieve();
-		$acc = new \helper\accounting((string)$acc->_id);
+		$acc = new \helper\accounting(self::retrieve());
 		$acc->vat()->vatPayed($settings->vatSettlementAccount, $assetAccount);
 	}
 
@@ -622,7 +643,7 @@ class accounting
 
 	static function getRapport($type)
 	{
-		$acc = new \helper\accounting((string)self::retrieve()->_id);
+		$acc = new \helper\accounting(self::retrieve());
 		switch (strtolower($type)) {
 			case 'vatstatement':
 				return $acc->report('DKVatSettlement');

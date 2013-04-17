@@ -128,7 +128,7 @@ interface Queries
 	 *  grp_id
 	 *
 	 * @param $tags
-	 * @return mixed
+	 * @return string
 	 */
 	function setTagsByAccountCode($tags);
 
@@ -139,6 +139,16 @@ interface Queries
 	 * @return string
 	 */
 	function getTagsForAccount();
+
+	/**
+	 * returns tags
+	 *
+	 * takes:
+	 *  grp_id
+	 *
+	 * @return string
+	 */
+	function getAllTags();
 
 	//endregion
 

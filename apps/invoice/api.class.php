@@ -192,12 +192,16 @@ class invoice{
 	 * removes an invoice, so far, only drafts is to be removed
 	 *
 	 * @param $id string id of invoice
+	 * @throws \exception\UserException
 	 */
 	public static function remove($id){
 		$inv = self::getOne($id);
 
 		if(!$inv->draft)
 			throw new \exception\UserException(__('You can only delete drafts.'));
+
+		$lodo = new \helper\lodo('invoices', 'invoice');
+		$lodo->delete($id);
 
 	}
 

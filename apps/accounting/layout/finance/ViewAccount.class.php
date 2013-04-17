@@ -38,6 +38,8 @@ class ViewAccount extends \helper\layout\LayoutBlock
 
 		$this->account->tags = implode(', ', $this->account->tags);
 
+		$tags = json_encode($this->allTags);
+
 		$block = new \helper\html\HTMLMerger('
 		<div class="app-box">
 			<form method="post" action="/accounting/updateAccount">
@@ -46,7 +48,7 @@ class ViewAccount extends \helper\layout\LayoutBlock
 				<input type="text" name="code" id="code" class="span4"  />
 
 				<label>Tags</label>
-				<input type="text" name="tags" id="tags" class="span4" data-tags=\'["hej", "med", "dig"]\' />
+				<input type="text" name="tags" id="tags" class="span4" data-tags=\''.$tags.'\' />
 				<div class="clearfix" />
 
 				<label>Navn:</label>

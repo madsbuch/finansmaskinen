@@ -213,7 +213,8 @@ class accounting extends \core\app{
 
 		$view = new \app\accounting\layout\finance\ViewAccount(
 			\api\accounting::getAccount($id),
-			array());
+			array(),
+			\api\accounting::getTags());
 		$html->appendContent($view);
 
 		$this->output_header = $this->header->getHeader();
