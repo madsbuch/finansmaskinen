@@ -118,6 +118,11 @@ class lodo
 		$this->collection = $this->DB->getCollection($collection);
 
 		$this->setGroupCondition();
+
+		$this->addCondition(array(
+			'_subsystem.isDeleted' => array('$ne' => true)
+		));
+
 		$this->setFields(array(
 			'_subsystem.fulltext_index' => false,
 			'_subsystem.edited_by' => false,
@@ -248,11 +253,16 @@ class lodo
 	/**
 	 * links documents from other collection
 	 *
+	 * if to documents links to the same other document, this specifies whether to copy
+	 * or just put in the reference.
+	 *
 	 * @param $collection
-	 * @param $source
-	 * @param $target
+	 * @param $source string field to compare to target (e.g.contactID)
+	 * @param $target string
+	 * @param $set
+	 * @param bool $deepCopy
 	 */
-	function link($collection, $source, $target){
+	function link($collection, $source, $target, $set, $deepCopy = false){
 
 	}
 
@@ -280,17 +290,6 @@ class lodo
 		$this->collection->insert($obj, array('safe' => true));
 
 		return new $c($obj);
-	}
-
-    /**
-     * marks a single object as deleted
-     *
-     * @param $id
-     */
-    function delete($id)
-	{
-		//update the document
-		$this->collection->update(array('_id' => new \MongoId($id), array('$set' => array('_subsystem.deleted' => true))));
 	}
 
 	/**
@@ -394,6 +393,22 @@ class lodo
 	 */
 	function increment($field, $amount, $immediateExecution = true){
 		$this->updates['$inc'][$field] = $amount;
+		if($immediateExecution)
+			$this->executeUpdate();
+	}
+
+	/**
+	 * marks object
+	 *
+	 *
+	 * @param $id
+	 * @param bool $immediateExecution
+	 * @internal param $field
+	 * @internal param $amount
+	 */
+	function delete($id, $immediateExecution = true){
+		$this->updates['_subsystem.isDeleted'] = true;
+		$this->conditions['_id'] = new \MongoId( (string) $id );
 		if($immediateExecution)
 			$this->executeUpdate();
 	}

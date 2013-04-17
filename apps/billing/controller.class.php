@@ -201,7 +201,17 @@ class billing extends \core\app
 	}
 
 	function remove($id){
-		throw new \exception\UserException('Ikke implmenteret endnu');
+		\api\billing::remove($id);
+
+		$html = $this->getTpl();
+
+		$m = new \helper\layout\MessagePage('Deleted!',
+			'<p>'.__('Your bill was deleted.').'</p>');
+
+		$html->add2content($m);
+
+		$this->output_header = $this->header->getHeader();
+		$this->output_content = $html->generate();
 	}
 
 	/**

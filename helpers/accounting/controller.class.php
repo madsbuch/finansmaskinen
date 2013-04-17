@@ -101,13 +101,13 @@ class accounting
 	/**
 	 * instanciate with details of the group and the accounting
 	 *
-	 * @param $accounting string    the id of the accounting related to
+	 * @param \model\finance\Accounting|string $accounting the id of the accounting related to
 	 * @param $grp int            the group the account are related to
 	 */
-	function __construct($accounting, $grp = null)
+	function __construct(\model\finance\Accounting $accounting, $grp = null)
 	{
 
-		$this->accounting = (string) $accounting;
+		$this->accounting = (string) $accounting->_id;
 		$core = new core('accounting');
 
 		$this->queries = new accounting\MysqlQueries();

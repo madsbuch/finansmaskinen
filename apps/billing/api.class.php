@@ -252,9 +252,14 @@ class billing extends \core\api
 	 *
 	 * @param $id
 	 */
-	static function delete($id)
+	static function remove($id)
 	{
+		$bill = self::getOne($id);
+		if(!$bill->draft)
+			throw new \exception\UserException(__('You only delete drafts.'));
 
+		$lodo = new \helper\lodo('bills', 'billing');
+		$lodo->delete($id);
 	}
 
 	/**
@@ -291,6 +296,7 @@ class billing extends \core\api
 	 *					account,  this is required.
 	 * @param $currency string the currency it was payed in, only mandatory when another valuta
 	 *  the default was used.
+	 * @return string
 	 */
 	static function bookkeep($id, $asset, $liability, $amount = null, $currency = null){
 		//fetch invoice
