@@ -34,28 +34,12 @@ class main extends \core\app implements \core\framework\Output
 		
 		$err = null;
 
-		if($data && ($err = api::login($data->mail, $data->password))){
+		if($data && api::login($data->mail, $data->password)){
 			//if login, then redirect to home
 			$this->header->redirect("/index/apps");
 			$this->output_header = $this->header->generate();
 			$this->output_content = '';
 			return;
-		}
-		
-		if($err === 0){
-			$msg = new \helper\layout\UserMsg('Din bruger er ikke aktiveret.
-			Skal vi sende din aktiveringsmail igen?');
-			$msg->setButton('Send aktiveringskode', '/index/activate/resend');
-			$msg->setTitle('Ikke aktiveret?');
-			$this->setUserMsg('index_user_not_activated', $msg);
-		}
-				
-		if($err === false){
-			$msg = new \helper\layout\UserMsg('Kan du huske din adgangskode? Vil du have mulighedden
-				for at nulstille den?');
-			$msg->setButton('Nulstil adgangskode', '/index/password/reset');
-			$msg->setTitle('Ups, nogle informationer passede ikke.');
-			$this->setUserMsg('index_user_wrong_cred', $msg);
 		}
 		
 		/**** echo out some frontpage ****/
@@ -446,6 +430,23 @@ class main extends \core\app implements \core\framework\Output
 		$this->header->setMime('json');
 		$this->output_header = $this->header->getHeader();
 		$this->output_content = json_encode($ret);
+	}
+
+	/**
+	 * a function for fixing everything
+	 */
+	function fix(){
+		//get what people psted
+		$post = new \helper\parser\Post('\model\Base');
+		$data = $post->getObj();
+
+		if(empty($data->mail)){
+			throw new \exception\UserException(__('No e-mail was provided'));
+		}
+
+		api::recoverAccount($data->mail);
+
+		throw new \exception\SuccessException(__('Nothing happened'));
 	}
 
     /**

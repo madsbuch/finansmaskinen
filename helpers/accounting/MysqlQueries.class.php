@@ -13,7 +13,7 @@ class MysqlQueries implements \helper\accounting\Queries
 {
 	/**** Accounts ****/
 	//region accounts
-	function getAllAccounts($grp, $flags = 0, $accounts=array(), $type = null){
+	function getAllAccounts($grp, $flags = 0, $accounts=array(), $type = null, $tags = array()){
 		$add = ' AND flags & ' . $flags . ' = ' . $flags . '';
 
 		if(is_array($accounts)){
@@ -73,6 +73,51 @@ class MysqlQueries implements \helper\accounting\Queries
 
 	function deleteAccount(){
 		return 'DELETE FROM accounting_accounts WHERE code = :code AND grp_id = :grp_id LIMIT 1';
+	}
+
+	function setTags($tags){
+		$insert = '(:account_id,' . implode('\'), (:account_id, \'', $tags) . ')';
+		return "
+			DELETE FROM accounting_account_tags WHERE id = :account_id;
+			INSERT INTO
+				accounting_account_tags (account_id, tag)
+			VALUES $insert;
+
+		";
+	}
+
+	function setTagsByAccountCode($tags){
+		$insert = '(@id,\'' . implode('\'), (@id, \'', $tags) . '\')';
+		return "
+			SET @id = (SELECT id FROM accounting_accounts WHERE grp_id = :grp_id AND code = :code);
+			DELETE FROM accounting_account_tags WHERE account_id = @id;
+			INSERT INTO
+				accounting_account_tags (account_id, tag)
+			VALUES $insert;
+
+		";
+	}
+
+
+	function getTagsForAccount(){
+		return 'SELECT tag FROM accounting_account_tags WHERE account_id = :account_id;';
+	}
+
+	function getAccountsForTags($tags){
+
+
+	}
+
+	function getAllTags(){
+		return '
+			SELECT
+				DISTINCT tags.tag
+			FROM
+				accounting_account_tags as tags,
+				accounting_accounts as account
+			WHERE
+					tags.account_id = account.id
+				AND account.grp_id = :grp_id;';
 	}
 
 	//endregion
@@ -182,34 +227,6 @@ class MysqlQueries implements \helper\accounting\Queries
 		VALUES
 			(:name, :type, :percentage, :account, :taxCategoryID, :description, :contraAccount, :deductionPercentage,
 				:contraDeductionPercentage, :principle, :grp, :code);';
-	}
-
-	function setTags($tags){
-		$insert = '(:account_id,' . implode('\'), (:account_id, \'', $tags) . ')';
-		return "
-			DELETE FROM accounting_account_tags WHERE id = :account_id;
-			INSERT INTO
-				accounting_account_tags (account_id, tag)
-			VALUES $insert;
-
-		";
-	}
-
-	function setTagsByAccountCode($tags){
-		$insert = '(@id,\'' . implode('\'), (@id, \'', $tags) . '\')';
-		return "
-			SET @id = (SELECT id FROM accounting_accounts WHERE grp_id = :grp_id AND code = :code);
-			DELETE FROM accounting_account_tags WHERE account_id = @id;
-			INSERT INTO
-				accounting_account_tags (account_id, tag)
-			VALUES $insert;
-
-		";
-	}
-
-
-	function getTagsForAccount(){
-		return 'SELECT tag FROM accounting_account_tags WHERE account_id = :account_id;';
 	}
 
 	//endregion

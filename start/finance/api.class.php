@@ -14,7 +14,25 @@ class api extends \core\startapi{
 	public $external = array();
 	
 	/**** Interacting with the user system ****/
-	
+
+	/**
+	 * sends mails used for recvovery
+	 */
+	static function recoverAccount($mail){
+		$user = self::findUser($mail);
+
+		if(empty($user))
+			throw new \exception\UserException(__('No user with that mail'));
+
+		if(!$user->activated){
+			//resend activation mail
+			self::sendActivationMail($user);
+			throw new \exception\SuccessException(__('Activationmail was resend.'));
+		}
+
+		//send link for resetting the password
+	}
+
 	/**
 	* creaete a user for finansmaskien
 	*
@@ -87,21 +105,25 @@ class api extends \core\startapi{
 		$rpc->add(\helper\model\Arr::export($contact));
 		
 		//sending the mail
+		self::sendActivationMail($fUser);
+		
+		return $fUser;
+	}
+
+	static function sendActivationMail($fUser){
 		$mail = new \helper\mail();
 		$mail->AddReplyTo('info@finansmaskinen.dk', 'Finansmaskinen');
 		$mail->AddAddress($fUser->mail);
 		$mail->SetFrom('info@finansmaskinen.dk', 'Finansmaskinen');
-		
+
 		$content = new \start\finance\layout\MailWelcome($fUser);
 		$tpl = new \helper\template\DefMail();
 		$tpl->appendContent($content);
-		
+
 		$mail->MsgHTML($tpl->generate());
 		$mail->AltBody = $tpl->generateAlt();
 		$mail->Subject = $tpl->generateSubject();
 		$mail->Send();
-		
-		return $fUser;
 	}
 
     /**
@@ -155,21 +177,18 @@ class api extends \core\startapi{
 		
 		return is_null($user['_id']) ? null : new \model\finance\platform\User($user);
 	}
-	
+
 	/**
-	* log a user in
-	*
-	* return	200 on sucess
-	*			false   if the credentials are wrong
-	*			0		if the user is not activated
-	* the values doesn't make a lot of sense, but the idea, is that 200 validates
-	* to true, and the others validates bot to false, on loosy comparison
-	*/
+	 * @param $mail
+	 * @param $pass
+	 * @return bool
+	 * @throws \exception\UserException
+	 */
 	public static function login($mail, $pass){
 		$user = self::findUser($mail);
 		
 		if($user && !$user->activated)
-			return 0;
+			throw new \exception\UserException(__('You are not activated. press the trouble button on the frontpage to have activation mail resend.'));
 		
 		if($user && $user->password === self::hashPassword($pass, $user->mail)){
 			if(\core\auth::getInstance()->login($user->coreID, $user->coreSecret)){
@@ -189,7 +208,7 @@ class api extends \core\startapi{
 				return true;
 			}
 		}
-		return false;
+		throw new \exception\UserException(__('Wrong password or username.'));
 	}
 
     /**

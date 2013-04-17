@@ -34,4 +34,9 @@ class ObjectServer
 	 * @var string
 	 */
 	public $accounting;
+
+	/**
+	 * the actual accounting object
+	 */
+	public $accountingObj;
 }

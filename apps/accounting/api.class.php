@@ -56,7 +56,10 @@ class accounting
         if($holderAccount->income - $holderAccount->outgoing != 0)
             return new \app\accounting\layout\finance\widgets\PayVat($holderAccount);
 
-		$accounts = self::getAccounts(true);
+		//we show the statistics accounts
+		$accounts = self::getAccountsForTags(array('frontpage'));
+		if(empty($accounts))
+			$accounts = self::getAccounts(true);
 		return new \app\accounting\layout\finance\widgets\Accounts($accounts);
 	}
 
@@ -354,8 +357,6 @@ class accounting
 	 */
 	static function getTransaction($id, $byReference = false){
 		$acc = self::retrieve();
-
-		$acc = (string)$acc->_id;
 		$acc = new \helper\accounting($acc);
 
 		if($byReference)
@@ -549,15 +550,19 @@ class accounting
 	/**
 	 * returns all tags the user has
 	 */
-	static function getAllTags(){
+	static function getTags($search = null){
 		$acc = self::retrieve();
 		$acc = new \helper\accounting($acc);
+		return $acc->accounts()->getTags($search);
 	}
 
 	/**
 	 * @param $tags array
 	 */
 	static function getAccountsForTags($tags){
+		$acc = self::retrieve();
+		$acc = new \helper\accounting($acc);
+		return $acc->accounts()->getByTag($tags);
 
 	}
 

@@ -251,6 +251,10 @@ class billing extends \core\api
 	 * marks a bill as deleted
 	 *
 	 * @param $id
+	 * @throws \exception\UserException
+	 *
+	 * TODO make it possible to delete those that are not drafts (set status to cancelled and reverse postings and SKU)
+	 *
 	 */
 	static function remove($id)
 	{

@@ -183,11 +183,11 @@ class Accounts
 	}
 
 	/**
-	 * returns a collection of accounts based on a given tag
+	 * returns a collection of accounts based on array of tags
 	 *
-	 * @param $tag
+	 * @param $tags array
 	 */
-	function getByTag($tag){
+	function getByTag($tags){
 
 	}
 
@@ -215,9 +215,18 @@ class Accounts
 	 * otherwise tags that matches search are returned
 	 *
 	 * @param null $search
+	 * @return array
 	 */
 	function getTags($search = null){
+		$pdo = $this->srv->db->dbh;
+		$sth = $pdo->prepare($this->srv->queries->getAllTags());
+		$sth->execute(array('grp_id' => $this->srv->grp));
 
+		$ret = array();
+		foreach($sth->fetchAll() as $r)
+			$ret[] = $r['tag'];
+
+		return $ret;
 	}
 
 	//region private aux
