@@ -22,7 +22,8 @@ class ResendPassword extends \helper\layout\LayoutBlock{
 <p>Gå ind på nedenstående side for at nulstille og vælge et nyt password:</p>
 
 <a href=\"$codeLink\">$codeLink</a>
-
+<p>Har du ikke bedt om en nulstilling skal du blot ignorere denne mail.</p>
+<p>Ovenstående link udløber efter en time. Hvis det er udløbet, kan du blot få tilsendt et nyt.</p>
 <p>Vi ønsker dig en god fornøjelse</p>
 
 <p>Med venlig hilsen<br/>

@@ -30,8 +30,8 @@ class api extends \core\startapi{
 			throw new \exception\SuccessException(__('Activationmail was resend.'));
 		}
 
-		//send link for resetting the password
-		$user->resetPasswordKey = sha1(time() . $user->mail);
+		//send link for resetting the password (making sure another one cannot calculate the hash within the timelimit)
+		$user->resetPasswordKey = sha1(time() . $user->mail . uniqid('saltAndPepper', true));
 		$user->resetPasswordIssued = time();
 
 		$core = new \helper\core(null);
@@ -66,13 +66,15 @@ class api extends \core\startapi{
 	static function resetPassword($newPass, $resetKey, $mail){
 		$user = self::findUser($mail);
 
-		if($user->resetPasswordKey != $resetKey)
+		if(!is_string($user->resetPasswordKey) || $user->resetPasswordKey != $resetKey)
 			throw new \exception\UserException(__('wrong resetkey.'));
 
-		if($user->resetPasswordIssued > time() + 3600)
+		if((int) $user->resetPasswordIssued + 3600 < time())
 			throw new \exception\UserException(__('The reset was expired, try again.'));
 
 		$user->password = self::hashPassword($newPass, $user->mail);
+		$user->resetPasswordKey = null;
+		$user->resetPasswordIssued = null;
 
 		//and update
 		$core = new \helper\core(null);
