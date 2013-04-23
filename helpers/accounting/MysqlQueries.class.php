@@ -16,6 +16,7 @@ class MysqlQueries implements \helper\accounting\Queries
 	function getAllAccounts($grp, $flags = 0, $accounts=array(), $type = null, $tags = array()){
 		$add = ' AND flags & ' . $flags . ' = ' . $flags . '';
 
+		//add condition for accounts
 		if(is_array($accounts)){
 			$first = 'AND ';
 			foreach($accounts as $acc){
@@ -23,6 +24,22 @@ class MysqlQueries implements \helper\accounting\Queries
 				$first = 'OR';
 			}
 			$add .= '';
+		}
+
+		//add conditions for tags
+		if(!empty($tags)){
+
+			$tagSelect = false;
+			foreach($tags as $tag){
+				if($tagSelect)
+					$tagSelect = " AND ";
+				$tagSelect .= 'tags.tag = "' .$tag . '" ';
+			}
+
+			$add .=
+				'AND
+					(' . $tagSelect . ')
+				AND acc.id = tags.account_id';
 		}
 
 		if(!is_null($type)){
@@ -42,6 +59,7 @@ class MysqlQueries implements \helper\accounting\Queries
 			    SUM(posts.amount_out) as amount_out,
 			    acc.currency
 			FROM
+				accounting_account_tags as tags,
 			    accounting_accounts as acc
 			    LEFT OUTER JOIN accounting_postings as posts ON posts.account_id = acc.id
 			WHERE

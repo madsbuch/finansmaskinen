@@ -32,12 +32,6 @@ her skal du udfylde flere informationer omkring din virksomhed.</p>
 <p>Hvis du ikke kan udfylde det hele på nuværende tidspunkt eller hvis du ønsker at ændre dit
 password, brugernavn eller andet, så kan du også gøre det når du er logget ind i systemet.</p>
 
-<h3>Priser, abonnement og betingelser:</h3>
-<p>Systemet er som udgangspunkt gratis for dig at benytte. Du får hver måned tildelt 5 gratis
-fakturaer samt regninger. Når disse er opbrugt, vil det koste dig et mindre beløb at sende
-en faktura eller at registrere en regning. Du kan på vores hjemmeside få et overblik over
-vores priser samt læse vores vilkår.</p>
-
 
 <p>Vi ønsker dig en god fornøjelse</p>
 

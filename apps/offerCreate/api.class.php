@@ -23,13 +23,15 @@ class offerCreate extends \core\api{
 	/**
 	* returns a summery of this app in a widget
 	*
+	 * TODO put in when the module is finished
+	 *
 	* @return \model\platform\Widget
 	*/
-	static function on_getWidget(){
+	/*static function on_getWidget(){
 		//retrive 3 first elements, that are not closed
 		$objs = self::retrive(true, 4);
 		return new \app\offerCreate\layout\finance\Widget($objs);
-	}
+	}*/
 	
 	
 	/**

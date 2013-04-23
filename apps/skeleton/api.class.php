@@ -30,7 +30,7 @@ class api_appName{
 	* Returns user friendly name of app (in current language)
 	*/
 	static function getTitle(){
-		return "title"
+		return "title";
 	}
 	
 	/**

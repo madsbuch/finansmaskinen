@@ -18,21 +18,25 @@ class contacts extends \core\api{
 	static function getTitle(){
 		return __('Contacts');
 	}
+
+	static function on_getWidget(){
+		return new \app\contacts\layout\finance\Widget();
+	}
 	
 	/**
 	* is called casually
 	*
 	* we don't have any groups here
 	*/
-	static function cron(){
-		$lodo = new \helper\lodo('contacts', 'contacts');
+	static function on_cronFast(){
+		echo "blah!\n";
+		/*$lodo = new \helper\lodo('contacts', 'contacts');
 		//optimize the collection
 		$lodo->optimizeCollection(array(
 			'Party.PartyName'
-		));
-
+		));*/
 		//@TODO, take all contacts that have an external reference, to another
-		//company, and update thei information
+		//company, and update the information
 	}
 	/*************************** LISTENERS ************************************/
 	

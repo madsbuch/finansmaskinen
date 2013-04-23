@@ -141,12 +141,14 @@ class Accounts
 	 * @param $flags int, binary representation of flags. see constants, used for quereing
 	 * @param array $accounts
 	 * @param null $type
+	 * @param array $tags array of tags returning acounts should have
 	 * @return array
 	 */
-	function getAccounts($flags = 0, $accounts = array(), $type = null)
+	function getAccounts($flags = 0, $accounts = array(), $type = null, $tags = array())
 	{
 		$pdo = $this->db->dbh;
-		$sth = $pdo->prepare($this->queries->getAllAccounts($this->grp, $flags, $accounts, $type));
+		$sth = $pdo->prepare(
+			$this->queries->getAllAccounts($this->grp, $flags, $accounts, $type, $tags));
 
 		$ret = array();
 		$sth->execute(array($this->accounting));
@@ -186,9 +188,10 @@ class Accounts
 	 * returns a collection of accounts based on array of tags
 	 *
 	 * @param $tags array
+	 * @return array
 	 */
 	function getByTag($tags){
-
+		return $this->getAccounts(0, array(), null, $tags);
 	}
 
 	/**
