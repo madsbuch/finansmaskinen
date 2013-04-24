@@ -11,11 +11,11 @@ namespace cli;
  * Cron modes
  *
  * cron_fast:
- *  runs every few minutes or more, depending on how many instances running the farm
+ *  runs at leas every five minutes or more, depending on how many instances running the farm
  *  this is not concurrency safe
  *
  * cron_slow
- *  runs every few hour or more depending on how many instances in the farm
+ *  runs like once a day or more depending on how many instances in the farm
  *  this is not concurrencysafe
  *
  * cron_safe
@@ -80,6 +80,16 @@ class Cron{
 			//depressing errors as a function may not be defined
 			if(method_exists('\api\\'.$app, $function))
 				call_user_func(array('\api\\'.$app, $function));
+		}
+
+		$dirs = array_filter(glob(ROOT.'start/*'), 'is_dir');
+		foreach($dirs as $d){
+			$d = explode('/', $d);
+			$app = array_pop($d);
+			echo "executing: " . implode('::', array('\start\\'.$app.'\api', $function)) . "\n";
+			//depressing errors as a function may not be defined
+			if(method_exists('\start\\'.$app.'\api', $function))
+				call_user_func(array('\start\\'.$app.'\api', $function));
 		}
 
 		//TODO run on the api's in the start folder

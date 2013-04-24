@@ -12,11 +12,29 @@ class api extends \core\startapi{
 	* methods that should not be externally availanle
 	*/
 	public $external = array();
-	
+
+	/**** CRON system ****/
+
+	static function on_cronFast(){
+		//synchronize mails
+		self::synchronizeMails();
+	}
+
+	/**
+	 * takes all mails not synchronized to external mail list, and put thm over
+	 */
+	static function synchronizeMails(){
+		echo "synchronizing mails to mailchimp:\n";
+	}
+
 	/**** Interacting with the user system ****/
 
 	/**
-	 * sends mails used for recvovery
+	 * sends recovery mail
+	 *
+	 * @param $mail
+	 * @throws \exception\SuccessException
+	 * @throws \exception\UserException
 	 */
 	static function recoverAccount($mail){
 		$user = self::findUser($mail);
@@ -83,16 +101,13 @@ class api extends \core\startapi{
 	}
 
 	/**
-	* creaete a user for finansmaskien
-	*
-	* errorcodes:
-	*	200 sucess
-	*	0	user exist
-	*/
-	public static function createUser(
-
-		\model\finance\platform\UserCreate $data,
-		$companyType='company'){
+	 * create new user
+	 *
+	 * @param \model\finance\platform\UserCreate $data
+	 * @param string $companyType
+	 * @return int|\model\finance\platform\User
+	 */
+	public static function createUser(\model\finance\platform\UserCreate $data, $companyType='company'){
 		if(!is_null(self::findUser($data->mail)))
 			return 0;
 			
@@ -159,6 +174,13 @@ class api extends \core\startapi{
 		return $fUser;
 	}
 
+	/**
+	 * sends activation mail.
+	 *
+	 * put here to make it easier to resend
+	 *
+	 * @param $fUser
+	 */
 	static function sendActivationMail($fUser){
 		$mail = new \helper\mail();
 		$mail->AddReplyTo('info@finansmaskinen.dk', 'Finansmaskinen');
