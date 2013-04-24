@@ -12,18 +12,26 @@ namespace core;
 
 class initialize {
 
-	private $configuration = 'testLaptop';
+	private $configuration = 'test';
 
 	function __construct(){
 
 	}
 
-	public function initialize(){
+	/**
+	 * @param null $profile string force profile
+	 */
+	public function initialize($profile = null){
 		$this->includes();
 		$this->setupAutoload();
 		$this->setupConfiguration();
 
+		if(!is_null($profile))
+			\core\inputParser::getInstance()->setProfile($profile);
+
 	}
+
+	//region setup
 
 	function setupConfiguration(){
 		//some character settings:
@@ -48,6 +56,8 @@ class initialize {
 		spl_autoload_register(array($this, 'autoload'));
 		spl_autoload_register(array($this, 'autoload_type'));
 	}
+
+	//endregion
 
 	/**
 	 * Defining the autoload function

@@ -19,6 +19,7 @@ namespace model\finance\platform;
  * @property $settings
  * @property $tosApproved;
  * @property $TosReApprove;
+ * @property $inMailList
  * @property $resetPasswordKey;
  * @property $resetPasswordIssued;
  */
@@ -70,6 +71,13 @@ class User extends \model\AbstractModel{
      * @var bool
      */
     protected $TosReApprove;
+
+	/**
+	 * whether this contact is synchronized to the operational mailingslist
+	 *
+	 * @var bool
+	 */
+	protected $inMailList;
 
 	/**
 	* some application settings

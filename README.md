@@ -3,17 +3,6 @@ Finansmaskinen - Application framework
 
 Et framework til at køre applikationssystemer
 
-1. setup
-2. add new site/domain
-3. tmps
-4. conventions
-5. future feature
-6. security
-7. feature suggestion
-8. update an installation
-9. create new localization
-10. Databases
-
 .. contents::
 
 Setup
@@ -99,18 +88,22 @@ Security
 expose_php = false, no reason to tell that we use php
 keep http headers to a minimum.
 
-::::::::::::: 7 :::::::::::::
+feature suggestions
+-------------------
+(this is probably deprecated, as this is done on business level, and not in this readme ;))
 let http://piwik.org/ about doin the stats
 
-::::::::::::: 8 :::::::::::::
+Update an installation
+----------------------
 
 checklist for updating an installation:
-1. make sure all models have code, for updating from older versions
-2. refactor the MySQL database on the host
+1. make sure all models have code, for updating from older versions (forward migration)
+2. refactor the MySQL database on the host (from the migration file)
 3. create a app.js (combine all javascript in a single js file, the clousure compiler does it)
-4. upload the new code, and overwrite the old one
+4. upload the new code, and overwrite the old one (effectivly: push or let be pulled)
 
-::::::::::::: 9 :::::::::::::
+Create localization
+-------------------
 To create a new localization, som file needs to be created:
 
 static/js/language/ copy one of the existing, and translate all entries
@@ -118,10 +111,25 @@ static/js/language/ copy one of the existing, and translate all entries
 /localization/[localID]-settings.lan change the settings for this
 
 
-::::::::::::: 10 :::::::::::::
+Databases
+---------
 MySQL is pretty self explainatory as of the schema design
 
 mongo should have following index:
 db          collection      field
 finance     contacts        contactID
 finance     products        productID
+
+Cron
+----
+
+Cron is to be handled by the virtual machines, that hosts the system:
+system crontab may be used.
+
+following commands is to run in following intervals
+
+php appRoot/cli/cli.php cron fast -> every 5 minutes
+php appRoot/cli/cli.php cron slow -> every 24th hour
+php appRoot/cli/cli.php cron concurrencySafe -> every 5 minutes. ONLY ON ONE MACHINE!
+
+example crontab:

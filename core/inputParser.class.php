@@ -11,7 +11,11 @@ class inputParser{
 	// Hold an instance of the class
 	private static $instance;
 
-	// The singleton method
+	/**
+	 * singleton stuff
+	 *
+	 * @return \core\inputParser
+	 */
 	public static function getInstance(){
 		if(!isset(self::$instance)){
 			$c = __CLASS__;
@@ -31,6 +35,13 @@ class inputParser{
 	*/
 	private $URI;//uri arr (by /)
 	private $domain;//domain arr (by .)
+
+	/**
+	 * profile used for this execution
+	 *
+	 * @var string
+	 */
+	private $profile;
 	
 	/**
 	* lazy populated
@@ -55,37 +66,61 @@ class inputParser{
 		$this->URI = explode("/", $realData[0]);
 		$this->domain = explode(".", $this->getDomain());
 	}
+
+	//region setters
+
+	public function setProfile($profile){
+		$this->profile = $profile;
+	}
+
+
+	//endregion
 	/**
-	* returns URI
-	*/
+	 * return URI, doesn't work in CLI
+	 *
+	 * @return mixed
+	 */
 	public function getURI(){
-		return $_SERVER["REQUEST_URI"];
+		return isset($_SERVER["REQUEST_URI"]) ? $_SERVER["REQUEST_URI"] : null;
 	}
-	
+
 	/**
-	* Returns the domain (vhost)
-	*/
+	 * returns domain
+	 *
+	 * @return mixed
+	 */
 	public function getDomain(){
-		return $_SERVER['SERVER_NAME'];
+		return isset($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : null;
 	}
-	
+
+	/**
+	 * returns url (schema should be added?)
+	 *
+	 * @return string
+	 */
 	public function getURL(){
 		return $this->getDomain().$this->getURI();
 	}
-	
+
 	/**
-	* this function reads the request body, and makes sure to save it, for evt
-	* later retrieval.
-	*/
+	 * returns the request body
+	 *
+	 * this function reads the request body, and makes sure to save it, for evt
+	 * later retrieval.
+	 *
+	 * @return string
+	 */
 	public function getRequestBody(){
 		if(is_null($this->reqBody))
 			$this->reqBody = file_get_contents('php://input');
 		return $this->reqBody;
 	}
-	
+
 	/**
-	* get header from key
-	*/
+	 * returns requested field from request header
+	 *
+	 * @param $key
+	 */
 	function getRequestHeader($key){
 		//return $_SERVER['CONTENT_TYPE'];
 	}
@@ -99,30 +134,33 @@ class inputParser{
 	
 	
 	/*************************** URL PARSING **********************************/
-	
+
 	/**
-	* returns current site (or profile if you want)
-	*
-	* returns tld independent site str.
-	* ex: appf (from finansmaskinen.dev -> finance)
-	* this function takes care to router.php
-	*/
+	 * returns current site (or profile if you want)
+	 *
+	 * returns tld independent site str.
+	 * ex: appf (from finansmaskinen.dev -> finance)
+	 * this function takes care to router.php
+	 *
+	 * @return string
+	 */
 	function getSite(){
+		if(isset($this->profile))
+			return $this->profile;
+
 		$site = $this->getReverseDomain();
 		$domain = $site[1].".".$site[0];
-		return \config\router::$domains[$domain];
+		return $this->profile = \config\router::$domains[$domain];
 	}
-	
-	/**
-	* Alias for getSite();
-	*/
 	function getProfile(){
 		return $this->getSite();
 	}
-	
+
 	/**
-	* returns requested filetype, or null if none
-	*/
+	 * returns requested filetype, or null if none
+	 *
+	 * @return null
+	 */
 	function getFileType(){
 		$realData = explode("?", $this->getURI());
 		$type = explode('.', $realData[0]);

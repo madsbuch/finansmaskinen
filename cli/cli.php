@@ -8,7 +8,7 @@
 chdir("..");
 require_once("core/initialize.class.php");
 $ini = new \core\initialize();
-$ini->initialize();
+$ini->initialize('finance');
 
 if(!isset($argv[1]))
 	die('No command given, interactive mode should be implmented here.' . "\n");

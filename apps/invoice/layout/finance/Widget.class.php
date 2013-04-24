@@ -56,8 +56,10 @@ class Widget extends \helper\layout\LayoutBlock implements \helper\layout\Widget
 							$toRet = new \DOMText(date("j/n-Y", $date));
 						}
 						else{
-							$toRet = $dom->createElement('a', 'Send rykker');
-							$toRet->setAttribute('href', '/invoice/view/'.$data->_id.'/doReminder');
+							$toRet = $dom->createElement('span', date("j/n-Y", $date));
+							$toRet->setAttribute('class', 'label label-important');
+							//$toRet = $dom->createElement('a', 'Send rykker');
+							//$toRet->setAttribute('href', '/invoice/view/'.$data->_id.'/doReminder');
 						}
 					}
 					return $toRet;

@@ -69,7 +69,8 @@ class finance{
 		'finansmaskinen' => array(
 			'url' => 'http://rpc.finansmaskinen.dk/',//remember trailing /
 			'key' => '9feb1101115be822c9f4de80eaf6545cb7a75d5fc98ab1e959018557129811b2-50df331e27d2c-d41d8cd98f00b204e9800998ecf8427e'
-		)
+		),
+		'mailchimp' => 'd677f5b34fde5b4d1c25203d3c6308f7-us6'
 	);
 }
 

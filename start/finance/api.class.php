@@ -25,6 +25,48 @@ class api extends \core\startapi{
 	 */
 	static function synchronizeMails(){
 		echo "synchronizing mails to mailchimp:\n";
+
+		//including resources
+		require_once PLUGINDIR . 'MCAPI.class.php';
+
+		$core = new \helper\core(null);
+		$db = $core->getDB('mongo');
+		$users = $db->getCollection('financeUsers')->find(array(
+			'_subsystem.isDeleted' => array('$ne' => true)
+		));
+
+		$batch = array();
+
+		foreach($users as $u){
+			$u = new \model\finance\platform\User($u);
+			$batch[] = array('EMAIL'=> $u->mail, 'FNAME' => $u->name);
+			echo "attempting to add " . $u->mail . "\n";
+		}
+
+		//this is not promotional, but operational, people should not
+		$optin = false;
+		$up_exist = true; // yes, update currently subscribed users
+		$replace_int = false; // no, add interest, don't replace
+		$listId = '3c89f78ba8';
+
+		$api = new \MCAPI(\config\finance::$api['mailchimp']);
+
+		$vals = $api->listBatchSubscribe($listId,$batch,$optin, $up_exist, $replace_int);
+		if ($api->errorCode){
+			echo "Batch Subscribe failed!\n";
+			echo "code:".$api->errorCode."\n";
+			echo "msg :".$api->errorMessage."\n";
+		} else {
+			echo "added:   ".$vals['add_count']."\n";
+			echo "updated: ".$vals['update_count']."\n";
+			echo "errors:  ".$vals['error_count']."\n";
+			foreach($vals['errors'] as $val){
+				echo $val['email_address']. " failed\n";
+				echo "code:".$val['code']."\n";
+				echo "msg :".$val['message']."\n";
+			}
+		}
+
 	}
 
 	/**** Interacting with the user system ****/
