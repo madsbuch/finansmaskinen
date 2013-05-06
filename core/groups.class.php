@@ -36,6 +36,11 @@ class groups{
 
 	private $authArray;
 
+	/**
+	 * @var \core\db
+	 */
+	private $db;
+
 	private function __construct(){
 		
 	}
@@ -100,12 +105,15 @@ class groups{
 		
 		$db->insert('grp', array('id', $id));
 	}
-	
+
 	/**
-	* add a user to a group
-	*
-	* @param permissions	array of ints, if more
-	*/
+	 * add a user to a group
+	 *
+	 * @param $uid
+	 * @param $gid
+	 * @param array $permissions
+	 * @internal param array $permissions of ints, if more
+	 */
 	public function addUser2Group($uid, $gid, $permissions){
 		$this->authArray['update'] = true;
 		$db = $this->getDB();
@@ -129,17 +137,28 @@ class groups{
 			'permission' => $permissions), 'usr_grp_permissions');
 		}
 	}
-	
+
 	/**
-	* remove user from group
-	*/
+	 * remove user from groups
+	 *
+	 * @param $uid
+	 * @param $gid
+	 * @throws \Exception
+	 */
 	public function removeUserFromGroup($uid, $gid){
-		$this->authArray['update'] = true;
+		throw new \Exception('Not yet implemented');
+		//$this->authArray['update'] = true;
 	}
-	
+
 	/**
-	* Add app to group
-	*/
+	 * add app to group
+	 *
+	 * @param $appID
+	 * @param $groupID
+	 * @param string $expire
+	 * @param bool $status
+	 * @return mixed
+	 */
 	function addApp2Group($appID, $groupID, $expire = '9999999999', $status=true){
 		if(is_object($this->authArray))
 			$this->authArray->update = true;
@@ -153,25 +172,36 @@ class groups{
 		
 		
 	}
-	
+
 	/**
-	* remove groups access to app
-	*/
+	 * remove group access to app
+	 *
+	 * @param $grp
+	 * @param $app
+	 */
 	function removeAppFromGroup($grp, $app){
 		if(is_object($this->authArray))
 			$this->authArray->update = true;
 	}
-	
+
 	/**
-	* return metadata for a group
-	*/
+	 * get metadata for app
+	 *
+	 * @param $grp
+	 * @throws \Exception
+	 */
 	public function getMeta($grp){
 		throw new \Exception('not yet implemented');
 	}
-	
+
 	/**
-	* set metadata for grp
-	*/
+	 * set metadata
+	 *
+	 * @param $grp
+	 * @param $key
+	 * @param $value
+	 * @return mixed
+	 */
 	public function setMeta($grp, $key, $value){
 		if(is_object($this->authArray))
 			$this->authArray->update = true;
@@ -188,14 +218,14 @@ class groups{
 	*/
 	
 	//APPS
-	
+
 	/**
-	* get All Groups for app, also descendants
-	*
-	* @param	$app: name
-	* @param	$object whether the complete groups objects are returned
-	* @return	array of grpID
-	*/
+	 * get All Groups for app, also descendants
+	 *
+	 * @param $app: name
+	 * @param $object bool whether the complete groups objects are returned
+	 * @return array of grpID
+	 */
 	public function getGrpForApp($app, $object = false){
 		if(isset($this->authArray->appnames[$app]->groups)){
 			$grps = $this->getGrpRecurse($this->authArray->appnames[$app]->groups);
@@ -211,9 +241,13 @@ class groups{
 		}
 		return false;
 	}
+
 	/**
-	* takes an array, and recurses down the structure to fetch all descendants
-	*/
+	 * takes an array, and resources down the structure to fetch all descendants
+	 *
+	 * @param $grps
+	 * @return array
+	 */
 	private function getGrpRecurse($grps){
 		//run through all 
 		foreach($grps as $g){
@@ -224,28 +258,33 @@ class groups{
 		}
 		return $grps;
 	}
-	
+
 	/**
-	* returns treeid
-	*/
+	 * get the tree id
+	 *
+	 * @return mixed
+	 */
 	public function getTree(){
 		return $this->authArray->treeID;
 	}
-	
+
 	/**
-	* getGroups
-	*
-	* returns all groups for logged in user
-	*/
+	 * get groups for currently signed in user
+	 *
+	 * @return mixed
+	 */
 	public function getGroups(){
 		return $this->authArray->groups;
 	}
-	
+
 	/**
-	* this returns a group from a string
-	*
-	* read write and create are allowed on all objects in this groups
-	*/
+	 * this returns a group from a string
+	 *
+	 * read write and create are allowed on all objects in this groups
+	 *
+	 * @param $group
+	 * @return int
+	 */
 	public function getCommonGroup($group){
 		//fetch to see if a group exists
 		$db = $this->getDB();
@@ -269,15 +308,19 @@ class groups{
 		$this->authenticatePublicGroup($grp, $group);
 		return $grp;
 	}
+
 	/**
-	* aux for getCommonGroup
-	*
-	* provides NO VALIDATIOn
-	*
-	* and is therefor not public ;)
-	*
-	* permissions are to manipulate all objects
-	*/
+	 * aux for getCommonGroup
+	 *
+	 * provides NO VALIDATION
+	 *
+	 * and is therefor not public ;)
+	 *
+	 * permissions are to manipulate all objects
+	 *
+	 * @param $group
+	 * @param $name
+	 */
 	private function authenticatePublicGroup($group, $name){
 		if(!isset($this->authArray->auxGroups[$group])){
 			$permissions = array(
@@ -297,32 +340,39 @@ class groups{
 			));
 		}
 	}
-	
+
 	/**
-	* Get permissions
-	*
-	* returns permission to given group (to this user)
-	*/
+	 * Get permissions
+	 *
+	 * returns permission to given group (to this user)
+	 *
+	 * @param $grp
+	 * @param $permission
+	 * @return bool
+	 */
 	public function getPermissions($grp, $permission){
 		if(	in_array($permission, $this->authArray->groups[$grp]->permissions)
 			|| in_array('-1', $this->authArray->groups[$grp]->permissions))
 			return true;
 		return false;
 	}
-	
+
 	/**
-	* getChilds
-	*
-	* get all childs of a group
-	*
-	* @param $mode L | H : L for list H for hirachy
-	*
-	* array(
-	*	id = id
-	*	parrent = id
-	* )
-	*
-	*/
+	 * getChilds
+	 *
+	 * get all childs of a group
+	 *
+	 * @param $grpID
+	 * @param $mode string H | L L for list H for hirachy
+	 *
+	 * array(
+	 *    id = id
+	 *    parrent = id
+	 * )
+	 *
+	 * @param array $parrents
+	 * @return array
+	 */
 	function getChilds($grpID, $mode = "H", $parrents = array()){
 		
 		//udtrække info om grpID
@@ -341,10 +391,12 @@ class groups{
 			return $parrents;
 		return $this->getChilds($p, $mode, $parrents);
 	}
-	
+
 	/**
-	* retrieve DB connection
-	*/
+	 * helper method for getting DB object
+	 *
+	 * @return db
+	 */
 	private function getDB(){
 		if(isset($this->db))
 			return $this->db;
