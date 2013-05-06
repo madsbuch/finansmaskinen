@@ -133,3 +133,11 @@ php appRoot/cli/cli.php cron slow -> every 24th hour
 php appRoot/cli/cli.php cron concurrencySafe -> every 5 minutes. ONLY ON ONE MACHINE!
 
 example crontab:
+
+#run every 5 minues
+*/5 * * * * php /var/www/cli/cli.php cron fast
+*/5 * * * * php /var/www/cli/cli.php cron concurrencySafe
+
+#run every night at 3am
+* 3 * * * php /var/www/cli/cli.php cron slow
+

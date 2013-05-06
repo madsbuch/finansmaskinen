@@ -61,7 +61,6 @@ class api extends \core\startapi{
 			echo "updated: ".$vals['update_count']."\n";
 			echo "errors:  ".$vals['error_count']."\n";
 			foreach($vals['errors'] as $val){
-				echo $val['email_address']. " failed\n";
 				echo "code:".$val['code']."\n";
 				echo "msg :".$val['message']."\n";
 			}

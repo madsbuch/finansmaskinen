@@ -49,7 +49,7 @@ abstract class Mail{
 	* generates text only alternative
 	*/
 	public function generateAlt(){
-	
+		return "";
 	}
 	
 	/**

@@ -13,7 +13,11 @@ class groups{
 	// Hold an instance of the class
 	private static $instance;
 
-	// The singleton method
+	/**
+	 * The singleton method
+	 *
+	 * @return \core\groups
+	 */
 	public static function getInstance() {
 		if (!isset(self::$instance)){
 			$c = __CLASS__;
@@ -29,7 +33,9 @@ class groups{
 	}
 	
 	/********* THE CLASS ***************/
-	
+
+	private $authArray;
+
 	private function __construct(){
 		
 	}

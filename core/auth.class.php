@@ -12,7 +12,11 @@ class auth{
 	// Hold an instance of the class
 	private static $instance;
 
-	// The singleton method
+	/**
+	 * The singleton method
+	 *
+	 * @return \core\auth
+	 */
 	public static function getInstance() {
 		if (!isset(self::$instance)){
 			$c = __CLASS__;
