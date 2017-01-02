@@ -1,7 +1,9 @@
 Finansmaskinen - Application framework
 ======================================
 
-Et framework til at køre applikationssystemer
+__Discontinued since 2013.__ This is here for reference reasons.
+A blog post will soon be available for retrospect.
+
 
 .. contents::
 
